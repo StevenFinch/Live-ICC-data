@@ -1,0 +1,80 @@
+name: Daily ICC (after 16:00 US/Eastern)
+
+on:
+  workflow_dispatch: {}
+  schedule:
+    # ≈16:15 ET in DST (UTC-4)
+    - cron: "15 20 * * *"
+    # ≈16:15 ET in Standard Time (UTC-5)
+    - cron: "15 21 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-icc
+  cancel-in-progress: false
+
+jobs:
+  run-icc:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Mark workspace as safe
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then
+            pip install -r requirements.txt
+          else
+            pip install pandas numpy yfinance lxml html5lib requests tzdata python-dateutil
+          fi
+
+      - name: Run daily ICC
+        env:
+          IGNORE_TIME_GUARD: "0"   # set to "1" to bypass time guard on manual runs
+        run: |
+          python run_daily_icc.py
+
+      - name: Commit & push (rebase if needed)
+        shell: bash
+        env:
+          BRANCH_NAME: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+          BRANCH="${BRANCH_NAME:-main}"
+
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # keep up-to-date with remote to avoid non-fast-forward
+          git fetch origin "${BRANCH}"
+          git checkout "${BRANCH}"
+          git pull --rebase origin "${BRANCH}"
+
+          # add moves/renames/new files recursively (data/**)
+          git add -A data || true
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
+          ts=$(date -u +"%Y-%m-%d")
+          git commit -m "Daily ICC update ${ts} [skip ci]"
+
+          git push origin HEAD:"${BRANCH}" || {
+            echo "First push failed; rebasing once and retrying..."
+            git pull --rebase origin "${BRANCH}"
+            git push origin HEAD:"${BRANCH}"
+          }
