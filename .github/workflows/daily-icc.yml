@@ -55,7 +55,7 @@ jobs:
         run: |
           find . -type f | sort
 
-      - name: Commit & push (rebase if needed)
+      - name: Commit & push (rebase-safe)
         shell: bash
         env:
           BRANCH_NAME: ${{ github.ref_name }}
@@ -66,13 +66,10 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          # stay up-to-date to avoid non-fast-forward
-          git fetch origin "${BRANCH}"
-          git checkout "${BRANCH}"
-          git pull --rebase origin "${BRANCH}"
-
-          # add all data (including subfolders) and FILES.md
+          # 1) Stage FIRST so the worktree is clean before rebase
           git add -A data FILES.md || true
+
+          # 2) If nothing to commit, exit quietly
           if git diff --cached --quiet; then
             echo "No changes to commit."
             exit 0
@@ -81,9 +78,12 @@ jobs:
           ts=$(date -u +"%Y-%m-%d")
           git commit -m "Daily ICC update ${ts} [skip ci]"
 
-          # push, rebasing once more if needed
+          # 3) Rebase our new commit(s) on top of remote, then push
+          git fetch origin "${BRANCH}"
+          git pull --rebase origin "${BRANCH}"
+
           git push origin HEAD:"${BRANCH}" || {
-            echo "First push failed; rebasing once and retrying..."
+            echo "Push failed; rebasing once more and retrying..."
             git pull --rebase origin "${BRANCH}"
             git push origin HEAD:"${BRANCH}"
           }
