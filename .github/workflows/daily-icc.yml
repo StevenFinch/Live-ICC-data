@@ -41,11 +41,19 @@ jobs:
             pip install pandas numpy yfinance lxml html5lib requests tzdata python-dateutil
           fi
 
-      - name: Run daily ICC
+      - name: Run daily ICC (writes into data/YYYYMM/)
         env:
           IGNORE_TIME_GUARD: "0"   # set to "1" to bypass time guard on manual runs
         run: |
           python run_daily_icc.py
+
+      - name: Generate FILES.md manifest (show all files)
+        run: |
+          python tools/generate_files_manifest.py
+
+      - name: Print repository file list to logs
+        run: |
+          find . -type f | sort
 
       - name: Commit & push (rebase if needed)
         shell: bash
@@ -58,13 +66,13 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          # keep up-to-date with remote to avoid non-fast-forward
+          # stay up-to-date to avoid non-fast-forward
           git fetch origin "${BRANCH}"
           git checkout "${BRANCH}"
           git pull --rebase origin "${BRANCH}"
 
-          # add moves/renames/new files recursively (data/**)
-          git add -A data || true
+          # add all data (including subfolders) and FILES.md
+          git add -A data FILES.md || true
           if git diff --cached --quiet; then
             echo "No changes to commit."
             exit 0
@@ -73,6 +81,7 @@ jobs:
           ts=$(date -u +"%Y-%m-%d")
           git commit -m "Daily ICC update ${ts} [skip ci]"
 
+          # push, rebasing once more if needed
           git push origin HEAD:"${BRANCH}" || {
             echo "First push failed; rebasing once and retrying..."
             git pull --rebase origin "${BRANCH}"
