@@ -13,7 +13,7 @@ permissions:
 
 concurrency:
   group: daily-icc
-  cancel-in-progress: false
+  cancel-in-progress: true   # if a second run starts while first is running, cancel it
 
 jobs:
   run-icc:
@@ -27,12 +27,40 @@ jobs:
       - name: Mark workspace as safe
         run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
 
+      # ---- DST-aware gate: run only one of the two crons per day ----
+      - name: Decide if this scheduled run should proceed (DST-aware)
+        id: gate
+        shell: bash
+        run: |
+          python - <<'PY'
+          import os, datetime as dt
+          try:
+              from zoneinfo import ZoneInfo
+          except Exception:
+              # If tz not available, default to proceed.
+              with open(os.environ["GITHUB_OUTPUT"], "a") as f:
+                  f.write("skip=false\n")
+              raise SystemExit(0)
+
+          now_utc = dt.datetime.utcnow()
+          now_et  = dt.datetime.now(ZoneInfo("America/New_York"))
+          # Integer hour offset ET-UTC: -4 in DST, -5 in Standard Time
+          off = int(round((now_et - now_utc).total_seconds()/3600))
+          allowed_utc_hour = 20 if off == -4 else 21   # 20:15 in DST, 21:15 in ST
+
+          skip = (now_utc.hour != allowed_utc_hour)
+          with open(os.environ["GITHUB_OUTPUT"], "a") as f:
+              f.write(f"skip={'true' if skip else 'false'}\n")
+          PY
+
       - name: Set up Python
+        if: ${{ github.event_name == 'workflow_dispatch' || steps.gate.outputs.skip == 'false' }}
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
       - name: Install dependencies
+        if: ${{ github.event_name == 'workflow_dispatch' || steps.gate.outputs.skip == 'false' }}
         run: |
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then
@@ -42,20 +70,36 @@ jobs:
           fi
 
       - name: Run daily ICC (writes into data/YYYYMM/)
+        if: ${{ github.event_name == 'workflow_dispatch' || steps.gate.outputs.skip == 'false' }}
         env:
           IGNORE_TIME_GUARD: "0"   # set to "1" to bypass time guard on manual runs
         run: |
           python run_daily_icc.py
 
-      - name: Generate FILES.md manifest (show all files)
+      # Only continue if data/** actually changed (avoid second run doing a no-op commit)
+      - name: Check for data changes
+        if: ${{ github.event_name == 'workflow_dispatch' || steps.gate.outputs.skip == 'false' }}
+        id: changes
+        shell: bash
+        run: |
+          if git status --porcelain data | grep .; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Generate FILES.md manifest (only when data changed)
+        if: ${{ (github.event_name == 'workflow_dispatch' || steps.gate.outputs.skip == 'false') && steps.changes.outputs.changed == 'true' }}
         run: |
           python tools/generate_files_manifest.py
 
       - name: Print repository file list to logs
+        if: ${{ github.event_name == 'workflow_dispatch' || steps.gate.outputs.skip == 'false' }}
         run: |
           find . -type f | sort
 
-      - name: Commit & push (rebase-safe)
+      - name: Commit & push (rebase-safe; only when data changed)
+        if: ${{ (github.event_name == 'workflow_dispatch' || steps.gate.outputs.skip == 'false') && steps.changes.outputs.changed == 'true' }}
         shell: bash
         env:
           BRANCH_NAME: ${{ github.ref_name }}
@@ -66,10 +110,9 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          # 1) Stage FIRST so the worktree is clean before rebase
+          # Stage FIRST so worktree is clean before rebase
           git add -A data FILES.md || true
 
-          # 2) If nothing to commit, exit quietly
           if git diff --cached --quiet; then
             echo "No changes to commit."
             exit 0
@@ -78,9 +121,13 @@ jobs:
           ts=$(date -u +"%Y-%m-%d")
           git commit -m "Daily ICC update ${ts} [skip ci]"
 
-          # 3) Rebase our new commit(s) on top of remote, then push
           git fetch origin "${BRANCH}"
-          git pull --rebase origin "${BRANCH}"
+          # If you ever still see 'unstaged changes', stash around the rebase:
+          git pull --rebase origin "${BRANCH}" || {
+            git stash push --include-untracked -m "ci-auto" || true
+            git pull --rebase origin "${BRANCH}"
+            git stash pop || true
+          }
 
           git push origin HEAD:"${BRANCH}" || {
             echo "Push failed; rebasing once more and retrying..."
