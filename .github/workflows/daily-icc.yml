@@ -1,7 +1,20 @@
 name: Daily ICC (after 16:00 US/Eastern)
 
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      tickers:
+        description: "Comma-separated tickers for sample run (leave blank for SP500)"
+        required: false
+        type: string
+      start:
+        description: "Start date (YYYY-MM-DD); default 2024-01-01"
+        required: false
+        type: string
+      end:
+        description: "End date (YYYY-MM-DD); default = today (UTC)"
+        required: false
+        type: string
   schedule:
     # ≈16:15 ET in DST (UTC-4)
     - cron: "15 20 * * *"
@@ -13,7 +26,7 @@ permissions:
 
 concurrency:
   group: daily-icc
-  cancel-in-progress: true   # if a second run starts while first is running, cancel it
+  cancel-in-progress: true  # cancel a second overlap
 
 jobs:
   run-icc:
@@ -27,26 +40,24 @@ jobs:
       - name: Mark workspace as safe
         run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
 
-      # ---- DST-aware gate: run only one of the two crons per day ----
+      # DST-aware gate: only for **scheduled** runs (manual runs skip this step)
       - name: Decide if this scheduled run should proceed (DST-aware)
+        if: ${{ github.event_name == 'schedule' }}
         id: gate
         shell: bash
         run: |
           python - <<'PY'
-          import os, datetime as dt
-          try:
-              from zoneinfo import ZoneInfo
-          except Exception:
-              # If tz not available, default to proceed.
-              with open(os.environ["GITHUB_OUTPUT"], "a") as f:
-                  f.write("skip=false\n")
-              raise SystemExit(0)
+          from datetime import datetime, timezone
+          from zoneinfo import ZoneInfo
+          import os
 
-          now_utc = dt.datetime.utcnow()
-          now_et  = dt.datetime.now(ZoneInfo("America/New_York"))
-          # Integer hour offset ET-UTC: -4 in DST, -5 in Standard Time
-          off = int(round((now_et - now_utc).total_seconds()/3600))
-          allowed_utc_hour = 20 if off == -4 else 21   # 20:15 in DST, 21:15 in ST
+          now_utc = datetime.now(timezone.utc)                   # aware
+          now_et  = now_utc.astimezone(ZoneInfo("America/New_York"))
+          # ET offset in hours: -4 (DST) or -5 (ST)
+          off_hours = int(round(now_et.utcoffset().total_seconds()/3600))
+          # 16:15 ET corresponds to these UTC hours:
+          # allowed_utc_hour = 16 - off_hours  (-> 20 for -4, 21 for -5)
+          allowed_utc_hour = (16 - off_hours) % 24
 
           skip = (now_utc.hour != allowed_utc_hour)
           with open(os.environ["GITHUB_OUTPUT"], "a") as f:
@@ -69,37 +80,65 @@ jobs:
             pip install pandas numpy yfinance lxml html5lib requests tzdata python-dateutil
           fi
 
-      - name: Run daily ICC (writes into data/YYYYMM/)
+      # ---- Build JSON for SP500 or a manual-specified sample ----
+      - name: Build JSON (prices + news) for SP500 or Sample
         if: ${{ github.event_name == 'workflow_dispatch' || steps.gate.outputs.skip == 'false' }}
         env:
-          IGNORE_TIME_GUARD: "0"   # set to "1" to bypass time guard on manual runs
+          SAMPLE_TICKERS: ${{ inputs.tickers }}
+          SAMPLE_START:   ${{ inputs.start }}
+          SAMPLE_END:     ${{ inputs.end }}
         run: |
-          python run_daily_icc.py
+          set -euo pipefail
+          export PYTHONPATH="src:${PYTHONPATH:-}"
 
-      # Only continue if data/** actually changed (avoid second run doing a no-op commit)
-      - name: Check for data changes
-        if: ${{ github.event_name == 'workflow_dispatch' || steps.gate.outputs.skip == 'false' }}
-        id: changes
-        shell: bash
-        run: |
-          if git status --porcelain data | grep .; then
-            echo "changed=true" >> "$GITHUB_OUTPUT"
+          mkdir -p data apps/web/public/data
+
+          if [ -n "${SAMPLE_TICKERS:-}" ]; then
+            echo ">>> Sample mode for tickers: ${SAMPLE_TICKERS}"
+            echo "ticker" > data/universe.csv
+            for t in $(echo "$SAMPLE_TICKERS" | tr ',;' '  '); do
+              printf "%s\n" "${t^^}" >> data/universe.csv
+            done
+            START="${SAMPLE_START:-2024-01-01}"
+            END="${SAMPLE_END:-$(date -u +%Y-%m-%d)}"
           else
-            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo ">>> Full SP500 mode"
+            python -m market_sentiment.cli.build_universe --out data/universe.csv
+            START="2024-01-01"
+            END="$(date -u +%Y-%m-%d)"
           fi
 
-      - name: Generate FILES.md manifest (only when data changed)
-        if: ${{ (github.event_name == 'workflow_dispatch' || steps.gate.outputs.skip == 'false') && steps.changes.outputs.changed == 'true' }}
+          python -m market_sentiment.cli.build_json \
+            --universe data/universe.csv \
+            --start "$START" \
+            --end   "$END" \
+            --out   apps/web/public/data
+
+      # Optional: inject daily news counts (n_finnhub+n_yfinance) into ticker JSONs
+      - name: Aggregate daily news counts into ticker JSONs
+        if: ${{ github.event_name == 'workflow_dispatch' || steps.gate.outputs.skip == 'false' }}
         run: |
-          python tools/generate_files_manifest.py
+          python tools/build_news_counts.py || true
 
       - name: Print repository file list to logs
         if: ${{ github.event_name == 'workflow_dispatch' || steps.gate.outputs.skip == 'false' }}
         run: |
           find . -type f | sort
 
-      - name: Commit & push (rebase-safe; only when data changed)
-        if: ${{ (github.event_name == 'workflow_dispatch' || steps.gate.outputs.skip == 'false') && steps.changes.outputs.changed == 'true' }}
+      # Only commit when data/public files changed
+      - name: Check for data changes
+        if: ${{ github.event_name == 'workflow_dispatch' || steps.gate.outputs.skip == 'false' }}
+        id: changes
+        shell: bash
+        run: |
+          if git status --porcelain apps/web/public/data data | grep .; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit & push (rebase-safe; only when changed)
+        if: ${{ steps.changes.outputs.changed == 'true' }}
         shell: bash
         env:
           BRANCH_NAME: ${{ github.ref_name }}
@@ -111,7 +150,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           # Stage FIRST so worktree is clean before rebase
-          git add -A data FILES.md || true
+          git add -A apps/web/public/data data FILES.md || true
 
           if git diff --cached --quiet; then
             echo "No changes to commit."
@@ -122,7 +161,7 @@ jobs:
           git commit -m "Daily ICC update ${ts} [skip ci]"
 
           git fetch origin "${BRANCH}"
-          # If you ever still see 'unstaged changes', stash around the rebase:
+          # Stash-around-rebase safety for rare edge cases
           git pull --rebase origin "${BRANCH}" || {
             git stash push --include-untracked -m "ci-auto" || true
             git pull --rebase origin "${BRANCH}"
