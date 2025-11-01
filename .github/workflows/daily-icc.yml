@@ -13,7 +13,7 @@ permissions:
 
 concurrency:
   group: daily-icc
-  cancel-in-progress: true   # cancel a second run if one is in-flight
+  cancel-in-progress: false
 
 jobs:
   run-icc:
@@ -27,58 +27,12 @@ jobs:
       - name: Mark workspace as safe
         run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
 
-      # ---- DST-aware single-run gate (BASH ONLY; manual runs skip) ----
-      - name: DST gate (allow only the correct cron for today's ET offset)
-        if: ${{ github.event_name == 'schedule' }}
-        id: dst_gate
-        env:
-          CRON_EXPR: ${{ github.event.schedule }}
-        shell: bash
-        run: |
-          set -e
-          ET_OFFSET=$(TZ=America/New_York date +%z)    # -0400 or -0500
-          if [ "$ET_OFFSET" = "-0400" ]; then
-            ALLOWED="15 20 * * *"
-          else
-            ALLOWED="15 21 * * *"
-          fi
-
-          if [ "${CRON_EXPR:-}" != "$ALLOWED" ]; then
-            echo "skip=true" >> "$GITHUB_OUTPUT"
-            echo "Skip: ET offset $ET_OFFSET expects '$ALLOWED', got '${CRON_EXPR:-}'."
-          else
-            echo "skip=false" >> "$GITHUB_OUTPUT"
-            echo "Proceed: '${CRON_EXPR:-}' matches ET offset $ET_OFFSET."
-          fi
-
-      # ---- Skip if today's files already exist (prevents double work) ----
-      - name: Skip if today's data already exists
-        if: ${{ github.event_name == 'workflow_dispatch' || steps.dst_gate.outputs.skip != 'true' }}
-        id: today
-        shell: bash
-        run: |
-          set -e
-          YYYYMM=$(TZ=America/New_York date +%Y%m)
-          TAG=$(TZ=America/New_York date +%Y_%m%d)   # e.g., 2025_1031
-          DIR="data/${YYYYMM}"
-          S1="${DIR}/icc_live_sp500_${TAG}.csv"
-          S2="${DIR}/icc_live_usall_${TAG}.csv"
-          if [ -f "$S1" ] && [ -f "$S2" ]; then
-            echo "skip=true" >> "$GITHUB_OUTPUT"
-            echo "Today's data already present: $S1 and $S2"
-          else
-            echo "skip=false" >> "$GITHUB_OUTPUT"
-            echo "No complete set for today; proceeding."
-          fi
-
       - name: Set up Python
-        if: ${{ github.event_name == 'workflow_dispatch' || (steps.dst_gate.outputs.skip != 'true' && steps.today.outputs.skip != 'true') }}
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
       - name: Install dependencies
-        if: ${{ github.event_name == 'workflow_dispatch' || (steps.dst_gate.outputs.skip != 'true' && steps.today.outputs.skip != 'true') }}
         run: |
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then
@@ -88,24 +42,20 @@ jobs:
           fi
 
       - name: Run daily ICC (writes into data/YYYYMM/)
-        if: ${{ github.event_name == 'workflow_dispatch' || (steps.dst_gate.outputs.skip != 'true' && steps.today.outputs.skip != 'true') }}
         env:
           IGNORE_TIME_GUARD: "0"   # set to "1" to bypass time guard on manual runs
         run: |
           python run_daily_icc.py
 
       - name: Generate FILES.md manifest (show all files)
-        if: ${{ github.event_name == 'workflow_dispatch' || (steps.dst_gate.outputs.skip != 'true' && steps.today.outputs.skip != 'true') }}
         run: |
           python tools/generate_files_manifest.py
 
       - name: Print repository file list to logs
-        if: ${{ github.event_name == 'workflow_dispatch' || (steps.dst_gate.outputs.skip != 'true' && steps.today.outputs.skip != 'true') }}
         run: |
           find . -type f | sort
 
       - name: Commit & push (rebase-safe)
-        if: ${{ github.event_name == 'workflow_dispatch' || (steps.dst_gate.outputs.skip != 'true' && steps.today.outputs.skip != 'true') }}
         shell: bash
         env:
           BRANCH_NAME: ${{ github.ref_name }}
@@ -116,9 +66,10 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          # Stage FIRST so the worktree is clean before rebase
+          # 1) Stage FIRST so the worktree is clean before rebase
           git add -A data FILES.md || true
 
+          # 2) If nothing to commit, exit quietly
           if git diff --cached --quiet; then
             echo "No changes to commit."
             exit 0
@@ -127,13 +78,9 @@ jobs:
           ts=$(date -u +"%Y-%m-%d")
           git commit -m "Daily ICC update ${ts} [skip ci]"
 
+          # 3) Rebase our new commit(s) on top of remote, then push
           git fetch origin "${BRANCH}"
-          # Rebase with stash safety for rare edge cases
-          git pull --rebase origin "${BRANCH}" || {
-            git stash push --include-untracked -m "ci-auto" || true
-            git pull --rebase origin "${BRANCH}"
-            git stash pop || true
-          }
+          git pull --rebase origin "${BRANCH}"
 
           git push origin HEAD:"${BRANCH}" || {
             echo "Push failed; rebasing once more and retrying..."
