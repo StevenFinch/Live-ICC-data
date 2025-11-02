@@ -1,22 +1,47 @@
-name: Daily ICC (after 16:00 US/Eastern)
+name: Daily ICC (5pm US/Eastern, Mon–Fri)
 
 on:
   workflow_dispatch: {}
   schedule:
-    # ≈16:15 ET in DST (UTC-4)
-    - cron: "15 20 * * *"
-    # ≈16:15 ET in Standard Time (UTC-5)
-    - cron: "15 21 * * *"
+    # 5:05pm ET in DST (UTC-4)
+    - cron: "05 21 * * 1-5"
+    # 5:05pm ET in Standard Time (UTC-5)
+    - cron: "05 22 * * 1-5"
 
 permissions:
   contents: write
 
 concurrency:
   group: daily-icc
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
+  gate:
+    runs-on: ubuntu-latest
+    outputs:
+      proceed: ${{ steps.check.outputs.proceed }}
+    steps:
+      - name: Decide whether to run (5pm America/New_York)
+        id: check
+        run: |
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            NY_HOUR=$(TZ=America/New_York date +%H)
+            NY_MIN=$(TZ=America/New_York date +%M)
+            if [ "$NY_HOUR" -eq 17 ]; then
+              echo "proceed=true" >> "$GITHUB_OUTPUT"
+              echo "Proceeding: NY time is ${NY_HOUR}:${NY_MIN}"
+            else
+              echo "proceed=false" >> "$GITHUB_OUTPUT"
+              echo "Skipping: NY time is ${NY_HOUR}:${NY_MIN} (not 5pm)."
+            fi
+          else
+            echo "proceed=true" >> "$GITHUB_OUTPUT"
+            echo "Manual dispatch → proceed."
+          fi
+
   run-icc:
+    needs: gate
+    if: needs.gate.outputs.proceed == 'true'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -43,19 +68,16 @@ jobs:
 
       - name: Run daily ICC (writes into data/YYYYMM/)
         env:
-          IGNORE_TIME_GUARD: "0"   # set to "1" to bypass time guard on manual runs
-        run: |
-          python run_daily_icc.py
+          IGNORE_TIME_GUARD: "0"
+        run: python run_daily_icc.py
 
       - name: Generate FILES.md manifest (show all files)
-        run: |
-          python tools/generate_files_manifest.py
+        run: python tools/generate_files_manifest.py
 
       - name: Print repository file list to logs
-        run: |
-          find . -type f | sort
+        run: find . -type f | sort
 
-      - name: Commit & push (rebase-safe)
+      - name: Commit & push (rebase-safe, idempotent)
         shell: bash
         env:
           BRANCH_NAME: ${{ github.ref_name }}
@@ -66,22 +88,25 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          # 1) Stage FIRST so the worktree is clean before rebase
-          git add -A data FILES.md || true
+          # Sync first to reduce rebase races
+          git fetch origin "${BRANCH}"
+          git checkout "${BRANCH}"
+          git pull --rebase origin "${BRANCH}"
 
-          # 2) If nothing to commit, exit quietly
+          # If today's update already on remote, skip
+          ts=$(date -u +"%Y-%m-%d")
+          if git log -n 50 --pretty=%s origin/"${BRANCH}" | grep -Fq "Daily ICC update ${ts}"; then
+            echo "Already updated today on remote. Skipping commit."
+            exit 0
+          fi
+
+          git add -A data FILES.md || true
           if git diff --cached --quiet; then
             echo "No changes to commit."
             exit 0
           fi
 
-          ts=$(date -u +"%Y-%m-%d")
           git commit -m "Daily ICC update ${ts} [skip ci]"
-
-          # 3) Rebase our new commit(s) on top of remote, then push
-          git fetch origin "${BRANCH}"
-          git pull --rebase origin "${BRANCH}"
-
           git push origin HEAD:"${BRANCH}" || {
             echo "Push failed; rebasing once more and retrying..."
             git pull --rebase origin "${BRANCH}"
