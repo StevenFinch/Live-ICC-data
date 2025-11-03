@@ -3,10 +3,10 @@ name: Daily ICC (5pm US/Eastern, Mon–Fri)
 on:
   workflow_dispatch: {}
   schedule:
-    # 5:05pm ET in DST (UTC-4)
-    - cron: "05 21 * * 1-5"
-    # 5:05pm ET in Standard Time (UTC-5)
-    - cron: "05 22 * * 1-5"
+    # 5:00pm ET in DST (UTC-4)
+    - cron: "00 21 * * 1-5"
+    # 5:00pm ET in Standard Time (UTC-5)
+    - cron: "00 22 * * 1-5"
 
 permissions:
   contents: write
@@ -21,18 +21,18 @@ jobs:
     outputs:
       proceed: ${{ steps.check.outputs.proceed }}
     steps:
-      - name: Decide whether to run (5pm America/New_York)
+      - name: Decide whether to run (exactly 5:00pm America/New_York)
         id: check
         run: |
           if [ "${{ github.event_name }}" = "schedule" ]; then
             NY_HOUR=$(TZ=America/New_York date +%H)
             NY_MIN=$(TZ=America/New_York date +%M)
-            if [ "$NY_HOUR" -eq 17 ]; then
+            if [ "$NY_HOUR" -eq 17 ] && [ "$NY_MIN" -eq 00 ]; then
               echo "proceed=true" >> "$GITHUB_OUTPUT"
               echo "Proceeding: NY time is ${NY_HOUR}:${NY_MIN}"
             else
               echo "proceed=false" >> "$GITHUB_OUTPUT"
-              echo "Skipping: NY time is ${NY_HOUR}:${NY_MIN} (not 5pm)."
+              echo "Skipping: NY time is ${NY_HOUR}:${NY_MIN} (not 17:00)."
             fi
           else
             echo "proceed=true" >> "$GITHUB_OUTPUT"
@@ -88,27 +88,28 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          # Sync first to reduce rebase races
+          # 0) Fetch for remote checks (safe; does not touch worktree)
           git fetch origin "${BRANCH}"
-          git checkout "${BRANCH}"
-          git pull --rebase origin "${BRANCH}"
 
-          # If today's update already on remote, skip
+          # 1) If today's update already on remote, skip entirely
           ts=$(date -u +"%Y-%m-%d")
           if git log -n 50 --pretty=%s origin/"${BRANCH}" | grep -Fq "Daily ICC update ${ts}"; then
             echo "Already updated today on remote. Skipping commit."
             exit 0
           fi
 
+          # 2) Stage & commit local changes FIRST (avoid rebase with dirty worktree)
           git add -A data FILES.md || true
           if git diff --cached --quiet; then
             echo "No changes to commit."
             exit 0
           fi
-
           git commit -m "Daily ICC update ${ts} [skip ci]"
+
+          # 3) Rebase on remote and push (autostash for safety)
+          git pull --rebase --autostash origin "${BRANCH}" || true
           git push origin HEAD:"${BRANCH}" || {
-            echo "Push failed; rebasing once more and retrying..."
-            git pull --rebase origin "${BRANCH}"
+            echo "Push failed; re-pulling with rebase and retrying..."
+            git pull --rebase --autostash origin "${BRANCH}"
             git push origin HEAD:"${BRANCH}"
           }
