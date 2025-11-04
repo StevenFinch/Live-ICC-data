@@ -13,7 +13,7 @@ permissions:
 
 concurrency:
   group: daily-icc
-  cancel-in-progress: true
+  cancel-in-progress: false  # don't let the second cron cancel a running job
 
 jobs:
   gate:
@@ -21,18 +21,19 @@ jobs:
     outputs:
       proceed: ${{ steps.check.outputs.proceed }}
     steps:
-      - name: Decide whether to run (exactly 5:00pm America/New_York)
+      - name: Decide whether to run (any time during 5pm America/New_York)
         id: check
         run: |
           if [ "${{ github.event_name }}" = "schedule" ]; then
             NY_HOUR=$(TZ=America/New_York date +%H)
             NY_MIN=$(TZ=America/New_York date +%M)
-            if [ "$NY_HOUR" -eq 17 ] && [ "$NY_MIN" -eq 00 ]; then
+            # Allow the full 5pm hour (17:00–17:59 ET) to tolerate scheduler jitter
+            if [ "$NY_HOUR" -eq 17 ]; then
               echo "proceed=true" >> "$GITHUB_OUTPUT"
-              echo "Proceeding: NY time is ${NY_HOUR}:${NY_MIN}"
+              echo "Proceeding: NY time is ${NY_HOUR}:${NY_MIN} (within 5pm hour)."
             else
               echo "proceed=false" >> "$GITHUB_OUTPUT"
-              echo "Skipping: NY time is ${NY_HOUR}:${NY_MIN} (not 17:00)."
+              echo "Skipping: NY time is ${NY_HOUR}:${NY_MIN} (outside 5pm hour)."
             fi
           else
             echo "proceed=true" >> "$GITHUB_OUTPUT"
