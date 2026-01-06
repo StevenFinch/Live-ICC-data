@@ -46,11 +46,13 @@ BAD_SYM = re.compile(r"[^A-Z\.\-]")
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s  %(levelname)s: %(message)s")
 
+
 def _today_et() -> dt.date:
     """Return 'today' in America/New_York for consistent file naming in GH Actions."""
     if ZoneInfo is None:
         return dt.datetime.utcnow().date()
     return dt.datetime.now(dt.timezone.utc).astimezone(ZoneInfo("America/New_York")).date()
+
 
 # -----------------------------------------------------------------------------
 # 1  Ticker universes
@@ -61,6 +63,7 @@ _DATAHUB = {
     "nyse":   "https://raw.githubusercontent.com/datasets/nyse-other-listings/main/data/nyse-listed.csv",
     "amex":   "https://raw.githubusercontent.com/datasets/nyse-other-listings/main/data/other-listed.csv",
 }
+
 
 @lru_cache(maxsize=None)
 def get_us_tickers() -> List[str]:
@@ -77,6 +80,7 @@ def get_us_tickers() -> List[str]:
     logging.info("total US symbols: %d", len(symbols))
     return sorted(symbols)
 
+
 _INDEX_URL = {
     # avoid Wikipedia (403 in CI); use stable CSV for SP500
     "sp500":  "https://raw.githubusercontent.com/datasets/s-and-p-500-companies/main/data/constituents.csv",
@@ -84,6 +88,7 @@ _INDEX_URL = {
     "dow30":  "https://en.wikipedia.org/wiki/Dow_Jones_Industrial_Average",
     "ndx100": "https://en.wikipedia.org/wiki/Nasdaq-100",
 }
+
 
 def _get(url: str, max_retries: int = 3, timeout: int = 20) -> str:
     headers = {
@@ -103,6 +108,7 @@ def _get(url: str, max_retries: int = 3, timeout: int = 20) -> str:
             time.sleep(0.8 * attempt)
     raise RuntimeError(f"Failed to GET {url} after {max_retries} tries") from last_err
 
+
 def _find_symbol_column(df: pd.DataFrame) -> str:
     candidates = [c for c in df.columns]
     lowers = {c.lower(): c for c in candidates}
@@ -110,6 +116,7 @@ def _find_symbol_column(df: pd.DataFrame) -> str:
         if key in lowers:
             return lowers[key]
     return candidates[0]
+
 
 def _fetch_index_tickers(url: str) -> list[str]:
     # CSV mode (SP500)
@@ -153,9 +160,11 @@ def _fetch_index_tickers(url: str) -> list[str]:
         raise RuntimeError(f"Only parsed {len(ytickers)} symbols from {url}; page format may have changed.")
     return ytickers
 
+
 @lru_cache(maxsize=None)
 def _index_tickers(code: str) -> List[str]:
     return _fetch_index_tickers(_INDEX_URL[code])
+
 
 # -----------------------------------------------------------------------------
 # 2  Li–Ng–Swaminathan helpers
@@ -168,6 +177,7 @@ def _eps_path(fe1: float, g2: float, T: int = 15, g_long: float = 0.04) -> List[
         out.append(out[-1] * (1 + g2))
     return out
 
+
 def _pv(eps: List[float], b1: float, r: float, T: int = 15, g_long: float = 0.04) -> float:
     b_ss = np.clip(g_long / r, 0, 1)
     step = (b1 - b_ss) / T
@@ -177,6 +187,7 @@ def _pv(eps: List[float], b1: float, r: float, T: int = 15, g_long: float = 0.04
         pv += eps[k - 1] * (1 - b_k) / (1 + r) ** k
     tv = eps[-1] / (r * (1 + r) ** T)
     return pv + tv
+
 
 def _solve_icc(price: float, fe1: float, g2: float, div: float) -> Optional[float]:
     if min(price, fe1) <= 0 or not np.isfinite(price):
@@ -189,6 +200,7 @@ def _solve_icc(price: float, fe1: float, g2: float, div: float) -> Optional[floa
         pv = _pv(eps, b1, mid)
         lo, hi = (mid, hi) if pv > price else (lo, mid)
     return mid
+
 
 # -----------------------------------------------------------------------------
 # 3  yfinance fetch (sequential)
@@ -241,6 +253,7 @@ def _fetch(sym: str) -> Optional[Dict[str, Any]]:
     except Exception:
         return None
 
+
 # -----------------------------------------------------------------------------
 # 4  Panel builder
 # -----------------------------------------------------------------------------
@@ -269,6 +282,7 @@ def get_live_panel(symbols: List[str]) -> pd.DataFrame:
     logging.info("panel rows: %d / universe %d", len(df), len(symbols))
     return df
 
+
 # -----------------------------------------------------------------------------
 # 5  CLI
 # -----------------------------------------------------------------------------
@@ -287,7 +301,7 @@ if __name__ == "__main__":
 
     panel = get_live_panel(universe)
 
-    # --- NEW OUTPUT LOCATION (as you requested) ---
+    # --- OUTPUT LOCATION (your requested path) ---
     d_et = _today_et()
     yyyymm = f"{d_et.year}{d_et.month:02d}"
     tag = f"{d_et.year}_{d_et.month:02d}{d_et.day:02d}"
@@ -295,10 +309,15 @@ if __name__ == "__main__":
     out_dir = ROOT / "data" / yyyymm
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    # use "custom" for explicit ticker lists
     universe_name = arg if (arg == "usall" or arg in _INDEX_URL) else "custom"
     out = out_dir / f"icc_live_{universe_name}_{tag}.csv"
-
     panel.to_csv(out, index=False)
+
+    # --- COMPAT FILE (so run_daily_icc.py stops crashing) ---
+    # run_daily_icc.py expects this file to exist after running the command.
+    sample = ROOT / "icc_live_sample.csv"
+    panel.to_csv(sample, index=False)
+
     print(panel.head())
     logging.info("saved %s (%d rows)", out, len(panel))
+    logging.info("saved %s (%d rows)", sample, len(panel))
