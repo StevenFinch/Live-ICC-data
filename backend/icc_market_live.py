@@ -1,92 +1,91 @@
 from __future__ import annotations
 """
-backend/icc_market_live.py
-- Market-wide ICC (Li–Ng–Swaminathan style) for a chosen universe (sp500/sp100/dow30/ndx100)
-- Uses yfinance for prices / fundamentals
-- Writes JSON snapshots for the frontend
-
-(Only URL-related fixes applied: DataHub 404 -> GitHub raw CSV. Also sp500 uses a CSV source to avoid Wikipedia 403 in CI.)
+backend/icc_market_live.py – live Implied Cost of Capital (ICC) estimator
+=========================================================================
+CLI examples
+------------
+# S&P 500
+python backend/icc_market_live.py sp500
+# entire US market (slow)
+python backend/icc_market_live.py usall
+# custom list
+python backend/icc_market_live.py AAPL MSFT NVDA
 """
 
+# stdlib
+import datetime as dt
 import io
-import json
 import logging
-import os
+import pathlib
 import re
 import sys
 import time
-import typing as t
-from dataclasses import dataclass
-from datetime import datetime, timezone
 from functools import lru_cache
-from pathlib import Path
+from typing import Any, Dict, List, Optional
 
+# timezone (py3.11 has zoneinfo)
+try:
+    from zoneinfo import ZoneInfo
+except Exception:  # pragma: no cover
+    ZoneInfo = None  # type: ignore
+
+import requests
+
+# third-party
 import numpy as np
 import pandas as pd
-import requests
 import yfinance as yf
+from yfinance import exceptions as yfexc
 
 # -----------------------------------------------------------------------------
-# Config
+ROOT = pathlib.Path(__file__).resolve().parents[1]
+
+PAUSE_EVERY, PAUSE_SEC = 20, 0.6
+G_MIN, G_MAX = 0.01, 0.75
+BAD_SYM = re.compile(r"[^A-Z\.\-]")
+
+logging.basicConfig(level=logging.INFO, format="%(asctime)s  %(levelname)s: %(message)s")
+
+def _today_et() -> dt.date:
+    """Return 'today' in America/New_York for consistent file naming in GH Actions."""
+    if ZoneInfo is None:
+        return dt.datetime.utcnow().date()
+    return dt.datetime.now(dt.timezone.utc).astimezone(ZoneInfo("America/New_York")).date()
+
 # -----------------------------------------------------------------------------
-ROOT = Path(__file__).resolve().parents[1]
-DATA_DIR = ROOT / "data"
-DATA_DIR.mkdir(parents=True, exist_ok=True)
-
-# If you run in GitHub Actions, keep requests polite
-MAX_TICKERS, PAUSE_SEC = 20, 0.6       # rate-limit safety
-G_MIN, G_MAX = -0.5, 0.8               # growth clamp
-R_F = 0.04                             # simple rf placeholder
-
-BAD_SYM = re.compile(r"[^A-Z0-9\-\^]")  # allow '-' and '^' (Yahoo style)
-
-# -----------------------------------------------------------------------------
-# 0  US symbol universe (DataHub links used to 404; now use GitHub raw)
+# 1  Ticker universes
 # -----------------------------------------------------------------------------
 _DATAHUB = {
+    # datahub.io core links 404 now -> GitHub raw CSV mirrors
     "nasdaq": "https://raw.githubusercontent.com/datasets/nasdaq-listings/main/data/nasdaq-listed.csv",
     "nyse":   "https://raw.githubusercontent.com/datasets/nyse-other-listings/main/data/nyse-listed.csv",
     "amex":   "https://raw.githubusercontent.com/datasets/nyse-other-listings/main/data/other-listed.csv",
 }
 
-
 @lru_cache(maxsize=None)
-def get_us_tickers() -> t.List[str]:
-    symbols: t.Set[str] = set()
+def get_us_tickers() -> List[str]:
+    symbols: set[str] = set()
     for name, url in _DATAHUB.items():
         try:
-            df = pd.read_csv(url, usecols=[0], dtype=str)
-            raw = (
-                df.iloc[:, 0]
-                .dropna()
-                .astype(str)
-                .str.strip()
-                .str.replace(r"\s+", "", regex=True)
-                .str.replace(".", "-", regex=False)
-                .str.upper()
-                .tolist()
-            )
-            raw = [s for s in raw if s and not BAD_SYM.search(s)]
-            symbols.update(raw)
+            df = pd.read_csv(url, dtype=str, usecols=[0])
+            col = df.columns[0]
+            raw = df[col].astype(str).str.replace(r"\.", "-", regex=True).str.upper()
+            symbols.update(s for s in raw if not BAD_SYM.search(s))
             logging.info("%s tickers loaded: %d", name.upper(), len(raw))
         except Exception as exc:
             logging.warning("failed to load %s: %s", name, exc)
     logging.info("total US symbols: %d", len(symbols))
     return sorted(symbols)
 
-
-_WIKI_TICK = re.compile(r"(symbol|ticker)", re.I)
 _INDEX_URL = {
-    # Wikipedia 403s in some CI environments -> use a stable CSV source for SP500
+    # avoid Wikipedia (403 in CI); use stable CSV for SP500
     "sp500":  "https://raw.githubusercontent.com/datasets/s-and-p-500-companies/main/data/constituents.csv",
     "sp100":  "https://en.wikipedia.org/wiki/S%26P_100",
     "dow30":  "https://en.wikipedia.org/wiki/Dow_Jones_Industrial_Average",
     "ndx100": "https://en.wikipedia.org/wiki/Nasdaq-100",
 }
 
-
 def _get(url: str, max_retries: int = 3, timeout: int = 20) -> str:
-    """GET with a real User-Agent and a few retries (helps avoid 403s)."""
     headers = {
         "User-Agent": (
             "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
@@ -102,32 +101,18 @@ def _get(url: str, max_retries: int = 3, timeout: int = 20) -> str:
         except Exception as e:
             last_err = e
             time.sleep(0.8 * attempt)
-    raise RuntimeError(f"GET failed after {max_retries} tries: {url}") from last_err
-
+    raise RuntimeError(f"Failed to GET {url} after {max_retries} tries") from last_err
 
 def _find_symbol_column(df: pd.DataFrame) -> str:
-    """Best-effort symbol/ticker column finder."""
-    lowers = {c.lower(): c for c in df.columns}
-    for key in ["symbol", "ticker", "act symbol"]:
+    candidates = [c for c in df.columns]
+    lowers = {c.lower(): c for c in candidates}
+    for key in ("symbol", "ticker", "code"):
         if key in lowers:
             return lowers[key]
-    # fallback: fuzzy match
-    candidates = list(df.columns)
-    for c in candidates:
-        if _WIKI_TICK.search(str(c)):
-            return c
-    # fallback: first column
     return candidates[0]
 
-
-def _fetch_index_from_wikipedia(url: str) -> list[str]:
-    """Return Yahoo-friendly tickers from an index URL.
-
-    Supports:
-      * Wikipedia HTML pages (parsed via read_html)
-      * CSV constituents (e.g., GitHub raw constituents.csv)
-    """
-    # CSV mode (avoids Wikipedia 403s in some CI environments)
+def _fetch_index_tickers(url: str) -> list[str]:
+    # CSV mode (SP500)
     if url.lower().endswith(".csv"):
         df = pd.read_csv(url, dtype=str)
         sym_col = _find_symbol_column(df)
@@ -141,268 +126,179 @@ def _fetch_index_from_wikipedia(url: str) -> list[str]:
             .str.upper()
             .tolist()
         )
-        ytickers = [sym for sym in ytickers if sym and not BAD_SYM.search(sym)]
+        ytickers = [s for s in ytickers if s and not BAD_SYM.search(s)]
         if len(ytickers) < 30:
             raise RuntimeError(f"Only parsed {len(ytickers)} symbols from {url}; source may have changed.")
         return ytickers
 
-    # HTML mode (Wikipedia)
+    # Wikipedia HTML mode (sp100/dow30/ndx100)
     html = _get(url)
     tables = pd.read_html(io.StringIO(html))
     if not tables:
         raise RuntimeError(f"No tables found on {url}")
-
-    # Heuristic: pick the table with the most rows that also has a symbol-like column
-    best: t.Optional[pd.DataFrame] = None
-    best_rows = -1
-    for tbl in tables:
-        try:
-            sym_col = _find_symbol_column(tbl)
-        except Exception:
-            continue
-        rows = len(tbl)
-        if rows > best_rows and sym_col in tbl.columns:
-            best = tbl
-            best_rows = rows
-    if best is None:
-        best = max(tables, key=len)
-
+    best = max(tables, key=len)
     sym_col = _find_symbol_column(best)
     df = best.dropna(subset=[sym_col]).copy()
-    df[sym_col] = df[sym_col].astype(str).str.strip()
-
-    # raw symbols (e.g., "BRK.B") → Yahoo symbols ("BRK-B")
     ytickers = (
         df[sym_col]
         .astype(str)
+        .str.strip()
         .str.replace(r"\s+", "", regex=True)
         .str.replace(".", "-", regex=False)
         .str.upper()
         .tolist()
     )
-    # filter weird symbols
     ytickers = [s for s in ytickers if s and not BAD_SYM.search(s)]
-
-    # sanity check (avoid partial parses)
     if len(ytickers) < 30:
         raise RuntimeError(f"Only parsed {len(ytickers)} symbols from {url}; page format may have changed.")
-
     return ytickers
 
-
 @lru_cache(maxsize=None)
-def _index_tickers(code: str) -> t.List[str]:
-    """Fetch index constituents and return Yahoo-friendly tickers ('.' → '-')."""
-    url = _INDEX_URL[code]
-    return _fetch_index_from_wikipedia(url)
+def _index_tickers(code: str) -> List[str]:
+    return _fetch_index_tickers(_INDEX_URL[code])
 
 # -----------------------------------------------------------------------------
 # 2  Li–Ng–Swaminathan helpers
 # -----------------------------------------------------------------------------
-def _eps_path(fe1: float, g2: float,
-              T: int = 15,
-              g_terminal: float = 0.03) -> np.ndarray:
-    """Construct a 15-year EPS path with short-term FE and long-term terminal growth."""
-    fe1 = float(np.clip(fe1, G_MIN, G_MAX))
-    g2 = float(np.clip(g2, G_MIN, G_MAX))
-    eps = np.zeros(T)
-    eps[0] = 1.0 * (1.0 + fe1)  # year1
-    if T > 1:
-        # years 2..5: blend towards g2
-        for k in range(1, min(5, T)):
-            w = (k) / 4.0  # 0.25..1.0
-            g = (1 - w) * fe1 + w * g2
-            eps[k] = eps[k - 1] * (1.0 + g)
-        # years 6..15: fade g2 to terminal
-        for k in range(5, T):
-            w = (k - 5) / (T - 6 + 1e-9)
-            g = (1 - w) * g2 + w * g_terminal
-            eps[k] = eps[k - 1] * (1.0 + g)
-    return eps
+def _eps_path(fe1: float, g2: float, T: int = 15, g_long: float = 0.04) -> List[float]:
+    out = [fe1, fe1 * (1 + g2)]
+    fade = np.exp(np.log(g_long / g2) / T)
+    for _ in range(3, T + 2):
+        g2 *= fade
+        out.append(out[-1] * (1 + g2))
+    return out
 
+def _pv(eps: List[float], b1: float, r: float, T: int = 15, g_long: float = 0.04) -> float:
+    b_ss = np.clip(g_long / r, 0, 1)
+    step = (b1 - b_ss) / T
+    pv = 0.0
+    for k in range(1, T + 1):
+        b_k = np.clip(b1 - step * (k - 1), 0, 1)
+        pv += eps[k - 1] * (1 - b_k) / (1 + r) ** k
+    tv = eps[-1] / (r * (1 + r) ** T)
+    return pv + tv
 
-def _pv_cashflows(cf: np.ndarray, r: float) -> float:
-    """Present value of annual cashflows with discount rate r."""
-    r = float(max(r, -0.99))
-    disc = np.array([(1.0 + r) ** (i + 1) for i in range(len(cf))], dtype=float)
-    return float(np.sum(cf / disc))
-
-
-def _solve_icc(price: float,
-               fe1: float,
-               g2: float,
-               payout: float = 0.5,
-               g_terminal: float = 0.03) -> float:
-    """Solve for r such that PV(dividends) == price using a simple bisection."""
-    if price <= 0 or not np.isfinite(price):
-        return float("nan")
-
-    eps = _eps_path(fe1=fe1, g2=g2, T=15, g_terminal=g_terminal)
-    div = payout * eps
-
-    # terminal value: Gordon on year 15 dividend
-    dT = div[-1]
-    def f(r: float) -> float:
-        if r <= g_terminal + 1e-6:
-            return 1e9
-        pv = _pv_cashflows(div, r)
-        tv = dT * (1.0 + g_terminal) / (r - g_terminal)
-        pv += tv / ((1.0 + r) ** len(div))
-        return pv - price
-
-    lo, hi = -0.5, 1.5
-    flo, fhi = f(lo), f(hi)
-    if not np.isfinite(flo) or not np.isfinite(fhi):
-        return float("nan")
-    if flo * fhi > 0:
-        # no sign change; return midpoint-ish
-        return float("nan")
-
+def _solve_icc(price: float, fe1: float, g2: float, div: float) -> Optional[float]:
+    if min(price, fe1) <= 0 or not np.isfinite(price):
+        return None
+    eps = _eps_path(fe1, g2)
+    b1 = np.clip(1 - div / fe1, 0, 1)
+    lo, hi = 0.01, 0.40
     for _ in range(60):
         mid = 0.5 * (lo + hi)
-        fm = f(mid)
-        if not np.isfinite(fm):
-            return float("nan")
-        if abs(fm) < 1e-6:
-            return mid
-        if flo * fm <= 0:
-            hi, fhi = mid, fm
-        else:
-            lo, flo = mid, fm
-    return 0.5 * (lo + hi)
-
+        pv = _pv(eps, b1, mid)
+        lo, hi = (mid, hi) if pv > price else (lo, mid)
+    return mid
 
 # -----------------------------------------------------------------------------
-# 3  yfinance helpers
+# 3  yfinance fetch (sequential)
 # -----------------------------------------------------------------------------
-def _yf_info(sym: str) -> dict:
-    """Robust yfinance.info fetch (handles occasional None)."""
-    tkr = yf.Ticker(sym)
+def _fetch(sym: str) -> Optional[Dict[str, Any]]:
+    if BAD_SYM.search(sym):
+        return None
     try:
+        tkr = yf.Ticker(sym)
         info = tkr.info or {}
-    except Exception:
-        info = {}
-    return info
+        price = info.get("regularMarketPrice")
+        if price is None:
+            return None
 
-
-def _latest_price(sym: str) -> float:
-    """Fetch last close/regular price."""
-    tkr = yf.Ticker(sym)
-    try:
-        hist = tkr.history(period="5d", auto_adjust=False)
-        if len(hist):
-            return float(hist["Close"].dropna().iloc[-1])
-    except Exception:
-        pass
-    # fallback
-    info = _yf_info(sym)
-    for k in ["regularMarketPrice", "previousClose"]:
-        v = info.get(k)
-        if v is not None:
-            try:
-                return float(v)
-            except Exception:
-                pass
-    return float("nan")
-
-
-def _fe1_g2_from_info(info: dict) -> tuple[float, float]:
-    """Approximate FE1 and g2 from yfinance fields (very rough)."""
-    # Try forward EPS vs trailing EPS as FE1 proxy
-    fe1 = np.nan
-    try:
-        fwd = info.get("forwardEps")
-        trl = info.get("trailingEps")
-        if fwd and trl and float(trl) != 0:
-            fe1 = float(fwd) / float(trl) - 1.0
-    except Exception:
-        fe1 = np.nan
-
-    # Long-term growth proxy: earningsGrowth if available
-    g2 = np.nan
-    try:
-        eg = info.get("earningsGrowth")
-        if eg is not None:
-            g2 = float(eg)
-    except Exception:
-        g2 = np.nan
-
-    # Fill defaults if missing
-    if not np.isfinite(fe1):
-        fe1 = 0.05
-    if not np.isfinite(g2):
-        g2 = 0.05
-    return float(fe1), float(g2)
-
-
-# -----------------------------------------------------------------------------
-# 4  Main pipeline
-# -----------------------------------------------------------------------------
-@dataclass
-class Row:
-    symbol: str
-    price: float
-    icc: float
-    fe1: float
-    g2: float
-
-
-def build_index_snapshot(code: str) -> dict:
-    tickers = _index_tickers(code)
-    rows: t.List[dict] = []
-    out_rows: t.List[Row] = []
-
-    # limit to reduce API load
-    todo = tickers[: MAX_TICKERS] if os.environ.get("FAST_TEST") else tickers
-
-    for i, sym in enumerate(todo, 1):
+        fe1, g2 = None, None
         try:
-            info = _yf_info(sym)
-            price = _latest_price(sym)
-            fe1, g2 = _fe1_g2_from_info(info)
-            icc = _solve_icc(price=price, fe1=fe1, g2=g2, payout=0.5, g_terminal=0.03)
-            out_rows.append(Row(sym, price, icc, fe1, g2))
-        except Exception as exc:
-            logging.warning("ticker failed %s: %s", sym, exc)
+            trend = tkr.get_eps_trend(as_dict=True) or {}
+            curr = trend.get("current", {})
+            fe_now, fe_next = curr.get("0y"), curr.get("+1y")
+            if fe_now and fe_next and fe_now > 0:
+                fe1 = fe_now
+                g2 = np.clip(fe_next / fe_now - 1, G_MIN, G_MAX)
+        except Exception:
+            pass
 
-        if i % 5 == 0:
+        if fe1 is None:
+            fe1 = info.get("forwardEps")
+        if g2 is None and info.get("earningsGrowth") is not None:
+            g2 = np.clip(info["earningsGrowth"], G_MIN, G_MAX)
+        if fe1 is None or fe1 <= 0:
+            return None
+        if g2 is None:
+            g2 = 0.04
+
+        return dict(
+            ticker=sym,
+            price=price,
+            dividend=info.get("dividendRate") or 0.0,
+            mktcap=info.get("marketCap"),
+            shares=info.get("sharesOutstanding"),
+            bvps=info.get("bookValue"),
+            sector=info.get("sector"),
+            name=info.get("shortName") or info.get("longName"),
+            FE1=fe1,
+            g2=g2,
+        )
+    except yfexc.YFRateLimitError:
+        time.sleep(1.5)
+        return _fetch(sym)
+    except Exception:
+        return None
+
+# -----------------------------------------------------------------------------
+# 4  Panel builder
+# -----------------------------------------------------------------------------
+def get_live_panel(symbols: List[str]) -> pd.DataFrame:
+    rows: List[Dict[str, Any]] = []
+    for i, sym in enumerate(symbols, 1):
+        rec = _fetch(sym)
+        if rec:
+            rows.append(rec)
+        if i % PAUSE_EVERY == 0:
             time.sleep(PAUSE_SEC)
 
-    for r in out_rows:
-        rows.append({
-            "symbol": r.symbol,
-            "price": None if not np.isfinite(r.price) else r.price,
-            "icc": None if not np.isfinite(r.icc) else r.icc,
-            "fe1": r.fe1,
-            "g2": r.g2,
-        })
+    df = pd.DataFrame(rows)
+    if df.empty:
+        logging.warning("all fetches failed")
+        return df
 
-    now = datetime.now(timezone.utc).isoformat()
-    payload = {
-        "meta": {"updated_at": now, "universe": code, "n": len(rows)},
-        "rows": rows,
-    }
-    return payload
-
-
-def main(argv: t.List[str]) -> int:
-    logging.basicConfig(
-        level=logging.INFO,
-        format="%(asctime)s  %(levelname)s: %(message)s",
+    df["bm"] = np.where(
+        (df.bvps > 0) & (df.shares > 0) & (df.mktcap > 0),
+        (df.bvps * df.shares) / df.mktcap,
+        np.nan,
     )
+    df["ICC"] = df.apply(lambda r: _solve_icc(r.price, r.FE1, r.g2, r.dividend), axis=1)
+    df = df.dropna(subset=["ICC"]).reset_index(drop=True)
+    df["date"] = _today_et().isoformat()
+    logging.info("panel rows: %d / universe %d", len(df), len(symbols))
+    return df
 
-    code = (argv[1] if len(argv) > 1 else "sp500").lower().strip()
-    if code not in _INDEX_URL:
-        raise SystemExit(f"Unknown universe: {code}. Choose from {sorted(_INDEX_URL)}")
-
-    snap = build_index_snapshot(code)
-
-    out_path = DATA_DIR / f"{code}_index.json"
-    out_path.write_text(json.dumps(snap, indent=2), encoding="utf-8")
-    logging.info("wrote %s", out_path)
-
-    return 0
-
-
+# -----------------------------------------------------------------------------
+# 5  CLI
+# -----------------------------------------------------------------------------
 if __name__ == "__main__":
-    raise SystemExit(main(sys.argv))
+    if len(sys.argv) < 2:
+        print("usage: icc_market_live.py {usall|sp500|sp100|dow30|ndx100|TICKERS…}")
+        sys.exit(0)
+
+    arg = sys.argv[1].lower()
+    if arg == "usall":
+        universe = get_us_tickers()
+    elif arg in _INDEX_URL:
+        universe = _index_tickers(arg)
+    else:
+        universe = [s.upper() for s in sys.argv[1:]]
+
+    panel = get_live_panel(universe)
+
+    # --- NEW OUTPUT LOCATION (as you requested) ---
+    d_et = _today_et()
+    yyyymm = f"{d_et.year}{d_et.month:02d}"
+    tag = f"{d_et.year}_{d_et.month:02d}{d_et.day:02d}"
+
+    out_dir = ROOT / "data" / yyyymm
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    # use "custom" for explicit ticker lists
+    universe_name = arg if (arg == "usall" or arg in _INDEX_URL) else "custom"
+    out = out_dir / f"icc_live_{universe_name}_{tag}.csv"
+
+    panel.to_csv(out, index=False)
+    print(panel.head())
+    logging.info("saved %s (%d rows)", out, len(panel))
