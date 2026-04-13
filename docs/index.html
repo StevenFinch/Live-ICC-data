@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Live ICC Library</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="wrap">
+    <h1>Live ICC Library</h1>
+    <p class="sub">Daily-updated aggregate ICC library built on top of firm-level live ICC snapshots.</p>
+
+    <div id="cards" class="cards"></div>
+
+    <div class="tabs">
+      <button class="tab active" data-target="market">Market</button>
+      <button class="tab" data-target="value">Value / Growth</button>
+      <button class="tab" data-target="industry">Industry</button>
+      <button class="tab" data-target="etf">ETF</button>
+      <button class="tab" data-target="country">Country (ETF proxies)</button>
+    </div>
+
+    <section id="market" class="panel active">
+      <h2>Market ICC history</h2>
+      <table id="market-table"></table>
+    </section>
+
+    <section id="value" class="panel">
+      <h2>Value / Growth ICC history</h2>
+      <table id="value-table"></table>
+    </section>
+
+    <section id="industry" class="panel">
+      <h2>Latest industry ICC</h2>
+      <table id="industry-table"></table>
+    </section>
+
+    <section id="etf" class="panel">
+      <h2>Latest ETF ICC</h2>
+      <table id="etf-table"></table>
+    </section>
+
+    <section id="country" class="panel">
+      <h2>Latest country ICC (country ETF proxies)</h2>
+      <table id="country-table"></table>
+    </section>
+  </div>
+  <script src="./app.js"></script>
+</body>
+</html>
