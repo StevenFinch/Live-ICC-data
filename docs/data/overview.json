@@ -1,0 +1,32 @@
+{
+  "asof_date": "2026-04-13",
+  "source_file": "data/202604/icc_live_usall_2026_0413_r1.csv",
+  "cards": {
+    "market_vw_icc": 0.0823161755120436,
+    "value_icc": 0.12093333278717922,
+    "growth_icc": 0.08395879383739617,
+    "ivp_bm": 0.036974538949783045
+  },
+  "downloads": [
+    {
+      "label": "Market ICC history (CSV)",
+      "path": "./data/downloads/market_icc_history.csv"
+    },
+    {
+      "label": "Value / Growth / IVP history (CSV)",
+      "path": "./data/downloads/value_icc_bm_history.csv"
+    },
+    {
+      "label": "Industry ICC latest (CSV)",
+      "path": "./data/downloads/industry_icc_latest.csv"
+    },
+    {
+      "label": "ETF ICC latest (CSV)",
+      "path": "./data/downloads/etf_icc_latest.csv"
+    },
+    {
+      "label": "Country ICC latest (CSV)",
+      "path": "./data/downloads/country_icc_latest.csv"
+    }
+  ]
+}
