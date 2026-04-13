@@ -1,3 +1,4 @@
+
 name: Daily ICC + Build Website + Deploy Pages
 
 on:
@@ -21,7 +22,7 @@ jobs:
     outputs:
       proceed: ${{ steps.check.outputs.proceed }}
     steps:
-      - name: Decide whether to run (any time during 5pm America/New_York)
+      - name: Decide whether to run (5pm America/New_York only)
         id: check
         run: |
           if [ "${{ github.event_name }}" = "schedule" ]; then
@@ -70,10 +71,13 @@ jobs:
             pip install pandas numpy yfinance lxml html5lib requests tzdata python-dateutil
           fi
 
-      - name: Run daily ICC (writes into data/YYYYMM/)
+      - name: Run base daily ICC snapshots
         env:
           IGNORE_TIME_GUARD: "0"
         run: python run_daily_icc.py
+
+      - name: Run extra supported index snapshots
+        run: python backend/run_extra_indices.py
 
       - name: Build website data under docs/data/
         run: python backend/build_docs_data.py --universe usall
@@ -92,7 +96,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git fetch origin "${BRANCH}"
           ts=$(date -u +"%Y-%m-%d")
-          git add -A data docs/data FILES.md || true
+          git add -A data docs/data FILES.md config || true
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
