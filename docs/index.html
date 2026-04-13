@@ -1,41 +1,70 @@
+
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Live ICC Library</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
-  <div class="wrap">
-    <header class="hero">
-      <h1>Live ICC Library</h1>
-      <p class="sub">Daily-updated aggregate ICC library built on top of firm-level live ICC snapshots.</p>
-      <p id="asof" class="asof"></p>
-    </header>
-    <section class="cards" id="cards"></section>
-    <section class="section">
-      <div class="section-head">
-        <h2>Downloads</h2>
-        <p>Download the latest CSV files directly from this website.</p>
-      </div>
-      <div id="downloads" class="downloads"></div>
+  <main class="wrap">
+    <h1>Live ICC Library</h1>
+    <p class="subtitle">Daily-updated aggregate ICC library built on top of firm-level live ICC snapshots.</p>
+    <div id="asof" class="asof"></div>
+    <div id="status" class="status"></div>
+
+    <section>
+      <h2>Overview</h2>
+      <div id="cards" class="cards"></div>
     </section>
-    <section class="section">
-      <div class="tabs">
-        <button class="tab active" data-target="panel-market">Market</button>
-        <button class="tab" data-target="panel-value">Value / Growth</button>
-        <button class="tab" data-target="panel-industry">Industry</button>
-        <button class="tab" data-target="panel-etf">ETF</button>
-        <button class="tab" data-target="panel-country">Country</button>
-      </div>
-      <div class="panel active" id="panel-market"><h2>Market ICC history</h2><table id="market-table"></table></div>
-      <div class="panel" id="panel-value"><h2>Value / Growth ICC history</h2><table id="value-table"></table></div>
-      <div class="panel" id="panel-industry"><h2>Latest industry ICC</h2><table id="industry-table"></table></div>
-      <div class="panel" id="panel-etf"><h2>Latest ETF ICC</h2><p class="note">ETF ICC is computed as a holdings-based proxy using yfinance top holdings matched to the latest firm-level ICC snapshot.</p><table id="etf-table"></table></div>
-      <div class="panel" id="panel-country"><h2>Latest country ICC</h2><p class="note">Country ICC is currently computed via single-country ETF proxies.</p><table id="country-table"></table></div>
+
+    <section>
+      <h2>Downloads</h2>
+      <div id="downloads"></div>
     </section>
-  </div>
+
+    <section>
+      <h2>Market ICC history</h2>
+      <div id="market-table"></div>
+    </section>
+
+    <section>
+      <h2>Value / Growth ICC history</h2>
+      <div id="value-table"></div>
+    </section>
+
+    <section>
+      <h2>Latest index ICC</h2>
+      <div id="index-latest-table"></div>
+    </section>
+
+    <section>
+      <h2>Latest industry ICC</h2>
+      <div id="industry-table"></div>
+    </section>
+
+    <section>
+      <h2>Latest ETF ICC</h2>
+      <div id="etf-table"></div>
+    </section>
+
+    <section>
+      <h2>Latest country ICC (country ETF proxies)</h2>
+      <div id="country-table"></div>
+    </section>
+
+    <section>
+      <h2>Year-Month download folders</h2>
+      <div id="month-table"></div>
+    </section>
+
+    <section>
+      <h2>All snapshot file downloads</h2>
+      <div id="all-files-table"></div>
+    </section>
+  </main>
+
   <script src="./app.js"></script>
 </body>
 </html>
