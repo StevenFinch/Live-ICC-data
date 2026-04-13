@@ -1,0 +1,114 @@
+name: Daily ICC + Build Website + Deploy Pages
+
+on:
+  workflow_dispatch: {}
+  schedule:
+    - cron: "00 21 * * 1-5"
+    - cron: "00 22 * * 1-5"
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: daily-icc-pages
+  cancel-in-progress: false
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    outputs:
+      proceed: ${{ steps.check.outputs.proceed }}
+    steps:
+      - name: Decide whether to run (any time during 5pm America/New_York)
+        id: check
+        run: |
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            NY_HOUR=$(TZ=America/New_York date +%H)
+            NY_MIN=$(TZ=America/New_York date +%M)
+            if [ "$NY_HOUR" -eq 17 ]; then
+              echo "proceed=true" >> "$GITHUB_OUTPUT"
+              echo "Proceeding: NY time is ${NY_HOUR}:${NY_MIN}."
+            else
+              echo "proceed=false" >> "$GITHUB_OUTPUT"
+              echo "Skipping: NY time is ${NY_HOUR}:${NY_MIN}."
+            fi
+          else
+            echo "proceed=true" >> "$GITHUB_OUTPUT"
+            echo "Manual dispatch -> proceed."
+          fi
+
+  build-and-deploy:
+    needs: gate
+    if: needs.gate.outputs.proceed == 'true'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Mark workspace as safe
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then
+            pip install -r requirements.txt
+          else
+            pip install pandas numpy yfinance lxml html5lib requests tzdata python-dateutil
+          fi
+
+      - name: Run daily ICC (writes into data/YYYYMM/)
+        env:
+          IGNORE_TIME_GUARD: "0"
+        run: python run_daily_icc.py
+
+      - name: Build website data under docs/data/
+        run: python backend/build_docs_data.py --universe usall
+
+      - name: Generate FILES.md manifest
+        run: python tools/generate_files_manifest.py
+
+      - name: Commit raw data + site data back to repo
+        shell: bash
+        env:
+          BRANCH_NAME: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+          BRANCH="${BRANCH_NAME:-main}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin "${BRANCH}"
+          ts=$(date -u +"%Y-%m-%d")
+          git add -A data docs/data FILES.md || true
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Daily ICC + site data update ${ts} [skip ci]" || true
+            git pull --rebase --autostash origin "${BRANCH}" || true
+            git push origin HEAD:"${BRANCH}" || true
+          fi
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./docs
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
