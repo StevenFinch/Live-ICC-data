@@ -1,11 +1,10 @@
 
-name: Daily ICC + Build FF-style Site + Deploy Pages
+name: Daily ICC + Build Website + Deploy Pages
 
 on:
   workflow_dispatch: {}
   schedule:
-    - cron: "00 21 * * 1-5"
-    - cron: "00 22 * * 1-5"
+    - cron: "30 21 * * 1-5"
 
 permissions:
   contents: write
@@ -13,33 +12,11 @@ permissions:
   id-token: write
 
 concurrency:
-  group: daily-icc-pages
+  group: live-icc-site
   cancel-in-progress: false
 
 jobs:
-  gate:
-    runs-on: ubuntu-latest
-    outputs:
-      proceed: ${{ steps.check.outputs.proceed }}
-    steps:
-      - name: Decide whether to run
-        id: check
-        shell: bash
-        run: |
-          if [ "${{ github.event_name }}" = "schedule" ]; then
-            NY_HOUR=$(TZ=America/New_York date +%H)
-            if [ "$NY_HOUR" -eq 17 ]; then
-              echo "proceed=true" >> "$GITHUB_OUTPUT"
-            else
-              echo "proceed=false" >> "$GITHUB_OUTPUT"
-            fi
-          else
-            echo "proceed=true" >> "$GITHUB_OUTPUT"
-          fi
-
   build-and-deploy:
-    needs: gate
-    if: needs.gate.outputs.proceed == 'true'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
@@ -51,16 +28,12 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Mark workspace as safe
-        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
-
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
       - name: Install dependencies
-        shell: bash
         run: |
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then
@@ -69,7 +42,7 @@ jobs:
             pip install pandas numpy yfinance requests lxml html5lib python-dateutil tzdata
           fi
 
-      - name: Decide target trading date and whether recalculation is needed
+      - name: Decide whether recalculation is needed
         id: guard
         shell: bash
         run: |
@@ -77,93 +50,80 @@ jobs:
           from pathlib import Path
           from datetime import datetime, timedelta
           from zoneinfo import ZoneInfo
-          import glob
-          import os
+          import glob, os
 
-          repo = Path(".").resolve()
-          data_dir = repo / "data"
+          data_dir = Path("data")
           now = datetime.now(ZoneInfo("America/New_York"))
 
-          def prev_business_day(dt):
-              d = dt.date() - timedelta(days=1)
-              while d.weekday() >= 5:
-                  d -= timedelta(days=1)
-              return d
+          def prev_business_day(d):
+              x = d.date() - timedelta(days=1)
+              while x.weekday() >= 5:
+                  x -= timedelta(days=1)
+              return x
 
           if now.weekday() >= 5:
               target = prev_business_day(now)
-              need_recalc = False
-              reason = "weekend -> no recalculation"
+              need = False
+              reason = "weekend"
           elif now.hour < 16:
               target = prev_business_day(now)
-              need_recalc = False
-              reason = "before market close -> no recalculation"
+              need = False
+              reason = "before market close"
           else:
               target = now.date()
               yyyymm = target.strftime("%Y%m")
               mmdd = target.strftime("%m%d")
-              pattern = str(data_dir / yyyymm / f"icc_live_usall_{target.strftime('%Y')}_{mmdd}*.csv")
-              files = [p for p in glob.glob(pattern) if os.path.getsize(p) > 0]
-              need_recalc = (len(files) == 0)
+              patt = str(data_dir / yyyymm / f"icc_live_usall_{target.strftime('%Y')}_{mmdd}*.csv")
+              files = [p for p in glob.glob(patt) if os.path.getsize(p) > 0]
+              need = len(files) == 0
               reason = "after market close"
 
-          out = os.environ["GITHUB_OUTPUT"]
-          with open(out, "a", encoding="utf-8") as f:
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as f:
               f.write(f"target_date={target.strftime('%Y-%m-%d')}\n")
-              f.write(f"need_recalc={'true' if need_recalc else 'false'}\n")
+              f.write(f"need_recalc={'true' if need else 'false'}\n")
               f.write(f"reason={reason}\n")
           PY
 
-      - name: Show guard decision
+      - name: Show guard
         run: |
           echo "target_date = ${{ steps.guard.outputs.target_date }}"
           echo "need_recalc = ${{ steps.guard.outputs.need_recalc }}"
           echo "reason = ${{ steps.guard.outputs.reason }}"
 
-      - name: Run daily ICC
+      - name: Run base daily ICC
         if: steps.guard.outputs.need_recalc == 'true'
-        env:
-          IGNORE_TIME_GUARD: "0"
         run: python run_daily_icc.py
 
       - name: Run extra indices
         if: steps.guard.outputs.need_recalc == 'true'
-        env:
-          EXTRA_INDEX_UNIVERSES: "sp100,dow30,ndx100"
         run: python backend/run_extra_indices.py
 
       - name: Build docs data
         run: python backend/build_docs_data.py --universe usall
 
-      - name: Generate FILES.md manifest if present
-        shell: bash
+      - name: Generate FILES.md if tool exists
         run: |
           if [ -f tools/generate_files_manifest.py ]; then
             python tools/generate_files_manifest.py
           else
-            echo "No manifest tool found, skip."
+            echo "skip FILES.md generation"
           fi
 
-      - name: Commit updated raw data and site data
+      - name: Commit data and docs payload
         shell: bash
         env:
           BRANCH_NAME: ${{ github.ref_name }}
         run: |
           set -euo pipefail
-          BRANCH="${BRANCH_NAME}"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git fetch origin "${BRANCH}" || true
-
-          ts=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
-          git add -A data docs FILES.md || true
-
+          git add -A data docs FILES.md config || true
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
-            git commit -m "Update ICC raw/site data ${ts} [skip ci]" || true
-            git pull --rebase --autostash origin "${BRANCH}" || true
-            git push origin HEAD:"${BRANCH}" || true
+            git commit -m "Update ICC site payload [skip ci]" || true
+            git pull --rebase --autostash origin "${BRANCH_NAME}" || true
+            git push origin HEAD:"${BRANCH_NAME}" || true
           fi
 
       - name: Setup Pages
