@@ -1,69 +1,118 @@
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Live ICC Library</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
-  <main class="wrap">
-    <h1>Live ICC Library</h1>
-    <p class="subtitle">Daily-updated aggregate ICC library built on top of firm-level live ICC snapshots.</p>
-    <div id="asof" class="asof"></div>
-    <div id="status" class="status"></div>
+  <div class="page">
+    <header class="hero">
+      <h1>Live ICC Library</h1>
+      <p class="subtitle">
+        Daily-updated aggregate ICC library built on top of firm-level live ICC snapshots.
+      </p>
+      <div id="asof" class="asof"></div>
+      <div id="status" class="status"></div>
+    </header>
 
-    <section>
+    <section class="section">
       <h2>Overview</h2>
-      <div id="cards" class="cards"></div>
+      <div class="grid-2">
+        <div class="panel">
+          <div class="panel-title">All U.S. market</div>
+          <div id="all-cards" class="cards"></div>
+        </div>
+        <div class="panel">
+          <div class="panel-title">S&amp;P 500</div>
+          <div id="sp500-cards" class="cards"></div>
+        </div>
+      </div>
     </section>
 
-    <section>
+    <section class="section">
+      <h2>Value / Growth summary</h2>
+      <div id="style-cards" class="cards"></div>
+    </section>
+
+    <section class="section">
       <h2>Downloads</h2>
-      <div id="downloads"></div>
+      <div class="grid-2">
+        <div class="panel">
+          <div class="panel-title">Aggregate files</div>
+          <div id="downloads-aggregate"></div>
+        </div>
+        <div class="panel">
+          <div class="panel-title">Raw snapshot manifests</div>
+          <div id="downloads-raw"></div>
+        </div>
+      </div>
     </section>
 
-    <section>
-      <h2>Market ICC history</h2>
-      <div id="market-table"></div>
+    <section class="section">
+      <h2>Recent 1-month ICC history</h2>
+      <div class="grid-2">
+        <div class="panel">
+          <div class="panel-title">All U.S. market</div>
+          <div id="market-table"></div>
+        </div>
+        <div class="panel">
+          <div class="panel-title">S&amp;P 500</div>
+          <div id="sp500-table"></div>
+        </div>
+      </div>
     </section>
 
-    <section>
-      <h2>Value / Growth ICC history</h2>
-      <div id="value-table"></div>
+    <section class="section">
+      <h2>Recent 1-month Value / Growth / IVP</h2>
+      <div class="panel">
+        <div id="value-table"></div>
+      </div>
     </section>
 
-    <section>
-      <h2>Latest index ICC</h2>
-      <div id="index-latest-table"></div>
+    <section class="section">
+      <h2>Latest other indices</h2>
+      <div class="panel">
+        <div id="index-latest-table"></div>
+      </div>
     </section>
 
-    <section>
+    <section class="section">
       <h2>Latest industry ICC</h2>
-      <div id="industry-table"></div>
+      <div class="panel">
+        <div id="industry-table"></div>
+      </div>
     </section>
 
-    <section>
+    <section class="section">
       <h2>Latest ETF ICC</h2>
-      <div id="etf-table"></div>
+      <div class="panel">
+        <div id="etf-table"></div>
+      </div>
     </section>
 
-    <section>
+    <section class="section">
       <h2>Latest country ICC (country ETF proxies)</h2>
-      <div id="country-table"></div>
+      <div class="panel">
+        <div id="country-table"></div>
+      </div>
     </section>
 
-    <section>
-      <h2>Year-Month download folders</h2>
-      <div id="month-table"></div>
+    <section class="section">
+      <h2>Raw snapshot downloads</h2>
+      <div class="grid-2">
+        <div class="panel">
+          <div class="panel-title">Year-Month folders</div>
+          <div id="month-table"></div>
+        </div>
+        <div class="panel">
+          <div class="panel-title">All snapshot files</div>
+          <div id="all-files-table"></div>
+        </div>
+      </div>
     </section>
-
-    <section>
-      <h2>All snapshot file downloads</h2>
-      <div id="all-files-table"></div>
-    </section>
-  </main>
+  </div>
 
   <script src="./app.js"></script>
 </body>
