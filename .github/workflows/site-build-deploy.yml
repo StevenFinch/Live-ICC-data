@@ -1,4 +1,3 @@
-
 name: Daily ICC + Build Website + Deploy Pages
 
 on:
@@ -22,8 +21,9 @@ jobs:
     outputs:
       proceed: ${{ steps.check.outputs.proceed }}
     steps:
-      - name: Decide whether to run (5pm America/New_York only)
+      - name: Decide whether to run (only during 5pm America/New_York or manual)
         id: check
+        shell: bash
         run: |
           if [ "${{ github.event_name }}" = "schedule" ]; then
             NY_HOUR=$(TZ=America/New_York date +%H)
@@ -63,27 +63,91 @@ jobs:
           python-version: "3.11"
 
       - name: Install dependencies
+        shell: bash
         run: |
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then
             pip install -r requirements.txt
           else
-            pip install pandas numpy yfinance lxml html5lib requests tzdata python-dateutil
+            pip install pandas numpy yfinance requests lxml html5lib python-dateutil tzdata
           fi
 
-      - name: Run base daily ICC snapshots
+      - name: Decide target trading date and whether recalculation is needed
+        id: guard
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from datetime import datetime, timedelta
+          from zoneinfo import ZoneInfo
+          import glob
+          import os
+
+          repo = Path(".").resolve()
+          data_dir = repo / "data"
+          now = datetime.now(ZoneInfo("America/New_York"))
+
+          def prev_business_day(dt):
+              d = dt.date() - timedelta(days=1)
+              while d.weekday() >= 5:
+                  d -= timedelta(days=1)
+              return d
+
+          # Rule:
+          # - Weekend: never recalc, target = previous business day
+          # - Weekday before 16:00 ET: never recalc, target = previous business day
+          # - Weekday after 16:00 ET: target = today, recalc only if today's usall file is missing/nonexistent/empty
+          if now.weekday() >= 5:
+              target = prev_business_day(now)
+              need_recalc = False
+              reason = "weekend -> no recalculation"
+          elif now.hour < 16:
+              target = prev_business_day(now)
+              need_recalc = False
+              reason = "before market close -> no recalculation"
+          else:
+              target = now.date()
+              yyyymm = target.strftime("%Y%m")
+              mmdd = target.strftime("%m%d")
+              pattern = str(data_dir / yyyymm / f"icc_live_usall_{target.strftime('%Y')}_{mmdd}*.csv")
+              files = [p for p in glob.glob(pattern) if os.path.getsize(p) > 0]
+              need_recalc = (len(files) == 0)
+              reason = "after market close"
+
+          out = os.environ["GITHUB_OUTPUT"]
+          with open(out, "a", encoding="utf-8") as f:
+              f.write(f"target_date={target.strftime('%Y-%m-%d')}\n")
+              f.write(f"need_recalc={'true' if need_recalc else 'false'}\n")
+              f.write(f"reason={reason}\n")
+          PY
+
+      - name: Show guard decision
+        run: |
+          echo "target_date = ${{ steps.guard.outputs.target_date }}"
+          echo "need_recalc = ${{ steps.guard.outputs.need_recalc }}"
+          echo "reason = ${{ steps.guard.outputs.reason }}"
+
+      - name: Run daily ICC
+        if: steps.guard.outputs.need_recalc == 'true'
         env:
           IGNORE_TIME_GUARD: "0"
         run: python run_daily_icc.py
 
-      - name: Run extra supported index snapshots
+      - name: Run extra indices
+        if: steps.guard.outputs.need_recalc == 'true'
         run: python backend/run_extra_indices.py
 
       - name: Build website data under docs/data/
         run: python backend/build_docs_data.py --universe usall
 
-      - name: Generate FILES.md manifest
-        run: python tools/generate_files_manifest.py
+      - name: Generate FILES.md manifest if tool exists
+        shell: bash
+        run: |
+          if [ -f tools/generate_files_manifest.py ]; then
+            python tools/generate_files_manifest.py
+          else
+            echo "tools/generate_files_manifest.py not found, skip."
+          fi
 
       - name: Commit raw data + site data back to repo
         shell: bash
@@ -91,16 +155,18 @@ jobs:
           BRANCH_NAME: ${{ github.ref_name }}
         run: |
           set -euo pipefail
-          BRANCH="${BRANCH_NAME:-main}"
+          BRANCH="${BRANCH_NAME}"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git fetch origin "${BRANCH}"
-          ts=$(date -u +"%Y-%m-%d")
-          git add -A data docs/data FILES.md config || true
+          git fetch origin "${BRANCH}" || true
+
+          ts=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
+          git add -A data docs/data FILES.md || true
+
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
-            git commit -m "Daily ICC + site data update ${ts} [skip ci]" || true
+            git commit -m "Update ICC raw/site data ${ts} [skip ci]" || true
             git pull --rebase --autostash origin "${BRANCH}" || true
             git push origin HEAD:"${BRANCH}" || true
           fi
