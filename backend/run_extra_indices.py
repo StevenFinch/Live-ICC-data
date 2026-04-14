@@ -1,12 +1,13 @@
+
 from __future__ import annotations
 
+import os
 import pathlib
 import subprocess
 import sys
 from datetime import datetime
+from zoneinfo import ZoneInfo
 
-# Make repo root importable even when running:
-#   python backend/run_extra_indices.py
 REPO = pathlib.Path(__file__).resolve().parents[1]
 if str(REPO) not in sys.path:
     sys.path.insert(0, str(REPO))
@@ -14,15 +15,7 @@ if str(REPO) not in sys.path:
 from backend.icc_market_live import _today_et  # type: ignore
 
 
-EXTRA_UNIVERSES = [
-    "sp100",
-    "dow30",
-    "ndx100",
-    "sp400",
-    "sp600",
-    "sp1500",
-    "rut1000",
-]
+DEFAULT_EXTRA_UNIVERSES = ["sp100", "dow30", "ndx100"]
 
 
 def ensure_month_dir(now_et: datetime) -> pathlib.Path:
@@ -31,8 +24,19 @@ def ensure_month_dir(now_et: datetime) -> pathlib.Path:
     return month_dir
 
 
+def get_extra_universes() -> list[str]:
+    raw = os.getenv("EXTRA_INDEX_UNIVERSES", "").strip()
+    if not raw:
+        return DEFAULT_EXTRA_UNIVERSES
+    vals = [x.strip() for x in raw.split(",") if x.strip()]
+    return vals or DEFAULT_EXTRA_UNIVERSES
+
+
 def run_one(universe: str, month_dir: pathlib.Path) -> None:
     out_path = month_dir / f"icc_live_{universe}_{_today_et()}.csv"
+    if out_path.exists() and out_path.stat().st_size > 0:
+        print(f"[run_extra_indices] skip existing non-empty file: {out_path}")
+        return
 
     cmd = [
         sys.executable,
@@ -44,16 +48,15 @@ def run_one(universe: str, month_dir: pathlib.Path) -> None:
     ]
 
     print(f"[run_extra_indices] running {universe}")
-    print("[run_extra_indices] cmd =", " ".join(cmd))
     subprocess.run(cmd, check=True)
 
 
 def main() -> None:
-    now_et = datetime.now()
+    now_et = datetime.now(ZoneInfo("America/New_York"))
     month_dir = ensure_month_dir(now_et)
 
     failed = []
-    for universe in EXTRA_UNIVERSES:
+    for universe in get_extra_universes():
         try:
             run_one(universe, month_dir)
         except Exception as e:
