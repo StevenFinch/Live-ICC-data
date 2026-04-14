@@ -3,9 +3,7 @@ from __future__ import annotations
 
 import io
 import pathlib
-import subprocess
 import sys
-import time
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
@@ -13,176 +11,107 @@ import pandas as pd
 import requests
 
 REPO = pathlib.Path(__file__).resolve().parents[1]
+if str(REPO) not in sys.path:
+    sys.path.insert(0, str(REPO))
 
-INDEX_SOURCES = {
-    "sp100": {
-        "url": "https://en.wikipedia.org/wiki/S%26P_100",
-        "mode": "html",
-    },
-    "dow30": {
-        "url": "https://en.wikipedia.org/wiki/Dow_Jones_Industrial_Average",
-        "mode": "html",
-    },
-    "ndx100": {
-        "url": "https://en.wikipedia.org/wiki/Nasdaq-100",
-        "mode": "html",
-    },
-    "sp400": {
-        "url": "https://en.wikipedia.org/wiki/List_of_S%26P_400_companies",
-        "mode": "html",
-    },
-    "sp600": {
-        "url": "https://en.wikipedia.org/wiki/List_of_S%26P_600_companies",
-        "mode": "html",
-    },
-    "rut1000": {
-        "url": "https://en.wikipedia.org/wiki/Russell_1000_Index",
-        "mode": "html",
-    },
-}
+from backend.icc_market_live import _index_tickers, get_live_panel  # type: ignore
+
 
 HEADERS = {
-    "User-Agent": (
-        "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
-        "(KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
-    )
+    "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122 Safari/537.36"
 }
 
 
-def today_et_str() -> str:
-    now = datetime.now(ZoneInfo("America/New_York"))
-    return now.strftime("%Y_%m%d")
+def _today_et() -> datetime:
+    return datetime.now(ZoneInfo("America/New_York"))
 
 
-def ensure_month_dir() -> pathlib.Path:
-    now = datetime.now(ZoneInfo("America/New_York"))
-    month_dir = REPO / "data" / now.strftime("%Y%m")
-    month_dir.mkdir(parents=True, exist_ok=True)
-    return month_dir
+def fetch_html(url: str) -> str:
+    r = requests.get(url, headers=HEADERS, timeout=30)
+    r.raise_for_status()
+    return r.text
 
 
-def http_get(url: str, tries: int = 3, timeout: int = 30) -> str:
-    last = None
-    for i in range(1, tries + 1):
-        try:
-            r = requests.get(url, headers=HEADERS, timeout=timeout)
-            r.raise_for_status()
-            return r.text
-        except Exception as e:
-            last = e
-            time.sleep(i * 1.0)
-    raise RuntimeError(f"Failed to download {url}") from last
-
-
-def find_symbol_col(df: pd.DataFrame) -> str:
+def find_symbol_column(df: pd.DataFrame) -> str:
     lowers = {str(c).lower(): c for c in df.columns}
-    for key in ["symbol", "ticker", "code"]:
-        if key in lowers:
-            return lowers[key]
+    for cand in ["symbol", "ticker", "company", "security"]:
+        if cand in lowers:
+            return lowers[cand]
     return df.columns[0]
 
 
-def clean_symbols(vals) -> list[str]:
-    s = (
-        pd.Series(list(vals))
-        .dropna()
+def parse_table_symbols(url: str) -> list[str]:
+    html = fetch_html(url)
+    tables = pd.read_html(io.StringIO(html))
+    if not tables:
+        raise RuntimeError(f"No tables found for {url}")
+    best = max(tables, key=len)
+    col = find_symbol_column(best)
+    symbols = (
+        best[col]
         .astype(str)
         .str.strip()
         .str.replace(r"\s+", "", regex=True)
         .str.replace(".", "-", regex=False)
         .str.upper()
+        .tolist()
     )
-    s = s[s.str.match(r"^[A-Z0-9\.\-]+$")]
-    s = s[s.str.len() > 0]
-    return sorted(s.unique().tolist())
-
-
-def fetch_index_symbols(name: str) -> list[str]:
-    spec = INDEX_SOURCES[name]
-    if spec["mode"] == "csv":
-        df = pd.read_csv(spec["url"], dtype=str)
-        col = find_symbol_col(df)
-        return clean_symbols(df[col].tolist())
-
-    html = http_get(spec["url"])
-    tables = pd.read_html(io.StringIO(html))
-    if not tables:
-        raise RuntimeError(f"No HTML tables found for {name}")
-
-    # Choose the table with the most rows and a plausible symbol column
-    best = None
-    best_n = -1
-    for t in tables:
-        if len(t) > best_n:
-            best = t
-            best_n = len(t)
-
-    if best is None or best.empty:
-        raise RuntimeError(f"No usable table found for {name}")
-
-    col = find_symbol_col(best)
-    symbols = clean_symbols(best[col].tolist())
-    if len(symbols) < 20:
-        raise RuntimeError(f"Too few symbols parsed for {name}: {len(symbols)}")
+    symbols = [s for s in symbols if s and s not in {"NAN", "NONE"}]
+    if len(symbols) < 30:
+        raise RuntimeError(f"Only parsed {len(symbols)} symbols from {url}")
     return symbols
 
 
-def run_one(index_name: str, month_dir: pathlib.Path) -> bool:
-    out_path = month_dir / f"icc_live_{index_name}_{today_et_str()}.csv"
+def extra_index_universes() -> dict[str, list[str]]:
+    extra = {
+        "sp400": parse_table_symbols("https://en.wikipedia.org/wiki/List_of_S%26P_400_companies"),
+        "sp600": parse_table_symbols("https://en.wikipedia.org/wiki/List_of_S%26P_600_companies"),
+        "rut1000": parse_table_symbols("https://en.wikipedia.org/wiki/Russell_1000_Index"),
+    }
+    return extra
+
+
+def save_panel(universe_name: str, symbols: list[str]) -> bool:
+    now = _today_et()
+    out_dir = REPO / "data" / now.strftime("%Y%m")
+    out_dir.mkdir(parents=True, exist_ok=True)
+    out_path = out_dir / f"icc_live_{universe_name}_{now.strftime('%Y_%m%d')}.csv"
+
     if out_path.exists() and out_path.stat().st_size > 0:
         print(f"[run_extra_indices] skip existing {out_path.name}")
         return True
 
-    try:
-        symbols = fetch_index_symbols(index_name)
-        print(f"[run_extra_indices] {index_name}: parsed {len(symbols)} symbols")
-    except Exception as e:
-        print(f"[run_extra_indices] failed to fetch symbols for {index_name}: {type(e).__name__}: {e}")
+    print(f"[run_extra_indices] computing {universe_name} | n={len(symbols)}")
+    panel = get_live_panel(symbols)
+    if panel.empty:
+        print(f"[run_extra_indices] empty panel for {universe_name}")
         return False
 
-    cmd = [
-        sys.executable,
-        str(REPO / "backend" / "icc_market_live.py"),
-        *symbols,
-    ]
-
-    try:
-        subprocess.run(cmd, check=True)
-    except Exception as e:
-        print(f"[run_extra_indices] icc_market_live failed for {index_name}: {type(e).__name__}: {e}")
-        return False
-
-    # icc_market_live saves custom universe as icc_live_custom_YYYY_MMDD.csv; rename it.
-    month_glob = sorted(month_dir.glob(f"icc_live_custom_{today_et_str()}*.csv"))
-    if not month_glob:
-        print(f"[run_extra_indices] missing custom output for {index_name}")
-        return False
-
-    src = month_glob[-1]
-    try:
-        src.replace(out_path)
-    except Exception:
-        # fallback copy+remove
-        out_path.write_bytes(src.read_bytes())
-        src.unlink(missing_ok=True)
-
-    if out_path.exists() and out_path.stat().st_size > 0:
-        print(f"[run_extra_indices] done {index_name}: {out_path.name}")
-        return True
-
-    print(f"[run_extra_indices] empty output for {index_name}")
-    return False
+    panel.to_csv(out_path, index=False)
+    print(f"[run_extra_indices] wrote {out_path}")
+    return True
 
 
 def main() -> None:
-    month_dir = ensure_month_dir()
+    builtins = {
+        "sp100": _index_tickers("sp100"),
+        "dow30": _index_tickers("dow30"),
+        "ndx100": _index_tickers("ndx100"),
+    }
+    online_extra = extra_index_universes()
+
     ok, bad = [], []
-    for idx in INDEX_SOURCES:
-        success = run_one(idx, month_dir)
-        if success:
-            ok.append(idx)
-        else:
-            bad.append(idx)
+    for universe, symbols in {**builtins, **online_extra}.items():
+        try:
+            success = save_panel(universe, symbols)
+            if success:
+                ok.append(universe)
+            else:
+                bad.append(universe)
+        except Exception as e:
+            print(f"[run_extra_indices] FAILED on {universe}: {type(e).__name__}: {e}")
+            bad.append(universe)
+
     print(f"[run_extra_indices] success={ok}")
     print(f"[run_extra_indices] failed={bad}")
 
