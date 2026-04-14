@@ -85,6 +85,79 @@ function filterLastMonth(rows) {
     .map(({ __d, ...rest }) => rest);
 }
 
+function renderDownloadList(id, items) {
+  const el = byId(id);
+  if (!el) return;
+
+  if (!items || !items.length) {
+    el.innerHTML = `<div class="empty">No download files</div>`;
+    return;
+  }
+
+  el.innerHTML = `
+    <div class="download-list">
+      ${items.map(x => `
+        <div class="download-item">
+          <a class="btn-link" href="${x.path}" target="_blank" rel="noopener">${x.label}</a>
+        </div>
+      `).join("")}
+    </div>
+  `;
+}
+
+function renderRawTree(id, rows) {
+  const el = byId(id);
+  if (!el) return;
+
+  if (!rows || !rows.length) {
+    el.innerHTML = `<div class="empty">No raw snapshot files</div>`;
+    return;
+  }
+
+  const tree = {};
+  for (const r of rows) {
+    const yyyymm = String(r.yyyymm || "");
+    const year = yyyymm.slice(0, 4);
+    const month = yyyymm.slice(4, 6);
+    if (!tree[year]) tree[year] = {};
+    if (!tree[year][month]) tree[year][month] = [];
+    tree[year][month].push(r);
+  }
+
+  const yearKeys = Object.keys(tree).sort().reverse();
+
+  el.innerHTML = yearKeys.map(year => {
+    const monthKeys = Object.keys(tree[year]).sort().reverse();
+
+    return `
+      <details class="tree-level">
+        <summary><strong>${year}</strong></summary>
+        <div class="tree-body">
+          ${monthKeys.map(month => {
+            const rowsMonth = tree[year][month]
+              .slice()
+              .sort((a, b) => String(b.date).localeCompare(String(a.date)));
+
+            return `
+              <details class="tree-level nested">
+                <summary>${year}-${month}</summary>
+                <div class="tree-body">
+                  ${rowsMonth.map(r => `
+                    <div class="tree-leaf">
+                      <span>${r.date} | ${r.universe} | ${fmtInt(r.n_firms)} firms</span>
+                      <a class="btn-link small" href="${r.download_path}" target="_blank" rel="noopener">Download</a>
+                    </div>
+                  `).join("")}
+                </div>
+              </details>
+            `;
+          }).join("")}
+        </div>
+      </details>
+    `;
+  }).join("");
+}
+
 async function safeLoad(path, label, warnings) {
   try {
     return await fetchJson(path);
@@ -95,9 +168,7 @@ async function safeLoad(path, label, warnings) {
   }
 }
 
-(async function () {
-  const warnings = [];
-
+async function renderHome(warnings) {
   const overviewData = await safeLoad("./data/overview.json", "overview.json", warnings);
   const marketData = await safeLoad("./data/market_icc.json", "market_icc.json", warnings);
   const valueData = await safeLoad("./data/value_icc_bm.json", "value_icc_bm.json", warnings);
@@ -106,29 +177,34 @@ async function safeLoad(path, label, warnings) {
 
   if (overviewData) {
     setText("asof", overviewData.asof_date ? `As of ${overviewData.asof_date}` : "");
-
     const cards = overviewData.cards || {};
 
-    renderCards("all-cards", [
-      { label: "VW ICC", value: fmtPct(cards.all_market_vw_icc ?? cards.market_vw_icc) },
-      { label: "EW ICC", value: fmtPct(cards.all_market_ew_icc ?? cards.market_ew_icc) },
-      { label: "N Firms", value: fmtInt(cards.all_n_firms ?? cards.n_firms) },
-    ]);
+    if (byId("all-cards")) {
+      renderCards("all-cards", [
+        { label: "VW ICC", value: fmtPct(cards.all_market_vw_icc ?? cards.market_vw_icc) },
+        { label: "EW ICC", value: fmtPct(cards.all_market_ew_icc ?? cards.market_ew_icc) },
+        { label: "N Firms", value: fmtInt(cards.all_n_firms ?? cards.n_firms) },
+      ]);
+    }
 
-    renderCards("sp500-cards", [
-      { label: "VW ICC", value: fmtPct(cards.sp500_vw_icc) },
-      { label: "EW ICC", value: fmtPct(cards.sp500_ew_icc) },
-      { label: "N Firms", value: fmtInt(cards.sp500_n_firms) },
-    ]);
+    if (byId("sp500-cards")) {
+      renderCards("sp500-cards", [
+        { label: "VW ICC", value: fmtPct(cards.sp500_vw_icc) },
+        { label: "EW ICC", value: fmtPct(cards.sp500_ew_icc) },
+        { label: "N Firms", value: fmtInt(cards.sp500_n_firms) },
+      ]);
+    }
 
-    renderCards("style-cards", [
-      { label: "Value ICC", value: fmtPct(cards.value_icc) },
-      { label: "Growth ICC", value: fmtPct(cards.growth_icc) },
-      { label: "IVP (B/M)", value: fmtPct(cards.ivp_bm) },
-    ]);
+    if (byId("style-cards")) {
+      renderCards("style-cards", [
+        { label: "Value ICC", value: fmtPct(cards.value_icc) },
+        { label: "Growth ICC", value: fmtPct(cards.growth_icc) },
+        { label: "IVP (B/M)", value: fmtPct(cards.ivp_bm) },
+      ]);
+    }
   }
 
-  if (marketData) {
+  if (marketData && byId("market-table")) {
     const recentAll = filterLastMonth(marketData.history || []);
     renderTable("market-table", recentAll, [
       ["date", "Date"],
@@ -139,30 +215,34 @@ async function safeLoad(path, label, warnings) {
   }
 
   if (indexData) {
-    const sp500History = (indexData.history || []).filter(x => x.universe === "sp500");
-    const recentSP500 = filterLastMonth(sp500History);
+    if (byId("sp500-table")) {
+      const sp500History = (indexData.history || []).filter(x => x.universe === "sp500");
+      const recentSP500 = filterLastMonth(sp500History);
+      renderTable("sp500-table", recentSP500, [
+        ["date", "Date"],
+        ["vw_icc", "VW ICC", x => fmtPct(x)],
+        ["ew_icc", "EW ICC", x => fmtPct(x)],
+        ["n_firms", "N Firms", x => fmtInt(x)],
+      ]);
+    }
 
-    renderTable("sp500-table", recentSP500, [
-      ["date", "Date"],
-      ["vw_icc", "VW ICC", x => fmtPct(x)],
-      ["ew_icc", "EW ICC", x => fmtPct(x)],
-      ["n_firms", "N Firms", x => fmtInt(x)],
-    ]);
+    if (byId("index-latest-table")) {
+      const latestOther = (indexData.latest || [])
+        .filter(x => x.universe !== "sp500")
+        .filter(x => x.vw_icc !== null || x.ew_icc !== null)
+        .sort((a, b) => String(a.universe).localeCompare(String(b.universe)));
 
-    const latestOther = (indexData.latest || [])
-      .filter(x => x.universe !== "sp500")
-      .sort((a, b) => String(a.universe).localeCompare(String(b.universe)));
-
-    renderTable("index-latest-table", latestOther, [
-      ["universe", "Index"],
-      ["date", "Date"],
-      ["vw_icc", "VW ICC", x => fmtPct(x)],
-      ["ew_icc", "EW ICC", x => fmtPct(x)],
-      ["n_firms", "N Firms", x => fmtInt(x)],
-    ]);
+      renderTable("index-latest-table", latestOther, [
+        ["universe", "Index"],
+        ["date", "Date"],
+        ["vw_icc", "VW ICC", x => fmtPct(x)],
+        ["ew_icc", "EW ICC", x => fmtPct(x)],
+        ["n_firms", "N Firms", x => fmtInt(x)],
+      ]);
+    }
   }
 
-  if (valueData) {
+  if (valueData && byId("value-table")) {
     const recentValue = filterLastMonth(valueData.history || []);
     renderTable("value-table", recentValue, [
       ["date", "Date"],
@@ -173,13 +253,37 @@ async function safeLoad(path, label, warnings) {
     ]);
   }
 
-  if (industryData) {
+  if (industryData && byId("industry-table")) {
     renderTable("industry-table", industryData.latest || [], [
       ["sector", "Industry"],
       ["vw_icc", "VW ICC", x => fmtPct(x)],
       ["ew_icc", "EW ICC", x => fmtPct(x)],
       ["n_firms", "N Firms", x => fmtInt(x)],
     ]);
+  }
+}
+
+async function renderDownloadsPage(warnings) {
+  const overviewData = await safeLoad("./data/overview.json", "overview.json", warnings);
+  const allFilesData = await safeLoad("./data/all_snapshot_files.json", "all_snapshot_files.json", warnings);
+
+  if (overviewData) {
+    setText("asof", overviewData.asof_date ? `As of ${overviewData.asof_date}` : "");
+    renderDownloadList("aggregate-downloads", overviewData.downloads || []);
+  }
+
+  if (allFilesData) {
+    renderRawTree("raw-download-tree", allFilesData.rows || []);
+  }
+}
+
+(async function () {
+  const warnings = [];
+
+  if (byId("aggregate-downloads") || byId("raw-download-tree")) {
+    await renderDownloadsPage(warnings);
+  } else {
+    await renderHome(warnings);
   }
 
   if (warnings.length) {
