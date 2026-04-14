@@ -1,4 +1,5 @@
-name: Daily ICC + Build Website + Deploy Pages
+
+name: Daily ICC + Build FF-style Site + Deploy Pages
 
 on:
   workflow_dispatch: {}
@@ -21,23 +22,19 @@ jobs:
     outputs:
       proceed: ${{ steps.check.outputs.proceed }}
     steps:
-      - name: Decide whether to run (only during 5pm America/New_York or manual)
+      - name: Decide whether to run
         id: check
         shell: bash
         run: |
           if [ "${{ github.event_name }}" = "schedule" ]; then
             NY_HOUR=$(TZ=America/New_York date +%H)
-            NY_MIN=$(TZ=America/New_York date +%M)
             if [ "$NY_HOUR" -eq 17 ]; then
               echo "proceed=true" >> "$GITHUB_OUTPUT"
-              echo "Proceeding: NY time is ${NY_HOUR}:${NY_MIN}."
             else
               echo "proceed=false" >> "$GITHUB_OUTPUT"
-              echo "Skipping: NY time is ${NY_HOUR}:${NY_MIN}."
             fi
           else
             echo "proceed=true" >> "$GITHUB_OUTPUT"
-            echo "Manual dispatch -> proceed."
           fi
 
   build-and-deploy:
@@ -93,10 +90,6 @@ jobs:
                   d -= timedelta(days=1)
               return d
 
-          # Rule:
-          # - Weekend: never recalc, target = previous business day
-          # - Weekday before 16:00 ET: never recalc, target = previous business day
-          # - Weekday after 16:00 ET: target = today, recalc only if today's usall file is missing/nonexistent/empty
           if now.weekday() >= 5:
               target = prev_business_day(now)
               need_recalc = False
@@ -135,21 +128,23 @@ jobs:
 
       - name: Run extra indices
         if: steps.guard.outputs.need_recalc == 'true'
+        env:
+          EXTRA_INDEX_UNIVERSES: "sp100,dow30,ndx100"
         run: python backend/run_extra_indices.py
 
-      - name: Build website data under docs/data/
+      - name: Build docs data
         run: python backend/build_docs_data.py --universe usall
 
-      - name: Generate FILES.md manifest if tool exists
+      - name: Generate FILES.md manifest if present
         shell: bash
         run: |
           if [ -f tools/generate_files_manifest.py ]; then
             python tools/generate_files_manifest.py
           else
-            echo "tools/generate_files_manifest.py not found, skip."
+            echo "No manifest tool found, skip."
           fi
 
-      - name: Commit raw data + site data back to repo
+      - name: Commit updated raw data and site data
         shell: bash
         env:
           BRANCH_NAME: ${{ github.ref_name }}
@@ -161,7 +156,7 @@ jobs:
           git fetch origin "${BRANCH}" || true
 
           ts=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
-          git add -A data docs/data FILES.md || true
+          git add -A data docs FILES.md || true
 
           if git diff --cached --quiet; then
             echo "No changes to commit."
