@@ -1,13 +1,7 @@
-
 async function fetchJson(path) {
   const r = await fetch(path, { cache: "no-store" });
   if (!r.ok) throw new Error(`HTTP ${r.status} for ${path}`);
   return await r.json();
-}
-
-function fmt(x, digits = 4) {
-  if (x === null || x === undefined || Number.isNaN(Number(x))) return "";
-  return Number(x).toFixed(digits);
 }
 
 function byId(id) {
@@ -21,125 +15,246 @@ function setStatus(msg, isError = false) {
   el.className = isError ? "status error" : "status";
 }
 
-function makeCards(cards) {
-  const el = byId("cards");
-  const items = [
-    ["Market VW ICC", cards.market_vw_icc],
-    ["Value ICC", cards.value_icc],
-    ["Growth ICC", cards.growth_icc],
-    ["IVP (B/M)", cards.ivp_bm],
-  ];
-  el.innerHTML = items
-    .map(([label, value]) => `<div class="card"><div class="card-label">${label}</div><div class="card-value">${fmt(value)}</div></div>`)
-    .join("");
+function fmtPct(x, digits = 2) {
+  if (x === null || x === undefined || Number.isNaN(Number(x))) return "";
+  return `${(Number(x) * 100).toFixed(digits)}%`;
+}
+
+function fmtInt(x) {
+  if (x === null || x === undefined || Number.isNaN(Number(x))) return "";
+  return Number(x).toLocaleString();
+}
+
+function renderCards(id, items) {
+  const el = byId(id);
+  if (!el) return;
+  el.innerHTML = items.map(item => `
+    <div class="card">
+      <div class="card-label">${item.label}</div>
+      <div class="card-value">${item.value}</div>
+    </div>
+  `).join("");
+}
+
+function renderDownloadList(id, items) {
+  const el = byId(id);
+  if (!el) return;
+
+  if (!items || !items.length) {
+    el.innerHTML = `<div class="empty">No download files</div>`;
+    return;
+  }
+
+  el.innerHTML = `
+    <ul class="download-list">
+      ${items.map(x => `<li><a href="${x.path}" target="_blank" rel="noopener">${x.label}</a></li>`).join("")}
+    </ul>
+  `;
 }
 
 function renderTable(id, rows, columns) {
   const el = byId(id);
   if (!el) return;
+
   if (!rows || !rows.length) {
     el.innerHTML = `<div class="empty">No data</div>`;
     return;
   }
+
   const thead = `<thead><tr>${columns.map(c => `<th>${c[1]}</th>`).join("")}</tr></thead>`;
-  const tbody = rows.map(r => `<tr>${columns.map(c => {
-    const v = r[c[0]];
-    return `<td>${typeof c[2] === "function" ? c[2](v, r) : (v ?? "")}</td>`;
-  }).join("")}</tr>`).join("");
+  const tbody = rows.map(r => {
+    return `<tr>${columns.map(c => {
+      const v = r[c[0]];
+      return `<td>${typeof c[2] === "function" ? c[2](v, r) : (v ?? "")}</td>`;
+    }).join("")}</tr>`;
+  }).join("");
+
   el.innerHTML = `<table>${thead}<tbody>${tbody}</tbody></table>`;
 }
 
-function renderDownloads(items) {
-  const el = byId("downloads");
-  if (!el) return;
-  if (!items || !items.length) {
-    el.innerHTML = `<div class="empty">No download files</div>`;
-    return;
+function parseDateSafe(s) {
+  if (!s) return null;
+  const d = new Date(`${s}T00:00:00`);
+  return Number.isNaN(d.getTime()) ? null : d;
+}
+
+function filterLastMonth(rows) {
+  if (!rows || !rows.length) return [];
+  const dated = rows
+    .map(r => ({ ...r, __d: parseDateSafe(r.date) }))
+    .filter(r => r.__d !== null);
+
+  if (!dated.length) return rows;
+
+  const maxDate = dated.reduce((a, b) => (a.__d > b.__d ? a : b)).__d;
+  const cutoff = new Date(maxDate);
+  cutoff.setDate(cutoff.getDate() - 31);
+
+  return dated
+    .filter(r => r.__d >= cutoff)
+    .sort((a, b) => b.__d - a.__d)
+    .map(({ __d, ...rest }) => rest);
+}
+
+async function loadSection(path, onSuccess, label, warnings) {
+  try {
+    const data = await fetchJson(path);
+    onSuccess(data);
+  } catch (err) {
+    console.error(`[${label}]`, err);
+    warnings.push(`${label} failed`);
   }
-  el.innerHTML = `<ul class="download-list">${items.map(x => `<li><a href="${x.path}" target="_blank" rel="noopener">${x.label}</a></li>`).join("")}</ul>`;
 }
 
 (async function () {
-  try {
-    const overview = await fetchJson("./data/overview.json");
-    byId("asof").textContent = overview.asof_date ? `As of ${overview.asof_date}` : "";
-    makeCards(overview.cards || {});
-    renderDownloads(overview.downloads || []);
+  const warnings = [];
 
-    const market = await fetchJson("./data/market_icc.json");
-    renderTable("market-table", (market.history || []).slice().reverse(), [
-      ["date", "Date"],
-      ["vw_icc", "VW ICC", fmt],
-      ["ew_icc", "EW ICC", fmt],
-      ["n_firms", "N Firms"],
+  let overviewData = null;
+  let marketData = null;
+  let valueData = null;
+  let indexData = null;
+  let industryData = null;
+  let etfData = null;
+  let countryData = null;
+  let ymData = null;
+  let allFilesData = null;
+
+  await loadSection("./data/overview.json", d => { overviewData = d; }, "overview.json", warnings);
+  await loadSection("./data/market_icc.json", d => { marketData = d; }, "market_icc.json", warnings);
+  await loadSection("./data/value_icc_bm.json", d => { valueData = d; }, "value_icc_bm.json", warnings);
+  await loadSection("./data/index_icc.json", d => { indexData = d; }, "index_icc.json", warnings);
+  await loadSection("./data/industry_icc.json", d => { industryData = d; }, "industry_icc.json", warnings);
+  await loadSection("./data/etf_icc.json", d => { etfData = d; }, "etf_icc.json", warnings);
+  await loadSection("./data/country_icc.json", d => { countryData = d; }, "country_icc.json", warnings);
+  await loadSection("./data/year_month_manifest.json", d => { ymData = d; }, "year_month_manifest.json", warnings);
+  await loadSection("./data/all_snapshot_files.json", d => { allFilesData = d; }, "all_snapshot_files.json", warnings);
+
+  if (overviewData) {
+    byId("asof").textContent = overviewData.asof_date ? `As of ${overviewData.asof_date}` : "";
+
+    const cards = overviewData.cards || {};
+
+    renderCards("all-cards", [
+      { label: "VW ICC", value: fmtPct(cards.all_market_vw_icc) },
+      { label: "EW ICC", value: fmtPct(cards.all_market_ew_icc) },
+      { label: "N Firms", value: fmtInt(cards.all_n_firms) },
     ]);
 
-    const value = await fetchJson("./data/value_icc_bm.json");
-    renderTable("value-table", (value.history || []).slice().reverse(), [
-      ["date", "Date"],
-      ["value_icc", "Value ICC", fmt],
-      ["growth_icc", "Growth ICC", fmt],
-      ["ivp_bm", "IVP (B/M)", fmt],
-      ["n_firms", "N Firms"],
+    renderCards("sp500-cards", [
+      { label: "VW ICC", value: fmtPct(cards.sp500_vw_icc) },
+      { label: "EW ICC", value: fmtPct(cards.sp500_ew_icc) },
+      { label: "N Firms", value: fmtInt(cards.sp500_n_firms) },
     ]);
 
-    const industry = await fetchJson("./data/industry_icc.json");
-    renderTable("industry-table", industry.latest || [], [
+    renderCards("style-cards", [
+      { label: "Value ICC", value: fmtPct(cards.value_icc) },
+      { label: "Growth ICC", value: fmtPct(cards.growth_icc) },
+      { label: "IVP (B/M)", value: fmtPct(cards.ivp_bm) },
+    ]);
+
+    renderDownloadList("downloads-aggregate", overviewData.downloads?.aggregate || []);
+    renderDownloadList("downloads-raw", overviewData.downloads?.raw || []);
+  }
+
+  if (marketData) {
+    const recentAll = filterLastMonth(marketData.history || []);
+    renderTable("market-table", recentAll, [
+      ["date", "Date"],
+      ["vw_icc", "VW ICC", x => fmtPct(x)],
+      ["ew_icc", "EW ICC", x => fmtPct(x)],
+      ["n_firms", "N Firms", x => fmtInt(x)],
+    ]);
+  }
+
+  if (indexData) {
+    const sp500History = (indexData.history || []).filter(x => x.universe === "sp500");
+    const recentSP500 = filterLastMonth(sp500History);
+
+    renderTable("sp500-table", recentSP500, [
+      ["date", "Date"],
+      ["vw_icc", "VW ICC", x => fmtPct(x)],
+      ["ew_icc", "EW ICC", x => fmtPct(x)],
+      ["n_firms", "N Firms", x => fmtInt(x)],
+    ]);
+
+    const latestOther = (indexData.latest || [])
+      .filter(x => x.universe !== "sp500")
+      .sort((a, b) => String(a.universe).localeCompare(String(b.universe)));
+
+    renderTable("index-latest-table", latestOther, [
+      ["universe", "Index"],
+      ["date", "Date"],
+      ["vw_icc", "VW ICC", x => fmtPct(x)],
+      ["ew_icc", "EW ICC", x => fmtPct(x)],
+      ["n_firms", "N Firms", x => fmtInt(x)],
+    ]);
+  }
+
+  if (valueData) {
+    const recentValue = filterLastMonth(valueData.history || []);
+    renderTable("value-table", recentValue, [
+      ["date", "Date"],
+      ["value_icc", "Value ICC", x => fmtPct(x)],
+      ["growth_icc", "Growth ICC", x => fmtPct(x)],
+      ["ivp_bm", "IVP (B/M)", x => fmtPct(x)],
+      ["n_firms", "N Firms", x => fmtInt(x)],
+    ]);
+  }
+
+  if (industryData) {
+    renderTable("industry-table", industryData.latest || [], [
       ["sector", "Industry"],
-      ["vw_icc", "VW ICC", fmt],
-      ["ew_icc", "EW ICC", fmt],
-      ["n_firms", "N Firms"],
+      ["vw_icc", "VW ICC", x => fmtPct(x)],
+      ["ew_icc", "EW ICC", x => fmtPct(x)],
+      ["n_firms", "N Firms", x => fmtInt(x)],
     ]);
+  }
 
-    const etf = await fetchJson("./data/etf_icc.json");
-    renderTable("etf-table", etf.latest || [], [
+  if (etfData) {
+    renderTable("etf-table", etfData.latest || [], [
       ["ticker", "Ticker"],
       ["label", "Label"],
       ["category", "Category"],
-      ["vw_icc", "ETF ICC", fmt],
-      ["coverage_weight", "Coverage", x => fmt(x, 3)],
-      ["n_holdings", "Holdings"],
+      ["vw_icc", "ETF ICC", x => fmtPct(x)],
+      ["coverage_weight", "Coverage", x => fmtPct(x)],
+      ["n_holdings", "Holdings", x => fmtInt(x)],
       ["status", "Status"],
     ]);
+  }
 
-    const country = await fetchJson("./data/country_icc.json");
-    renderTable("country-table", country.latest || [], [
+  if (countryData) {
+    renderTable("country-table", countryData.latest || [], [
       ["country", "Country"],
       ["ticker", "Proxy ETF"],
-      ["vw_icc", "Country ICC", fmt],
-      ["coverage_weight", "Coverage", x => fmt(x, 3)],
-      ["n_holdings", "Holdings"],
+      ["vw_icc", "Country ICC", x => fmtPct(x)],
+      ["coverage_weight", "Coverage", x => fmtPct(x)],
+      ["n_holdings", "Holdings", x => fmtInt(x)],
       ["status", "Status"],
     ]);
+  }
 
-    const indexData = await fetchJson("./data/index_icc.json");
-    renderTable("index-latest-table", indexData.latest || [], [
-      ["universe", "Index"],
-      ["date", "Date"],
-      ["vw_icc", "VW ICC", fmt],
-      ["ew_icc", "EW ICC", fmt],
-      ["n_firms", "N Firms"],
-    ]);
-
-    const ym = await fetchJson("./data/year_month_manifest.json");
-    renderTable("month-table", ym.rows || [], [
+  if (ymData) {
+    renderTable("month-table", ymData.rows || [], [
       ["yyyymm", "Year-Month"],
-      ["n_files", "Files"],
+      ["n_files", "Files", x => fmtInt(x)],
       ["universes", "Universes"],
       ["download_folder", "Folder", x => `<a href="${x}" target="_blank" rel="noopener">${x}</a>`],
     ]);
+  }
 
-    const allf = await fetchJson("./data/all_snapshot_files.json");
-    renderTable("all-files-table", (allf.rows || []).slice().reverse(), [
+  if (allFilesData) {
+    const rows = (allFilesData.rows || []).slice().reverse();
+    renderTable("all-files-table", rows, [
       ["date", "Date"],
       ["universe", "Universe"],
-      ["n_firms", "N Firms"],
+      ["n_firms", "N Firms", x => fmtInt(x)],
       ["download_path", "Download", x => `<a href="${x}" target="_blank" rel="noopener">csv</a>`],
     ]);
+  }
 
+  if (warnings.length) {
+    setStatus(`Partial load: ${warnings.join(" | ")}`, true);
+  } else {
     setStatus("");
-  } catch (err) {
-    console.error(err);
-    setStatus("Failed to load site data. Check docs/data/*.json deployment.", true);
   }
 })();
