@@ -1,3 +1,4 @@
+
 async function fetchJson(path) {
   const r = await fetch(path, { cache: "no-store" });
   if (!r.ok) throw new Error(`HTTP ${r.status} for ${path}`);
@@ -25,231 +26,222 @@ function fmtInt(x) {
   return Number(x).toLocaleString();
 }
 
-function renderCards(id, items) {
-  const el = byId(id);
-  if (!el) return;
-  el.innerHTML = items.map(item => `
-    <div class="card">
-      <div class="card-label">${item.label}</div>
-      <div class="card-value">${item.value}</div>
-    </div>
-  `).join("");
+function escapeHtml(s) {
+  return String(s ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
 }
 
-function renderDownloadList(id, items) {
-  const el = byId(id);
+function renderNav(navItems) {
+  const page = document.body.dataset.page;
+  const el = byId("nav");
   if (!el) return;
-
-  if (!items || !items.length) {
-    el.innerHTML = `<div class="empty">No download files</div>`;
-    return;
-  }
-
-  el.innerHTML = `
-    <ul class="download-list">
-      ${items.map(x => `<li><a href="${x.path}" target="_blank" rel="noopener">${x.label}</a></li>`).join("")}
-    </ul>
-  `;
+  el.innerHTML = (navItems || []).map(x => {
+    const href = x.href || "#";
+    const label = x.label || href;
+    const active =
+      (page === "home" && href === "index.html") ||
+      (page === "marketwide" && href === "marketwide.html") ||
+      (page === "value" && href === "value.html") ||
+      (page === "indices" && href === "indices.html") ||
+      (page === "industry" && href === "industry.html") ||
+      (page === "downloads" && href === "downloads.html");
+    return `<a href="${href}" class="${active ? "active" : ""}">${escapeHtml(label)}</a>`;
+  }).join("");
 }
 
-function renderTable(id, rows, columns) {
-  const el = byId(id);
+function renderSimpleTable(targetId, rows, columns) {
+  const el = byId(targetId);
   if (!el) return;
-
   if (!rows || !rows.length) {
     el.innerHTML = `<div class="empty">No data</div>`;
     return;
   }
 
-  const thead = `<thead><tr>${columns.map(c => `<th>${c[1]}</th>`).join("")}</tr></thead>`;
+  const thead = `<thead><tr>${columns.map(c => `<th>${escapeHtml(c.label)}</th>`).join("")}</tr></thead>`;
+  const tbody = rows.map(r => `<tr>${
+    columns.map(c => {
+      const raw = r[c.key];
+      const val = c.format ? c.format(raw, r) : escapeHtml(raw ?? "");
+      return `<td>${val}</td>`;
+    }).join("")
+  }</tr>`).join("");
+
+  el.innerHTML = `<table>${thead}<tbody>${tbody}</tbody></table>`;
+}
+
+function renderMonthlyMatrix(targetId, months, rows) {
+  const el = byId(targetId);
+  if (!el) return;
+  if (!rows || !rows.length || !months || !months.length) {
+    el.innerHTML = `<div class="empty">No data</div>`;
+    return;
+  }
+
+  const thead = `<thead><tr><th>Series</th>${months.map(m => `<th>${escapeHtml(m)}</th>`).join("")}</tr></thead>`;
   const tbody = rows.map(r => {
-    return `<tr>${columns.map(c => {
-      const v = r[c[0]];
-      return `<td>${typeof c[2] === "function" ? c[2](v, r) : (v ?? "")}</td>`;
-    }).join("")}</tr>`;
+    const tds = months.map(m => `<td>${fmtPct(r[m])}</td>`).join("");
+    return `<tr><td>${escapeHtml(r.series)}</td>${tds}</tr>`;
   }).join("");
 
   el.innerHTML = `<table>${thead}<tbody>${tbody}</tbody></table>`;
 }
 
-function parseDateSafe(s) {
-  if (!s) return null;
-  const d = new Date(`${s}T00:00:00`);
-  return Number.isNaN(d.getTime()) ? null : d;
+function buildDownloadTabs(families) {
+  const el = byId("download-tabs");
+  if (!el) return;
+  el.innerHTML = families.map((f, idx) =>
+    `<button class="${idx === 0 ? "active" : ""}" data-family="${escapeHtml(f.family)}">${escapeHtml(f.label)}</button>`
+  ).join("");
 }
 
-function filterLastMonth(rows) {
-  if (!rows || !rows.length) return [];
-  const dated = rows
-    .map(r => ({ ...r, __d: parseDateSafe(r.date) }))
-    .filter(r => r.__d !== null);
-
-  if (!dated.length) return rows;
-
-  const maxDate = dated.reduce((a, b) => (a.__d > b.__d ? a : b)).__d;
-  const cutoff = new Date(maxDate);
-  cutoff.setDate(cutoff.getDate() - 31);
-
-  return dated
-    .filter(r => r.__d >= cutoff)
-    .sort((a, b) => b.__d - a.__d)
-    .map(({ __d, ...rest }) => rest);
-}
-
-async function loadSection(path, onSuccess, label, warnings) {
-  try {
-    const data = await fetchJson(path);
-    onSuccess(data);
-  } catch (err) {
-    console.error(`[${label}]`, err);
-    warnings.push(`${label} failed`);
+function renderDownloadTreeFamily(family) {
+  const el = byId("download-tree");
+  if (!el) return;
+  if (!family || !family.years || !family.years.length) {
+    el.innerHTML = `<div class="empty">No download files</div>`;
+    return;
   }
+
+  const html = `
+    <div class="tree">
+      ${family.years.map(year => `
+        <details>
+          <summary>${escapeHtml(year.year)}</summary>
+          <div class="actions">
+            <a href="${year.download_all_href}" download>${escapeHtml(year.download_all_label)}</a>
+          </div>
+          ${year.months.map(month => `
+            <details>
+              <summary>${escapeHtml(month.month)}</summary>
+              <div class="actions">
+                <a href="${month.download_all_href}" download>${escapeHtml(month.download_all_label)}</a>
+              </div>
+              ${month.days.map(day => `
+                <div class="day-row">
+                  <a class="day-link" href="${day.href}" download>${escapeHtml(day.label)}</a>
+                </div>
+              `).join("")}
+            </details>
+          `).join("")}
+        </details>
+      `).join("")}
+    </div>
+  `;
+  el.innerHTML = html;
 }
 
-(async function () {
+async function boot() {
   const warnings = [];
+  const page = document.body.dataset.page;
 
-  let overviewData = null;
-  let marketData = null;
-  let valueData = null;
-  let indexData = null;
-  let industryData = null;
-  let etfData = null;
-  let countryData = null;
-  let ymData = null;
-  let allFilesData = null;
-
-  await loadSection("./data/overview.json", d => { overviewData = d; }, "overview.json", warnings);
-  await loadSection("./data/market_icc.json", d => { marketData = d; }, "market_icc.json", warnings);
-  await loadSection("./data/value_icc_bm.json", d => { valueData = d; }, "value_icc_bm.json", warnings);
-  await loadSection("./data/index_icc.json", d => { indexData = d; }, "index_icc.json", warnings);
-  await loadSection("./data/industry_icc.json", d => { industryData = d; }, "industry_icc.json", warnings);
-  await loadSection("./data/etf_icc.json", d => { etfData = d; }, "etf_icc.json", warnings);
-  await loadSection("./data/country_icc.json", d => { countryData = d; }, "country_icc.json", warnings);
-  await loadSection("./data/year_month_manifest.json", d => { ymData = d; }, "year_month_manifest.json", warnings);
-  await loadSection("./data/all_snapshot_files.json", d => { allFilesData = d; }, "all_snapshot_files.json", warnings);
-
-  if (overviewData) {
-    byId("asof").textContent = overviewData.asof_date ? `As of ${overviewData.asof_date}` : "";
-
-    const cards = overviewData.cards || {};
-
-    renderCards("all-cards", [
-      { label: "VW ICC", value: fmtPct(cards.all_market_vw_icc) },
-      { label: "EW ICC", value: fmtPct(cards.all_market_ew_icc) },
-      { label: "N Firms", value: fmtInt(cards.all_n_firms) },
-    ]);
-
-    renderCards("sp500-cards", [
-      { label: "VW ICC", value: fmtPct(cards.sp500_vw_icc) },
-      { label: "EW ICC", value: fmtPct(cards.sp500_ew_icc) },
-      { label: "N Firms", value: fmtInt(cards.sp500_n_firms) },
-    ]);
-
-    renderCards("style-cards", [
-      { label: "Value ICC", value: fmtPct(cards.value_icc) },
-      { label: "Growth ICC", value: fmtPct(cards.growth_icc) },
-      { label: "IVP (B/M)", value: fmtPct(cards.ivp_bm) },
-    ]);
-
-    renderDownloadList("downloads-aggregate", overviewData.downloads?.aggregate || []);
-    renderDownloadList("downloads-raw", overviewData.downloads?.raw || []);
+  let overview = null;
+  try {
+    overview = await fetchJson("./data/overview.json");
+    byId("asof").textContent = overview.asof_date ? `As of ${overview.asof_date}` : "";
+    renderNav(overview.nav || []);
+  } catch (err) {
+    warnings.push("overview.json failed");
+    console.error(err);
   }
 
-  if (marketData) {
-    const recentAll = filterLastMonth(marketData.history || []);
-    renderTable("market-table", recentAll, [
-      ["date", "Date"],
-      ["vw_icc", "VW ICC", x => fmtPct(x)],
-      ["ew_icc", "EW ICC", x => fmtPct(x)],
-      ["n_firms", "N Firms", x => fmtInt(x)],
-    ]);
-  }
+  try {
+    if (page === "home") {
+      const home = await fetchJson("./data/home_monthly.json");
+      renderMonthlyMatrix("home-core-table", home.core?.months || [], home.core?.rows || []);
+      renderMonthlyMatrix("home-index-table", home.index?.months || [], home.index?.rows || []);
+      renderMonthlyMatrix("home-industry-table", home.industry?.months || [], home.industry?.rows || []);
+    }
 
-  if (indexData) {
-    const sp500History = (indexData.history || []).filter(x => x.universe === "sp500");
-    const recentSP500 = filterLastMonth(sp500History);
+    if (page === "marketwide") {
+      const d = await fetchJson("./data/marketwide_page.json");
+      renderSimpleTable("marketwide-recent-table", d.recent_daily || [], [
+        { key: "date", label: "Date" },
+        { key: "series", label: "Group" },
+        { key: "vw_icc", label: "VW ICC", format: x => fmtPct(x) },
+        { key: "ew_icc", label: "EW ICC", format: x => fmtPct(x) },
+        { key: "n_firms", label: "N Firms", format: x => fmtInt(x) },
+      ]);
+      renderMonthlyMatrix("marketwide-monthly-table", d.monthly?.months || [], (d.monthly?.rows || []).filter(x =>
+        ["All market VW ICC", "All market EW ICC", "S&P 500 VW ICC", "S&P 500 EW ICC"].includes(x.series)
+      ));
+    }
 
-    renderTable("sp500-table", recentSP500, [
-      ["date", "Date"],
-      ["vw_icc", "VW ICC", x => fmtPct(x)],
-      ["ew_icc", "EW ICC", x => fmtPct(x)],
-      ["n_firms", "N Firms", x => fmtInt(x)],
-    ]);
+    if (page === "value") {
+      const d = await fetchJson("./data/value_page.json");
+      renderSimpleTable("value-recent-table", d.recent_daily || [], [
+        { key: "date", label: "Date" },
+        { key: "value_icc", label: "Value ICC", format: x => fmtPct(x) },
+        { key: "growth_icc", label: "Growth ICC", format: x => fmtPct(x) },
+        { key: "ivp_bm", label: "IVP (B/M)", format: x => fmtPct(x) },
+        { key: "n_firms", label: "N Firms", format: x => fmtInt(x) },
+      ]);
+      renderMonthlyMatrix("value-monthly-table", d.months || [], d.monthly_rows || []);
+    }
 
-    const latestOther = (indexData.latest || [])
-      .filter(x => x.universe !== "sp500")
-      .sort((a, b) => String(a.universe).localeCompare(String(b.universe)));
+    if (page === "indices") {
+      const d = await fetchJson("./data/indices_page.json");
+      renderSimpleTable("indices-latest-table", d.latest || [], [
+        { key: "universe", label: "Index" },
+        { key: "date", label: "Date" },
+        { key: "vw_icc", label: "VW ICC", format: x => fmtPct(x) },
+        { key: "ew_icc", label: "EW ICC", format: x => fmtPct(x) },
+        { key: "n_firms", label: "N Firms", format: x => fmtInt(x) },
+      ]);
+      renderSimpleTable("indices-recent-table", d.recent_daily || [], [
+        { key: "date", label: "Date" },
+        { key: "universe", label: "Index" },
+        { key: "vw_icc", label: "VW ICC", format: x => fmtPct(x) },
+        { key: "ew_icc", label: "EW ICC", format: x => fmtPct(x) },
+        { key: "n_firms", label: "N Firms", format: x => fmtInt(x) },
+      ]);
+      renderMonthlyMatrix("indices-monthly-table", d.months || [], d.monthly_rows || []);
+    }
 
-    renderTable("index-latest-table", latestOther, [
-      ["universe", "Index"],
-      ["date", "Date"],
-      ["vw_icc", "VW ICC", x => fmtPct(x)],
-      ["ew_icc", "EW ICC", x => fmtPct(x)],
-      ["n_firms", "N Firms", x => fmtInt(x)],
-    ]);
-  }
+    if (page === "industry") {
+      const d = await fetchJson("./data/industry_page.json");
+      renderSimpleTable("industry-latest-table", d.latest || [], [
+        { key: "date", label: "Date" },
+        { key: "sector", label: "Industry" },
+        { key: "vw_icc", label: "VW ICC", format: x => fmtPct(x) },
+        { key: "ew_icc", label: "EW ICC", format: x => fmtPct(x) },
+        { key: "n_firms", label: "N Firms", format: x => fmtInt(x) },
+      ]);
+      renderSimpleTable("industry-recent-table", d.recent_daily || [], [
+        { key: "date", label: "Date" },
+        { key: "sector", label: "Industry" },
+        { key: "vw_icc", label: "VW ICC", format: x => fmtPct(x) },
+        { key: "ew_icc", label: "EW ICC", format: x => fmtPct(x) },
+        { key: "n_firms", label: "N Firms", format: x => fmtInt(x) },
+      ]);
+      renderMonthlyMatrix("industry-monthly-table", d.months || [], d.monthly_rows || []);
+    }
 
-  if (valueData) {
-    const recentValue = filterLastMonth(valueData.history || []);
-    renderTable("value-table", recentValue, [
-      ["date", "Date"],
-      ["value_icc", "Value ICC", x => fmtPct(x)],
-      ["growth_icc", "Growth ICC", x => fmtPct(x)],
-      ["ivp_bm", "IVP (B/M)", x => fmtPct(x)],
-      ["n_firms", "N Firms", x => fmtInt(x)],
-    ]);
-  }
-
-  if (industryData) {
-    renderTable("industry-table", industryData.latest || [], [
-      ["sector", "Industry"],
-      ["vw_icc", "VW ICC", x => fmtPct(x)],
-      ["ew_icc", "EW ICC", x => fmtPct(x)],
-      ["n_firms", "N Firms", x => fmtInt(x)],
-    ]);
-  }
-
-  if (etfData) {
-    renderTable("etf-table", etfData.latest || [], [
-      ["ticker", "Ticker"],
-      ["label", "Label"],
-      ["category", "Category"],
-      ["vw_icc", "ETF ICC", x => fmtPct(x)],
-      ["coverage_weight", "Coverage", x => fmtPct(x)],
-      ["n_holdings", "Holdings", x => fmtInt(x)],
-      ["status", "Status"],
-    ]);
-  }
-
-  if (countryData) {
-    renderTable("country-table", countryData.latest || [], [
-      ["country", "Country"],
-      ["ticker", "Proxy ETF"],
-      ["vw_icc", "Country ICC", x => fmtPct(x)],
-      ["coverage_weight", "Coverage", x => fmtPct(x)],
-      ["n_holdings", "Holdings", x => fmtInt(x)],
-      ["status", "Status"],
-    ]);
-  }
-
-  if (ymData) {
-    renderTable("month-table", ymData.rows || [], [
-      ["yyyymm", "Year-Month"],
-      ["n_files", "Files", x => fmtInt(x)],
-      ["universes", "Universes"],
-      ["download_folder", "Folder", x => `<a href="${x}" target="_blank" rel="noopener">${x}</a>`],
-    ]);
-  }
-
-  if (allFilesData) {
-    const rows = (allFilesData.rows || []).slice().reverse();
-    renderTable("all-files-table", rows, [
-      ["date", "Date"],
-      ["universe", "Universe"],
-      ["n_firms", "N Firms", x => fmtInt(x)],
-      ["download_path", "Download", x => `<a href="${x}" target="_blank" rel="noopener">csv</a>`],
-    ]);
+    if (page === "downloads") {
+      const d = await fetchJson("./data/download_tree.json");
+      const families = d.families || [];
+      buildDownloadTabs(families);
+      if (families.length) {
+        renderDownloadTreeFamily(families[0]);
+      }
+      const tabEl = byId("download-tabs");
+      if (tabEl) {
+        tabEl.addEventListener("click", (evt) => {
+          const btn = evt.target.closest("button[data-family]");
+          if (!btn) return;
+          const fam = btn.getAttribute("data-family");
+          tabEl.querySelectorAll("button").forEach(x => x.classList.remove("active"));
+          btn.classList.add("active");
+          const found = families.find(x => x.family === fam);
+          renderDownloadTreeFamily(found);
+        });
+      }
+    }
+  } catch (err) {
+    warnings.push(`${page} page data failed`);
+    console.error(err);
   }
 
   if (warnings.length) {
@@ -257,4 +249,6 @@ async function loadSection(path, onSuccess, label, warnings) {
   } else {
     setStatus("");
   }
-})();
+}
+
+boot();
