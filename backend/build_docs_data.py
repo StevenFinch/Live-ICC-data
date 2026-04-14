@@ -87,9 +87,6 @@ def safe_int(x):
 
 
 def json_safe(obj):
-    """
-    Recursively convert NaN/Inf into JSON-safe None.
-    """
     if isinstance(obj, dict):
         return {k: json_safe(v) for k, v in obj.items()}
     if isinstance(obj, list):
@@ -208,6 +205,35 @@ def get_valid_snapshots(paths: list[Path]) -> list[tuple[Path, pd.DataFrame]]:
             continue
         valid.append((path, df))
     return valid
+
+
+def dedup_valid_snapshots(valid_snapshots: list[tuple[Path, pd.DataFrame]]) -> list[tuple[Path, pd.DataFrame]]:
+    """
+    Deduplicate same (universe, date), keep the last one encountered.
+    Since input is already sorted by (yyyymmdd, rerun, filename), this keeps the newest rerun.
+    """
+    keep: dict[tuple[str, str], tuple[Path, pd.DataFrame]] = {}
+
+    for path, df in valid_snapshots:
+        meta = parse_snapshot_meta(path)
+        if meta is None:
+            continue
+        date_value = str(df["date"].dropna().iloc[0]) if df["date"].notna().any() else None
+        if not date_value:
+            continue
+        key = (meta["universe"], date_value)
+        keep[key] = (path, df)
+
+    out = list(keep.values())
+    out.sort(
+        key=lambda x: (
+            parse_snapshot_meta(x[0])["universe"],
+            str(x[1]["date"].dropna().iloc[0]),
+            parse_snapshot_meta(x[0])["rerun"],
+            x[0].name,
+        )
+    )
+    return out
 
 
 def read_csv_config(path: Path, expected_cols: list[str]) -> pd.DataFrame:
@@ -669,21 +695,19 @@ def main() -> None:
     DOWNLOAD_DIR.mkdir(parents=True, exist_ok=True)
     RAW_DOWNLOAD_DIR.mkdir(parents=True, exist_ok=True)
 
-    # Base universe (normally usall)
     base_paths = find_all_snapshots(args.universe)
     if not base_paths:
         raise FileNotFoundError(f"No {args.universe} snapshot found under data/YYYYMM/")
 
-    base_valid = get_valid_snapshots(base_paths)
+    base_valid = dedup_valid_snapshots(get_valid_snapshots(base_paths))
     if not base_valid:
-        raise RuntimeError(f"Found {args.universe} snapshot files, but none of them are valid non-empty CSVs.")
+        raise RuntimeError(f"Found {args.universe} snapshot files, but none are valid non-empty CSVs.")
 
     latest_usall_path, latest_usall = base_valid[-1]
     latest_date = str(latest_usall["date"].dropna().iloc[0])
 
-    # All universes
     all_paths = find_all_snapshots(None)
-    all_valid = get_valid_snapshots(all_paths)
+    all_valid = dedup_valid_snapshots(get_valid_snapshots(all_paths))
 
     all_valid_by_universe: dict[str, list[tuple[Path, pd.DataFrame]]] = {}
     for path, df in all_valid:
@@ -695,6 +719,8 @@ def main() -> None:
     market_history = build_market_history(base_valid)
     value_history = build_value_history(base_valid)
     industry_latest = build_latest_industry(latest_usall)
+
+    sp500_history = build_market_history(all_valid_by_universe.get("sp500", []))
 
     etf_cfg = read_csv_config(CONFIG_DIR / "etfs.csv", ["ticker", "label", "category"])
     country_cfg = read_csv_config(CONFIG_DIR / "country_etfs.csv", ["ticker", "label", "country"])
@@ -709,7 +735,6 @@ def main() -> None:
 
     copy_raw_snapshots(all_valid)
 
-    # CSV downloads
     market_history.to_csv(DOWNLOAD_DIR / "market_icc_history.csv", index=False)
     value_history.to_csv(DOWNLOAD_DIR / "value_icc_bm_history.csv", index=False)
     industry_latest.to_csv(DOWNLOAD_DIR / "industry_icc_latest.csv", index=False)
@@ -722,6 +747,7 @@ def main() -> None:
 
     latest_market = market_history.iloc[-1].to_dict() if not market_history.empty else {}
     latest_value = value_history.iloc[-1].to_dict() if not value_history.empty else {}
+    latest_sp500 = sp500_history.iloc[-1].to_dict() if not sp500_history.empty else {}
 
     write_json(
         DOCS_DATA_DIR / "overview.json",
@@ -729,22 +755,31 @@ def main() -> None:
             "asof_date": latest_date,
             "source_file": str(latest_usall_path.relative_to(REPO)),
             "cards": {
-                "market_vw_icc": safe_float(latest_market.get("vw_icc")),
+                "all_market_vw_icc": safe_float(latest_market.get("vw_icc")),
+                "all_market_ew_icc": safe_float(latest_market.get("ew_icc")),
+                "all_n_firms": safe_int(latest_market.get("n_firms")),
+                "sp500_vw_icc": safe_float(latest_sp500.get("vw_icc")),
+                "sp500_ew_icc": safe_float(latest_sp500.get("ew_icc")),
+                "sp500_n_firms": safe_int(latest_sp500.get("n_firms")),
                 "value_icc": safe_float(latest_value.get("value_icc")),
                 "growth_icc": safe_float(latest_value.get("growth_icc")),
                 "ivp_bm": safe_float(latest_value.get("ivp_bm")),
             },
-            "downloads": [
-                {"label": "Market ICC history (CSV)", "path": "./data/downloads/market_icc_history.csv"},
-                {"label": "Value / Growth / IVP history (CSV)", "path": "./data/downloads/value_icc_bm_history.csv"},
-                {"label": "Industry ICC latest (CSV)", "path": "./data/downloads/industry_icc_latest.csv"},
-                {"label": "ETF ICC latest (CSV)", "path": "./data/downloads/etf_icc_latest.csv"},
-                {"label": "Country ICC latest (CSV)", "path": "./data/downloads/country_icc_latest.csv"},
-                {"label": "Index ICC history (CSV)", "path": "./data/downloads/index_icc_history.csv"},
-                {"label": "Index ICC latest (CSV)", "path": "./data/downloads/index_icc_latest.csv"},
-                {"label": "Year-Month manifest (CSV)", "path": "./data/downloads/year_month_manifest.csv"},
-                {"label": "All snapshot files manifest (CSV)", "path": "./data/downloads/all_snapshot_files.csv"},
-            ],
+            "downloads": {
+                "aggregate": [
+                    {"label": "All market ICC history (CSV)", "path": "./data/downloads/market_icc_history.csv"},
+                    {"label": "S&P 500 / index ICC history (CSV)", "path": "./data/downloads/index_icc_history.csv"},
+                    {"label": "Value / Growth / IVP history (CSV)", "path": "./data/downloads/value_icc_bm_history.csv"},
+                    {"label": "Industry ICC latest (CSV)", "path": "./data/downloads/industry_icc_latest.csv"},
+                    {"label": "ETF ICC latest (CSV)", "path": "./data/downloads/etf_icc_latest.csv"},
+                    {"label": "Country ICC latest (CSV)", "path": "./data/downloads/country_icc_latest.csv"},
+                    {"label": "Index ICC latest (CSV)", "path": "./data/downloads/index_icc_latest.csv"},
+                ],
+                "raw": [
+                    {"label": "Year-Month manifest (CSV)", "path": "./data/downloads/year_month_manifest.csv"},
+                    {"label": "All snapshot files manifest (CSV)", "path": "./data/downloads/all_snapshot_files.csv"},
+                ],
+            },
         },
     )
 
@@ -793,7 +828,7 @@ def main() -> None:
     )
 
     print(f"[build_docs_data] total snapshot files found = {len(all_paths)}")
-    print(f"[build_docs_data] total valid snapshots used = {len(all_valid)}")
+    print(f"[build_docs_data] total valid deduped snapshots used = {len(all_valid)}")
     print(f"[build_docs_data] latest valid {args.universe} asof_date = {latest_date}")
     print("[build_docs_data] wrote docs/data and docs/data/downloads")
 
