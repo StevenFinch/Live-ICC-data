@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Live ICC Library - Marketwide</title>
   <link rel="stylesheet" href="./styles.css" />
 </head>
@@ -10,19 +10,29 @@
   <div class="page">
     <header class="hero">
       <h1>Live ICC Library</h1>
+      <p class="subtitle">Fama-French style live ICC data library</p>
       <div id="asof" class="asof"></div>
-      <div id="nav" class="nav"></div>
       <div id="status" class="status"></div>
+      <nav class="topnav"><a href="./index.html" class="">Overview</a> <a href="./marketwide.html" class="active">Marketwide</a> <a href="./value.html" class="">Value Premium</a> <a href="./industry.html" class="">Industry</a> <a href="./etf.html" class="">ETF</a> <a href="./country.html" class="">Country</a> <a href="./indices.html" class="">Indices</a> <a href="./downloads.html" class="">Downloads</a></nav>
     </header>
     
-    <section class="panel">
-      <h2>Recent 1-month daily data</h2>
-      <div id="marketwide-recent-table"></div>
-    </section>
-    <section class="panel">
-      <h2>Past 3 months monthly summary</h2>
-      <div id="marketwide-monthly-table"></div>
-    </section>
+<section class="section">
+  <h2>Last three monthly marketwide observations</h2>
+  <div class="panel"><div id="marketwide-monthly"></div></div>
+</section>
+<section class="section">
+  <h2>Recent daily history</h2>
+  <div class="grid-2">
+    <div class="panel">
+      <div class="panel-title">All U.S. market</div>
+      <div id="marketwide-all-table"></div>
+    </div>
+    <div class="panel">
+      <div class="panel-title">S&amp;P 500</div>
+      <div id="marketwide-sp500-table"></div>
+    </div>
+  </div>
+</section>
 
   </div>
   <script src="./app.js"></script>

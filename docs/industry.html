@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Live ICC Library - Industry</title>
   <link rel="stylesheet" href="./styles.css" />
 </head>
@@ -10,23 +10,24 @@
   <div class="page">
     <header class="hero">
       <h1>Live ICC Library</h1>
+      <p class="subtitle">Fama-French style live ICC data library</p>
       <div id="asof" class="asof"></div>
-      <div id="nav" class="nav"></div>
       <div id="status" class="status"></div>
+      <nav class="topnav"><a href="./index.html" class="">Overview</a> <a href="./marketwide.html" class="">Marketwide</a> <a href="./value.html" class="">Value Premium</a> <a href="./industry.html" class="active">Industry</a> <a href="./etf.html" class="">ETF</a> <a href="./country.html" class="">Country</a> <a href="./indices.html" class="">Indices</a> <a href="./downloads.html" class="">Downloads</a></nav>
     </header>
     
-    <section class="panel">
-      <h2>Latest available industry ICC</h2>
-      <div id="industry-latest-table"></div>
-    </section>
-    <section class="panel">
-      <h2>Recent 1-month daily data</h2>
-      <div id="industry-recent-table"></div>
-    </section>
-    <section class="panel">
-      <h2>Past 3 months monthly summary</h2>
-      <div id="industry-monthly-table"></div>
-    </section>
+<section class="section">
+  <h2>Last three monthly overview</h2>
+  <div class="panel"><div id="industry-monthly"></div></div>
+</section>
+<section class="section">
+  <h2>Latest daily industry table</h2>
+  <div class="panel"><div id="industry-latest-table"></div></div>
+</section>
+<section class="section">
+  <h2>Recent daily overview history</h2>
+  <div class="panel"><div id="industry-daily-table"></div></div>
+</section>
 
   </div>
   <script src="./app.js"></script>
