@@ -1,21 +1,10 @@
 {
-  "asof_date": "2026-04-13",
+  "asof_date": "2026-04-14",
   "latest": [
     {
-      "ticker": "IWF",
-      "label": "iShares Russell 1000 Growth ETF",
-      "category": "Growth",
-      "vw_icc": NaN,
-      "coverage_weight": 0.0,
-      "n_holdings": 10,
-      "n_matched": 0,
-      "holding_source": "yfinance_top_holdings",
-      "status": "no_matched_holdings"
-    },
-    {
-      "ticker": "VUG",
-      "label": "Vanguard Growth ETF",
-      "category": "Growth",
+      "ticker": "DIA",
+      "label": "SPDR Dow Jones Industrial Average ETF",
+      "category": "Dow",
       "vw_icc": NaN,
       "coverage_weight": 0.0,
       "n_holdings": 10,
@@ -25,8 +14,8 @@
     },
     {
       "ticker": "QQQ",
-      "label": "Invesco QQQ ETF",
-      "category": "Growth / Tech",
+      "label": "Invesco QQQ",
+      "category": "Nasdaq 100",
       "vw_icc": NaN,
       "coverage_weight": 0.0,
       "n_holdings": 10,
@@ -35,9 +24,42 @@
       "status": "no_matched_holdings"
     },
     {
-      "ticker": "SPY",
-      "label": "SPDR S&P 500 ETF",
-      "category": "Market",
+      "ticker": "IWB",
+      "label": "iShares Russell 1000 ETF",
+      "category": "Russell Proxy",
+      "vw_icc": NaN,
+      "coverage_weight": 0.0,
+      "n_holdings": 10,
+      "n_matched": 0,
+      "holding_source": "yfinance_top_holdings",
+      "status": "no_matched_holdings"
+    },
+    {
+      "ticker": "IWM",
+      "label": "iShares Russell 2000 ETF",
+      "category": "Russell Proxy",
+      "vw_icc": NaN,
+      "coverage_weight": 0.0,
+      "n_holdings": 10,
+      "n_matched": 0,
+      "holding_source": "yfinance_top_holdings",
+      "status": "no_matched_holdings"
+    },
+    {
+      "ticker": "MDY",
+      "label": "SPDR S&P MidCap 400 ETF",
+      "category": "S&P Midcap",
+      "vw_icc": NaN,
+      "coverage_weight": 0.0,
+      "n_holdings": 10,
+      "n_matched": 0,
+      "holding_source": "yfinance_top_holdings",
+      "status": "no_matched_holdings"
+    },
+    {
+      "ticker": "IJR",
+      "label": "iShares Core S&P Small-Cap ETF",
+      "category": "S&P Smallcap",
       "vw_icc": NaN,
       "coverage_weight": 0.0,
       "n_holdings": 10,
@@ -90,6 +112,28 @@
       "status": "no_matched_holdings"
     },
     {
+      "ticker": "XLP",
+      "label": "Consumer Staples Select Sector SPDR",
+      "category": "Sector",
+      "vw_icc": NaN,
+      "coverage_weight": 0.0,
+      "n_holdings": 10,
+      "n_matched": 0,
+      "holding_source": "yfinance_top_holdings",
+      "status": "no_matched_holdings"
+    },
+    {
+      "ticker": "XLU",
+      "label": "Utilities Select Sector SPDR",
+      "category": "Sector",
+      "vw_icc": NaN,
+      "coverage_weight": 0.0,
+      "n_holdings": 10,
+      "n_matched": 0,
+      "holding_source": "yfinance_top_holdings",
+      "status": "no_matched_holdings"
+    },
+    {
       "ticker": "XLV",
       "label": "Health Care Select Sector SPDR",
       "category": "Sector",
@@ -101,9 +145,9 @@
       "status": "no_matched_holdings"
     },
     {
-      "ticker": "IWM",
-      "label": "iShares Russell 2000 ETF",
-      "category": "Small Cap",
+      "ticker": "XLY",
+      "label": "Consumer Discretionary Select Sector SPDR",
+      "category": "Sector",
       "vw_icc": NaN,
       "coverage_weight": 0.0,
       "n_holdings": 10,
@@ -114,7 +158,18 @@
     {
       "ticker": "IWD",
       "label": "iShares Russell 1000 Value ETF",
-      "category": "Value",
+      "category": "Style",
+      "vw_icc": NaN,
+      "coverage_weight": 0.0,
+      "n_holdings": 10,
+      "n_matched": 0,
+      "holding_source": "yfinance_top_holdings",
+      "status": "no_matched_holdings"
+    },
+    {
+      "ticker": "IWF",
+      "label": "iShares Russell 1000 Growth ETF",
+      "category": "Style",
       "vw_icc": NaN,
       "coverage_weight": 0.0,
       "n_holdings": 10,
@@ -125,7 +180,40 @@
     {
       "ticker": "VTV",
       "label": "Vanguard Value ETF",
-      "category": "Value",
+      "category": "Style",
+      "vw_icc": NaN,
+      "coverage_weight": 0.0,
+      "n_holdings": 10,
+      "n_matched": 0,
+      "holding_source": "yfinance_top_holdings",
+      "status": "no_matched_holdings"
+    },
+    {
+      "ticker": "VUG",
+      "label": "Vanguard Growth ETF",
+      "category": "Style",
+      "vw_icc": NaN,
+      "coverage_weight": 0.0,
+      "n_holdings": 10,
+      "n_matched": 0,
+      "holding_source": "yfinance_top_holdings",
+      "status": "no_matched_holdings"
+    },
+    {
+      "ticker": "IVV",
+      "label": "iShares Core S&P 500 ETF",
+      "category": "US Broad",
+      "vw_icc": NaN,
+      "coverage_weight": 0.0,
+      "n_holdings": 10,
+      "n_matched": 0,
+      "holding_source": "yfinance_top_holdings",
+      "status": "no_matched_holdings"
+    },
+    {
+      "ticker": "SPY",
+      "label": "SPDR S&P 500 ETF",
+      "category": "US Broad",
       "vw_icc": NaN,
       "coverage_weight": 0.0,
       "n_holdings": 10,

@@ -1,10 +1,10 @@
 {
-  "asof_date": "2026-04-13",
+  "asof_date": "2026-04-14",
   "latest": [
     {
       "country": "Australia",
       "ticker": "EWA",
-      "label": "Australia Equity Proxy",
+      "label": "iShares MSCI Australia ETF",
       "vw_icc": NaN,
       "coverage_weight": 0.0,
       "n_holdings": 10,
@@ -15,7 +15,7 @@
     {
       "country": "Brazil",
       "ticker": "EWZ",
-      "label": "Brazil Equity Proxy",
+      "label": "iShares MSCI Brazil ETF",
       "vw_icc": NaN,
       "coverage_weight": 0.0,
       "n_holdings": 10,
@@ -26,7 +26,7 @@
     {
       "country": "Canada",
       "ticker": "EWC",
-      "label": "Canada Equity Proxy",
+      "label": "iShares MSCI Canada ETF",
       "vw_icc": NaN,
       "coverage_weight": 0.0,
       "n_holdings": 10,
@@ -37,7 +37,7 @@
     {
       "country": "China",
       "ticker": "MCHI",
-      "label": "China Equity Proxy",
+      "label": "iShares MSCI China ETF",
       "vw_icc": NaN,
       "coverage_weight": 0.0,
       "n_holdings": 10,
@@ -48,7 +48,7 @@
     {
       "country": "France",
       "ticker": "EWQ",
-      "label": "France Equity Proxy",
+      "label": "iShares MSCI France ETF",
       "vw_icc": NaN,
       "coverage_weight": 0.0,
       "n_holdings": 10,
@@ -59,7 +59,18 @@
     {
       "country": "Germany",
       "ticker": "EWG",
-      "label": "Germany Equity Proxy",
+      "label": "iShares MSCI Germany ETF",
+      "vw_icc": NaN,
+      "coverage_weight": 0.0,
+      "n_holdings": 10,
+      "n_matched": 0,
+      "holding_source": "yfinance_top_holdings",
+      "status": "no_matched_holdings"
+    },
+    {
+      "country": "Hong Kong",
+      "ticker": "EWH",
+      "label": "iShares MSCI Hong Kong ETF",
       "vw_icc": NaN,
       "coverage_weight": 0.0,
       "n_holdings": 10,
@@ -70,7 +81,18 @@
     {
       "country": "India",
       "ticker": "INDA",
-      "label": "India Equity Proxy",
+      "label": "iShares MSCI India ETF",
+      "vw_icc": NaN,
+      "coverage_weight": 0.0,
+      "n_holdings": 10,
+      "n_matched": 0,
+      "holding_source": "yfinance_top_holdings",
+      "status": "no_matched_holdings"
+    },
+    {
+      "country": "Indonesia",
+      "ticker": "EIDO",
+      "label": "iShares MSCI Indonesia ETF",
       "vw_icc": NaN,
       "coverage_weight": 0.0,
       "n_holdings": 10,
@@ -81,7 +103,40 @@
     {
       "country": "Japan",
       "ticker": "EWJ",
-      "label": "Japan Equity Proxy",
+      "label": "iShares MSCI Japan ETF",
+      "vw_icc": NaN,
+      "coverage_weight": 0.0,
+      "n_holdings": 10,
+      "n_matched": 0,
+      "holding_source": "yfinance_top_holdings",
+      "status": "no_matched_holdings"
+    },
+    {
+      "country": "Malaysia",
+      "ticker": "EWM",
+      "label": "iShares MSCI Malaysia ETF",
+      "vw_icc": NaN,
+      "coverage_weight": 0.0,
+      "n_holdings": 10,
+      "n_matched": 0,
+      "holding_source": "yfinance_top_holdings",
+      "status": "no_matched_holdings"
+    },
+    {
+      "country": "Singapore",
+      "ticker": "EWS",
+      "label": "iShares MSCI Singapore ETF",
+      "vw_icc": NaN,
+      "coverage_weight": 0.0,
+      "n_holdings": 10,
+      "n_matched": 0,
+      "holding_source": "yfinance_top_holdings",
+      "status": "no_matched_holdings"
+    },
+    {
+      "country": "Taiwan",
+      "ticker": "EWT",
+      "label": "iShares MSCI Taiwan ETF",
       "vw_icc": NaN,
       "coverage_weight": 0.0,
       "n_holdings": 10,
@@ -92,7 +147,7 @@
     {
       "country": "United Kingdom",
       "ticker": "EWU",
-      "label": "UK Equity Proxy",
+      "label": "iShares MSCI United Kingdom ETF",
       "vw_icc": NaN,
       "coverage_weight": 0.0,
       "n_holdings": 10,
@@ -103,7 +158,7 @@
     {
       "country": "United States",
       "ticker": "SPY",
-      "label": "US Equity Proxy",
+      "label": "SPDR S&P 500 ETF",
       "vw_icc": NaN,
       "coverage_weight": 0.0,
       "n_holdings": 10,
