@@ -2,27 +2,39 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Live ICC Library - Downloads</title>
   <link rel="stylesheet" href="./styles.css" />
 </head>
-<body data-page="downloads">
+<body>
   <div class="page">
     <header class="hero">
       <h1>Live ICC Library</h1>
+      <p class="subtitle">Downloads</p>
       <div id="asof" class="asof"></div>
-      <div id="nav" class="nav"></div>
       <div id="status" class="status"></div>
+      <nav class="topnav">
+        <a href="./index.html">Home</a>
+        <a href="./downloads.html">Downloads</a>
+      </nav>
     </header>
-    
-    <section class="panel">
-      <h2>Downloads</h2>
-      <p class="muted">Expand a family, then expand year → month → day. Year and month both support “Download all”.</p>
-      <div id="download-tabs" class="tabs"></div>
-      <div id="download-tree"></div>
+
+    <section class="section">
+      <h2>Aggregate downloads</h2>
+      <div class="panel">
+        <div id="aggregate-downloads"></div>
+      </div>
     </section>
 
+    <section class="section">
+      <h2>Raw snapshot downloads</h2>
+      <div class="panel">
+        <div class="panel-title">Year → Month → Day</div>
+        <div id="raw-download-tree"></div>
+      </div>
+    </section>
   </div>
+
   <script src="./app.js"></script>
 </body>
 </html>
