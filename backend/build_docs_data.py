@@ -6,30 +6,29 @@ import json
 import re
 import shutil
 import zipfile
+from collections import defaultdict
 from pathlib import Path
+from typing import Dict, List, Tuple
 
 import numpy as np
 import pandas as pd
+import yfinance as yf
 from pandas.errors import EmptyDataError
-
 
 REPO = Path(__file__).resolve().parents[1]
 DATA_DIR = REPO / "data"
-DOCS_DIR = REPO / "docs"
-DOCS_DATA_DIR = DOCS_DIR / "data"
+DOCS_DATA_DIR = REPO / "docs" / "data"
 DOWNLOAD_DIR = DOCS_DATA_DIR / "downloads"
+FAMILY_DIR = DOWNLOAD_DIR / "families"
+ARCHIVE_DIR = DOWNLOAD_DIR / "archives"
+CONFIG_DIR = REPO / "config"
 
 SNAPSHOT_RE = re.compile(
     r"^icc_live_(?P<universe>[A-Za-z0-9_]+)_(?P<year>\d{4})_(?P<mmdd>\d{4})(?:_r(?P<rerun>\d+))?\.csv$"
 )
 
-# Keep this list conservative so the page only shows indices that the pipeline actually knows how to build.
-INDEX_UNIVERSES = [
-    "sp500",
-    "sp100",
-    "dow30",
-    "ndx100",
-]
+INDEX_UNIVERSES = ["sp500", "sp100", "dow30", "ndx100", "sp400", "sp600", "rut1000"]
+DERIVED_FAMILIES = ["marketwide", "value", "industry", "etf", "country", "indices"]
 
 
 def parse_snapshot_meta(path: Path) -> dict | None:
@@ -62,6 +61,33 @@ def weighted_mean(values: pd.Series, weights: pd.Series) -> float:
     return float(np.average(values[mask], weights=weights[mask]))
 
 
+def safe_float(x):
+    try:
+        if pd.isna(x):
+            return None
+    except Exception:
+        pass
+    try:
+        x = float(x)
+        if not np.isfinite(x):
+            return None
+        return x
+    except Exception:
+        return None
+
+
+def safe_int(x):
+    try:
+        if pd.isna(x):
+            return None
+    except Exception:
+        pass
+    try:
+        return int(x)
+    except Exception:
+        return None
+
+
 def json_safe(obj):
     if isinstance(obj, dict):
         return {k: json_safe(v) for k, v in obj.items()}
@@ -69,22 +95,18 @@ def json_safe(obj):
         return [json_safe(v) for v in obj]
     if isinstance(obj, tuple):
         return [json_safe(v) for v in obj]
-
     try:
         if pd.isna(obj):
             return None
     except Exception:
         pass
-
     if isinstance(obj, (np.integer,)):
         return int(obj)
-
     if isinstance(obj, (np.floating, float)):
         x = float(obj)
         if not np.isfinite(x):
             return None
         return x
-
     return obj
 
 
@@ -103,46 +125,32 @@ def find_all_snapshots(universe: str | None = None) -> list[Path]:
         if universe is not None and meta["universe"] != universe:
             continue
         files.append(((meta["yyyymmdd"], meta["rerun"], p.name), p))
-
     files.sort(key=lambda x: x[0])
     return [p for _, p in files]
 
 
 def load_snapshot(path: Path) -> pd.DataFrame:
     if not path.exists():
-        raise FileNotFoundError(f"Snapshot not found: {path}")
+        raise FileNotFoundError(path)
     if path.stat().st_size == 0:
-        raise EmptyDataError(f"Empty file (0 bytes): {path}")
-
-    try:
-        df = pd.read_csv(path)
-    except EmptyDataError:
-        raise EmptyDataError(f"Empty CSV content: {path}")
-
+        raise EmptyDataError(f"Empty file: {path}")
+    df = pd.read_csv(path)
     if df is None or len(df.columns) == 0:
-        raise EmptyDataError(f"No columns parsed from file: {path}")
-
+        raise EmptyDataError(f"No columns parsed from: {path}")
     df.columns = [str(c).strip() for c in df.columns]
     required = {"ticker", "mktcap", "ICC", "date"}
     missing = required - set(df.columns)
     if missing:
-        raise ValueError(f"Missing required columns in {path}: {sorted(missing)}")
-
+        raise ValueError(f"Missing required columns {sorted(missing)} in {path}")
     for col in ["mktcap", "ICC"]:
         df[col] = pd.to_numeric(df[col], errors="coerce")
-
-    if "bm" in df.columns:
-        df["bm"] = pd.to_numeric(df["bm"], errors="coerce")
-    else:
-        df["bm"] = np.nan
-
+    df["bm"] = pd.to_numeric(df["bm"], errors="coerce") if "bm" in df.columns else np.nan
+    df["ticker"] = df["ticker"].astype(str).str.upper().str.strip()
+    df["date"] = pd.to_datetime(df["date"], errors="coerce").dt.strftime("%Y-%m-%d")
     if "sector" not in df.columns:
         df["sector"] = None
     if "name" not in df.columns:
         df["name"] = None
-
-    df["ticker"] = df["ticker"].astype(str).str.upper().str.strip()
-    df["date"] = pd.to_datetime(df["date"], errors="coerce").dt.strftime("%Y-%m-%d")
     return df
 
 
@@ -150,7 +158,7 @@ def try_load_snapshot(path: Path) -> pd.DataFrame | None:
     try:
         return load_snapshot(path)
     except Exception as e:
-        print(f"[build_docs_data] skipping invalid snapshot: {path} | {type(e).__name__}: {e}")
+        print(f"[build_docs_data] skip invalid snapshot {path}: {type(e).__name__}: {e}")
         return None
 
 
@@ -180,110 +188,69 @@ def get_valid_snapshots(paths: list[Path]) -> list[tuple[Path, pd.DataFrame]]:
 
 
 def dedup_valid_snapshots(valid_snapshots: list[tuple[Path, pd.DataFrame]]) -> list[tuple[Path, pd.DataFrame]]:
-    """
-    Deduplicate same (universe, date): keep the last one only.
-    Input is already sorted by date -> rerun -> filename, so the last one is the newest rerun.
-    """
-    keep: dict[tuple[str, str], tuple[Path, pd.DataFrame]] = {}
+    keep = {}
     for path, df in valid_snapshots:
         meta = parse_snapshot_meta(path)
         if meta is None:
             continue
-        if not df["date"].notna().any():
-            continue
         date_value = str(df["date"].dropna().iloc[0])
-        key = (meta["universe"], date_value)
-        keep[key] = (path, df)
-
+        keep[(meta["universe"], date_value)] = (path, df)
     out = list(keep.values())
-    out.sort(
-        key=lambda x: (
-            str(x[1]["date"].dropna().iloc[0]),
-            parse_snapshot_meta(x[0])["universe"],
-            parse_snapshot_meta(x[0])["rerun"],
-            x[0].name,
-        )
-    )
+    out.sort(key=lambda x: (parse_snapshot_meta(x[0])["universe"], str(x[1]["date"].iloc[0]), parse_snapshot_meta(x[0])["rerun"], x[0].name))
     return out
 
 
-def build_market_history(valid_snapshots: list[tuple[Path, pd.DataFrame]]) -> pd.DataFrame:
+def build_market_history(valid_snapshots: list[tuple[Path, pd.DataFrame]], universe_label: str) -> pd.DataFrame:
     rows = []
     for path, df in valid_snapshots:
         rows.append(
             {
                 "date": str(df["date"].iloc[0]),
+                "universe": universe_label,
                 "vw_icc": weighted_mean(df["ICC"], df["mktcap"]),
                 "ew_icc": float(df["ICC"].mean()),
                 "n_firms": int(len(df)),
                 "source_file": str(path.relative_to(REPO)),
             }
         )
-
     if not rows:
-        return pd.DataFrame(columns=["date", "vw_icc", "ew_icc", "n_firms", "source_file"])
-
-    out = pd.DataFrame(rows).sort_values("date").reset_index(drop=True)
-    out = out.drop_duplicates(subset=["date"], keep="last").reset_index(drop=True)
+        return pd.DataFrame(columns=["date", "universe", "vw_icc", "ew_icc", "n_firms", "source_file"])
+    out = pd.DataFrame(rows).sort_values("date").drop_duplicates(["date", "universe"], keep="last").reset_index(drop=True)
     return out
 
 
 def build_value_history(valid_snapshots: list[tuple[Path, pd.DataFrame]]) -> pd.DataFrame:
     rows = []
-
     for path, raw_df in valid_snapshots:
-        df = raw_df.copy()
-        df = df[
-            df["date"].notna()
-            & df["mktcap"].notna()
-            & df["bm"].notna()
-            & df["ICC"].notna()
-            & np.isfinite(df["mktcap"])
-            & np.isfinite(df["bm"])
-            & np.isfinite(df["ICC"])
-            & (df["mktcap"] > 0)
-            & (df["bm"] > 0)
+        df = raw_df[
+            raw_df["bm"].notna()
+            & np.isfinite(raw_df["bm"])
+            & (raw_df["bm"] > 0)
         ].copy()
-
         if df.empty:
             continue
-
         q_lo = float(df["ICC"].quantile(0.005))
         q_hi = float(df["ICC"].quantile(0.995))
         df = df[(df["ICC"] >= q_lo) & (df["ICC"] <= q_hi)].copy()
         if df.empty:
             continue
-
         size_median = float(df["mktcap"].median())
         bm30 = float(df["bm"].quantile(0.30))
         bm70 = float(df["bm"].quantile(0.70))
-
         df["size_bucket"] = np.where(df["mktcap"] <= size_median, "S", "B")
-        df["bm_bucket"] = pd.cut(
-            df["bm"],
-            bins=[-np.inf, bm30, bm70, np.inf],
-            labels=["L", "M", "H"],
-            include_lowest=True,
-            right=True,
-        ).astype("string")
-        df["portfolio"] = df["size_bucket"] + "/" + df["bm_bucket"].astype(str)
-
+        df["bm_bucket"] = pd.cut(df["bm"], bins=[-np.inf, bm30, bm70, np.inf], labels=["L", "M", "H"], include_lowest=True).astype(str)
+        df["portfolio"] = df["size_bucket"] + "/" + df["bm_bucket"]
         pt = (
             df.groupby("portfolio", dropna=False)
-            .apply(lambda g: pd.Series({"vw_icc": weighted_mean(g["ICC"], g["mktcap"])}))
+            .apply(lambda g: pd.Series({"vw_icc": weighted_mean(g["ICC"], g["mktcap"]), "n_firms": int(len(g))}))
             .reset_index()
         )
-
         d = dict(zip(pt["portfolio"], pt["vw_icc"]))
-        icc_sl = d.get("S/L", np.nan)
-        icc_bl = d.get("B/L", np.nan)
-        icc_sh = d.get("S/H", np.nan)
-        icc_bh = d.get("B/H", np.nan)
-
+        icc_sl, icc_bl = d.get("S/L", np.nan), d.get("B/L", np.nan)
+        icc_sh, icc_bh = d.get("S/H", np.nan), d.get("B/H", np.nan)
         growth_icc = np.nan if (pd.isna(icc_sl) or pd.isna(icc_bl)) else float((icc_sl + icc_bl) / 2.0)
         value_icc = np.nan if (pd.isna(icc_sh) or pd.isna(icc_bh)) else float((icc_sh + icc_bh) / 2.0)
         ivp_bm = np.nan if (pd.isna(value_icc) or pd.isna(growth_icc)) else float(value_icc - growth_icc)
-
         rows.append(
             {
                 "date": str(df["date"].iloc[0]),
@@ -294,256 +261,284 @@ def build_value_history(valid_snapshots: list[tuple[Path, pd.DataFrame]]) -> pd.
                 "source_file": str(path.relative_to(REPO)),
             }
         )
-
     if not rows:
         return pd.DataFrame(columns=["date", "value_icc", "growth_icc", "ivp_bm", "n_firms", "source_file"])
-
-    out = pd.DataFrame(rows).sort_values("date").reset_index(drop=True)
-    out = out.drop_duplicates(subset=["date"], keep="last").reset_index(drop=True)
-    return out
+    return pd.DataFrame(rows).sort_values("date").drop_duplicates(["date"], keep="last").reset_index(drop=True)
 
 
-def build_industry_daily_history(base_valid: list[tuple[Path, pd.DataFrame]]) -> pd.DataFrame:
-    rows = []
-    for path, df in base_valid:
-        d = df[df["sector"].notna()].copy()
-        if d.empty:
-            continue
-
-        agg = (
-            d.groupby("sector", dropna=False)
-            .apply(
-                lambda g: pd.Series(
-                    {
-                        "date": str(g["date"].iloc[0]),
-                        "sector": str(g["sector"].iloc[0]),
-                        "vw_icc": weighted_mean(g["ICC"], g["mktcap"]),
-                        "ew_icc": float(g["ICC"].mean()),
-                        "n_firms": int(len(g)),
-                        "source_file": str(path.relative_to(REPO)),
-                    }
-                )
+def build_industry_daily(valid_snapshots: list[tuple[Path, pd.DataFrame]]) -> tuple[dict[str, pd.DataFrame], pd.DataFrame]:
+    daily_tables = {}
+    series_rows = []
+    for path, df in valid_snapshots:
+        g = df[df["sector"].notna()].groupby("sector", dropna=False).apply(
+            lambda x: pd.Series(
+                {
+                    "vw_icc": weighted_mean(x["ICC"], x["mktcap"]),
+                    "ew_icc": float(x["ICC"].mean()),
+                    "n_firms": int(len(x)),
+                    "total_mktcap": float(x["mktcap"].sum()),
+                }
             )
-            .reset_index(drop=True)
+        ).reset_index()
+        if g.empty:
+            continue
+        date = str(df["date"].iloc[0])
+        g.insert(0, "date", date)
+        daily_tables[date] = g.sort_values(["total_mktcap", "sector"], ascending=[False, True]).reset_index(drop=True)
+        series_rows.append(
+            {
+                "date": date,
+                "median_icc": float(g["vw_icc"].median()),
+                "mean_icc": float(g["vw_icc"].mean()),
+                "n_groups": int(len(g)),
+            }
         )
-        rows.append(agg)
-
-    if not rows:
-        return pd.DataFrame(columns=["date", "sector", "vw_icc", "ew_icc", "n_firms", "source_file"])
-
-    out = pd.concat(rows, ignore_index=True)
-    out = out.sort_values(["date", "sector"]).reset_index(drop=True)
-    return out
+    series = pd.DataFrame(series_rows).sort_values("date").reset_index(drop=True) if series_rows else pd.DataFrame(columns=["date","median_icc","mean_icc","n_groups"])
+    return daily_tables, series
 
 
-def to_month_end_panel(df: pd.DataFrame, date_col: str, value_col: str, row_col: str | None = None, months_keep: int = 3) -> tuple[list[str], list[dict]]:
-    if df.empty:
-        return [], []
+def read_csv_config(path: Path, cols: list[str]) -> pd.DataFrame:
+    if not path.exists():
+        return pd.DataFrame(columns=cols)
+    df = pd.read_csv(path)
+    for c in cols:
+        if c not in df.columns:
+            df[c] = None
+    return df[cols].copy()
 
-    tmp = df.copy()
-    tmp[date_col] = pd.to_datetime(tmp[date_col], errors="coerce")
-    tmp = tmp[tmp[date_col].notna()].copy()
-    if tmp.empty:
-        return [], []
 
-    tmp["ym"] = tmp[date_col].dt.strftime("%Y-%m")
-    # keep month-end (latest available date) within each month and row group
-    if row_col is None:
-        latest_per_month = tmp.groupby("ym")[date_col].max().reset_index()
-        tmp = tmp.merge(latest_per_month, on=["ym", date_col], how="inner")
-        tmp = tmp.sort_values("ym")
-        months = sorted(tmp["ym"].dropna().unique())[-months_keep:]
-        tmp = tmp[tmp["ym"].isin(months)].copy()
+def get_top_holdings(etf_ticker: str) -> pd.DataFrame:
+    t = yf.Ticker(etf_ticker)
+    fd = getattr(t, "funds_data", None)
+    if fd is None:
+        raise ValueError("funds_data unavailable")
+    h = getattr(fd, "top_holdings", None)
+    if h is None:
+        raise ValueError("top_holdings unavailable")
+    if not isinstance(h, pd.DataFrame):
+        h = pd.DataFrame(h)
+    if h.empty:
+        raise ValueError("top_holdings empty")
+    cols = {str(c).lower(): c for c in h.columns}
+    symbol_col = None
+    for cand in ["symbol", "holding", "ticker"]:
+        if cand in cols:
+            symbol_col = cols[cand]
+            break
+    if symbol_col is None:
+        symbol_col = h.columns[0]
+    weight_col = None
+    for cand in ["holdingpercent", "holding_percent", "weight", "percent", "pct"]:
+        if cand in cols:
+            weight_col = cols[cand]
+            break
+    if weight_col is None:
+        # choose last numeric-ish column
+        for c in reversed(list(h.columns)):
+            vals = pd.to_numeric(h[c], errors="coerce")
+            if vals.notna().sum() >= max(1, len(h)//2):
+                weight_col = c
+                break
+    if weight_col is None:
+        raise ValueError("weight column not found")
+    out = pd.DataFrame({"symbol": h[symbol_col].astype(str).str.upper().str.strip(), "raw_weight": pd.to_numeric(h[weight_col], errors="coerce")})
+    out = out[out["symbol"].notna() & out["raw_weight"].notna()].copy()
+    out["weight"] = out["raw_weight"] / 100.0 if out["raw_weight"].max() > 1.5 else out["raw_weight"]
+    out = out[out["weight"] > 0].copy()
+    if out.empty:
+        raise ValueError("no positive weights")
+    out["weight"] = out["weight"] / out["weight"].sum()
+    return out[["symbol", "weight"]]
 
+
+def get_holdings_cache(cfg: pd.DataFrame) -> dict[str, pd.DataFrame]:
+    cache = {}
+    for _, row in cfg.iterrows():
+        ticker = str(row.get("ticker", "")).upper().strip()
+        if not ticker:
+            continue
+        try:
+            cache[ticker] = get_top_holdings(ticker)
+        except Exception as e:
+            print(f"[build_docs_data] holdings unavailable for {ticker}: {type(e).__name__}: {e}")
+    return cache
+
+
+def build_holdings_daily(cfg: pd.DataFrame, holdings_cache: dict[str, pd.DataFrame], valid_snapshots: list[tuple[Path, pd.DataFrame]], kind: str) -> tuple[dict[str, pd.DataFrame], pd.DataFrame]:
+    daily_tables = {}
+    series_rows = []
+    for path, df in valid_snapshots:
+        base = df[["ticker", "ICC", "mktcap", "sector", "name"]].copy()
+        date = str(df["date"].iloc[0])
         rows = []
-        row = {"series": value_col}
-        series = tmp.sort_values("ym").set_index("ym")[value_col]
-        for m in months:
-            row[m] = series.get(m, np.nan)
-        rows.append(row)
-        return months, rows
-
-    latest_per_group_month = tmp.groupby([row_col, "ym"])[date_col].max().reset_index()
-    tmp = tmp.merge(latest_per_group_month, on=[row_col, "ym", date_col], how="inner")
-    months = sorted(tmp["ym"].dropna().unique())[-months_keep:]
-    tmp = tmp[tmp["ym"].isin(months)].copy()
-
-    rows = []
-    for key, g in tmp.groupby(row_col, dropna=False):
-        row = {"series": str(key)}
-        s = g.sort_values("ym").set_index("ym")[value_col]
-        for m in months:
-            row[m] = s.get(m, np.nan)
-        rows.append(row)
-
-    rows.sort(key=lambda x: x["series"])
-    return months, rows
-
-
-def make_home_monthly_payload(market_all: pd.DataFrame, sp500: pd.DataFrame, value_hist: pd.DataFrame, industry_daily: pd.DataFrame, index_daily: pd.DataFrame) -> dict:
-    # Core table
-    def _month_rows_from_single(df: pd.DataFrame, value_col: str, label: str, months_keep: int = 3):
-        months, rows = to_month_end_panel(df, "date", value_col, None, months_keep)
+        for _, r in cfg.iterrows():
+            ticker = str(r.get("ticker", "")).upper().strip()
+            if not ticker or ticker not in holdings_cache:
+                continue
+            label = str(r.get("label", ticker))
+            category = str(r.get("category", "")) if "category" in r.index else ""
+            country = str(r.get("country", "")) if "country" in r.index else ""
+            h = holdings_cache[ticker]
+            merged = h.merge(base, left_on="symbol", right_on="ticker", how="left")
+            matched = merged["ICC"].notna()
+            coverage = float(merged.loc[matched, "weight"].sum()) if len(merged) else 0.0
+            icc = weighted_mean(merged.loc[matched, "ICC"], merged.loc[matched, "weight"]) if matched.sum() else np.nan
+            rows.append(
+                {
+                    "date": date,
+                    "ticker": ticker,
+                    "label": label,
+                    "category": category,
+                    "country": country,
+                    "vw_icc": icc,
+                    "coverage_weight": coverage,
+                    "n_holdings": int(len(h)),
+                    "n_matched": int(matched.sum()),
+                    "status": "ok" if matched.sum() else "no_match",
+                }
+            )
         if not rows:
-            return [], []
-        rows[0]["series"] = label
-        return months, rows
-
-    months_all, rows_all_vw = _month_rows_from_single(market_all, "vw_icc", "All market VW ICC")
-    _, rows_all_ew = _month_rows_from_single(market_all, "ew_icc", "All market EW ICC")
-    months_sp, rows_sp_vw = _month_rows_from_single(sp500, "vw_icc", "S&P 500 VW ICC")
-    _, rows_sp_ew = _month_rows_from_single(sp500, "ew_icc", "S&P 500 EW ICC")
-    months_val, rows_val = to_month_end_panel(value_hist, "date", "value_icc", None, 3)
-    _, rows_growth = to_month_end_panel(value_hist, "date", "growth_icc", None, 3)
-    _, rows_ivp = to_month_end_panel(value_hist, "date", "ivp_bm", None, 3)
-
-    if rows_val:
-        rows_val[0]["series"] = "Value ICC"
-    if rows_growth:
-        rows_growth[0]["series"] = "Growth ICC"
-    if rows_ivp:
-        rows_ivp[0]["series"] = "IVP (B/M)"
-
-    core_months = months_all or months_sp or months_val
-    core_rows = rows_all_vw + rows_all_ew + rows_sp_vw + rows_sp_ew + rows_val + rows_growth + rows_ivp
-
-    index_months, index_rows = to_month_end_panel(index_daily, "date", "vw_icc", "universe", 3)
-    industry_months, industry_rows = to_month_end_panel(industry_daily, "date", "vw_icc", "sector", 3)
-
-    # Order index rows
-    index_order = {u: i for i, u in enumerate(INDEX_UNIVERSES)}
-    index_rows.sort(key=lambda x: index_order.get(x["series"], 999))
-
-    return {
-        "core": {"months": core_months, "rows": core_rows},
-        "index": {"months": index_months, "rows": index_rows},
-        "industry": {"months": industry_months, "rows": industry_rows},
-    }
+            continue
+        table = pd.DataFrame(rows)
+        daily_tables[date] = table
+        good = table["vw_icc"].notna()
+        if good.sum():
+            series_rows.append(
+                {
+                    "date": date,
+                    "median_icc": float(table.loc[good, "vw_icc"].median()),
+                    "mean_icc": float(table.loc[good, "vw_icc"].mean()),
+                    "n_groups": int(good.sum()),
+                }
+            )
+    series = pd.DataFrame(series_rows).sort_values("date").reset_index(drop=True) if series_rows else pd.DataFrame(columns=["date","median_icc","mean_icc","n_groups"])
+    return daily_tables, series
 
 
-def filter_last_31_days(df: pd.DataFrame, date_col: str = "date") -> pd.DataFrame:
-    if df.empty:
-        return df.copy()
-    tmp = df.copy()
-    tmp[date_col] = pd.to_datetime(tmp[date_col], errors="coerce")
-    tmp = tmp[tmp[date_col].notna()].copy()
-    if tmp.empty:
-        return tmp
-    max_date = tmp[date_col].max()
-    cutoff = max_date - pd.Timedelta(days=31)
-    tmp = tmp[tmp[date_col] >= cutoff].copy()
-    tmp[date_col] = tmp[date_col].dt.strftime("%Y-%m-%d")
-    return tmp.sort_values(date_col, ascending=False).reset_index(drop=True)
+def build_indices_data(all_valid_by_universe: dict[str, list[tuple[Path, pd.DataFrame]]]) -> tuple[pd.DataFrame, dict[str, pd.DataFrame]]:
+    history_rows = []
+    daily_tables = {}
+    all_dates = set()
+    for u in INDEX_UNIVERSES:
+        hist = build_market_history(all_valid_by_universe.get(u, []), u)
+        if hist.empty:
+            continue
+        history_rows.append(hist)
+        all_dates.update(hist["date"].tolist())
+    history = pd.concat(history_rows, ignore_index=True) if history_rows else pd.DataFrame(columns=["date","universe","vw_icc","ew_icc","n_firms","source_file"])
+    history = history.sort_values(["date","universe"]).reset_index(drop=True)
+    for date, sub in history.groupby("date"):
+        daily_tables[str(date)] = sub.sort_values("universe").reset_index(drop=True)
+    return history, daily_tables
 
 
-def ensure_clean_dir(path: Path) -> None:
-    if path.exists():
-        shutil.rmtree(path)
-    path.mkdir(parents=True, exist_ok=True)
-
-
-def build_family_daily_outputs(market_all: pd.DataFrame, sp500: pd.DataFrame, value_hist: pd.DataFrame, index_daily: pd.DataFrame, industry_daily: pd.DataFrame) -> dict[str, pd.DataFrame]:
-    # marketwide family: one daily file containing All + SP500 rows
-    m1 = market_all.copy()
-    m1["universe"] = "usall"
-    m2 = sp500.copy()
-    m2["universe"] = "sp500"
-    marketwide = pd.concat([m1, m2], ignore_index=True) if not m1.empty or not m2.empty else pd.DataFrame(
-        columns=["date", "universe", "vw_icc", "ew_icc", "n_firms", "source_file"]
+def month_end_rows(df: pd.DataFrame, value_cols: list[str], label_map: dict[str, str] | None = None, date_col: str = "date") -> tuple[list[str], list[dict]]:
+    if df is None or df.empty:
+        return [], []
+    x = df.copy()
+    x[date_col] = pd.to_datetime(x[date_col])
+    x["yyyymm"] = x[date_col].dt.strftime("%Y-%m")
+    month_last = (
+        x.sort_values(date_col)
+         .groupby("yyyymm", as_index=False)
+         .tail(1)
+         .sort_values(date_col)
     )
-    marketwide = marketwide[["date", "universe", "vw_icc", "ew_icc", "n_firms", "source_file"]].sort_values(["date", "universe"]).reset_index(drop=True)
-
-    value_family = value_hist[["date", "value_icc", "growth_icc", "ivp_bm", "n_firms", "source_file"]].copy()
-    index_family = index_daily[["date", "universe", "vw_icc", "ew_icc", "n_firms", "source_file"]].copy()
-    industry_family = industry_daily[["date", "sector", "vw_icc", "ew_icc", "n_firms", "source_file"]].copy()
-
-    return {
-        "marketwide": marketwide,
-        "value_icc": value_family,
-        "index_icc": index_family,
-        "industry_icc": industry_family,
-    }
+    month_last = month_last.tail(3).reset_index(drop=True)
+    cols = month_last["yyyymm"].tolist()
+    rows = []
+    for col in value_cols:
+        rows.append({"label": label_map.get(col, col) if label_map else col, "values": [safe_float(v) for v in month_last[col].tolist()]})
+    return cols, rows
 
 
-def write_family_downloads(family_name: str, df: pd.DataFrame) -> dict:
-    family_dir = DOWNLOAD_DIR / family_name
-    family_dir.mkdir(parents=True, exist_ok=True)
+def ensure_clean_download_dirs():
+    if FAMILY_DIR.exists():
+        shutil.rmtree(FAMILY_DIR)
+    if ARCHIVE_DIR.exists():
+        shutil.rmtree(ARCHIVE_DIR)
+    FAMILY_DIR.mkdir(parents=True, exist_ok=True)
+    ARCHIVE_DIR.mkdir(parents=True, exist_ok=True)
 
-    tree = {"family": family_name, "label": family_name.replace("_", " ").title(), "years": []}
-    if df.empty:
-        return tree
 
-    tmp = df.copy()
-    tmp["date"] = pd.to_datetime(tmp["date"], errors="coerce")
-    tmp = tmp[tmp["date"].notna()].copy()
-    if tmp.empty:
-        return tree
+def write_daily_family_files(family: str, daily_tables: dict[str, pd.DataFrame]) -> list[dict]:
+    entries = []
+    fam_root = FAMILY_DIR / family
+    for date, df in sorted(daily_tables.items()):
+        d = pd.to_datetime(date)
+        year = d.strftime("%Y")
+        month = d.strftime("%m")
+        out_dir = fam_root / year / month
+        out_dir.mkdir(parents=True, exist_ok=True)
+        filename = f"{family}_{date}.csv"
+        path = out_dir / filename
+        df.to_csv(path, index=False)
+        entries.append(
+            {
+                "family": family,
+                "date": date,
+                "year": year,
+                "month": month,
+                "label": filename,
+                "download_path": f"./data/downloads/families/{family}/{year}/{month}/{filename}",
+            }
+        )
+    return entries
 
-    tmp["year"] = tmp["date"].dt.strftime("%Y")
-    tmp["month"] = tmp["date"].dt.strftime("%Y-%m")
-    tmp["date_str"] = tmp["date"].dt.strftime("%Y-%m-%d")
 
-    for year, g_year in sorted(tmp.groupby("year"), reverse=True):
-        year_dir = family_dir / year
-        year_dir.mkdir(parents=True, exist_ok=True)
+def build_archives_for_family(family: str, entries: list[dict]) -> dict:
+    family_archives = {"family": family, "years": []}
+    if not entries:
+        return family_archives
 
-        year_entry = {
-            "year": year,
-            "download_all_label": f"Download all {family_name} files for {year}",
-            "download_all_href": f"data/downloads/{family_name}/{year}/all-{family_name}-{year}.zip",
-            "months": [],
-        }
+    grouped_year = defaultdict(list)
+    grouped_month = defaultdict(list)
+    for e in entries:
+        grouped_year[e["year"]].append(e)
+        grouped_month[(e["year"], e["month"])].append(e)
 
-        month_files_for_zip: list[Path] = []
+    for year in sorted(grouped_year.keys(), reverse=True):
+        year_entries = grouped_year[year]
+        y_dir = ARCHIVE_DIR / family / year
+        y_dir.mkdir(parents=True, exist_ok=True)
 
-        for month, g_month in sorted(g_year.groupby("month"), reverse=True):
-            month_dir = year_dir / month
-            month_dir.mkdir(parents=True, exist_ok=True)
+        year_zip = y_dir / f"{family}_{year}_all.zip"
+        with zipfile.ZipFile(year_zip, "w", zipfile.ZIP_DEFLATED) as zf:
+            for e in sorted(year_entries, key=lambda x: x["date"]):
+                rel = e["download_path"].replace("./data/downloads/", "")
+                src = DOWNLOAD_DIR / rel
+                if src.exists():
+                    zf.write(src, arcname=f"{family}/{year}/{src.name}")
 
-            days = []
-            daily_files: list[Path] = []
-
-            for date_str, g_day in sorted(g_month.groupby("date_str"), reverse=True):
-                out_name = f"{family_name}_{date_str}.csv"
-                out_path = month_dir / out_name
-
-                out_df = g_day.drop(columns=["year", "month", "date_str"]).copy()
-                out_df["date"] = out_df["date"].dt.strftime("%Y-%m-%d")
-                out_df.to_csv(out_path, index=False)
-
-                daily_files.append(out_path)
-                month_files_for_zip.append(out_path)
-
-                days.append(
-                    {
-                        "date": date_str,
-                        "label": date_str,
-                        "href": f"data/downloads/{family_name}/{year}/{month}/{out_name}",
-                    }
-                )
-
-            month_zip = month_dir / f"all-{family_name}-{month}.zip"
-            with zipfile.ZipFile(month_zip, "w", compression=zipfile.ZIP_DEFLATED) as zf:
-                for fp in daily_files:
-                    zf.write(fp, arcname=fp.name)
-
-            year_entry["months"].append(
+        months_payload = []
+        months = sorted({e["month"] for e in year_entries}, reverse=True)
+        for month in months:
+            month_entries = grouped_month[(year, month)]
+            m_dir = y_dir / month
+            m_dir.mkdir(parents=True, exist_ok=True)
+            month_zip = m_dir / f"{family}_{year}_{month}_all.zip"
+            with zipfile.ZipFile(month_zip, "w", zipfile.ZIP_DEFLATED) as zf:
+                for e in sorted(month_entries, key=lambda x: x["date"]):
+                    rel = e["download_path"].replace("./data/downloads/", "")
+                    src = DOWNLOAD_DIR / rel
+                    if src.exists():
+                        zf.write(src, arcname=f"{family}/{year}/{month}/{src.name}")
+            months_payload.append(
                 {
                     "month": month,
-                    "download_all_label": f"Download all {family_name} files for {month}",
-                    "download_all_href": f"data/downloads/{family_name}/{year}/{month}/{month_zip.name}",
-                    "days": days,
+                    "download_all": f"./data/downloads/archives/{family}/{year}/{month}/{month_zip.name}",
+                    "days": sorted(month_entries, key=lambda x: x["date"], reverse=True),
                 }
             )
 
-        year_zip = year_dir / f"all-{family_name}-{year}.zip"
-        with zipfile.ZipFile(year_zip, "w", compression=zipfile.ZIP_DEFLATED) as zf:
-            for fp in month_files_for_zip:
-                zf.write(fp, arcname=f"{fp.parent.name}/{fp.name}")
-
-        tree["years"].append(year_entry)
-
-    return tree
+        family_archives["years"].append(
+            {
+                "year": year,
+                "download_all": f"./data/downloads/archives/{family}/{year}/{year_zip.name}",
+                "months": months_payload,
+            }
+        )
+    return family_archives
 
 
 def main() -> None:
@@ -552,162 +547,224 @@ def main() -> None:
     args = parser.parse_args()
 
     DOCS_DATA_DIR.mkdir(parents=True, exist_ok=True)
-    ensure_clean_dir(DOWNLOAD_DIR)
+    DOWNLOAD_DIR.mkdir(parents=True, exist_ok=True)
+    ensure_clean_download_dirs()
 
-    # Base universe and all valid snapshots
-    all_paths = find_all_snapshots(None)
-    if not all_paths:
-        raise FileNotFoundError("No snapshot files found under data/YYYYMM/")
-
-    all_valid = dedup_valid_snapshots(get_valid_snapshots(all_paths))
+    all_valid = dedup_valid_snapshots(get_valid_snapshots(find_all_snapshots(None)))
     if not all_valid:
-        raise RuntimeError("Found snapshot files, but none were valid non-empty CSVs.")
-
-    by_universe: dict[str, list[tuple[Path, pd.DataFrame]]] = {}
+        raise RuntimeError("No valid snapshots found.")
+    all_valid_by_universe: dict[str, list[tuple[Path, pd.DataFrame]]] = defaultdict(list)
     for path, df in all_valid:
         meta = parse_snapshot_meta(path)
-        if meta is None:
-            continue
-        by_universe.setdefault(meta["universe"], []).append((path, df))
+        if meta:
+            all_valid_by_universe[meta["universe"]].append((path, df))
 
-    base_valid = by_universe.get(args.universe, [])
-    if not base_valid:
-        raise RuntimeError(f"No valid snapshots for universe={args.universe}")
+    usall_valid = all_valid_by_universe.get("usall", [])
+    sp500_valid = all_valid_by_universe.get("sp500", [])
+    if not usall_valid:
+        raise RuntimeError("No valid usall snapshots found.")
 
-    latest_usall_path, latest_usall = base_valid[-1]
-    latest_date = str(latest_usall["date"].dropna().iloc[0])
+    latest_usall_path, latest_usall = usall_valid[-1]
+    latest_date = str(latest_usall["date"].iloc[0])
 
-    market_all = build_market_history(base_valid)
-    sp500_hist = build_market_history(by_universe.get("sp500", []))
-    value_hist = build_value_history(base_valid)
+    market_all = build_market_history(usall_valid, "usall")
+    market_sp500 = build_market_history(sp500_valid, "sp500")
+    marketwide_daily = {}
+    for date in sorted(set(market_all["date"]).union(set(market_sp500["date"]))):
+        rows = []
+        sub = market_all[market_all["date"] == date]
+        if not sub.empty:
+            rows.append({"date": date, "market": "All U.S.", "vw_icc": sub.iloc[0]["vw_icc"], "ew_icc": sub.iloc[0]["ew_icc"], "n_firms": sub.iloc[0]["n_firms"]})
+        sub2 = market_sp500[market_sp500["date"] == date]
+        if not sub2.empty:
+            rows.append({"date": date, "market": "S&P 500", "vw_icc": sub2.iloc[0]["vw_icc"], "ew_icc": sub2.iloc[0]["ew_icc"], "n_firms": sub2.iloc[0]["n_firms"]})
+        if rows:
+            marketwide_daily[date] = pd.DataFrame(rows)
 
-    # index daily history
-    index_rows = []
-    for universe in INDEX_UNIVERSES:
-        hist = build_market_history(by_universe.get(universe, []))
-        if hist.empty:
-            continue
-        hist = hist.copy()
-        hist["universe"] = universe
-        index_rows.append(hist)
+    value_hist = build_value_history(usall_valid)
+    value_daily = {}
+    for _, row in value_hist.iterrows():
+        value_daily[str(row["date"])] = pd.DataFrame([row])
 
-    index_daily = pd.concat(index_rows, ignore_index=True) if index_rows else pd.DataFrame(
-        columns=["date", "vw_icc", "ew_icc", "n_firms", "source_file", "universe"]
-    )
-    index_daily = index_daily.sort_values(["date", "universe"]).reset_index(drop=True)
+    industry_daily, industry_series = build_industry_daily(usall_valid)
 
-    industry_daily = build_industry_daily_history(base_valid)
-    latest_industry = (
-        industry_daily[industry_daily["date"] == industry_daily["date"].max()].copy()
-        if not industry_daily.empty
-        else pd.DataFrame(columns=["date", "sector", "vw_icc", "ew_icc", "n_firms", "source_file"])
-    )
+    etf_cfg = read_csv_config(CONFIG_DIR / "etfs.csv", ["ticker", "label", "category"])
+    country_cfg = read_csv_config(CONFIG_DIR / "country_etfs.csv", ["ticker", "label", "country"])
+    etf_holdings = get_holdings_cache(etf_cfg)
+    country_holdings = get_holdings_cache(country_cfg)
+    etf_daily, etf_series = build_holdings_daily(etf_cfg, etf_holdings, usall_valid, "etf")
+    country_daily, country_series = build_holdings_daily(country_cfg, country_holdings, usall_valid, "country")
 
-    home_monthly = make_home_monthly_payload(market_all, sp500_hist, value_hist, industry_daily, index_daily)
+    indices_hist, indices_daily = build_indices_data(all_valid_by_universe)
 
-    # Recent page payloads (recent month only)
-    marketwide_recent = filter_last_31_days(
-        pd.concat(
-            [
-                market_all.assign(series="All U.S. market"),
-                sp500_hist.assign(series="S&P 500"),
-            ],
-            ignore_index=True,
-        ),
-        "date",
-    )
+    # write daily family files + archives
+    family_entries = {}
+    family_entries["marketwide"] = write_daily_family_files("marketwide", marketwide_daily)
+    family_entries["value"] = write_daily_family_files("value", value_daily)
+    family_entries["industry"] = write_daily_family_files("industry", industry_daily)
+    family_entries["etf"] = write_daily_family_files("etf", etf_daily)
+    family_entries["country"] = write_daily_family_files("country", country_daily)
+    family_entries["indices"] = write_daily_family_files("indices", indices_daily)
 
-    value_recent = filter_last_31_days(value_hist, "date")
-    index_recent = filter_last_31_days(index_daily, "date")
-    industry_recent = filter_last_31_days(industry_daily, "date")
+    download_tree = {fam: build_archives_for_family(fam, entries) for fam, entries in family_entries.items()}
 
-    # Write page data JSON
+    # aggregate CSV downloads
+    market_all.to_csv(DOWNLOAD_DIR / "marketwide_all_history.csv", index=False)
+    market_sp500.to_csv(DOWNLOAD_DIR / "marketwide_sp500_history.csv", index=False)
+    value_hist.to_csv(DOWNLOAD_DIR / "value_history.csv", index=False)
+    industry_series.to_csv(DOWNLOAD_DIR / "industry_overview_history.csv", index=False)
+    etf_series.to_csv(DOWNLOAD_DIR / "etf_overview_history.csv", index=False)
+    country_series.to_csv(DOWNLOAD_DIR / "country_overview_history.csv", index=False)
+    indices_hist.to_csv(DOWNLOAD_DIR / "indices_history.csv", index=False)
+
+    latest_industry = industry_daily.get(latest_date, pd.DataFrame())
+    latest_etf = etf_daily.get(latest_date, pd.DataFrame())
+    latest_country = country_daily.get(latest_date, pd.DataFrame())
+    latest_indices = indices_daily.get(latest_date, pd.DataFrame())
+
+    if not latest_industry.empty:
+        latest_industry.to_csv(DOWNLOAD_DIR / "industry_latest.csv", index=False)
+    if not latest_etf.empty:
+        latest_etf.to_csv(DOWNLOAD_DIR / "etf_latest.csv", index=False)
+    if not latest_country.empty:
+        latest_country.to_csv(DOWNLOAD_DIR / "country_latest.csv", index=False)
+    if not latest_indices.empty:
+        latest_indices.to_csv(DOWNLOAD_DIR / "indices_latest.csv", index=False)
+
+    # overview monthly summary
+    cols_all, rows_all = month_end_rows(market_all, ["vw_icc"], {"vw_icc": "All U.S. market"})
+    cols_sp500, rows_sp500 = month_end_rows(market_sp500, ["vw_icc"], {"vw_icc": "S&P 500"})
+    cols_value, rows_value = month_end_rows(value_hist, ["value_icc", "growth_icc", "ivp_bm"], {"value_icc": "Value ICC", "growth_icc": "Growth ICC", "ivp_bm": "IVP (B/M)"})
+    cols_ind, rows_ind = month_end_rows(industry_series, ["median_icc"], {"median_icc": "Industry median ICC"})
+    cols_etf, rows_etf = month_end_rows(etf_series, ["median_icc"], {"median_icc": "ETF median ICC"})
+    cols_country, rows_country = month_end_rows(country_series, ["median_icc"], {"median_icc": "Country median ICC"})
+
+    # unify last 3 month columns
+    all_months = sorted(set(cols_all + cols_sp500 + cols_value + cols_ind + cols_etf + cols_country))
+    all_months = all_months[-3:]
+
+    def align_rows(cols, rows):
+        if not cols:
+            return []
+        idx = {c:i for i,c in enumerate(cols)}
+        out = []
+        for r in rows:
+            vals = []
+            for m in all_months:
+                vals.append(r["values"][idx[m]] if m in idx else None)
+            out.append({"label": r["label"], "values": vals})
+        return out
+
+    latest_daily = {
+        "all_market_vw_icc": safe_float(market_all.iloc[-1]["vw_icc"]) if not market_all.empty else None,
+        "all_market_ew_icc": safe_float(market_all.iloc[-1]["ew_icc"]) if not market_all.empty else None,
+        "all_n_firms": safe_int(market_all.iloc[-1]["n_firms"]) if not market_all.empty else None,
+        "sp500_vw_icc": safe_float(market_sp500.iloc[-1]["vw_icc"]) if not market_sp500.empty else None,
+        "sp500_ew_icc": safe_float(market_sp500.iloc[-1]["ew_icc"]) if not market_sp500.empty else None,
+        "sp500_n_firms": safe_int(market_sp500.iloc[-1]["n_firms"]) if not market_sp500.empty else None,
+        "value_icc": safe_float(value_hist.iloc[-1]["value_icc"]) if not value_hist.empty else None,
+        "growth_icc": safe_float(value_hist.iloc[-1]["growth_icc"]) if not value_hist.empty else None,
+        "ivp_bm": safe_float(value_hist.iloc[-1]["ivp_bm"]) if not value_hist.empty else None,
+        "industry_median_icc": safe_float(industry_series.iloc[-1]["median_icc"]) if not industry_series.empty else None,
+        "etf_median_icc": safe_float(etf_series.iloc[-1]["median_icc"]) if not etf_series.empty else None,
+        "country_median_icc": safe_float(country_series.iloc[-1]["median_icc"]) if not country_series.empty else None,
+    }
+
+    overview_monthly_rows = []
+    for rows in [align_rows(cols_all, rows_all), align_rows(cols_sp500, rows_sp500), align_rows(cols_value, rows_value), align_rows(cols_ind, rows_ind), align_rows(cols_etf, rows_etf), align_rows(cols_country, rows_country)]:
+        overview_monthly_rows.extend(rows)
+
+    overview_downloads = {
+        "marketwide": [
+            {"label": "All U.S. market history", "path": "./data/downloads/marketwide_all_history.csv"},
+            {"label": "S&P 500 history", "path": "./data/downloads/marketwide_sp500_history.csv"},
+        ],
+        "value": [{"label": "Value / Growth / IVP history", "path": "./data/downloads/value_history.csv"}],
+        "industry": [{"label": "Industry overview history", "path": "./data/downloads/industry_overview_history.csv"}, {"label": "Industry latest table", "path": "./data/downloads/industry_latest.csv"}],
+        "etf": [{"label": "ETF overview history", "path": "./data/downloads/etf_overview_history.csv"}, {"label": "ETF latest table", "path": "./data/downloads/etf_latest.csv"}],
+        "country": [{"label": "Country overview history", "path": "./data/downloads/country_overview_history.csv"}, {"label": "Country latest table", "path": "./data/downloads/country_latest.csv"}],
+        "indices": [{"label": "Indices history", "path": "./data/downloads/indices_history.csv"}, {"label": "Indices latest table", "path": "./data/downloads/indices_latest.csv"}],
+    }
+
+    # write JSON payloads
     write_json(
         DOCS_DATA_DIR / "overview.json",
         {
             "asof_date": latest_date,
-            "source_file": str(latest_usall_path.relative_to(REPO)),
-            "nav": [
-                {"label": "Home", "href": "index.html"},
-                {"label": "Marketwide", "href": "marketwide.html"},
-                {"label": "Value", "href": "value.html"},
-                {"label": "Indices", "href": "indices.html"},
-                {"label": "Industry", "href": "industry.html"},
-                {"label": "Downloads", "href": "downloads.html"},
-            ],
+            "latest_daily": latest_daily,
+            "three_months": {"columns": all_months, "rows": overview_monthly_rows},
+            "downloads": overview_downloads,
         },
     )
 
     write_json(
-        DOCS_DATA_DIR / "home_monthly.json",
+        DOCS_DATA_DIR / "marketwide.json",
         {
             "asof_date": latest_date,
-            "core": home_monthly["core"],
-            "index": home_monthly["index"],
-            "industry": home_monthly["industry"],
+            "all_history": market_all.to_dict(orient="records"),
+            "sp500_history": market_sp500.to_dict(orient="records"),
+            "three_months": {
+                "columns": all_months,
+                "rows": align_rows(cols_all, rows_all) + align_rows(cols_sp500, rows_sp500),
+            },
         },
     )
 
     write_json(
-        DOCS_DATA_DIR / "marketwide_page.json",
+        DOCS_DATA_DIR / "value.json",
         {
             "asof_date": latest_date,
-            "recent_daily": marketwide_recent.to_dict(orient="records"),
-            "monthly": home_monthly["core"],
+            "history": value_hist.to_dict(orient="records"),
+            "three_months": {"columns": all_months, "rows": align_rows(cols_value, rows_value)},
         },
     )
 
     write_json(
-        DOCS_DATA_DIR / "value_page.json",
+        DOCS_DATA_DIR / "industry.json",
         {
             "asof_date": latest_date,
-            "recent_daily": value_recent.to_dict(orient="records"),
-            "monthly_rows": [r for r in home_monthly["core"]["rows"] if r["series"] in ["Value ICC", "Growth ICC", "IVP (B/M)"]],
-            "months": home_monthly["core"]["months"],
-        },
-    )
-
-    # Build latest index latest table
-    latest_index = (
-        index_daily.sort_values(["universe", "date"]).groupby("universe", as_index=False).tail(1).sort_values("universe")
-        if not index_daily.empty
-        else pd.DataFrame(columns=["date", "vw_icc", "ew_icc", "n_firms", "source_file", "universe"])
-    )
-
-    write_json(
-        DOCS_DATA_DIR / "indices_page.json",
-        {
-            "asof_date": latest_date,
-            "recent_daily": index_recent.to_dict(orient="records"),
-            "latest": latest_index.to_dict(orient="records"),
-            "months": home_monthly["index"]["months"],
-            "monthly_rows": home_monthly["index"]["rows"],
+            "latest": latest_industry.to_dict(orient="records"),
+            "overview_history": industry_series.to_dict(orient="records"),
+            "three_months": {"columns": all_months, "rows": align_rows(cols_ind, rows_ind)},
         },
     )
 
     write_json(
-        DOCS_DATA_DIR / "industry_page.json",
+        DOCS_DATA_DIR / "etf.json",
         {
             "asof_date": latest_date,
-            "recent_daily": industry_recent.to_dict(orient="records"),
-            "latest": latest_industry.sort_values("sector").to_dict(orient="records"),
-            "months": home_monthly["industry"]["months"],
-            "monthly_rows": home_monthly["industry"]["rows"],
+            "latest": latest_etf.to_dict(orient="records"),
+            "overview_history": etf_series.to_dict(orient="records"),
+            "three_months": {"columns": all_months, "rows": align_rows(cols_etf, rows_etf)},
         },
     )
-
-    # Family downloads
-    family_frames = build_family_daily_outputs(market_all, sp500_hist, value_hist, index_daily, industry_daily)
-    trees = [write_family_downloads(name, frame) for name, frame in family_frames.items()]
 
     write_json(
-        DOCS_DATA_DIR / "download_tree.json",
+        DOCS_DATA_DIR / "country.json",
         {
             "asof_date": latest_date,
-            "families": trees,
+            "latest": latest_country.to_dict(orient="records"),
+            "overview_history": country_series.to_dict(orient="records"),
+            "three_months": {"columns": all_months, "rows": align_rows(cols_country, rows_country)},
         },
     )
 
-    print(f"[build_docs_data] total valid deduped snapshots used = {len(all_valid)}")
-    print(f"[build_docs_data] latest valid {args.universe} asof_date = {latest_date}")
-    print("[build_docs_data] wrote FF-style site data and collapsible download tree.")
+    write_json(
+        DOCS_DATA_DIR / "indices.json",
+        {
+            "asof_date": latest_date,
+            "latest": latest_indices.to_dict(orient="records"),
+            "history": indices_hist.to_dict(orient="records"),
+        },
+    )
+
+    write_json(DOCS_DATA_DIR / "downloads_catalog.json", {"asof_date": latest_date, "families": download_tree, "aggregate": overview_downloads})
+
+    print(f"[build_docs_data] asof_date={latest_date}")
+    print(f"[build_docs_data] usall snapshots={len(usall_valid)}")
+    print(f"[build_docs_data] indices available={[u for u in INDEX_UNIVERSES if len(all_valid_by_universe.get(u, [])) > 0]}")
+    print("[build_docs_data] docs/data generated successfully")
+
+
+if __name__ == "__main__":
+    main()
