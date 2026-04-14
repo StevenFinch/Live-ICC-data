@@ -2,11 +2,7 @@
   "asof_date": "2026-04-14",
   "latest_daily": {
     "all_market_vw_icc": 0.08233123928352122,
-    "all_market_ew_icc": 0.1064137577264621,
-    "all_n_firms": 2719,
     "sp500_vw_icc": 0.07666735898881136,
-    "sp500_ew_icc": 0.08163982789425475,
-    "sp500_n_firms": 500,
     "value_icc": 0.12131109373932639,
     "growth_icc": 0.08389872467753796,
     "ivp_bm": 0.03741236906178842,
@@ -22,7 +18,7 @@
     ],
     "rows": [
       {
-        "label": "All U.S. market",
+        "label": "All market",
         "values": [
           0.08042145131520971,
           0.0846043873892946,
@@ -54,7 +50,7 @@
         ]
       },
       {
-        "label": "IVP (B/M)",
+        "label": "IVP",
         "values": [
           0.04258253104764308,
           0.03551502878898988,
@@ -62,7 +58,7 @@
         ]
       },
       {
-        "label": "Industry median ICC",
+        "label": "Industry median",
         "values": [
           0.0749285882278573,
           0.08273670845327648,
@@ -74,7 +70,7 @@
   "downloads": {
     "marketwide": [
       {
-        "label": "All U.S. market history",
+        "label": "All market history",
         "path": "./data/downloads/marketwide_all_history.csv"
       },
       {

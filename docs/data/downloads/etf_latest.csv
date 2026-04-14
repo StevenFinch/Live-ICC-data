@@ -1,11 +1,20 @@
-date,ticker,label,category,country,vw_icc,coverage_weight,n_holdings,n_matched,status
-2026-04-14,SPY,SPDR S&P 500,Core US Equity,,,0.0,10,0,no_match
-2026-04-14,QQQ,Invesco QQQ,Large Cap Growth,,,0.0,10,0,no_match
-2026-04-14,IWM,iShares Russell 2000,Small Cap,,,0.0,10,0,no_match
-2026-04-14,IWB,iShares Russell 1000,Large Cap Broad,,,0.0,10,0,no_match
-2026-04-14,VTV,Vanguard Value,Value,,,0.0,10,0,no_match
-2026-04-14,VUG,Vanguard Growth,Growth,,,0.0,10,0,no_match
-2026-04-14,XLF,Financial Select Sector,Sector,,,0.0,10,0,no_match
-2026-04-14,XLK,Technology Select Sector,Sector,,,0.0,10,0,no_match
-2026-04-14,XLE,Energy Select Sector,Sector,,,0.0,10,0,no_match
-2026-04-14,XLV,Health Care Select Sector,Sector,,,0.0,10,0,no_match
+ticker,label,category,vw_icc,coverage_weight,n_holdings,n_matched,status
+DIA,SPDR Dow Jones Industrial Average,Dow Jones,,0.0,10,0,no_match
+SPY,SPDR S&P 500 ETF,Market,,0.0,10,0,no_match
+MDY,SPDR S&P MidCap 400 ETF,Mid Cap,,0.0,10,0,no_match
+QQQ,Invesco QQQ,Nasdaq 100,,0.0,10,0,no_match
+XLB,Materials Select Sector SPDR,Sector,,0.0,10,0,no_match
+XLC,Communication Services Select Sector SPDR,Sector,,0.0,10,0,no_match
+XLE,Energy Select Sector SPDR,Sector,,0.0,10,0,no_match
+XLF,Financial Select Sector SPDR,Sector,,0.0,10,0,no_match
+XLI,Industrial Select Sector SPDR,Sector,,0.0,10,0,no_match
+XLK,Technology Select Sector SPDR,Sector,,0.0,10,0,no_match
+XLP,Consumer Staples Select Sector SPDR,Sector,,0.0,10,0,no_match
+XLRE,Real Estate Select Sector SPDR,Sector,,0.0,10,0,no_match
+XLU,Utilities Select Sector SPDR,Sector,,0.0,10,0,no_match
+XLV,Health Care Select Sector SPDR,Sector,,0.0,10,0,no_match
+XLY,Consumer Discretionary Select Sector SPDR,Sector,,0.0,10,0,no_match
+IJR,iShares Core S&P Small-Cap ETF,Small Cap,,0.0,10,0,no_match
+IWM,iShares Russell 2000,Small Cap,,0.0,10,0,no_match
+VTV,Vanguard Value ETF,Style,,0.0,10,0,no_match
+VUG,Vanguard Growth ETF,Style,,0.0,10,0,no_match

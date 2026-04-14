@@ -1,11 +1,19 @@
-date,ticker,label,category,country,vw_icc,coverage_weight,n_holdings,n_matched,status
-2026-04-14,SPY,SPDR S&P 500,,United States,,0.0,10,0,no_match
-2026-04-14,EWJ,iShares MSCI Japan,,Japan,,0.0,10,0,no_match
-2026-04-14,EWG,iShares MSCI Germany,,Germany,,0.0,10,0,no_match
-2026-04-14,EWU,iShares MSCI United Kingdom,,United Kingdom,,0.0,10,0,no_match
-2026-04-14,EWQ,iShares MSCI France,,France,,0.0,10,0,no_match
-2026-04-14,EWC,iShares MSCI Canada,,Canada,,0.0,10,0,no_match
-2026-04-14,EWA,iShares MSCI Australia,,Australia,,0.0,10,0,no_match
-2026-04-14,INDA,iShares MSCI India,,India,,0.0,10,0,no_match
-2026-04-14,MCHI,iShares MSCI China,,China,,0.0,10,0,no_match
-2026-04-14,EWZ,iShares MSCI Brazil,,Brazil,,0.0,10,0,no_match
+country,ticker,label,vw_icc,coverage_weight,n_holdings,n_matched,status
+Australia,EWA,iShares MSCI Australia ETF,,0.0,10,0,no_match
+Brazil,EWZ,iShares MSCI Brazil ETF,,0.0,10,0,no_match
+Canada,EWC,iShares MSCI Canada ETF,,0.0,10,0,no_match
+Canada,EWC,iShares MSCI Canada ETF,,0.0,10,0,no_match
+China,MCHI,iShares MSCI China ETF,,0.0,10,0,no_match
+Germany,EWG,iShares MSCI Germany ETF,,0.0,10,0,no_match
+Hong Kong,EWH,iShares MSCI Hong Kong ETF,,0.0,10,0,no_match
+India,INDA,iShares MSCI India ETF,,0.0,10,0,no_match
+Indonesia,EIDO,iShares MSCI Indonesia ETF,,0.0,10,0,no_match
+Japan,EWJ,iShares MSCI Japan ETF,,0.0,10,0,no_match
+Mexico,EWW,iShares MSCI Mexico ETF,,0.0,10,0,no_match
+Poland,EPOL,iShares MSCI Poland ETF,,0.0,10,0,no_match
+Russia,ERUS,iShares MSCI Russia ETF,,0.0,10,0,no_match
+South Korea,EWY,iShares MSCI South Korea ETF,,0.0,10,0,no_match
+Switzerland,EWL,iShares MSCI Switzerland ETF,,0.0,10,0,no_match
+Taiwan,EWT,iShares MSCI Taiwan ETF,,0.0,10,0,no_match
+United Kingdom,EWU,iShares MSCI United Kingdom ETF,,0.0,10,0,no_match
+United States,SPY,United States Proxy,,0.0,10,0,no_match

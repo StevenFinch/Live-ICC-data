@@ -2,11 +2,9 @@
   "asof_date": "2026-04-14",
   "latest": [
     {
-      "date": "2026-04-14",
-      "ticker": "SPY",
-      "label": "SPDR S&P 500",
-      "category": "Core US Equity",
-      "country": "",
+      "ticker": "DIA",
+      "label": "SPDR Dow Jones Industrial Average",
+      "category": "Dow Jones",
       "vw_icc": null,
       "coverage_weight": 0.0,
       "n_holdings": 10,
@@ -14,11 +12,29 @@
       "status": "no_match"
     },
     {
-      "date": "2026-04-14",
+      "ticker": "SPY",
+      "label": "SPDR S&P 500 ETF",
+      "category": "Market",
+      "vw_icc": null,
+      "coverage_weight": 0.0,
+      "n_holdings": 10,
+      "n_matched": 0,
+      "status": "no_match"
+    },
+    {
+      "ticker": "MDY",
+      "label": "SPDR S&P MidCap 400 ETF",
+      "category": "Mid Cap",
+      "vw_icc": null,
+      "coverage_weight": 0.0,
+      "n_holdings": 10,
+      "n_matched": 0,
+      "status": "no_match"
+    },
+    {
       "ticker": "QQQ",
       "label": "Invesco QQQ",
-      "category": "Large Cap Growth",
-      "country": "",
+      "category": "Nasdaq 100",
       "vw_icc": null,
       "coverage_weight": 0.0,
       "n_holdings": 10,
@@ -26,11 +42,129 @@
       "status": "no_match"
     },
     {
-      "date": "2026-04-14",
+      "ticker": "XLB",
+      "label": "Materials Select Sector SPDR",
+      "category": "Sector",
+      "vw_icc": null,
+      "coverage_weight": 0.0,
+      "n_holdings": 10,
+      "n_matched": 0,
+      "status": "no_match"
+    },
+    {
+      "ticker": "XLC",
+      "label": "Communication Services Select Sector SPDR",
+      "category": "Sector",
+      "vw_icc": null,
+      "coverage_weight": 0.0,
+      "n_holdings": 10,
+      "n_matched": 0,
+      "status": "no_match"
+    },
+    {
+      "ticker": "XLE",
+      "label": "Energy Select Sector SPDR",
+      "category": "Sector",
+      "vw_icc": null,
+      "coverage_weight": 0.0,
+      "n_holdings": 10,
+      "n_matched": 0,
+      "status": "no_match"
+    },
+    {
+      "ticker": "XLF",
+      "label": "Financial Select Sector SPDR",
+      "category": "Sector",
+      "vw_icc": null,
+      "coverage_weight": 0.0,
+      "n_holdings": 10,
+      "n_matched": 0,
+      "status": "no_match"
+    },
+    {
+      "ticker": "XLI",
+      "label": "Industrial Select Sector SPDR",
+      "category": "Sector",
+      "vw_icc": null,
+      "coverage_weight": 0.0,
+      "n_holdings": 10,
+      "n_matched": 0,
+      "status": "no_match"
+    },
+    {
+      "ticker": "XLK",
+      "label": "Technology Select Sector SPDR",
+      "category": "Sector",
+      "vw_icc": null,
+      "coverage_weight": 0.0,
+      "n_holdings": 10,
+      "n_matched": 0,
+      "status": "no_match"
+    },
+    {
+      "ticker": "XLP",
+      "label": "Consumer Staples Select Sector SPDR",
+      "category": "Sector",
+      "vw_icc": null,
+      "coverage_weight": 0.0,
+      "n_holdings": 10,
+      "n_matched": 0,
+      "status": "no_match"
+    },
+    {
+      "ticker": "XLRE",
+      "label": "Real Estate Select Sector SPDR",
+      "category": "Sector",
+      "vw_icc": null,
+      "coverage_weight": 0.0,
+      "n_holdings": 10,
+      "n_matched": 0,
+      "status": "no_match"
+    },
+    {
+      "ticker": "XLU",
+      "label": "Utilities Select Sector SPDR",
+      "category": "Sector",
+      "vw_icc": null,
+      "coverage_weight": 0.0,
+      "n_holdings": 10,
+      "n_matched": 0,
+      "status": "no_match"
+    },
+    {
+      "ticker": "XLV",
+      "label": "Health Care Select Sector SPDR",
+      "category": "Sector",
+      "vw_icc": null,
+      "coverage_weight": 0.0,
+      "n_holdings": 10,
+      "n_matched": 0,
+      "status": "no_match"
+    },
+    {
+      "ticker": "XLY",
+      "label": "Consumer Discretionary Select Sector SPDR",
+      "category": "Sector",
+      "vw_icc": null,
+      "coverage_weight": 0.0,
+      "n_holdings": 10,
+      "n_matched": 0,
+      "status": "no_match"
+    },
+    {
+      "ticker": "IJR",
+      "label": "iShares Core S&P Small-Cap ETF",
+      "category": "Small Cap",
+      "vw_icc": null,
+      "coverage_weight": 0.0,
+      "n_holdings": 10,
+      "n_matched": 0,
+      "status": "no_match"
+    },
+    {
       "ticker": "IWM",
       "label": "iShares Russell 2000",
       "category": "Small Cap",
-      "country": "",
       "vw_icc": null,
       "coverage_weight": 0.0,
       "n_holdings": 10,
@@ -38,23 +172,9 @@
       "status": "no_match"
     },
     {
-      "date": "2026-04-14",
-      "ticker": "IWB",
-      "label": "iShares Russell 1000",
-      "category": "Large Cap Broad",
-      "country": "",
-      "vw_icc": null,
-      "coverage_weight": 0.0,
-      "n_holdings": 10,
-      "n_matched": 0,
-      "status": "no_match"
-    },
-    {
-      "date": "2026-04-14",
       "ticker": "VTV",
-      "label": "Vanguard Value",
-      "category": "Value",
-      "country": "",
+      "label": "Vanguard Value ETF",
+      "category": "Style",
       "vw_icc": null,
       "coverage_weight": 0.0,
       "n_holdings": 10,
@@ -62,59 +182,9 @@
       "status": "no_match"
     },
     {
-      "date": "2026-04-14",
       "ticker": "VUG",
-      "label": "Vanguard Growth",
-      "category": "Growth",
-      "country": "",
-      "vw_icc": null,
-      "coverage_weight": 0.0,
-      "n_holdings": 10,
-      "n_matched": 0,
-      "status": "no_match"
-    },
-    {
-      "date": "2026-04-14",
-      "ticker": "XLF",
-      "label": "Financial Select Sector",
-      "category": "Sector",
-      "country": "",
-      "vw_icc": null,
-      "coverage_weight": 0.0,
-      "n_holdings": 10,
-      "n_matched": 0,
-      "status": "no_match"
-    },
-    {
-      "date": "2026-04-14",
-      "ticker": "XLK",
-      "label": "Technology Select Sector",
-      "category": "Sector",
-      "country": "",
-      "vw_icc": null,
-      "coverage_weight": 0.0,
-      "n_holdings": 10,
-      "n_matched": 0,
-      "status": "no_match"
-    },
-    {
-      "date": "2026-04-14",
-      "ticker": "XLE",
-      "label": "Energy Select Sector",
-      "category": "Sector",
-      "country": "",
-      "vw_icc": null,
-      "coverage_weight": 0.0,
-      "n_holdings": 10,
-      "n_matched": 0,
-      "status": "no_match"
-    },
-    {
-      "date": "2026-04-14",
-      "ticker": "XLV",
-      "label": "Health Care Select Sector",
-      "category": "Sector",
-      "country": "",
+      "label": "Vanguard Growth ETF",
+      "category": "Style",
       "vw_icc": null,
       "coverage_weight": 0.0,
       "n_holdings": 10,

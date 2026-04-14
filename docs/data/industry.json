@@ -2,92 +2,70 @@
   "asof_date": "2026-04-14",
   "latest": [
     {
-      "date": "2026-04-14",
-      "sector": "Technology",
-      "vw_icc": 0.0823618161813164,
-      "ew_icc": 0.09902337383413368,
-      "n_firms": 374.0,
-      "total_mktcap": 19275202894927.0
-    },
-    {
-      "date": "2026-04-14",
-      "sector": "Financial Services",
-      "vw_icc": 0.09069956524332476,
-      "ew_icc": 0.12058029223105962,
-      "n_firms": 514.0,
-      "total_mktcap": 13437086955659.0
-    },
-    {
-      "date": "2026-04-14",
-      "sector": "Communication Services",
-      "vw_icc": 0.07156385139134122,
-      "ew_icc": 0.12772448243991222,
-      "n_firms": 124.0,
-      "total_mktcap": 11051914077901.0
-    },
-    {
-      "date": "2026-04-14",
-      "sector": "Healthcare",
-      "vw_icc": 0.09533521625753626,
-      "ew_icc": 0.10022034066889522,
-      "n_firms": 257.0,
-      "total_mktcap": 7194095972967.0
-    },
-    {
-      "date": "2026-04-14",
-      "sector": "Industrials",
-      "vw_icc": 0.06923083640999937,
-      "ew_icc": 0.09018757243448129,
-      "n_firms": 383.0,
-      "total_mktcap": 7111089272095.0
-    },
-    {
-      "date": "2026-04-14",
-      "sector": "Consumer Cyclical",
-      "vw_icc": 0.0957205168610886,
-      "ew_icc": 0.11782841431846763,
-      "n_firms": 334.0,
-      "total_mktcap": 7090408331179.0
-    },
-    {
-      "date": "2026-04-14",
-      "sector": "Energy",
-      "vw_icc": 0.08010222890381247,
-      "ew_icc": 0.10609594484723008,
-      "n_firms": 186.0,
-      "total_mktcap": 4629732016840.0
-    },
-    {
-      "date": "2026-04-14",
-      "sector": "Consumer Defensive",
-      "vw_icc": 0.07403050892288367,
-      "ew_icc": 0.10870844811041723,
-      "n_firms": 135.0,
-      "total_mktcap": 3165124418750.0
-    },
-    {
-      "date": "2026-04-14",
       "sector": "Basic Materials",
       "vw_icc": 0.08035568856537254,
       "ew_icc": 0.10859508695443827,
-      "n_firms": 166.0,
-      "total_mktcap": 2906519420545.0
+      "n_firms": 166.0
     },
     {
-      "date": "2026-04-14",
-      "sector": "Utilities",
-      "vw_icc": 0.07712521220214219,
-      "ew_icc": 0.08563996364723542,
-      "n_firms": 80.0,
-      "total_mktcap": 1839887421904.0
+      "sector": "Communication Services",
+      "vw_icc": 0.07156385139134122,
+      "ew_icc": 0.12772448243991222,
+      "n_firms": 124.0
     },
     {
-      "date": "2026-04-14",
+      "sector": "Consumer Cyclical",
+      "vw_icc": 0.0957205168610886,
+      "ew_icc": 0.11782841431846763,
+      "n_firms": 334.0
+    },
+    {
+      "sector": "Consumer Defensive",
+      "vw_icc": 0.07403050892288367,
+      "ew_icc": 0.10870844811041723,
+      "n_firms": 135.0
+    },
+    {
+      "sector": "Energy",
+      "vw_icc": 0.08010222890381247,
+      "ew_icc": 0.10609594484723008,
+      "n_firms": 186.0
+    },
+    {
+      "sector": "Financial Services",
+      "vw_icc": 0.09069956524332476,
+      "ew_icc": 0.12058029223105962,
+      "n_firms": 514.0
+    },
+    {
+      "sector": "Healthcare",
+      "vw_icc": 0.09533521625753626,
+      "ew_icc": 0.10022034066889522,
+      "n_firms": 257.0
+    },
+    {
+      "sector": "Industrials",
+      "vw_icc": 0.06923083640999937,
+      "ew_icc": 0.09018757243448129,
+      "n_firms": 383.0
+    },
+    {
       "sector": "Real Estate",
       "vw_icc": 0.05866202303457383,
       "ew_icc": 0.0932682623167315,
-      "n_firms": 164.0,
-      "total_mktcap": 1639949425641.0
+      "n_firms": 164.0
+    },
+    {
+      "sector": "Technology",
+      "vw_icc": 0.0823618161813164,
+      "ew_icc": 0.09902337383413368,
+      "n_firms": 374.0
+    },
+    {
+      "sector": "Utilities",
+      "vw_icc": 0.07712521220214219,
+      "ew_icc": 0.08563996364723542,
+      "n_firms": 80.0
     }
   ],
   "overview_history": [
@@ -802,7 +780,7 @@
     ],
     "rows": [
       {
-        "label": "Industry median ICC",
+        "label": "Industry median",
         "values": [
           0.0749285882278573,
           0.08273670845327648,
