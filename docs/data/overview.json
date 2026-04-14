@@ -1,7 +1,6 @@
 {
   "asof_date": "2026-04-14",
-  "source_file": "data/202604/icc_live_usall_2026_0414.csv",
-  "cards": {
+  "latest_daily": {
     "all_market_vw_icc": 0.08233123928352122,
     "all_market_ew_icc": 0.1064137577264621,
     "all_n_firms": 2719,
@@ -10,47 +9,123 @@
     "sp500_n_firms": 500,
     "value_icc": 0.12131109373932639,
     "growth_icc": 0.08389872467753796,
-    "ivp_bm": 0.03741236906178842
+    "ivp_bm": 0.03741236906178842,
+    "industry_median_icc": 0.08010222890381247,
+    "etf_median_icc": null,
+    "country_median_icc": null
+  },
+  "three_months": {
+    "columns": [
+      "2026-02",
+      "2026-03",
+      "2026-04"
+    ],
+    "rows": [
+      {
+        "label": "All U.S. market",
+        "values": [
+          0.08042145131520971,
+          0.0846043873892946,
+          0.08233123928352122
+        ]
+      },
+      {
+        "label": "S&P 500",
+        "values": [
+          0.07395991999074679,
+          0.07889568917176408,
+          0.07666735898881136
+        ]
+      },
+      {
+        "label": "Value ICC",
+        "values": [
+          0.1208263678209743,
+          0.12256802483293994,
+          0.12131109373932639
+        ]
+      },
+      {
+        "label": "Growth ICC",
+        "values": [
+          0.07824383677333123,
+          0.08705299604395006,
+          0.08389872467753796
+        ]
+      },
+      {
+        "label": "IVP (B/M)",
+        "values": [
+          0.04258253104764308,
+          0.03551502878898988,
+          0.03741236906178842
+        ]
+      },
+      {
+        "label": "Industry median ICC",
+        "values": [
+          0.0749285882278573,
+          0.08273670845327648,
+          0.08010222890381247
+        ]
+      }
+    ]
   },
   "downloads": {
-    "aggregate": [
+    "marketwide": [
       {
-        "label": "All market ICC history (CSV)",
-        "path": "./data/downloads/market_icc_history.csv"
+        "label": "All U.S. market history",
+        "path": "./data/downloads/marketwide_all_history.csv"
       },
       {
-        "label": "S&P 500 / index ICC history (CSV)",
-        "path": "./data/downloads/index_icc_history.csv"
-      },
-      {
-        "label": "Value / Growth / IVP history (CSV)",
-        "path": "./data/downloads/value_icc_bm_history.csv"
-      },
-      {
-        "label": "Industry ICC latest (CSV)",
-        "path": "./data/downloads/industry_icc_latest.csv"
-      },
-      {
-        "label": "ETF ICC latest (CSV)",
-        "path": "./data/downloads/etf_icc_latest.csv"
-      },
-      {
-        "label": "Country ICC latest (CSV)",
-        "path": "./data/downloads/country_icc_latest.csv"
-      },
-      {
-        "label": "Index ICC latest (CSV)",
-        "path": "./data/downloads/index_icc_latest.csv"
+        "label": "S&P 500 history",
+        "path": "./data/downloads/marketwide_sp500_history.csv"
       }
     ],
-    "raw": [
+    "value": [
       {
-        "label": "Year-Month manifest (CSV)",
-        "path": "./data/downloads/year_month_manifest.csv"
+        "label": "Value / Growth / IVP history",
+        "path": "./data/downloads/value_history.csv"
+      }
+    ],
+    "industry": [
+      {
+        "label": "Industry overview history",
+        "path": "./data/downloads/industry_overview_history.csv"
       },
       {
-        "label": "All snapshot files manifest (CSV)",
-        "path": "./data/downloads/all_snapshot_files.csv"
+        "label": "Industry latest table",
+        "path": "./data/downloads/industry_latest.csv"
+      }
+    ],
+    "etf": [
+      {
+        "label": "ETF overview history",
+        "path": "./data/downloads/etf_overview_history.csv"
+      },
+      {
+        "label": "ETF latest table",
+        "path": "./data/downloads/etf_latest.csv"
+      }
+    ],
+    "country": [
+      {
+        "label": "Country overview history",
+        "path": "./data/downloads/country_overview_history.csv"
+      },
+      {
+        "label": "Country latest table",
+        "path": "./data/downloads/country_latest.csv"
+      }
+    ],
+    "indices": [
+      {
+        "label": "Indices history",
+        "path": "./data/downloads/indices_history.csv"
+      },
+      {
+        "label": "Indices latest table",
+        "path": "./data/downloads/indices_latest.csv"
       }
     ]
   }
