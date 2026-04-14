@@ -4,7 +4,8 @@ name: Daily ICC + Build Website + Deploy Pages
 on:
   workflow_dispatch: {}
   schedule:
-    - cron: "30 21 * * 1-5"
+    - cron: "00 21 * * 1-5"
+    - cron: "00 22 * * 1-5"
 
 permissions:
   contents: write
@@ -12,19 +13,40 @@ permissions:
   id-token: write
 
 concurrency:
-  group: live-icc-site
+  group: daily-icc-pages
   cancel-in-progress: false
 
 jobs:
+  gate:
+    runs-on: ubuntu-latest
+    outputs:
+      proceed: ${{ steps.check.outputs.proceed }}
+    steps:
+      - name: Decide whether to run
+        id: check
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            NY_HOUR=$(TZ=America/New_York date +%H)
+            if [ "$NY_HOUR" -eq 17 ]; then
+              echo "proceed=true" >> "$GITHUB_OUTPUT"
+            else
+              echo "proceed=false" >> "$GITHUB_OUTPUT"
+            fi
+          else
+            echo "proceed=true" >> "$GITHUB_OUTPUT"
+          fi
+
   build-and-deploy:
+    needs: gate
+    if: needs.gate.outputs.proceed == 'true'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
@@ -36,13 +58,9 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          if [ -f requirements.txt ]; then
-            pip install -r requirements.txt
-          else
-            pip install pandas numpy yfinance requests lxml html5lib python-dateutil tzdata
-          fi
+          pip install pandas numpy yfinance requests lxml html5lib tzdata python-dateutil
 
-      - name: Decide whether recalculation is needed
+      - name: Decide target trading date and whether recalculation is needed
         id: guard
         shell: bash
         run: |
@@ -55,42 +73,42 @@ jobs:
           data_dir = Path("data")
           now = datetime.now(ZoneInfo("America/New_York"))
 
-          def prev_business_day(d):
-              x = d.date() - timedelta(days=1)
-              while x.weekday() >= 5:
-                  x -= timedelta(days=1)
-              return x
+          def prev_business_day(dt):
+              d = dt.date() - timedelta(days=1)
+              while d.weekday() >= 5:
+                  d -= timedelta(days=1)
+              return d
 
           if now.weekday() >= 5:
               target = prev_business_day(now)
-              need = False
-              reason = "weekend"
+              need_recalc = False
+              reason = "weekend -> no recalculation"
           elif now.hour < 16:
               target = prev_business_day(now)
-              need = False
-              reason = "before market close"
+              need_recalc = False
+              reason = "before market close -> no recalculation"
           else:
               target = now.date()
               yyyymm = target.strftime("%Y%m")
               mmdd = target.strftime("%m%d")
-              patt = str(data_dir / yyyymm / f"icc_live_usall_{target.strftime('%Y')}_{mmdd}*.csv")
-              files = [p for p in glob.glob(patt) if os.path.getsize(p) > 0]
-              need = len(files) == 0
+              pattern = str(data_dir / yyyymm / f"icc_live_usall_{target.strftime('%Y')}_{mmdd}*.csv")
+              files = [p for p in glob.glob(pattern) if os.path.getsize(p) > 0]
+              need_recalc = (len(files) == 0)
               reason = "after market close"
 
           with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as f:
               f.write(f"target_date={target.strftime('%Y-%m-%d')}\n")
-              f.write(f"need_recalc={'true' if need else 'false'}\n")
+              f.write(f"need_recalc={'true' if need_recalc else 'false'}\n")
               f.write(f"reason={reason}\n")
           PY
 
-      - name: Show guard
+      - name: Show guard decision
         run: |
           echo "target_date = ${{ steps.guard.outputs.target_date }}"
           echo "need_recalc = ${{ steps.guard.outputs.need_recalc }}"
           echo "reason = ${{ steps.guard.outputs.reason }}"
 
-      - name: Run base daily ICC
+      - name: Run daily ICC
         if: steps.guard.outputs.need_recalc == 'true'
         run: python run_daily_icc.py
 
@@ -101,39 +119,29 @@ jobs:
       - name: Build docs data
         run: python backend/build_docs_data.py --universe usall
 
-      - name: Generate FILES.md if tool exists
-        run: |
-          if [ -f tools/generate_files_manifest.py ]; then
-            python tools/generate_files_manifest.py
-          else
-            echo "skip FILES.md generation"
-          fi
-
-      - name: Commit data and docs payload
+      - name: Commit generated files
         shell: bash
         env:
           BRANCH_NAME: ${{ github.ref_name }}
         run: |
           set -euo pipefail
+          BRANCH="${BRANCH_NAME}"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A data docs FILES.md config || true
+          git add -A data docs
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
-            git commit -m "Update ICC site payload [skip ci]" || true
-            git pull --rebase --autostash origin "${BRANCH_NAME}" || true
-            git push origin HEAD:"${BRANCH_NAME}" || true
+            git commit -m "Update ICC site data [skip ci]" || true
+            git pull --rebase --autostash origin "${BRANCH}" || true
+            git push origin HEAD:"${BRANCH}" || true
           fi
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
+      - uses: actions/configure-pages@v5
 
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v3
         with:
           path: ./docs
 
-      - name: Deploy to GitHub Pages
-        id: deployment
+      - id: deployment
         uses: actions/deploy-pages@v4
