@@ -1,41 +1,37 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Fama-French style live ICC data library</title>
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body data-page="overview">
-  <div class="page">
-    <header class="hero centered">
-      <h1>Fama-French style live ICC data library</h1>
-      <div id="asof" class="asof"></div>
-      <div id="status" class="status"></div>
-      <nav class="topnav">
-        <a href="./index.html">Overview</a>
-        <a href="./marketwide.html">Marketwide</a>
-        <a href="./value.html">Value Premium</a>
-        <a href="./industry.html">Industry</a>
-        <a href="./etf.html">ETF</a>
-        <a href="./country.html">Country</a>
-        <a href="./indices.html">Indices</a>
-        <a href="./downloads.html">Downloads</a>
-      </nav>
-    </header>
-
-<section class="section">
-  <div class="panel">
-    <div class="panel-title">Overview: latest daily and last three monthly observations</div>
-    <div id="overview-table"></div>
-  </div>
-</section>
-<section class="section">
-  <div class="cards" id="overview-links"></div>
-</section>
-
-  </div>
+  <header class="site-header centered">
+    <h1>Fama-French style live ICC data library</h1>
+    <nav class="topnav">
+      <a href="./index.html">Overview</a>
+      <a href="./marketwide.html">Marketwide</a>
+      <a href="./value.html">Value Premium</a>
+      <a href="./industry.html">Industry</a>
+      <a href="./etf.html">ETF</a>
+      <a href="./country.html">Country</a>
+      <a href="./indices.html">Indices</a>
+      <a href="./downloads.html">Downloads</a>
+    </nav>
+    <div id="asof" class="asof"></div>
+    <div id="status" class="status"></div>
+  </header>
+  <main class="page-wrap">
+    <section class="panel">
+      <div class="panel-title">Overview: latest daily and last three monthly observations</div>
+      <div id="overview-table"></div>
+    </section>
+    <section class="panel compact-links">
+      <div class="panel-title">Category pages</div>
+      <div id="overview-links"></div>
+    </section>
+  </main>
   <script src="./app.js"></script>
 </body>
 </html>

@@ -1,4 +1,3 @@
-
 async function fetchJson(path) {
   const r = await fetch(path, { cache: "no-store" });
   if (!r.ok) throw new Error(`HTTP ${r.status} for ${path}`);
@@ -6,25 +5,21 @@ async function fetchJson(path) {
 }
 
 function byId(id) { return document.getElementById(id); }
-
 function setStatus(msg, isError = false) {
   const el = byId("status");
   if (!el) return;
   el.textContent = msg || "";
   el.className = isError ? "status error" : "status";
 }
-
 function fmtPct(x, digits = 2) {
   if (x === null || x === undefined || Number.isNaN(Number(x))) return "";
   return `${(Number(x) * 100).toFixed(digits)}%`;
 }
-
 function fmtInt(x) {
   if (x === null || x === undefined || Number.isNaN(Number(x))) return "";
   return Number(x).toLocaleString();
 }
-
-function escapeHtml(s) {
+function esc(s) {
   return String(s ?? "")
     .replaceAll("&", "&amp;")
     .replaceAll("<", "&lt;")
@@ -32,7 +27,6 @@ function escapeHtml(s) {
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#39;");
 }
-
 function renderTable(id, rows, columns) {
   const el = byId(id);
   if (!el) return;
@@ -40,75 +34,36 @@ function renderTable(id, rows, columns) {
     el.innerHTML = `<div class="empty">No data</div>`;
     return;
   }
-  const thead = `<thead><tr>${columns.map(c => `<th>${c.label}</th>`).join("")}</tr></thead>`;
-  const tbody = rows.map(r => `<tr>${columns.map(c => `<td>${c.render ? c.render(r[c.key], r) : escapeHtml(r[c.key] ?? "")}</td>`).join("")}</tr>`).join("");
+  const thead = `<thead><tr>${columns.map(c => `<th>${esc(c.label)}</th>`).join("")}</tr></thead>`;
+  const tbody = rows.map(r => `<tr>${columns.map(c => {
+    const raw = r[c.key];
+    const value = c.render ? c.render(raw, r) : esc(raw ?? "");
+    return `<td>${value}</td>`;
+  }).join("")}</tr>`).join("");
   el.innerHTML = `<table>${thead}<tbody>${tbody}</tbody></table>`;
 }
-
-function renderCardsGrid(id, items) {
+function renderLinkGrid(id, items) {
   const el = byId(id);
   if (!el) return;
-  el.innerHTML = items.map(x => `
-    <a class="card linkcard" href="${x.href}">
-      <div class="card-label">${escapeHtml(x.title)}</div>
-      <div class="smallmuted">${escapeHtml(x.text)}</div>
-    </a>
-  `).join("");
+  el.innerHTML = `<div class="link-grid">${items.map(x => `
+    <div class="link-card"><a href="${x.href}">${esc(x.title)}</a></div>
+  `).join("")}</div>`;
 }
-
-function renderDownloadsList(id, items) {
+function renderDownloadCards(id, familyMap) {
   const el = byId(id);
   if (!el) return;
-  if (!items || !items.length) {
+  const entries = Object.entries(familyMap || {});
+  if (!entries.length) {
     el.innerHTML = `<div class="empty">No download files</div>`;
     return;
   }
-  el.innerHTML = `<div class="download-list">
-    ${items.map(x => `<a class="download-link" href="${x.path}" target="_blank" rel="noopener">${escapeHtml(x.label)}</a>`).join("")}
-  </div>`;
+  el.innerHTML = `<div class="download-grid">${entries.map(([family, items]) => `
+    <div class="download-card">
+      <div><strong>${esc(family)}</strong></div>
+      <div class="download-inline">${(items || []).map(x => `<a href="${x.path}" target="_blank" rel="noopener">${esc(x.label)}</a>`).join("")}</div>
+    </div>
+  `).join("")}</div>`;
 }
-
-function parseDateSafe(s) {
-  if (!s) return null;
-  const d = new Date(`${s}T00:00:00`);
-  return Number.isNaN(d.getTime()) ? null : d;
-}
-
-function filterRecentDaily(rows, days = 31) {
-  if (!rows || !rows.length) return [];
-  const dated = rows.map(r => ({ ...r, __d: parseDateSafe(r.date) })).filter(r => r.__d !== null);
-  if (!dated.length) return rows;
-  const maxDate = dated.reduce((a, b) => (a.__d > b.__d ? a : b)).__d;
-  const cutoff = new Date(maxDate);
-  cutoff.setDate(cutoff.getDate() - days);
-  return dated.filter(r => r.__d >= cutoff).sort((a, b) => b.__d - a.__d).map(({ __d, ...rest }) => rest);
-}
-
-async function safeLoad(path, label, warnings) {
-  try {
-    return await fetchJson(path);
-  } catch (err) {
-    console.error(`[${label}]`, err);
-    warnings.push(`${label} failed`);
-    return null;
-  }
-}
-
-function attachTabBehavior() {
-  const btns = Array.from(document.querySelectorAll(".tabbtn"));
-  if (!btns.length) return;
-  btns.forEach(btn => {
-    btn.addEventListener("click", () => {
-      btns.forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-      const tab = btn.dataset.tab;
-      document.querySelectorAll(".rawtab").forEach(x => x.classList.remove("active"));
-      const target = byId(`raw-tab-${tab}`);
-      if (target) target.classList.add("active");
-    });
-  });
-}
-
 function renderRawTree(id, years) {
   const el = byId(id);
   if (!el) return;
@@ -118,22 +73,18 @@ function renderRawTree(id, years) {
   }
   el.innerHTML = years.map(year => `
     <details class="tree-level">
-      <summary>
-        <span>${escapeHtml(year.year)}</span>
-        <a class="download-link smalllink" href="${year.zip_path}" target="_blank" rel="noopener">Download all year</a>
-      </summary>
+      <summary>${esc(year.year)}</summary>
       <div class="tree-body">
+        <div class="download-inline"><a href="${year.download_all_zip}" target="_blank" rel="noopener">Download all ${esc(year.year)} (.zip)</a></div>
         ${year.months.map(month => `
-          <details class="tree-level nested">
-            <summary>
-              <span>${escapeHtml(year.year)}-${escapeHtml(month.month)}</span>
-              <a class="download-link smalllink" href="${month.zip_path}" target="_blank" rel="noopener">Download all month</a>
-            </summary>
+          <details class="tree-level">
+            <summary>${esc(year.year)}-${esc(month.month)}</summary>
             <div class="tree-body">
-              ${month.files.map(r => `
+              <div class="download-inline"><a href="${month.download_all_zip}" target="_blank" rel="noopener">Download all ${esc(month.yyyymm)} (.zip)</a></div>
+              ${month.files.map(f => `
                 <div class="tree-leaf">
-                  <span>${escapeHtml(r.date)} | ${escapeHtml(r.universe)} | ${fmtInt(r.n_items)} items</span>
-                  <a class="download-link smalllink" href="${r.download_path}" target="_blank" rel="noopener">Download day</a>
+                  <span>${esc(f.date)} | ${esc(f.universe)} | ${fmtInt(f.n_items)} items</span>
+                  <a href="${f.download_path}" target="_blank" rel="noopener">Download day</a>
                 </div>
               `).join("")}
             </div>
@@ -143,8 +94,49 @@ function renderRawTree(id, years) {
     </details>
   `).join("");
 }
+function parseDateSafe(s) {
+  if (!s) return null;
+  const d = new Date(`${s}T00:00:00`);
+  return Number.isNaN(d.getTime()) ? null : d;
+}
+function filterRecentDaily(rows, days = 31) {
+  if (!rows || !rows.length) return [];
+  const dated = rows.map(r => ({ ...r, __d: parseDateSafe(r.date) })).filter(r => r.__d !== null);
+  if (!dated.length) return rows;
+  const maxDate = dated.reduce((a, b) => a.__d > b.__d ? a : b).__d;
+  const cutoff = new Date(maxDate);
+  cutoff.setDate(cutoff.getDate() - days);
+  return dated.filter(r => r.__d >= cutoff).sort((a, b) => b.__d - a.__d).map(({ __d, ...rest }) => rest);
+}
+function onlyLastThreeMonthly(rows) {
+  if (!rows || !rows.length) return [];
+  return rows.slice().sort((a, b) => String(b.date).localeCompare(String(a.date))).slice(0, 3);
+}
+function attachTabs() {
+  const btns = Array.from(document.querySelectorAll(".tabbtn"));
+  if (!btns.length) return;
+  btns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      btns.forEach(x => x.classList.remove("active"));
+      btn.classList.add("active");
+      const tab = btn.dataset.tab;
+      document.querySelectorAll(".rawtab").forEach(x => x.classList.remove("active"));
+      const target = byId(`raw-tab-${tab}`);
+      if (target) target.classList.add("active");
+    });
+  });
+}
+async function safeLoad(path, label, warnings) {
+  try {
+    return await fetchJson(path);
+  } catch (err) {
+    console.error(label, err);
+    warnings.push(`${label} failed`);
+    return null;
+  }
+}
 
-async function renderOverview(warnings) {
+async function renderOverviewPage(warnings) {
   const data = await safeLoad("./data/overview.json", "overview.json", warnings);
   if (!data) return;
   if (byId("asof")) byId("asof").textContent = data.asof_date ? `As of ${data.asof_date}` : "";
@@ -158,14 +150,14 @@ async function renderOverview(warnings) {
     { key: "m3_date", label: "Month 3" },
     { key: "m3_value", label: "Value 3", render: x => fmtPct(x) },
   ]);
-  renderCardsGrid("overview-links", [
-    { title: "Marketwide", text: "All U.S. and S&P 500 history and downloads", href: "./marketwide.html" },
-    { title: "Value Premium", text: "Value, Growth, and IVP series", href: "./value.html" },
-    { title: "Industry", text: "Sector-level history and latest cross-section", href: "./industry.html" },
-    { title: "ETF", text: "Online holdings and proxy-based ETF ICC", href: "./etf.html" },
-    { title: "Country", text: "Country ETF proxy ICC", href: "./country.html" },
-    { title: "Indices", text: "Additional index ICC series", href: "./indices.html" },
-    { title: "Downloads", text: "Family-specific and raw snapshot downloads", href: "./downloads.html" },
+  renderLinkGrid("overview-links", [
+    { title: "Marketwide", href: "./marketwide.html" },
+    { title: "Value Premium", href: "./value.html" },
+    { title: "Industry", href: "./industry.html" },
+    { title: "ETF", href: "./etf.html" },
+    { title: "Country", href: "./country.html" },
+    { title: "Indices", href: "./indices.html" },
+    { title: "Downloads", href: "./downloads.html" },
   ]);
 }
 
@@ -173,175 +165,147 @@ async function renderFamilyPage(page, warnings) {
   const data = await safeLoad(`./data/${page}.json`, `${page}.json`, warnings);
   if (!data) return;
   if (byId("asof")) byId("asof").textContent = data.asof_date ? `As of ${data.asof_date}` : "";
-  renderDownloadsList(`${page}-downloads`, data.downloads || []);
 
-  if (page === "marketwide") {
-    renderTable("marketwide-latest", data.latest || [], [
+  const latestCols = {
+    marketwide: [
       { key: "family", label: "Family" },
       { key: "date", label: "Date" },
       { key: "vw_icc", label: "VW ICC", render: x => fmtPct(x) },
       { key: "ew_icc", label: "EW ICC", render: x => fmtPct(x) },
-      { key: "n_items", label: "Items", render: x => fmtInt(x) },
-    ]);
-    renderTable("marketwide-monthly", data.monthly || [], [
-      { key: "family", label: "Family" },
+      { key: "n_items", label: "N Items", render: x => fmtInt(x) },
+    ],
+    value: [
+      { key: "bucket", label: "Bucket" },
       { key: "date", label: "Date" },
       { key: "vw_icc", label: "VW ICC", render: x => fmtPct(x) },
-      { key: "ew_icc", label: "EW ICC", render: x => fmtPct(x) },
-    ]);
-    renderTable("marketwide-daily", filterRecentDaily(data.daily || []), [
-      { key: "family", label: "Family" },
-      { key: "date", label: "Date" },
-      { key: "vw_icc", label: "VW ICC", render: x => fmtPct(x) },
-      { key: "ew_icc", label: "EW ICC", render: x => fmtPct(x) },
-      { key: "n_items", label: "Items", render: x => fmtInt(x) },
-    ]);
-  }
-
-  if (page === "value") {
-    renderTable("value-latest", data.latest || [], [
-      { key: "date", label: "Date" },
-      { key: "value_icc", label: "Value ICC", render: x => fmtPct(x) },
-      { key: "growth_icc", label: "Growth ICC", render: x => fmtPct(x) },
-      { key: "ivp_bm", label: "IVP", render: x => fmtPct(x) },
-    ]);
-    renderTable("value-monthly", data.monthly || [], [
-      { key: "date", label: "Date" },
-      { key: "value_icc", label: "Value ICC", render: x => fmtPct(x) },
-      { key: "growth_icc", label: "Growth ICC", render: x => fmtPct(x) },
-      { key: "ivp_bm", label: "IVP", render: x => fmtPct(x) },
-    ]);
-    renderTable("value-daily", filterRecentDaily(data.daily || []), [
-      { key: "date", label: "Date" },
-      { key: "value_icc", label: "Value ICC", render: x => fmtPct(x) },
-      { key: "growth_icc", label: "Growth ICC", render: x => fmtPct(x) },
-      { key: "ivp_bm", label: "IVP", render: x => fmtPct(x) },
-    ]);
-  }
-
-  if (page === "industry") {
-    renderTable("industry-summary-latest", data.summary_latest || [], [
-      { key: "date", label: "Date" },
-      { key: "vw_icc", label: "Industry-wide ICC", render: x => fmtPct(x) },
-      { key: "n_items", label: "Sectors", render: x => fmtInt(x) },
-    ]);
-    renderTable("industry-summary-monthly", data.summary_monthly || [], [
-      { key: "date", label: "Date" },
-      { key: "vw_icc", label: "Industry-wide ICC", render: x => fmtPct(x) },
-      { key: "n_items", label: "Sectors", render: x => fmtInt(x) },
-    ]);
-    renderTable("industry-latest-table", data.latest_table || [], [
+      { key: "n_items", label: "N Items", render: x => fmtInt(x) },
+    ],
+    industry: [
       { key: "sector", label: "Sector" },
+      { key: "date", label: "Date" },
+      { key: "vw_icc", label: "VW ICC", render: x => fmtPct(x) },
+      { key: "n_items", label: "N Items", render: x => fmtInt(x) },
+    ],
+    etf: [
+      { key: "ticker", label: "Ticker" },
+      { key: "label", label: "Label" },
+      { key: "category", label: "Category" },
+      { key: "vw_icc", label: "ETF ICC", render: x => fmtPct(x) },
+      { key: "source", label: "Source" },
+      { key: "status", label: "Status" },
+    ],
+    country: [
+      { key: "country", label: "Country" },
+      { key: "ticker", label: "Ticker" },
+      { key: "label", label: "Label" },
+      { key: "vw_icc", label: "Country ICC", render: x => fmtPct(x) },
+      { key: "source", label: "Source" },
+      { key: "status", label: "Status" },
+    ],
+    indices: [
+      { key: "universe", label: "Index" },
+      { key: "date", label: "Date" },
       { key: "vw_icc", label: "VW ICC", render: x => fmtPct(x) },
       { key: "ew_icc", label: "EW ICC", render: x => fmtPct(x) },
-      { key: "n_items", label: "Items", render: x => fmtInt(x) },
-    ]);
-  }
-
-  if (page === "etf") {
-    renderTable("etf-summary-latest", data.latest_summary || [], [
+      { key: "n_items", label: "N Items", render: x => fmtInt(x) },
+    ],
+  };
+  const dailyCols = {
+    marketwide: [
       { key: "date", label: "Date" },
-      { key: "etf_icc", label: "ETF ICC", render: x => fmtPct(x) },
-      { key: "n_items", label: "ETFs", render: x => fmtInt(x) },
-    ]);
-    renderTable("etf-summary-monthly", data.last_three_months || [], [
+      { key: "family", label: "Family" },
+      { key: "vw_icc", label: "VW ICC", render: x => fmtPct(x) },
+      { key: "ew_icc", label: "EW ICC", render: x => fmtPct(x) },
+    ],
+    value: [
       { key: "date", label: "Date" },
-      { key: "etf_icc", label: "ETF ICC", render: x => fmtPct(x) },
-      { key: "n_items", label: "ETFs", render: x => fmtInt(x) },
-    ]);
-    renderTable("etf-latest-table", data.latest_table || [], [
+      { key: "value_icc", label: "Value ICC", render: x => fmtPct(x) },
+      { key: "growth_icc", label: "Growth ICC", render: x => fmtPct(x) },
+      { key: "ivp", label: "IVP", render: x => fmtPct(x) },
+    ],
+    industry: [
+      { key: "date", label: "Date" },
+      { key: "summary_icc", label: "Summary ICC", render: x => fmtPct(x) },
+      { key: "n_groups", label: "N Groups", render: x => fmtInt(x) },
+    ],
+    etf: [
+      { key: "date", label: "Date" },
       { key: "ticker", label: "Ticker" },
-      { key: "label", label: "ETF" },
-      { key: "category", label: "Category" },
-      { key: "vw_icc", label: "ICC", render: x => fmtPct(x) },
-      { key: "coverage_weight", label: "Coverage", render: x => fmtPct(x) },
-      { key: "source", label: "Source" },
+      { key: "vw_icc", label: "ETF ICC", render: x => fmtPct(x) },
       { key: "status", label: "Status" },
-    ]);
-  }
-
-  if (page === "country") {
-    renderTable("country-summary-latest", data.latest_summary || [], [
+    ],
+    country: [
       { key: "date", label: "Date" },
-      { key: "country_icc", label: "Country ICC", render: x => fmtPct(x) },
-      { key: "n_items", label: "Countries", render: x => fmtInt(x) },
-    ]);
-    renderTable("country-summary-monthly", data.last_three_months || [], [
-      { key: "date", label: "Date" },
-      { key: "country_icc", label: "Country ICC", render: x => fmtPct(x) },
-      { key: "n_items", label: "Countries", render: x => fmtInt(x) },
-    ]);
-    renderTable("country-latest-table", data.latest_table || [], [
       { key: "country", label: "Country" },
-      { key: "ticker", label: "Proxy ETF" },
-      { key: "vw_icc", label: "ICC", render: x => fmtPct(x) },
-      { key: "coverage_weight", label: "Coverage", render: x => fmtPct(x) },
-      { key: "source", label: "Source" },
+      { key: "vw_icc", label: "Country ICC", render: x => fmtPct(x) },
       { key: "status", label: "Status" },
-    ]);
-  }
+    ],
+    indices: [
+      { key: "date", label: "Date" },
+      { key: "universe", label: "Index" },
+      { key: "vw_icc", label: "VW ICC", render: x => fmtPct(x) },
+    ],
+  };
+  const monthlyCols = {
+    marketwide: [
+      { key: "date", label: "Date" },
+      { key: "family", label: "Family" },
+      { key: "vw_icc", label: "Monthly ICC", render: x => fmtPct(x) },
+    ],
+    value: [
+      { key: "date", label: "Date" },
+      { key: "ivp", label: "Monthly IVP", render: x => fmtPct(x) },
+    ],
+    industry: [
+      { key: "date", label: "Date" },
+      { key: "summary_icc", label: "Monthly Summary", render: x => fmtPct(x) },
+    ],
+    etf: [
+      { key: "date", label: "Date" },
+      { key: "ticker", label: "Ticker" },
+      { key: "vw_icc", label: "Monthly ICC", render: x => fmtPct(x) },
+    ],
+    country: [
+      { key: "date", label: "Date" },
+      { key: "ticker", label: "Ticker" },
+      { key: "vw_icc", label: "Monthly ICC", render: x => fmtPct(x) },
+    ],
+    indices: [
+      { key: "date", label: "Date" },
+      { key: "universe", label: "Index" },
+      { key: "vw_icc", label: "Monthly ICC", render: x => fmtPct(x) },
+    ],
+  };
 
-  if (page === "indices") {
-    renderTable("indices-latest", data.latest || [], [
-      { key: "family", label: "Index" },
-      { key: "date", label: "Date" },
-      { key: "vw_icc", label: "VW ICC", render: x => fmtPct(x) },
-      { key: "n_items", label: "Items", render: x => fmtInt(x) },
-    ]);
-    renderTable("indices-monthly", data.monthly || [], [
-      { key: "family", label: "Index" },
-      { key: "date", label: "Date" },
-      { key: "vw_icc", label: "VW ICC", render: x => fmtPct(x) },
-    ]);
-    renderTable("indices-daily", filterRecentDaily(data.daily || []), [
-      { key: "family", label: "Index" },
-      { key: "date", label: "Date" },
-      { key: "vw_icc", label: "VW ICC", render: x => fmtPct(x) },
-      { key: "n_items", label: "Items", render: x => fmtInt(x) },
-    ]);
-  }
+  renderTable("latest-table", data.latest || [], latestCols[page]);
+  renderTable("daily-table", filterRecentDaily(data.daily || []), dailyCols[page]);
+  renderTable("monthly-table", onlyLastThreeMonthly(data.monthly || []), monthlyCols[page]);
+  renderDownloadCards("family-downloads", { [page]: data.downloads || [] });
 }
 
 async function renderDownloadsPage(warnings) {
-  const catalog = await safeLoad("./data/downloads_catalog.json", "downloads_catalog.json", warnings);
   const overview = await safeLoad("./data/overview.json", "overview.json", warnings);
+  const catalog = await safeLoad("./data/downloads_catalog.json", "downloads_catalog.json", warnings);
   if (overview && byId("asof")) byId("asof").textContent = overview.asof_date ? `As of ${overview.asof_date}` : "";
   if (!catalog) return;
-
-  const sections = byId("downloads-sections");
-  if (sections) {
-    const order = [
-      ["marketwide", "Marketwide"],
-      ["value", "Value Premium"],
-      ["industry", "Industry"],
-      ["etf", "ETF"],
-      ["country", "Country"],
-      ["indices", "Indices"],
-    ];
-    sections.innerHTML = order.map(([key, title]) => `
-      <div class="download-block">
-        <h3>${title}</h3>
-        <div class="download-list">
-          ${(catalog.families?.[key] || []).map(x => `<a class="download-link" href="${x.path}" target="_blank" rel="noopener">${escapeHtml(x.label)}</a>`).join("")}
-        </div>
-      </div>
-    `).join("");
-  }
-
-  renderRawTree("raw-tab-usall", catalog.raw_tabs?.usall || []);
-  renderRawTree("raw-tab-sp500", catalog.raw_tabs?.sp500 || []);
-  renderRawTree("raw-tab-other", catalog.raw_tabs?.other || []);
-  attachTabBehavior();
+  renderDownloadCards("category-downloads", catalog.families || {});
+  attachTabs();
+  const rawTabs = catalog.raw_tabs || {};
+  renderRawTree("raw-tab-usall", rawTabs.usall || []);
+  renderRawTree("raw-tab-sp500", rawTabs.sp500 || []);
+  renderRawTree("raw-tab-other_indices", rawTabs.other_indices || []);
 }
 
-(async function () {
+(async function main() {
+  const page = document.body.dataset.page;
   const warnings = [];
-  const page = document.body.dataset.page || "overview";
-
-  if (page === "overview") await renderOverview(warnings);
-  else if (page === "downloads") await renderDownloadsPage(warnings);
-  else await renderFamilyPage(page, warnings);
-
+  if (page === "overview") {
+    await renderOverviewPage(warnings);
+  } else if (page === "downloads") {
+    await renderDownloadsPage(warnings);
+  } else {
+    await renderFamilyPage(page, warnings);
+  }
   if (warnings.length) setStatus(`Partial load: ${warnings.join(" | ")}`, true);
   else setStatus("");
 })();
