@@ -1,3 +1,4 @@
+
 name: Daily ICC + Build Website + Deploy Pages
 
 on:
@@ -69,7 +70,7 @@ jobs:
           if [ -f requirements.txt ]; then
             pip install -r requirements.txt
           else
-            pip install pandas numpy yfinance requests lxml html5lib python-dateutil tzdata
+            pip install pandas numpy yfinance requests lxml html5lib python-dateutil tzdata openpyxl
           fi
 
       - name: Decide target trading date and whether recalculation is needed
@@ -106,6 +107,7 @@ jobs:
 
           latest_valid_date = None
           latest_valid_file = None
+
           for p in data_dir.glob("*/*.csv"):
               m = snap_re.match(p.name)
               if not m:
@@ -115,9 +117,7 @@ jobs:
                       continue
               except FileNotFoundError:
                   continue
-              year = m.group(1)
-              mmdd = m.group(2)
-              dt = datetime.strptime(f"{year}{mmdd}", "%Y%m%d").date()
+              dt = datetime.strptime(f"{m.group(1)}{m.group(2)}", "%Y%m%d").date()
               if latest_valid_date is None or dt > latest_valid_date:
                   latest_valid_date = dt
                   latest_valid_file = str(p)
@@ -174,7 +174,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git fetch origin "${BRANCH}" || true
           ts=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
-          git add -A data docs FILES.md config || true
+          git add -A data docs config FILES.md || true
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
