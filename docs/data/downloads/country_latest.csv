@@ -1,17 +1,5 @@
-date,country,ticker,label,category,vw_icc,coverage_weight,n_items,n_matched,source,status
-2026-04-15,Japan,EWJ,iShares MSCI Japan ETF,,,0.0,10,0,yfinance_top_holdings,no_matched_holdings
-2026-04-15,Germany,EWG,iShares MSCI Germany ETF,,,0.0,10,0,yfinance_top_holdings,no_matched_holdings
-2026-04-15,France,EWQ,iShares MSCI France ETF,,,0.0,10,0,yfinance_top_holdings,no_matched_holdings
-2026-04-15,United Kingdom,EWU,iShares MSCI United Kingdom ETF,,,0.0,10,0,yfinance_top_holdings,no_matched_holdings
-2026-04-15,Italy,EWI,iShares MSCI Italy ETF,,,0.0,10,0,yfinance_top_holdings,no_matched_holdings
-2026-04-15,Spain,EWP,iShares MSCI Spain ETF,,,0.0,10,0,yfinance_top_holdings,no_matched_holdings
-2026-04-15,Canada,EWC,iShares MSCI Canada ETF,,,0.0,10,0,yfinance_top_holdings,no_matched_holdings
-2026-04-15,Australia,EWA,iShares MSCI Australia ETF,,,0.0,10,0,yfinance_top_holdings,no_matched_holdings
-2026-04-15,Switzerland,EWL,iShares MSCI Switzerland ETF,,,0.0,10,0,yfinance_top_holdings,no_matched_holdings
-2026-04-15,Taiwan,EWT,iShares MSCI Taiwan ETF,,,0.0,10,0,yfinance_top_holdings,no_matched_holdings
-2026-04-15,South Korea,EWY,iShares MSCI South Korea ETF,,,0.0,10,0,yfinance_top_holdings,no_matched_holdings
-2026-04-15,India,INDA,iShares MSCI India ETF,,,0.0,10,0,yfinance_top_holdings,no_matched_holdings
-2026-04-15,China,MCHI,iShares MSCI China ETF,,,0.0,10,0,yfinance_top_holdings,no_matched_holdings
-2026-04-15,Brazil,EWZ,iShares MSCI Brazil ETF,,,0.0,10,0,yfinance_top_holdings,no_matched_holdings
-2026-04-15,Mexico,EWW,iShares MSCI Mexico ETF,,,0.0,10,0,yfinance_top_holdings,no_matched_holdings
-2026-04-15,Singapore,EWS,iShares MSCI Singapore ETF,,,0.0,10,0,yfinance_top_holdings,no_matched_holdings
+date,ticker,label,category,vw_icc,coverage_weight,n_items,n_matched,source,status,country
+2026-04-15,EWJ,iShares MSCI Japan ETF,,0.05027652086475616,,,,official_page_pe_ratio_proxy,ok_page_proxy,Japan
+2026-04-15,EWG,iShares MSCI Germany ETF,,0.0573394495412844,,,,official_page_pe_ratio_proxy,ok_page_proxy,Germany
+2026-04-15,MCHI,iShares MSCI China ETF,,0.07127583749109052,,,,official_page_pe_ratio_proxy,ok_page_proxy,China
+2026-04-15,INDA,iShares MSCI India ETF,,0.04164931278633902,,,,official_page_pe_ratio_proxy,ok_page_proxy,India
