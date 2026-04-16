@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +12,7 @@
     <header class="hero centered">
       <h1>Fama-French style live ICC data library</h1>
       <div id="asof" class="asof"></div>
+      <div id="status" class="status"></div>
       <nav class="topnav">
         <a href="./index.html">Overview</a>
         <a href="./marketwide.html">Marketwide</a>
@@ -21,20 +23,18 @@
         <a href="./indices.html">Indices</a>
         <a href="./downloads.html">Downloads</a>
       </nav>
-      <div id="status" class="status"></div>
     </header>
 
-    <section class="section">
-      <h2>Latest daily and last three monthly observations</h2>
-      <div class="panel">
-        <div id="overview-table"></div>
-      </div>
-    </section>
+<section class="section">
+  <div class="panel">
+    <div class="panel-title">Overview: latest daily and last three monthly observations</div>
+    <div id="overview-table"></div>
+  </div>
+</section>
+<section class="section">
+  <div class="cards" id="overview-links"></div>
+</section>
 
-    <section class="section">
-      <h2>Quick links</h2>
-      <div class="grid-3" id="overview-links"></div>
-    </section>
   </div>
   <script src="./app.js"></script>
 </body>

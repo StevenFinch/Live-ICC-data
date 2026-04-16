@@ -1,3 +1,45 @@
+
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" /><title>Country ICC</title><link rel="stylesheet" href="./styles.css" /></head>
-<body data-page="country"><div class="page"><header class="hero centered compact"><h1>Country ICC</h1><div id="asof" class="asof"></div><nav class="topnav"><a href="./index.html">Overview</a><a href="./marketwide.html">Marketwide</a><a href="./value.html">Value Premium</a><a href="./industry.html">Industry</a><a href="./etf.html">ETF</a><a href="./country.html">Country</a><a href="./indices.html">Indices</a><a href="./downloads.html">Downloads</a></nav><div id="status" class="status"></div></header><section class="section"><h2>Latest daily summary</h2><div class="panel"><div id="country-summary-latest"></div></div></section><section class="section"><h2>Last three monthly summary observations</h2><div class="panel"><div id="country-summary-monthly"></div></div></section><section class="section"><h2>Latest country breakdown</h2><div class="panel"><div id="country-latest"></div></div></section><section class="section"><h2>Downloads</h2><div class="panel"><div id="country-downloads"></div></div></section></div><script src="./app.js"></script></body></html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Fama-French style live ICC data library</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body data-page="country">
+  <div class="page">
+    <header class="hero centered">
+      <h1>Fama-French style live ICC data library</h1>
+      <div id="asof" class="asof"></div>
+      <div id="status" class="status"></div>
+      <nav class="topnav">
+        <a href="./index.html">Overview</a>
+        <a href="./marketwide.html">Marketwide</a>
+        <a href="./value.html">Value Premium</a>
+        <a href="./industry.html">Industry</a>
+        <a href="./etf.html">ETF</a>
+        <a href="./country.html">Country</a>
+        <a href="./indices.html">Indices</a>
+        <a href="./downloads.html">Downloads</a>
+      </nav>
+    </header>
+
+<section class="section">
+  <div class="panel">
+    <div class="panel-title">Country downloads</div>
+    <div id="country-downloads"></div>
+  </div>
+</section>
+
+<section class="section"><div class="grid-2">
+  <div class="panel"><div class="panel-title">Latest summary</div><div id="country-summary-latest"></div></div>
+  <div class="panel"><div class="panel-title">Last three months</div><div id="country-summary-monthly"></div></div>
+</div></section>
+<section class="section"><div class="panel"><div class="panel-title">Latest country table</div><div id="country-latest-table"></div></div></section>
+
+
+  </div>
+  <script src="./app.js"></script>
+</body>
+</html>

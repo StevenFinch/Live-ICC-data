@@ -1,12 +1,11 @@
+
 async function fetchJson(path) {
   const r = await fetch(path, { cache: "no-store" });
   if (!r.ok) throw new Error(`HTTP ${r.status} for ${path}`);
   return await r.json();
 }
 
-function byId(id) {
-  return document.getElementById(id);
-}
+function byId(id) { return document.getElementById(id); }
 
 function setStatus(msg, isError = false) {
   const el = byId("status");
@@ -50,9 +49,9 @@ function renderCardsGrid(id, items) {
   const el = byId(id);
   if (!el) return;
   el.innerHTML = items.map(x => `
-    <a class="cardlink" href="${x.href}">
-      <div class="cardlink-title">${escapeHtml(x.title)}</div>
-      <div class="cardlink-text">${escapeHtml(x.text)}</div>
+    <a class="card linkcard" href="${x.href}">
+      <div class="card-label">${escapeHtml(x.title)}</div>
+      <div class="smallmuted">${escapeHtml(x.text)}</div>
     </a>
   `).join("");
 }
@@ -64,31 +63,15 @@ function renderDownloadsList(id, items) {
     el.innerHTML = `<div class="empty">No download files</div>`;
     return;
   }
-  el.innerHTML = `<div class="download-list">${items.map(x => `
-    <a class="btn-link" href="${x.path}" target="_blank" rel="noopener">${escapeHtml(x.label)}</a>
-  `).join("")}</div>`;
+  el.innerHTML = `<div class="download-list">
+    ${items.map(x => `<a class="download-link" href="${x.path}" target="_blank" rel="noopener">${escapeHtml(x.label)}</a>`).join("")}
+  </div>`;
 }
 
 function parseDateSafe(s) {
   if (!s) return null;
   const d = new Date(`${s}T00:00:00`);
   return Number.isNaN(d.getTime()) ? null : d;
-}
-
-function latestThreeByFamily(rows) {
-  const byFamily = {};
-  for (const r of rows || []) {
-    const fam = String(r.family || "");
-    if (!byFamily[fam]) byFamily[fam] = [];
-    byFamily[fam].push(r);
-  }
-  for (const k of Object.keys(byFamily)) {
-    byFamily[k] = byFamily[k]
-      .slice()
-      .sort((a, b) => String(b.date).localeCompare(String(a.date)))
-      .slice(0, 3);
-  }
-  return byFamily;
 }
 
 function filterRecentDaily(rows, days = 31) {
@@ -100,70 +83,6 @@ function filterRecentDaily(rows, days = 31) {
   cutoff.setDate(cutoff.getDate() - days);
   return dated.filter(r => r.__d >= cutoff).sort((a, b) => b.__d - a.__d).map(({ __d, ...rest }) => rest);
 }
-
-function buildTreeByYearMonth(rows) {
-  const tree = {};
-  for (const r of rows || []) {
-    const ym = String(r.yyyymm || "");
-    const year = ym.slice(0, 4);
-    const month = ym.slice(4, 6);
-    if (!tree[year]) tree[year] = {};
-    if (!tree[year][month]) tree[year][month] = [];
-    tree[year][month].push(r);
-  }
-  return tree;
-}
-
-function renderRawTree(id, rows) {
-  const el = byId(id);
-  if (!el) return;
-  if (!rows || !rows.length) {
-    el.innerHTML = `<div class="empty">No raw snapshot files</div>`;
-    return;
-  }
-  const tree = buildTreeByYearMonth(rows);
-  const years = Object.keys(tree).sort().reverse();
-
-  el.innerHTML = years.map(year => {
-    const months = Object.keys(tree[year]).sort().reverse();
-    const yearFiles = months.flatMap(m => tree[year][m]);
-    return `
-      <details class="tree-level">
-        <summary>
-          <span>${year}</span>
-          <a class="btn-link small" href="#" onclick="downloadGroup(${JSON.stringify(yearFiles).replaceAll('"', '&quot;')}); return false;">Download all</a>
-        </summary>
-        <div class="tree-body">
-          ${months.map(month => {
-            const monthFiles = tree[year][month].slice().sort((a,b)=>String(b.date).localeCompare(String(a.date)));
-            return `
-              <details class="tree-level nested">
-                <summary>
-                  <span>${year}-${month}</span>
-                  <a class="btn-link small" href="#" onclick="downloadGroup(${JSON.stringify(monthFiles).replaceAll('"', '&quot;')}); return false;">Download all</a>
-                </summary>
-                <div class="tree-body">
-                  ${monthFiles.map(r => `
-                    <div class="tree-leaf">
-                      <span>${escapeHtml(r.date)} | ${escapeHtml(r.universe)} | ${fmtInt(r.n_items)} items</span>
-                      <a class="btn-link small" href="${r.download_path}" target="_blank" rel="noopener">Download</a>
-                    </div>
-                  `).join("")}
-                </div>
-              </details>
-            `;
-          }).join("")}
-        </div>
-      </details>
-    `;
-  }).join("");
-}
-
-window.downloadGroup = function(files) {
-  for (const f of files) {
-    window.open(f.download_path, "_blank", "noopener");
-  }
-};
 
 async function safeLoad(path, label, warnings) {
   try {
@@ -190,10 +109,45 @@ function attachTabBehavior() {
   });
 }
 
+function renderRawTree(id, years) {
+  const el = byId(id);
+  if (!el) return;
+  if (!years || !years.length) {
+    el.innerHTML = `<div class="empty">No raw snapshot files</div>`;
+    return;
+  }
+  el.innerHTML = years.map(year => `
+    <details class="tree-level">
+      <summary>
+        <span>${escapeHtml(year.year)}</span>
+        <a class="download-link smalllink" href="${year.zip_path}" target="_blank" rel="noopener">Download all year</a>
+      </summary>
+      <div class="tree-body">
+        ${year.months.map(month => `
+          <details class="tree-level nested">
+            <summary>
+              <span>${escapeHtml(year.year)}-${escapeHtml(month.month)}</span>
+              <a class="download-link smalllink" href="${month.zip_path}" target="_blank" rel="noopener">Download all month</a>
+            </summary>
+            <div class="tree-body">
+              ${month.files.map(r => `
+                <div class="tree-leaf">
+                  <span>${escapeHtml(r.date)} | ${escapeHtml(r.universe)} | ${fmtInt(r.n_items)} items</span>
+                  <a class="download-link smalllink" href="${r.download_path}" target="_blank" rel="noopener">Download day</a>
+                </div>
+              `).join("")}
+            </div>
+          </details>
+        `).join("")}
+      </div>
+    </details>
+  `).join("");
+}
+
 async function renderOverview(warnings) {
   const data = await safeLoad("./data/overview.json", "overview.json", warnings);
   if (!data) return;
-  byId("asof") && (byId("asof").textContent = data.asof_date ? `As of ${data.asof_date}` : "");
+  if (byId("asof")) byId("asof").textContent = data.asof_date ? `As of ${data.asof_date}` : "";
   renderTable("overview-table", data.rows || [], [
     { key: "family", label: "Family" },
     { key: "latest_daily", label: "Latest Daily", render: x => fmtPct(x) },
@@ -208,7 +162,7 @@ async function renderOverview(warnings) {
     { title: "Marketwide", text: "All U.S. and S&P 500 history and downloads", href: "./marketwide.html" },
     { title: "Value Premium", text: "Value, Growth, and IVP series", href: "./value.html" },
     { title: "Industry", text: "Sector-level history and latest cross-section", href: "./industry.html" },
-    { title: "ETF", text: "Online holdings-based ETF ICC", href: "./etf.html" },
+    { title: "ETF", text: "Online holdings and proxy-based ETF ICC", href: "./etf.html" },
     { title: "Country", text: "Country ETF proxy ICC", href: "./country.html" },
     { title: "Indices", text: "Additional index ICC series", href: "./indices.html" },
     { title: "Downloads", text: "Family-specific and raw snapshot downloads", href: "./downloads.html" },
@@ -217,9 +171,9 @@ async function renderOverview(warnings) {
 
 async function renderFamilyPage(page, warnings) {
   const data = await safeLoad(`./data/${page}.json`, `${page}.json`, warnings);
-  const catalog = await safeLoad("./data/downloads_catalog.json", "downloads_catalog.json", warnings);
   if (!data) return;
-  byId("asof") && (byId("asof").textContent = data.asof_date ? `As of ${data.asof_date}` : "");
+  if (byId("asof")) byId("asof").textContent = data.asof_date ? `As of ${data.asof_date}` : "";
+  renderDownloadsList(`${page}-downloads`, data.downloads || []);
 
   if (page === "marketwide") {
     renderTable("marketwide-latest", data.latest || [], [
@@ -276,7 +230,7 @@ async function renderFamilyPage(page, warnings) {
       { key: "vw_icc", label: "Industry-wide ICC", render: x => fmtPct(x) },
       { key: "n_items", label: "Sectors", render: x => fmtInt(x) },
     ]);
-    renderTable("industry-latest", data.latest || [], [
+    renderTable("industry-latest-table", data.latest_table || [], [
       { key: "sector", label: "Sector" },
       { key: "vw_icc", label: "VW ICC", render: x => fmtPct(x) },
       { key: "ew_icc", label: "EW ICC", render: x => fmtPct(x) },
@@ -285,17 +239,17 @@ async function renderFamilyPage(page, warnings) {
   }
 
   if (page === "etf") {
-    renderTable("etf-summary-latest", data.summary_latest || [], [
+    renderTable("etf-summary-latest", data.latest_summary || [], [
       { key: "date", label: "Date" },
-      { key: "vw_icc", label: "ETF ICC", render: x => fmtPct(x) },
+      { key: "etf_icc", label: "ETF ICC", render: x => fmtPct(x) },
       { key: "n_items", label: "ETFs", render: x => fmtInt(x) },
     ]);
-    renderTable("etf-summary-monthly", data.summary_monthly || [], [
+    renderTable("etf-summary-monthly", data.last_three_months || [], [
       { key: "date", label: "Date" },
-      { key: "vw_icc", label: "ETF ICC", render: x => fmtPct(x) },
+      { key: "etf_icc", label: "ETF ICC", render: x => fmtPct(x) },
       { key: "n_items", label: "ETFs", render: x => fmtInt(x) },
     ]);
-    renderTable("etf-latest", data.latest || [], [
+    renderTable("etf-latest-table", data.latest_table || [], [
       { key: "ticker", label: "Ticker" },
       { key: "label", label: "ETF" },
       { key: "category", label: "Category" },
@@ -307,17 +261,17 @@ async function renderFamilyPage(page, warnings) {
   }
 
   if (page === "country") {
-    renderTable("country-summary-latest", data.summary_latest || [], [
+    renderTable("country-summary-latest", data.latest_summary || [], [
       { key: "date", label: "Date" },
-      { key: "vw_icc", label: "Country ICC", render: x => fmtPct(x) },
+      { key: "country_icc", label: "Country ICC", render: x => fmtPct(x) },
       { key: "n_items", label: "Countries", render: x => fmtInt(x) },
     ]);
-    renderTable("country-summary-monthly", data.summary_monthly || [], [
+    renderTable("country-summary-monthly", data.last_three_months || [], [
       { key: "date", label: "Date" },
-      { key: "vw_icc", label: "Country ICC", render: x => fmtPct(x) },
+      { key: "country_icc", label: "Country ICC", render: x => fmtPct(x) },
       { key: "n_items", label: "Countries", render: x => fmtInt(x) },
     ]);
-    renderTable("country-latest", data.latest || [], [
+    renderTable("country-latest-table", data.latest_table || [], [
       { key: "country", label: "Country" },
       { key: "ticker", label: "Proxy ETF" },
       { key: "vw_icc", label: "ICC", render: x => fmtPct(x) },
@@ -346,20 +300,14 @@ async function renderFamilyPage(page, warnings) {
       { key: "n_items", label: "Items", render: x => fmtInt(x) },
     ]);
   }
-
-  if (catalog) {
-    const key = page === "value" ? "value" : page;
-    renderDownloadsList(`${page}-downloads`, catalog.families?.[key] || []);
-  }
 }
 
 async function renderDownloadsPage(warnings) {
   const catalog = await safeLoad("./data/downloads_catalog.json", "downloads_catalog.json", warnings);
   const overview = await safeLoad("./data/overview.json", "overview.json", warnings);
-  if (overview) {
-    byId("asof") && (byId("asof").textContent = overview.asof_date ? `As of ${overview.asof_date}` : "");
-  }
+  if (overview && byId("asof")) byId("asof").textContent = overview.asof_date ? `As of ${overview.asof_date}` : "";
   if (!catalog) return;
+
   const sections = byId("downloads-sections");
   if (sections) {
     const order = [
@@ -371,34 +319,29 @@ async function renderDownloadsPage(warnings) {
       ["indices", "Indices"],
     ];
     sections.innerHTML = order.map(([key, title]) => `
-      <section class="section family-block">
+      <div class="download-block">
         <h3>${title}</h3>
-        <div class="panel"><div id="dl-${key}"></div></div>
-      </section>
+        <div class="download-list">
+          ${(catalog.families?.[key] || []).map(x => `<a class="download-link" href="${x.path}" target="_blank" rel="noopener">${escapeHtml(x.label)}</a>`).join("")}
+        </div>
+      </div>
     `).join("");
-    for (const [key] of order) {
-      renderDownloadsList(`dl-${key}`, catalog.families?.[key] || []);
-    }
   }
+
   renderRawTree("raw-tab-usall", catalog.raw_tabs?.usall || []);
   renderRawTree("raw-tab-sp500", catalog.raw_tabs?.sp500 || []);
-  renderRawTree("raw-tab-other_indices", catalog.raw_tabs?.other_indices || []);
+  renderRawTree("raw-tab-other", catalog.raw_tabs?.other || []);
   attachTabBehavior();
 }
 
-(async function main() {
+(async function () {
   const warnings = [];
   const page = document.body.dataset.page || "overview";
-  if (page === "overview") {
-    await renderOverview(warnings);
-  } else if (page === "downloads") {
-    await renderDownloadsPage(warnings);
-  } else {
-    await renderFamilyPage(page, warnings);
-  }
-  if (warnings.length) {
-    setStatus(`Partial load: ${warnings.join(" | ")}`, true);
-  } else {
-    setStatus("");
-  }
+
+  if (page === "overview") await renderOverview(warnings);
+  else if (page === "downloads") await renderDownloadsPage(warnings);
+  else await renderFamilyPage(page, warnings);
+
+  if (warnings.length) setStatus(`Partial load: ${warnings.join(" | ")}`, true);
+  else setStatus("");
 })();

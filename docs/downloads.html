@@ -1,3 +1,51 @@
+
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" /><title>Downloads</title><link rel="stylesheet" href="./styles.css" /></head>
-<body data-page="downloads"><div class="page"><header class="hero centered compact"><h1>Downloads</h1><div id="asof" class="asof"></div><nav class="topnav"><a href="./index.html">Overview</a><a href="./marketwide.html">Marketwide</a><a href="./value.html">Value Premium</a><a href="./industry.html">Industry</a><a href="./etf.html">ETF</a><a href="./country.html">Country</a><a href="./indices.html">Indices</a><a href="./downloads.html">Downloads</a></nav><div id="status" class="status"></div></header><section class="section"><h2>Category downloads</h2><div id="downloads-sections"></div></section><section class="section"><h2>Raw snapshots</h2><div class="tabbar"><button class="tabbtn active" data-tab="usall">usall</button><button class="tabbtn" data-tab="sp500">sp500</button><button class="tabbtn" data-tab="other_indices">other indices</button></div><div id="raw-tab-usall" class="rawtab active"></div><div id="raw-tab-sp500" class="rawtab"></div><div id="raw-tab-other_indices" class="rawtab"></div></section></div><script src="./app.js"></script></body></html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Fama-French style live ICC data library</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body data-page="downloads">
+  <div class="page">
+    <header class="hero centered">
+      <h1>Fama-French style live ICC data library</h1>
+      <div id="asof" class="asof"></div>
+      <div id="status" class="status"></div>
+      <nav class="topnav">
+        <a href="./index.html">Overview</a>
+        <a href="./marketwide.html">Marketwide</a>
+        <a href="./value.html">Value Premium</a>
+        <a href="./industry.html">Industry</a>
+        <a href="./etf.html">ETF</a>
+        <a href="./country.html">Country</a>
+        <a href="./indices.html">Indices</a>
+        <a href="./downloads.html">Downloads</a>
+      </nav>
+    </header>
+
+<section class="section">
+  <div class="grid-2">
+    <div class="panel">
+      <div class="panel-title">Category downloads</div>
+      <div id="downloads-sections"></div>
+    </div>
+    <div class="panel">
+      <div class="panel-title">Raw snapshots</div>
+      <div class="tabbar">
+        <button class="tabbtn active" data-tab="usall">usall</button>
+        <button class="tabbtn" data-tab="sp500">sp500</button>
+        <button class="tabbtn" data-tab="other">other indices</button>
+      </div>
+      <div id="raw-tab-usall" class="rawtab active"></div>
+      <div id="raw-tab-sp500" class="rawtab"></div>
+      <div id="raw-tab-other" class="rawtab"></div>
+    </div>
+  </div>
+</section>
+
+  </div>
+  <script src="./app.js"></script>
+</body>
+</html>
