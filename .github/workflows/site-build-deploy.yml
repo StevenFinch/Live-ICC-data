@@ -3,7 +3,6 @@ name: Daily ICC + Build Website + Deploy Pages
 on:
   workflow_dispatch: {}
   schedule:
-    # Run at two UTC times to cover DST changes while only executing during 5pm ET.
     - cron: "00 21 * * 1-5"
     - cron: "00 22 * * 1-5"
 
@@ -29,8 +28,6 @@ jobs:
           if [ "${{ github.event_name }}" = "schedule" ]; then
             NY_HOUR=$(TZ=America/New_York date +%H)
             NY_MIN=$(TZ=America/New_York date +%M)
-
-            # Only scheduled jobs during 5pm ET should proceed.
             if [ "$NY_HOUR" -eq 17 ]; then
               echo "proceed=true" >> "$GITHUB_OUTPUT"
               echo "Proceeding: NY time is ${NY_HOUR}:${NY_MIN}."
@@ -39,7 +36,6 @@ jobs:
               echo "Skipping: NY time is ${NY_HOUR}:${NY_MIN}."
             fi
           else
-            # Manual dispatch should always proceed.
             echo "proceed=true" >> "$GITHUB_OUTPUT"
             echo "Manual dispatch -> proceed."
           fi
@@ -90,7 +86,6 @@ jobs:
           repo = Path(".").resolve()
           data_dir = repo / "data"
           now = datetime.now(ZoneInfo("America/New_York"))
-
           snap_re = re.compile(r"^icc_live_usall_(\d{4})_(\d{4})(?:_r\d+)?\.csv$")
 
           def previous_business_day(d):
@@ -99,10 +94,6 @@ jobs:
                   d -= timedelta(days=1)
               return d
 
-          # Define the target trading date.
-          # - Weekend: use previous business day.
-          # - Weekday before 4pm ET: use previous business day.
-          # - Weekday after 4pm ET: use today.
           if now.weekday() >= 5:
               target_date = previous_business_day(now.date())
               timing_reason = "weekend"
@@ -115,8 +106,6 @@ jobs:
 
           latest_valid_date = None
           latest_valid_file = None
-
-          # Scan all historical usall snapshots and find the latest valid non-empty file.
           for p in data_dir.glob("*/*.csv"):
               m = snap_re.match(p.name)
               if not m:
@@ -133,15 +122,7 @@ jobs:
                   latest_valid_date = dt
                   latest_valid_file = str(p)
 
-          # Recalculate only when the latest valid usall date is older than the target date.
           need_recalc = (latest_valid_date is None) or (latest_valid_date < target_date)
-
-          print(f"now_et={now.isoformat()}")
-          print(f"timing_reason={timing_reason}")
-          print(f"target_date={target_date.isoformat()}")
-          print(f"latest_valid_usall_date={latest_valid_date.isoformat() if latest_valid_date else ''}")
-          print(f"latest_valid_usall_file={latest_valid_file or ''}")
-          print(f"need_recalc={str(need_recalc).lower()}")
 
           out = os.environ["GITHUB_OUTPUT"]
           with open(out, "a", encoding="utf-8") as f:
@@ -189,17 +170,11 @@ jobs:
         run: |
           set -euo pipefail
           BRANCH="${BRANCH_NAME}"
-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
           git fetch origin "${BRANCH}" || true
-
           ts=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
-
-          # Add both raw data and docs outputs.
-          git add -A data docs FILES.md || true
-
+          git add -A data docs FILES.md config || true
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
