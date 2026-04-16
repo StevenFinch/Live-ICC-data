@@ -1,798 +1,1026 @@
 {
   "asof_date": "2026-04-15",
-  "latest": [
+  "latest_summary": {
+    "date": "2026-04-15",
+    "industry_icc_eq_sector": 0.07944137202452439,
+    "industry_icc_cap_sector": 0.08169257808825055,
+    "n_sectors": 11,
+    "source_file": "data/202604/icc_live_usall_2026_0415_r1.csv"
+  },
+  "latest_table": [
     {
-      "sector": "Basic Materials",
-      "vw_icc": 0.0810829259016994,
-      "ew_icc": 0.10982358974848422,
-      "n_firms": 166.0
-    },
-    {
-      "sector": "Communication Services",
-      "vw_icc": 0.068971192307244,
-      "ew_icc": 0.12579361946736836,
-      "n_firms": 124.0
-    },
-    {
-      "sector": "Consumer Cyclical",
-      "vw_icc": 0.09473757812077588,
-      "ew_icc": 0.11749644482987996,
-      "n_firms": 334.0
-    },
-    {
-      "sector": "Consumer Defensive",
-      "vw_icc": 0.07453143017200735,
-      "ew_icc": 0.10853370051568678,
-      "n_firms": 135.0
-    },
-    {
-      "sector": "Energy",
-      "vw_icc": 0.08189362446415702,
-      "ew_icc": 0.10895902103232877,
-      "n_firms": 186.0
+      "sector": "Technology",
+      "vw_icc": 0.08110708971210549,
+      "ew_icc": 0.09735571653718333,
+      "n_firms": 375.0,
+      "total_mktcap": 19862271317490.0,
+      "date": "2026-04-15"
     },
     {
       "sector": "Financial Services",
       "vw_icc": 0.09048234959535006,
       "ew_icc": 0.11954409932308509,
-      "n_firms": 515.0
+      "n_firms": 515.0,
+      "total_mktcap": 13576345220243.0,
+      "date": "2026-04-15"
+    },
+    {
+      "sector": "Communication Services",
+      "vw_icc": 0.068971192307244,
+      "ew_icc": 0.12579361946736836,
+      "n_firms": 124.0,
+      "total_mktcap": 11554911302188.0,
+      "date": "2026-04-15"
+    },
+    {
+      "sector": "Consumer Cyclical",
+      "vw_icc": 0.09473757812077588,
+      "ew_icc": 0.11749644482987996,
+      "n_firms": 334.0,
+      "total_mktcap": 7251958289219.0,
+      "date": "2026-04-15"
     },
     {
       "sector": "Healthcare",
       "vw_icc": 0.09535799182538172,
       "ew_icc": 0.09893465188199205,
-      "n_firms": 256.0
+      "n_firms": 256.0,
+      "total_mktcap": 7175206043438.0,
+      "date": "2026-04-15"
     },
     {
       "sector": "Industrials",
       "vw_icc": 0.06982600993979975,
       "ew_icc": 0.09065118477383018,
-      "n_firms": 383.0
+      "n_firms": 383.0,
+      "total_mktcap": 7052603092780.0,
+      "date": "2026-04-15"
     },
     {
-      "sector": "Real Estate",
-      "vw_icc": 0.05848641035208302,
-      "ew_icc": 0.0931128539073337,
-      "n_firms": 164.0
+      "sector": "Energy",
+      "vw_icc": 0.08189362446415702,
+      "ew_icc": 0.10895902103232877,
+      "n_firms": 186.0,
+      "total_mktcap": 4500533287532.0,
+      "date": "2026-04-15"
     },
     {
-      "sector": "Technology",
-      "vw_icc": 0.08110708971210549,
-      "ew_icc": 0.09735571653718333,
-      "n_firms": 375.0
+      "sector": "Consumer Defensive",
+      "vw_icc": 0.07453143017200735,
+      "ew_icc": 0.10853370051568678,
+      "n_firms": 135.0,
+      "total_mktcap": 3137502210717.0,
+      "date": "2026-04-15"
+    },
+    {
+      "sector": "Basic Materials",
+      "vw_icc": 0.0810829259016994,
+      "ew_icc": 0.10982358974848422,
+      "n_firms": 166.0,
+      "total_mktcap": 2872997344419.0,
+      "date": "2026-04-15"
     },
     {
       "sector": "Utilities",
       "vw_icc": 0.07737848987916464,
       "ew_icc": 0.0855469388748178,
-      "n_firms": 80.0
+      "n_firms": 80.0,
+      "total_mktcap": 1831430135216.0,
+      "date": "2026-04-15"
+    },
+    {
+      "sector": "Real Estate",
+      "vw_icc": 0.05848641035208302,
+      "ew_icc": 0.0931128539073337,
+      "n_firms": 164.0,
+      "total_mktcap": 1657203285547.0,
+      "date": "2026-04-15"
     }
   ],
-  "overview_history": [
+  "daily_history": [
     {
       "date": "2025-10-28",
-      "median_icc": 0.0821765362049947,
-      "mean_icc": 0.07718233986975094,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07718233986975094,
+      "industry_icc_cap_sector": 0.07269220298005272,
+      "n_sectors": 11,
+      "source_file": "data/202510/icc_live_usall_2025_1028.csv"
     },
     {
       "date": "2025-10-29",
-      "median_icc": 0.08273082761740803,
-      "mean_icc": 0.07747076032843946,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07747076032843946,
+      "industry_icc_cap_sector": 0.07302743673334107,
+      "n_sectors": 11,
+      "source_file": "data/202510/icc_live_usall_2025_1029.csv"
     },
     {
       "date": "2025-10-30",
-      "median_icc": 0.0825975970049667,
-      "mean_icc": 0.0781446868488124,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.0781446868488124,
+      "industry_icc_cap_sector": 0.07394983922839228,
+      "n_sectors": 11,
+      "source_file": "data/202510/icc_live_usall_2025_1030.csv"
     },
     {
       "date": "2025-11-01",
-      "median_icc": 0.0820009186993626,
-      "mean_icc": 0.0779473501890711,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.0779473501890711,
+      "industry_icc_cap_sector": 0.07386094267841388,
+      "n_sectors": 11,
+      "source_file": "data/202510/icc_live_usall_2025_1031.csv"
     },
     {
       "date": "2025-11-03",
-      "median_icc": 0.0803741074756109,
-      "mean_icc": 0.07846323662948468,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07846323662948468,
+      "industry_icc_cap_sector": 0.07419423560734013,
+      "n_sectors": 11,
+      "source_file": "data/202511/icc_live_usall_2025_1103.csv"
     },
     {
       "date": "2025-11-04",
-      "median_icc": 0.08123560620324367,
-      "mean_icc": 0.07845742349428687,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07845742349428687,
+      "industry_icc_cap_sector": 0.07472335657645746,
+      "n_sectors": 11,
+      "source_file": "data/202511/icc_live_usall_2025_1104.csv"
     },
     {
       "date": "2025-11-05",
-      "median_icc": 0.08066274079469885,
-      "mean_icc": 0.07816014335613068,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07816014335613068,
+      "industry_icc_cap_sector": 0.07442443598777054,
+      "n_sectors": 11,
+      "source_file": "data/202511/icc_live_usall_2025_1105.csv"
     },
     {
       "date": "2025-11-06",
-      "median_icc": 0.08177010395952387,
-      "mean_icc": 0.07853645570527021,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07853645570527021,
+      "industry_icc_cap_sector": 0.07504173562761138,
+      "n_sectors": 11,
+      "source_file": "data/202511/icc_live_usall_2025_1106.csv"
     },
     {
       "date": "2025-11-07",
-      "median_icc": 0.08035511768102527,
-      "mean_icc": 0.07810494755182756,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07810494755182756,
+      "industry_icc_cap_sector": 0.07503198130705943,
+      "n_sectors": 11,
+      "source_file": "data/202511/icc_live_usall_2025_1107.csv"
     },
     {
       "date": "2025-11-10",
-      "median_icc": 0.07977621116043568,
-      "mean_icc": 0.07750903849483147,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07750903849483147,
+      "industry_icc_cap_sector": 0.07423708989404246,
+      "n_sectors": 11,
+      "source_file": "data/202511/icc_live_usall_2025_1110.csv"
     },
     {
       "date": "2025-11-11",
-      "median_icc": 0.07914452603577402,
-      "mean_icc": 0.07712968514030133,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07712968514030133,
+      "industry_icc_cap_sector": 0.0744105433606645,
+      "n_sectors": 11,
+      "source_file": "data/202511/icc_live_usall_2025_1111.csv"
     },
     {
       "date": "2025-11-12",
-      "median_icc": 0.07955574088398634,
-      "mean_icc": 0.07735222381131684,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07735222381131684,
+      "industry_icc_cap_sector": 0.0744370524368499,
+      "n_sectors": 11,
+      "source_file": "data/202511/icc_live_usall_2025_1112.csv"
     },
     {
       "date": "2025-11-13",
-      "median_icc": 0.0796840064624349,
-      "mean_icc": 0.0780334295841904,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.0780334295841904,
+      "industry_icc_cap_sector": 0.075372998194512,
+      "n_sectors": 11,
+      "source_file": "data/202511/icc_live_usall_2025_1113.csv"
     },
     {
       "date": "2025-11-14",
-      "median_icc": 0.08013126434222535,
-      "mean_icc": 0.0782129122969894,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.0782129122969894,
+      "industry_icc_cap_sector": 0.07559297022772743,
+      "n_sectors": 11,
+      "source_file": "data/202511/icc_live_usall_2025_1114.csv"
     },
     {
       "date": "2025-11-17",
-      "median_icc": 0.07917928558780425,
-      "mean_icc": 0.07827954149246254,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07827954149246254,
+      "industry_icc_cap_sector": 0.07601016345514966,
+      "n_sectors": 11,
+      "source_file": "data/202511/icc_live_usall_2025_1117.csv"
     },
     {
       "date": "2025-11-18",
-      "median_icc": 0.07994789291574618,
-      "mean_icc": 0.07826823474079897,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07826823474079897,
+      "industry_icc_cap_sector": 0.07629009793588966,
+      "n_sectors": 11,
+      "source_file": "data/202511/icc_live_usall_2025_1118.csv"
     },
     {
       "date": "2025-11-19",
-      "median_icc": 0.08008354857379378,
-      "mean_icc": 0.07822893168600575,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07822893168600575,
+      "industry_icc_cap_sector": 0.07598694959832113,
+      "n_sectors": 11,
+      "source_file": "data/202511/icc_live_usall_2025_1119.csv"
     },
     {
       "date": "2025-11-20",
-      "median_icc": 0.08046940389455824,
-      "mean_icc": 0.07899056954476939,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07899056954476939,
+      "industry_icc_cap_sector": 0.07759229217481596,
+      "n_sectors": 11,
+      "source_file": "data/202511/icc_live_usall_2025_1120.csv"
     },
     {
       "date": "2025-11-25",
-      "median_icc": 0.0790686387146853,
-      "mean_icc": 0.07804779160542895,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07804779160542895,
+      "industry_icc_cap_sector": 0.07632207649022295,
+      "n_sectors": 11,
+      "source_file": "data/202511/icc_live_usall_2025_1124.csv"
     },
     {
       "date": "2025-11-26",
-      "median_icc": 0.07800015635436013,
-      "mean_icc": 0.0774414593388371,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.0774414593388371,
+      "industry_icc_cap_sector": 0.07569227748804115,
+      "n_sectors": 11,
+      "source_file": "data/202511/icc_live_usall_2025_1126.csv"
     },
     {
       "date": "2025-11-27",
-      "median_icc": 0.07800975751295569,
-      "mean_icc": 0.07742517836414747,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07742517836414747,
+      "industry_icc_cap_sector": 0.07566413212147548,
+      "n_sectors": 11,
+      "source_file": "data/202511/icc_live_usall_2025_1127.csv"
     },
     {
       "date": "2025-11-28",
-      "median_icc": 0.07826227190362725,
-      "mean_icc": 0.07712770241303778,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07712770241303778,
+      "industry_icc_cap_sector": 0.07538725763833765,
+      "n_sectors": 11,
+      "source_file": "data/202511/icc_live_usall_2025_1128.csv"
     },
     {
       "date": "2025-12-01",
-      "median_icc": 0.07906504755645424,
-      "mean_icc": 0.07745823286563135,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07745823286563135,
+      "industry_icc_cap_sector": 0.07566470235029775,
+      "n_sectors": 11,
+      "source_file": "data/202512/icc_live_usall_2025_1201.csv"
     },
     {
       "date": "2025-12-02",
-      "median_icc": 0.07921862780728613,
-      "mean_icc": 0.0776280440084956,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.0776280440084956,
+      "industry_icc_cap_sector": 0.07558593188903338,
+      "n_sectors": 11,
+      "source_file": "data/202512/icc_live_usall_2025_1202.csv"
     },
     {
       "date": "2025-12-03",
-      "median_icc": 0.07872102881160807,
-      "mean_icc": 0.07717121604337096,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07717121604337096,
+      "industry_icc_cap_sector": 0.07529602142206428,
+      "n_sectors": 11,
+      "source_file": "data/202512/icc_live_usall_2025_1203.csv"
     },
     {
       "date": "2025-12-04",
-      "median_icc": 0.07903028947856072,
-      "mean_icc": 0.0772118840577313,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.0772118840577313,
+      "industry_icc_cap_sector": 0.07531717493742249,
+      "n_sectors": 11,
+      "source_file": "data/202512/icc_live_usall_2025_1204.csv"
     },
     {
       "date": "2025-12-05",
-      "median_icc": 0.07918992046939134,
-      "mean_icc": 0.07755989683542847,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07755989683542847,
+      "industry_icc_cap_sector": 0.07531497283906224,
+      "n_sectors": 11,
+      "source_file": "data/202512/icc_live_usall_2025_1205.csv"
     },
     {
       "date": "2025-12-08",
-      "median_icc": 0.0797457097554928,
-      "mean_icc": 0.07797050881336488,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07797050881336488,
+      "industry_icc_cap_sector": 0.07562662155628616,
+      "n_sectors": 11,
+      "source_file": "data/202512/icc_live_usall_2025_1208.csv"
     },
     {
       "date": "2025-12-09",
-      "median_icc": 0.08006991125245502,
-      "mean_icc": 0.07798608854636038,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07798608854636038,
+      "industry_icc_cap_sector": 0.07566309503296473,
+      "n_sectors": 11,
+      "source_file": "data/202512/icc_live_usall_2025_1209.csv"
     },
     {
       "date": "2025-12-10",
-      "median_icc": 0.07897749792815328,
-      "mean_icc": 0.07921375839208739,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07921375839208739,
+      "industry_icc_cap_sector": 0.07602416479468958,
+      "n_sectors": 11,
+      "source_file": "data/202512/icc_live_usall_2025_1210.csv"
     },
     {
       "date": "2025-12-11",
-      "median_icc": 0.07871792974259384,
-      "mean_icc": 0.07888689584904991,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07888689584904991,
+      "industry_icc_cap_sector": 0.07589751669511292,
+      "n_sectors": 11,
+      "source_file": "data/202512/icc_live_usall_2025_1211.csv"
     },
     {
       "date": "2025-12-12",
-      "median_icc": 0.07859902272760828,
-      "mean_icc": 0.07922567713006108,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07922567713006108,
+      "industry_icc_cap_sector": 0.07658441284246834,
+      "n_sectors": 11,
+      "source_file": "data/202512/icc_live_usall_2025_1212.csv"
     },
     {
       "date": "2025-12-15",
-      "median_icc": 0.07800181117054046,
-      "mean_icc": 0.07922047888457423,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07922047888457423,
+      "industry_icc_cap_sector": 0.07668797776949858,
+      "n_sectors": 11,
+      "source_file": "data/202512/icc_live_usall_2025_1215.csv"
     },
     {
       "date": "2025-12-16",
-      "median_icc": 0.07753886796272573,
-      "mean_icc": 0.07968718668808271,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07968718668808271,
+      "industry_icc_cap_sector": 0.07686811226910872,
+      "n_sectors": 11,
+      "source_file": "data/202512/icc_live_usall_2025_1216.csv"
     },
     {
       "date": "2025-12-17",
-      "median_icc": 0.0781838712815881,
-      "mean_icc": 0.07994394592480422,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07994394592480422,
+      "industry_icc_cap_sector": 0.0775227343617582,
+      "n_sectors": 11,
+      "source_file": "data/202512/icc_live_usall_2025_1217.csv"
     },
     {
       "date": "2025-12-18",
-      "median_icc": 0.07735485620544838,
-      "mean_icc": 0.0798948938484372,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.0798948938484372,
+      "industry_icc_cap_sector": 0.0771532143200065,
+      "n_sectors": 11,
+      "source_file": "data/202512/icc_live_usall_2025_1218.csv"
     },
     {
       "date": "2025-12-19",
-      "median_icc": 0.07766678093320513,
-      "mean_icc": 0.07972667003742827,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07972667003742827,
+      "industry_icc_cap_sector": 0.07693043281718724,
+      "n_sectors": 11,
+      "source_file": "data/202512/icc_live_usall_2025_1219.csv"
     },
     {
       "date": "2025-12-22",
-      "median_icc": 0.07733604020609529,
-      "mean_icc": 0.07931788052729385,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07931788052729385,
+      "industry_icc_cap_sector": 0.07679125892029239,
+      "n_sectors": 11,
+      "source_file": "data/202512/icc_live_usall_2025_1222.csv"
     },
     {
       "date": "2025-12-23",
-      "median_icc": 0.07720493698898294,
-      "mean_icc": 0.07917574186221092,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07917574186221092,
+      "industry_icc_cap_sector": 0.07668243884516708,
+      "n_sectors": 11,
+      "source_file": "data/202512/icc_live_usall_2025_1223.csv"
     },
     {
       "date": "2025-12-24",
-      "median_icc": 0.07705518114873407,
-      "mean_icc": 0.07899924124882197,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07899924124882197,
+      "industry_icc_cap_sector": 0.07652539412324835,
+      "n_sectors": 11,
+      "source_file": "data/202512/icc_live_usall_2025_1224.csv"
     },
     {
       "date": "2025-12-25",
-      "median_icc": 0.07704827486216281,
-      "mean_icc": 0.07898986316753678,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07898986316753678,
+      "industry_icc_cap_sector": 0.07652293682335548,
+      "n_sectors": 11,
+      "source_file": "data/202512/icc_live_usall_2025_1225.csv"
     },
     {
       "date": "2025-12-26",
-      "median_icc": 0.07733175297594334,
-      "mean_icc": 0.07905325959577918,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07905325959577918,
+      "industry_icc_cap_sector": 0.07657900151544841,
+      "n_sectors": 11,
+      "source_file": "data/202512/icc_live_usall_2025_1226.csv"
     },
     {
       "date": "2025-12-29",
-      "median_icc": 0.07774812986647058,
-      "mean_icc": 0.07916764071073325,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07916764071073325,
+      "industry_icc_cap_sector": 0.0767425856065568,
+      "n_sectors": 11,
+      "source_file": "data/202512/icc_live_usall_2025_1229.csv"
     },
     {
       "date": "2025-12-30",
-      "median_icc": 0.07787503733123642,
-      "mean_icc": 0.07914703555692261,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07914703555692261,
+      "industry_icc_cap_sector": 0.07680627840001264,
+      "n_sectors": 11,
+      "source_file": "data/202512/icc_live_usall_2025_1230.csv"
     },
     {
       "date": "2025-12-31",
-      "median_icc": 0.07829922298957434,
-      "mean_icc": 0.07955566002503905,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07955566002503905,
+      "industry_icc_cap_sector": 0.07717031006227483,
+      "n_sectors": 11,
+      "source_file": "data/202512/icc_live_usall_2025_1231.csv"
     },
     {
       "date": "2026-01-01",
-      "median_icc": 0.07830528498341792,
-      "mean_icc": 0.07904382525678574,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07904382525678574,
+      "industry_icc_cap_sector": 0.07686116135663194,
+      "n_sectors": 11,
+      "source_file": "data/202601/icc_live_usall_2026_0101.csv"
     },
     {
       "date": "2026-01-02",
-      "median_icc": 0.07843151999139007,
-      "mean_icc": 0.07859131383585699,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07859131383585699,
+      "industry_icc_cap_sector": 0.07668994388316765,
+      "n_sectors": 11,
+      "source_file": "data/202601/icc_live_usall_2026_0102.csv"
     },
     {
       "date": "2026-01-06",
-      "median_icc": 0.07720733515696274,
-      "mean_icc": 0.07685165367299022,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07685165367299022,
+      "industry_icc_cap_sector": 0.0756170662450137,
+      "n_sectors": 11,
+      "source_file": "data/202601/icc_live_usall_2026_0106_r1.csv"
     },
     {
       "date": "2026-01-07",
-      "median_icc": 0.07697288158155628,
-      "mean_icc": 0.07715633918985428,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07715633918985428,
+      "industry_icc_cap_sector": 0.07579494157706565,
+      "n_sectors": 11,
+      "source_file": "data/202601/icc_live_usall_2026_0107_r1.csv"
     },
     {
       "date": "2026-01-08",
-      "median_icc": 0.07743853875319218,
-      "mean_icc": 0.0767584149030369,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.0767584149030369,
+      "industry_icc_cap_sector": 0.07578737740233207,
+      "n_sectors": 11,
+      "source_file": "data/202601/icc_live_usall_2026_0108_r1.csv"
     },
     {
       "date": "2026-01-09",
-      "median_icc": 0.0769781207427234,
-      "mean_icc": 0.07635688137248624,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07635688137248624,
+      "industry_icc_cap_sector": 0.07541187065270039,
+      "n_sectors": 11,
+      "source_file": "data/202601/icc_live_usall_2026_0109_r1.csv"
     },
     {
       "date": "2026-01-12",
-      "median_icc": 0.07707196731008835,
-      "mean_icc": 0.07614058597194134,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07614058597194134,
+      "industry_icc_cap_sector": 0.07535107917471089,
+      "n_sectors": 11,
+      "source_file": "data/202601/icc_live_usall_2026_0112_r1.csv"
     },
     {
       "date": "2026-01-13",
-      "median_icc": 0.07747057301991457,
-      "mean_icc": 0.07609286715856346,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07609286715856346,
+      "industry_icc_cap_sector": 0.07553254381445092,
+      "n_sectors": 11,
+      "source_file": "data/202601/icc_live_usall_2026_0113_r1.csv"
     },
     {
       "date": "2026-01-14",
-      "median_icc": 0.07763192914498182,
-      "mean_icc": 0.07578854442530103,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07578854442530103,
+      "industry_icc_cap_sector": 0.07555164507032641,
+      "n_sectors": 11,
+      "source_file": "data/202601/icc_live_usall_2026_0114_r1.csv"
     },
     {
       "date": "2026-01-15",
-      "median_icc": 0.07795197833646861,
-      "mean_icc": 0.07585894989581833,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07585894989581833,
+      "industry_icc_cap_sector": 0.0756521045608229,
+      "n_sectors": 11,
+      "source_file": "data/202601/icc_live_usall_2026_0115_r1.csv"
     },
     {
       "date": "2026-01-16",
-      "median_icc": 0.07824226816362939,
-      "mean_icc": 0.07598321230535089,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07598321230535089,
+      "industry_icc_cap_sector": 0.07599352488910986,
+      "n_sectors": 11,
+      "source_file": "data/202601/icc_live_usall_2026_0116_r1.csv"
     },
     {
       "date": "2026-01-19",
-      "median_icc": 0.07825845522006589,
-      "mean_icc": 0.07603140731979198,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07603140731979198,
+      "industry_icc_cap_sector": 0.07594971720546964,
+      "n_sectors": 11,
+      "source_file": "data/202601/icc_live_usall_2026_0119_r1.csv"
     },
     {
       "date": "2026-01-20",
-      "median_icc": 0.07868902227132651,
-      "mean_icc": 0.07687991785564136,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07687991785564136,
+      "industry_icc_cap_sector": 0.07707107301860702,
+      "n_sectors": 11,
+      "source_file": "data/202601/icc_live_usall_2026_0120_r1.csv"
     },
     {
       "date": "2026-01-21",
-      "median_icc": 0.07874021479212866,
-      "mean_icc": 0.07618143129207205,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07618143129207205,
+      "industry_icc_cap_sector": 0.07453803042971353,
+      "n_sectors": 11,
+      "source_file": "data/202601/icc_live_usall_2026_0121_r1.csv"
     },
     {
       "date": "2026-01-22",
-      "median_icc": 0.07875983948479853,
-      "mean_icc": 0.07602065449928018,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07602065449928018,
+      "industry_icc_cap_sector": 0.0744369655229381,
+      "n_sectors": 11,
+      "source_file": "data/202601/icc_live_usall_2026_0122_r1.csv"
     },
     {
       "date": "2026-01-23",
-      "median_icc": 0.07928333852544545,
-      "mean_icc": 0.07607736451941757,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07607736451941757,
+      "industry_icc_cap_sector": 0.0746802500088975,
+      "n_sectors": 11,
+      "source_file": "data/202601/icc_live_usall_2026_0123_r1.csv"
     },
     {
       "date": "2026-01-26",
-      "median_icc": 0.07980187478710205,
-      "mean_icc": 0.07609927093411648,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07609927093411648,
+      "industry_icc_cap_sector": 0.07447363047143248,
+      "n_sectors": 11,
+      "source_file": "data/202601/icc_live_usall_2026_0126_r1.csv"
     },
     {
       "date": "2026-01-27",
-      "median_icc": 0.08144311759781636,
-      "mean_icc": 0.07626270884301564,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07626270884301564,
+      "industry_icc_cap_sector": 0.07470428995860375,
+      "n_sectors": 11,
+      "source_file": "data/202601/icc_live_usall_2026_0127_r1.csv"
     },
     {
       "date": "2026-01-28",
-      "median_icc": 0.08082234764809094,
-      "mean_icc": 0.07649933637616982,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07649933637616982,
+      "industry_icc_cap_sector": 0.07509661349630377,
+      "n_sectors": 11,
+      "source_file": "data/202601/icc_live_usall_2026_0128_r1.csv"
     },
     {
       "date": "2026-01-29",
-      "median_icc": 0.08070407708095775,
-      "mean_icc": 0.07568816784202713,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07568816784202713,
+      "industry_icc_cap_sector": 0.07415928550217159,
+      "n_sectors": 11,
+      "source_file": "data/202601/icc_live_usall_2026_0129_r1.csv"
     },
     {
       "date": "2026-01-30",
-      "median_icc": 0.08115716611461118,
-      "mean_icc": 0.07668821556074162,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07668821556074162,
+      "industry_icc_cap_sector": 0.07487053752870658,
+      "n_sectors": 11,
+      "source_file": "data/202601/icc_live_usall_2026_0130_r1.csv"
     },
     {
       "date": "2026-02-03",
-      "median_icc": 0.0817831438916081,
-      "mean_icc": 0.07808948350223109,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07808948350223109,
+      "industry_icc_cap_sector": 0.0763733584825375,
+      "n_sectors": 11,
+      "source_file": "data/202602/icc_live_usall_2026_0203_r1.csv"
     },
     {
       "date": "2026-02-04",
-      "median_icc": 0.08221095003718881,
-      "mean_icc": 0.07924872334884778,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07924872334884778,
+      "industry_icc_cap_sector": 0.07849976625972578,
+      "n_sectors": 11,
+      "source_file": "data/202602/icc_live_usall_2026_0204_r1.csv"
     },
     {
       "date": "2026-02-05",
-      "median_icc": 0.0824065053866086,
-      "mean_icc": 0.08081106986092677,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.08081106986092677,
+      "industry_icc_cap_sector": 0.07980473277284658,
+      "n_sectors": 11,
+      "source_file": "data/202602/icc_live_usall_2026_0205_r1.csv"
     },
     {
       "date": "2026-02-06",
-      "median_icc": 0.08213702085995976,
-      "mean_icc": 0.08086777363890241,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.08086777363890241,
+      "industry_icc_cap_sector": 0.07965062769531717,
+      "n_sectors": 11,
+      "source_file": "data/202602/icc_live_usall_2026_0206_r1.csv"
     },
     {
       "date": "2026-02-09",
-      "median_icc": 0.08206881109582156,
-      "mean_icc": 0.08048979663859736,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.08048979663859736,
+      "industry_icc_cap_sector": 0.07933910304043701,
+      "n_sectors": 11,
+      "source_file": "data/202602/icc_live_usall_2026_0209_r1.csv"
     },
     {
       "date": "2026-02-10",
-      "median_icc": 0.08148633829211123,
-      "mean_icc": 0.08051002475905869,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.08051002475905869,
+      "industry_icc_cap_sector": 0.07944052521677801,
+      "n_sectors": 11,
+      "source_file": "data/202602/icc_live_usall_2026_0210_r1.csv"
     },
     {
       "date": "2026-02-11",
-      "median_icc": 0.08075870295920565,
-      "mean_icc": 0.08076821092236833,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.08076821092236833,
+      "industry_icc_cap_sector": 0.07978567553206586,
+      "n_sectors": 11,
+      "source_file": "data/202602/icc_live_usall_2026_0211_r1.csv"
     },
     {
       "date": "2026-02-12",
-      "median_icc": 0.08038286949591458,
-      "mean_icc": 0.08171956810871114,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.08171956810871114,
+      "industry_icc_cap_sector": 0.0808254950533805,
+      "n_sectors": 11,
+      "source_file": "data/202602/icc_live_usall_2026_0212_r1.csv"
     },
     {
       "date": "2026-02-13",
-      "median_icc": 0.07949795470243148,
-      "mean_icc": 0.0810866574874647,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.0810866574874647,
+      "industry_icc_cap_sector": 0.08033440883638124,
+      "n_sectors": 11,
+      "source_file": "data/202602/icc_live_usall_2026_0213_r1.csv"
     },
     {
       "date": "2026-02-16",
-      "median_icc": 0.07974993877814379,
-      "mean_icc": 0.08146333672072892,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.08146333672072892,
+      "industry_icc_cap_sector": 0.08083154766316226,
+      "n_sectors": 11,
+      "source_file": "data/202602/icc_live_usall_2026_0216_r1.csv"
     },
     {
       "date": "2026-02-17",
-      "median_icc": 0.08015918893825781,
-      "mean_icc": 0.08163496570991874,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.08163496570991874,
+      "industry_icc_cap_sector": 0.08105609251956773,
+      "n_sectors": 11,
+      "source_file": "data/202602/icc_live_usall_2026_0217_r1.csv"
     },
     {
       "date": "2026-02-18",
-      "median_icc": 0.08140440223900225,
-      "mean_icc": 0.08128942945578274,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.08128942945578274,
+      "industry_icc_cap_sector": 0.08077701014883505,
+      "n_sectors": 11,
+      "source_file": "data/202602/icc_live_usall_2026_0218_r1.csv"
     },
     {
       "date": "2026-02-19",
-      "median_icc": 0.08145557721089215,
-      "mean_icc": 0.08072731951346691,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.08072731951346691,
+      "industry_icc_cap_sector": 0.08063822937083895,
+      "n_sectors": 11,
+      "source_file": "data/202602/icc_live_usall_2026_0219_r1.csv"
     },
     {
       "date": "2026-02-20",
-      "median_icc": 0.08027282926625864,
-      "mean_icc": 0.08003503449251367,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.08003503449251367,
+      "industry_icc_cap_sector": 0.08011977022321048,
+      "n_sectors": 11,
+      "source_file": "data/202602/icc_live_usall_2026_0220_r1.csv"
     },
     {
       "date": "2026-02-23",
-      "median_icc": 0.07688932420708455,
-      "mean_icc": 0.07999161509051772,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07999161509051772,
+      "industry_icc_cap_sector": 0.08061623223791752,
+      "n_sectors": 11,
+      "source_file": "data/202602/icc_live_usall_2026_0223_r1.csv"
     },
     {
       "date": "2026-02-24",
-      "median_icc": 0.07604746669136904,
-      "mean_icc": 0.07964651718061239,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07964651718061239,
+      "industry_icc_cap_sector": 0.08030285458753732,
+      "n_sectors": 11,
+      "source_file": "data/202602/icc_live_usall_2026_0224_r1.csv"
     },
     {
       "date": "2026-02-25",
-      "median_icc": 0.0767522600031082,
-      "mean_icc": 0.07972321655516533,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07972321655516533,
+      "industry_icc_cap_sector": 0.08025645503788548,
+      "n_sectors": 11,
+      "source_file": "data/202602/icc_live_usall_2026_0225_r1.csv"
     },
     {
       "date": "2026-02-26",
-      "median_icc": 0.07559351766480438,
-      "mean_icc": 0.07929311965632325,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07929311965632325,
+      "industry_icc_cap_sector": 0.08025740988170883,
+      "n_sectors": 11,
+      "source_file": "data/202602/icc_live_usall_2026_0226_r1.csv"
     },
     {
       "date": "2026-02-27",
-      "median_icc": 0.0749285882278573,
-      "mean_icc": 0.0791148646428733,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.0791148646428733,
+      "industry_icc_cap_sector": 0.08040687763170834,
+      "n_sectors": 11,
+      "source_file": "data/202602/icc_live_usall_2026_0227_r1.csv"
     },
     {
       "date": "2026-03-02",
-      "median_icc": 0.07522213490534002,
-      "mean_icc": 0.07880325156791158,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07880325156791158,
+      "industry_icc_cap_sector": 0.07990093052371514,
+      "n_sectors": 11,
+      "source_file": "data/202603/icc_live_usall_2026_0302_r1.csv"
     },
     {
       "date": "2026-03-03",
-      "median_icc": 0.07519386933796149,
-      "mean_icc": 0.07955399301543825,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07955399301543825,
+      "industry_icc_cap_sector": 0.0806036194575078,
+      "n_sectors": 11,
+      "source_file": "data/202603/icc_live_usall_2026_0303_r1.csv"
     },
     {
       "date": "2026-03-04",
-      "median_icc": 0.07493676998436015,
-      "mean_icc": 0.07950849011213544,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07950849011213544,
+      "industry_icc_cap_sector": 0.08042537330122018,
+      "n_sectors": 11,
+      "source_file": "data/202603/icc_live_usall_2026_0304_r1.csv"
     },
     {
       "date": "2026-03-05",
-      "median_icc": 0.07746607279503072,
-      "mean_icc": 0.08050184889608068,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.08050184889608068,
+      "industry_icc_cap_sector": 0.08166059531192893,
+      "n_sectors": 11,
+      "source_file": "data/202603/icc_live_usall_2026_0305_r1.csv"
     },
     {
       "date": "2026-03-06",
-      "median_icc": 0.0782665807996579,
-      "mean_icc": 0.08137405552561582,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.08137405552561582,
+      "industry_icc_cap_sector": 0.08251828385789875,
+      "n_sectors": 11,
+      "source_file": "data/202603/icc_live_usall_2026_0306_r1.csv"
     },
     {
       "date": "2026-03-09",
-      "median_icc": 0.07806607394930869,
-      "mean_icc": 0.0810090089375022,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.0810090089375022,
+      "industry_icc_cap_sector": 0.0823526560902747,
+      "n_sectors": 11,
+      "source_file": "data/202603/icc_live_usall_2026_0309_r1.csv"
     },
     {
       "date": "2026-03-10",
-      "median_icc": 0.0783543805204816,
-      "mean_icc": 0.08116341080183044,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.08116341080183044,
+      "industry_icc_cap_sector": 0.08253783429664265,
+      "n_sectors": 11,
+      "source_file": "data/202603/icc_live_usall_2026_0310_r1.csv"
     },
     {
       "date": "2026-03-11",
-      "median_icc": 0.0782450267163481,
-      "mean_icc": 0.08109411125003094,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.08109411125003094,
+      "industry_icc_cap_sector": 0.08253074983155219,
+      "n_sectors": 11,
+      "source_file": "data/202603/icc_live_usall_2026_0311_r1.csv"
     },
     {
       "date": "2026-03-12",
-      "median_icc": 0.0794153787037333,
-      "mean_icc": 0.08148646370457781,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.08148646370457781,
+      "industry_icc_cap_sector": 0.08332273113132183,
+      "n_sectors": 11,
+      "source_file": "data/202603/icc_live_usall_2026_0312_r1.csv"
     },
     {
       "date": "2026-03-13",
-      "median_icc": 0.07991625649124282,
-      "mean_icc": 0.0815045581157306,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.0815045581157306,
+      "industry_icc_cap_sector": 0.08356678485190185,
+      "n_sectors": 11,
+      "source_file": "data/202603/icc_live_usall_2026_0313_r1.csv"
     },
     {
       "date": "2026-03-16",
-      "median_icc": 0.0801909854810535,
-      "mean_icc": 0.08021615885432352,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.08021615885432352,
+      "industry_icc_cap_sector": 0.08260686283511935,
+      "n_sectors": 11,
+      "source_file": "data/202603/icc_live_usall_2026_0316_r1.csv"
     },
     {
       "date": "2026-03-17",
-      "median_icc": 0.07995899936285905,
-      "mean_icc": 0.08020577273722952,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.08020577273722952,
+      "industry_icc_cap_sector": 0.08241349581678344,
+      "n_sectors": 11,
+      "source_file": "data/202603/icc_live_usall_2026_0317_r1.csv"
     },
     {
       "date": "2026-03-18",
-      "median_icc": 0.08125270872633583,
-      "mean_icc": 0.08101863492758384,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.08101863492758384,
+      "industry_icc_cap_sector": 0.08325340776744247,
+      "n_sectors": 11,
+      "source_file": "data/202603/icc_live_usall_2026_0318_r1.csv"
     },
     {
       "date": "2026-03-19",
-      "median_icc": 0.08231504407718301,
-      "mean_icc": 0.08131058670213448,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.08131058670213448,
+      "industry_icc_cap_sector": 0.08362729076009112,
+      "n_sectors": 11,
+      "source_file": "data/202603/icc_live_usall_2026_0319_r1.csv"
     },
     {
       "date": "2026-03-20",
-      "median_icc": 0.08530720279920943,
-      "mean_icc": 0.0824996851294562,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.0824996851294562,
+      "industry_icc_cap_sector": 0.08538619176776616,
+      "n_sectors": 11,
+      "source_file": "data/202603/icc_live_usall_2026_0320_r1.csv"
     },
     {
       "date": "2026-03-23",
-      "median_icc": 0.08333092451134406,
-      "mean_icc": 0.08177026845716563,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.08177026845716563,
+      "industry_icc_cap_sector": 0.08426255095264862,
+      "n_sectors": 11,
+      "source_file": "data/202603/icc_live_usall_2026_0323_r1.csv"
     },
     {
       "date": "2026-03-24",
-      "median_icc": 0.08385907264364333,
-      "mean_icc": 0.08155490858819069,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.08155490858819069,
+      "industry_icc_cap_sector": 0.0843278283658797,
+      "n_sectors": 11,
+      "source_file": "data/202603/icc_live_usall_2026_0324_r1.csv"
     },
     {
       "date": "2026-03-25",
-      "median_icc": 0.08355207066422564,
-      "mean_icc": 0.08123994120880985,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.08123994120880985,
+      "industry_icc_cap_sector": 0.08404366226908128,
+      "n_sectors": 11,
+      "source_file": "data/202603/icc_live_usall_2026_0325_r1.csv"
     },
     {
       "date": "2026-03-26",
-      "median_icc": 0.08376610409362882,
-      "mean_icc": 0.08180349382376509,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.08180349382376509,
+      "industry_icc_cap_sector": 0.08482601929398047,
+      "n_sectors": 11,
+      "source_file": "data/202603/icc_live_usall_2026_0326_r1.csv"
     },
     {
       "date": "2026-03-27",
-      "median_icc": 0.0829436109474417,
-      "mean_icc": 0.08229654138799244,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.08229654138799244,
+      "industry_icc_cap_sector": 0.08563004640341265,
+      "n_sectors": 11,
+      "source_file": "data/202603/icc_live_usall_2026_0327_r1.csv"
     },
     {
       "date": "2026-03-30",
-      "median_icc": 0.08243643557486367,
-      "mean_icc": 0.08268712914853399,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.08268712914853399,
+      "industry_icc_cap_sector": 0.08611860771297677,
+      "n_sectors": 11,
+      "source_file": "data/202603/icc_live_usall_2026_0330_r1.csv"
     },
     {
       "date": "2026-03-31",
-      "median_icc": 0.08273670845327648,
-      "mean_icc": 0.08153501496920224,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.08153501496920224,
+      "industry_icc_cap_sector": 0.08458654113845046,
+      "n_sectors": 11,
+      "source_file": "data/202603/icc_live_usall_2026_0331_r1.csv"
     },
     {
       "date": "2026-04-01",
-      "median_icc": 0.08160202388534012,
-      "mean_icc": 0.08122546776797447,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.08122546776797447,
+      "industry_icc_cap_sector": 0.08422695238153237,
+      "n_sectors": 11,
+      "source_file": "data/202604/icc_live_usall_2026_0401_r1.csv"
     },
     {
       "date": "2026-04-02",
-      "median_icc": 0.08164922139537636,
-      "mean_icc": 0.08118870559953831,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.08118870559953831,
+      "industry_icc_cap_sector": 0.08419421416431472,
+      "n_sectors": 11,
+      "source_file": "data/202604/icc_live_usall_2026_0402_r1.csv"
     },
     {
       "date": "2026-04-03",
-      "median_icc": 0.08044878742984728,
-      "mean_icc": 0.08097963342456463,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.08097963342456463,
+      "industry_icc_cap_sector": 0.08404968756670052,
+      "n_sectors": 11,
+      "source_file": "data/202604/icc_live_usall_2026_0403_r1.csv"
     },
     {
       "date": "2026-04-06",
-      "median_icc": 0.08071770876511518,
-      "mean_icc": 0.08079170598581663,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.08079170598581663,
+      "industry_icc_cap_sector": 0.08382659400778099,
+      "n_sectors": 11,
+      "source_file": "data/202604/icc_live_usall_2026_0406_r1.csv"
     },
     {
       "date": "2026-04-07",
-      "median_icc": 0.08082692122045756,
-      "mean_icc": 0.0805817763869975,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.0805817763869975,
+      "industry_icc_cap_sector": 0.08365073770218281,
+      "n_sectors": 11,
+      "source_file": "data/202604/icc_live_usall_2026_0407_r1.csv"
     },
     {
       "date": "2026-04-08",
-      "median_icc": 0.07886292209015174,
-      "mean_icc": 0.07947658955541564,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07947658955541564,
+      "industry_icc_cap_sector": 0.08228001831670359,
+      "n_sectors": 11,
+      "source_file": "data/202604/icc_live_usall_2026_0408_r1.csv"
     },
     {
       "date": "2026-04-09",
-      "median_icc": 0.0803402320116428,
-      "mean_icc": 0.07966554082038853,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07966554082038853,
+      "industry_icc_cap_sector": 0.08245261370045093,
+      "n_sectors": 11,
+      "source_file": "data/202604/icc_live_usall_2026_0409_r1.csv"
     },
     {
       "date": "2026-04-10",
-      "median_icc": 0.08092433075648028,
-      "mean_icc": 0.07994021437160158,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07994021437160158,
+      "industry_icc_cap_sector": 0.08270166610559314,
+      "n_sectors": 11,
+      "source_file": "data/202604/icc_live_usall_2026_0410_r1.csv"
     },
     {
       "date": "2026-04-13",
-      "median_icc": 0.08009229150801664,
-      "mean_icc": 0.07955096531141362,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07955096531141362,
+      "industry_icc_cap_sector": 0.08229796658080353,
+      "n_sectors": 11,
+      "source_file": "data/202604/icc_live_usall_2026_0413_r2.csv"
     },
     {
       "date": "2026-04-14",
-      "median_icc": 0.08010222890381247,
-      "mean_icc": 0.07956249672485376,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07931652900790975,
+      "industry_icc_cap_sector": 0.08190402982047479,
+      "n_sectors": 11,
+      "source_file": "data/202604/icc_live_usall_2026_0414_r1.csv"
     },
     {
       "date": "2026-04-15",
-      "median_icc": 0.0810829259016994,
-      "mean_icc": 0.07944137202452439,
-      "n_groups": 11
+      "industry_icc_eq_sector": 0.07944137202452439,
+      "industry_icc_cap_sector": 0.08169257808825055,
+      "n_sectors": 11,
+      "source_file": "data/202604/icc_live_usall_2026_0415_r1.csv"
     }
   ],
-  "three_months": {
-    "columns": [
-      "2026-02",
-      "2026-03",
-      "2026-04"
-    ],
-    "rows": [
-      {
-        "label": "Industry median",
-        "values": [
-          0.0749285882278573,
-          0.08273670845327648,
-          0.0810829259016994
-        ]
-      }
-    ]
-  }
+  "monthly_history": [
+    {
+      "date": "2025-10-30",
+      "industry_icc_eq_sector": 0.0781446868488124,
+      "industry_icc_cap_sector": 0.07394983922839228,
+      "n_sectors": 11,
+      "source_file": "data/202510/icc_live_usall_2025_1030.csv",
+      "yyyymm": "2025-10"
+    },
+    {
+      "date": "2025-11-28",
+      "industry_icc_eq_sector": 0.07712770241303778,
+      "industry_icc_cap_sector": 0.07538725763833765,
+      "n_sectors": 11,
+      "source_file": "data/202511/icc_live_usall_2025_1128.csv",
+      "yyyymm": "2025-11"
+    },
+    {
+      "date": "2025-12-31",
+      "industry_icc_eq_sector": 0.07955566002503905,
+      "industry_icc_cap_sector": 0.07717031006227483,
+      "n_sectors": 11,
+      "source_file": "data/202512/icc_live_usall_2025_1231.csv",
+      "yyyymm": "2025-12"
+    },
+    {
+      "date": "2026-01-30",
+      "industry_icc_eq_sector": 0.07668821556074162,
+      "industry_icc_cap_sector": 0.07487053752870658,
+      "n_sectors": 11,
+      "source_file": "data/202601/icc_live_usall_2026_0130_r1.csv",
+      "yyyymm": "2026-01"
+    },
+    {
+      "date": "2026-02-27",
+      "industry_icc_eq_sector": 0.0791148646428733,
+      "industry_icc_cap_sector": 0.08040687763170834,
+      "n_sectors": 11,
+      "source_file": "data/202602/icc_live_usall_2026_0227_r1.csv",
+      "yyyymm": "2026-02"
+    },
+    {
+      "date": "2026-03-31",
+      "industry_icc_eq_sector": 0.08153501496920224,
+      "industry_icc_cap_sector": 0.08458654113845046,
+      "n_sectors": 11,
+      "source_file": "data/202603/icc_live_usall_2026_0331_r1.csv",
+      "yyyymm": "2026-03"
+    },
+    {
+      "date": "2026-04-15",
+      "industry_icc_eq_sector": 0.07944137202452439,
+      "industry_icc_cap_sector": 0.08169257808825055,
+      "n_sectors": 11,
+      "source_file": "data/202604/icc_live_usall_2026_0415_r1.csv",
+      "yyyymm": "2026-04"
+    }
+  ],
+  "last_three_months": [
+    {
+      "date": "2026-02-27",
+      "industry_icc_eq_sector": 0.0791148646428733,
+      "industry_icc_cap_sector": 0.08040687763170834,
+      "n_sectors": 11,
+      "source_file": "data/202602/icc_live_usall_2026_0227_r1.csv",
+      "yyyymm": "2026-02"
+    },
+    {
+      "date": "2026-03-31",
+      "industry_icc_eq_sector": 0.08153501496920224,
+      "industry_icc_cap_sector": 0.08458654113845046,
+      "n_sectors": 11,
+      "source_file": "data/202603/icc_live_usall_2026_0331_r1.csv",
+      "yyyymm": "2026-03"
+    },
+    {
+      "date": "2026-04-15",
+      "industry_icc_eq_sector": 0.07944137202452439,
+      "industry_icc_cap_sector": 0.08169257808825055,
+      "n_sectors": 11,
+      "source_file": "data/202604/icc_live_usall_2026_0415_r1.csv",
+      "yyyymm": "2026-04"
+    }
+  ],
+  "downloads": [
+    {
+      "label": "Daily summary history (CSV)",
+      "path": "./data/downloads/industry/daily_history.csv"
+    },
+    {
+      "label": "Monthly summary history (CSV)",
+      "path": "./data/downloads/industry/monthly_history.csv"
+    },
+    {
+      "label": "Latest daily table (CSV)",
+      "path": "./data/downloads/industry/latest_daily_table.csv"
+    }
+  ]
 }

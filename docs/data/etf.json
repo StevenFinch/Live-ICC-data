@@ -1,77 +1,85 @@
 {
   "asof_date": "2026-04-15",
-  "latest": [
+  "latest_summary": {
+    "date": "2026-04-15",
+    "etf_icc": null,
+    "n_items": 12.0
+  },
+  "latest_table": [
     {
-      "ticker": "DIA",
-      "label": "SPDR Dow Jones Industrial Average",
-      "category": "Dow Jones",
-      "vw_icc": null,
-      "coverage_weight": 0.0,
-      "n_holdings": 10,
-      "n_matched": 0,
-      "status": "no_match"
-    },
-    {
+      "date": "2026-04-15",
       "ticker": "SPY",
       "label": "SPDR S&P 500 ETF",
-      "category": "Market",
+      "category": "US Broad Market",
       "vw_icc": null,
       "coverage_weight": 0.0,
       "n_holdings": 10,
       "n_matched": 0,
-      "status": "no_match"
+      "holding_source": "yfinance_top_holdings",
+      "status": "no_matched_holdings"
     },
     {
-      "ticker": "MDY",
-      "label": "SPDR S&P MidCap 400 ETF",
-      "category": "Mid Cap",
+      "date": "2026-04-15",
+      "ticker": "IVV",
+      "label": "iShares Core S&P 500 ETF",
+      "category": "US Broad Market",
       "vw_icc": null,
       "coverage_weight": 0.0,
       "n_holdings": 10,
       "n_matched": 0,
-      "status": "no_match"
+      "holding_source": "yfinance_top_holdings",
+      "status": "no_matched_holdings"
     },
     {
+      "date": "2026-04-15",
+      "ticker": "VTI",
+      "label": "Vanguard Total Stock Market ETF",
+      "category": "US Broad Market",
+      "vw_icc": null,
+      "coverage_weight": 0.0,
+      "n_holdings": 10,
+      "n_matched": 0,
+      "holding_source": "yfinance_top_holdings",
+      "status": "no_matched_holdings"
+    },
+    {
+      "date": "2026-04-15",
       "ticker": "QQQ",
-      "label": "Invesco QQQ",
-      "category": "Nasdaq 100",
+      "label": "Invesco QQQ Trust",
+      "category": "Growth / Nasdaq",
       "vw_icc": null,
       "coverage_weight": 0.0,
       "n_holdings": 10,
       "n_matched": 0,
-      "status": "no_match"
+      "holding_source": "yfinance_top_holdings",
+      "status": "no_matched_holdings"
     },
     {
-      "ticker": "XLB",
-      "label": "Materials Select Sector SPDR",
-      "category": "Sector",
+      "date": "2026-04-15",
+      "ticker": "IWM",
+      "label": "iShares Russell 2000 ETF",
+      "category": "Small Cap",
       "vw_icc": null,
       "coverage_weight": 0.0,
       "n_holdings": 10,
       "n_matched": 0,
-      "status": "no_match"
+      "holding_source": "yfinance_top_holdings",
+      "status": "no_matched_holdings"
     },
     {
-      "ticker": "XLC",
-      "label": "Communication Services Select Sector SPDR",
-      "category": "Sector",
+      "date": "2026-04-15",
+      "ticker": "DIA",
+      "label": "SPDR Dow Jones Industrial Average ETF",
+      "category": "Blue Chip",
       "vw_icc": null,
       "coverage_weight": 0.0,
       "n_holdings": 10,
       "n_matched": 0,
-      "status": "no_match"
+      "holding_source": "yfinance_top_holdings",
+      "status": "no_matched_holdings"
     },
     {
-      "ticker": "XLE",
-      "label": "Energy Select Sector SPDR",
-      "category": "Sector",
-      "vw_icc": null,
-      "coverage_weight": 0.0,
-      "n_holdings": 10,
-      "n_matched": 0,
-      "status": "no_match"
-    },
-    {
+      "date": "2026-04-15",
       "ticker": "XLF",
       "label": "Financial Select Sector SPDR",
       "category": "Sector",
@@ -79,19 +87,11 @@
       "coverage_weight": 0.0,
       "n_holdings": 10,
       "n_matched": 0,
-      "status": "no_match"
+      "holding_source": "yfinance_top_holdings",
+      "status": "no_matched_holdings"
     },
     {
-      "ticker": "XLI",
-      "label": "Industrial Select Sector SPDR",
-      "category": "Sector",
-      "vw_icc": null,
-      "coverage_weight": 0.0,
-      "n_holdings": 10,
-      "n_matched": 0,
-      "status": "no_match"
-    },
-    {
+      "date": "2026-04-15",
       "ticker": "XLK",
       "label": "Technology Select Sector SPDR",
       "category": "Sector",
@@ -99,39 +99,23 @@
       "coverage_weight": 0.0,
       "n_holdings": 10,
       "n_matched": 0,
-      "status": "no_match"
+      "holding_source": "yfinance_top_holdings",
+      "status": "no_matched_holdings"
     },
     {
-      "ticker": "XLP",
-      "label": "Consumer Staples Select Sector SPDR",
+      "date": "2026-04-15",
+      "ticker": "XLE",
+      "label": "Energy Select Sector SPDR",
       "category": "Sector",
       "vw_icc": null,
       "coverage_weight": 0.0,
       "n_holdings": 10,
       "n_matched": 0,
-      "status": "no_match"
+      "holding_source": "yfinance_top_holdings",
+      "status": "no_matched_holdings"
     },
     {
-      "ticker": "XLRE",
-      "label": "Real Estate Select Sector SPDR",
-      "category": "Sector",
-      "vw_icc": null,
-      "coverage_weight": 0.0,
-      "n_holdings": 10,
-      "n_matched": 0,
-      "status": "no_match"
-    },
-    {
-      "ticker": "XLU",
-      "label": "Utilities Select Sector SPDR",
-      "category": "Sector",
-      "vw_icc": null,
-      "coverage_weight": 0.0,
-      "n_holdings": 10,
-      "n_matched": 0,
-      "status": "no_match"
-    },
-    {
+      "date": "2026-04-15",
       "ticker": "XLV",
       "label": "Health Care Select Sector SPDR",
       "category": "Sector",
@@ -139,9 +123,11 @@
       "coverage_weight": 0.0,
       "n_holdings": 10,
       "n_matched": 0,
-      "status": "no_match"
+      "holding_source": "yfinance_top_holdings",
+      "status": "no_matched_holdings"
     },
     {
+      "date": "2026-04-15",
       "ticker": "XLY",
       "label": "Consumer Discretionary Select Sector SPDR",
       "category": "Sector",
@@ -149,56 +135,58 @@
       "coverage_weight": 0.0,
       "n_holdings": 10,
       "n_matched": 0,
-      "status": "no_match"
+      "holding_source": "yfinance_top_holdings",
+      "status": "no_matched_holdings"
     },
     {
-      "ticker": "IJR",
-      "label": "iShares Core S&P Small-Cap ETF",
-      "category": "Small Cap",
+      "date": "2026-04-15",
+      "ticker": "XLI",
+      "label": "Industrial Select Sector SPDR",
+      "category": "Sector",
       "vw_icc": null,
       "coverage_weight": 0.0,
       "n_holdings": 10,
       "n_matched": 0,
-      "status": "no_match"
-    },
-    {
-      "ticker": "IWM",
-      "label": "iShares Russell 2000",
-      "category": "Small Cap",
-      "vw_icc": null,
-      "coverage_weight": 0.0,
-      "n_holdings": 10,
-      "n_matched": 0,
-      "status": "no_match"
-    },
-    {
-      "ticker": "VTV",
-      "label": "Vanguard Value ETF",
-      "category": "Style",
-      "vw_icc": null,
-      "coverage_weight": 0.0,
-      "n_holdings": 10,
-      "n_matched": 0,
-      "status": "no_match"
-    },
-    {
-      "ticker": "VUG",
-      "label": "Vanguard Growth ETF",
-      "category": "Style",
-      "vw_icc": null,
-      "coverage_weight": 0.0,
-      "n_holdings": 10,
-      "n_matched": 0,
-      "status": "no_match"
+      "holding_source": "yfinance_top_holdings",
+      "status": "no_matched_holdings"
     }
   ],
-  "overview_history": [],
-  "three_months": {
-    "columns": [
-      "2026-02",
-      "2026-03",
-      "2026-04"
-    ],
-    "rows": []
-  }
+  "daily_history": [
+    {
+      "date": "2026-04-15",
+      "etf_icc": null,
+      "n_items": 12.0
+    }
+  ],
+  "monthly_history": [
+    {
+      "date": "2026-04-15",
+      "etf_icc": null,
+      "n_items": 12.0,
+      "yyyymm": "2026-04"
+    }
+  ],
+  "last_three_months": [
+    {
+      "date": "2026-04-15",
+      "etf_icc": null,
+      "n_items": 12.0,
+      "yyyymm": "2026-04"
+    }
+  ],
+  "downloads": [
+    {
+      "label": "Daily summary history (CSV)",
+      "path": "./data/downloads/etf/daily_history.csv"
+    },
+    {
+      "label": "Monthly summary history (CSV)",
+      "path": "./data/downloads/etf/monthly_history.csv"
+    },
+    {
+      "label": "Latest daily table (CSV)",
+      "path": "./data/downloads/etf/latest_daily_table.csv"
+    }
+  ],
+  "note": "ETF ICC history starts when this archive pipeline began. Historical backfill before archive start is not guaranteed."
 }

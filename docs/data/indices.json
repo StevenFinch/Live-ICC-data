@@ -1,57 +1,69 @@
 {
   "asof_date": "2026-04-15",
-  "latest": [
+  "latest_summary": {
+    "date": "2026-04-15",
+    "index_icc": 0.07921429983905448,
+    "n_indices": 7.0
+  },
+  "latest_table": [
     {
       "universe": "dow30",
       "date": "2026-04-15",
       "vw_icc": 0.07337433539554318,
       "ew_icc": 0.07624744146387943,
-      "n_firms": 30
+      "n_firms": 30,
+      "source_file": "data/202604/icc_live_dow30_2026_0415.csv"
     },
     {
       "universe": "ndx100",
       "date": "2026-04-15",
       "vw_icc": 0.07507322132040703,
       "ew_icc": 0.08064160150332489,
-      "n_firms": 100
+      "n_firms": 100,
+      "source_file": "data/202604/icc_live_ndx100_2026_0415.csv"
     },
     {
       "universe": "rut1000",
       "date": "2026-04-15",
       "vw_icc": 0.07614768984726404,
       "ew_icc": 0.08697026212512006,
-      "n_firms": 979
+      "n_firms": 979,
+      "source_file": "data/202604/icc_live_rut1000_2026_0415.csv"
     },
     {
       "universe": "sp100",
       "date": "2026-04-15",
       "vw_icc": 0.07521095446221929,
       "ew_icc": 0.08117452735175708,
-      "n_firms": 101
+      "n_firms": 101,
+      "source_file": "data/202604/icc_live_sp100_2026_0415.csv"
     },
     {
       "universe": "sp400",
       "date": "2026-04-15",
       "vw_icc": 0.08490015516816177,
       "ew_icc": 0.09021205151945856,
-      "n_firms": 396
+      "n_firms": 396,
+      "source_file": "data/202604/icc_live_sp400_2026_0415.csv"
     },
     {
       "universe": "sp500",
       "date": "2026-04-15",
       "vw_icc": 0.07569297028442881,
       "ew_icc": 0.08138525083469349,
-      "n_firms": 500
+      "n_firms": 500,
+      "source_file": "data/202604/icc_live_sp500_2026_0415_r1.csv"
     },
     {
       "universe": "sp600",
       "date": "2026-04-15",
       "vw_icc": 0.09410077239535737,
       "ew_icc": 0.10247942566763234,
-      "n_firms": 572
+      "n_firms": 572,
+      "source_file": "data/202604/icc_live_sp600_2026_0415.csv"
     }
   ],
-  "history": [
+  "daily_history": [
     {
       "date": "2025-10-28",
       "vw_icc": 0.06385038804489955,
@@ -1099,6 +1111,84 @@
       "n_firms": 979,
       "source_file": "data/202604/icc_live_rut1000_2026_0415.csv",
       "universe": "rut1000"
+    }
+  ],
+  "monthly_history": [
+    {
+      "date": "2025-10-30",
+      "index_icc": 0.06508549053558753,
+      "n_indices": 1.0,
+      "yyyymm": "2025-10"
+    },
+    {
+      "date": "2025-11-28",
+      "index_icc": 0.06704505106919476,
+      "n_indices": 1.0,
+      "yyyymm": "2025-11"
+    },
+    {
+      "date": "2025-12-31",
+      "index_icc": 0.06846715355482065,
+      "n_indices": 1.0,
+      "yyyymm": "2025-12"
+    },
+    {
+      "date": "2026-01-30",
+      "index_icc": 0.06949106104919214,
+      "n_indices": 1.0,
+      "yyyymm": "2026-01"
+    },
+    {
+      "date": "2026-02-27",
+      "index_icc": 0.07395991999074679,
+      "n_indices": 1.0,
+      "yyyymm": "2026-02"
+    },
+    {
+      "date": "2026-03-31",
+      "index_icc": 0.07889568917176408,
+      "n_indices": 1.0,
+      "yyyymm": "2026-03"
+    },
+    {
+      "date": "2026-04-15",
+      "index_icc": 0.07921429983905448,
+      "n_indices": 7.0,
+      "yyyymm": "2026-04"
+    }
+  ],
+  "last_three_months": [
+    {
+      "date": "2026-02-27",
+      "index_icc": 0.07395991999074679,
+      "n_indices": 1.0,
+      "yyyymm": "2026-02"
+    },
+    {
+      "date": "2026-03-31",
+      "index_icc": 0.07889568917176408,
+      "n_indices": 1.0,
+      "yyyymm": "2026-03"
+    },
+    {
+      "date": "2026-04-15",
+      "index_icc": 0.07921429983905448,
+      "n_indices": 7.0,
+      "yyyymm": "2026-04"
+    }
+  ],
+  "downloads": [
+    {
+      "label": "Daily history by index (CSV)",
+      "path": "./data/downloads/indices/daily_history.csv"
+    },
+    {
+      "label": "Monthly summary history (CSV)",
+      "path": "./data/downloads/indices/monthly_history.csv"
+    },
+    {
+      "label": "Latest daily table (CSV)",
+      "path": "./data/downloads/indices/latest_daily_table.csv"
     }
   ]
 }

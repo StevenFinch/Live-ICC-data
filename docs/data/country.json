@@ -1,97 +1,13 @@
 {
   "asof_date": "2026-04-15",
-  "latest": [
+  "latest_summary": {
+    "date": "2026-04-15",
+    "country_icc": null,
+    "n_items": 12.0
+  },
+  "latest_table": [
     {
-      "country": "Australia",
-      "ticker": "EWA",
-      "label": "iShares MSCI Australia ETF",
-      "vw_icc": null,
-      "coverage_weight": 0.0,
-      "n_holdings": 10,
-      "n_matched": 0,
-      "status": "no_match"
-    },
-    {
-      "country": "Brazil",
-      "ticker": "EWZ",
-      "label": "iShares MSCI Brazil ETF",
-      "vw_icc": null,
-      "coverage_weight": 0.0,
-      "n_holdings": 10,
-      "n_matched": 0,
-      "status": "no_match"
-    },
-    {
-      "country": "Canada",
-      "ticker": "EWC",
-      "label": "iShares MSCI Canada ETF",
-      "vw_icc": null,
-      "coverage_weight": 0.0,
-      "n_holdings": 10,
-      "n_matched": 0,
-      "status": "no_match"
-    },
-    {
-      "country": "Canada",
-      "ticker": "EWC",
-      "label": "iShares MSCI Canada ETF",
-      "vw_icc": null,
-      "coverage_weight": 0.0,
-      "n_holdings": 10,
-      "n_matched": 0,
-      "status": "no_match"
-    },
-    {
-      "country": "China",
-      "ticker": "MCHI",
-      "label": "iShares MSCI China ETF",
-      "vw_icc": null,
-      "coverage_weight": 0.0,
-      "n_holdings": 10,
-      "n_matched": 0,
-      "status": "no_match"
-    },
-    {
-      "country": "Germany",
-      "ticker": "EWG",
-      "label": "iShares MSCI Germany ETF",
-      "vw_icc": null,
-      "coverage_weight": 0.0,
-      "n_holdings": 10,
-      "n_matched": 0,
-      "status": "no_match"
-    },
-    {
-      "country": "Hong Kong",
-      "ticker": "EWH",
-      "label": "iShares MSCI Hong Kong ETF",
-      "vw_icc": null,
-      "coverage_weight": 0.0,
-      "n_holdings": 10,
-      "n_matched": 0,
-      "status": "no_match"
-    },
-    {
-      "country": "India",
-      "ticker": "INDA",
-      "label": "iShares MSCI India ETF",
-      "vw_icc": null,
-      "coverage_weight": 0.0,
-      "n_holdings": 10,
-      "n_matched": 0,
-      "status": "no_match"
-    },
-    {
-      "country": "Indonesia",
-      "ticker": "EIDO",
-      "label": "iShares MSCI Indonesia ETF",
-      "vw_icc": null,
-      "coverage_weight": 0.0,
-      "n_holdings": 10,
-      "n_matched": 0,
-      "status": "no_match"
-    },
-    {
+      "date": "2026-04-15",
       "country": "Japan",
       "ticker": "EWJ",
       "label": "iShares MSCI Japan ETF",
@@ -99,69 +15,23 @@
       "coverage_weight": 0.0,
       "n_holdings": 10,
       "n_matched": 0,
-      "status": "no_match"
+      "holding_source": "yfinance_top_holdings",
+      "status": "no_matched_holdings"
     },
     {
-      "country": "Mexico",
-      "ticker": "EWW",
-      "label": "iShares MSCI Mexico ETF",
+      "date": "2026-04-15",
+      "country": "Germany",
+      "ticker": "EWG",
+      "label": "iShares MSCI Germany ETF",
       "vw_icc": null,
       "coverage_weight": 0.0,
       "n_holdings": 10,
       "n_matched": 0,
-      "status": "no_match"
+      "holding_source": "yfinance_top_holdings",
+      "status": "no_matched_holdings"
     },
     {
-      "country": "Poland",
-      "ticker": "EPOL",
-      "label": "iShares MSCI Poland ETF",
-      "vw_icc": null,
-      "coverage_weight": 0.0,
-      "n_holdings": 10,
-      "n_matched": 0,
-      "status": "no_match"
-    },
-    {
-      "country": "Russia",
-      "ticker": "ERUS",
-      "label": "iShares MSCI Russia ETF",
-      "vw_icc": null,
-      "coverage_weight": 0.0,
-      "n_holdings": 10,
-      "n_matched": 0,
-      "status": "no_match"
-    },
-    {
-      "country": "South Korea",
-      "ticker": "EWY",
-      "label": "iShares MSCI South Korea ETF",
-      "vw_icc": null,
-      "coverage_weight": 0.0,
-      "n_holdings": 10,
-      "n_matched": 0,
-      "status": "no_match"
-    },
-    {
-      "country": "Switzerland",
-      "ticker": "EWL",
-      "label": "iShares MSCI Switzerland ETF",
-      "vw_icc": null,
-      "coverage_weight": 0.0,
-      "n_holdings": 10,
-      "n_matched": 0,
-      "status": "no_match"
-    },
-    {
-      "country": "Taiwan",
-      "ticker": "EWT",
-      "label": "iShares MSCI Taiwan ETF",
-      "vw_icc": null,
-      "coverage_weight": 0.0,
-      "n_holdings": 10,
-      "n_matched": 0,
-      "status": "no_match"
-    },
-    {
+      "date": "2026-04-15",
       "country": "United Kingdom",
       "ticker": "EWU",
       "label": "iShares MSCI United Kingdom ETF",
@@ -169,26 +39,154 @@
       "coverage_weight": 0.0,
       "n_holdings": 10,
       "n_matched": 0,
-      "status": "no_match"
+      "holding_source": "yfinance_top_holdings",
+      "status": "no_matched_holdings"
     },
     {
-      "country": "United States",
-      "ticker": "SPY",
-      "label": "United States Proxy",
+      "date": "2026-04-15",
+      "country": "Canada",
+      "ticker": "EWC",
+      "label": "iShares MSCI Canada ETF",
       "vw_icc": null,
       "coverage_weight": 0.0,
       "n_holdings": 10,
       "n_matched": 0,
-      "status": "no_match"
+      "holding_source": "yfinance_top_holdings",
+      "status": "no_matched_holdings"
+    },
+    {
+      "date": "2026-04-15",
+      "country": "Australia",
+      "ticker": "EWA",
+      "label": "iShares MSCI Australia ETF",
+      "vw_icc": null,
+      "coverage_weight": 0.0,
+      "n_holdings": 10,
+      "n_matched": 0,
+      "holding_source": "yfinance_top_holdings",
+      "status": "no_matched_holdings"
+    },
+    {
+      "date": "2026-04-15",
+      "country": "Brazil",
+      "ticker": "EWZ",
+      "label": "iShares MSCI Brazil ETF",
+      "vw_icc": null,
+      "coverage_weight": 0.0,
+      "n_holdings": 10,
+      "n_matched": 0,
+      "holding_source": "yfinance_top_holdings",
+      "status": "no_matched_holdings"
+    },
+    {
+      "date": "2026-04-15",
+      "country": "India",
+      "ticker": "INDA",
+      "label": "iShares MSCI India ETF",
+      "vw_icc": null,
+      "coverage_weight": 0.0,
+      "n_holdings": 10,
+      "n_matched": 0,
+      "holding_source": "yfinance_top_holdings",
+      "status": "no_matched_holdings"
+    },
+    {
+      "date": "2026-04-15",
+      "country": "China",
+      "ticker": "MCHI",
+      "label": "iShares MSCI China ETF",
+      "vw_icc": null,
+      "coverage_weight": 0.0,
+      "n_holdings": 10,
+      "n_matched": 0,
+      "holding_source": "yfinance_top_holdings",
+      "status": "no_matched_holdings"
+    },
+    {
+      "date": "2026-04-15",
+      "country": "Hong Kong",
+      "ticker": "EWH",
+      "label": "iShares MSCI Hong Kong ETF",
+      "vw_icc": null,
+      "coverage_weight": 0.0,
+      "n_holdings": 10,
+      "n_matched": 0,
+      "holding_source": "yfinance_top_holdings",
+      "status": "no_matched_holdings"
+    },
+    {
+      "date": "2026-04-15",
+      "country": "South Korea",
+      "ticker": "EWY",
+      "label": "iShares MSCI South Korea ETF",
+      "vw_icc": null,
+      "coverage_weight": 0.0,
+      "n_holdings": 10,
+      "n_matched": 0,
+      "holding_source": "yfinance_top_holdings",
+      "status": "no_matched_holdings"
+    },
+    {
+      "date": "2026-04-15",
+      "country": "Taiwan",
+      "ticker": "EWT",
+      "label": "iShares MSCI Taiwan ETF",
+      "vw_icc": null,
+      "coverage_weight": 0.0,
+      "n_holdings": 10,
+      "n_matched": 0,
+      "holding_source": "yfinance_top_holdings",
+      "status": "no_matched_holdings"
+    },
+    {
+      "date": "2026-04-15",
+      "country": "Switzerland",
+      "ticker": "EWL",
+      "label": "iShares MSCI Switzerland ETF",
+      "vw_icc": null,
+      "coverage_weight": 0.0,
+      "n_holdings": 10,
+      "n_matched": 0,
+      "holding_source": "yfinance_top_holdings",
+      "status": "no_matched_holdings"
     }
   ],
-  "overview_history": [],
-  "three_months": {
-    "columns": [
-      "2026-02",
-      "2026-03",
-      "2026-04"
-    ],
-    "rows": []
-  }
+  "daily_history": [
+    {
+      "date": "2026-04-15",
+      "country_icc": null,
+      "n_items": 12.0
+    }
+  ],
+  "monthly_history": [
+    {
+      "date": "2026-04-15",
+      "country_icc": null,
+      "n_items": 12.0,
+      "yyyymm": "2026-04"
+    }
+  ],
+  "last_three_months": [
+    {
+      "date": "2026-04-15",
+      "country_icc": null,
+      "n_items": 12.0,
+      "yyyymm": "2026-04"
+    }
+  ],
+  "downloads": [
+    {
+      "label": "Daily summary history (CSV)",
+      "path": "./data/downloads/country/daily_history.csv"
+    },
+    {
+      "label": "Monthly summary history (CSV)",
+      "path": "./data/downloads/country/monthly_history.csv"
+    },
+    {
+      "label": "Latest daily table (CSV)",
+      "path": "./data/downloads/country/latest_daily_table.csv"
+    }
+  ],
+  "note": "Country ICC history starts when this archive pipeline began. Country ICC is based on country ETF proxies using online holdings data."
 }
