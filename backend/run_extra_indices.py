@@ -1,3 +1,4 @@
+
 from __future__ import annotations
 
 import io
@@ -31,7 +32,6 @@ INDEX_URLS = {
     "sp600": "https://en.wikipedia.org/wiki/List_of_S%26P_600_companies",
     "rut1000": "https://en.wikipedia.org/wiki/Russell_1000_Index",
 }
-
 RUN_ORDER = ["sp100", "dow30", "ndx100", "sp400", "sp600", "rut1000"]
 
 
@@ -46,11 +46,15 @@ def _get_text(url: str, timeout: int = 30, retries: int = 3) -> str:
         except Exception as e:
             last_err = e
             time.sleep(0.8 * attempt)
-    raise RuntimeError(f"Failed to fetch {url}: {last_err}")
+    raise RuntimeError(f"Failed to fetch {url} after {retries} attempts: {last_err}")
 
 
 def _read_html_tables(url: str) -> list[pd.DataFrame]:
-    return pd.read_html(io.StringIO(_get_text(url)))
+    html = _get_text(url)
+    tables = pd.read_html(io.StringIO(html))
+    if not tables:
+        raise RuntimeError(f"No HTML tables found at {url}")
+    return tables
 
 
 def _normalize_symbols(series: pd.Series) -> list[str]:
@@ -73,11 +77,12 @@ def _find_table_by_columns(tables: list[pd.DataFrame], required_cols: list[str],
             df = df.copy()
             df.columns = cols
             return df
-    raise RuntimeError(f"Could not find table with columns {required_cols}")
+    raise RuntimeError(f"Could not find a table with columns {required_cols} and at least {min_rows} rows")
 
 
 def _fetch_sp100() -> list[str]:
-    df = _find_table_by_columns(_read_html_tables(INDEX_URLS["sp100"]), ["Symbol", "Name"], 90)
+    tables = _read_html_tables(INDEX_URLS["sp100"])
+    df = _find_table_by_columns(tables, ["Symbol", "Name", "Sector"], min_rows=90)
     syms = _normalize_symbols(df["Symbol"])
     if len(syms) < 90:
         raise RuntimeError(f"Parsed only {len(syms)} symbols for sp100")
@@ -85,7 +90,8 @@ def _fetch_sp100() -> list[str]:
 
 
 def _fetch_dow30() -> list[str]:
-    df = _find_table_by_columns(_read_html_tables(INDEX_URLS["dow30"]), ["Company", "Exchange", "Symbol"], 30)
+    tables = _read_html_tables(INDEX_URLS["dow30"])
+    df = _find_table_by_columns(tables, ["Company", "Exchange", "Symbol", "Sector"], min_rows=30)
     syms = _normalize_symbols(df["Symbol"])
     if len(syms) < 30:
         raise RuntimeError(f"Parsed only {len(syms)} symbols for dow30")
@@ -93,7 +99,8 @@ def _fetch_dow30() -> list[str]:
 
 
 def _fetch_ndx100() -> list[str]:
-    df = _find_table_by_columns(_read_html_tables(INDEX_URLS["ndx100"]), ["Ticker", "Company"], 90)
+    tables = _read_html_tables(INDEX_URLS["ndx100"])
+    df = _find_table_by_columns(tables, ["Ticker", "Company"], min_rows=90)
     syms = _normalize_symbols(df["Ticker"])
     if len(syms) < 90:
         raise RuntimeError(f"Parsed only {len(syms)} symbols for ndx100")
@@ -101,7 +108,8 @@ def _fetch_ndx100() -> list[str]:
 
 
 def _fetch_sp400() -> list[str]:
-    df = _find_table_by_columns(_read_html_tables(INDEX_URLS["sp400"]), ["Symbol", "Security"], 350)
+    tables = _read_html_tables(INDEX_URLS["sp400"])
+    df = _find_table_by_columns(tables, ["Symbol", "Security"], min_rows=350)
     syms = _normalize_symbols(df["Symbol"])
     if len(syms) < 350:
         raise RuntimeError(f"Parsed only {len(syms)} symbols for sp400")
@@ -109,7 +117,8 @@ def _fetch_sp400() -> list[str]:
 
 
 def _fetch_sp600() -> list[str]:
-    df = _find_table_by_columns(_read_html_tables(INDEX_URLS["sp600"]), ["Symbol", "Security"], 500)
+    tables = _read_html_tables(INDEX_URLS["sp600"])
+    df = _find_table_by_columns(tables, ["Symbol", "Security"], min_rows=500)
     syms = _normalize_symbols(df["Symbol"])
     if len(syms) < 500:
         raise RuntimeError(f"Parsed only {len(syms)} symbols for sp600")
@@ -117,7 +126,8 @@ def _fetch_sp600() -> list[str]:
 
 
 def _fetch_rut1000() -> list[str]:
-    df = _find_table_by_columns(_read_html_tables(INDEX_URLS["rut1000"]), ["Company", "Symbol"], 900)
+    tables = _read_html_tables(INDEX_URLS["rut1000"])
+    df = _find_table_by_columns(tables, ["Company", "Symbol"], min_rows=900)
     syms = _normalize_symbols(df["Symbol"])
     if len(syms) < 900:
         raise RuntimeError(f"Parsed only {len(syms)} symbols for rut1000")
@@ -146,6 +156,13 @@ def _date_tag() -> str:
     return f"{d_et.year}_{d_et.month:02d}{d_et.day:02d}"
 
 
+def _save_panel(universe: str, panel: pd.DataFrame) -> pathlib.Path:
+    out_dir = _month_dir()
+    out_path = out_dir / f"icc_live_{universe}_{_date_tag()}.csv"
+    panel.to_csv(out_path, index=False)
+    return out_path
+
+
 def _existing_nonempty_file(universe: str) -> pathlib.Path | None:
     out_dir = _month_dir()
     pattern = f"icc_live_{universe}_{_date_tag()}*.csv"
@@ -162,21 +179,12 @@ def run_one(universe: str) -> tuple[bool, str]:
     existing = _existing_nonempty_file(universe)
     if existing is not None:
         return True, f"skip existing {existing.name}"
-
     tickers = FETCHERS[universe]()
-    deduped = []
-    seen = set()
-    for t in tickers:
-        if t not in seen:
-            deduped.append(t)
-            seen.add(t)
-
-    panel = get_live_panel(deduped)
+    tickers = list(dict.fromkeys(tickers))
+    panel = get_live_panel(tickers)
     if panel.empty:
         raise RuntimeError(f"ICC panel is empty for {universe}")
-
-    out_path = _month_dir() / f"icc_live_{universe}_{_date_tag()}.csv"
-    panel.to_csv(out_path, index=False)
+    out_path = _save_panel(universe, panel)
     return True, f"saved {out_path.name} with {len(panel)} rows"
 
 
@@ -189,6 +197,8 @@ def main() -> None:
             print(f"[run_extra_indices] {universe}: {msg}")
             if success:
                 ok.append(universe)
+            else:
+                bad.append(universe)
         except Exception as e:
             print(f"[run_extra_indices] FAILED on {universe}: {type(e).__name__}: {e}")
             bad.append(universe)
