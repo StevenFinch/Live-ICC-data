@@ -1,19 +1,17 @@
-country,ticker,label,vw_icc,coverage_weight,n_holdings,n_matched,status
-Australia,EWA,iShares MSCI Australia ETF,,0.0,10,0,no_match
-Brazil,EWZ,iShares MSCI Brazil ETF,,0.0,10,0,no_match
-Canada,EWC,iShares MSCI Canada ETF,,0.0,10,0,no_match
-Canada,EWC,iShares MSCI Canada ETF,,0.0,10,0,no_match
-China,MCHI,iShares MSCI China ETF,,0.0,10,0,no_match
-Germany,EWG,iShares MSCI Germany ETF,,0.0,10,0,no_match
-Hong Kong,EWH,iShares MSCI Hong Kong ETF,,0.0,10,0,no_match
-India,INDA,iShares MSCI India ETF,,0.0,10,0,no_match
-Indonesia,EIDO,iShares MSCI Indonesia ETF,,0.0,10,0,no_match
-Japan,EWJ,iShares MSCI Japan ETF,,0.0,10,0,no_match
-Mexico,EWW,iShares MSCI Mexico ETF,,0.0,10,0,no_match
-Poland,EPOL,iShares MSCI Poland ETF,,0.0,10,0,no_match
-Russia,ERUS,iShares MSCI Russia ETF,,0.0,10,0,no_match
-South Korea,EWY,iShares MSCI South Korea ETF,,0.0,10,0,no_match
-Switzerland,EWL,iShares MSCI Switzerland ETF,,0.0,10,0,no_match
-Taiwan,EWT,iShares MSCI Taiwan ETF,,0.0,10,0,no_match
-United Kingdom,EWU,iShares MSCI United Kingdom ETF,,0.0,10,0,no_match
-United States,SPY,United States Proxy,,0.0,10,0,no_match
+date,country,ticker,label,category,vw_icc,coverage_weight,n_items,n_matched,source,status
+2026-04-15,Japan,EWJ,iShares MSCI Japan ETF,,,0.0,10,0,yfinance_top_holdings,no_matched_holdings
+2026-04-15,Germany,EWG,iShares MSCI Germany ETF,,,0.0,10,0,yfinance_top_holdings,no_matched_holdings
+2026-04-15,France,EWQ,iShares MSCI France ETF,,,0.0,10,0,yfinance_top_holdings,no_matched_holdings
+2026-04-15,United Kingdom,EWU,iShares MSCI United Kingdom ETF,,,0.0,10,0,yfinance_top_holdings,no_matched_holdings
+2026-04-15,Italy,EWI,iShares MSCI Italy ETF,,,0.0,10,0,yfinance_top_holdings,no_matched_holdings
+2026-04-15,Spain,EWP,iShares MSCI Spain ETF,,,0.0,10,0,yfinance_top_holdings,no_matched_holdings
+2026-04-15,Canada,EWC,iShares MSCI Canada ETF,,,0.0,10,0,yfinance_top_holdings,no_matched_holdings
+2026-04-15,Australia,EWA,iShares MSCI Australia ETF,,,0.0,10,0,yfinance_top_holdings,no_matched_holdings
+2026-04-15,Switzerland,EWL,iShares MSCI Switzerland ETF,,,0.0,10,0,yfinance_top_holdings,no_matched_holdings
+2026-04-15,Taiwan,EWT,iShares MSCI Taiwan ETF,,,0.0,10,0,yfinance_top_holdings,no_matched_holdings
+2026-04-15,South Korea,EWY,iShares MSCI South Korea ETF,,,0.0,10,0,yfinance_top_holdings,no_matched_holdings
+2026-04-15,India,INDA,iShares MSCI India ETF,,,0.0,10,0,yfinance_top_holdings,no_matched_holdings
+2026-04-15,China,MCHI,iShares MSCI China ETF,,,0.0,10,0,yfinance_top_holdings,no_matched_holdings
+2026-04-15,Brazil,EWZ,iShares MSCI Brazil ETF,,,0.0,10,0,yfinance_top_holdings,no_matched_holdings
+2026-04-15,Mexico,EWW,iShares MSCI Mexico ETF,,,0.0,10,0,yfinance_top_holdings,no_matched_holdings
+2026-04-15,Singapore,EWS,iShares MSCI Singapore ETF,,,0.0,10,0,yfinance_top_holdings,no_matched_holdings

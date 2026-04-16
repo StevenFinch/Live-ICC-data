@@ -1,162 +1,66 @@
 {
+  "title": "Fama-French style live ICC data library",
   "asof_date": "2026-04-15",
-  "source_file": "data/202604/icc_live_usall_2026_0415_r1.csv",
-  "overview_rows": [
+  "rows": [
     {
-      "family": "marketwide",
-      "label": "Marketwide",
-      "latest_date": "2026-04-15",
-      "latest_value": 0.08170929701047211,
-      "m1_label": "2026-02",
-      "m1_value": 0.08042145131520971,
-      "m2_label": "2026-03",
+      "family": "Marketwide (All U.S.)",
+      "latest_daily": 0.08170929701047211,
+      "m1_date": "2026-04-15",
+      "m1_value": 0.08170929701047211,
+      "m2_date": "2026-03-31",
       "m2_value": 0.0846043873892946,
-      "m3_label": "2026-04",
-      "m3_value": 0.08170929701047211
+      "m3_date": "2026-02-27",
+      "m3_value": 0.08042145131520971
     },
     {
-      "family": "value",
-      "label": "Value Premium",
-      "latest_date": "2026-04-15",
-      "latest_value": 0.039677770829615044,
-      "m1_label": "2026-02",
-      "m1_value": 0.04258253104764308,
-      "m2_label": "2026-03",
-      "m2_value": 0.03551502878898988,
-      "m3_label": "2026-04",
-      "m3_value": 0.039677770829615044
-    },
-    {
-      "family": "industry",
-      "label": "Industry",
-      "latest_date": "2026-04-15",
-      "latest_value": 0.07944137202452439,
-      "m1_label": "2026-02",
-      "m1_value": 0.0791148646428733,
-      "m2_label": "2026-03",
-      "m2_value": 0.08153501496920224,
-      "m3_label": "2026-04",
-      "m3_value": 0.07944137202452439
-    },
-    {
-      "family": "etf",
-      "label": "ETF",
-      "latest_date": "2026-04-15",
-      "latest_value": null,
-      "m1_label": "2026-04",
-      "m1_value": null,
-      "m2_label": null,
-      "m2_value": null,
-      "m3_label": null,
-      "m3_value": null
-    },
-    {
-      "family": "country",
-      "label": "Country",
-      "latest_date": "2026-04-15",
-      "latest_value": null,
-      "m1_label": "2026-04",
-      "m1_value": null,
-      "m2_label": null,
-      "m2_value": null,
-      "m3_label": null,
-      "m3_value": null
-    },
-    {
-      "family": "indices",
-      "label": "Indices",
-      "latest_date": "2026-04-15",
-      "latest_value": 0.07921429983905448,
-      "m1_label": "2026-02",
-      "m1_value": 0.07395991999074679,
-      "m2_label": "2026-03",
+      "family": "Marketwide (S&P 500)",
+      "latest_daily": 0.07569297028442881,
+      "m1_date": "2026-04-15",
+      "m1_value": 0.07569297028442881,
+      "m2_date": "2026-03-31",
       "m2_value": 0.07889568917176408,
-      "m3_label": "2026-04",
-      "m3_value": 0.07921429983905448
+      "m3_date": "2026-02-27",
+      "m3_value": 0.07395991999074679
+    },
+    {
+      "family": "Value Premium (IVP)",
+      "latest_daily": 0.039677770829615044,
+      "m1_date": "2026-04-15",
+      "m1_value": 0.039677770829615044,
+      "m2_date": "2026-03-31",
+      "m2_value": 0.03551502878898988,
+      "m3_date": "2026-02-27",
+      "m3_value": 0.04258253104764308
+    },
+    {
+      "family": "Industry Wide",
+      "latest_daily": 0.07944137202452439,
+      "m1_date": "2026-04-15",
+      "m1_value": 0.07944137202452439,
+      "m2_date": "2026-03-31",
+      "m2_value": 0.08153501496920224,
+      "m3_date": "2026-02-27",
+      "m3_value": 0.0791148646428733
+    },
+    {
+      "family": "ETF ICC",
+      "latest_daily": null,
+      "m1_date": "2026-04-15",
+      "m1_value": null,
+      "m2_date": null,
+      "m2_value": null,
+      "m3_date": null,
+      "m3_value": null
+    },
+    {
+      "family": "Country ICC",
+      "latest_daily": null,
+      "m1_date": "2026-04-15",
+      "m1_value": null,
+      "m2_date": null,
+      "m2_value": null,
+      "m3_date": null,
+      "m3_value": null
     }
-  ],
-  "family_downloads": {
-    "marketwide": [
-      {
-        "label": "Daily history (CSV)",
-        "path": "./data/downloads/marketwide/daily_history.csv"
-      },
-      {
-        "label": "Monthly history (CSV)",
-        "path": "./data/downloads/marketwide/monthly_history.csv"
-      }
-    ],
-    "value": [
-      {
-        "label": "Daily history (CSV)",
-        "path": "./data/downloads/value/daily_history.csv"
-      },
-      {
-        "label": "Monthly history (CSV)",
-        "path": "./data/downloads/value/monthly_history.csv"
-      }
-    ],
-    "industry": [
-      {
-        "label": "Daily summary history (CSV)",
-        "path": "./data/downloads/industry/daily_history.csv"
-      },
-      {
-        "label": "Monthly summary history (CSV)",
-        "path": "./data/downloads/industry/monthly_history.csv"
-      },
-      {
-        "label": "Latest daily table (CSV)",
-        "path": "./data/downloads/industry/latest_daily_table.csv"
-      }
-    ],
-    "etf": [
-      {
-        "label": "Daily summary history (CSV)",
-        "path": "./data/downloads/etf/daily_history.csv"
-      },
-      {
-        "label": "Monthly summary history (CSV)",
-        "path": "./data/downloads/etf/monthly_history.csv"
-      },
-      {
-        "label": "Latest daily table (CSV)",
-        "path": "./data/downloads/etf/latest_daily_table.csv"
-      }
-    ],
-    "country": [
-      {
-        "label": "Daily summary history (CSV)",
-        "path": "./data/downloads/country/daily_history.csv"
-      },
-      {
-        "label": "Monthly summary history (CSV)",
-        "path": "./data/downloads/country/monthly_history.csv"
-      },
-      {
-        "label": "Latest daily table (CSV)",
-        "path": "./data/downloads/country/latest_daily_table.csv"
-      }
-    ],
-    "indices": [
-      {
-        "label": "Daily history by index (CSV)",
-        "path": "./data/downloads/indices/daily_history.csv"
-      },
-      {
-        "label": "Monthly summary history (CSV)",
-        "path": "./data/downloads/indices/monthly_history.csv"
-      },
-      {
-        "label": "Latest daily table (CSV)",
-        "path": "./data/downloads/indices/latest_daily_table.csv"
-      }
-    ],
-    "raw": [
-      {
-        "label": "Raw manifest (CSV)",
-        "path": "./data/downloads/raw/manifest.csv"
-      }
-    ]
-  }
+  ]
 }
