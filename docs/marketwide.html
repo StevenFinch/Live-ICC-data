@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Live ICC Library - Marketwide</title>
+  <title>Marketwide ICC</title>
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body data-page="marketwide">
@@ -11,15 +11,13 @@
     <header class="hero centered compact">
       <h1>Marketwide ICC</h1>
       <div id="asof" class="asof"></div>
-      <nav class="topnav">
-        <a href="./index.html">Overview</a><a href="./marketwide.html">Marketwide</a><a href="./value.html">Value Premium</a><a href="./industry.html">Industry</a><a href="./etf.html">ETF</a><a href="./country.html">Country</a><a href="./indices.html">Indices</a><a href="./downloads.html">Downloads</a>
-      </nav>
+      <nav class="topnav"><a href="./index.html">Overview</a><a href="./marketwide.html">Marketwide</a><a href="./value.html">Value Premium</a><a href="./industry.html">Industry</a><a href="./etf.html">ETF</a><a href="./country.html">Country</a><a href="./indices.html">Indices</a><a href="./downloads.html">Downloads</a></nav>
       <div id="status" class="status"></div>
     </header>
-    <section class="section"><h2>Latest daily</h2><div id="marketwide-latest-cards" class="cards"></div></section>
-    <section class="section"><h2>Last three monthly observations</h2><div id="marketwide-monthly-table"></div></section>
-    <section class="section"><h2>Daily history</h2><div id="marketwide-daily-table"></div></section>
-    <section class="section"><h2>Downloads</h2><div id="marketwide-downloads"></div></section>
+    <section class="section"><h2>Latest daily</h2><div class="panel"><div id="marketwide-latest"></div></div></section>
+    <section class="section"><h2>Last three monthly observations</h2><div class="panel"><div id="marketwide-monthly"></div></div></section>
+    <section class="section"><h2>Historical daily</h2><div class="panel"><div id="marketwide-daily"></div></div></section>
+    <section class="section"><h2>Downloads</h2><div class="panel"><div id="marketwide-downloads"></div></div></section>
   </div>
   <script src="./app.js"></script>
 </body>
