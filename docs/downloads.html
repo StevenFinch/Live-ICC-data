@@ -8,43 +8,23 @@
 </head>
 <body data-page="downloads">
   <div class="page">
-    <header class="hero">
-      <h1>Live ICC Library</h1>
-      <p class="subtitle">Fama-French style live ICC data library</p>
+    <header class="hero centered compact">
+      <h1>Downloads</h1>
       <div id="asof" class="asof"></div>
+      <nav class="topnav"><a href="./index.html">Overview</a><a href="./marketwide.html">Marketwide</a><a href="./value.html">Value Premium</a><a href="./industry.html">Industry</a><a href="./etf.html">ETF</a><a href="./country.html">Country</a><a href="./indices.html">Indices</a><a href="./downloads.html">Downloads</a></nav>
       <div id="status" class="status"></div>
-      <nav class="topnav">
-        <a href="./index.html">Overview</a>
-        <a href="./marketwide.html">Marketwide</a>
-        <a href="./value.html">Value Premium</a>
-        <a href="./industry.html">Industry</a>
-        <a href="./etf.html">ETF</a>
-        <a href="./country.html">Country</a>
-        <a href="./indices.html">Indices</a>
-        <a href="./downloads.html">Downloads</a>
-      </nav>
     </header>
-    
-<section class="section">
-  <h2>Aggregate downloads by family</h2>
-  <div class="panel">
-    <div class="note">Marketwide, value premium, industry, ETF, country, and indices are separated.</div>
-    <div id="aggregate-downloads" class="download-groups" style="margin-top:12px;"></div>
-  </div>
-</section>
-<section class="section">
-  <h2>Raw snapshot downloads</h2>
-  <div class="panel">
-    <div class="note">Usall and S&amp;P 500 are separated into different tabs. Year and month both support download-all.</div>
-    <div class="tab-row">
-      <button class="tab-btn active" data-raw-tab="usall">usall</button>
-      <button class="tab-btn" data-raw-tab="sp500">sp500</button>
-      <button class="tab-btn" data-raw-tab="other_indices">other indices</button>
-    </div>
-    <div id="download-tree"></div>
-  </div>
-</section>
-
+    <section class="section"><h2>Category downloads</h2><div id="downloads-sections"></div></section>
+    <section class="section"><h2>Raw snapshots</h2>
+      <div class="tabbar">
+        <button class="tabbtn active" data-tab="usall">usall</button>
+        <button class="tabbtn" data-tab="sp500">sp500</button>
+        <button class="tabbtn" data-tab="other_indices">other indices</button>
+      </div>
+      <div id="raw-tab-usall" class="rawtab active"></div>
+      <div id="raw-tab-sp500" class="rawtab"></div>
+      <div id="raw-tab-other_indices" class="rawtab"></div>
+    </section>
   </div>
   <script src="./app.js"></script>
 </body>

@@ -8,37 +8,18 @@
 </head>
 <body data-page="marketwide">
   <div class="page">
-    <header class="hero">
-      <h1>Live ICC Library</h1>
-      <p class="subtitle">Fama-French style live ICC data library</p>
+    <header class="hero centered compact">
+      <h1>Marketwide ICC</h1>
       <div id="asof" class="asof"></div>
-      <div id="status" class="status"></div>
       <nav class="topnav">
-        <a href="./index.html">Overview</a>
-        <a href="./marketwide.html">Marketwide</a>
-        <a href="./value.html">Value Premium</a>
-        <a href="./industry.html">Industry</a>
-        <a href="./etf.html">ETF</a>
-        <a href="./country.html">Country</a>
-        <a href="./indices.html">Indices</a>
-        <a href="./downloads.html">Downloads</a>
+        <a href="./index.html">Overview</a><a href="./marketwide.html">Marketwide</a><a href="./value.html">Value Premium</a><a href="./industry.html">Industry</a><a href="./etf.html">ETF</a><a href="./country.html">Country</a><a href="./indices.html">Indices</a><a href="./downloads.html">Downloads</a>
       </nav>
+      <div id="status" class="status"></div>
     </header>
-    
-<section class="section">
-  <h2>Last three monthly observations</h2>
-  <div class="panel">
-    <div id="marketwide-monthly"></div>
-  </div>
-</section>
-<section class="section">
-  <h2>Recent daily: All U.S. vs S&amp;P 500</h2>
-  <div class="grid-2">
-    <div class="panel"><div class="panel-title">All U.S. market</div><div id="marketwide-all-table"></div></div>
-    <div class="panel"><div class="panel-title">S&amp;P 500</div><div id="marketwide-sp500-table"></div></div>
-  </div>
-</section>
-
+    <section class="section"><h2>Latest daily</h2><div id="marketwide-latest-cards" class="cards"></div></section>
+    <section class="section"><h2>Last three monthly observations</h2><div id="marketwide-monthly-table"></div></section>
+    <section class="section"><h2>Daily history</h2><div id="marketwide-daily-table"></div></section>
+    <section class="section"><h2>Downloads</h2><div id="marketwide-downloads"></div></section>
   </div>
   <script src="./app.js"></script>
 </body>

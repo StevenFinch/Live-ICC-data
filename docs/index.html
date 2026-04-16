@@ -8,7 +8,7 @@
 </head>
 <body data-page="overview">
   <div class="page">
-    <header class="hero">
+    <header class="hero centered">
       <h1>Live ICC Library</h1>
       <p class="subtitle">Fama-French style live ICC data library</p>
       <div id="asof" class="asof"></div>
@@ -24,27 +24,21 @@
         <a href="./downloads.html">Downloads</a>
       </nav>
     </header>
-    
-<section class="section">
-  <h2>Latest daily overview</h2>
-  <div id="overview-cards" class="cards"></div>
-</section>
 
-<section class="section">
-  <h2>Last three monthly observations</h2>
-  <div class="panel">
-    <div id="overview-monthly"></div>
-  </div>
-</section>
+    <section class="section">
+      <h2>Latest daily overview</h2>
+      <div id="overview-latest-table"></div>
+    </section>
 
-<section class="section">
-  <h2>Category downloads</h2>
-  <div class="panel">
-    <div class="note">Downloads are split by family, not mixed together.</div>
-    <div id="overview-downloads" class="download-groups" style="margin-top:12px;"></div>
-  </div>
-</section>
+    <section class="section">
+      <h2>Last three monthly observations</h2>
+      <div id="overview-monthly-table"></div>
+    </section>
 
+    <section class="section">
+      <h2>Category downloads</h2>
+      <div id="overview-downloads" class="grid-3"></div>
+    </section>
   </div>
   <script src="./app.js"></script>
 </body>

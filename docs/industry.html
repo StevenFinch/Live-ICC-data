@@ -8,36 +8,16 @@
 </head>
 <body data-page="industry">
   <div class="page">
-    <header class="hero">
-      <h1>Live ICC Library</h1>
-      <p class="subtitle">Fama-French style live ICC data library</p>
+    <header class="hero centered compact">
+      <h1>Industry ICC</h1>
       <div id="asof" class="asof"></div>
+      <nav class="topnav"><a href="./index.html">Overview</a><a href="./marketwide.html">Marketwide</a><a href="./value.html">Value Premium</a><a href="./industry.html">Industry</a><a href="./etf.html">ETF</a><a href="./country.html">Country</a><a href="./indices.html">Indices</a><a href="./downloads.html">Downloads</a></nav>
       <div id="status" class="status"></div>
-      <nav class="topnav">
-        <a href="./index.html">Overview</a>
-        <a href="./marketwide.html">Marketwide</a>
-        <a href="./value.html">Value Premium</a>
-        <a href="./industry.html">Industry</a>
-        <a href="./etf.html">ETF</a>
-        <a href="./country.html">Country</a>
-        <a href="./indices.html">Indices</a>
-        <a href="./downloads.html">Downloads</a>
-      </nav>
     </header>
-    
-<section class="section">
-  <h2>Last three monthly observations</h2>
-  <div class="panel"><div id="industry-monthly"></div></div>
-</section>
-<section class="section">
-  <h2>Latest daily detail</h2>
-  <div class="panel"><div id="industry-latest-table"></div></div>
-</section>
-<section class="section">
-  <h2>Recent daily overview</h2>
-  <div class="panel"><div id="industry-daily-table"></div></div>
-</section>
-
+    <section class="section"><h2>Latest daily summary</h2><div id="industry-latest-cards" class="cards"></div></section>
+    <section class="section"><h2>Last three monthly observations</h2><div id="industry-monthly-table"></div></section>
+    <section class="section"><h2>Latest sector table</h2><div id="industry-latest-table"></div></section>
+    <section class="section"><h2>Downloads</h2><div id="industry-downloads"></div></section>
   </div>
   <script src="./app.js"></script>
 </body>
