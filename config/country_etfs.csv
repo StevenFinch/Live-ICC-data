@@ -1,13 +1,5 @@
-ticker,label,country
-EWJ,iShares MSCI Japan ETF,Japan
-EWG,iShares MSCI Germany ETF,Germany
-EWU,iShares MSCI United Kingdom ETF,United Kingdom
-EWC,iShares MSCI Canada ETF,Canada
-EWA,iShares MSCI Australia ETF,Australia
-EWZ,iShares MSCI Brazil ETF,Brazil
-INDA,iShares MSCI India ETF,India
-MCHI,iShares MSCI China ETF,China
-EWH,iShares MSCI Hong Kong ETF,Hong Kong
-EWY,iShares MSCI South Korea ETF,South Korea
-EWT,iShares MSCI Taiwan ETF,Taiwan
-EWL,iShares MSCI Switzerland ETF,Switzerland
+ticker,label,country,url,allow_holdings
+EWJ,iShares MSCI Japan ETF,Japan,https://www.ishares.com/us/products/239665/ishares-msci-japan-etf,0
+EWG,iShares MSCI Germany ETF,Germany,https://www.ishares.com/us/products/239650/ishares-msci-germany-etf,0
+MCHI,iShares MSCI China ETF,China,https://www.ishares.com/us/products/239619/ishares-msci-china-etf,0
+INDA,iShares MSCI India ETF,India,https://www.ishares.com/us/products/239659/ishares-msci-india-etf,0

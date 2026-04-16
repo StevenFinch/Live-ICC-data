@@ -1,13 +1,7 @@
-ticker,label,category
-SPY,SPDR S&P 500 ETF,US Broad Market
-IVV,iShares Core S&P 500 ETF,US Broad Market
-VTI,Vanguard Total Stock Market ETF,US Broad Market
-QQQ,Invesco QQQ Trust,Growth / Nasdaq
-IWM,iShares Russell 2000 ETF,Small Cap
-DIA,SPDR Dow Jones Industrial Average ETF,Blue Chip
-XLF,Financial Select Sector SPDR,Sector
-XLK,Technology Select Sector SPDR,Sector
-XLE,Energy Select Sector SPDR,Sector
-XLV,Health Care Select Sector SPDR,Sector
-XLY,Consumer Discretionary Select Sector SPDR,Sector
-XLI,Industrial Select Sector SPDR,Sector
+ticker,label,category,url,allow_holdings
+IVV,iShares Core S&P 500 ETF,Core US,https://www.ishares.com/us/products/239726/ishares-core-sp-500-etf,1
+SPY,State Street SPDR S&P 500 ETF,Core US,https://www.ssga.com/us/en/intermediary/etfs/state-street-spdr-sp-500-etf-trust-spy,1
+IVE,iShares S&P 500 Value ETF,Style US,https://www.ishares.com/us/products/239728/ishares-sp-500-value-etf,0
+IVW,iShares S&P 500 Growth ETF,Style US,https://www.ishares.com/us/products/239725/ishares-sp-500-growth-etf,0
+IYW,iShares U.S. Technology ETF,Sector US,https://www.ishares.com/us/products/239522/ishares-us-technology-etf,0
+IWD,iShares Russell 1000 Value ETF,Style US,https://www.ishares.com/us/products/239708/ishares-russell-1000-value-etf,0
