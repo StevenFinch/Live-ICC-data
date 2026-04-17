@@ -1,27 +1,27 @@
 {
-  "asof_date": "2026-04-16",
+  "asof_date": "2026-04-17",
   "summary_latest": [
     {
-      "date": "2026-04-16",
-      "summary_icc": 0.0562565448834975,
-      "n_items": 10
+      "date": "2026-04-17",
+      "summary_icc": 0.0544818180434542,
+      "n_items": 4
     }
   ],
   "summary_monthly": [
     {
-      "date": "2026-04-16",
-      "summary_icc": 0.0562565448834975,
-      "n_items": 10,
+      "date": "2026-04-17",
+      "summary_icc": 0.0544818180434542,
+      "n_items": 4,
       "yyyymm": "2026-04"
     }
   ],
   "latest": [
     {
-      "date": "2026-04-16",
+      "date": "2026-04-17",
       "ticker": "EWJ",
       "label": "iShares MSCI Japan ETF",
       "category": "",
-      "vw_icc": 0.05007511266900351,
+      "vw_icc": 0.04957858205255329,
       "coverage_weight": null,
       "n_items": null,
       "n_matched": null,
@@ -30,11 +30,11 @@
       "country": "Japan"
     },
     {
-      "date": "2026-04-16",
+      "date": "2026-04-17",
       "ticker": "EWG",
       "label": "iShares MSCI Germany ETF",
       "category": "",
-      "vw_icc": 0.0573394495412844,
+      "vw_icc": 0.057175528873642086,
       "coverage_weight": null,
       "n_items": null,
       "n_matched": null,
@@ -43,11 +43,11 @@
       "country": "Germany"
     },
     {
-      "date": "2026-04-16",
+      "date": "2026-04-17",
       "ticker": "MCHI",
       "label": "iShares MSCI China ETF",
       "category": "",
-      "vw_icc": 0.07127583749109052,
+      "vw_icc": 0.07032348804500703,
       "coverage_weight": null,
       "n_items": null,
       "n_matched": null,
@@ -56,11 +56,11 @@
       "country": "China"
     },
     {
-      "date": "2026-04-16",
+      "date": "2026-04-17",
       "ticker": "INDA",
       "label": "iShares MSCI India ETF",
       "category": "",
-      "vw_icc": 0.04164931278633902,
+      "vw_icc": 0.04084967320261438,
       "coverage_weight": null,
       "n_items": null,
       "n_matched": null,
@@ -152,7 +152,7 @@
       "date": "2026-04-16",
       "ticker": "EWG",
       "label": "iShares MSCI Germany ETF",
-      "category": "",
+      "category": null,
       "vw_icc": 0.0573394495412844,
       "coverage_weight": null,
       "n_items": null,
@@ -178,8 +178,8 @@
       "date": "2026-04-16",
       "ticker": "EWJ",
       "label": "iShares MSCI Japan ETF",
-      "category": "",
-      "vw_icc": 0.05007511266900351,
+      "category": null,
+      "vw_icc": 0.0500751126690035,
       "coverage_weight": null,
       "n_items": null,
       "n_matched": null,
@@ -230,8 +230,8 @@
       "date": "2026-04-16",
       "ticker": "INDA",
       "label": "iShares MSCI India ETF",
-      "category": "",
-      "vw_icc": 0.04164931278633902,
+      "category": null,
+      "vw_icc": 0.041649312786339,
       "coverage_weight": null,
       "n_items": null,
       "n_matched": null,
@@ -243,8 +243,60 @@
       "date": "2026-04-16",
       "ticker": "MCHI",
       "label": "iShares MSCI China ETF",
+      "category": null,
+      "vw_icc": 0.0712758374910905,
+      "coverage_weight": null,
+      "n_items": null,
+      "n_matched": null,
+      "source": "official_page_pe_ratio_proxy",
+      "status": "ok_page_proxy",
+      "country": "China"
+    },
+    {
+      "date": "2026-04-17",
+      "ticker": "EWG",
+      "label": "iShares MSCI Germany ETF",
       "category": "",
-      "vw_icc": 0.07127583749109052,
+      "vw_icc": 0.057175528873642086,
+      "coverage_weight": null,
+      "n_items": null,
+      "n_matched": null,
+      "source": "official_page_pe_ratio_proxy",
+      "status": "ok_page_proxy",
+      "country": "Germany"
+    },
+    {
+      "date": "2026-04-17",
+      "ticker": "EWJ",
+      "label": "iShares MSCI Japan ETF",
+      "category": "",
+      "vw_icc": 0.04957858205255329,
+      "coverage_weight": null,
+      "n_items": null,
+      "n_matched": null,
+      "source": "official_page_pe_ratio_proxy",
+      "status": "ok_page_proxy",
+      "country": "Japan"
+    },
+    {
+      "date": "2026-04-17",
+      "ticker": "INDA",
+      "label": "iShares MSCI India ETF",
+      "category": "",
+      "vw_icc": 0.04084967320261438,
+      "coverage_weight": null,
+      "n_items": null,
+      "n_matched": null,
+      "source": "official_page_pe_ratio_proxy",
+      "status": "ok_page_proxy",
+      "country": "India"
+    },
+    {
+      "date": "2026-04-17",
+      "ticker": "MCHI",
+      "label": "iShares MSCI China ETF",
+      "category": "",
+      "vw_icc": 0.07032348804500703,
       "coverage_weight": null,
       "n_items": null,
       "n_matched": null,
@@ -283,11 +335,11 @@
       "yyyymm": "2026-04"
     },
     {
-      "date": "2026-04-16",
+      "date": "2026-04-17",
       "ticker": "EWG",
       "label": "iShares MSCI Germany ETF",
       "category": "",
-      "vw_icc": 0.0573394495412844,
+      "vw_icc": 0.057175528873642086,
       "coverage_weight": null,
       "n_items": null,
       "n_matched": null,
@@ -311,11 +363,11 @@
       "yyyymm": "2026-04"
     },
     {
-      "date": "2026-04-16",
+      "date": "2026-04-17",
       "ticker": "EWJ",
       "label": "iShares MSCI Japan ETF",
       "category": "",
-      "vw_icc": 0.05007511266900351,
+      "vw_icc": 0.04957858205255329,
       "coverage_weight": null,
       "n_items": null,
       "n_matched": null,
@@ -367,11 +419,11 @@
       "yyyymm": "2026-04"
     },
     {
-      "date": "2026-04-16",
+      "date": "2026-04-17",
       "ticker": "INDA",
       "label": "iShares MSCI India ETF",
       "category": "",
-      "vw_icc": 0.04164931278633902,
+      "vw_icc": 0.04084967320261438,
       "coverage_weight": null,
       "n_items": null,
       "n_matched": null,
@@ -381,11 +433,11 @@
       "yyyymm": "2026-04"
     },
     {
-      "date": "2026-04-16",
+      "date": "2026-04-17",
       "ticker": "MCHI",
       "label": "iShares MSCI China ETF",
       "category": "",
-      "vw_icc": 0.07127583749109052,
+      "vw_icc": 0.07032348804500703,
       "coverage_weight": null,
       "n_items": null,
       "n_matched": null,
