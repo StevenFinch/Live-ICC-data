@@ -1,95 +1,76 @@
 {
-  "title": "Live ICC data library",
-  "overview_cards": [
+  "title": "Fama-French style live ICC data library",
+  "asof_date": "2026-04-16",
+  "rows": [
     {
-      "family": "All market",
-      "value": 0.08165551595446656,
-      "method": "ICC calculation"
+      "family": "Marketwide (All U.S.)",
+      "latest_daily": 0.08165551595446656,
+      "m1_date": "2026-04-16",
+      "m1_value": 0.08165551595446656,
+      "m2_date": "2026-03-31",
+      "m2_value": 0.0846043873892946,
+      "m3_date": "2026-02-27",
+      "m3_value": 0.08042145131520971
     },
     {
-      "family": "S&P 500",
-      "value": 0.0754672706502571,
-      "method": "ICC calculation"
+      "family": "Marketwide (S&P 500)",
+      "latest_daily": 0.0754672706502571,
+      "m1_date": "2026-04-16",
+      "m1_value": 0.0754672706502571,
+      "m2_date": "2026-03-31",
+      "m2_value": 0.07889568917176408,
+      "m3_date": "2026-02-27",
+      "m3_value": 0.07395991999074679
     },
     {
-      "family": "Value premium",
-      "value": 0.03952808119279459,
-      "method": "ICC calculation"
+      "family": "Value Premium (IVP)",
+      "latest_daily": 0.03952808119279459,
+      "m1_date": "2026-04-16",
+      "m1_value": 0.03952808119279459,
+      "m2_date": "2026-03-31",
+      "m2_value": 0.03551502878898988,
+      "m3_date": "2026-02-27",
+      "m3_value": 0.04258253104764308
     },
     {
-      "family": "Industry",
-      "value": 0.08146835236434928,
-      "method": "ICC calculation"
+      "family": "Industry Wide",
+      "latest_daily": 0.07936850225015286,
+      "m1_date": "2026-04-16",
+      "m1_value": 0.07936850225015286,
+      "m2_date": "2026-03-31",
+      "m2_value": 0.08153501496920224,
+      "m3_date": "2026-02-27",
+      "m3_value": 0.0791148646428733
     },
     {
-      "family": "ETF",
-      "value": 1.0,
-      "method": "P/E estimate"
+      "family": "ETF ICC",
+      "latest_daily": 0.03740665818343293,
+      "m1_date": "2026-04-16",
+      "m1_value": 0.03740665818343293,
+      "m2_date": null,
+      "m2_value": null,
+      "m3_date": null,
+      "m3_value": null
     },
     {
-      "family": "Country",
-      "value": 0.054514450690589064,
-      "method": "P/E estimate"
+      "family": "Country ICC",
+      "latest_daily": 0.055833274385024945,
+      "m1_date": "2026-04-16",
+      "m1_value": 0.055833274385024945,
+      "m2_date": null,
+      "m2_value": null,
+      "m3_date": null,
+      "m3_value": null
     },
     {
       "family": "Indices",
-      "value": 0.07363831672062235,
-      "method": "ICC calculation"
+      "latest_daily": 0.07256073747315142,
+      "m1_date": "2026-04-16",
+      "m1_value": 0.07363831672062235,
+      "m2_date": "2026-04-16",
+      "m2_value": 0.07520109474516204,
+      "m3_date": "2026-04-16",
+      "m3_value": 0.07601832096846213
     }
-  ],
-  "marketwide_last_three": {
-    "all_market": [
-      {
-        "family": "all_market",
-        "date": "2026-02-27",
-        "month": "2026-02",
-        "value": 0.08042145131520971,
-        "method": "ICC calculation",
-        "n_items": 2686
-      },
-      {
-        "family": "all_market",
-        "date": "2026-03-31",
-        "month": "2026-03",
-        "value": 0.0846043873892946,
-        "method": "ICC calculation",
-        "n_items": 2721
-      },
-      {
-        "family": "all_market",
-        "date": "2026-04-16",
-        "month": "2026-04",
-        "value": 0.08165551595446656,
-        "method": "ICC calculation",
-        "n_items": 2724
-      }
-    ],
-    "sp500": [
-      {
-        "family": "sp500",
-        "date": "2026-02-27",
-        "month": "2026-02",
-        "value": 0.07395991999074679,
-        "method": "ICC calculation",
-        "n_items": 496
-      },
-      {
-        "family": "sp500",
-        "date": "2026-03-31",
-        "month": "2026-03",
-        "value": 0.07889568917176408,
-        "method": "ICC calculation",
-        "n_items": 500
-      },
-      {
-        "family": "sp500",
-        "date": "2026-04-16",
-        "month": "2026-04",
-        "value": 0.0754672706502571,
-        "method": "ICC calculation",
-        "n_items": 500
-      }
-    ]
-  },
-  "as_of": "2026-04-16"
+  ]
 }
