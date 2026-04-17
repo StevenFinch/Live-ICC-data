@@ -3,6 +3,7 @@ name: Daily ICC + Build Website + Deploy Pages
 on:
   workflow_dispatch: {}
   schedule:
+    # Run twice in UTC to cover daylight saving transitions while executing only during 5pm ET.
     - cron: "00 21 * * 1-5"
     - cron: "00 22 * * 1-5"
 
@@ -27,13 +28,19 @@ jobs:
         run: |
           if [ "${{ github.event_name }}" = "schedule" ]; then
             NY_HOUR=$(TZ=America/New_York date +%H)
+            NY_MIN=$(TZ=America/New_York date +%M)
+            # Only scheduled jobs during 5pm ET should proceed.
             if [ "$NY_HOUR" -eq 17 ]; then
               echo "proceed=true" >> "$GITHUB_OUTPUT"
+              echo "Proceeding: NY time is ${NY_HOUR}:${NY_MIN}."
             else
               echo "proceed=false" >> "$GITHUB_OUTPUT"
+              echo "Skipping: NY time is ${NY_HOUR}:${NY_MIN}."
             fi
           else
+            # Manual dispatch should always proceed.
             echo "proceed=true" >> "$GITHUB_OUTPUT"
+            echo "Manual dispatch -> proceed."
           fi
 
   build-and-deploy:
@@ -59,12 +66,13 @@ jobs:
           python-version: "3.11"
 
       - name: Install dependencies
+        shell: bash
         run: |
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then
             pip install -r requirements.txt
           else
-            pip install pandas numpy yfinance requests lxml html5lib python-dateutil tzdata beautifulsoup4 openpyxl
+            pip install pandas numpy requests yfinance lxml html5lib python-dateutil tzdata
           fi
 
       - name: Decide target trading date and whether recalculation is needed
@@ -78,10 +86,10 @@ jobs:
           from datetime import datetime, timedelta
           from zoneinfo import ZoneInfo
 
-          repo = Path('.').resolve()
-          data_dir = repo / 'data'
-          snap_re = re.compile(r'^icc_live_usall_(\d{4})_(\d{4})(?:_r\d+)?\.csv$')
-          now = datetime.now(ZoneInfo('America/New_York'))
+          repo = Path(".").resolve()
+          data_dir = repo / "data"
+          now = datetime.now(ZoneInfo("America/New_York"))
+          snap_re = re.compile(r"^icc_live_usall_(\d{4})_(\d{4})(?:_r\d+)?\.csv$")
 
           def previous_business_day(d):
               d = d - timedelta(days=1)
@@ -89,19 +97,25 @@ jobs:
                   d -= timedelta(days=1)
               return d
 
+          # Define the target trading date.
+          # - Weekend: use previous business day.
+          # - Weekday before 4pm ET: use previous business day.
+          # - Weekday after 4pm ET: use today.
           if now.weekday() >= 5:
               target_date = previous_business_day(now.date())
-              reason = 'weekend'
+              timing_reason = "weekend"
           elif now.hour < 16:
               target_date = previous_business_day(now.date())
-              reason = 'before market close'
+              timing_reason = "before market close"
           else:
               target_date = now.date()
-              reason = 'after market close'
+              timing_reason = "after market close"
 
           latest_valid_date = None
           latest_valid_file = None
-          for p in data_dir.glob('*/*.csv'):
+
+          # Scan all historical usall snapshots and keep the latest valid non-empty file.
+          for p in data_dir.glob("*/*.csv"):
               m = snap_re.match(p.name)
               if not m:
                   continue
@@ -110,18 +124,30 @@ jobs:
                       continue
               except FileNotFoundError:
                   continue
-              dt = datetime.strptime(f"{m.group(1)}{m.group(2)}", '%Y%m%d').date()
+              year = m.group(1)
+              mmdd = m.group(2)
+              dt = datetime.strptime(f"{year}{mmdd}", "%Y%m%d").date()
               if latest_valid_date is None or dt > latest_valid_date:
                   latest_valid_date = dt
                   latest_valid_file = str(p)
 
+          # Recalculate only when the latest valid usall date is older than the target date.
           need_recalc = (latest_valid_date is None) or (latest_valid_date < target_date)
-          with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as f:
+
+          print(f"now_et={now.isoformat()}")
+          print(f"timing_reason={timing_reason}")
+          print(f"target_date={target_date.isoformat()}")
+          print(f"latest_valid_usall_date={latest_valid_date.isoformat() if latest_valid_date else ''}")
+          print(f"latest_valid_usall_file={latest_valid_file or ''}")
+          print(f"need_recalc={str(need_recalc).lower()}")
+
+          out = os.environ["GITHUB_OUTPUT"]
+          with open(out, "a", encoding="utf-8") as f:
               f.write(f"target_date={target_date.isoformat()}\n")
               f.write(f"latest_valid_usall_date={latest_valid_date.isoformat() if latest_valid_date else ''}\n")
               f.write(f"latest_valid_usall_file={latest_valid_file or ''}\n")
               f.write(f"need_recalc={'true' if need_recalc else 'false'}\n")
-              f.write(f"reason={reason}\n")
+              f.write(f"reason={timing_reason}\n")
           PY
 
       - name: Show guard decision
@@ -142,10 +168,11 @@ jobs:
         if: steps.guard.outputs.need_recalc == 'true'
         run: python backend/run_extra_indices.py
 
-      - name: Build docs data
+      - name: Build website data under docs/data
         run: python backend/build_docs_data.py --universe usall
 
       - name: Generate FILES.md manifest if tool exists
+        shell: bash
         run: |
           if [ -f tools/generate_files_manifest.py ]; then
             python tools/generate_files_manifest.py
@@ -164,7 +191,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git fetch origin "${BRANCH}" || true
           ts=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
-          git add -A data docs FILES.md config || true
+          git add -A data docs FILES.md || true
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
