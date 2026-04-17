@@ -4,87 +4,87 @@ async function fetchJson(path) {
   return await r.json();
 }
 
-function byId(id) { return document.getElementById(id); }
+function byId(id) {
+  return document.getElementById(id);
+}
+
 function setStatus(msg, isError = false) {
   const el = byId("status");
   if (!el) return;
   el.textContent = msg || "";
   el.className = isError ? "status error" : "status";
 }
-function fmtPct(x, digits = 2) {
-  if (x === null || x === undefined || Number.isNaN(Number(x))) return "";
-  return `${(Number(x) * 100).toFixed(digits)}%`;
-}
-function fmtInt(x) {
-  if (x === null || x === undefined || Number.isNaN(Number(x))) return "";
-  return Number(x).toLocaleString();
-}
-function esc(s) {
-  return String(s ?? "")
+
+function esc(v) {
+  return String(v ?? "")
     .replaceAll("&", "&amp;")
     .replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#39;");
 }
-function renderTable(id, rows, columns) {
-  const el = byId(id);
-  if (!el) return;
-  if (!rows || !rows.length) {
-    el.innerHTML = `<div class="empty">No data</div>`;
-    return;
-  }
+
+function fmtPct(v, digits = 2) {
+  const x = Number(v);
+  if (!Number.isFinite(x)) return "";
+  return `${(x * 100).toFixed(digits)}%`;
+}
+
+function fmtInt(v) {
+  const x = Number(v);
+  if (!Number.isFinite(x)) return "";
+  return x.toLocaleString();
+}
+
+function renderTable(rows, columns) {
+  if (!rows || !rows.length) return `<div class="empty">No data</div>`;
   const thead = `<thead><tr>${columns.map(c => `<th>${esc(c.label)}</th>`).join("")}</tr></thead>`;
-  const tbody = rows.map(r => `<tr>${columns.map(c => {
-    const raw = r[c.key];
-    const value = c.render ? c.render(raw, r) : esc(raw ?? "");
-    return `<td>${value}</td>`;
-  }).join("")}</tr>`).join("");
-  el.innerHTML = `<table>${thead}<tbody>${tbody}</tbody></table>`;
+  const tbody = rows.map(row => {
+    return `<tr>${columns.map(c => {
+      const raw = row[c.key];
+      const value = c.render ? c.render(raw, row) : esc(raw ?? "");
+      return `<td>${value}</td>`;
+    }).join("")}</tr>`;
+  }).join("");
+  return `<div class="table-wrap"><table class="data">${thead}<tbody>${tbody}</tbody></table></div>`;
 }
-function renderLinkGrid(id, items) {
-  const el = byId(id);
-  if (!el) return;
-  el.innerHTML = `<div class="link-grid">${items.map(x => `
-    <div class="link-card"><a href="${x.href}">${esc(x.title)}</a></div>
-  `).join("")}</div>`;
+
+function section(title, inner, note = "") {
+  return `
+    <section class="section">
+      <h2>${esc(title)}</h2>
+      ${note ? `<div class="note">${note}</div>` : ""}
+      ${inner}
+    </section>
+  `;
 }
-function renderDownloadCards(id, familyMap) {
-  const el = byId(id);
-  if (!el) return;
-  const entries = Object.entries(familyMap || {});
-  if (!entries.length) {
-    el.innerHTML = `<div class="empty">No download files</div>`;
-    return;
-  }
-  el.innerHTML = `<div class="download-grid">${entries.map(([family, items]) => `
-    <div class="download-card">
-      <div><strong>${esc(family)}</strong></div>
-      <div class="download-inline">${(items || []).map(x => `<a href="${x.path}" target="_blank" rel="noopener">${esc(x.label)}</a>`).join("")}</div>
+
+function renderDownloadBox(downloads) {
+  return `
+    <div class="link-list">
+      <div class="link-row">
+        <a class="link-btn" href="${downloads.latest_csv}" target="_blank" rel="noopener">Latest CSV</a>
+        <a class="link-btn" href="${downloads.daily_history_csv}" target="_blank" rel="noopener">Daily history CSV</a>
+        <a class="link-btn" href="${downloads.monthly_history_csv}" target="_blank" rel="noopener">Monthly history CSV</a>
+      </div>
     </div>
-  `).join("")}</div>`;
+  `;
 }
-function renderRawTree(id, years) {
-  const el = byId(id);
-  if (!el) return;
-  if (!years || !years.length) {
-    el.innerHTML = `<div class="empty">No raw snapshot files</div>`;
-    return;
-  }
-  el.innerHTML = years.map(year => `
-    <details class="tree-level">
-      <summary>${esc(year.year)}</summary>
+
+function renderYearTree(years) {
+  if (!years || !years.length) return `<div class="empty">No archived files</div>`;
+  return years.map(year => `
+    <details class="tree">
+      <summary>${esc(year.year)} &nbsp; <a class="link-btn" href="${year.download_all}" target="_blank" rel="noopener">Download all ${esc(year.year)}</a></summary>
       <div class="tree-body">
-        <div class="download-inline"><a href="${year.download_all_zip}" target="_blank" rel="noopener">Download all ${esc(year.year)} (.zip)</a></div>
         ${year.months.map(month => `
-          <details class="tree-level">
-            <summary>${esc(year.year)}-${esc(month.month)}</summary>
+          <details class="tree">
+            <summary>${esc(month.yyyymm)} &nbsp; <a class="link-btn" href="${month.download_all}" target="_blank" rel="noopener">Download all ${esc(month.yyyymm)}</a></summary>
             <div class="tree-body">
-              <div class="download-inline"><a href="${month.download_all_zip}" target="_blank" rel="noopener">Download all ${esc(month.yyyymm)} (.zip)</a></div>
-              ${month.files.map(f => `
+              ${month.files.map(file => `
                 <div class="tree-leaf">
-                  <span>${esc(f.date)} | ${esc(f.universe)} | ${fmtInt(f.n_items)} items</span>
-                  <a href="${f.download_path}" target="_blank" rel="noopener">Download day</a>
+                  <span>${esc(file.date)}</span>
+                  <a class="link-btn" href="${file.download_path}" target="_blank" rel="noopener">Download day</a>
                 </div>
               `).join("")}
             </div>
@@ -94,218 +94,198 @@ function renderRawTree(id, years) {
     </details>
   `).join("");
 }
-function parseDateSafe(s) {
-  if (!s) return null;
-  const d = new Date(`${s}T00:00:00`);
-  return Number.isNaN(d.getTime()) ? null : d;
+
+function renderTabs(tabDefs) {
+  const id = `tabs_${Math.random().toString(36).slice(2)}`;
+  const nav = tabDefs.map((tab, i) => `<button class="tab-btn ${i === 0 ? "active" : ""}" data-tab-group="${id}" data-target="${id}_${i}">${esc(tab.label)}</button>`).join("");
+  const panels = tabDefs.map((tab, i) => `<div class="tab-panel ${i === 0 ? "active" : ""}" id="${id}_${i}">${tab.html}</div>`).join("");
+  return `<div><div class="tabs">${nav}</div>${panels}</div>`;
 }
-function filterRecentDaily(rows, days = 31) {
-  if (!rows || !rows.length) return [];
-  const dated = rows.map(r => ({ ...r, __d: parseDateSafe(r.date) })).filter(r => r.__d !== null);
-  if (!dated.length) return rows;
-  const maxDate = dated.reduce((a, b) => a.__d > b.__d ? a : b).__d;
-  const cutoff = new Date(maxDate);
-  cutoff.setDate(cutoff.getDate() - days);
-  return dated.filter(r => r.__d >= cutoff).sort((a, b) => b.__d - a.__d).map(({ __d, ...rest }) => rest);
-}
-function onlyLastThreeMonthly(rows) {
-  if (!rows || !rows.length) return [];
-  return rows.slice().sort((a, b) => String(b.date).localeCompare(String(a.date))).slice(0, 3);
-}
-function attachTabs() {
-  const btns = Array.from(document.querySelectorAll(".tabbtn"));
-  if (!btns.length) return;
-  btns.forEach(btn => {
+
+function activateTabs() {
+  document.querySelectorAll(".tab-btn").forEach(btn => {
     btn.addEventListener("click", () => {
-      btns.forEach(x => x.classList.remove("active"));
+      const group = btn.dataset.tabGroup;
+      const target = btn.dataset.target;
+      document.querySelectorAll(`.tab-btn[data-tab-group="${group}"]`).forEach(x => x.classList.remove("active"));
+      document.querySelectorAll(`.tab-panel[id^="${group}_"]`).forEach(x => x.classList.remove("active"));
       btn.classList.add("active");
-      const tab = btn.dataset.tab;
-      document.querySelectorAll(".rawtab").forEach(x => x.classList.remove("active"));
-      const target = byId(`raw-tab-${tab}`);
-      if (target) target.classList.add("active");
+      const panel = document.getElementById(target);
+      if (panel) panel.classList.add("active");
     });
   });
 }
-async function safeLoad(path, label, warnings) {
-  try {
-    return await fetchJson(path);
-  } catch (err) {
-    console.error(label, err);
-    warnings.push(`${label} failed`);
-    return null;
+
+function lastNByFamily(rows, n = 3) {
+  const out = {};
+  for (const row of rows || []) {
+    const fam = row.family || row.ticker;
+    if (!out[fam]) out[fam] = [];
+    out[fam].push(row);
   }
+  Object.keys(out).forEach(k => {
+    out[k] = out[k].slice().sort((a, b) => String(b.date).localeCompare(String(a.date))).slice(0, n);
+  });
+  return out;
 }
 
-async function renderOverviewPage(warnings) {
-  const data = await safeLoad("./data/overview.json", "overview.json", warnings);
-  if (!data) return;
-  if (byId("asof")) byId("asof").textContent = data.asof_date ? `As of ${data.asof_date}` : "";
-  renderTable("overview-table", data.rows || [], [
-    { key: "family", label: "Family" },
-    { key: "latest_daily", label: "Latest Daily", render: x => fmtPct(x) },
-    { key: "m1_date", label: "Month 1" },
-    { key: "m1_value", label: "Value 1", render: x => fmtPct(x) },
-    { key: "m2_date", label: "Month 2" },
-    { key: "m2_value", label: "Value 2", render: x => fmtPct(x) },
-    { key: "m3_date", label: "Month 3" },
-    { key: "m3_value", label: "Value 3", render: x => fmtPct(x) },
-  ]);
-  renderLinkGrid("overview-links", [
-    { title: "Marketwide", href: "./marketwide.html" },
-    { title: "Value Premium", href: "./value.html" },
-    { title: "Industry", href: "./industry.html" },
-    { title: "ETF", href: "./etf.html" },
-    { title: "Country", href: "./country.html" },
-    { title: "Indices", href: "./indices.html" },
-    { title: "Downloads", href: "./downloads.html" },
-  ]);
-}
+function renderFamilyPage(data, options = {}) {
+  const app = byId("app");
+  const monthlyGroups = data.monthly_groups || lastNByFamily(data.monthly || [], 3);
+  const dailyRecent = (data.daily || []).slice().sort((a, b) => String(b.date).localeCompare(String(a.date))).slice(0, 30);
 
-async function renderFamilyPage(page, warnings) {
-  const data = await safeLoad(`./data/${page}.json`, `${page}.json`, warnings);
-  if (!data) return;
-  if (byId("asof")) byId("asof").textContent = data.asof_date ? `As of ${data.asof_date}` : "";
+  let html = "";
 
-  const latestCols = {
-    marketwide: [
-      { key: "family", label: "Family" },
-      { key: "date", label: "Date" },
-      { key: "vw_icc", label: "VW ICC", render: x => fmtPct(x) },
-      { key: "ew_icc", label: "EW ICC", render: x => fmtPct(x) },
-      { key: "n_items", label: "N Items", render: x => fmtInt(x) },
-    ],
-    value: [
-      { key: "bucket", label: "Bucket" },
-      { key: "date", label: "Date" },
-      { key: "vw_icc", label: "VW ICC", render: x => fmtPct(x) },
-      { key: "n_items", label: "N Items", render: x => fmtInt(x) },
-    ],
-    industry: [
-      { key: "sector", label: "Sector" },
-      { key: "date", label: "Date" },
-      { key: "vw_icc", label: "VW ICC", render: x => fmtPct(x) },
-      { key: "n_items", label: "N Items", render: x => fmtInt(x) },
-    ],
-    etf: [
-      { key: "ticker", label: "Ticker" },
+  html += section(
+    "Latest daily",
+    renderTable((data.latest || []).slice().sort((a, b) => String(a.family || a.ticker).localeCompare(String(b.family || b.ticker))), [
+      { key: "family", label: options.familyLabel || "Series", render: (v, row) => esc(v || row.ticker) },
       { key: "label", label: "Label" },
-      { key: "category", label: "Category" },
-      { key: "vw_icc", label: "ETF ICC", render: x => fmtPct(x) },
+      { key: "date", label: "Date" },
+      { key: "value", label: "Value", render: v => fmtPct(v) },
+      { key: "method", label: "Method" },
       { key: "source", label: "Source" },
-      { key: "status", label: "Status" },
-    ],
-    country: [
-      { key: "country", label: "Country" },
-      { key: "ticker", label: "Ticker" },
-      { key: "label", label: "Label" },
-      { key: "vw_icc", label: "Country ICC", render: x => fmtPct(x) },
-      { key: "source", label: "Source" },
-      { key: "status", label: "Status" },
-    ],
-    indices: [
-      { key: "universe", label: "Index" },
-      { key: "date", label: "Date" },
-      { key: "vw_icc", label: "VW ICC", render: x => fmtPct(x) },
-      { key: "ew_icc", label: "EW ICC", render: x => fmtPct(x) },
-      { key: "n_items", label: "N Items", render: x => fmtInt(x) },
-    ],
-  };
-  const dailyCols = {
-    marketwide: [
-      { key: "date", label: "Date" },
-      { key: "family", label: "Family" },
-      { key: "vw_icc", label: "VW ICC", render: x => fmtPct(x) },
-      { key: "ew_icc", label: "EW ICC", render: x => fmtPct(x) },
-    ],
-    value: [
-      { key: "date", label: "Date" },
-      { key: "value_icc", label: "Value ICC", render: x => fmtPct(x) },
-      { key: "growth_icc", label: "Growth ICC", render: x => fmtPct(x) },
-      { key: "ivp", label: "IVP", render: x => fmtPct(x) },
-    ],
-    industry: [
-      { key: "date", label: "Date" },
-      { key: "summary_icc", label: "Summary ICC", render: x => fmtPct(x) },
-      { key: "n_groups", label: "N Groups", render: x => fmtInt(x) },
-    ],
-    etf: [
-      { key: "date", label: "Date" },
-      { key: "ticker", label: "Ticker" },
-      { key: "vw_icc", label: "ETF ICC", render: x => fmtPct(x) },
-      { key: "status", label: "Status" },
-    ],
-    country: [
-      { key: "date", label: "Date" },
-      { key: "country", label: "Country" },
-      { key: "vw_icc", label: "Country ICC", render: x => fmtPct(x) },
-      { key: "status", label: "Status" },
-    ],
-    indices: [
-      { key: "date", label: "Date" },
-      { key: "universe", label: "Index" },
-      { key: "vw_icc", label: "VW ICC", render: x => fmtPct(x) },
-    ],
-  };
-  const monthlyCols = {
-    marketwide: [
-      { key: "date", label: "Date" },
-      { key: "family", label: "Family" },
-      { key: "vw_icc", label: "Monthly ICC", render: x => fmtPct(x) },
-    ],
-    value: [
-      { key: "date", label: "Date" },
-      { key: "ivp", label: "Monthly IVP", render: x => fmtPct(x) },
-    ],
-    industry: [
-      { key: "date", label: "Date" },
-      { key: "summary_icc", label: "Monthly Summary", render: x => fmtPct(x) },
-    ],
-    etf: [
-      { key: "date", label: "Date" },
-      { key: "ticker", label: "Ticker" },
-      { key: "vw_icc", label: "Monthly ICC", render: x => fmtPct(x) },
-    ],
-    country: [
-      { key: "date", label: "Date" },
-      { key: "ticker", label: "Ticker" },
-      { key: "vw_icc", label: "Monthly ICC", render: x => fmtPct(x) },
-    ],
-    indices: [
-      { key: "date", label: "Date" },
-      { key: "universe", label: "Index" },
-      { key: "vw_icc", label: "Monthly ICC", render: x => fmtPct(x) },
-    ],
-  };
+    ]),
+    "Method is shown explicitly as ICC calculation or P/E estimate."
+  );
 
-  renderTable("latest-table", data.latest || [], latestCols[page]);
-  renderTable("daily-table", filterRecentDaily(data.daily || []), dailyCols[page]);
-  renderTable("monthly-table", onlyLastThreeMonthly(data.monthly || []), monthlyCols[page]);
-  renderDownloadCards("family-downloads", { [page]: data.downloads || [] });
+  const monthlySections = Object.entries(monthlyGroups).map(([family, rows]) => `
+    <div>
+      <h3>${esc(family)}</h3>
+      ${renderTable(rows, [
+        { key: "date", label: "Date" },
+        { key: "value", label: "Monthly value", render: v => fmtPct(v) },
+        { key: "method", label: "Method" },
+      ])}
+    </div>
+  `).join("");
+
+  html += section("Last three monthly observations", monthlySections);
+
+  html += section(
+    "Recent daily history",
+    renderTable(dailyRecent, [
+      { key: "family", label: options.familyLabel || "Series", render: (v, row) => esc(v || row.ticker) },
+      { key: "label", label: "Label" },
+      { key: "date", label: "Date" },
+      { key: "value", label: "Daily value", render: v => fmtPct(v) },
+      { key: "method", label: "Method" },
+    ])
+  );
+
+  html += section(
+    "Downloads",
+    `${renderDownloadBox(data.downloads)}<h3>Archived daily files</h3>${renderYearTree(data.downloads.years)}`
+  );
+
+  app.innerHTML = html;
 }
 
-async function renderDownloadsPage(warnings) {
-  const overview = await safeLoad("./data/overview.json", "overview.json", warnings);
-  const catalog = await safeLoad("./data/downloads_catalog.json", "downloads_catalog.json", warnings);
-  if (overview && byId("asof")) byId("asof").textContent = overview.asof_date ? `As of ${overview.asof_date}` : "";
-  if (!catalog) return;
-  renderDownloadCards("category-downloads", catalog.families || {});
-  attachTabs();
-  const rawTabs = catalog.raw_tabs || {};
-  renderRawTree("raw-tab-usall", rawTabs.usall || []);
-  renderRawTree("raw-tab-sp500", rawTabs.sp500 || []);
-  renderRawTree("raw-tab-other_indices", rawTabs.other_indices || []);
+function renderOverview(dataMap, overview) {
+  const app = byId("app");
+  const rows = (overview.rows || []).slice().sort((a, b) => {
+    const k1 = `${a.family_key}_${a.family}`;
+    const k2 = `${b.family_key}_${b.family}`;
+    return k1.localeCompare(k2);
+  });
+  const html = renderTable(rows, [
+    { key: "family_key", label: "Family", render: v => esc(v) },
+    { key: "family", label: "Series" },
+    { key: "latest_daily", label: "Latest daily", render: v => fmtPct(v) },
+    { key: "method", label: "Method" },
+    { key: "m1_date", label: "Month 1 date" },
+    { key: "m1_value", label: "Month 1", render: v => fmtPct(v) },
+    { key: "m2_date", label: "Month 2 date" },
+    { key: "m2_value", label: "Month 2", render: v => fmtPct(v) },
+    { key: "m3_date", label: "Month 3 date" },
+    { key: "m3_value", label: "Month 3", render: v => fmtPct(v) },
+  ]);
+  app.innerHTML = section(
+    "Overview",
+    html,
+    "Latest daily and the last three monthly observations are shown for each family/series."
+  );
+}
+
+function renderDownloads(catalog) {
+  const app = byId("app");
+  const familyTabs = Object.entries(catalog.families || {}).map(([key, v]) => ({
+    label: v.title,
+    html: `${renderDownloadBox(v)}<h3>Archived daily files</h3>${renderYearTree(v.years)}`,
+  }));
+
+  const rawTabs = [
+    { label: "usall", html: renderYearTree((catalog.raw || {}).usall || []) },
+    { label: "sp500", html: renderYearTree((catalog.raw || {}).sp500 || []) },
+    { label: "other indices", html: renderYearTree((catalog.raw || {}).other_indices || []) },
+  ];
+
+  app.innerHTML =
+    section("Family downloads", renderTabs(familyTabs), "Each family has latest, daily history, monthly history, and archived daily files.") +
+    section("Raw snapshot downloads", renderTabs(rawTabs), "Raw snapshots are grouped into usall, sp500, and other indices.");
+}
+
+async function loadData() {
+  const paths = {
+    overview: "./data/overview.json",
+    marketwide: "./data/marketwide.json",
+    value: "./data/value.json",
+    industry: "./data/industry.json",
+    etf: "./data/etf.json",
+    country: "./data/country.json",
+    indices: "./data/indices.json",
+    downloads: "./data/downloads_catalog.json",
+  };
+
+  const out = {};
+  const warnings = [];
+  for (const [k, p] of Object.entries(paths)) {
+    try {
+      out[k] = await fetchJson(p);
+    } catch (e) {
+      console.error(e);
+      warnings.push(`${k} failed`);
+    }
+  }
+  return { out, warnings };
+}
+
+function setActiveNav(page) {
+  document.querySelectorAll("[data-nav]").forEach(el => {
+    if (el.dataset.nav === page) el.classList.add("active");
+  });
 }
 
 (async function main() {
   const page = document.body.dataset.page;
-  const warnings = [];
-  if (page === "overview") {
-    await renderOverviewPage(warnings);
+  setActiveNav(page);
+
+  const { out, warnings } = await loadData();
+
+  const asof = out.overview?.asof_date || out.marketwide?.latest?.[0]?.date || "";
+  byId("asof").textContent = asof ? `As of ${asof}` : "";
+
+  if (page === "index") {
+    renderOverview(out, out.overview || { rows: [] });
+  } else if (page === "marketwide") {
+    renderFamilyPage(out.marketwide || { latest: [], daily: [], monthly: [], downloads: { years: [] } }, { familyLabel: "Series" });
+  } else if (page === "value") {
+    renderFamilyPage(out.value || { latest: [], daily: [], monthly: [], downloads: { years: [] } }, { familyLabel: "Series" });
+  } else if (page === "industry") {
+    renderFamilyPage(out.industry || { latest: [], daily: [], monthly: [], downloads: { years: [] } }, { familyLabel: "Industry" });
+  } else if (page === "etf") {
+    renderFamilyPage(out.etf || { latest: [], daily: [], monthly: [], downloads: { years: [] } }, { familyLabel: "Ticker" });
+  } else if (page === "country") {
+    renderFamilyPage(out.country || { latest: [], daily: [], monthly: [], downloads: { years: [] } }, { familyLabel: "Ticker" });
+  } else if (page === "indices") {
+    renderFamilyPage(out.indices || { latest: [], daily: [], monthly: [], downloads: { years: [] } }, { familyLabel: "Index" });
   } else if (page === "downloads") {
-    await renderDownloadsPage(warnings);
-  } else {
-    await renderFamilyPage(page, warnings);
+    renderDownloads(out.downloads || { families: {}, raw: {} });
   }
-  if (warnings.length) setStatus(`Partial load: ${warnings.join(" | ")}`, true);
-  else setStatus("");
+
+  if (warnings.length) {
+    setStatus(`Partial load: ${warnings.join(" | ")}`, true);
+  }
+
+  activateTabs();
 })();
