@@ -1,4 +1,5 @@
 {
+  "family": "etf",
   "latest": [
     {
       "date": "2026-04-16",
@@ -151,7 +152,7 @@
       "status": "P/E estimate"
     }
   ],
-  "history": [
+  "daily": [
     {
       "date": "2026-04-16",
       "ticker": "IVE",
@@ -302,5 +303,154 @@
       "n_matched": null,
       "status": "P/E estimate"
     }
-  ]
+  ],
+  "monthly": [
+    {
+      "family": "IVE",
+      "date": "2026-04-16",
+      "month": "2026-04",
+      "value": 0.04229105533184057,
+      "method": "P/E estimate"
+    },
+    {
+      "family": "IVV",
+      "date": "2026-04-16",
+      "month": "2026-04",
+      "value": 0.035951956394015896,
+      "method": "P/E estimate"
+    },
+    {
+      "family": "IVW",
+      "date": "2026-04-16",
+      "month": "2026-04",
+      "value": 0.03057580353211683,
+      "method": "P/E estimate"
+    },
+    {
+      "family": "IWD",
+      "date": "2026-04-16",
+      "month": "2026-04",
+      "value": 0.04525509391337089,
+      "method": "P/E estimate"
+    },
+    {
+      "family": "IWF",
+      "date": "2026-04-16",
+      "month": "2026-04",
+      "value": 0.028423011725060794,
+      "method": "P/E estimate"
+    },
+    {
+      "family": "IYW",
+      "date": "2026-04-16",
+      "month": "2026-04",
+      "value": 0.028164452236609565,
+      "method": "P/E estimate"
+    },
+    {
+      "family": "SPY",
+      "date": "2026-04-16",
+      "month": "2026-04",
+      "value": 1.0,
+      "method": "P/E estimate"
+    },
+    {
+      "family": "XLE",
+      "date": "2026-04-16",
+      "month": "2026-04",
+      "value": 1.0,
+      "method": "P/E estimate"
+    },
+    {
+      "family": "XLF",
+      "date": "2026-04-16",
+      "month": "2026-04",
+      "value": 1.0,
+      "method": "P/E estimate"
+    },
+    {
+      "family": "XLK",
+      "date": "2026-04-16",
+      "month": "2026-04",
+      "value": 1.0,
+      "method": "P/E estimate"
+    }
+  ],
+  "last_three_monthly": [
+    {
+      "family": "IVE",
+      "date": "2026-04-16",
+      "month": "2026-04",
+      "value": 0.04229105533184057,
+      "method": "P/E estimate"
+    },
+    {
+      "family": "IVV",
+      "date": "2026-04-16",
+      "month": "2026-04",
+      "value": 0.035951956394015896,
+      "method": "P/E estimate"
+    },
+    {
+      "family": "IVW",
+      "date": "2026-04-16",
+      "month": "2026-04",
+      "value": 0.03057580353211683,
+      "method": "P/E estimate"
+    },
+    {
+      "family": "IWD",
+      "date": "2026-04-16",
+      "month": "2026-04",
+      "value": 0.04525509391337089,
+      "method": "P/E estimate"
+    },
+    {
+      "family": "IWF",
+      "date": "2026-04-16",
+      "month": "2026-04",
+      "value": 0.028423011725060794,
+      "method": "P/E estimate"
+    },
+    {
+      "family": "IYW",
+      "date": "2026-04-16",
+      "month": "2026-04",
+      "value": 0.028164452236609565,
+      "method": "P/E estimate"
+    },
+    {
+      "family": "SPY",
+      "date": "2026-04-16",
+      "month": "2026-04",
+      "value": 1.0,
+      "method": "P/E estimate"
+    },
+    {
+      "family": "XLE",
+      "date": "2026-04-16",
+      "month": "2026-04",
+      "value": 1.0,
+      "method": "P/E estimate"
+    },
+    {
+      "family": "XLF",
+      "date": "2026-04-16",
+      "month": "2026-04",
+      "value": 1.0,
+      "method": "P/E estimate"
+    },
+    {
+      "family": "XLK",
+      "date": "2026-04-16",
+      "month": "2026-04",
+      "value": 1.0,
+      "method": "P/E estimate"
+    }
+  ],
+  "downloads": {
+    "latest_csv": "./data/downloads/families/etf/latest.csv",
+    "daily_history_csv": "./data/downloads/families/etf/daily_history.csv",
+    "monthly_history_csv": "./data/downloads/families/etf/monthly_history.csv"
+  }
 }

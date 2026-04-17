@@ -1,5 +1,5 @@
 {
-  "slug": "country",
+  "family": "country",
   "latest": [
     {
       "date": "2026-04-16",
@@ -376,30 +376,81 @@
       "method": "P/E estimate"
     }
   ],
+  "last_three_monthly": [
+    {
+      "family": "EWA",
+      "date": "2026-04-16",
+      "month": "2026-04",
+      "value": 0.0457663599862884,
+      "method": "P/E estimate"
+    },
+    {
+      "family": "EWC",
+      "date": "2026-04-16",
+      "month": "2026-04",
+      "value": 0.05003219321472401,
+      "method": "P/E estimate"
+    },
+    {
+      "family": "EWG",
+      "date": "2026-04-16",
+      "month": "2026-04",
+      "value": 0.055929600293518546,
+      "method": "P/E estimate"
+    },
+    {
+      "family": "EWH",
+      "date": "2026-04-16",
+      "month": "2026-04",
+      "value": 0.05429559608420161,
+      "method": "P/E estimate"
+    },
+    {
+      "family": "EWJ",
+      "date": "2026-04-16",
+      "month": "2026-04",
+      "value": 0.054514450690589064,
+      "method": "P/E estimate"
+    },
+    {
+      "family": "EWQ",
+      "date": "2026-04-16",
+      "month": "2026-04",
+      "value": 0.05295822247632754,
+      "method": "P/E estimate"
+    },
+    {
+      "family": "EWU",
+      "date": "2026-04-16",
+      "month": "2026-04",
+      "value": 0.05257212817126906,
+      "method": "P/E estimate"
+    },
+    {
+      "family": "EWZ",
+      "date": "2026-04-16",
+      "month": "2026-04",
+      "value": 0.0725607050114196,
+      "method": "P/E estimate"
+    },
+    {
+      "family": "INDA",
+      "date": "2026-04-16",
+      "month": "2026-04",
+      "value": 0.04314276025654411,
+      "method": "P/E estimate"
+    },
+    {
+      "family": "MCHI",
+      "date": "2026-04-16",
+      "month": "2026-04",
+      "value": 0.07595643776763726,
+      "method": "P/E estimate"
+    }
+  ],
   "downloads": {
-    "latest_csv": "./data/downloads/families/country_latest.csv",
-    "daily_csv": "./data/downloads/families/country_daily_history.csv",
-    "monthly_csv": "./data/downloads/families/country_monthly_history.csv"
-  },
-  "tree": {
-    "years": [
-      {
-        "year": "2026",
-        "download_all": "./data/downloads/families/country/2026/country_2026.zip",
-        "months": [
-          {
-            "month": "04",
-            "month_label": "2026-04",
-            "download_all": "./data/downloads/families/country/2026/04/country_202604.zip",
-            "days": [
-              {
-                "date": "2026-04-16",
-                "download_path": "./data/downloads/families/country/2026/04/country_20260416.csv"
-              }
-            ]
-          }
-        ]
-      }
-    ]
+    "latest_csv": "./data/downloads/families/country/latest.csv",
+    "daily_history_csv": "./data/downloads/families/country/daily_history.csv",
+    "monthly_history_csv": "./data/downloads/families/country/monthly_history.csv"
   }
 }

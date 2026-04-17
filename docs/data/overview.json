@@ -1,36 +1,95 @@
 {
   "title": "Live ICC data library",
-  "cards": {
-    "all_market_vw_icc": 0.08165551595446656,
-    "sp500_vw_icc": 0.0754672706502571,
-    "value_icc": 0.1220465407598389,
-    "growth_icc": 0.0825184595670443,
-    "ivp_bm": 0.03952808119279459
-  },
-  "downloads": [
+  "overview_cards": [
     {
-      "label": "Marketwide daily history",
-      "path": "./data/downloads/families/marketwide_daily_history.csv"
+      "family": "All market",
+      "value": 0.08165551595446656,
+      "method": "ICC calculation"
     },
     {
-      "label": "Value daily history",
-      "path": "./data/downloads/families/value_daily_history.csv"
+      "family": "S&P 500",
+      "value": 0.0754672706502571,
+      "method": "ICC calculation"
     },
     {
-      "label": "Industry daily history",
-      "path": "./data/downloads/families/industry_daily_history.csv"
+      "family": "Value premium",
+      "value": 0.03952808119279459,
+      "method": "ICC calculation"
     },
     {
-      "label": "ETF daily history",
-      "path": "./data/downloads/families/etf_daily_history.csv"
+      "family": "Industry",
+      "value": 0.08146835236434928,
+      "method": "ICC calculation"
     },
     {
-      "label": "Country daily history",
-      "path": "./data/downloads/families/country_daily_history.csv"
+      "family": "ETF",
+      "value": 1.0,
+      "method": "P/E estimate"
     },
     {
-      "label": "Indices daily history",
-      "path": "./data/downloads/families/indices_daily_history.csv"
+      "family": "Country",
+      "value": 0.054514450690589064,
+      "method": "P/E estimate"
+    },
+    {
+      "family": "Indices",
+      "value": 0.07363831672062235,
+      "method": "ICC calculation"
     }
-  ]
+  ],
+  "marketwide_last_three": {
+    "all_market": [
+      {
+        "family": "all_market",
+        "date": "2026-02-27",
+        "month": "2026-02",
+        "value": 0.08042145131520971,
+        "method": "ICC calculation",
+        "n_items": 2686
+      },
+      {
+        "family": "all_market",
+        "date": "2026-03-31",
+        "month": "2026-03",
+        "value": 0.0846043873892946,
+        "method": "ICC calculation",
+        "n_items": 2721
+      },
+      {
+        "family": "all_market",
+        "date": "2026-04-16",
+        "month": "2026-04",
+        "value": 0.08165551595446656,
+        "method": "ICC calculation",
+        "n_items": 2724
+      }
+    ],
+    "sp500": [
+      {
+        "family": "sp500",
+        "date": "2026-02-27",
+        "month": "2026-02",
+        "value": 0.07395991999074679,
+        "method": "ICC calculation",
+        "n_items": 496
+      },
+      {
+        "family": "sp500",
+        "date": "2026-03-31",
+        "month": "2026-03",
+        "value": 0.07889568917176408,
+        "method": "ICC calculation",
+        "n_items": 500
+      },
+      {
+        "family": "sp500",
+        "date": "2026-04-16",
+        "month": "2026-04",
+        "value": 0.0754672706502571,
+        "method": "ICC calculation",
+        "n_items": 500
+      }
+    ]
+  },
+  "as_of": "2026-04-16"
 }
