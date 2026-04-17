@@ -1,1300 +1,1843 @@
 {
-  "asof_date": "2026-04-16",
+  "slug": "indices",
   "latest": [
     {
-      "date": "2026-04-16",
-      "universe": "dow30",
-      "vw_icc": 0.07363831672062235,
-      "ew_icc": 0.07590298150346524,
-      "n_items": 30,
-      "source_file": "data/202604/icc_live_dow30_2026_0416.csv"
-    },
-    {
-      "date": "2026-04-16",
-      "universe": "ndx100",
-      "vw_icc": 0.07520109474516204,
-      "ew_icc": 0.08008074147779737,
-      "n_items": 100,
-      "source_file": "data/202604/icc_live_ndx100_2026_0416.csv"
-    },
-    {
-      "date": "2026-04-16",
-      "universe": "rut1000",
-      "vw_icc": 0.07601832096846213,
-      "ew_icc": 0.08665821027202925,
-      "n_items": 978,
-      "source_file": "data/202604/icc_live_rut1000_2026_0416.csv"
-    },
-    {
-      "date": "2026-04-16",
-      "universe": "sp100",
-      "vw_icc": 0.07499110979862825,
-      "ew_icc": 0.08037447958664179,
-      "n_items": 101,
-      "source_file": "data/202604/icc_live_sp100_2026_0416.csv"
-    },
-    {
-      "date": "2026-04-16",
-      "universe": "sp400",
-      "vw_icc": 0.08413663850907217,
-      "ew_icc": 0.08971162960208759,
-      "n_items": 396,
-      "source_file": "data/202604/icc_live_sp400_2026_0416.csv"
-    },
-    {
-      "date": "2026-04-16",
-      "universe": "sp500",
-      "vw_icc": 0.0754672706502571,
-      "ew_icc": 0.08111658737002901,
-      "n_items": 500,
+      "date": "2026-04-16T00:00:00",
+      "family": "sp500",
+      "label": "sp500",
+      "value": 0.0754672706502571,
+      "method": "ICC calculation",
+      "n_firms": 500,
       "source_file": "data/202604/icc_live_sp500_2026_0416_r1.csv"
     },
     {
-      "date": "2026-04-16",
-      "universe": "sp600",
-      "vw_icc": 0.09415219656154872,
-      "ew_icc": 0.10263456546425356,
-      "n_items": 572,
+      "date": "2026-04-16T00:00:00",
+      "family": "sp100",
+      "label": "sp100",
+      "value": 0.07499110979862825,
+      "method": "ICC calculation",
+      "n_firms": 101,
+      "source_file": "data/202604/icc_live_sp100_2026_0416.csv"
+    },
+    {
+      "date": "2026-04-16T00:00:00",
+      "family": "dow30",
+      "label": "dow30",
+      "value": 0.07363831672062235,
+      "method": "ICC calculation",
+      "n_firms": 30,
+      "source_file": "data/202604/icc_live_dow30_2026_0416.csv"
+    },
+    {
+      "date": "2026-04-16T00:00:00",
+      "family": "ndx100",
+      "label": "ndx100",
+      "value": 0.07520109474516204,
+      "method": "ICC calculation",
+      "n_firms": 100,
+      "source_file": "data/202604/icc_live_ndx100_2026_0416.csv"
+    },
+    {
+      "date": "2026-04-16T00:00:00",
+      "family": "sp400",
+      "label": "sp400",
+      "value": 0.08413663850907217,
+      "method": "ICC calculation",
+      "n_firms": 396,
+      "source_file": "data/202604/icc_live_sp400_2026_0416.csv"
+    },
+    {
+      "date": "2026-04-16T00:00:00",
+      "family": "sp600",
+      "label": "sp600",
+      "value": 0.09415219656154872,
+      "method": "ICC calculation",
+      "n_firms": 572,
       "source_file": "data/202604/icc_live_sp600_2026_0416.csv"
+    },
+    {
+      "date": "2026-04-16T00:00:00",
+      "family": "rut1000",
+      "label": "rut1000",
+      "value": 0.07601832096846213,
+      "method": "ICC calculation",
+      "n_firms": 978,
+      "source_file": "data/202604/icc_live_rut1000_2026_0416.csv"
     }
   ],
   "daily": [
     {
-      "date": "2025-10-28",
-      "universe": "sp500",
-      "vw_icc": 0.06385038804489955,
-      "ew_icc": 0.07626400946253087,
-      "n_items": 502,
+      "date": "2025-10-28T00:00:00",
+      "family": "sp500",
+      "value": 0.06385038804489955,
+      "method": "ICC calculation",
+      "n_firms": 502,
       "source_file": "data/202510/icc_live_sp500_2025_1028.csv"
     },
     {
-      "date": "2025-10-29",
-      "universe": "sp500",
-      "vw_icc": 0.06409704251561504,
-      "ew_icc": 0.07680152929636873,
-      "n_items": 502,
+      "date": "2025-10-29T00:00:00",
+      "family": "sp500",
+      "value": 0.06409704251561504,
+      "method": "ICC calculation",
+      "n_firms": 502,
       "source_file": "data/202510/icc_live_sp500_2025_1029.csv"
     },
     {
-      "date": "2025-10-30",
-      "universe": "sp500",
-      "vw_icc": 0.06508549053558753,
-      "ew_icc": 0.07728856096472293,
-      "n_items": 502,
+      "date": "2025-10-30T00:00:00",
+      "family": "sp500",
+      "value": 0.06508549053558753,
+      "method": "ICC calculation",
+      "n_firms": 502,
       "source_file": "data/202510/icc_live_sp500_2025_1030.csv"
     },
     {
-      "date": "2025-11-01",
-      "universe": "sp500",
-      "vw_icc": 0.06511265513855775,
-      "ew_icc": 0.0761357278667141,
-      "n_items": 501,
+      "date": "2025-11-01T00:00:00",
+      "family": "sp500",
+      "value": 0.06511265513855775,
+      "method": "ICC calculation",
+      "n_firms": 501,
       "source_file": "data/202510/icc_live_sp500_2025_1031.csv"
     },
     {
-      "date": "2025-11-03",
-      "universe": "sp500",
-      "vw_icc": 0.06536408405994593,
-      "ew_icc": 0.07694277679801874,
-      "n_items": 501,
+      "date": "2025-11-03T00:00:00",
+      "family": "sp500",
+      "value": 0.06536408405994593,
+      "method": "ICC calculation",
+      "n_firms": 501,
       "source_file": "data/202511/icc_live_sp500_2025_1103.csv"
     },
     {
-      "date": "2025-11-04",
-      "universe": "sp500",
-      "vw_icc": 0.06568197037594754,
-      "ew_icc": 0.07686459269461528,
-      "n_items": 501,
+      "date": "2025-11-04T00:00:00",
+      "family": "sp500",
+      "value": 0.06568197037594754,
+      "method": "ICC calculation",
+      "n_firms": 501,
       "source_file": "data/202511/icc_live_sp500_2025_1104.csv"
     },
     {
-      "date": "2025-11-05",
-      "universe": "sp500",
-      "vw_icc": 0.06542282520967908,
-      "ew_icc": 0.0765424308180333,
-      "n_items": 501,
+      "date": "2025-11-05T00:00:00",
+      "family": "sp500",
+      "value": 0.06542282520967908,
+      "method": "ICC calculation",
+      "n_firms": 501,
       "source_file": "data/202511/icc_live_sp500_2025_1105.csv"
     },
     {
-      "date": "2025-11-06",
-      "universe": "sp500",
-      "vw_icc": 0.06602005013699455,
-      "ew_icc": 0.07662871672299468,
-      "n_items": 501,
+      "date": "2025-11-06T00:00:00",
+      "family": "sp500",
+      "value": 0.06602005013699455,
+      "method": "ICC calculation",
+      "n_firms": 501,
       "source_file": "data/202511/icc_live_sp500_2025_1106.csv"
     },
     {
-      "date": "2025-11-07",
-      "universe": "sp500",
-      "vw_icc": 0.0658709125077403,
-      "ew_icc": 0.07629481827339928,
-      "n_items": 500,
+      "date": "2025-11-07T00:00:00",
+      "family": "sp500",
+      "value": 0.0658709125077403,
+      "method": "ICC calculation",
+      "n_firms": 500,
       "source_file": "data/202511/icc_live_sp500_2025_1107.csv"
     },
     {
-      "date": "2025-11-10",
-      "universe": "sp500",
-      "vw_icc": 0.06559303680020566,
-      "ew_icc": 0.07597021712298999,
-      "n_items": 501,
+      "date": "2025-11-10T00:00:00",
+      "family": "sp500",
+      "value": 0.06559303680020566,
+      "method": "ICC calculation",
+      "n_firms": 501,
       "source_file": "data/202511/icc_live_sp500_2025_1110.csv"
     },
     {
-      "date": "2025-11-11",
-      "universe": "sp500",
-      "vw_icc": 0.06546967842396231,
-      "ew_icc": 0.07579487842249517,
-      "n_items": 501,
+      "date": "2025-11-11T00:00:00",
+      "family": "sp500",
+      "value": 0.06546967842396231,
+      "method": "ICC calculation",
+      "n_firms": 501,
       "source_file": "data/202511/icc_live_sp500_2025_1111.csv"
     },
     {
-      "date": "2025-11-12",
-      "universe": "sp500",
-      "vw_icc": 0.06575941752748253,
-      "ew_icc": 0.07571094862450482,
-      "n_items": 501,
+      "date": "2025-11-12T00:00:00",
+      "family": "sp500",
+      "value": 0.06575941752748253,
+      "method": "ICC calculation",
+      "n_firms": 501,
       "source_file": "data/202511/icc_live_sp500_2025_1112.csv"
     },
     {
-      "date": "2025-11-13",
-      "universe": "sp500",
-      "vw_icc": 0.06660470388282475,
-      "ew_icc": 0.07629535229408793,
-      "n_items": 501,
+      "date": "2025-11-13T00:00:00",
+      "family": "sp500",
+      "value": 0.06660470388282475,
+      "method": "ICC calculation",
+      "n_firms": 501,
       "source_file": "data/202511/icc_live_sp500_2025_1113.csv"
     },
     {
-      "date": "2025-11-14",
-      "universe": "sp500",
-      "vw_icc": 0.06691322664920919,
-      "ew_icc": 0.07653695279633957,
-      "n_items": 501,
+      "date": "2025-11-14T00:00:00",
+      "family": "sp500",
+      "value": 0.06691322664920919,
+      "method": "ICC calculation",
+      "n_firms": 501,
       "source_file": "data/202511/icc_live_sp500_2025_1114.csv"
     },
     {
-      "date": "2025-11-17",
-      "universe": "sp500",
-      "vw_icc": 0.06729190471078396,
-      "ew_icc": 0.07748287406138142,
-      "n_items": 502,
+      "date": "2025-11-17T00:00:00",
+      "family": "sp500",
+      "value": 0.06729190471078396,
+      "method": "ICC calculation",
+      "n_firms": 502,
       "source_file": "data/202511/icc_live_sp500_2025_1117.csv"
     },
     {
-      "date": "2025-11-18",
-      "universe": "sp500",
-      "vw_icc": 0.06755013899662468,
-      "ew_icc": 0.07726228760922314,
-      "n_items": 502,
+      "date": "2025-11-18T00:00:00",
+      "family": "sp500",
+      "value": 0.06755013899662468,
+      "method": "ICC calculation",
+      "n_firms": 502,
       "source_file": "data/202511/icc_live_sp500_2025_1118.csv"
     },
     {
-      "date": "2025-11-19",
-      "universe": "sp500",
-      "vw_icc": 0.06731089613814646,
-      "ew_icc": 0.07727416418671797,
-      "n_items": 502,
+      "date": "2025-11-19T00:00:00",
+      "family": "sp500",
+      "value": 0.06731089613814646,
+      "method": "ICC calculation",
+      "n_firms": 502,
       "source_file": "data/202511/icc_live_sp500_2025_1119.csv"
     },
     {
-      "date": "2025-11-20",
-      "universe": "sp500",
-      "vw_icc": 0.06917104009644617,
-      "ew_icc": 0.07787711820132712,
-      "n_items": 502,
+      "date": "2025-11-20T00:00:00",
+      "family": "sp500",
+      "value": 0.06917104009644617,
+      "method": "ICC calculation",
+      "n_firms": 502,
       "source_file": "data/202511/icc_live_sp500_2025_1120.csv"
     },
     {
-      "date": "2025-11-25",
-      "universe": "sp500",
-      "vw_icc": 0.0679149047938529,
-      "ew_icc": 0.07663689457195874,
-      "n_items": 502,
+      "date": "2025-11-25T00:00:00",
+      "family": "sp500",
+      "value": 0.0679149047938529,
+      "method": "ICC calculation",
+      "n_firms": 502,
       "source_file": "data/202511/icc_live_sp500_2025_1124.csv"
     },
     {
-      "date": "2025-11-26",
-      "universe": "sp500",
-      "vw_icc": 0.0673066743106299,
-      "ew_icc": 0.07580101448817922,
-      "n_items": 502,
+      "date": "2025-11-26T00:00:00",
+      "family": "sp500",
+      "value": 0.0673066743106299,
+      "method": "ICC calculation",
+      "n_firms": 502,
       "source_file": "data/202511/icc_live_sp500_2025_1126.csv"
     },
     {
-      "date": "2025-11-27",
-      "universe": "sp500",
-      "vw_icc": 0.0672968960507204,
-      "ew_icc": 0.07577861519874396,
-      "n_items": 502,
+      "date": "2025-11-27T00:00:00",
+      "family": "sp500",
+      "value": 0.0672968960507204,
+      "method": "ICC calculation",
+      "n_firms": 502,
       "source_file": "data/202511/icc_live_sp500_2025_1127.csv"
     },
     {
-      "date": "2025-11-28",
-      "universe": "sp500",
-      "vw_icc": 0.06704505106919476,
-      "ew_icc": 0.07552097163549865,
-      "n_items": 502,
+      "date": "2025-11-28T00:00:00",
+      "family": "sp500",
+      "value": 0.06704505106919476,
+      "method": "ICC calculation",
+      "n_firms": 502,
       "source_file": "data/202511/icc_live_sp500_2025_1128.csv"
     },
     {
-      "date": "2025-12-01",
-      "universe": "sp500",
-      "vw_icc": 0.06735404414863305,
-      "ew_icc": 0.07573060324471316,
-      "n_items": 501,
+      "date": "2025-12-01T00:00:00",
+      "family": "sp500",
+      "value": 0.06735404414863305,
+      "method": "ICC calculation",
+      "n_firms": 501,
       "source_file": "data/202512/icc_live_sp500_2025_1201.csv"
     },
     {
-      "date": "2025-12-02",
-      "universe": "sp500",
-      "vw_icc": 0.0673114017076002,
-      "ew_icc": 0.0760295817096123,
-      "n_items": 502,
+      "date": "2025-12-02T00:00:00",
+      "family": "sp500",
+      "value": 0.0673114017076002,
+      "method": "ICC calculation",
+      "n_firms": 502,
       "source_file": "data/202512/icc_live_sp500_2025_1202.csv"
     },
     {
-      "date": "2025-12-03",
-      "universe": "sp500",
-      "vw_icc": 0.06703603537393457,
-      "ew_icc": 0.07562696400636913,
-      "n_items": 502,
+      "date": "2025-12-03T00:00:00",
+      "family": "sp500",
+      "value": 0.06703603537393457,
+      "method": "ICC calculation",
+      "n_firms": 502,
       "source_file": "data/202512/icc_live_sp500_2025_1203.csv"
     },
     {
-      "date": "2025-12-04",
-      "universe": "sp500",
-      "vw_icc": 0.06710189754446967,
-      "ew_icc": 0.07559528532828554,
-      "n_items": 502,
+      "date": "2025-12-04T00:00:00",
+      "family": "sp500",
+      "value": 0.06710189754446967,
+      "method": "ICC calculation",
+      "n_firms": 502,
       "source_file": "data/202512/icc_live_sp500_2025_1204.csv"
     },
     {
-      "date": "2025-12-05",
-      "universe": "sp500",
-      "vw_icc": 0.06700326492097802,
-      "ew_icc": 0.07558080785076121,
-      "n_items": 502,
+      "date": "2025-12-05T00:00:00",
+      "family": "sp500",
+      "value": 0.06700326492097802,
+      "method": "ICC calculation",
+      "n_firms": 502,
       "source_file": "data/202512/icc_live_sp500_2025_1205.csv"
     },
     {
-      "date": "2025-12-08",
-      "universe": "sp500",
-      "vw_icc": 0.06737787282209594,
-      "ew_icc": 0.07592135137914091,
-      "n_items": 502,
+      "date": "2025-12-08T00:00:00",
+      "family": "sp500",
+      "value": 0.06737787282209594,
+      "method": "ICC calculation",
+      "n_firms": 502,
       "source_file": "data/202512/icc_live_sp500_2025_1208.csv"
     },
     {
-      "date": "2025-12-09",
-      "universe": "sp500",
-      "vw_icc": 0.06739011313915971,
-      "ew_icc": 0.07599823812809704,
-      "n_items": 502,
+      "date": "2025-12-09T00:00:00",
+      "family": "sp500",
+      "value": 0.06739011313915971,
+      "method": "ICC calculation",
+      "n_firms": 502,
       "source_file": "data/202512/icc_live_sp500_2025_1209.csv"
     },
     {
-      "date": "2025-12-10",
-      "universe": "sp500",
-      "vw_icc": 0.06714901135879887,
-      "ew_icc": 0.07532128279684525,
-      "n_items": 501,
+      "date": "2025-12-10T00:00:00",
+      "family": "sp500",
+      "value": 0.06714901135879887,
+      "method": "ICC calculation",
+      "n_firms": 501,
       "source_file": "data/202512/icc_live_sp500_2025_1210.csv"
     },
     {
-      "date": "2025-12-11",
-      "universe": "sp500",
-      "vw_icc": 0.06701812278953245,
-      "ew_icc": 0.07487204471633542,
-      "n_items": 501,
+      "date": "2025-12-11T00:00:00",
+      "family": "sp500",
+      "value": 0.06701812278953245,
+      "method": "ICC calculation",
+      "n_firms": 501,
       "source_file": "data/202512/icc_live_sp500_2025_1211.csv"
     },
     {
-      "date": "2025-12-12",
-      "universe": "sp500",
-      "vw_icc": 0.06767329735676415,
-      "ew_icc": 0.07524074745858558,
-      "n_items": 500,
+      "date": "2025-12-12T00:00:00",
+      "family": "sp500",
+      "value": 0.06767329735676415,
+      "method": "ICC calculation",
+      "n_firms": 500,
       "source_file": "data/202512/icc_live_sp500_2025_1212.csv"
     },
     {
-      "date": "2025-12-15",
-      "universe": "sp500",
-      "vw_icc": 0.0678294184064622,
-      "ew_icc": 0.07532542222271334,
-      "n_items": 501,
+      "date": "2025-12-15T00:00:00",
+      "family": "sp500",
+      "value": 0.0678294184064622,
+      "method": "ICC calculation",
+      "n_firms": 501,
       "source_file": "data/202512/icc_live_sp500_2025_1215.csv"
     },
     {
-      "date": "2025-12-16",
-      "universe": "sp500",
-      "vw_icc": 0.06799014070807206,
-      "ew_icc": 0.07583687654113215,
-      "n_items": 501,
+      "date": "2025-12-16T00:00:00",
+      "family": "sp500",
+      "value": 0.06799014070807206,
+      "method": "ICC calculation",
+      "n_firms": 501,
       "source_file": "data/202512/icc_live_sp500_2025_1216.csv"
     },
     {
-      "date": "2025-12-17",
-      "universe": "sp500",
-      "vw_icc": 0.06857129717670164,
-      "ew_icc": 0.07612789513968983,
-      "n_items": 501,
+      "date": "2025-12-17T00:00:00",
+      "family": "sp500",
+      "value": 0.06857129717670164,
+      "method": "ICC calculation",
+      "n_firms": 501,
       "source_file": "data/202512/icc_live_sp500_2025_1217.csv"
     },
     {
-      "date": "2025-12-18",
-      "universe": "sp500",
-      "vw_icc": 0.06819115690843186,
-      "ew_icc": 0.0760902156797316,
-      "n_items": 501,
+      "date": "2025-12-18T00:00:00",
+      "family": "sp500",
+      "value": 0.06819115690843186,
+      "method": "ICC calculation",
+      "n_firms": 501,
       "source_file": "data/202512/icc_live_sp500_2025_1218.csv"
     },
     {
-      "date": "2025-12-19",
-      "universe": "sp500",
-      "vw_icc": 0.0681645883786361,
-      "ew_icc": 0.07607920365940186,
-      "n_items": 501,
+      "date": "2025-12-19T00:00:00",
+      "family": "sp500",
+      "value": 0.0681645883786361,
+      "method": "ICC calculation",
+      "n_firms": 501,
       "source_file": "data/202512/icc_live_sp500_2025_1219.csv"
     },
     {
-      "date": "2025-12-22",
-      "universe": "sp500",
-      "vw_icc": 0.06807008963831669,
-      "ew_icc": 0.07568006117595545,
-      "n_items": 501,
+      "date": "2025-12-22T00:00:00",
+      "family": "sp500",
+      "value": 0.06807008963831669,
+      "method": "ICC calculation",
+      "n_firms": 501,
       "source_file": "data/202512/icc_live_sp500_2025_1222.csv"
     },
     {
-      "date": "2025-12-23",
-      "universe": "sp500",
-      "vw_icc": 0.06802613777753075,
-      "ew_icc": 0.07572964412173355,
-      "n_items": 499,
+      "date": "2025-12-23T00:00:00",
+      "family": "sp500",
+      "value": 0.06802613777753075,
+      "method": "ICC calculation",
+      "n_firms": 499,
       "source_file": "data/202512/icc_live_sp500_2025_1223.csv"
     },
     {
-      "date": "2025-12-24",
-      "universe": "sp500",
-      "vw_icc": 0.06781607432001784,
-      "ew_icc": 0.07549299491114406,
-      "n_items": 499,
+      "date": "2025-12-24T00:00:00",
+      "family": "sp500",
+      "value": 0.06781607432001784,
+      "method": "ICC calculation",
+      "n_firms": 499,
       "source_file": "data/202512/icc_live_sp500_2025_1224.csv"
     },
     {
-      "date": "2025-12-25",
-      "universe": "sp500",
-      "vw_icc": 0.06783320684719624,
-      "ew_icc": 0.07552066421465362,
-      "n_items": 499,
+      "date": "2025-12-25T00:00:00",
+      "family": "sp500",
+      "value": 0.06783320684719624,
+      "method": "ICC calculation",
+      "n_firms": 499,
       "source_file": "data/202512/icc_live_sp500_2025_1225.csv"
     },
     {
-      "date": "2025-12-26",
-      "universe": "sp500",
-      "vw_icc": 0.06790524480419664,
-      "ew_icc": 0.07552639473910139,
-      "n_items": 499,
+      "date": "2025-12-26T00:00:00",
+      "family": "sp500",
+      "value": 0.06790524480419664,
+      "method": "ICC calculation",
+      "n_firms": 499,
       "source_file": "data/202512/icc_live_sp500_2025_1226.csv"
     },
     {
-      "date": "2025-12-29",
-      "universe": "sp500",
-      "vw_icc": 0.06804463052556269,
-      "ew_icc": 0.07563040517268789,
-      "n_items": 499,
+      "date": "2025-12-29T00:00:00",
+      "family": "sp500",
+      "value": 0.06804463052556269,
+      "method": "ICC calculation",
+      "n_firms": 499,
       "source_file": "data/202512/icc_live_sp500_2025_1229.csv"
     },
     {
-      "date": "2025-12-30",
-      "universe": "sp500",
-      "vw_icc": 0.06812874034595798,
-      "ew_icc": 0.07562636061125554,
-      "n_items": 499,
+      "date": "2025-12-30T00:00:00",
+      "family": "sp500",
+      "value": 0.06812874034595798,
+      "method": "ICC calculation",
+      "n_firms": 499,
       "source_file": "data/202512/icc_live_sp500_2025_1230.csv"
     },
     {
-      "date": "2025-12-31",
-      "universe": "sp500",
-      "vw_icc": 0.06846715355482065,
-      "ew_icc": 0.07608304769934701,
-      "n_items": 499,
+      "date": "2025-12-31T00:00:00",
+      "family": "sp500",
+      "value": 0.06846715355482065,
+      "method": "ICC calculation",
+      "n_firms": 499,
       "source_file": "data/202512/icc_live_sp500_2025_1231.csv"
     },
     {
-      "date": "2026-01-01",
-      "universe": "sp500",
-      "vw_icc": 0.06846459233629582,
-      "ew_icc": 0.07609936746343596,
-      "n_items": 500,
+      "date": "2026-01-01T00:00:00",
+      "family": "sp500",
+      "value": 0.06846459233629582,
+      "method": "ICC calculation",
+      "n_firms": 500,
       "source_file": "data/202601/icc_live_sp500_2026_0101.csv"
     },
     {
-      "date": "2026-01-02",
-      "universe": "sp500",
-      "vw_icc": 0.06843254406851189,
-      "ew_icc": 0.07534105023406093,
-      "n_items": 501,
+      "date": "2026-01-02T00:00:00",
+      "family": "sp500",
+      "value": 0.06843254406851189,
+      "method": "ICC calculation",
+      "n_firms": 501,
       "source_file": "data/202601/icc_live_sp500_2026_0102.csv"
     },
     {
-      "date": "2026-01-05",
-      "universe": "sp500",
-      "vw_icc": 0.0678929252970122,
-      "ew_icc": 0.07485100688904016,
-      "n_items": 497,
+      "date": "2026-01-05T00:00:00",
+      "family": "sp500",
+      "value": 0.0678929252970122,
+      "method": "ICC calculation",
+      "n_firms": 497,
       "source_file": "data/202601/icc_live_sp500_2026_0105_r1.csv"
     },
     {
-      "date": "2026-01-06",
-      "universe": "sp500",
-      "vw_icc": 0.06768487976678952,
-      "ew_icc": 0.07436227331846826,
-      "n_items": 497,
+      "date": "2026-01-06T00:00:00",
+      "family": "sp500",
+      "value": 0.06768487976678952,
+      "method": "ICC calculation",
+      "n_firms": 497,
       "source_file": "data/202601/icc_live_sp500_2026_0106_r1.csv"
     },
     {
-      "date": "2026-01-07",
-      "universe": "sp500",
-      "vw_icc": 0.06781276843417244,
-      "ew_icc": 0.07498213475817848,
-      "n_items": 497,
+      "date": "2026-01-07T00:00:00",
+      "family": "sp500",
+      "value": 0.06781276843417244,
+      "method": "ICC calculation",
+      "n_firms": 497,
       "source_file": "data/202601/icc_live_sp500_2026_0107_r1.csv"
     },
     {
-      "date": "2026-01-08",
-      "universe": "sp500",
-      "vw_icc": 0.06773361097944448,
-      "ew_icc": 0.07443436129036075,
-      "n_items": 497,
+      "date": "2026-01-08T00:00:00",
+      "family": "sp500",
+      "value": 0.06773361097944448,
+      "method": "ICC calculation",
+      "n_firms": 497,
       "source_file": "data/202601/icc_live_sp500_2026_0108_r1.csv"
     },
     {
-      "date": "2026-01-09",
-      "universe": "sp500",
-      "vw_icc": 0.06744258262637452,
-      "ew_icc": 0.07416247950365767,
-      "n_items": 497,
+      "date": "2026-01-09T00:00:00",
+      "family": "sp500",
+      "value": 0.06744258262637452,
+      "method": "ICC calculation",
+      "n_firms": 497,
       "source_file": "data/202601/icc_live_sp500_2026_0109_r1.csv"
     },
     {
-      "date": "2026-01-12",
-      "universe": "sp500",
-      "vw_icc": 0.06740415683426457,
-      "ew_icc": 0.07409045473353114,
-      "n_items": 496,
+      "date": "2026-01-12T00:00:00",
+      "family": "sp500",
+      "value": 0.06740415683426457,
+      "method": "ICC calculation",
+      "n_firms": 496,
       "source_file": "data/202601/icc_live_sp500_2026_0112_r1.csv"
     },
     {
-      "date": "2026-01-13",
-      "universe": "sp500",
-      "vw_icc": 0.06769618686705364,
-      "ew_icc": 0.07415107831063711,
-      "n_items": 496,
+      "date": "2026-01-13T00:00:00",
+      "family": "sp500",
+      "value": 0.06769618686705364,
+      "method": "ICC calculation",
+      "n_firms": 496,
       "source_file": "data/202601/icc_live_sp500_2026_0113_r1.csv"
     },
     {
-      "date": "2026-01-14",
-      "universe": "sp500",
-      "vw_icc": 0.06785427680125362,
-      "ew_icc": 0.0739434747686191,
-      "n_items": 496,
+      "date": "2026-01-14T00:00:00",
+      "family": "sp500",
+      "value": 0.06785427680125362,
+      "method": "ICC calculation",
+      "n_firms": 496,
       "source_file": "data/202601/icc_live_sp500_2026_0114_r1.csv"
     },
     {
-      "date": "2026-01-15",
-      "universe": "sp500",
-      "vw_icc": 0.06805037218643983,
-      "ew_icc": 0.0737883864925223,
-      "n_items": 496,
+      "date": "2026-01-15T00:00:00",
+      "family": "sp500",
+      "value": 0.06805037218643983,
+      "method": "ICC calculation",
+      "n_firms": 496,
       "source_file": "data/202601/icc_live_sp500_2026_0115_r1.csv"
     },
     {
-      "date": "2026-01-16",
-      "universe": "sp500",
-      "vw_icc": 0.06817249582034454,
-      "ew_icc": 0.07404574308558601,
-      "n_items": 496,
+      "date": "2026-01-16T00:00:00",
+      "family": "sp500",
+      "value": 0.06817249582034454,
+      "method": "ICC calculation",
+      "n_firms": 496,
       "source_file": "data/202601/icc_live_sp500_2026_0116_r1.csv"
     },
     {
-      "date": "2026-01-19",
-      "universe": "sp500",
-      "vw_icc": 0.06812944192730826,
-      "ew_icc": 0.07404903366406547,
-      "n_items": 496,
+      "date": "2026-01-19T00:00:00",
+      "family": "sp500",
+      "value": 0.06812944192730826,
+      "method": "ICC calculation",
+      "n_firms": 496,
       "source_file": "data/202601/icc_live_sp500_2026_0119_r1.csv"
     },
     {
-      "date": "2026-01-20",
-      "universe": "sp500",
-      "vw_icc": 0.06928492488988393,
-      "ew_icc": 0.07522222642440721,
-      "n_items": 496,
+      "date": "2026-01-20T00:00:00",
+      "family": "sp500",
+      "value": 0.06928492488988393,
+      "method": "ICC calculation",
+      "n_firms": 496,
       "source_file": "data/202601/icc_live_sp500_2026_0120_r1.csv"
     },
     {
-      "date": "2026-01-21",
-      "universe": "sp500",
-      "vw_icc": 0.0689539185928104,
-      "ew_icc": 0.0745244122023246,
-      "n_items": 495,
+      "date": "2026-01-21T00:00:00",
+      "family": "sp500",
+      "value": 0.0689539185928104,
+      "method": "ICC calculation",
+      "n_firms": 495,
       "source_file": "data/202601/icc_live_sp500_2026_0121_r1.csv"
     },
     {
-      "date": "2026-01-22",
-      "universe": "sp500",
-      "vw_icc": 0.06882813785572822,
-      "ew_icc": 0.07433988114686506,
-      "n_items": 495,
+      "date": "2026-01-22T00:00:00",
+      "family": "sp500",
+      "value": 0.06882813785572822,
+      "method": "ICC calculation",
+      "n_firms": 495,
       "source_file": "data/202601/icc_live_sp500_2026_0122_r1.csv"
     },
     {
-      "date": "2026-01-23",
-      "universe": "sp500",
-      "vw_icc": 0.0691114757150584,
-      "ew_icc": 0.07479766268227507,
-      "n_items": 495,
+      "date": "2026-01-23T00:00:00",
+      "family": "sp500",
+      "value": 0.0691114757150584,
+      "method": "ICC calculation",
+      "n_firms": 495,
       "source_file": "data/202601/icc_live_sp500_2026_0123_r1.csv"
     },
     {
-      "date": "2026-01-26",
-      "universe": "sp500",
-      "vw_icc": 0.06898439095251283,
-      "ew_icc": 0.07463486832054142,
-      "n_items": 495,
+      "date": "2026-01-26T00:00:00",
+      "family": "sp500",
+      "value": 0.06898439095251283,
+      "method": "ICC calculation",
+      "n_firms": 495,
       "source_file": "data/202601/icc_live_sp500_2026_0126_r1.csv"
     },
     {
-      "date": "2026-01-27",
-      "universe": "sp500",
-      "vw_icc": 0.06947907181125385,
-      "ew_icc": 0.07513790361484106,
-      "n_items": 495,
+      "date": "2026-01-27T00:00:00",
+      "family": "sp500",
+      "value": 0.06947907181125385,
+      "method": "ICC calculation",
+      "n_firms": 495,
       "source_file": "data/202601/icc_live_sp500_2026_0127_r1.csv"
     },
     {
-      "date": "2026-01-28",
-      "universe": "sp500",
-      "vw_icc": 0.06948957834698481,
-      "ew_icc": 0.07527891079934772,
-      "n_items": 495,
+      "date": "2026-01-28T00:00:00",
+      "family": "sp500",
+      "value": 0.06948957834698481,
+      "method": "ICC calculation",
+      "n_firms": 495,
       "source_file": "data/202601/icc_live_sp500_2026_0128_r1.csv"
     },
     {
-      "date": "2026-01-29",
-      "universe": "sp500",
-      "vw_icc": 0.06903422154965734,
-      "ew_icc": 0.07538603094564343,
-      "n_items": 497,
+      "date": "2026-01-29T00:00:00",
+      "family": "sp500",
+      "value": 0.06903422154965734,
+      "method": "ICC calculation",
+      "n_firms": 497,
       "source_file": "data/202601/icc_live_sp500_2026_0129_r1.csv"
     },
     {
-      "date": "2026-01-30",
-      "universe": "sp500",
-      "vw_icc": 0.06949106104919214,
-      "ew_icc": 0.07605516211381749,
-      "n_items": 497,
+      "date": "2026-01-30T00:00:00",
+      "family": "sp500",
+      "value": 0.06949106104919214,
+      "method": "ICC calculation",
+      "n_firms": 497,
       "source_file": "data/202601/icc_live_sp500_2026_0130_r1.csv"
     },
     {
-      "date": "2026-02-03",
-      "universe": "sp500",
-      "vw_icc": 0.07110565703785837,
-      "ew_icc": 0.0767562995616888,
-      "n_items": 496,
+      "date": "2026-02-03T00:00:00",
+      "family": "sp500",
+      "value": 0.07110565703785837,
+      "method": "ICC calculation",
+      "n_firms": 496,
       "source_file": "data/202602/icc_live_sp500_2026_0203_r1.csv"
     },
     {
-      "date": "2026-02-04",
-      "universe": "sp500",
-      "vw_icc": 0.07082231086169674,
-      "ew_icc": 0.07645169917769168,
-      "n_items": 496,
+      "date": "2026-02-04T00:00:00",
+      "family": "sp500",
+      "value": 0.07082231086169674,
+      "method": "ICC calculation",
+      "n_firms": 496,
       "source_file": "data/202602/icc_live_sp500_2026_0204_r1.csv"
     },
     {
-      "date": "2026-02-05",
-      "universe": "sp500",
-      "vw_icc": 0.07497588609145042,
-      "ew_icc": 0.07727914079977305,
-      "n_items": 496,
+      "date": "2026-02-05T00:00:00",
+      "family": "sp500",
+      "value": 0.07497588609145042,
+      "method": "ICC calculation",
+      "n_firms": 496,
       "source_file": "data/202602/icc_live_sp500_2026_0205_r1.csv"
     },
     {
-      "date": "2026-02-06",
-      "universe": "sp500",
-      "vw_icc": 0.07502093195326427,
-      "ew_icc": 0.07680729141487537,
-      "n_items": 496,
+      "date": "2026-02-06T00:00:00",
+      "family": "sp500",
+      "value": 0.07502093195326427,
+      "method": "ICC calculation",
+      "n_firms": 496,
       "source_file": "data/202602/icc_live_sp500_2026_0206_r1.csv"
     },
     {
-      "date": "2026-02-09",
-      "universe": "sp500",
-      "vw_icc": 0.07473837330177734,
-      "ew_icc": 0.0770278088167138,
-      "n_items": 496,
+      "date": "2026-02-09T00:00:00",
+      "family": "sp500",
+      "value": 0.07473837330177734,
+      "method": "ICC calculation",
+      "n_firms": 496,
       "source_file": "data/202602/icc_live_sp500_2026_0209_r1.csv"
     },
     {
-      "date": "2026-02-10",
-      "universe": "sp500",
-      "vw_icc": 0.07512630868991586,
-      "ew_icc": 0.07710417549719034,
-      "n_items": 496,
+      "date": "2026-02-10T00:00:00",
+      "family": "sp500",
+      "value": 0.07512630868991586,
+      "method": "ICC calculation",
+      "n_firms": 496,
       "source_file": "data/202602/icc_live_sp500_2026_0210_r1.csv"
     },
     {
-      "date": "2026-02-11",
-      "universe": "sp500",
-      "vw_icc": 0.07539150669103345,
-      "ew_icc": 0.07758427585824478,
-      "n_items": 496,
+      "date": "2026-02-11T00:00:00",
+      "family": "sp500",
+      "value": 0.07539150669103345,
+      "method": "ICC calculation",
+      "n_firms": 496,
       "source_file": "data/202602/icc_live_sp500_2026_0211_r1.csv"
     },
     {
-      "date": "2026-02-12",
-      "universe": "sp500",
-      "vw_icc": 0.07628148812249078,
-      "ew_icc": 0.07919572898682606,
-      "n_items": 496,
+      "date": "2026-02-12T00:00:00",
+      "family": "sp500",
+      "value": 0.07628148812249078,
+      "method": "ICC calculation",
+      "n_firms": 496,
       "source_file": "data/202602/icc_live_sp500_2026_0212_r1.csv"
     },
     {
-      "date": "2026-02-13",
-      "universe": "sp500",
-      "vw_icc": 0.07641902308286991,
-      "ew_icc": 0.0792224514356346,
-      "n_items": 496,
+      "date": "2026-02-13T00:00:00",
+      "family": "sp500",
+      "value": 0.07641902308286991,
+      "method": "ICC calculation",
+      "n_firms": 496,
       "source_file": "data/202602/icc_live_sp500_2026_0213_r1.csv"
     },
     {
-      "date": "2026-02-16",
-      "universe": "sp500",
-      "vw_icc": 0.07647095471625483,
-      "ew_icc": 0.0789925240604363,
-      "n_items": 496,
+      "date": "2026-02-16T00:00:00",
+      "family": "sp500",
+      "value": 0.07647095471625483,
+      "method": "ICC calculation",
+      "n_firms": 496,
       "source_file": "data/202602/icc_live_sp500_2026_0216_r1.csv"
     },
     {
-      "date": "2026-02-17",
-      "universe": "sp500",
-      "vw_icc": 0.07660536099162935,
-      "ew_icc": 0.07931431449624968,
-      "n_items": 496,
+      "date": "2026-02-17T00:00:00",
+      "family": "sp500",
+      "value": 0.07660536099162935,
+      "method": "ICC calculation",
+      "n_firms": 496,
       "source_file": "data/202602/icc_live_sp500_2026_0217_r1.csv"
     },
     {
-      "date": "2026-02-18",
-      "universe": "sp500",
-      "vw_icc": 0.07654050219861844,
-      "ew_icc": 0.07943106876488142,
-      "n_items": 496,
+      "date": "2026-02-18T00:00:00",
+      "family": "sp500",
+      "value": 0.07654050219861844,
+      "method": "ICC calculation",
+      "n_firms": 496,
       "source_file": "data/202602/icc_live_sp500_2026_0218_r1.csv"
     },
     {
-      "date": "2026-02-19",
-      "universe": "sp500",
-      "vw_icc": 0.07677636393669138,
-      "ew_icc": 0.0798712709990035,
-      "n_items": 496,
+      "date": "2026-02-19T00:00:00",
+      "family": "sp500",
+      "value": 0.07677636393669138,
+      "method": "ICC calculation",
+      "n_firms": 496,
       "source_file": "data/202602/icc_live_sp500_2026_0219_r1.csv"
     },
     {
-      "date": "2026-02-20",
-      "universe": "sp500",
-      "vw_icc": 0.07638525463045794,
-      "ew_icc": 0.07977059047012032,
-      "n_items": 496,
+      "date": "2026-02-20T00:00:00",
+      "family": "sp500",
+      "value": 0.07638525463045794,
+      "method": "ICC calculation",
+      "n_firms": 496,
       "source_file": "data/202602/icc_live_sp500_2026_0220_r1.csv"
     },
     {
-      "date": "2026-02-23",
-      "universe": "sp500",
-      "vw_icc": 0.0770576837648785,
-      "ew_icc": 0.08041998129647047,
-      "n_items": 496,
+      "date": "2026-02-23T00:00:00",
+      "family": "sp500",
+      "value": 0.0770576837648785,
+      "method": "ICC calculation",
+      "n_firms": 496,
       "source_file": "data/202602/icc_live_sp500_2026_0223_r1.csv"
     },
     {
-      "date": "2026-02-24",
-      "universe": "sp500",
-      "vw_icc": 0.07689768609460049,
-      "ew_icc": 0.07997235667386303,
-      "n_items": 496,
+      "date": "2026-02-24T00:00:00",
+      "family": "sp500",
+      "value": 0.07689768609460049,
+      "method": "ICC calculation",
+      "n_firms": 496,
       "source_file": "data/202602/icc_live_sp500_2026_0224_r1.csv"
     },
     {
-      "date": "2026-02-25",
-      "universe": "sp500",
-      "vw_icc": 0.07673253543163475,
-      "ew_icc": 0.0804189043590779,
-      "n_items": 496,
+      "date": "2026-02-25T00:00:00",
+      "family": "sp500",
+      "value": 0.07673253543163475,
+      "method": "ICC calculation",
+      "n_firms": 496,
       "source_file": "data/202602/icc_live_sp500_2026_0225_r1.csv"
     },
     {
-      "date": "2026-02-26",
-      "universe": "sp500",
-      "vw_icc": 0.07378859755320966,
-      "ew_icc": 0.0797600886082171,
-      "n_items": 496,
+      "date": "2026-02-26T00:00:00",
+      "family": "sp500",
+      "value": 0.07378859755320966,
+      "method": "ICC calculation",
+      "n_firms": 496,
       "source_file": "data/202602/icc_live_sp500_2026_0226_r1.csv"
     },
     {
-      "date": "2026-02-27",
-      "universe": "sp500",
-      "vw_icc": 0.07395991999074679,
-      "ew_icc": 0.08007957851279425,
-      "n_items": 496,
+      "date": "2026-02-27T00:00:00",
+      "family": "sp500",
+      "value": 0.07395991999074679,
+      "method": "ICC calculation",
+      "n_firms": 496,
       "source_file": "data/202602/icc_live_sp500_2026_0227_r1.csv"
     },
     {
-      "date": "2026-03-02",
-      "universe": "sp500",
-      "vw_icc": 0.07384518689463118,
-      "ew_icc": 0.08025915862679166,
-      "n_items": 495,
+      "date": "2026-03-02T00:00:00",
+      "family": "sp500",
+      "value": 0.07384518689463118,
+      "method": "ICC calculation",
+      "n_firms": 495,
       "source_file": "data/202603/icc_live_sp500_2026_0302_r1.csv"
     },
     {
-      "date": "2026-03-03",
-      "universe": "sp500",
-      "vw_icc": 0.07424068648706249,
-      "ew_icc": 0.08084175858272391,
-      "n_items": 495,
+      "date": "2026-03-03T00:00:00",
+      "family": "sp500",
+      "value": 0.07424068648706249,
+      "method": "ICC calculation",
+      "n_firms": 495,
       "source_file": "data/202603/icc_live_sp500_2026_0303_r1.csv"
     },
     {
-      "date": "2026-03-04",
-      "universe": "sp500",
-      "vw_icc": 0.07419240884989318,
-      "ew_icc": 0.0806672050711749,
-      "n_items": 501,
+      "date": "2026-03-04T00:00:00",
+      "family": "sp500",
+      "value": 0.07419240884989318,
+      "method": "ICC calculation",
+      "n_firms": 501,
       "source_file": "data/202603/icc_live_sp500_2026_0304_r1.csv"
     },
     {
-      "date": "2026-03-05",
-      "universe": "sp500",
-      "vw_icc": 0.07540820323204772,
-      "ew_icc": 0.0811618500690547,
-      "n_items": 501,
+      "date": "2026-03-05T00:00:00",
+      "family": "sp500",
+      "value": 0.07540820323204772,
+      "method": "ICC calculation",
+      "n_firms": 501,
       "source_file": "data/202603/icc_live_sp500_2026_0305_r1.csv"
     },
     {
-      "date": "2026-03-06",
-      "universe": "sp500",
-      "vw_icc": 0.07598419755862147,
-      "ew_icc": 0.08195994603049062,
-      "n_items": 501,
+      "date": "2026-03-06T00:00:00",
+      "family": "sp500",
+      "value": 0.07598419755862147,
+      "method": "ICC calculation",
+      "n_firms": 501,
       "source_file": "data/202603/icc_live_sp500_2026_0306_r1.csv"
     },
     {
-      "date": "2026-03-09",
-      "universe": "sp500",
-      "vw_icc": 0.07596853622969772,
-      "ew_icc": 0.08187574394879418,
-      "n_items": 501,
+      "date": "2026-03-09T00:00:00",
+      "family": "sp500",
+      "value": 0.07596853622969772,
+      "method": "ICC calculation",
+      "n_firms": 501,
       "source_file": "data/202603/icc_live_sp500_2026_0309_r1.csv"
     },
     {
-      "date": "2026-03-10",
-      "universe": "sp500",
-      "vw_icc": 0.0761408169324043,
-      "ew_icc": 0.08241244934865362,
-      "n_items": 501,
+      "date": "2026-03-10T00:00:00",
+      "family": "sp500",
+      "value": 0.0761408169324043,
+      "method": "ICC calculation",
+      "n_firms": 501,
       "source_file": "data/202603/icc_live_sp500_2026_0310_r1.csv"
     },
     {
-      "date": "2026-03-11",
-      "universe": "sp500",
-      "vw_icc": 0.07617988088716068,
-      "ew_icc": 0.08256605869748812,
-      "n_items": 501,
+      "date": "2026-03-11T00:00:00",
+      "family": "sp500",
+      "value": 0.07617988088716068,
+      "method": "ICC calculation",
+      "n_firms": 501,
       "source_file": "data/202603/icc_live_sp500_2026_0311_r1.csv"
     },
     {
-      "date": "2026-03-12",
-      "universe": "sp500",
-      "vw_icc": 0.07683473594671442,
-      "ew_icc": 0.08352430675903079,
-      "n_items": 501,
+      "date": "2026-03-12T00:00:00",
+      "family": "sp500",
+      "value": 0.07683473594671442,
+      "method": "ICC calculation",
+      "n_firms": 501,
       "source_file": "data/202603/icc_live_sp500_2026_0312_r1.csv"
     },
     {
-      "date": "2026-03-13",
-      "universe": "sp500",
-      "vw_icc": 0.07712571264052383,
-      "ew_icc": 0.08352497509885028,
-      "n_items": 501,
+      "date": "2026-03-13T00:00:00",
+      "family": "sp500",
+      "value": 0.07712571264052383,
+      "method": "ICC calculation",
+      "n_firms": 501,
       "source_file": "data/202603/icc_live_sp500_2026_0313_r1.csv"
     },
     {
-      "date": "2026-03-16",
-      "universe": "sp500",
-      "vw_icc": 0.07655681309290481,
-      "ew_icc": 0.08288094829252265,
-      "n_items": 501,
+      "date": "2026-03-16T00:00:00",
+      "family": "sp500",
+      "value": 0.07655681309290481,
+      "method": "ICC calculation",
+      "n_firms": 501,
       "source_file": "data/202603/icc_live_sp500_2026_0316_r1.csv"
     },
     {
-      "date": "2026-03-17",
-      "universe": "sp500",
-      "vw_icc": 0.07641440056347147,
-      "ew_icc": 0.08254446084698135,
-      "n_items": 501,
+      "date": "2026-03-17T00:00:00",
+      "family": "sp500",
+      "value": 0.07641440056347147,
+      "method": "ICC calculation",
+      "n_firms": 501,
       "source_file": "data/202603/icc_live_sp500_2026_0317_r1.csv"
     },
     {
-      "date": "2026-03-18",
-      "universe": "sp500",
-      "vw_icc": 0.0776629337624896,
-      "ew_icc": 0.08341711084818361,
-      "n_items": 501,
+      "date": "2026-03-18T00:00:00",
+      "family": "sp500",
+      "value": 0.0776629337624896,
+      "method": "ICC calculation",
+      "n_firms": 501,
       "source_file": "data/202603/icc_live_sp500_2026_0318_r1.csv"
     },
     {
-      "date": "2026-03-19",
-      "universe": "sp500",
-      "vw_icc": 0.07781684892630251,
-      "ew_icc": 0.08349787440431047,
-      "n_items": 501,
+      "date": "2026-03-19T00:00:00",
+      "family": "sp500",
+      "value": 0.07781684892630251,
+      "method": "ICC calculation",
+      "n_firms": 501,
       "source_file": "data/202603/icc_live_sp500_2026_0319_r1.csv"
     },
     {
-      "date": "2026-03-20",
-      "universe": "sp500",
-      "vw_icc": 0.07845866400141227,
-      "ew_icc": 0.08407252861530375,
-      "n_items": 501,
+      "date": "2026-03-20T00:00:00",
+      "family": "sp500",
+      "value": 0.07845866400141227,
+      "method": "ICC calculation",
+      "n_firms": 501,
       "source_file": "data/202603/icc_live_sp500_2026_0320_r1.csv"
     },
     {
-      "date": "2026-03-23",
-      "universe": "sp500",
-      "vw_icc": 0.07876554765792887,
-      "ew_icc": 0.08348973996769969,
-      "n_items": 501,
+      "date": "2026-03-23T00:00:00",
+      "family": "sp500",
+      "value": 0.07876554765792887,
+      "method": "ICC calculation",
+      "n_firms": 501,
       "source_file": "data/202603/icc_live_sp500_2026_0323_r1.csv"
     },
     {
-      "date": "2026-03-24",
-      "universe": "sp500",
-      "vw_icc": 0.07893744979754445,
-      "ew_icc": 0.0833376017189145,
-      "n_items": 501,
+      "date": "2026-03-24T00:00:00",
+      "family": "sp500",
+      "value": 0.07893744979754445,
+      "method": "ICC calculation",
+      "n_firms": 501,
       "source_file": "data/202603/icc_live_sp500_2026_0324_r1.csv"
     },
     {
-      "date": "2026-03-25",
-      "universe": "sp500",
-      "vw_icc": 0.07866412455686017,
-      "ew_icc": 0.0830559656027959,
-      "n_items": 500,
+      "date": "2026-03-25T00:00:00",
+      "family": "sp500",
+      "value": 0.07866412455686017,
+      "method": "ICC calculation",
+      "n_firms": 500,
       "source_file": "data/202603/icc_live_sp500_2026_0325_r1.csv"
     },
     {
-      "date": "2026-03-26",
-      "universe": "sp500",
-      "vw_icc": 0.0793986669195491,
-      "ew_icc": 0.08353960331998751,
-      "n_items": 500,
+      "date": "2026-03-26T00:00:00",
+      "family": "sp500",
+      "value": 0.0793986669195491,
+      "method": "ICC calculation",
+      "n_firms": 500,
       "source_file": "data/202603/icc_live_sp500_2026_0326_r1.csv"
     },
     {
-      "date": "2026-03-27",
-      "universe": "sp500",
-      "vw_icc": 0.08028739616071724,
-      "ew_icc": 0.084314558512701,
-      "n_items": 500,
+      "date": "2026-03-27T00:00:00",
+      "family": "sp500",
+      "value": 0.08028739616071724,
+      "method": "ICC calculation",
+      "n_firms": 500,
       "source_file": "data/202603/icc_live_sp500_2026_0327_r1.csv"
     },
     {
-      "date": "2026-03-30",
-      "universe": "sp500",
-      "vw_icc": 0.08027931314886187,
-      "ew_icc": 0.08452709300987163,
-      "n_items": 500,
+      "date": "2026-03-30T00:00:00",
+      "family": "sp500",
+      "value": 0.08027931314886187,
+      "method": "ICC calculation",
+      "n_firms": 500,
       "source_file": "data/202603/icc_live_sp500_2026_0330_r1.csv"
     },
     {
-      "date": "2026-03-31",
-      "universe": "sp500",
-      "vw_icc": 0.07889568917176408,
-      "ew_icc": 0.08332771742426166,
-      "n_items": 500,
+      "date": "2026-03-31T00:00:00",
+      "family": "sp500",
+      "value": 0.07889568917176408,
+      "method": "ICC calculation",
+      "n_firms": 500,
       "source_file": "data/202603/icc_live_sp500_2026_0331_r1.csv"
     },
     {
-      "date": "2026-04-01",
-      "universe": "sp500",
-      "vw_icc": 0.0784875336195354,
-      "ew_icc": 0.08315906142677075,
-      "n_items": 500,
+      "date": "2026-04-01T00:00:00",
+      "family": "sp500",
+      "value": 0.0784875336195354,
+      "method": "ICC calculation",
+      "n_firms": 500,
       "source_file": "data/202604/icc_live_sp500_2026_0401_r1.csv"
     },
     {
-      "date": "2026-04-02",
-      "universe": "sp500",
-      "vw_icc": 0.07849130427216776,
-      "ew_icc": 0.08303663929555677,
-      "n_items": 500,
+      "date": "2026-04-02T00:00:00",
+      "family": "sp500",
+      "value": 0.07849130427216776,
+      "method": "ICC calculation",
+      "n_firms": 500,
       "source_file": "data/202604/icc_live_sp500_2026_0402_r1.csv"
     },
     {
-      "date": "2026-04-03",
-      "universe": "sp500",
-      "vw_icc": 0.07840426934784,
-      "ew_icc": 0.0828280586776455,
-      "n_items": 500,
+      "date": "2026-04-03T00:00:00",
+      "family": "sp500",
+      "value": 0.07840426934784,
+      "method": "ICC calculation",
+      "n_firms": 500,
       "source_file": "data/202604/icc_live_sp500_2026_0403_r1.csv"
     },
     {
-      "date": "2026-04-06",
-      "universe": "sp500",
-      "vw_icc": 0.07820711667158994,
-      "ew_icc": 0.08260252127933762,
-      "n_items": 500,
+      "date": "2026-04-06T00:00:00",
+      "family": "sp500",
+      "value": 0.07820711667158994,
+      "method": "ICC calculation",
+      "n_firms": 500,
       "source_file": "data/202604/icc_live_sp500_2026_0406_r1.csv"
     },
     {
-      "date": "2026-04-07",
-      "universe": "sp500",
-      "vw_icc": 0.07818730088016826,
-      "ew_icc": 0.08289410762703829,
-      "n_items": 500,
+      "date": "2026-04-07T00:00:00",
+      "family": "sp500",
+      "value": 0.07818730088016826,
+      "method": "ICC calculation",
+      "n_firms": 500,
       "source_file": "data/202604/icc_live_sp500_2026_0407_r1.csv"
     },
     {
-      "date": "2026-04-08",
-      "universe": "sp500",
-      "vw_icc": 0.07705306641904613,
-      "ew_icc": 0.08160053125228461,
-      "n_items": 500,
+      "date": "2026-04-08T00:00:00",
+      "family": "sp500",
+      "value": 0.07705306641904613,
+      "method": "ICC calculation",
+      "n_firms": 500,
       "source_file": "data/202604/icc_live_sp500_2026_0408_r1.csv"
     },
     {
-      "date": "2026-04-09",
-      "universe": "sp500",
-      "vw_icc": 0.07684847746875212,
-      "ew_icc": 0.08191544234091763,
-      "n_items": 499,
+      "date": "2026-04-09T00:00:00",
+      "family": "sp500",
+      "value": 0.07684847746875212,
+      "method": "ICC calculation",
+      "n_firms": 499,
       "source_file": "data/202604/icc_live_sp500_2026_0409_r1.csv"
     },
     {
-      "date": "2026-04-10",
-      "universe": "sp500",
-      "vw_icc": 0.07702641166459312,
-      "ew_icc": 0.08230591260918903,
-      "n_items": 500,
+      "date": "2026-04-10T00:00:00",
+      "family": "sp500",
+      "value": 0.07702641166459312,
+      "method": "ICC calculation",
+      "n_firms": 500,
       "source_file": "data/202604/icc_live_sp500_2026_0410_r1.csv"
     },
     {
-      "date": "2026-04-13",
-      "universe": "sp500",
-      "vw_icc": 0.07666735898881136,
-      "ew_icc": 0.08163982789425475,
-      "n_items": 500,
+      "date": "2026-04-13T00:00:00",
+      "family": "sp500",
+      "value": 0.07666735898881136,
+      "method": "ICC calculation",
+      "n_firms": 500,
       "source_file": "data/202604/icc_live_sp500_2026_0413_r3.csv"
     },
     {
-      "date": "2026-04-14",
-      "universe": "sp500",
-      "vw_icc": 0.07614673715602163,
-      "ew_icc": 0.08142821907906203,
-      "n_items": 500,
+      "date": "2026-04-14T00:00:00",
+      "family": "sp500",
+      "value": 0.07614673715602163,
+      "method": "ICC calculation",
+      "n_firms": 500,
       "source_file": "data/202604/icc_live_sp500_2026_0414_r1.csv"
     },
     {
-      "date": "2026-04-15",
-      "universe": "sp500",
-      "vw_icc": 0.07569297028442881,
-      "ew_icc": 0.08138525083469349,
-      "n_items": 500,
+      "date": "2026-04-15T00:00:00",
+      "family": "sp500",
+      "value": 0.07569297028442881,
+      "method": "ICC calculation",
+      "n_firms": 500,
       "source_file": "data/202604/icc_live_sp500_2026_0415_r1.csv"
     },
     {
-      "date": "2026-04-16",
-      "universe": "sp500",
-      "vw_icc": 0.0754672706502571,
-      "ew_icc": 0.08111658737002901,
-      "n_items": 500,
+      "date": "2026-04-16T00:00:00",
+      "family": "sp500",
+      "value": 0.0754672706502571,
+      "method": "ICC calculation",
+      "n_firms": 500,
       "source_file": "data/202604/icc_live_sp500_2026_0416_r1.csv"
     },
     {
-      "date": "2026-04-14",
-      "universe": "sp100",
-      "vw_icc": 0.07589577103962168,
-      "ew_icc": 0.08121825127483452,
-      "n_items": 101,
+      "date": "2026-04-14T00:00:00",
+      "family": "sp100",
+      "value": 0.07589577103962168,
+      "method": "ICC calculation",
+      "n_firms": 101,
       "source_file": "data/202604/icc_live_sp100_2026_0414.csv"
     },
     {
-      "date": "2026-04-15",
-      "universe": "sp100",
-      "vw_icc": 0.07521095446221929,
-      "ew_icc": 0.08117452735175708,
-      "n_items": 101,
+      "date": "2026-04-15T00:00:00",
+      "family": "sp100",
+      "value": 0.07521095446221929,
+      "method": "ICC calculation",
+      "n_firms": 101,
       "source_file": "data/202604/icc_live_sp100_2026_0415.csv"
     },
     {
-      "date": "2026-04-16",
-      "universe": "sp100",
-      "vw_icc": 0.07499110979862825,
-      "ew_icc": 0.08037447958664179,
-      "n_items": 101,
+      "date": "2026-04-16T00:00:00",
+      "family": "sp100",
+      "value": 0.07499110979862825,
+      "method": "ICC calculation",
+      "n_firms": 101,
       "source_file": "data/202604/icc_live_sp100_2026_0416.csv"
     },
     {
-      "date": "2026-04-14",
-      "universe": "dow30",
-      "vw_icc": 0.07400235839201003,
-      "ew_icc": 0.07625301820113438,
-      "n_items": 30,
+      "date": "2026-04-14T00:00:00",
+      "family": "dow30",
+      "value": 0.07400235839201003,
+      "method": "ICC calculation",
+      "n_firms": 30,
       "source_file": "data/202604/icc_live_dow30_2026_0414.csv"
     },
     {
-      "date": "2026-04-15",
-      "universe": "dow30",
-      "vw_icc": 0.07337433539554318,
-      "ew_icc": 0.07624744146387943,
-      "n_items": 30,
+      "date": "2026-04-15T00:00:00",
+      "family": "dow30",
+      "value": 0.07337433539554318,
+      "method": "ICC calculation",
+      "n_firms": 30,
       "source_file": "data/202604/icc_live_dow30_2026_0415.csv"
     },
     {
-      "date": "2026-04-16",
-      "universe": "dow30",
-      "vw_icc": 0.07363831672062235,
-      "ew_icc": 0.07590298150346524,
-      "n_items": 30,
+      "date": "2026-04-16T00:00:00",
+      "family": "dow30",
+      "value": 0.07363831672062235,
+      "method": "ICC calculation",
+      "n_firms": 30,
       "source_file": "data/202604/icc_live_dow30_2026_0416.csv"
     },
     {
-      "date": "2026-04-14",
-      "universe": "ndx100",
-      "vw_icc": 0.07600557629991651,
-      "ew_icc": 0.081230567084743,
-      "n_items": 100,
+      "date": "2026-04-14T00:00:00",
+      "family": "ndx100",
+      "value": 0.07600557629991651,
+      "method": "ICC calculation",
+      "n_firms": 100,
       "source_file": "data/202604/icc_live_ndx100_2026_0414.csv"
     },
     {
-      "date": "2026-04-15",
-      "universe": "ndx100",
-      "vw_icc": 0.07507322132040703,
-      "ew_icc": 0.08064160150332489,
-      "n_items": 100,
+      "date": "2026-04-15T00:00:00",
+      "family": "ndx100",
+      "value": 0.07507322132040703,
+      "method": "ICC calculation",
+      "n_firms": 100,
       "source_file": "data/202604/icc_live_ndx100_2026_0415.csv"
     },
     {
-      "date": "2026-04-16",
-      "universe": "ndx100",
-      "vw_icc": 0.07520109474516204,
-      "ew_icc": 0.08008074147779737,
-      "n_items": 100,
+      "date": "2026-04-16T00:00:00",
+      "family": "ndx100",
+      "value": 0.07520109474516204,
+      "method": "ICC calculation",
+      "n_firms": 100,
       "source_file": "data/202604/icc_live_ndx100_2026_0416.csv"
     },
     {
-      "date": "2026-04-14",
-      "universe": "sp400",
-      "vw_icc": 0.08386941894567358,
-      "ew_icc": 0.08957788349898227,
-      "n_items": 396,
+      "date": "2026-04-14T00:00:00",
+      "family": "sp400",
+      "value": 0.08386941894567358,
+      "method": "ICC calculation",
+      "n_firms": 396,
       "source_file": "data/202604/icc_live_sp400_2026_0414.csv"
     },
     {
-      "date": "2026-04-15",
-      "universe": "sp400",
-      "vw_icc": 0.08490015516816177,
-      "ew_icc": 0.09021205151945856,
-      "n_items": 396,
+      "date": "2026-04-15T00:00:00",
+      "family": "sp400",
+      "value": 0.08490015516816177,
+      "method": "ICC calculation",
+      "n_firms": 396,
       "source_file": "data/202604/icc_live_sp400_2026_0415.csv"
     },
     {
-      "date": "2026-04-16",
-      "universe": "sp400",
-      "vw_icc": 0.08413663850907217,
-      "ew_icc": 0.08971162960208759,
-      "n_items": 396,
+      "date": "2026-04-16T00:00:00",
+      "family": "sp400",
+      "value": 0.08413663850907217,
+      "method": "ICC calculation",
+      "n_firms": 396,
       "source_file": "data/202604/icc_live_sp400_2026_0416.csv"
     },
     {
-      "date": "2026-04-14",
-      "universe": "sp600",
-      "vw_icc": 0.09353224977878939,
-      "ew_icc": 0.10224258319177149,
-      "n_items": 573,
+      "date": "2026-04-14T00:00:00",
+      "family": "sp600",
+      "value": 0.09353224977878939,
+      "method": "ICC calculation",
+      "n_firms": 573,
       "source_file": "data/202604/icc_live_sp600_2026_0414.csv"
     },
     {
-      "date": "2026-04-15",
-      "universe": "sp600",
-      "vw_icc": 0.09410077239535737,
-      "ew_icc": 0.10247942566763234,
-      "n_items": 572,
+      "date": "2026-04-15T00:00:00",
+      "family": "sp600",
+      "value": 0.09410077239535737,
+      "method": "ICC calculation",
+      "n_firms": 572,
       "source_file": "data/202604/icc_live_sp600_2026_0415.csv"
     },
     {
-      "date": "2026-04-16",
-      "universe": "sp600",
-      "vw_icc": 0.09415219656154872,
-      "ew_icc": 0.10263456546425356,
-      "n_items": 572,
+      "date": "2026-04-16T00:00:00",
+      "family": "sp600",
+      "value": 0.09415219656154872,
+      "method": "ICC calculation",
+      "n_firms": 572,
       "source_file": "data/202604/icc_live_sp600_2026_0416.csv"
     },
     {
-      "date": "2026-04-14",
-      "universe": "rut1000",
-      "vw_icc": 0.0766836717263129,
-      "ew_icc": 0.08718959089546562,
-      "n_items": 981,
+      "date": "2026-04-14T00:00:00",
+      "family": "rut1000",
+      "value": 0.0766836717263129,
+      "method": "ICC calculation",
+      "n_firms": 981,
       "source_file": "data/202604/icc_live_rut1000_2026_0414.csv"
     },
     {
-      "date": "2026-04-15",
-      "universe": "rut1000",
-      "vw_icc": 0.07614768984726404,
-      "ew_icc": 0.08697026212512006,
-      "n_items": 979,
+      "date": "2026-04-15T00:00:00",
+      "family": "rut1000",
+      "value": 0.07614768984726404,
+      "method": "ICC calculation",
+      "n_firms": 979,
       "source_file": "data/202604/icc_live_rut1000_2026_0415.csv"
     },
     {
-      "date": "2026-04-16",
-      "universe": "rut1000",
-      "vw_icc": 0.07601832096846213,
-      "ew_icc": 0.08665821027202925,
-      "n_items": 978,
+      "date": "2026-04-16T00:00:00",
+      "family": "rut1000",
+      "value": 0.07601832096846213,
+      "method": "ICC calculation",
+      "n_firms": 978,
       "source_file": "data/202604/icc_live_rut1000_2026_0416.csv"
     }
   ],
   "monthly": [
     {
-      "date": "2026-04-16",
-      "universe": "dow30",
-      "vw_icc": 0.07363831672062235,
-      "ew_icc": 0.07590298150346524,
-      "n_items": 30,
-      "source_file": "data/202604/icc_live_dow30_2026_0416.csv",
-      "yyyymm": "2026-04"
+      "family": "dow30",
+      "date": "2026-04-16T00:00:00",
+      "month": "2026-04",
+      "value": 0.07363831672062235,
+      "method": "ICC calculation",
+      "n_firms": 30,
+      "source_file": "data/202604/icc_live_dow30_2026_0416.csv"
     },
     {
-      "date": "2026-04-16",
-      "universe": "ndx100",
-      "vw_icc": 0.07520109474516204,
-      "ew_icc": 0.08008074147779737,
-      "n_items": 100,
-      "source_file": "data/202604/icc_live_ndx100_2026_0416.csv",
-      "yyyymm": "2026-04"
+      "family": "ndx100",
+      "date": "2026-04-16T00:00:00",
+      "month": "2026-04",
+      "value": 0.07520109474516204,
+      "method": "ICC calculation",
+      "n_firms": 100,
+      "source_file": "data/202604/icc_live_ndx100_2026_0416.csv"
     },
     {
-      "date": "2026-04-16",
-      "universe": "rut1000",
-      "vw_icc": 0.07601832096846213,
-      "ew_icc": 0.08665821027202925,
-      "n_items": 978,
-      "source_file": "data/202604/icc_live_rut1000_2026_0416.csv",
-      "yyyymm": "2026-04"
+      "family": "rut1000",
+      "date": "2026-04-16T00:00:00",
+      "month": "2026-04",
+      "value": 0.07601832096846213,
+      "method": "ICC calculation",
+      "n_firms": 978,
+      "source_file": "data/202604/icc_live_rut1000_2026_0416.csv"
     },
     {
-      "date": "2026-04-16",
-      "universe": "sp100",
-      "vw_icc": 0.07499110979862825,
-      "ew_icc": 0.08037447958664179,
-      "n_items": 101,
-      "source_file": "data/202604/icc_live_sp100_2026_0416.csv",
-      "yyyymm": "2026-04"
+      "family": "sp100",
+      "date": "2026-04-16T00:00:00",
+      "month": "2026-04",
+      "value": 0.07499110979862825,
+      "method": "ICC calculation",
+      "n_firms": 101,
+      "source_file": "data/202604/icc_live_sp100_2026_0416.csv"
     },
     {
-      "date": "2026-04-16",
-      "universe": "sp400",
-      "vw_icc": 0.08413663850907217,
-      "ew_icc": 0.08971162960208759,
-      "n_items": 396,
-      "source_file": "data/202604/icc_live_sp400_2026_0416.csv",
-      "yyyymm": "2026-04"
+      "family": "sp400",
+      "date": "2026-04-16T00:00:00",
+      "month": "2026-04",
+      "value": 0.08413663850907217,
+      "method": "ICC calculation",
+      "n_firms": 396,
+      "source_file": "data/202604/icc_live_sp400_2026_0416.csv"
     },
     {
-      "date": "2025-10-30",
-      "universe": "sp500",
-      "vw_icc": 0.06508549053558753,
-      "ew_icc": 0.07728856096472293,
-      "n_items": 502,
-      "source_file": "data/202510/icc_live_sp500_2025_1030.csv",
-      "yyyymm": "2025-10"
+      "family": "sp500",
+      "date": "2025-10-30T00:00:00",
+      "month": "2025-10",
+      "value": 0.06508549053558753,
+      "method": "ICC calculation",
+      "n_firms": 502,
+      "source_file": "data/202510/icc_live_sp500_2025_1030.csv"
     },
     {
-      "date": "2025-11-28",
-      "universe": "sp500",
-      "vw_icc": 0.06704505106919476,
-      "ew_icc": 0.07552097163549865,
-      "n_items": 502,
-      "source_file": "data/202511/icc_live_sp500_2025_1128.csv",
-      "yyyymm": "2025-11"
+      "family": "sp500",
+      "date": "2025-11-28T00:00:00",
+      "month": "2025-11",
+      "value": 0.06704505106919476,
+      "method": "ICC calculation",
+      "n_firms": 502,
+      "source_file": "data/202511/icc_live_sp500_2025_1128.csv"
     },
     {
-      "date": "2025-12-31",
-      "universe": "sp500",
-      "vw_icc": 0.06846715355482065,
-      "ew_icc": 0.07608304769934701,
-      "n_items": 499,
-      "source_file": "data/202512/icc_live_sp500_2025_1231.csv",
-      "yyyymm": "2025-12"
+      "family": "sp500",
+      "date": "2025-12-31T00:00:00",
+      "month": "2025-12",
+      "value": 0.06846715355482065,
+      "method": "ICC calculation",
+      "n_firms": 499,
+      "source_file": "data/202512/icc_live_sp500_2025_1231.csv"
     },
     {
-      "date": "2026-01-30",
-      "universe": "sp500",
-      "vw_icc": 0.06949106104919214,
-      "ew_icc": 0.07605516211381749,
-      "n_items": 497,
-      "source_file": "data/202601/icc_live_sp500_2026_0130_r1.csv",
-      "yyyymm": "2026-01"
+      "family": "sp500",
+      "date": "2026-01-30T00:00:00",
+      "month": "2026-01",
+      "value": 0.06949106104919214,
+      "method": "ICC calculation",
+      "n_firms": 497,
+      "source_file": "data/202601/icc_live_sp500_2026_0130_r1.csv"
     },
     {
-      "date": "2026-02-27",
-      "universe": "sp500",
-      "vw_icc": 0.07395991999074679,
-      "ew_icc": 0.08007957851279425,
-      "n_items": 496,
-      "source_file": "data/202602/icc_live_sp500_2026_0227_r1.csv",
-      "yyyymm": "2026-02"
+      "family": "sp500",
+      "date": "2026-02-27T00:00:00",
+      "month": "2026-02",
+      "value": 0.07395991999074679,
+      "method": "ICC calculation",
+      "n_firms": 496,
+      "source_file": "data/202602/icc_live_sp500_2026_0227_r1.csv"
     },
     {
-      "date": "2026-03-31",
-      "universe": "sp500",
-      "vw_icc": 0.07889568917176408,
-      "ew_icc": 0.08332771742426166,
-      "n_items": 500,
-      "source_file": "data/202603/icc_live_sp500_2026_0331_r1.csv",
-      "yyyymm": "2026-03"
+      "family": "sp500",
+      "date": "2026-03-31T00:00:00",
+      "month": "2026-03",
+      "value": 0.07889568917176408,
+      "method": "ICC calculation",
+      "n_firms": 500,
+      "source_file": "data/202603/icc_live_sp500_2026_0331_r1.csv"
     },
     {
-      "date": "2026-04-16",
-      "universe": "sp500",
-      "vw_icc": 0.0754672706502571,
-      "ew_icc": 0.08111658737002901,
-      "n_items": 500,
-      "source_file": "data/202604/icc_live_sp500_2026_0416_r1.csv",
-      "yyyymm": "2026-04"
+      "family": "sp500",
+      "date": "2026-04-16T00:00:00",
+      "month": "2026-04",
+      "value": 0.0754672706502571,
+      "method": "ICC calculation",
+      "n_firms": 500,
+      "source_file": "data/202604/icc_live_sp500_2026_0416_r1.csv"
     },
     {
-      "date": "2026-04-16",
-      "universe": "sp600",
-      "vw_icc": 0.09415219656154872,
-      "ew_icc": 0.10263456546425356,
-      "n_items": 572,
-      "source_file": "data/202604/icc_live_sp600_2026_0416.csv",
-      "yyyymm": "2026-04"
+      "family": "sp600",
+      "date": "2026-04-16T00:00:00",
+      "month": "2026-04",
+      "value": 0.09415219656154872,
+      "method": "ICC calculation",
+      "n_firms": 572,
+      "source_file": "data/202604/icc_live_sp600_2026_0416.csv"
     }
   ],
-  "downloads": [
-    {
-      "label": "Daily history CSV",
-      "path": "./data/downloads/indices_daily_history.csv"
-    },
-    {
-      "label": "Monthly history CSV",
-      "path": "./data/downloads/indices_monthly_history.csv"
-    },
-    {
-      "label": "Latest breakdown CSV",
-      "path": "./data/downloads/indices_latest.csv"
-    }
-  ]
+  "downloads": {
+    "latest_csv": "./data/downloads/families/indices_latest.csv",
+    "daily_csv": "./data/downloads/families/indices_daily_history.csv",
+    "monthly_csv": "./data/downloads/families/indices_monthly_history.csv"
+  },
+  "tree": {
+    "years": [
+      {
+        "year": "2026",
+        "download_all": "./data/downloads/families/indices/2026/indices_2026.zip",
+        "months": [
+          {
+            "month": "04",
+            "month_label": "2026-04",
+            "download_all": "./data/downloads/families/indices/2026/04/indices_202604.zip",
+            "days": [
+              {
+                "date": "2026-04-16",
+                "download_path": "./data/downloads/families/indices/2026/04/indices_20260416.csv"
+              },
+              {
+                "date": "2026-04-15",
+                "download_path": "./data/downloads/families/indices/2026/04/indices_20260415.csv"
+              },
+              {
+                "date": "2026-04-14",
+                "download_path": "./data/downloads/families/indices/2026/04/indices_20260414.csv"
+              },
+              {
+                "date": "2026-04-13",
+                "download_path": "./data/downloads/families/indices/2026/04/indices_20260413.csv"
+              },
+              {
+                "date": "2026-04-10",
+                "download_path": "./data/downloads/families/indices/2026/04/indices_20260410.csv"
+              },
+              {
+                "date": "2026-04-09",
+                "download_path": "./data/downloads/families/indices/2026/04/indices_20260409.csv"
+              },
+              {
+                "date": "2026-04-08",
+                "download_path": "./data/downloads/families/indices/2026/04/indices_20260408.csv"
+              },
+              {
+                "date": "2026-04-07",
+                "download_path": "./data/downloads/families/indices/2026/04/indices_20260407.csv"
+              },
+              {
+                "date": "2026-04-06",
+                "download_path": "./data/downloads/families/indices/2026/04/indices_20260406.csv"
+              },
+              {
+                "date": "2026-04-03",
+                "download_path": "./data/downloads/families/indices/2026/04/indices_20260403.csv"
+              },
+              {
+                "date": "2026-04-02",
+                "download_path": "./data/downloads/families/indices/2026/04/indices_20260402.csv"
+              },
+              {
+                "date": "2026-04-01",
+                "download_path": "./data/downloads/families/indices/2026/04/indices_20260401.csv"
+              }
+            ]
+          },
+          {
+            "month": "03",
+            "month_label": "2026-03",
+            "download_all": "./data/downloads/families/indices/2026/03/indices_202603.zip",
+            "days": [
+              {
+                "date": "2026-03-31",
+                "download_path": "./data/downloads/families/indices/2026/03/indices_20260331.csv"
+              },
+              {
+                "date": "2026-03-30",
+                "download_path": "./data/downloads/families/indices/2026/03/indices_20260330.csv"
+              },
+              {
+                "date": "2026-03-27",
+                "download_path": "./data/downloads/families/indices/2026/03/indices_20260327.csv"
+              },
+              {
+                "date": "2026-03-26",
+                "download_path": "./data/downloads/families/indices/2026/03/indices_20260326.csv"
+              },
+              {
+                "date": "2026-03-25",
+                "download_path": "./data/downloads/families/indices/2026/03/indices_20260325.csv"
+              },
+              {
+                "date": "2026-03-24",
+                "download_path": "./data/downloads/families/indices/2026/03/indices_20260324.csv"
+              },
+              {
+                "date": "2026-03-23",
+                "download_path": "./data/downloads/families/indices/2026/03/indices_20260323.csv"
+              },
+              {
+                "date": "2026-03-20",
+                "download_path": "./data/downloads/families/indices/2026/03/indices_20260320.csv"
+              },
+              {
+                "date": "2026-03-19",
+                "download_path": "./data/downloads/families/indices/2026/03/indices_20260319.csv"
+              },
+              {
+                "date": "2026-03-18",
+                "download_path": "./data/downloads/families/indices/2026/03/indices_20260318.csv"
+              },
+              {
+                "date": "2026-03-17",
+                "download_path": "./data/downloads/families/indices/2026/03/indices_20260317.csv"
+              },
+              {
+                "date": "2026-03-16",
+                "download_path": "./data/downloads/families/indices/2026/03/indices_20260316.csv"
+              },
+              {
+                "date": "2026-03-13",
+                "download_path": "./data/downloads/families/indices/2026/03/indices_20260313.csv"
+              },
+              {
+                "date": "2026-03-12",
+                "download_path": "./data/downloads/families/indices/2026/03/indices_20260312.csv"
+              },
+              {
+                "date": "2026-03-11",
+                "download_path": "./data/downloads/families/indices/2026/03/indices_20260311.csv"
+              },
+              {
+                "date": "2026-03-10",
+                "download_path": "./data/downloads/families/indices/2026/03/indices_20260310.csv"
+              },
+              {
+                "date": "2026-03-09",
+                "download_path": "./data/downloads/families/indices/2026/03/indices_20260309.csv"
+              },
+              {
+                "date": "2026-03-06",
+                "download_path": "./data/downloads/families/indices/2026/03/indices_20260306.csv"
+              },
+              {
+                "date": "2026-03-05",
+                "download_path": "./data/downloads/families/indices/2026/03/indices_20260305.csv"
+              },
+              {
+                "date": "2026-03-04",
+                "download_path": "./data/downloads/families/indices/2026/03/indices_20260304.csv"
+              },
+              {
+                "date": "2026-03-03",
+                "download_path": "./data/downloads/families/indices/2026/03/indices_20260303.csv"
+              },
+              {
+                "date": "2026-03-02",
+                "download_path": "./data/downloads/families/indices/2026/03/indices_20260302.csv"
+              }
+            ]
+          },
+          {
+            "month": "02",
+            "month_label": "2026-02",
+            "download_all": "./data/downloads/families/indices/2026/02/indices_202602.zip",
+            "days": [
+              {
+                "date": "2026-02-27",
+                "download_path": "./data/downloads/families/indices/2026/02/indices_20260227.csv"
+              },
+              {
+                "date": "2026-02-26",
+                "download_path": "./data/downloads/families/indices/2026/02/indices_20260226.csv"
+              },
+              {
+                "date": "2026-02-25",
+                "download_path": "./data/downloads/families/indices/2026/02/indices_20260225.csv"
+              },
+              {
+                "date": "2026-02-24",
+                "download_path": "./data/downloads/families/indices/2026/02/indices_20260224.csv"
+              },
+              {
+                "date": "2026-02-23",
+                "download_path": "./data/downloads/families/indices/2026/02/indices_20260223.csv"
+              },
+              {
+                "date": "2026-02-20",
+                "download_path": "./data/downloads/families/indices/2026/02/indices_20260220.csv"
+              },
+              {
+                "date": "2026-02-19",
+                "download_path": "./data/downloads/families/indices/2026/02/indices_20260219.csv"
+              },
+              {
+                "date": "2026-02-18",
+                "download_path": "./data/downloads/families/indices/2026/02/indices_20260218.csv"
+              },
+              {
+                "date": "2026-02-17",
+                "download_path": "./data/downloads/families/indices/2026/02/indices_20260217.csv"
+              },
+              {
+                "date": "2026-02-16",
+                "download_path": "./data/downloads/families/indices/2026/02/indices_20260216.csv"
+              },
+              {
+                "date": "2026-02-13",
+                "download_path": "./data/downloads/families/indices/2026/02/indices_20260213.csv"
+              },
+              {
+                "date": "2026-02-12",
+                "download_path": "./data/downloads/families/indices/2026/02/indices_20260212.csv"
+              },
+              {
+                "date": "2026-02-11",
+                "download_path": "./data/downloads/families/indices/2026/02/indices_20260211.csv"
+              },
+              {
+                "date": "2026-02-10",
+                "download_path": "./data/downloads/families/indices/2026/02/indices_20260210.csv"
+              },
+              {
+                "date": "2026-02-09",
+                "download_path": "./data/downloads/families/indices/2026/02/indices_20260209.csv"
+              },
+              {
+                "date": "2026-02-06",
+                "download_path": "./data/downloads/families/indices/2026/02/indices_20260206.csv"
+              },
+              {
+                "date": "2026-02-05",
+                "download_path": "./data/downloads/families/indices/2026/02/indices_20260205.csv"
+              },
+              {
+                "date": "2026-02-04",
+                "download_path": "./data/downloads/families/indices/2026/02/indices_20260204.csv"
+              },
+              {
+                "date": "2026-02-03",
+                "download_path": "./data/downloads/families/indices/2026/02/indices_20260203.csv"
+              }
+            ]
+          },
+          {
+            "month": "01",
+            "month_label": "2026-01",
+            "download_all": "./data/downloads/families/indices/2026/01/indices_202601.zip",
+            "days": [
+              {
+                "date": "2026-01-30",
+                "download_path": "./data/downloads/families/indices/2026/01/indices_20260130.csv"
+              },
+              {
+                "date": "2026-01-29",
+                "download_path": "./data/downloads/families/indices/2026/01/indices_20260129.csv"
+              },
+              {
+                "date": "2026-01-28",
+                "download_path": "./data/downloads/families/indices/2026/01/indices_20260128.csv"
+              },
+              {
+                "date": "2026-01-27",
+                "download_path": "./data/downloads/families/indices/2026/01/indices_20260127.csv"
+              },
+              {
+                "date": "2026-01-26",
+                "download_path": "./data/downloads/families/indices/2026/01/indices_20260126.csv"
+              },
+              {
+                "date": "2026-01-23",
+                "download_path": "./data/downloads/families/indices/2026/01/indices_20260123.csv"
+              },
+              {
+                "date": "2026-01-22",
+                "download_path": "./data/downloads/families/indices/2026/01/indices_20260122.csv"
+              },
+              {
+                "date": "2026-01-21",
+                "download_path": "./data/downloads/families/indices/2026/01/indices_20260121.csv"
+              },
+              {
+                "date": "2026-01-20",
+                "download_path": "./data/downloads/families/indices/2026/01/indices_20260120.csv"
+              },
+              {
+                "date": "2026-01-19",
+                "download_path": "./data/downloads/families/indices/2026/01/indices_20260119.csv"
+              },
+              {
+                "date": "2026-01-16",
+                "download_path": "./data/downloads/families/indices/2026/01/indices_20260116.csv"
+              },
+              {
+                "date": "2026-01-15",
+                "download_path": "./data/downloads/families/indices/2026/01/indices_20260115.csv"
+              },
+              {
+                "date": "2026-01-14",
+                "download_path": "./data/downloads/families/indices/2026/01/indices_20260114.csv"
+              },
+              {
+                "date": "2026-01-13",
+                "download_path": "./data/downloads/families/indices/2026/01/indices_20260113.csv"
+              },
+              {
+                "date": "2026-01-12",
+                "download_path": "./data/downloads/families/indices/2026/01/indices_20260112.csv"
+              },
+              {
+                "date": "2026-01-09",
+                "download_path": "./data/downloads/families/indices/2026/01/indices_20260109.csv"
+              },
+              {
+                "date": "2026-01-08",
+                "download_path": "./data/downloads/families/indices/2026/01/indices_20260108.csv"
+              },
+              {
+                "date": "2026-01-07",
+                "download_path": "./data/downloads/families/indices/2026/01/indices_20260107.csv"
+              },
+              {
+                "date": "2026-01-06",
+                "download_path": "./data/downloads/families/indices/2026/01/indices_20260106.csv"
+              },
+              {
+                "date": "2026-01-05",
+                "download_path": "./data/downloads/families/indices/2026/01/indices_20260105.csv"
+              },
+              {
+                "date": "2026-01-02",
+                "download_path": "./data/downloads/families/indices/2026/01/indices_20260102.csv"
+              },
+              {
+                "date": "2026-01-01",
+                "download_path": "./data/downloads/families/indices/2026/01/indices_20260101.csv"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "year": "2025",
+        "download_all": "./data/downloads/families/indices/2025/indices_2025.zip",
+        "months": [
+          {
+            "month": "12",
+            "month_label": "2025-12",
+            "download_all": "./data/downloads/families/indices/2025/12/indices_202512.zip",
+            "days": [
+              {
+                "date": "2025-12-31",
+                "download_path": "./data/downloads/families/indices/2025/12/indices_20251231.csv"
+              },
+              {
+                "date": "2025-12-30",
+                "download_path": "./data/downloads/families/indices/2025/12/indices_20251230.csv"
+              },
+              {
+                "date": "2025-12-29",
+                "download_path": "./data/downloads/families/indices/2025/12/indices_20251229.csv"
+              },
+              {
+                "date": "2025-12-26",
+                "download_path": "./data/downloads/families/indices/2025/12/indices_20251226.csv"
+              },
+              {
+                "date": "2025-12-25",
+                "download_path": "./data/downloads/families/indices/2025/12/indices_20251225.csv"
+              },
+              {
+                "date": "2025-12-24",
+                "download_path": "./data/downloads/families/indices/2025/12/indices_20251224.csv"
+              },
+              {
+                "date": "2025-12-23",
+                "download_path": "./data/downloads/families/indices/2025/12/indices_20251223.csv"
+              },
+              {
+                "date": "2025-12-22",
+                "download_path": "./data/downloads/families/indices/2025/12/indices_20251222.csv"
+              },
+              {
+                "date": "2025-12-19",
+                "download_path": "./data/downloads/families/indices/2025/12/indices_20251219.csv"
+              },
+              {
+                "date": "2025-12-18",
+                "download_path": "./data/downloads/families/indices/2025/12/indices_20251218.csv"
+              },
+              {
+                "date": "2025-12-17",
+                "download_path": "./data/downloads/families/indices/2025/12/indices_20251217.csv"
+              },
+              {
+                "date": "2025-12-16",
+                "download_path": "./data/downloads/families/indices/2025/12/indices_20251216.csv"
+              },
+              {
+                "date": "2025-12-15",
+                "download_path": "./data/downloads/families/indices/2025/12/indices_20251215.csv"
+              },
+              {
+                "date": "2025-12-12",
+                "download_path": "./data/downloads/families/indices/2025/12/indices_20251212.csv"
+              },
+              {
+                "date": "2025-12-11",
+                "download_path": "./data/downloads/families/indices/2025/12/indices_20251211.csv"
+              },
+              {
+                "date": "2025-12-10",
+                "download_path": "./data/downloads/families/indices/2025/12/indices_20251210.csv"
+              },
+              {
+                "date": "2025-12-09",
+                "download_path": "./data/downloads/families/indices/2025/12/indices_20251209.csv"
+              },
+              {
+                "date": "2025-12-08",
+                "download_path": "./data/downloads/families/indices/2025/12/indices_20251208.csv"
+              },
+              {
+                "date": "2025-12-05",
+                "download_path": "./data/downloads/families/indices/2025/12/indices_20251205.csv"
+              },
+              {
+                "date": "2025-12-04",
+                "download_path": "./data/downloads/families/indices/2025/12/indices_20251204.csv"
+              },
+              {
+                "date": "2025-12-03",
+                "download_path": "./data/downloads/families/indices/2025/12/indices_20251203.csv"
+              },
+              {
+                "date": "2025-12-02",
+                "download_path": "./data/downloads/families/indices/2025/12/indices_20251202.csv"
+              },
+              {
+                "date": "2025-12-01",
+                "download_path": "./data/downloads/families/indices/2025/12/indices_20251201.csv"
+              }
+            ]
+          },
+          {
+            "month": "11",
+            "month_label": "2025-11",
+            "download_all": "./data/downloads/families/indices/2025/11/indices_202511.zip",
+            "days": [
+              {
+                "date": "2025-11-28",
+                "download_path": "./data/downloads/families/indices/2025/11/indices_20251128.csv"
+              },
+              {
+                "date": "2025-11-27",
+                "download_path": "./data/downloads/families/indices/2025/11/indices_20251127.csv"
+              },
+              {
+                "date": "2025-11-26",
+                "download_path": "./data/downloads/families/indices/2025/11/indices_20251126.csv"
+              },
+              {
+                "date": "2025-11-25",
+                "download_path": "./data/downloads/families/indices/2025/11/indices_20251125.csv"
+              },
+              {
+                "date": "2025-11-20",
+                "download_path": "./data/downloads/families/indices/2025/11/indices_20251120.csv"
+              },
+              {
+                "date": "2025-11-19",
+                "download_path": "./data/downloads/families/indices/2025/11/indices_20251119.csv"
+              },
+              {
+                "date": "2025-11-18",
+                "download_path": "./data/downloads/families/indices/2025/11/indices_20251118.csv"
+              },
+              {
+                "date": "2025-11-17",
+                "download_path": "./data/downloads/families/indices/2025/11/indices_20251117.csv"
+              },
+              {
+                "date": "2025-11-14",
+                "download_path": "./data/downloads/families/indices/2025/11/indices_20251114.csv"
+              },
+              {
+                "date": "2025-11-13",
+                "download_path": "./data/downloads/families/indices/2025/11/indices_20251113.csv"
+              },
+              {
+                "date": "2025-11-12",
+                "download_path": "./data/downloads/families/indices/2025/11/indices_20251112.csv"
+              },
+              {
+                "date": "2025-11-11",
+                "download_path": "./data/downloads/families/indices/2025/11/indices_20251111.csv"
+              },
+              {
+                "date": "2025-11-10",
+                "download_path": "./data/downloads/families/indices/2025/11/indices_20251110.csv"
+              },
+              {
+                "date": "2025-11-07",
+                "download_path": "./data/downloads/families/indices/2025/11/indices_20251107.csv"
+              },
+              {
+                "date": "2025-11-06",
+                "download_path": "./data/downloads/families/indices/2025/11/indices_20251106.csv"
+              },
+              {
+                "date": "2025-11-05",
+                "download_path": "./data/downloads/families/indices/2025/11/indices_20251105.csv"
+              },
+              {
+                "date": "2025-11-04",
+                "download_path": "./data/downloads/families/indices/2025/11/indices_20251104.csv"
+              },
+              {
+                "date": "2025-11-03",
+                "download_path": "./data/downloads/families/indices/2025/11/indices_20251103.csv"
+              },
+              {
+                "date": "2025-11-01",
+                "download_path": "./data/downloads/families/indices/2025/11/indices_20251101.csv"
+              }
+            ]
+          },
+          {
+            "month": "10",
+            "month_label": "2025-10",
+            "download_all": "./data/downloads/families/indices/2025/10/indices_202510.zip",
+            "days": [
+              {
+                "date": "2025-10-30",
+                "download_path": "./data/downloads/families/indices/2025/10/indices_20251030.csv"
+              },
+              {
+                "date": "2025-10-29",
+                "download_path": "./data/downloads/families/indices/2025/10/indices_20251029.csv"
+              },
+              {
+                "date": "2025-10-28",
+                "download_path": "./data/downloads/families/indices/2025/10/indices_20251028.csv"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
 }

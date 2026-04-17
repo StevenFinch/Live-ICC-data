@@ -1,76 +1,36 @@
 {
-  "title": "Fama-French style live ICC data library",
-  "asof_date": "2026-04-16",
-  "rows": [
+  "title": "Live ICC data library",
+  "cards": {
+    "all_market_vw_icc": 0.08165551595446656,
+    "sp500_vw_icc": 0.0754672706502571,
+    "value_icc": 0.1220465407598389,
+    "growth_icc": 0.0825184595670443,
+    "ivp_bm": 0.03952808119279459
+  },
+  "downloads": [
     {
-      "family": "Marketwide (All U.S.)",
-      "latest_daily": 0.08165551595446656,
-      "m1_date": "2026-04-16",
-      "m1_value": 0.08165551595446656,
-      "m2_date": "2026-03-31",
-      "m2_value": 0.0846043873892946,
-      "m3_date": "2026-02-27",
-      "m3_value": 0.08042145131520971
+      "label": "Marketwide daily history",
+      "path": "./data/downloads/families/marketwide_daily_history.csv"
     },
     {
-      "family": "Marketwide (S&P 500)",
-      "latest_daily": 0.0754672706502571,
-      "m1_date": "2026-04-16",
-      "m1_value": 0.0754672706502571,
-      "m2_date": "2026-03-31",
-      "m2_value": 0.07889568917176408,
-      "m3_date": "2026-02-27",
-      "m3_value": 0.07395991999074679
+      "label": "Value daily history",
+      "path": "./data/downloads/families/value_daily_history.csv"
     },
     {
-      "family": "Value Premium (IVP)",
-      "latest_daily": 0.03952808119279459,
-      "m1_date": "2026-04-16",
-      "m1_value": 0.03952808119279459,
-      "m2_date": "2026-03-31",
-      "m2_value": 0.03551502878898988,
-      "m3_date": "2026-02-27",
-      "m3_value": 0.04258253104764308
+      "label": "Industry daily history",
+      "path": "./data/downloads/families/industry_daily_history.csv"
     },
     {
-      "family": "Industry Wide",
-      "latest_daily": 0.07936850225015286,
-      "m1_date": "2026-04-16",
-      "m1_value": 0.07936850225015286,
-      "m2_date": "2026-03-31",
-      "m2_value": 0.08153501496920224,
-      "m3_date": "2026-02-27",
-      "m3_value": 0.0791148646428733
+      "label": "ETF daily history",
+      "path": "./data/downloads/families/etf_daily_history.csv"
     },
     {
-      "family": "ETF ICC",
-      "latest_daily": 0.03579491289284744,
-      "m1_date": "2026-04-16",
-      "m1_value": 0.03579491289284744,
-      "m2_date": null,
-      "m2_value": null,
-      "m3_date": null,
-      "m3_value": null
+      "label": "Country daily history",
+      "path": "./data/downloads/families/country_daily_history.csv"
     },
     {
-      "family": "Country ICC",
-      "latest_daily": 0.05508492812192936,
-      "m1_date": "2026-04-16",
-      "m1_value": 0.05508492812192936,
-      "m2_date": null,
-      "m2_value": null,
-      "m3_date": null,
-      "m3_value": null
-    },
-    {
-      "family": "Indices",
-      "latest_daily": 0.07256073747315142,
-      "m1_date": "2026-04-16",
-      "m1_value": 0.07363831672062235,
-      "m2_date": "2026-04-16",
-      "m2_value": 0.07520109474516204,
-      "m3_date": "2026-04-16",
-      "m3_value": 0.07601832096846213
+      "label": "Indices daily history",
+      "path": "./data/downloads/families/indices_daily_history.csv"
     }
   ]
 }
