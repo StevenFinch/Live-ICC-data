@@ -2,30 +2,46 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Live ICC data library</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fama-French style live ICC data library</title>
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body data-page="country">
-  <div class="page">
-    <header class="header">
-      <h1 class="title">Live ICC data library</h1>
-      <div id="asof" class="asof"></div>
-      <div id="status" class="status"></div>
-      <nav class="nav">
-        <a href="./index.html" data-nav="index">Overview</a>
-        <a href="./marketwide.html" data-nav="marketwide">Marketwide</a>
-        <a href="./value.html" data-nav="value">Value Premium</a>
-        <a href="./industry.html" data-nav="industry">Industry</a>
-        <a href="./etf.html" data-nav="etf">ETF</a>
-        <a href="./country.html" data-nav="country">Country</a>
-        <a href="./indices.html" data-nav="indices">Indices</a>
-        <a href="./downloads.html" data-nav="downloads">Downloads</a>
-      </nav>
-    </header>
-
-    <main id="app"></main>
-  </div>
+  <header class="site-header centered">
+    <h1>Fama-French style live ICC data library</h1>
+    <nav class="topnav">
+      <a href="./index.html">Overview</a>
+      <a href="./marketwide.html">Marketwide</a>
+      <a href="./value.html">Value Premium</a>
+      <a href="./industry.html">Industry</a>
+      <a href="./etf.html">ETF</a>
+      <a href="./country.html">Country</a>
+      <a href="./indices.html">Indices</a>
+      <a href="./downloads.html">Downloads</a>
+    </nav>
+    <div id="asof" class="asof"></div>
+    <div id="status" class="status"></div>
+  </header>
+  <main class="page-wrap family-page">
+    <section class="panel">
+      <div class="panel-title">Latest daily</div>
+      <div id="latest-table"></div>
+    </section>
+    <section class="grid-2">
+      <section class="panel">
+        <div class="panel-title">Recent daily history</div>
+        <div id="daily-table"></div>
+      </section>
+      <section class="panel">
+        <div class="panel-title">Last three monthly observations</div>
+        <div id="monthly-table"></div>
+      </section>
+    </section>
+    <section class="panel">
+      <div class="panel-title">Downloads</div>
+      <div id="family-downloads"></div>
+    </section>
+  </main>
   <script src="./app.js"></script>
 </body>
 </html>
