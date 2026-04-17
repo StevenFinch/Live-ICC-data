@@ -1,21 +1,21 @@
 {
-  "asof_date": "2026-04-15",
+  "asof_date": "2026-04-16",
   "latest": [
     {
-      "date": "2026-04-15",
+      "date": "2026-04-16",
       "family": "all_market",
-      "vw_icc": 0.08170929701047211,
-      "ew_icc": 0.10605627999942241,
-      "n_items": 2720,
-      "source_file": "data/202604/icc_live_usall_2026_0415_r1.csv"
+      "vw_icc": 0.08165551595446656,
+      "ew_icc": 0.10613679193511591,
+      "n_items": 2724,
+      "source_file": "data/202604/icc_live_usall_2026_0416_r1.csv"
     },
     {
-      "date": "2026-04-15",
+      "date": "2026-04-16",
       "family": "sp500",
-      "vw_icc": 0.07569297028442881,
-      "ew_icc": 0.08138525083469349,
+      "vw_icc": 0.0754672706502571,
+      "ew_icc": 0.08111658737002901,
       "n_items": 500,
-      "source_file": "data/202604/icc_live_sp500_2026_0415_r1.csv"
+      "source_file": "data/202604/icc_live_sp500_2026_0416_r1.csv"
     }
   ],
   "daily": [
@@ -962,6 +962,14 @@
       "ew_icc": 0.10605627999942241,
       "n_items": 2720,
       "source_file": "data/202604/icc_live_usall_2026_0415_r1.csv"
+    },
+    {
+      "date": "2026-04-16",
+      "family": "all_market",
+      "vw_icc": 0.08165551595446656,
+      "ew_icc": 0.10613679193511591,
+      "n_items": 2724,
+      "source_file": "data/202604/icc_live_usall_2026_0416_r1.csv"
     },
     {
       "date": "2025-10-28",
@@ -1914,6 +1922,14 @@
       "ew_icc": 0.08138525083469349,
       "n_items": 500,
       "source_file": "data/202604/icc_live_sp500_2026_0415_r1.csv"
+    },
+    {
+      "date": "2026-04-16",
+      "family": "sp500",
+      "vw_icc": 0.0754672706502571,
+      "ew_icc": 0.08111658737002901,
+      "n_items": 500,
+      "source_file": "data/202604/icc_live_sp500_2026_0416_r1.csv"
     }
   ],
   "monthly": [
@@ -1972,12 +1988,12 @@
       "yyyymm": "2026-03"
     },
     {
-      "date": "2026-04-15",
+      "date": "2026-04-16",
       "family": "all_market",
-      "vw_icc": 0.08170929701047211,
-      "ew_icc": 0.10605627999942241,
-      "n_items": 2720,
-      "source_file": "data/202604/icc_live_usall_2026_0415_r1.csv",
+      "vw_icc": 0.08165551595446656,
+      "ew_icc": 0.10613679193511591,
+      "n_items": 2724,
+      "source_file": "data/202604/icc_live_usall_2026_0416_r1.csv",
       "yyyymm": "2026-04"
     },
     {
@@ -2035,12 +2051,12 @@
       "yyyymm": "2026-03"
     },
     {
-      "date": "2026-04-15",
+      "date": "2026-04-16",
       "family": "sp500",
-      "vw_icc": 0.07569297028442881,
-      "ew_icc": 0.08138525083469349,
+      "vw_icc": 0.0754672706502571,
+      "ew_icc": 0.08111658737002901,
       "n_items": 500,
-      "source_file": "data/202604/icc_live_sp500_2026_0415_r1.csv",
+      "source_file": "data/202604/icc_live_sp500_2026_0416_r1.csv",
       "yyyymm": "2026-04"
     }
   ],
