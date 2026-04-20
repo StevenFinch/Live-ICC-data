@@ -1,881 +1,585 @@
 {
-  "asof_date": "2026-04-17",
   "latest": [
     {
-      "sector": "Consumer Cyclical",
-      "vw_icc": 0.09358116414266184,
-      "ew_icc": 0.11629606416812485,
-      "n_items": 334.0,
+      "family": "Basic Materials",
+      "label": "Basic Materials",
       "date": "2026-04-17",
-      "source_file": "data/202604/icc_live_usall_2026_0417_r1.csv"
+      "value": 0.0811722011236684,
+      "method": "ICC calculation",
+      "source": "Constituent ICC aggregation",
+      "n_items": 167,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/industry/daily/202604/industry_2026_0417.csv"
     },
     {
-      "sector": "Healthcare",
-      "vw_icc": 0.09350474615779983,
-      "ew_icc": 0.09798931763466015,
-      "n_items": 256.0,
+      "family": "Communication Services",
+      "label": "Communication Services",
       "date": "2026-04-17",
-      "source_file": "data/202604/icc_live_usall_2026_0417_r1.csv"
+      "value": 0.0682254115071632,
+      "method": "ICC calculation",
+      "source": "Constituent ICC aggregation",
+      "n_items": 124,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/industry/daily/202604/industry_2026_0417.csv"
     },
     {
-      "sector": "Financial Services",
-      "vw_icc": 0.08921223925838043,
-      "ew_icc": 0.11865410012484237,
-      "n_items": 515.0,
+      "family": "Consumer Cyclical",
+      "label": "Consumer Cyclical",
       "date": "2026-04-17",
-      "source_file": "data/202604/icc_live_usall_2026_0417_r1.csv"
+      "value": 0.0935811641426618,
+      "method": "ICC calculation",
+      "source": "Constituent ICC aggregation",
+      "n_items": 334,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/industry/daily/202604/industry_2026_0417.csv"
     },
     {
-      "sector": "Energy",
-      "vw_icc": 0.08279438338487694,
-      "ew_icc": 0.11081465663636633,
-      "n_items": 187.0,
+      "family": "Consumer Defensive",
+      "label": "Consumer Defensive",
       "date": "2026-04-17",
-      "source_file": "data/202604/icc_live_usall_2026_0417_r1.csv"
+      "value": 0.0736365246117874,
+      "method": "ICC calculation",
+      "source": "Constituent ICC aggregation",
+      "n_items": 135,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/industry/daily/202604/industry_2026_0417.csv"
     },
     {
-      "sector": "Basic Materials",
-      "vw_icc": 0.08117220112366844,
-      "ew_icc": 0.10834385666433789,
-      "n_items": 167.0,
+      "family": "Energy",
+      "label": "Energy",
       "date": "2026-04-17",
-      "source_file": "data/202604/icc_live_usall_2026_0417_r1.csv"
+      "value": 0.0827943833848769,
+      "method": "ICC calculation",
+      "source": "Constituent ICC aggregation",
+      "n_items": 187,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/industry/daily/202604/industry_2026_0417.csv"
     },
     {
-      "sector": "Technology",
-      "vw_icc": 0.08106303961069243,
-      "ew_icc": 0.09584800673378242,
-      "n_items": 376.0,
+      "family": "Financial Services",
+      "label": "Financial Services",
       "date": "2026-04-17",
-      "source_file": "data/202604/icc_live_usall_2026_0417_r1.csv"
+      "value": 0.0892122392583804,
+      "method": "ICC calculation",
+      "source": "Constituent ICC aggregation",
+      "n_items": 515,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/industry/daily/202604/industry_2026_0417.csv"
     },
     {
-      "sector": "Utilities",
-      "vw_icc": 0.07752876833620392,
-      "ew_icc": 0.0859922047384202,
-      "n_items": 80.0,
+      "family": "Healthcare",
+      "label": "Healthcare",
       "date": "2026-04-17",
-      "source_file": "data/202604/icc_live_usall_2026_0417_r1.csv"
+      "value": 0.0935047461577998,
+      "method": "ICC calculation",
+      "source": "Constituent ICC aggregation",
+      "n_items": 256,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/industry/daily/202604/industry_2026_0417.csv"
     },
     {
-      "sector": "Consumer Defensive",
-      "vw_icc": 0.0736365246117874,
-      "ew_icc": 0.10733333675922918,
-      "n_items": 135.0,
+      "family": "Industrials",
+      "label": "Industrials",
       "date": "2026-04-17",
-      "source_file": "data/202604/icc_live_usall_2026_0417_r1.csv"
+      "value": 0.0690278433673493,
+      "method": "ICC calculation",
+      "source": "Constituent ICC aggregation",
+      "n_items": 383,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/industry/daily/202604/industry_2026_0417.csv"
     },
     {
-      "sector": "Industrials",
-      "vw_icc": 0.06902784336734938,
-      "ew_icc": 0.08844775376671438,
-      "n_items": 383.0,
+      "family": "Real Estate",
+      "label": "Real Estate",
       "date": "2026-04-17",
-      "source_file": "data/202604/icc_live_usall_2026_0417_r1.csv"
+      "value": 0.0572703470154684,
+      "method": "ICC calculation",
+      "source": "Constituent ICC aggregation",
+      "n_items": 164,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/industry/daily/202604/industry_2026_0417.csv"
     },
     {
-      "sector": "Communication Services",
-      "vw_icc": 0.06822541150716326,
-      "ew_icc": 0.13133890415040528,
-      "n_items": 124.0,
+      "family": "Technology",
+      "label": "Technology",
       "date": "2026-04-17",
-      "source_file": "data/202604/icc_live_usall_2026_0417_r1.csv"
+      "value": 0.0810630396106924,
+      "method": "ICC calculation",
+      "source": "Constituent ICC aggregation",
+      "n_items": 376,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/industry/daily/202604/industry_2026_0417.csv"
     },
     {
-      "sector": "Real Estate",
-      "vw_icc": 0.05727034701546847,
-      "ew_icc": 0.09166027984455266,
-      "n_items": 164.0,
+      "family": "Utilities",
+      "label": "Utilities",
       "date": "2026-04-17",
-      "source_file": "data/202604/icc_live_usall_2026_0417_r1.csv"
+      "value": 0.0775287683362039,
+      "method": "ICC calculation",
+      "source": "Constituent ICC aggregation",
+      "n_items": 80,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/industry/daily/202604/industry_2026_0417.csv"
     }
   ],
   "daily": [
     {
-      "date": "2025-10-28",
-      "summary_icc": 0.07718233986975094,
-      "n_groups": 11,
-      "source_file": "data/202510/icc_live_usall_2025_1028.csv"
-    },
-    {
-      "date": "2025-10-29",
-      "summary_icc": 0.07747076032843946,
-      "n_groups": 11,
-      "source_file": "data/202510/icc_live_usall_2025_1029.csv"
-    },
-    {
-      "date": "2025-10-30",
-      "summary_icc": 0.0781446868488124,
-      "n_groups": 11,
-      "source_file": "data/202510/icc_live_usall_2025_1030.csv"
-    },
-    {
-      "date": "2025-11-01",
-      "summary_icc": 0.0779473501890711,
-      "n_groups": 11,
-      "source_file": "data/202510/icc_live_usall_2025_1031.csv"
-    },
-    {
-      "date": "2025-11-03",
-      "summary_icc": 0.07846323662948468,
-      "n_groups": 11,
-      "source_file": "data/202511/icc_live_usall_2025_1103.csv"
-    },
-    {
-      "date": "2025-11-04",
-      "summary_icc": 0.07845742349428687,
-      "n_groups": 11,
-      "source_file": "data/202511/icc_live_usall_2025_1104.csv"
-    },
-    {
-      "date": "2025-11-05",
-      "summary_icc": 0.07816014335613068,
-      "n_groups": 11,
-      "source_file": "data/202511/icc_live_usall_2025_1105.csv"
-    },
-    {
-      "date": "2025-11-06",
-      "summary_icc": 0.07853645570527021,
-      "n_groups": 11,
-      "source_file": "data/202511/icc_live_usall_2025_1106.csv"
-    },
-    {
-      "date": "2025-11-07",
-      "summary_icc": 0.07810494755182756,
-      "n_groups": 11,
-      "source_file": "data/202511/icc_live_usall_2025_1107.csv"
-    },
-    {
-      "date": "2025-11-10",
-      "summary_icc": 0.07750903849483147,
-      "n_groups": 11,
-      "source_file": "data/202511/icc_live_usall_2025_1110.csv"
-    },
-    {
-      "date": "2025-11-11",
-      "summary_icc": 0.07712968514030133,
-      "n_groups": 11,
-      "source_file": "data/202511/icc_live_usall_2025_1111.csv"
-    },
-    {
-      "date": "2025-11-12",
-      "summary_icc": 0.07735222381131684,
-      "n_groups": 11,
-      "source_file": "data/202511/icc_live_usall_2025_1112.csv"
-    },
-    {
-      "date": "2025-11-13",
-      "summary_icc": 0.0780334295841904,
-      "n_groups": 11,
-      "source_file": "data/202511/icc_live_usall_2025_1113.csv"
-    },
-    {
-      "date": "2025-11-14",
-      "summary_icc": 0.0782129122969894,
-      "n_groups": 11,
-      "source_file": "data/202511/icc_live_usall_2025_1114.csv"
-    },
-    {
-      "date": "2025-11-17",
-      "summary_icc": 0.07827954149246254,
-      "n_groups": 11,
-      "source_file": "data/202511/icc_live_usall_2025_1117.csv"
-    },
-    {
-      "date": "2025-11-18",
-      "summary_icc": 0.07826823474079897,
-      "n_groups": 11,
-      "source_file": "data/202511/icc_live_usall_2025_1118.csv"
-    },
-    {
-      "date": "2025-11-19",
-      "summary_icc": 0.07822893168600575,
-      "n_groups": 11,
-      "source_file": "data/202511/icc_live_usall_2025_1119.csv"
-    },
-    {
-      "date": "2025-11-20",
-      "summary_icc": 0.07899056954476939,
-      "n_groups": 11,
-      "source_file": "data/202511/icc_live_usall_2025_1120.csv"
-    },
-    {
-      "date": "2025-11-25",
-      "summary_icc": 0.07804779160542895,
-      "n_groups": 11,
-      "source_file": "data/202511/icc_live_usall_2025_1124.csv"
-    },
-    {
-      "date": "2025-11-26",
-      "summary_icc": 0.0774414593388371,
-      "n_groups": 11,
-      "source_file": "data/202511/icc_live_usall_2025_1126.csv"
-    },
-    {
-      "date": "2025-11-27",
-      "summary_icc": 0.07742517836414747,
-      "n_groups": 11,
-      "source_file": "data/202511/icc_live_usall_2025_1127.csv"
-    },
-    {
-      "date": "2025-11-28",
-      "summary_icc": 0.07712770241303778,
-      "n_groups": 11,
-      "source_file": "data/202511/icc_live_usall_2025_1128.csv"
-    },
-    {
-      "date": "2025-12-01",
-      "summary_icc": 0.07745823286563135,
-      "n_groups": 11,
-      "source_file": "data/202512/icc_live_usall_2025_1201.csv"
-    },
-    {
-      "date": "2025-12-02",
-      "summary_icc": 0.0776280440084956,
-      "n_groups": 11,
-      "source_file": "data/202512/icc_live_usall_2025_1202.csv"
-    },
-    {
-      "date": "2025-12-03",
-      "summary_icc": 0.07717121604337096,
-      "n_groups": 11,
-      "source_file": "data/202512/icc_live_usall_2025_1203.csv"
-    },
-    {
-      "date": "2025-12-04",
-      "summary_icc": 0.0772118840577313,
-      "n_groups": 11,
-      "source_file": "data/202512/icc_live_usall_2025_1204.csv"
-    },
-    {
-      "date": "2025-12-05",
-      "summary_icc": 0.07755989683542847,
-      "n_groups": 11,
-      "source_file": "data/202512/icc_live_usall_2025_1205.csv"
-    },
-    {
-      "date": "2025-12-08",
-      "summary_icc": 0.07797050881336488,
-      "n_groups": 11,
-      "source_file": "data/202512/icc_live_usall_2025_1208.csv"
-    },
-    {
-      "date": "2025-12-09",
-      "summary_icc": 0.07798608854636038,
-      "n_groups": 11,
-      "source_file": "data/202512/icc_live_usall_2025_1209.csv"
-    },
-    {
-      "date": "2025-12-10",
-      "summary_icc": 0.07921375839208739,
-      "n_groups": 11,
-      "source_file": "data/202512/icc_live_usall_2025_1210.csv"
-    },
-    {
-      "date": "2025-12-11",
-      "summary_icc": 0.07888689584904991,
-      "n_groups": 11,
-      "source_file": "data/202512/icc_live_usall_2025_1211.csv"
-    },
-    {
-      "date": "2025-12-12",
-      "summary_icc": 0.07922567713006108,
-      "n_groups": 11,
-      "source_file": "data/202512/icc_live_usall_2025_1212.csv"
-    },
-    {
-      "date": "2025-12-15",
-      "summary_icc": 0.07922047888457423,
-      "n_groups": 11,
-      "source_file": "data/202512/icc_live_usall_2025_1215.csv"
-    },
-    {
-      "date": "2025-12-16",
-      "summary_icc": 0.07968718668808271,
-      "n_groups": 11,
-      "source_file": "data/202512/icc_live_usall_2025_1216.csv"
-    },
-    {
-      "date": "2025-12-17",
-      "summary_icc": 0.07994394592480422,
-      "n_groups": 11,
-      "source_file": "data/202512/icc_live_usall_2025_1217.csv"
-    },
-    {
-      "date": "2025-12-18",
-      "summary_icc": 0.0798948938484372,
-      "n_groups": 11,
-      "source_file": "data/202512/icc_live_usall_2025_1218.csv"
-    },
-    {
-      "date": "2025-12-19",
-      "summary_icc": 0.07972667003742827,
-      "n_groups": 11,
-      "source_file": "data/202512/icc_live_usall_2025_1219.csv"
-    },
-    {
-      "date": "2025-12-22",
-      "summary_icc": 0.07931788052729385,
-      "n_groups": 11,
-      "source_file": "data/202512/icc_live_usall_2025_1222.csv"
-    },
-    {
-      "date": "2025-12-23",
-      "summary_icc": 0.07917574186221092,
-      "n_groups": 11,
-      "source_file": "data/202512/icc_live_usall_2025_1223.csv"
-    },
-    {
-      "date": "2025-12-24",
-      "summary_icc": 0.07899924124882197,
-      "n_groups": 11,
-      "source_file": "data/202512/icc_live_usall_2025_1224.csv"
-    },
-    {
-      "date": "2025-12-25",
-      "summary_icc": 0.07898986316753678,
-      "n_groups": 11,
-      "source_file": "data/202512/icc_live_usall_2025_1225.csv"
-    },
-    {
-      "date": "2025-12-26",
-      "summary_icc": 0.07905325959577918,
-      "n_groups": 11,
-      "source_file": "data/202512/icc_live_usall_2025_1226.csv"
-    },
-    {
-      "date": "2025-12-29",
-      "summary_icc": 0.07916764071073325,
-      "n_groups": 11,
-      "source_file": "data/202512/icc_live_usall_2025_1229.csv"
-    },
-    {
-      "date": "2025-12-30",
-      "summary_icc": 0.07914703555692261,
-      "n_groups": 11,
-      "source_file": "data/202512/icc_live_usall_2025_1230.csv"
-    },
-    {
-      "date": "2025-12-31",
-      "summary_icc": 0.07955566002503905,
-      "n_groups": 11,
-      "source_file": "data/202512/icc_live_usall_2025_1231.csv"
-    },
-    {
-      "date": "2026-01-01",
-      "summary_icc": 0.07904382525678574,
-      "n_groups": 11,
-      "source_file": "data/202601/icc_live_usall_2026_0101.csv"
-    },
-    {
-      "date": "2026-01-02",
-      "summary_icc": 0.07859131383585699,
-      "n_groups": 11,
-      "source_file": "data/202601/icc_live_usall_2026_0102.csv"
-    },
-    {
-      "date": "2026-01-06",
-      "summary_icc": 0.07685165367299022,
-      "n_groups": 11,
-      "source_file": "data/202601/icc_live_usall_2026_0106_r1.csv"
-    },
-    {
-      "date": "2026-01-07",
-      "summary_icc": 0.07715633918985428,
-      "n_groups": 11,
-      "source_file": "data/202601/icc_live_usall_2026_0107_r1.csv"
-    },
-    {
-      "date": "2026-01-08",
-      "summary_icc": 0.0767584149030369,
-      "n_groups": 11,
-      "source_file": "data/202601/icc_live_usall_2026_0108_r1.csv"
-    },
-    {
-      "date": "2026-01-09",
-      "summary_icc": 0.07635688137248624,
-      "n_groups": 11,
-      "source_file": "data/202601/icc_live_usall_2026_0109_r1.csv"
-    },
-    {
-      "date": "2026-01-12",
-      "summary_icc": 0.07614058597194134,
-      "n_groups": 11,
-      "source_file": "data/202601/icc_live_usall_2026_0112_r1.csv"
-    },
-    {
-      "date": "2026-01-13",
-      "summary_icc": 0.07609286715856346,
-      "n_groups": 11,
-      "source_file": "data/202601/icc_live_usall_2026_0113_r1.csv"
-    },
-    {
-      "date": "2026-01-14",
-      "summary_icc": 0.07578854442530103,
-      "n_groups": 11,
-      "source_file": "data/202601/icc_live_usall_2026_0114_r1.csv"
-    },
-    {
-      "date": "2026-01-15",
-      "summary_icc": 0.07585894989581833,
-      "n_groups": 11,
-      "source_file": "data/202601/icc_live_usall_2026_0115_r1.csv"
-    },
-    {
-      "date": "2026-01-16",
-      "summary_icc": 0.07598321230535089,
-      "n_groups": 11,
-      "source_file": "data/202601/icc_live_usall_2026_0116_r1.csv"
-    },
-    {
-      "date": "2026-01-19",
-      "summary_icc": 0.07603140731979198,
-      "n_groups": 11,
-      "source_file": "data/202601/icc_live_usall_2026_0119_r1.csv"
-    },
-    {
-      "date": "2026-01-20",
-      "summary_icc": 0.07687991785564136,
-      "n_groups": 11,
-      "source_file": "data/202601/icc_live_usall_2026_0120_r1.csv"
-    },
-    {
-      "date": "2026-01-21",
-      "summary_icc": 0.07618143129207205,
-      "n_groups": 11,
-      "source_file": "data/202601/icc_live_usall_2026_0121_r1.csv"
-    },
-    {
-      "date": "2026-01-22",
-      "summary_icc": 0.07602065449928018,
-      "n_groups": 11,
-      "source_file": "data/202601/icc_live_usall_2026_0122_r1.csv"
-    },
-    {
-      "date": "2026-01-23",
-      "summary_icc": 0.07607736451941757,
-      "n_groups": 11,
-      "source_file": "data/202601/icc_live_usall_2026_0123_r1.csv"
-    },
-    {
-      "date": "2026-01-26",
-      "summary_icc": 0.07609927093411648,
-      "n_groups": 11,
-      "source_file": "data/202601/icc_live_usall_2026_0126_r1.csv"
-    },
-    {
-      "date": "2026-01-27",
-      "summary_icc": 0.07626270884301564,
-      "n_groups": 11,
-      "source_file": "data/202601/icc_live_usall_2026_0127_r1.csv"
-    },
-    {
-      "date": "2026-01-28",
-      "summary_icc": 0.07649933637616982,
-      "n_groups": 11,
-      "source_file": "data/202601/icc_live_usall_2026_0128_r1.csv"
-    },
-    {
-      "date": "2026-01-29",
-      "summary_icc": 0.07568816784202713,
-      "n_groups": 11,
-      "source_file": "data/202601/icc_live_usall_2026_0129_r1.csv"
-    },
-    {
-      "date": "2026-01-30",
-      "summary_icc": 0.07668821556074162,
-      "n_groups": 11,
-      "source_file": "data/202601/icc_live_usall_2026_0130_r1.csv"
-    },
-    {
-      "date": "2026-02-03",
-      "summary_icc": 0.07808948350223109,
-      "n_groups": 11,
-      "source_file": "data/202602/icc_live_usall_2026_0203_r1.csv"
-    },
-    {
-      "date": "2026-02-04",
-      "summary_icc": 0.07924872334884778,
-      "n_groups": 11,
-      "source_file": "data/202602/icc_live_usall_2026_0204_r1.csv"
-    },
-    {
-      "date": "2026-02-05",
-      "summary_icc": 0.08081106986092677,
-      "n_groups": 11,
-      "source_file": "data/202602/icc_live_usall_2026_0205_r1.csv"
-    },
-    {
-      "date": "2026-02-06",
-      "summary_icc": 0.08086777363890241,
-      "n_groups": 11,
-      "source_file": "data/202602/icc_live_usall_2026_0206_r1.csv"
-    },
-    {
-      "date": "2026-02-09",
-      "summary_icc": 0.08048979663859736,
-      "n_groups": 11,
-      "source_file": "data/202602/icc_live_usall_2026_0209_r1.csv"
-    },
-    {
-      "date": "2026-02-10",
-      "summary_icc": 0.08051002475905869,
-      "n_groups": 11,
-      "source_file": "data/202602/icc_live_usall_2026_0210_r1.csv"
-    },
-    {
-      "date": "2026-02-11",
-      "summary_icc": 0.08076821092236833,
-      "n_groups": 11,
-      "source_file": "data/202602/icc_live_usall_2026_0211_r1.csv"
-    },
-    {
-      "date": "2026-02-12",
-      "summary_icc": 0.08171956810871114,
-      "n_groups": 11,
-      "source_file": "data/202602/icc_live_usall_2026_0212_r1.csv"
-    },
-    {
-      "date": "2026-02-13",
-      "summary_icc": 0.0810866574874647,
-      "n_groups": 11,
-      "source_file": "data/202602/icc_live_usall_2026_0213_r1.csv"
-    },
-    {
-      "date": "2026-02-16",
-      "summary_icc": 0.08146333672072892,
-      "n_groups": 11,
-      "source_file": "data/202602/icc_live_usall_2026_0216_r1.csv"
-    },
-    {
-      "date": "2026-02-17",
-      "summary_icc": 0.08163496570991874,
-      "n_groups": 11,
-      "source_file": "data/202602/icc_live_usall_2026_0217_r1.csv"
-    },
-    {
-      "date": "2026-02-18",
-      "summary_icc": 0.08128942945578274,
-      "n_groups": 11,
-      "source_file": "data/202602/icc_live_usall_2026_0218_r1.csv"
-    },
-    {
-      "date": "2026-02-19",
-      "summary_icc": 0.08072731951346691,
-      "n_groups": 11,
-      "source_file": "data/202602/icc_live_usall_2026_0219_r1.csv"
-    },
-    {
-      "date": "2026-02-20",
-      "summary_icc": 0.08003503449251367,
-      "n_groups": 11,
-      "source_file": "data/202602/icc_live_usall_2026_0220_r1.csv"
-    },
-    {
-      "date": "2026-02-23",
-      "summary_icc": 0.07999161509051772,
-      "n_groups": 11,
-      "source_file": "data/202602/icc_live_usall_2026_0223_r1.csv"
-    },
-    {
-      "date": "2026-02-24",
-      "summary_icc": 0.07964651718061239,
-      "n_groups": 11,
-      "source_file": "data/202602/icc_live_usall_2026_0224_r1.csv"
-    },
-    {
-      "date": "2026-02-25",
-      "summary_icc": 0.07972321655516533,
-      "n_groups": 11,
-      "source_file": "data/202602/icc_live_usall_2026_0225_r1.csv"
-    },
-    {
-      "date": "2026-02-26",
-      "summary_icc": 0.07929311965632325,
-      "n_groups": 11,
-      "source_file": "data/202602/icc_live_usall_2026_0226_r1.csv"
-    },
-    {
-      "date": "2026-02-27",
-      "summary_icc": 0.0791148646428733,
-      "n_groups": 11,
-      "source_file": "data/202602/icc_live_usall_2026_0227_r1.csv"
-    },
-    {
-      "date": "2026-03-02",
-      "summary_icc": 0.07880325156791158,
-      "n_groups": 11,
-      "source_file": "data/202603/icc_live_usall_2026_0302_r1.csv"
-    },
-    {
-      "date": "2026-03-03",
-      "summary_icc": 0.07955399301543825,
-      "n_groups": 11,
-      "source_file": "data/202603/icc_live_usall_2026_0303_r1.csv"
-    },
-    {
-      "date": "2026-03-04",
-      "summary_icc": 0.07950849011213544,
-      "n_groups": 11,
-      "source_file": "data/202603/icc_live_usall_2026_0304_r1.csv"
-    },
-    {
-      "date": "2026-03-05",
-      "summary_icc": 0.08050184889608068,
-      "n_groups": 11,
-      "source_file": "data/202603/icc_live_usall_2026_0305_r1.csv"
-    },
-    {
-      "date": "2026-03-06",
-      "summary_icc": 0.08137405552561582,
-      "n_groups": 11,
-      "source_file": "data/202603/icc_live_usall_2026_0306_r1.csv"
-    },
-    {
-      "date": "2026-03-09",
-      "summary_icc": 0.0810090089375022,
-      "n_groups": 11,
-      "source_file": "data/202603/icc_live_usall_2026_0309_r1.csv"
-    },
-    {
-      "date": "2026-03-10",
-      "summary_icc": 0.08116341080183044,
-      "n_groups": 11,
-      "source_file": "data/202603/icc_live_usall_2026_0310_r1.csv"
-    },
-    {
-      "date": "2026-03-11",
-      "summary_icc": 0.08109411125003094,
-      "n_groups": 11,
-      "source_file": "data/202603/icc_live_usall_2026_0311_r1.csv"
-    },
-    {
-      "date": "2026-03-12",
-      "summary_icc": 0.08148646370457781,
-      "n_groups": 11,
-      "source_file": "data/202603/icc_live_usall_2026_0312_r1.csv"
-    },
-    {
-      "date": "2026-03-13",
-      "summary_icc": 0.0815045581157306,
-      "n_groups": 11,
-      "source_file": "data/202603/icc_live_usall_2026_0313_r1.csv"
-    },
-    {
-      "date": "2026-03-16",
-      "summary_icc": 0.08021615885432352,
-      "n_groups": 11,
-      "source_file": "data/202603/icc_live_usall_2026_0316_r1.csv"
-    },
-    {
-      "date": "2026-03-17",
-      "summary_icc": 0.08020577273722952,
-      "n_groups": 11,
-      "source_file": "data/202603/icc_live_usall_2026_0317_r1.csv"
-    },
-    {
-      "date": "2026-03-18",
-      "summary_icc": 0.08101863492758384,
-      "n_groups": 11,
-      "source_file": "data/202603/icc_live_usall_2026_0318_r1.csv"
-    },
-    {
-      "date": "2026-03-19",
-      "summary_icc": 0.08131058670213448,
-      "n_groups": 11,
-      "source_file": "data/202603/icc_live_usall_2026_0319_r1.csv"
-    },
-    {
-      "date": "2026-03-20",
-      "summary_icc": 0.0824996851294562,
-      "n_groups": 11,
-      "source_file": "data/202603/icc_live_usall_2026_0320_r1.csv"
-    },
-    {
-      "date": "2026-03-23",
-      "summary_icc": 0.08177026845716563,
-      "n_groups": 11,
-      "source_file": "data/202603/icc_live_usall_2026_0323_r1.csv"
-    },
-    {
-      "date": "2026-03-24",
-      "summary_icc": 0.08155490858819069,
-      "n_groups": 11,
-      "source_file": "data/202603/icc_live_usall_2026_0324_r1.csv"
-    },
-    {
-      "date": "2026-03-25",
-      "summary_icc": 0.08123994120880985,
-      "n_groups": 11,
-      "source_file": "data/202603/icc_live_usall_2026_0325_r1.csv"
-    },
-    {
-      "date": "2026-03-26",
-      "summary_icc": 0.08180349382376509,
-      "n_groups": 11,
-      "source_file": "data/202603/icc_live_usall_2026_0326_r1.csv"
-    },
-    {
-      "date": "2026-03-27",
-      "summary_icc": 0.08229654138799244,
-      "n_groups": 11,
-      "source_file": "data/202603/icc_live_usall_2026_0327_r1.csv"
-    },
-    {
-      "date": "2026-03-30",
-      "summary_icc": 0.08268712914853399,
-      "n_groups": 11,
-      "source_file": "data/202603/icc_live_usall_2026_0330_r1.csv"
-    },
-    {
-      "date": "2026-03-31",
-      "summary_icc": 0.08153501496920224,
-      "n_groups": 11,
-      "source_file": "data/202603/icc_live_usall_2026_0331_r1.csv"
-    },
-    {
-      "date": "2026-04-01",
-      "summary_icc": 0.08122546776797447,
-      "n_groups": 11,
-      "source_file": "data/202604/icc_live_usall_2026_0401_r1.csv"
-    },
-    {
-      "date": "2026-04-02",
-      "summary_icc": 0.08118870559953831,
-      "n_groups": 11,
-      "source_file": "data/202604/icc_live_usall_2026_0402_r1.csv"
-    },
-    {
-      "date": "2026-04-03",
-      "summary_icc": 0.08097963342456463,
-      "n_groups": 11,
-      "source_file": "data/202604/icc_live_usall_2026_0403_r1.csv"
-    },
-    {
-      "date": "2026-04-06",
-      "summary_icc": 0.08079170598581663,
-      "n_groups": 11,
-      "source_file": "data/202604/icc_live_usall_2026_0406_r1.csv"
-    },
-    {
-      "date": "2026-04-07",
-      "summary_icc": 0.0805817763869975,
-      "n_groups": 11,
-      "source_file": "data/202604/icc_live_usall_2026_0407_r1.csv"
-    },
-    {
-      "date": "2026-04-08",
-      "summary_icc": 0.07947658955541564,
-      "n_groups": 11,
-      "source_file": "data/202604/icc_live_usall_2026_0408_r1.csv"
-    },
-    {
-      "date": "2026-04-09",
-      "summary_icc": 0.07966554082038853,
-      "n_groups": 11,
-      "source_file": "data/202604/icc_live_usall_2026_0409_r1.csv"
-    },
-    {
-      "date": "2026-04-10",
-      "summary_icc": 0.07994021437160158,
-      "n_groups": 11,
-      "source_file": "data/202604/icc_live_usall_2026_0410_r1.csv"
-    },
-    {
-      "date": "2026-04-13",
-      "summary_icc": 0.07955096531141362,
-      "n_groups": 11,
-      "source_file": "data/202604/icc_live_usall_2026_0413_r2.csv"
-    },
-    {
-      "date": "2026-04-14",
-      "summary_icc": 0.07931652900790975,
-      "n_groups": 11,
-      "source_file": "data/202604/icc_live_usall_2026_0414_r1.csv"
-    },
-    {
-      "date": "2026-04-15",
-      "summary_icc": 0.07944137202452439,
-      "n_groups": 11,
-      "source_file": "data/202604/icc_live_usall_2026_0415_r1.csv"
-    },
-    {
-      "date": "2026-04-16",
-      "summary_icc": 0.07936850225015286,
-      "n_groups": 11,
-      "source_file": "data/202604/icc_live_usall_2026_0416_r1.csv"
-    },
-    {
+      "family": "Basic Materials",
+      "label": "Basic Materials",
       "date": "2026-04-17",
-      "summary_icc": 0.07881969713782294,
-      "n_groups": 11,
-      "source_file": "data/202604/icc_live_usall_2026_0417_r1.csv"
+      "value": 0.0811722011236684,
+      "method": "ICC calculation",
+      "source": "Constituent ICC aggregation",
+      "n_items": 167,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/industry/daily/202604/industry_2026_0417.csv"
+    },
+    {
+      "family": "Communication Services",
+      "label": "Communication Services",
+      "date": "2026-04-17",
+      "value": 0.0682254115071632,
+      "method": "ICC calculation",
+      "source": "Constituent ICC aggregation",
+      "n_items": 124,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/industry/daily/202604/industry_2026_0417.csv"
+    },
+    {
+      "family": "Consumer Cyclical",
+      "label": "Consumer Cyclical",
+      "date": "2026-04-17",
+      "value": 0.0935811641426618,
+      "method": "ICC calculation",
+      "source": "Constituent ICC aggregation",
+      "n_items": 334,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/industry/daily/202604/industry_2026_0417.csv"
+    },
+    {
+      "family": "Consumer Defensive",
+      "label": "Consumer Defensive",
+      "date": "2026-04-17",
+      "value": 0.0736365246117874,
+      "method": "ICC calculation",
+      "source": "Constituent ICC aggregation",
+      "n_items": 135,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/industry/daily/202604/industry_2026_0417.csv"
+    },
+    {
+      "family": "Energy",
+      "label": "Energy",
+      "date": "2026-04-17",
+      "value": 0.0827943833848769,
+      "method": "ICC calculation",
+      "source": "Constituent ICC aggregation",
+      "n_items": 187,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/industry/daily/202604/industry_2026_0417.csv"
+    },
+    {
+      "family": "Financial Services",
+      "label": "Financial Services",
+      "date": "2026-04-17",
+      "value": 0.0892122392583804,
+      "method": "ICC calculation",
+      "source": "Constituent ICC aggregation",
+      "n_items": 515,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/industry/daily/202604/industry_2026_0417.csv"
+    },
+    {
+      "family": "Healthcare",
+      "label": "Healthcare",
+      "date": "2026-04-17",
+      "value": 0.0935047461577998,
+      "method": "ICC calculation",
+      "source": "Constituent ICC aggregation",
+      "n_items": 256,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/industry/daily/202604/industry_2026_0417.csv"
+    },
+    {
+      "family": "Industrials",
+      "label": "Industrials",
+      "date": "2026-04-17",
+      "value": 0.0690278433673493,
+      "method": "ICC calculation",
+      "source": "Constituent ICC aggregation",
+      "n_items": 383,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/industry/daily/202604/industry_2026_0417.csv"
+    },
+    {
+      "family": "Real Estate",
+      "label": "Real Estate",
+      "date": "2026-04-17",
+      "value": 0.0572703470154684,
+      "method": "ICC calculation",
+      "source": "Constituent ICC aggregation",
+      "n_items": 164,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/industry/daily/202604/industry_2026_0417.csv"
+    },
+    {
+      "family": "Technology",
+      "label": "Technology",
+      "date": "2026-04-17",
+      "value": 0.0810630396106924,
+      "method": "ICC calculation",
+      "source": "Constituent ICC aggregation",
+      "n_items": 376,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/industry/daily/202604/industry_2026_0417.csv"
+    },
+    {
+      "family": "Utilities",
+      "label": "Utilities",
+      "date": "2026-04-17",
+      "value": 0.0775287683362039,
+      "method": "ICC calculation",
+      "source": "Constituent ICC aggregation",
+      "n_items": 80,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/industry/daily/202604/industry_2026_0417.csv"
     }
   ],
   "monthly": [
     {
-      "date": "2025-10-30",
-      "summary_icc": 0.0781446868488124,
-      "n_groups": 11,
-      "source_file": "data/202510/icc_live_usall_2025_1030.csv",
-      "yyyymm": "2025-10"
-    },
-    {
-      "date": "2025-11-28",
-      "summary_icc": 0.07712770241303778,
-      "n_groups": 11,
-      "source_file": "data/202511/icc_live_usall_2025_1128.csv",
-      "yyyymm": "2025-11"
-    },
-    {
-      "date": "2025-12-31",
-      "summary_icc": 0.07955566002503905,
-      "n_groups": 11,
-      "source_file": "data/202512/icc_live_usall_2025_1231.csv",
-      "yyyymm": "2025-12"
-    },
-    {
-      "date": "2026-01-30",
-      "summary_icc": 0.07668821556074162,
-      "n_groups": 11,
-      "source_file": "data/202601/icc_live_usall_2026_0130_r1.csv",
-      "yyyymm": "2026-01"
-    },
-    {
-      "date": "2026-02-27",
-      "summary_icc": 0.0791148646428733,
-      "n_groups": 11,
-      "source_file": "data/202602/icc_live_usall_2026_0227_r1.csv",
-      "yyyymm": "2026-02"
-    },
-    {
-      "date": "2026-03-31",
-      "summary_icc": 0.08153501496920224,
-      "n_groups": 11,
-      "source_file": "data/202603/icc_live_usall_2026_0331_r1.csv",
-      "yyyymm": "2026-03"
-    },
-    {
+      "family": "Basic Materials",
+      "label": "Basic Materials",
       "date": "2026-04-17",
-      "summary_icc": 0.07881969713782294,
-      "n_groups": 11,
-      "source_file": "data/202604/icc_live_usall_2026_0417_r1.csv",
-      "yyyymm": "2026-04"
-    }
-  ],
-  "downloads": [
-    {
-      "label": "Daily history CSV",
-      "path": "./data/downloads/industry_daily_history.csv"
+      "value": 0.0811722011236684,
+      "method": "ICC calculation",
+      "source": "Constituent ICC aggregation",
+      "n_items": 167,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/industry/daily/202604/industry_2026_0417.csv"
     },
     {
-      "label": "Monthly history CSV",
-      "path": "./data/downloads/industry_monthly_history.csv"
+      "family": "Communication Services",
+      "label": "Communication Services",
+      "date": "2026-04-17",
+      "value": 0.0682254115071632,
+      "method": "ICC calculation",
+      "source": "Constituent ICC aggregation",
+      "n_items": 124,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/industry/daily/202604/industry_2026_0417.csv"
     },
     {
-      "label": "Latest breakdown CSV",
-      "path": "./data/downloads/industry_latest.csv"
+      "family": "Consumer Cyclical",
+      "label": "Consumer Cyclical",
+      "date": "2026-04-17",
+      "value": 0.0935811641426618,
+      "method": "ICC calculation",
+      "source": "Constituent ICC aggregation",
+      "n_items": 334,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/industry/daily/202604/industry_2026_0417.csv"
+    },
+    {
+      "family": "Consumer Defensive",
+      "label": "Consumer Defensive",
+      "date": "2026-04-17",
+      "value": 0.0736365246117874,
+      "method": "ICC calculation",
+      "source": "Constituent ICC aggregation",
+      "n_items": 135,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/industry/daily/202604/industry_2026_0417.csv"
+    },
+    {
+      "family": "Energy",
+      "label": "Energy",
+      "date": "2026-04-17",
+      "value": 0.0827943833848769,
+      "method": "ICC calculation",
+      "source": "Constituent ICC aggregation",
+      "n_items": 187,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/industry/daily/202604/industry_2026_0417.csv"
+    },
+    {
+      "family": "Financial Services",
+      "label": "Financial Services",
+      "date": "2026-04-17",
+      "value": 0.0892122392583804,
+      "method": "ICC calculation",
+      "source": "Constituent ICC aggregation",
+      "n_items": 515,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/industry/daily/202604/industry_2026_0417.csv"
+    },
+    {
+      "family": "Healthcare",
+      "label": "Healthcare",
+      "date": "2026-04-17",
+      "value": 0.0935047461577998,
+      "method": "ICC calculation",
+      "source": "Constituent ICC aggregation",
+      "n_items": 256,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/industry/daily/202604/industry_2026_0417.csv"
+    },
+    {
+      "family": "Industrials",
+      "label": "Industrials",
+      "date": "2026-04-17",
+      "value": 0.0690278433673493,
+      "method": "ICC calculation",
+      "source": "Constituent ICC aggregation",
+      "n_items": 383,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/industry/daily/202604/industry_2026_0417.csv"
+    },
+    {
+      "family": "Real Estate",
+      "label": "Real Estate",
+      "date": "2026-04-17",
+      "value": 0.0572703470154684,
+      "method": "ICC calculation",
+      "source": "Constituent ICC aggregation",
+      "n_items": 164,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/industry/daily/202604/industry_2026_0417.csv"
+    },
+    {
+      "family": "Technology",
+      "label": "Technology",
+      "date": "2026-04-17",
+      "value": 0.0810630396106924,
+      "method": "ICC calculation",
+      "source": "Constituent ICC aggregation",
+      "n_items": 376,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/industry/daily/202604/industry_2026_0417.csv"
+    },
+    {
+      "family": "Utilities",
+      "label": "Utilities",
+      "date": "2026-04-17",
+      "value": 0.0775287683362039,
+      "method": "ICC calculation",
+      "source": "Constituent ICC aggregation",
+      "n_items": 80,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/industry/daily/202604/industry_2026_0417.csv"
     }
   ],
-  "latest_summary": 0.07881969713782294
+  "monthly_groups": {
+    "Basic Materials": [
+      {
+        "family": "Basic Materials",
+        "label": "Basic Materials",
+        "date": "2026-04-17",
+        "value": 0.0811722011236684,
+        "method": "ICC calculation",
+        "source": "Constituent ICC aggregation",
+        "n_items": 167,
+        "coverage_weight": null,
+        "status": "available",
+        "__source_file": "data/library/industry/daily/202604/industry_2026_0417.csv"
+      }
+    ],
+    "Communication Services": [
+      {
+        "family": "Communication Services",
+        "label": "Communication Services",
+        "date": "2026-04-17",
+        "value": 0.0682254115071632,
+        "method": "ICC calculation",
+        "source": "Constituent ICC aggregation",
+        "n_items": 124,
+        "coverage_weight": null,
+        "status": "available",
+        "__source_file": "data/library/industry/daily/202604/industry_2026_0417.csv"
+      }
+    ],
+    "Consumer Cyclical": [
+      {
+        "family": "Consumer Cyclical",
+        "label": "Consumer Cyclical",
+        "date": "2026-04-17",
+        "value": 0.0935811641426618,
+        "method": "ICC calculation",
+        "source": "Constituent ICC aggregation",
+        "n_items": 334,
+        "coverage_weight": null,
+        "status": "available",
+        "__source_file": "data/library/industry/daily/202604/industry_2026_0417.csv"
+      }
+    ],
+    "Consumer Defensive": [
+      {
+        "family": "Consumer Defensive",
+        "label": "Consumer Defensive",
+        "date": "2026-04-17",
+        "value": 0.0736365246117874,
+        "method": "ICC calculation",
+        "source": "Constituent ICC aggregation",
+        "n_items": 135,
+        "coverage_weight": null,
+        "status": "available",
+        "__source_file": "data/library/industry/daily/202604/industry_2026_0417.csv"
+      }
+    ],
+    "Energy": [
+      {
+        "family": "Energy",
+        "label": "Energy",
+        "date": "2026-04-17",
+        "value": 0.0827943833848769,
+        "method": "ICC calculation",
+        "source": "Constituent ICC aggregation",
+        "n_items": 187,
+        "coverage_weight": null,
+        "status": "available",
+        "__source_file": "data/library/industry/daily/202604/industry_2026_0417.csv"
+      }
+    ],
+    "Financial Services": [
+      {
+        "family": "Financial Services",
+        "label": "Financial Services",
+        "date": "2026-04-17",
+        "value": 0.0892122392583804,
+        "method": "ICC calculation",
+        "source": "Constituent ICC aggregation",
+        "n_items": 515,
+        "coverage_weight": null,
+        "status": "available",
+        "__source_file": "data/library/industry/daily/202604/industry_2026_0417.csv"
+      }
+    ],
+    "Healthcare": [
+      {
+        "family": "Healthcare",
+        "label": "Healthcare",
+        "date": "2026-04-17",
+        "value": 0.0935047461577998,
+        "method": "ICC calculation",
+        "source": "Constituent ICC aggregation",
+        "n_items": 256,
+        "coverage_weight": null,
+        "status": "available",
+        "__source_file": "data/library/industry/daily/202604/industry_2026_0417.csv"
+      }
+    ],
+    "Industrials": [
+      {
+        "family": "Industrials",
+        "label": "Industrials",
+        "date": "2026-04-17",
+        "value": 0.0690278433673493,
+        "method": "ICC calculation",
+        "source": "Constituent ICC aggregation",
+        "n_items": 383,
+        "coverage_weight": null,
+        "status": "available",
+        "__source_file": "data/library/industry/daily/202604/industry_2026_0417.csv"
+      }
+    ],
+    "Real Estate": [
+      {
+        "family": "Real Estate",
+        "label": "Real Estate",
+        "date": "2026-04-17",
+        "value": 0.0572703470154684,
+        "method": "ICC calculation",
+        "source": "Constituent ICC aggregation",
+        "n_items": 164,
+        "coverage_weight": null,
+        "status": "available",
+        "__source_file": "data/library/industry/daily/202604/industry_2026_0417.csv"
+      }
+    ],
+    "Technology": [
+      {
+        "family": "Technology",
+        "label": "Technology",
+        "date": "2026-04-17",
+        "value": 0.0810630396106924,
+        "method": "ICC calculation",
+        "source": "Constituent ICC aggregation",
+        "n_items": 376,
+        "coverage_weight": null,
+        "status": "available",
+        "__source_file": "data/library/industry/daily/202604/industry_2026_0417.csv"
+      }
+    ],
+    "Utilities": [
+      {
+        "family": "Utilities",
+        "label": "Utilities",
+        "date": "2026-04-17",
+        "value": 0.0775287683362039,
+        "method": "ICC calculation",
+        "source": "Constituent ICC aggregation",
+        "n_items": 80,
+        "coverage_weight": null,
+        "status": "available",
+        "__source_file": "data/library/industry/daily/202604/industry_2026_0417.csv"
+      }
+    ]
+  },
+  "downloads": {
+    "title": "Industry",
+    "latest_csv": "./data/downloads/family/industry/latest.csv",
+    "daily_history_csv": "./data/downloads/family/industry/daily_history.csv",
+    "monthly_history_csv": "./data/downloads/family/industry/monthly_history.csv",
+    "years": [
+      {
+        "year": "2026",
+        "download_all": "./data/downloads/family/industry/archive/2026.zip",
+        "months": [
+          {
+            "yyyymm": "202604",
+            "download_all": "./data/downloads/family/industry/archive/202604.zip",
+            "files": [
+              {
+                "date": "2026-04-17",
+                "download_path": "./data/downloads/family/industry/archive/202604/industry_2026_0417.csv",
+                "filename": "industry_2026_0417.csv"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
 }

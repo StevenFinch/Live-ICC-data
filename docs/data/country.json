@@ -1,464 +1,251 @@
 {
-  "asof_date": "2026-04-17",
-  "summary_latest": [
-    {
-      "date": "2026-04-17",
-      "summary_icc": 0.05408380197659084,
-      "n_items": 4
-    }
-  ],
-  "summary_monthly": [
-    {
-      "date": "2026-04-17",
-      "summary_icc": 0.05408380197659084,
-      "n_items": 4,
-      "yyyymm": "2026-04"
-    }
-  ],
   "latest": [
     {
-      "date": "2026-04-17",
-      "ticker": "EWJ",
-      "label": "iShares MSCI Japan ETF",
-      "category": "",
-      "vw_icc": 0.04918839153959666,
-      "coverage_weight": null,
-      "n_items": null,
-      "n_matched": null,
-      "source": "official_page_pe_ratio_proxy",
-      "status": "ok_page_proxy",
-      "country": "Japan"
-    },
-    {
-      "date": "2026-04-17",
-      "ticker": "EWG",
-      "label": "iShares MSCI Germany ETF",
-      "category": "",
-      "vw_icc": 0.057045065601825436,
-      "coverage_weight": null,
-      "n_items": null,
-      "n_matched": null,
-      "source": "official_page_pe_ratio_proxy",
-      "status": "ok_page_proxy",
-      "country": "Germany"
-    },
-    {
-      "date": "2026-04-17",
+      "family": "China",
       "ticker": "MCHI",
       "label": "iShares MSCI China ETF",
-      "category": "",
-      "vw_icc": 0.06925207756232687,
-      "coverage_weight": null,
+      "date": "2026-04-17",
+      "value": 0.0750927884039913,
+      "method": "P/E estimate",
+      "source": "Yahoo Finance",
       "n_items": null,
-      "n_matched": null,
-      "source": "official_page_pe_ratio_proxy",
-      "status": "ok_page_proxy",
-      "country": "China"
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/country/daily/202604/country_2026_0417.csv"
     },
     {
+      "family": "Germany",
+      "ticker": "EWG",
+      "label": "iShares MSCI Germany ETF",
       "date": "2026-04-17",
+      "value": 0.0552384713857813,
+      "method": "P/E estimate",
+      "source": "Yahoo Finance",
+      "n_items": null,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/country/daily/202604/country_2026_0417.csv"
+    },
+    {
+      "family": "India",
       "ticker": "INDA",
       "label": "iShares MSCI India ETF",
-      "category": "",
-      "vw_icc": 0.04084967320261438,
-      "coverage_weight": null,
+      "date": "2026-04-17",
+      "value": 0.0426902453429745,
+      "method": "P/E estimate",
+      "source": "Yahoo Finance",
       "n_items": null,
-      "n_matched": null,
-      "source": "official_page_pe_ratio_proxy",
-      "status": "ok_page_proxy",
-      "country": "India"
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/country/daily/202604/country_2026_0417.csv"
+    },
+    {
+      "family": "Japan",
+      "ticker": "EWJ",
+      "label": "iShares MSCI Japan ETF",
+      "date": "2026-04-17",
+      "value": 0.0546918437287761,
+      "method": "P/E estimate",
+      "source": "Yahoo Finance",
+      "n_items": null,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/country/daily/202604/country_2026_0417.csv"
     }
   ],
   "daily": [
     {
-      "date": "2026-04-15",
-      "ticker": "EWG",
-      "label": "iShares MSCI Germany ETF",
-      "category": null,
-      "vw_icc": 0.0573394495412844,
-      "coverage_weight": null,
-      "n_items": null,
-      "n_matched": null,
-      "source": "official_page_pe_ratio_proxy",
-      "status": "ok_page_proxy",
-      "country": "Germany"
-    },
-    {
-      "date": "2026-04-15",
-      "ticker": "EWJ",
-      "label": "iShares MSCI Japan ETF",
-      "category": null,
-      "vw_icc": 0.0502765208647561,
-      "coverage_weight": null,
-      "n_items": null,
-      "n_matched": null,
-      "source": "official_page_pe_ratio_proxy",
-      "status": "ok_page_proxy",
-      "country": "Japan"
-    },
-    {
-      "date": "2026-04-15",
-      "ticker": "INDA",
-      "label": "iShares MSCI India ETF",
-      "category": null,
-      "vw_icc": 0.041649312786339,
-      "coverage_weight": null,
-      "n_items": null,
-      "n_matched": null,
-      "source": "official_page_pe_ratio_proxy",
-      "status": "ok_page_proxy",
-      "country": "India"
-    },
-    {
-      "date": "2026-04-15",
+      "family": "China",
       "ticker": "MCHI",
       "label": "iShares MSCI China ETF",
-      "category": null,
-      "vw_icc": 0.0712758374910905,
-      "coverage_weight": null,
+      "date": "2026-04-17",
+      "value": 0.0750927884039913,
+      "method": "P/E estimate",
+      "source": "Yahoo Finance",
       "n_items": null,
-      "n_matched": null,
-      "source": "official_page_pe_ratio_proxy",
-      "status": "ok_page_proxy",
-      "country": "China"
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/country/daily/202604/country_2026_0417.csv"
     },
     {
-      "date": "2026-04-16",
-      "ticker": "EWA",
-      "label": "iShares MSCI Australia ETF",
-      "category": null,
-      "vw_icc": 0.0457663599862884,
-      "coverage_weight": null,
-      "n_items": null,
-      "n_matched": null,
-      "source": "yfinance_pe_ratio_proxy",
-      "status": "ok_yfinance_proxy",
-      "country": null
-    },
-    {
-      "date": "2026-04-16",
-      "ticker": "EWC",
-      "label": "iShares MSCI Canada ETF",
-      "category": null,
-      "vw_icc": 0.0497017892644135,
-      "coverage_weight": null,
-      "n_items": null,
-      "n_matched": null,
-      "source": "official_page_pe_ratio_proxy",
-      "status": "ok_page_proxy",
-      "country": null
-    },
-    {
-      "date": "2026-04-16",
+      "family": "Germany",
       "ticker": "EWG",
       "label": "iShares MSCI Germany ETF",
-      "category": null,
-      "vw_icc": 0.0573394495412844,
-      "coverage_weight": null,
+      "date": "2026-04-17",
+      "value": 0.0552384713857813,
+      "method": "P/E estimate",
+      "source": "Yahoo Finance",
       "n_items": null,
-      "n_matched": null,
-      "source": "official_page_pe_ratio_proxy",
-      "status": "ok_page_proxy",
-      "country": "Germany"
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/country/daily/202604/country_2026_0417.csv"
     },
     {
-      "date": "2026-04-16",
-      "ticker": "EWH",
-      "label": "iShares MSCI Hong Kong ETF",
-      "category": null,
-      "vw_icc": 0.0542955960842016,
-      "coverage_weight": null,
-      "n_items": null,
-      "n_matched": null,
-      "source": "yfinance_pe_ratio_proxy",
-      "status": "ok_yfinance_proxy",
-      "country": null
-    },
-    {
-      "date": "2026-04-16",
-      "ticker": "EWJ",
-      "label": "iShares MSCI Japan ETF",
-      "category": null,
-      "vw_icc": 0.0500751126690035,
-      "coverage_weight": null,
-      "n_items": null,
-      "n_matched": null,
-      "source": "official_page_pe_ratio_proxy",
-      "status": "ok_page_proxy",
-      "country": "Japan"
-    },
-    {
-      "date": "2026-04-16",
-      "ticker": "EWQ",
-      "label": "iShares MSCI France ETF",
-      "category": null,
-      "vw_icc": 0.0529582224763275,
-      "coverage_weight": null,
-      "n_items": null,
-      "n_matched": null,
-      "source": "yfinance_pe_ratio_proxy",
-      "status": "ok_yfinance_proxy",
-      "country": null
-    },
-    {
-      "date": "2026-04-16",
-      "ticker": "EWU",
-      "label": "iShares MSCI United Kingdom ETF",
-      "category": null,
-      "vw_icc": 0.0576036866359447,
-      "coverage_weight": null,
-      "n_items": null,
-      "n_matched": null,
-      "source": "official_page_pe_ratio_proxy",
-      "status": "ok_page_proxy",
-      "country": null
-    },
-    {
-      "date": "2026-04-16",
-      "ticker": "EWZ",
-      "label": "iShares MSCI Brazil ETF",
-      "category": null,
-      "vw_icc": 0.0819000819000819,
-      "coverage_weight": null,
-      "n_items": null,
-      "n_matched": null,
-      "source": "official_page_pe_ratio_proxy",
-      "status": "ok_page_proxy",
-      "country": null
-    },
-    {
-      "date": "2026-04-16",
+      "family": "India",
       "ticker": "INDA",
       "label": "iShares MSCI India ETF",
-      "category": null,
-      "vw_icc": 0.041649312786339,
-      "coverage_weight": null,
-      "n_items": null,
-      "n_matched": null,
-      "source": "official_page_pe_ratio_proxy",
-      "status": "ok_page_proxy",
-      "country": "India"
-    },
-    {
-      "date": "2026-04-16",
-      "ticker": "MCHI",
-      "label": "iShares MSCI China ETF",
-      "category": null,
-      "vw_icc": 0.0712758374910905,
-      "coverage_weight": null,
-      "n_items": null,
-      "n_matched": null,
-      "source": "official_page_pe_ratio_proxy",
-      "status": "ok_page_proxy",
-      "country": "China"
-    },
-    {
       "date": "2026-04-17",
-      "ticker": "EWG",
-      "label": "iShares MSCI Germany ETF",
-      "category": "",
-      "vw_icc": 0.057045065601825436,
-      "coverage_weight": null,
+      "value": 0.0426902453429745,
+      "method": "P/E estimate",
+      "source": "Yahoo Finance",
       "n_items": null,
-      "n_matched": null,
-      "source": "official_page_pe_ratio_proxy",
-      "status": "ok_page_proxy",
-      "country": "Germany"
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/country/daily/202604/country_2026_0417.csv"
     },
     {
-      "date": "2026-04-17",
+      "family": "Japan",
       "ticker": "EWJ",
       "label": "iShares MSCI Japan ETF",
-      "category": "",
-      "vw_icc": 0.04918839153959666,
-      "coverage_weight": null,
-      "n_items": null,
-      "n_matched": null,
-      "source": "official_page_pe_ratio_proxy",
-      "status": "ok_page_proxy",
-      "country": "Japan"
-    },
-    {
       "date": "2026-04-17",
-      "ticker": "INDA",
-      "label": "iShares MSCI India ETF",
-      "category": "",
-      "vw_icc": 0.04084967320261438,
-      "coverage_weight": null,
+      "value": 0.0546918437287761,
+      "method": "P/E estimate",
+      "source": "Yahoo Finance",
       "n_items": null,
-      "n_matched": null,
-      "source": "official_page_pe_ratio_proxy",
-      "status": "ok_page_proxy",
-      "country": "India"
-    },
-    {
-      "date": "2026-04-17",
-      "ticker": "MCHI",
-      "label": "iShares MSCI China ETF",
-      "category": "",
-      "vw_icc": 0.06925207756232687,
       "coverage_weight": null,
-      "n_items": null,
-      "n_matched": null,
-      "source": "official_page_pe_ratio_proxy",
-      "status": "ok_page_proxy",
-      "country": "China"
+      "status": "available",
+      "__source_file": "data/library/country/daily/202604/country_2026_0417.csv"
     }
   ],
   "monthly": [
     {
-      "date": "2026-04-16",
-      "ticker": "EWA",
-      "label": "iShares MSCI Australia ETF",
-      "category": null,
-      "vw_icc": 0.0457663599862884,
-      "coverage_weight": null,
-      "n_items": null,
-      "n_matched": null,
-      "source": "yfinance_pe_ratio_proxy",
-      "status": "ok_yfinance_proxy",
-      "country": null,
-      "yyyymm": "2026-04"
-    },
-    {
-      "date": "2026-04-16",
-      "ticker": "EWC",
-      "label": "iShares MSCI Canada ETF",
-      "category": null,
-      "vw_icc": 0.0497017892644135,
-      "coverage_weight": null,
-      "n_items": null,
-      "n_matched": null,
-      "source": "official_page_pe_ratio_proxy",
-      "status": "ok_page_proxy",
-      "country": null,
-      "yyyymm": "2026-04"
-    },
-    {
-      "date": "2026-04-17",
-      "ticker": "EWG",
-      "label": "iShares MSCI Germany ETF",
-      "category": "",
-      "vw_icc": 0.057045065601825436,
-      "coverage_weight": null,
-      "n_items": null,
-      "n_matched": null,
-      "source": "official_page_pe_ratio_proxy",
-      "status": "ok_page_proxy",
-      "country": "Germany",
-      "yyyymm": "2026-04"
-    },
-    {
-      "date": "2026-04-16",
-      "ticker": "EWH",
-      "label": "iShares MSCI Hong Kong ETF",
-      "category": null,
-      "vw_icc": 0.0542955960842016,
-      "coverage_weight": null,
-      "n_items": null,
-      "n_matched": null,
-      "source": "yfinance_pe_ratio_proxy",
-      "status": "ok_yfinance_proxy",
-      "country": null,
-      "yyyymm": "2026-04"
-    },
-    {
-      "date": "2026-04-17",
-      "ticker": "EWJ",
-      "label": "iShares MSCI Japan ETF",
-      "category": "",
-      "vw_icc": 0.04918839153959666,
-      "coverage_weight": null,
-      "n_items": null,
-      "n_matched": null,
-      "source": "official_page_pe_ratio_proxy",
-      "status": "ok_page_proxy",
-      "country": "Japan",
-      "yyyymm": "2026-04"
-    },
-    {
-      "date": "2026-04-16",
-      "ticker": "EWQ",
-      "label": "iShares MSCI France ETF",
-      "category": null,
-      "vw_icc": 0.0529582224763275,
-      "coverage_weight": null,
-      "n_items": null,
-      "n_matched": null,
-      "source": "yfinance_pe_ratio_proxy",
-      "status": "ok_yfinance_proxy",
-      "country": null,
-      "yyyymm": "2026-04"
-    },
-    {
-      "date": "2026-04-16",
-      "ticker": "EWU",
-      "label": "iShares MSCI United Kingdom ETF",
-      "category": null,
-      "vw_icc": 0.0576036866359447,
-      "coverage_weight": null,
-      "n_items": null,
-      "n_matched": null,
-      "source": "official_page_pe_ratio_proxy",
-      "status": "ok_page_proxy",
-      "country": null,
-      "yyyymm": "2026-04"
-    },
-    {
-      "date": "2026-04-16",
-      "ticker": "EWZ",
-      "label": "iShares MSCI Brazil ETF",
-      "category": null,
-      "vw_icc": 0.0819000819000819,
-      "coverage_weight": null,
-      "n_items": null,
-      "n_matched": null,
-      "source": "official_page_pe_ratio_proxy",
-      "status": "ok_page_proxy",
-      "country": null,
-      "yyyymm": "2026-04"
-    },
-    {
-      "date": "2026-04-17",
-      "ticker": "INDA",
-      "label": "iShares MSCI India ETF",
-      "category": "",
-      "vw_icc": 0.04084967320261438,
-      "coverage_weight": null,
-      "n_items": null,
-      "n_matched": null,
-      "source": "official_page_pe_ratio_proxy",
-      "status": "ok_page_proxy",
-      "country": "India",
-      "yyyymm": "2026-04"
-    },
-    {
-      "date": "2026-04-17",
+      "family": "China",
       "ticker": "MCHI",
       "label": "iShares MSCI China ETF",
-      "category": "",
-      "vw_icc": 0.06925207756232687,
-      "coverage_weight": null,
+      "date": "2026-04-17",
+      "value": 0.0750927884039913,
+      "method": "P/E estimate",
+      "source": "Yahoo Finance",
       "n_items": null,
-      "n_matched": null,
-      "source": "official_page_pe_ratio_proxy",
-      "status": "ok_page_proxy",
-      "country": "China",
-      "yyyymm": "2026-04"
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/country/daily/202604/country_2026_0417.csv"
+    },
+    {
+      "family": "Germany",
+      "ticker": "EWG",
+      "label": "iShares MSCI Germany ETF",
+      "date": "2026-04-17",
+      "value": 0.0552384713857813,
+      "method": "P/E estimate",
+      "source": "Yahoo Finance",
+      "n_items": null,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/country/daily/202604/country_2026_0417.csv"
+    },
+    {
+      "family": "India",
+      "ticker": "INDA",
+      "label": "iShares MSCI India ETF",
+      "date": "2026-04-17",
+      "value": 0.0426902453429745,
+      "method": "P/E estimate",
+      "source": "Yahoo Finance",
+      "n_items": null,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/country/daily/202604/country_2026_0417.csv"
+    },
+    {
+      "family": "Japan",
+      "ticker": "EWJ",
+      "label": "iShares MSCI Japan ETF",
+      "date": "2026-04-17",
+      "value": 0.0546918437287761,
+      "method": "P/E estimate",
+      "source": "Yahoo Finance",
+      "n_items": null,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/country/daily/202604/country_2026_0417.csv"
     }
   ],
-  "downloads": [
-    {
-      "label": "Daily history CSV",
-      "path": "./data/downloads/country_daily_history.csv"
-    },
-    {
-      "label": "Monthly history CSV",
-      "path": "./data/downloads/country_monthly_history.csv"
-    },
-    {
-      "label": "Latest breakdown CSV",
-      "path": "./data/downloads/country_latest.csv"
-    }
-  ]
+  "monthly_groups": {
+    "China": [
+      {
+        "family": "China",
+        "ticker": "MCHI",
+        "label": "iShares MSCI China ETF",
+        "date": "2026-04-17",
+        "value": 0.0750927884039913,
+        "method": "P/E estimate",
+        "source": "Yahoo Finance",
+        "n_items": null,
+        "coverage_weight": null,
+        "status": "available",
+        "__source_file": "data/library/country/daily/202604/country_2026_0417.csv"
+      }
+    ],
+    "Germany": [
+      {
+        "family": "Germany",
+        "ticker": "EWG",
+        "label": "iShares MSCI Germany ETF",
+        "date": "2026-04-17",
+        "value": 0.0552384713857813,
+        "method": "P/E estimate",
+        "source": "Yahoo Finance",
+        "n_items": null,
+        "coverage_weight": null,
+        "status": "available",
+        "__source_file": "data/library/country/daily/202604/country_2026_0417.csv"
+      }
+    ],
+    "India": [
+      {
+        "family": "India",
+        "ticker": "INDA",
+        "label": "iShares MSCI India ETF",
+        "date": "2026-04-17",
+        "value": 0.0426902453429745,
+        "method": "P/E estimate",
+        "source": "Yahoo Finance",
+        "n_items": null,
+        "coverage_weight": null,
+        "status": "available",
+        "__source_file": "data/library/country/daily/202604/country_2026_0417.csv"
+      }
+    ],
+    "Japan": [
+      {
+        "family": "Japan",
+        "ticker": "EWJ",
+        "label": "iShares MSCI Japan ETF",
+        "date": "2026-04-17",
+        "value": 0.0546918437287761,
+        "method": "P/E estimate",
+        "source": "Yahoo Finance",
+        "n_items": null,
+        "coverage_weight": null,
+        "status": "available",
+        "__source_file": "data/library/country/daily/202604/country_2026_0417.csv"
+      }
+    ]
+  },
+  "downloads": {
+    "title": "Country",
+    "latest_csv": "./data/downloads/family/country/latest.csv",
+    "daily_history_csv": "./data/downloads/family/country/daily_history.csv",
+    "monthly_history_csv": "./data/downloads/family/country/monthly_history.csv",
+    "years": [
+      {
+        "year": "2026",
+        "download_all": "./data/downloads/family/country/archive/2026.zip",
+        "months": [
+          {
+            "yyyymm": "202604",
+            "download_all": "./data/downloads/family/country/archive/202604.zip",
+            "files": [
+              {
+                "date": "2026-04-17",
+                "download_path": "./data/downloads/family/country/archive/202604/country_2026_0417.csv",
+                "filename": "country_2026_0417.csv"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
 }
