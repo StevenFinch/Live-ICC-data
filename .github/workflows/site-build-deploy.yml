@@ -28,13 +28,20 @@ jobs:
         run: |
           if [ "${{ github.event_name }}" = "schedule" ]; then
             NY_HOUR=$(TZ=America/New_York date +%H)
+            NY_MIN=$(TZ=America/New_York date +%M)
+
+            # Only scheduled jobs during 5pm ET should proceed.
             if [ "$NY_HOUR" -eq 17 ]; then
               echo "proceed=true" >> "$GITHUB_OUTPUT"
+              echo "Proceeding: NY time is ${NY_HOUR}:${NY_MIN}."
             else
               echo "proceed=false" >> "$GITHUB_OUTPUT"
+              echo "Skipping: NY time is ${NY_HOUR}:${NY_MIN}."
             fi
           else
+            # Manual dispatch should always proceed.
             echo "proceed=true" >> "$GITHUB_OUTPUT"
+            echo "Manual dispatch -> proceed."
           fi
 
   build-and-deploy:
@@ -54,6 +61,11 @@ jobs:
       - name: Mark workspace as safe
         run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
 
+      - name: Set Python import path
+        shell: bash
+        run: |
+          echo "PYTHONPATH=${GITHUB_WORKSPACE}" >> "$GITHUB_ENV"
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -65,8 +77,9 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then
             pip install -r requirements.txt
+          else
+            pip install pandas numpy yfinance requests lxml html5lib openpyxl python-dateutil tzdata
           fi
-          pip install pandas numpy yfinance requests lxml html5lib python-dateutil tzdata openpyxl
 
       - name: Decide target trading date and whether recalculation is needed
         id: guard
@@ -79,8 +92,10 @@ jobs:
           from datetime import datetime, timedelta
           from zoneinfo import ZoneInfo
 
-          data_dir = Path("data")
+          repo = Path(".").resolve()
+          data_dir = repo / "data"
           now = datetime.now(ZoneInfo("America/New_York"))
+
           snap_re = re.compile(r"^icc_live_usall_(\d{4})_(\d{4})(?:_r\d+)?\.csv$")
 
           def previous_business_day(d):
@@ -89,45 +104,57 @@ jobs:
                   d -= timedelta(days=1)
               return d
 
-          # Use previous business day before market close; use today after market close.
+          # Define the target trading date.
           if now.weekday() >= 5:
               target_date = previous_business_day(now.date())
-              reason = "weekend"
+              timing_reason = "weekend"
           elif now.hour < 16:
               target_date = previous_business_day(now.date())
-              reason = "before market close"
+              timing_reason = "before market close"
           else:
               target_date = now.date()
-              reason = "after market close"
+              timing_reason = "after market close"
 
           latest_valid_date = None
-          latest_valid_file = ""
+          latest_valid_file = None
+
+          # Find the latest valid non-empty usall snapshot.
           for p in data_dir.glob("*/*.csv"):
               m = snap_re.match(p.name)
               if not m:
                   continue
-              if p.stat().st_size <= 0:
+
+              try:
+                  if p.stat().st_size <= 0:
+                      continue
+              except FileNotFoundError:
                   continue
-              dt = datetime.strptime(f"{m.group(1)}{m.group(2)}", "%Y%m%d").date()
+
+              year = m.group(1)
+              mmdd = m.group(2)
+              dt = datetime.strptime(f"{year}{mmdd}", "%Y%m%d").date()
+
               if latest_valid_date is None or dt > latest_valid_date:
                   latest_valid_date = dt
                   latest_valid_file = str(p)
 
-          need_recalc = latest_valid_date is None or latest_valid_date < target_date
+          # Recalculate only when the latest valid usall date is older than the target date.
+          need_recalc = (latest_valid_date is None) or (latest_valid_date < target_date)
 
           print(f"now_et={now.isoformat()}")
+          print(f"timing_reason={timing_reason}")
           print(f"target_date={target_date.isoformat()}")
           print(f"latest_valid_usall_date={latest_valid_date.isoformat() if latest_valid_date else ''}")
-          print(f"latest_valid_usall_file={latest_valid_file}")
-          print(f"need_recalc={need_recalc}")
-          print(f"reason={reason}")
+          print(f"latest_valid_usall_file={latest_valid_file or ''}")
+          print(f"need_recalc={str(need_recalc).lower()}")
 
-          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as f:
+          out = os.environ["GITHUB_OUTPUT"]
+          with open(out, "a", encoding="utf-8") as f:
               f.write(f"target_date={target_date.isoformat()}\n")
               f.write(f"latest_valid_usall_date={latest_valid_date.isoformat() if latest_valid_date else ''}\n")
-              f.write(f"latest_valid_usall_file={latest_valid_file}\n")
+              f.write(f"latest_valid_usall_file={latest_valid_file or ''}\n")
               f.write(f"need_recalc={'true' if need_recalc else 'false'}\n")
-              f.write(f"reason={reason}\n")
+              f.write(f"reason={timing_reason}\n")
           PY
 
       - name: Show guard decision
@@ -146,10 +173,10 @@ jobs:
 
       - name: Run extra indices
         if: steps.guard.outputs.need_recalc == 'true'
-        run: python backend/run_extra_indices.py
+        run: python -m backend.run_extra_indices
 
-      - name: Build website data
-        run: python backend/build_docs_data.py --universe usall
+      - name: Build website data under docs/data
+        run: python -m backend.build_docs_data --universe usall
 
       - name: Generate FILES.md manifest if tool exists
         shell: bash
@@ -160,22 +187,28 @@ jobs:
             echo "tools/generate_files_manifest.py not found, skip."
           fi
 
-      - name: Commit data outputs
+      - name: Commit raw data and site data back to repo
         shell: bash
         env:
           BRANCH_NAME: ${{ github.ref_name }}
         run: |
           set -euo pipefail
           BRANCH="${BRANCH_NAME}"
+
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
           git fetch origin "${BRANCH}" || true
+
           ts=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
+
+          # Add all generated raw data, derived data, docs data, and manifests.
           git add -A data docs FILES.md || true
+
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
-            git commit -m "Update ICC library data ${ts} [skip ci]" || true
+            git commit -m "Update ICC raw/site data ${ts} [skip ci]" || true
             git pull --rebase --autostash origin "${BRANCH}" || true
             git push origin HEAD:"${BRANCH}" || true
           fi
