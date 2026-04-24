@@ -3,6 +3,7 @@ name: Daily ICC + Build Website + Deploy Pages
 on:
   workflow_dispatch: {}
   schedule:
+    # Run at two UTC times to cover DST changes while only executing during 5pm ET.
     - cron: "00 21 * * 1-5"
     - cron: "00 22 * * 1-5"
 
@@ -59,13 +60,13 @@ jobs:
           python-version: "3.11"
 
       - name: Install dependencies
+        shell: bash
         run: |
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then
             pip install -r requirements.txt
-          else
-            pip install pandas numpy yfinance requests lxml html5lib python-dateutil tzdata beautifulsoup4 openpyxl
           fi
+          pip install pandas numpy yfinance requests lxml html5lib python-dateutil tzdata openpyxl
 
       - name: Decide target trading date and whether recalculation is needed
         id: guard
@@ -78,10 +79,9 @@ jobs:
           from datetime import datetime, timedelta
           from zoneinfo import ZoneInfo
 
-          repo = Path('.').resolve()
-          data_dir = repo / 'data'
-          snap_re = re.compile(r'^icc_live_usall_(\d{4})_(\d{4})(?:_r\d+)?\.csv$')
-          now = datetime.now(ZoneInfo('America/New_York'))
+          data_dir = Path("data")
+          now = datetime.now(ZoneInfo("America/New_York"))
+          snap_re = re.compile(r"^icc_live_usall_(\d{4})_(\d{4})(?:_r\d+)?\.csv$")
 
           def previous_business_day(d):
               d = d - timedelta(days=1)
@@ -89,37 +89,43 @@ jobs:
                   d -= timedelta(days=1)
               return d
 
+          # Use previous business day before market close; use today after market close.
           if now.weekday() >= 5:
               target_date = previous_business_day(now.date())
-              reason = 'weekend'
+              reason = "weekend"
           elif now.hour < 16:
               target_date = previous_business_day(now.date())
-              reason = 'before market close'
+              reason = "before market close"
           else:
               target_date = now.date()
-              reason = 'after market close'
+              reason = "after market close"
 
           latest_valid_date = None
-          latest_valid_file = None
-          for p in data_dir.glob('*/*.csv'):
+          latest_valid_file = ""
+          for p in data_dir.glob("*/*.csv"):
               m = snap_re.match(p.name)
               if not m:
                   continue
-              try:
-                  if p.stat().st_size <= 0:
-                      continue
-              except FileNotFoundError:
+              if p.stat().st_size <= 0:
                   continue
-              dt = datetime.strptime(f"{m.group(1)}{m.group(2)}", '%Y%m%d').date()
+              dt = datetime.strptime(f"{m.group(1)}{m.group(2)}", "%Y%m%d").date()
               if latest_valid_date is None or dt > latest_valid_date:
                   latest_valid_date = dt
                   latest_valid_file = str(p)
 
-          need_recalc = (latest_valid_date is None) or (latest_valid_date < target_date)
-          with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as f:
+          need_recalc = latest_valid_date is None or latest_valid_date < target_date
+
+          print(f"now_et={now.isoformat()}")
+          print(f"target_date={target_date.isoformat()}")
+          print(f"latest_valid_usall_date={latest_valid_date.isoformat() if latest_valid_date else ''}")
+          print(f"latest_valid_usall_file={latest_valid_file}")
+          print(f"need_recalc={need_recalc}")
+          print(f"reason={reason}")
+
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as f:
               f.write(f"target_date={target_date.isoformat()}\n")
               f.write(f"latest_valid_usall_date={latest_valid_date.isoformat() if latest_valid_date else ''}\n")
-              f.write(f"latest_valid_usall_file={latest_valid_file or ''}\n")
+              f.write(f"latest_valid_usall_file={latest_valid_file}\n")
               f.write(f"need_recalc={'true' if need_recalc else 'false'}\n")
               f.write(f"reason={reason}\n")
           PY
@@ -142,10 +148,11 @@ jobs:
         if: steps.guard.outputs.need_recalc == 'true'
         run: python backend/run_extra_indices.py
 
-      - name: Build docs data
+      - name: Build website data
         run: python backend/build_docs_data.py --universe usall
 
       - name: Generate FILES.md manifest if tool exists
+        shell: bash
         run: |
           if [ -f tools/generate_files_manifest.py ]; then
             python tools/generate_files_manifest.py
@@ -153,7 +160,7 @@ jobs:
             echo "tools/generate_files_manifest.py not found, skip."
           fi
 
-      - name: Commit raw data and site data back to repo
+      - name: Commit data outputs
         shell: bash
         env:
           BRANCH_NAME: ${{ github.ref_name }}
@@ -164,11 +171,11 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git fetch origin "${BRANCH}" || true
           ts=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
-          git add -A data docs FILES.md config || true
+          git add -A data docs FILES.md || true
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
-            git commit -m "Update ICC raw/site data ${ts} [skip ci]" || true
+            git commit -m "Update ICC library data ${ts} [skip ci]" || true
             git pull --rebase --autostash origin "${BRANCH}" || true
             git push origin HEAD:"${BRANCH}" || true
           fi
