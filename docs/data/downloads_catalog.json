@@ -1,2416 +1,2952 @@
 {
   "families": {
     "marketwide": {
-      "title": "Marketwide",
-      "latest_csv": "./data/downloads/family/marketwide/latest.csv",
-      "daily_history_csv": "./data/downloads/family/marketwide/daily_history.csv",
-      "monthly_history_csv": "./data/downloads/family/marketwide/monthly_history.csv",
-      "years": [
-        {
-          "year": "2026",
-          "download_all": "./data/downloads/family/marketwide/archive/2026.zip",
-          "months": [
-            {
-              "yyyymm": "202604",
-              "download_all": "./data/downloads/family/marketwide/archive/202604.zip",
-              "files": [
-                {
-                  "date": "2026-04-23",
-                  "download_path": "./data/downloads/family/marketwide/archive/202604/marketwide_2026_0423.csv",
-                  "filename": "marketwide_2026_0423.csv"
-                },
-                {
-                  "date": "2026-04-22",
-                  "download_path": "./data/downloads/family/marketwide/archive/202604/marketwide_2026_0422.csv",
-                  "filename": "marketwide_2026_0422.csv"
-                },
-                {
-                  "date": "2026-04-21",
-                  "download_path": "./data/downloads/family/marketwide/archive/202604/marketwide_2026_0421.csv",
-                  "filename": "marketwide_2026_0421.csv"
-                },
-                {
-                  "date": "2026-04-17",
-                  "download_path": "./data/downloads/family/marketwide/archive/202604/marketwide_2026_0417.csv",
-                  "filename": "marketwide_2026_0417.csv"
-                }
-              ]
-            }
-          ]
-        }
-      ]
+      "latest": "./data/downloads/marketwide/marketwide_latest.csv",
+      "daily": "./data/downloads/marketwide/marketwide_daily_history.csv",
+      "monthly": "./data/downloads/marketwide/marketwide_monthly_history.csv",
+      "zip": "./data/downloads/zip/marketwide_all.zip"
     },
     "value": {
-      "title": "Value Premium",
-      "latest_csv": "./data/downloads/family/value/latest.csv",
-      "daily_history_csv": "./data/downloads/family/value/daily_history.csv",
-      "monthly_history_csv": "./data/downloads/family/value/monthly_history.csv",
-      "years": [
-        {
-          "year": "2026",
-          "download_all": "./data/downloads/family/value/archive/2026.zip",
-          "months": [
-            {
-              "yyyymm": "202604",
-              "download_all": "./data/downloads/family/value/archive/202604.zip",
-              "files": [
-                {
-                  "date": "2026-04-23",
-                  "download_path": "./data/downloads/family/value/archive/202604/value_2026_0423.csv",
-                  "filename": "value_2026_0423.csv"
-                },
-                {
-                  "date": "2026-04-22",
-                  "download_path": "./data/downloads/family/value/archive/202604/value_2026_0422.csv",
-                  "filename": "value_2026_0422.csv"
-                },
-                {
-                  "date": "2026-04-21",
-                  "download_path": "./data/downloads/family/value/archive/202604/value_2026_0421.csv",
-                  "filename": "value_2026_0421.csv"
-                },
-                {
-                  "date": "2026-04-17",
-                  "download_path": "./data/downloads/family/value/archive/202604/value_2026_0417.csv",
-                  "filename": "value_2026_0417.csv"
-                }
-              ]
-            }
-          ]
-        }
-      ]
+      "latest": "./data/downloads/value/value_latest.csv",
+      "daily": "./data/downloads/value/value_daily_history.csv",
+      "monthly": "./data/downloads/value/value_monthly_history.csv",
+      "zip": "./data/downloads/zip/value_all.zip"
     },
     "industry": {
-      "title": "Industry",
-      "latest_csv": "./data/downloads/family/industry/latest.csv",
-      "daily_history_csv": "./data/downloads/family/industry/daily_history.csv",
-      "monthly_history_csv": "./data/downloads/family/industry/monthly_history.csv",
-      "years": [
-        {
-          "year": "2026",
-          "download_all": "./data/downloads/family/industry/archive/2026.zip",
-          "months": [
-            {
-              "yyyymm": "202604",
-              "download_all": "./data/downloads/family/industry/archive/202604.zip",
-              "files": [
-                {
-                  "date": "2026-04-23",
-                  "download_path": "./data/downloads/family/industry/archive/202604/industry_2026_0423.csv",
-                  "filename": "industry_2026_0423.csv"
-                },
-                {
-                  "date": "2026-04-22",
-                  "download_path": "./data/downloads/family/industry/archive/202604/industry_2026_0422.csv",
-                  "filename": "industry_2026_0422.csv"
-                },
-                {
-                  "date": "2026-04-21",
-                  "download_path": "./data/downloads/family/industry/archive/202604/industry_2026_0421.csv",
-                  "filename": "industry_2026_0421.csv"
-                },
-                {
-                  "date": "2026-04-17",
-                  "download_path": "./data/downloads/family/industry/archive/202604/industry_2026_0417.csv",
-                  "filename": "industry_2026_0417.csv"
-                }
-              ]
-            }
-          ]
-        }
-      ]
+      "latest": "./data/downloads/industry/industry_latest.csv",
+      "daily": "./data/downloads/industry/industry_daily_history.csv",
+      "monthly": "./data/downloads/industry/industry_monthly_history.csv",
+      "zip": "./data/downloads/zip/industry_all.zip"
     },
     "indices": {
-      "title": "Indices",
-      "latest_csv": "./data/downloads/family/indices/latest.csv",
-      "daily_history_csv": "./data/downloads/family/indices/daily_history.csv",
-      "monthly_history_csv": "./data/downloads/family/indices/monthly_history.csv",
-      "years": [
-        {
-          "year": "2026",
-          "download_all": "./data/downloads/family/indices/archive/2026.zip",
-          "months": [
-            {
-              "yyyymm": "202604",
-              "download_all": "./data/downloads/family/indices/archive/202604.zip",
-              "files": [
-                {
-                  "date": "2026-04-23",
-                  "download_path": "./data/downloads/family/indices/archive/202604/indices_2026_0423.csv",
-                  "filename": "indices_2026_0423.csv"
-                },
-                {
-                  "date": "2026-04-22",
-                  "download_path": "./data/downloads/family/indices/archive/202604/indices_2026_0422.csv",
-                  "filename": "indices_2026_0422.csv"
-                },
-                {
-                  "date": "2026-04-21",
-                  "download_path": "./data/downloads/family/indices/archive/202604/indices_2026_0421.csv",
-                  "filename": "indices_2026_0421.csv"
-                },
-                {
-                  "date": "2026-04-17",
-                  "download_path": "./data/downloads/family/indices/archive/202604/indices_2026_0417.csv",
-                  "filename": "indices_2026_0417.csv"
-                }
-              ]
-            }
-          ]
-        }
-      ]
+      "latest": "./data/downloads/indices/indices_latest.csv",
+      "daily": "./data/downloads/indices/indices_daily_history.csv",
+      "monthly": "./data/downloads/indices/indices_monthly_history.csv",
+      "zip": "./data/downloads/zip/indices_all.zip"
     },
     "etf": {
-      "title": "ETF",
-      "latest_csv": "./data/downloads/family/etf/latest.csv",
-      "daily_history_csv": "./data/downloads/family/etf/daily_history.csv",
-      "monthly_history_csv": "./data/downloads/family/etf/monthly_history.csv",
-      "years": [
-        {
-          "year": "2026",
-          "download_all": "./data/downloads/family/etf/archive/2026.zip",
-          "months": [
-            {
-              "yyyymm": "202604",
-              "download_all": "./data/downloads/family/etf/archive/202604.zip",
-              "files": [
-                {
-                  "date": "2026-04-23",
-                  "download_path": "./data/downloads/family/etf/archive/202604/etf_2026_0423.csv",
-                  "filename": "etf_2026_0423.csv"
-                },
-                {
-                  "date": "2026-04-22",
-                  "download_path": "./data/downloads/family/etf/archive/202604/etf_2026_0422.csv",
-                  "filename": "etf_2026_0422.csv"
-                },
-                {
-                  "date": "2026-04-21",
-                  "download_path": "./data/downloads/family/etf/archive/202604/etf_2026_0421.csv",
-                  "filename": "etf_2026_0421.csv"
-                },
-                {
-                  "date": "2026-04-17",
-                  "download_path": "./data/downloads/family/etf/archive/202604/etf_2026_0417.csv",
-                  "filename": "etf_2026_0417.csv"
-                }
-              ]
-            }
-          ]
-        }
-      ]
+      "latest": "./data/downloads/etf/etf_latest.csv",
+      "daily": "./data/downloads/etf/etf_daily_history.csv",
+      "monthly": "./data/downloads/etf/etf_monthly_history.csv",
+      "zip": "./data/downloads/zip/etf_all.zip"
     },
     "country": {
-      "title": "Country",
-      "latest_csv": "./data/downloads/family/country/latest.csv",
-      "daily_history_csv": "./data/downloads/family/country/daily_history.csv",
-      "monthly_history_csv": "./data/downloads/family/country/monthly_history.csv",
-      "years": [
-        {
-          "year": "2026",
-          "download_all": "./data/downloads/family/country/archive/2026.zip",
-          "months": [
-            {
-              "yyyymm": "202604",
-              "download_all": "./data/downloads/family/country/archive/202604.zip",
-              "files": [
-                {
-                  "date": "2026-04-23",
-                  "download_path": "./data/downloads/family/country/archive/202604/country_2026_0423.csv",
-                  "filename": "country_2026_0423.csv"
-                },
-                {
-                  "date": "2026-04-22",
-                  "download_path": "./data/downloads/family/country/archive/202604/country_2026_0422.csv",
-                  "filename": "country_2026_0422.csv"
-                },
-                {
-                  "date": "2026-04-21",
-                  "download_path": "./data/downloads/family/country/archive/202604/country_2026_0421.csv",
-                  "filename": "country_2026_0421.csv"
-                },
-                {
-                  "date": "2026-04-17",
-                  "download_path": "./data/downloads/family/country/archive/202604/country_2026_0417.csv",
-                  "filename": "country_2026_0417.csv"
-                }
-              ]
-            }
-          ]
-        }
-      ]
+      "latest": "./data/downloads/country/country_latest.csv",
+      "daily": "./data/downloads/country/country_daily_history.csv",
+      "monthly": "./data/downloads/country/country_monthly_history.csv",
+      "zip": "./data/downloads/zip/country_all.zip"
     }
   },
-  "raw": {
-    "usall": [
-      {
-        "year": "2026",
-        "download_all": "./data/downloads/raw/usall/2026.zip",
-        "months": [
-          {
-            "yyyymm": "202604",
-            "download_all": "./data/downloads/raw/usall/202604.zip",
-            "files": [
-              {
-                "date": "2026-04-23",
-                "universe": "usall",
-                "n_firms": 2724,
-                "download_path": "./data/downloads/raw/usall/202604/icc_live_usall_2026_0423_r1.csv",
-                "filename": "icc_live_usall_2026_0423_r1.csv"
-              },
-              {
-                "date": "2026-04-22",
-                "universe": "usall",
-                "n_firms": 2709,
-                "download_path": "./data/downloads/raw/usall/202604/icc_live_usall_2026_0422_r1.csv",
-                "filename": "icc_live_usall_2026_0422_r1.csv"
-              },
-              {
-                "date": "2026-04-21",
-                "universe": "usall",
-                "n_firms": 2706,
-                "download_path": "./data/downloads/raw/usall/202604/icc_live_usall_2026_0421_r1.csv",
-                "filename": "icc_live_usall_2026_0421_r1.csv"
-              },
-              {
-                "date": "2026-04-20",
-                "universe": "usall",
-                "n_firms": 2706,
-                "download_path": "./data/downloads/raw/usall/202604/icc_live_usall_2026_0420.csv",
-                "filename": "icc_live_usall_2026_0420.csv"
-              },
-              {
-                "date": "2026-04-17",
-                "universe": "usall",
-                "n_firms": 2723,
-                "download_path": "./data/downloads/raw/usall/202604/icc_live_usall_2026_0417_r1.csv",
-                "filename": "icc_live_usall_2026_0417_r1.csv"
-              },
-              {
-                "date": "2026-04-16",
-                "universe": "usall",
-                "n_firms": 2724,
-                "download_path": "./data/downloads/raw/usall/202604/icc_live_usall_2026_0416_r1.csv",
-                "filename": "icc_live_usall_2026_0416_r1.csv"
-              },
-              {
-                "date": "2026-04-15",
-                "universe": "usall",
-                "n_firms": 2720,
-                "download_path": "./data/downloads/raw/usall/202604/icc_live_usall_2026_0415_r1.csv",
-                "filename": "icc_live_usall_2026_0415_r1.csv"
-              },
-              {
-                "date": "2026-04-14",
-                "universe": "usall",
-                "n_firms": 2721,
-                "download_path": "./data/downloads/raw/usall/202604/icc_live_usall_2026_0414_r1.csv",
-                "filename": "icc_live_usall_2026_0414_r1.csv"
-              },
-              {
-                "date": "2026-04-13",
-                "universe": "usall",
-                "n_firms": 2719,
-                "download_path": "./data/downloads/raw/usall/202604/icc_live_usall_2026_0413_r3.csv",
-                "filename": "icc_live_usall_2026_0413_r3.csv"
-              },
-              {
-                "date": "2026-04-10",
-                "universe": "usall",
-                "n_firms": 2721,
-                "download_path": "./data/downloads/raw/usall/202604/icc_live_usall_2026_0410_r1.csv",
-                "filename": "icc_live_usall_2026_0410_r1.csv"
-              },
-              {
-                "date": "2026-04-09",
-                "universe": "usall",
-                "n_firms": 2726,
-                "download_path": "./data/downloads/raw/usall/202604/icc_live_usall_2026_0409_r1.csv",
-                "filename": "icc_live_usall_2026_0409_r1.csv"
-              },
-              {
-                "date": "2026-04-08",
-                "universe": "usall",
-                "n_firms": 2724,
-                "download_path": "./data/downloads/raw/usall/202604/icc_live_usall_2026_0408_r1.csv",
-                "filename": "icc_live_usall_2026_0408_r1.csv"
-              },
-              {
-                "date": "2026-04-07",
-                "universe": "usall",
-                "n_firms": 2726,
-                "download_path": "./data/downloads/raw/usall/202604/icc_live_usall_2026_0407_r1.csv",
-                "filename": "icc_live_usall_2026_0407_r1.csv"
-              },
-              {
-                "date": "2026-04-06",
-                "universe": "usall",
-                "n_firms": 2726,
-                "download_path": "./data/downloads/raw/usall/202604/icc_live_usall_2026_0406_r1.csv",
-                "filename": "icc_live_usall_2026_0406_r1.csv"
-              },
-              {
-                "date": "2026-04-03",
-                "universe": "usall",
-                "n_firms": 2724,
-                "download_path": "./data/downloads/raw/usall/202604/icc_live_usall_2026_0403_r1.csv",
-                "filename": "icc_live_usall_2026_0403_r1.csv"
-              },
-              {
-                "date": "2026-04-02",
-                "universe": "usall",
-                "n_firms": 2728,
-                "download_path": "./data/downloads/raw/usall/202604/icc_live_usall_2026_0402_r1.csv",
-                "filename": "icc_live_usall_2026_0402_r1.csv"
-              },
-              {
-                "date": "2026-04-01",
-                "universe": "usall",
-                "n_firms": 2729,
-                "download_path": "./data/downloads/raw/usall/202604/icc_live_usall_2026_0401_r1.csv",
-                "filename": "icc_live_usall_2026_0401_r1.csv"
-              }
-            ]
-          },
-          {
-            "yyyymm": "202603",
-            "download_all": "./data/downloads/raw/usall/202603.zip",
-            "files": [
-              {
-                "date": "2026-03-31",
-                "universe": "usall",
-                "n_firms": 2721,
-                "download_path": "./data/downloads/raw/usall/202603/icc_live_usall_2026_0331_r1.csv",
-                "filename": "icc_live_usall_2026_0331_r1.csv"
-              },
-              {
-                "date": "2026-03-30",
-                "universe": "usall",
-                "n_firms": 2721,
-                "download_path": "./data/downloads/raw/usall/202603/icc_live_usall_2026_0330_r1.csv",
-                "filename": "icc_live_usall_2026_0330_r1.csv"
-              },
-              {
-                "date": "2026-03-27",
-                "universe": "usall",
-                "n_firms": 2721,
-                "download_path": "./data/downloads/raw/usall/202603/icc_live_usall_2026_0327_r1.csv",
-                "filename": "icc_live_usall_2026_0327_r1.csv"
-              },
-              {
-                "date": "2026-03-26",
-                "universe": "usall",
-                "n_firms": 2719,
-                "download_path": "./data/downloads/raw/usall/202603/icc_live_usall_2026_0326_r1.csv",
-                "filename": "icc_live_usall_2026_0326_r1.csv"
-              },
-              {
-                "date": "2026-03-25",
-                "universe": "usall",
-                "n_firms": 2711,
-                "download_path": "./data/downloads/raw/usall/202603/icc_live_usall_2026_0325_r1.csv",
-                "filename": "icc_live_usall_2026_0325_r1.csv"
-              },
-              {
-                "date": "2026-03-24",
-                "universe": "usall",
-                "n_firms": 2708,
-                "download_path": "./data/downloads/raw/usall/202603/icc_live_usall_2026_0324_r1.csv",
-                "filename": "icc_live_usall_2026_0324_r1.csv"
-              },
-              {
-                "date": "2026-03-23",
-                "universe": "usall",
-                "n_firms": 2709,
-                "download_path": "./data/downloads/raw/usall/202603/icc_live_usall_2026_0323_r1.csv",
-                "filename": "icc_live_usall_2026_0323_r1.csv"
-              },
-              {
-                "date": "2026-03-20",
-                "universe": "usall",
-                "n_firms": 2711,
-                "download_path": "./data/downloads/raw/usall/202603/icc_live_usall_2026_0320_r1.csv",
-                "filename": "icc_live_usall_2026_0320_r1.csv"
-              },
-              {
-                "date": "2026-03-19",
-                "universe": "usall",
-                "n_firms": 2709,
-                "download_path": "./data/downloads/raw/usall/202603/icc_live_usall_2026_0319_r1.csv",
-                "filename": "icc_live_usall_2026_0319_r1.csv"
-              },
-              {
-                "date": "2026-03-18",
-                "universe": "usall",
-                "n_firms": 2708,
-                "download_path": "./data/downloads/raw/usall/202603/icc_live_usall_2026_0318_r1.csv",
-                "filename": "icc_live_usall_2026_0318_r1.csv"
-              },
-              {
-                "date": "2026-03-17",
-                "universe": "usall",
-                "n_firms": 2703,
-                "download_path": "./data/downloads/raw/usall/202603/icc_live_usall_2026_0317_r1.csv",
-                "filename": "icc_live_usall_2026_0317_r1.csv"
-              },
-              {
-                "date": "2026-03-16",
-                "universe": "usall",
-                "n_firms": 2700,
-                "download_path": "./data/downloads/raw/usall/202603/icc_live_usall_2026_0316_r1.csv",
-                "filename": "icc_live_usall_2026_0316_r1.csv"
-              },
-              {
-                "date": "2026-03-13",
-                "universe": "usall",
-                "n_firms": 2700,
-                "download_path": "./data/downloads/raw/usall/202603/icc_live_usall_2026_0313_r1.csv",
-                "filename": "icc_live_usall_2026_0313_r1.csv"
-              },
-              {
-                "date": "2026-03-12",
-                "universe": "usall",
-                "n_firms": 2696,
-                "download_path": "./data/downloads/raw/usall/202603/icc_live_usall_2026_0312_r1.csv",
-                "filename": "icc_live_usall_2026_0312_r1.csv"
-              },
-              {
-                "date": "2026-03-11",
-                "universe": "usall",
-                "n_firms": 2696,
-                "download_path": "./data/downloads/raw/usall/202603/icc_live_usall_2026_0311_r1.csv",
-                "filename": "icc_live_usall_2026_0311_r1.csv"
-              },
-              {
-                "date": "2026-03-10",
-                "universe": "usall",
-                "n_firms": 2694,
-                "download_path": "./data/downloads/raw/usall/202603/icc_live_usall_2026_0310_r1.csv",
-                "filename": "icc_live_usall_2026_0310_r1.csv"
-              },
-              {
-                "date": "2026-03-09",
-                "universe": "usall",
-                "n_firms": 2692,
-                "download_path": "./data/downloads/raw/usall/202603/icc_live_usall_2026_0309_r1.csv",
-                "filename": "icc_live_usall_2026_0309_r1.csv"
-              },
-              {
-                "date": "2026-03-06",
-                "universe": "usall",
-                "n_firms": 2691,
-                "download_path": "./data/downloads/raw/usall/202603/icc_live_usall_2026_0306_r1.csv",
-                "filename": "icc_live_usall_2026_0306_r1.csv"
-              },
-              {
-                "date": "2026-03-05",
-                "universe": "usall",
-                "n_firms": 2689,
-                "download_path": "./data/downloads/raw/usall/202603/icc_live_usall_2026_0305_r1.csv",
-                "filename": "icc_live_usall_2026_0305_r1.csv"
-              },
-              {
-                "date": "2026-03-04",
-                "universe": "usall",
-                "n_firms": 2684,
-                "download_path": "./data/downloads/raw/usall/202603/icc_live_usall_2026_0304_r1.csv",
-                "filename": "icc_live_usall_2026_0304_r1.csv"
-              },
-              {
-                "date": "2026-03-03",
-                "universe": "usall",
-                "n_firms": 2685,
-                "download_path": "./data/downloads/raw/usall/202603/icc_live_usall_2026_0303_r1.csv",
-                "filename": "icc_live_usall_2026_0303_r1.csv"
-              },
-              {
-                "date": "2026-03-02",
-                "universe": "usall",
-                "n_firms": 2686,
-                "download_path": "./data/downloads/raw/usall/202603/icc_live_usall_2026_0302_r1.csv",
-                "filename": "icc_live_usall_2026_0302_r1.csv"
-              }
-            ]
-          },
-          {
-            "yyyymm": "202602",
-            "download_all": "./data/downloads/raw/usall/202602.zip",
-            "files": [
-              {
-                "date": "2026-02-27",
-                "universe": "usall",
-                "n_firms": 2686,
-                "download_path": "./data/downloads/raw/usall/202602/icc_live_usall_2026_0227_r1.csv",
-                "filename": "icc_live_usall_2026_0227_r1.csv"
-              },
-              {
-                "date": "2026-02-26",
-                "universe": "usall",
-                "n_firms": 2684,
-                "download_path": "./data/downloads/raw/usall/202602/icc_live_usall_2026_0226_r1.csv",
-                "filename": "icc_live_usall_2026_0226_r1.csv"
-              },
-              {
-                "date": "2026-02-25",
-                "universe": "usall",
-                "n_firms": 2681,
-                "download_path": "./data/downloads/raw/usall/202602/icc_live_usall_2026_0225_r1.csv",
-                "filename": "icc_live_usall_2026_0225_r1.csv"
-              },
-              {
-                "date": "2026-02-24",
-                "universe": "usall",
-                "n_firms": 2677,
-                "download_path": "./data/downloads/raw/usall/202602/icc_live_usall_2026_0224_r1.csv",
-                "filename": "icc_live_usall_2026_0224_r1.csv"
-              },
-              {
-                "date": "2026-02-23",
-                "universe": "usall",
-                "n_firms": 2675,
-                "download_path": "./data/downloads/raw/usall/202602/icc_live_usall_2026_0223_r1.csv",
-                "filename": "icc_live_usall_2026_0223_r1.csv"
-              },
-              {
-                "date": "2026-02-20",
-                "universe": "usall",
-                "n_firms": 2680,
-                "download_path": "./data/downloads/raw/usall/202602/icc_live_usall_2026_0220_r1.csv",
-                "filename": "icc_live_usall_2026_0220_r1.csv"
-              },
-              {
-                "date": "2026-02-19",
-                "universe": "usall",
-                "n_firms": 2677,
-                "download_path": "./data/downloads/raw/usall/202602/icc_live_usall_2026_0219_r1.csv",
-                "filename": "icc_live_usall_2026_0219_r1.csv"
-              },
-              {
-                "date": "2026-02-18",
-                "universe": "usall",
-                "n_firms": 2674,
-                "download_path": "./data/downloads/raw/usall/202602/icc_live_usall_2026_0218_r1.csv",
-                "filename": "icc_live_usall_2026_0218_r1.csv"
-              },
-              {
-                "date": "2026-02-17",
-                "universe": "usall",
-                "n_firms": 2669,
-                "download_path": "./data/downloads/raw/usall/202602/icc_live_usall_2026_0217_r1.csv",
-                "filename": "icc_live_usall_2026_0217_r1.csv"
-              },
-              {
-                "date": "2026-02-16",
-                "universe": "usall",
-                "n_firms": 2667,
-                "download_path": "./data/downloads/raw/usall/202602/icc_live_usall_2026_0216_r1.csv",
-                "filename": "icc_live_usall_2026_0216_r1.csv"
-              },
-              {
-                "date": "2026-02-13",
-                "universe": "usall",
-                "n_firms": 2671,
-                "download_path": "./data/downloads/raw/usall/202602/icc_live_usall_2026_0213_r1.csv",
-                "filename": "icc_live_usall_2026_0213_r1.csv"
-              },
-              {
-                "date": "2026-02-12",
-                "universe": "usall",
-                "n_firms": 2670,
-                "download_path": "./data/downloads/raw/usall/202602/icc_live_usall_2026_0212_r1.csv",
-                "filename": "icc_live_usall_2026_0212_r1.csv"
-              },
-              {
-                "date": "2026-02-11",
-                "universe": "usall",
-                "n_firms": 2670,
-                "download_path": "./data/downloads/raw/usall/202602/icc_live_usall_2026_0211_r1.csv",
-                "filename": "icc_live_usall_2026_0211_r1.csv"
-              },
-              {
-                "date": "2026-02-10",
-                "universe": "usall",
-                "n_firms": 2677,
-                "download_path": "./data/downloads/raw/usall/202602/icc_live_usall_2026_0210_r1.csv",
-                "filename": "icc_live_usall_2026_0210_r1.csv"
-              },
-              {
-                "date": "2026-02-09",
-                "universe": "usall",
-                "n_firms": 2675,
-                "download_path": "./data/downloads/raw/usall/202602/icc_live_usall_2026_0209_r1.csv",
-                "filename": "icc_live_usall_2026_0209_r1.csv"
-              },
-              {
-                "date": "2026-02-06",
-                "universe": "usall",
-                "n_firms": 2678,
-                "download_path": "./data/downloads/raw/usall/202602/icc_live_usall_2026_0206_r1.csv",
-                "filename": "icc_live_usall_2026_0206_r1.csv"
-              },
-              {
-                "date": "2026-02-05",
-                "universe": "usall",
-                "n_firms": 2680,
-                "download_path": "./data/downloads/raw/usall/202602/icc_live_usall_2026_0205_r1.csv",
-                "filename": "icc_live_usall_2026_0205_r1.csv"
-              },
-              {
-                "date": "2026-02-04",
-                "universe": "usall",
-                "n_firms": 2679,
-                "download_path": "./data/downloads/raw/usall/202602/icc_live_usall_2026_0204_r1.csv",
-                "filename": "icc_live_usall_2026_0204_r1.csv"
-              },
-              {
-                "date": "2026-02-03",
-                "universe": "usall",
-                "n_firms": 2679,
-                "download_path": "./data/downloads/raw/usall/202602/icc_live_usall_2026_0203_r1.csv",
-                "filename": "icc_live_usall_2026_0203_r1.csv"
-              }
-            ]
-          },
-          {
-            "yyyymm": "202601",
-            "download_all": "./data/downloads/raw/usall/202601.zip",
-            "files": [
-              {
-                "date": "2026-01-30",
-                "universe": "usall",
-                "n_firms": 2684,
-                "download_path": "./data/downloads/raw/usall/202601/icc_live_usall_2026_0130_r1.csv",
-                "filename": "icc_live_usall_2026_0130_r1.csv"
-              },
-              {
-                "date": "2026-01-29",
-                "universe": "usall",
-                "n_firms": 2686,
-                "download_path": "./data/downloads/raw/usall/202601/icc_live_usall_2026_0129_r1.csv",
-                "filename": "icc_live_usall_2026_0129_r1.csv"
-              },
-              {
-                "date": "2026-01-28",
-                "universe": "usall",
-                "n_firms": 2685,
-                "download_path": "./data/downloads/raw/usall/202601/icc_live_usall_2026_0128_r1.csv",
-                "filename": "icc_live_usall_2026_0128_r1.csv"
-              },
-              {
-                "date": "2026-01-27",
-                "universe": "usall",
-                "n_firms": 2685,
-                "download_path": "./data/downloads/raw/usall/202601/icc_live_usall_2026_0127_r1.csv",
-                "filename": "icc_live_usall_2026_0127_r1.csv"
-              },
-              {
-                "date": "2026-01-26",
-                "universe": "usall",
-                "n_firms": 2686,
-                "download_path": "./data/downloads/raw/usall/202601/icc_live_usall_2026_0126_r1.csv",
-                "filename": "icc_live_usall_2026_0126_r1.csv"
-              },
-              {
-                "date": "2026-01-23",
-                "universe": "usall",
-                "n_firms": 2686,
-                "download_path": "./data/downloads/raw/usall/202601/icc_live_usall_2026_0123_r1.csv",
-                "filename": "icc_live_usall_2026_0123_r1.csv"
-              },
-              {
-                "date": "2026-01-22",
-                "universe": "usall",
-                "n_firms": 2685,
-                "download_path": "./data/downloads/raw/usall/202601/icc_live_usall_2026_0122_r1.csv",
-                "filename": "icc_live_usall_2026_0122_r1.csv"
-              },
-              {
-                "date": "2026-01-21",
-                "universe": "usall",
-                "n_firms": 2684,
-                "download_path": "./data/downloads/raw/usall/202601/icc_live_usall_2026_0121_r1.csv",
-                "filename": "icc_live_usall_2026_0121_r1.csv"
-              },
-              {
-                "date": "2026-01-20",
-                "universe": "usall",
-                "n_firms": 3281,
-                "download_path": "./data/downloads/raw/usall/202601/icc_live_usall_2026_0120_r1.csv",
-                "filename": "icc_live_usall_2026_0120_r1.csv"
-              },
-              {
-                "date": "2026-01-19",
-                "universe": "usall",
-                "n_firms": 3277,
-                "download_path": "./data/downloads/raw/usall/202601/icc_live_usall_2026_0119_r1.csv",
-                "filename": "icc_live_usall_2026_0119_r1.csv"
-              },
-              {
-                "date": "2026-01-16",
-                "universe": "usall",
-                "n_firms": 3277,
-                "download_path": "./data/downloads/raw/usall/202601/icc_live_usall_2026_0116_r1.csv",
-                "filename": "icc_live_usall_2026_0116_r1.csv"
-              },
-              {
-                "date": "2026-01-15",
-                "universe": "usall",
-                "n_firms": 3277,
-                "download_path": "./data/downloads/raw/usall/202601/icc_live_usall_2026_0115_r1.csv",
-                "filename": "icc_live_usall_2026_0115_r1.csv"
-              },
-              {
-                "date": "2026-01-14",
-                "universe": "usall",
-                "n_firms": 3279,
-                "download_path": "./data/downloads/raw/usall/202601/icc_live_usall_2026_0114_r1.csv",
-                "filename": "icc_live_usall_2026_0114_r1.csv"
-              },
-              {
-                "date": "2026-01-13",
-                "universe": "usall",
-                "n_firms": 3278,
-                "download_path": "./data/downloads/raw/usall/202601/icc_live_usall_2026_0113_r1.csv",
-                "filename": "icc_live_usall_2026_0113_r1.csv"
-              },
-              {
-                "date": "2026-01-12",
-                "universe": "usall",
-                "n_firms": 3277,
-                "download_path": "./data/downloads/raw/usall/202601/icc_live_usall_2026_0112_r1.csv",
-                "filename": "icc_live_usall_2026_0112_r1.csv"
-              },
-              {
-                "date": "2026-01-09",
-                "universe": "usall",
-                "n_firms": 3276,
-                "download_path": "./data/downloads/raw/usall/202601/icc_live_usall_2026_0109_r1.csv",
-                "filename": "icc_live_usall_2026_0109_r1.csv"
-              },
-              {
-                "date": "2026-01-08",
-                "universe": "usall",
-                "n_firms": 3276,
-                "download_path": "./data/downloads/raw/usall/202601/icc_live_usall_2026_0108_r1.csv",
-                "filename": "icc_live_usall_2026_0108_r1.csv"
-              },
-              {
-                "date": "2026-01-07",
-                "universe": "usall",
-                "n_firms": 3276,
-                "download_path": "./data/downloads/raw/usall/202601/icc_live_usall_2026_0107_r1.csv",
-                "filename": "icc_live_usall_2026_0107_r1.csv"
-              },
-              {
-                "date": "2026-01-06",
-                "universe": "usall",
-                "n_firms": 3277,
-                "download_path": "./data/downloads/raw/usall/202601/icc_live_usall_2026_0106_r1.csv",
-                "filename": "icc_live_usall_2026_0106_r1.csv"
-              },
-              {
-                "date": "2026-01-05",
-                "universe": "usall",
-                "n_firms": 3275,
-                "download_path": "./data/downloads/raw/usall/202601/icc_live_usall_2026_0105_r1.csv",
-                "filename": "icc_live_usall_2026_0105_r1.csv"
-              },
-              {
-                "date": "2026-01-02",
-                "universe": "usall",
-                "n_firms": 3200,
-                "download_path": "./data/downloads/raw/usall/202601/icc_live_usall_2026_0102.csv",
-                "filename": "icc_live_usall_2026_0102.csv"
-              },
-              {
-                "date": "2026-01-01",
-                "universe": "usall",
-                "n_firms": 3198,
-                "download_path": "./data/downloads/raw/usall/202601/icc_live_usall_2026_0101.csv",
-                "filename": "icc_live_usall_2026_0101.csv"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "year": "2025",
-        "download_all": "./data/downloads/raw/usall/2025.zip",
-        "months": [
-          {
-            "yyyymm": "202512",
-            "download_all": "./data/downloads/raw/usall/202512.zip",
-            "files": [
-              {
-                "date": "2025-12-31",
-                "universe": "usall",
-                "n_firms": 3197,
-                "download_path": "./data/downloads/raw/usall/202512/icc_live_usall_2025_1231.csv",
-                "filename": "icc_live_usall_2025_1231.csv"
-              },
-              {
-                "date": "2025-12-30",
-                "universe": "usall",
-                "n_firms": 3197,
-                "download_path": "./data/downloads/raw/usall/202512/icc_live_usall_2025_1230.csv",
-                "filename": "icc_live_usall_2025_1230.csv"
-              },
-              {
-                "date": "2025-12-29",
-                "universe": "usall",
-                "n_firms": 3197,
-                "download_path": "./data/downloads/raw/usall/202512/icc_live_usall_2025_1229.csv",
-                "filename": "icc_live_usall_2025_1229.csv"
-              },
-              {
-                "date": "2025-12-26",
-                "universe": "usall",
-                "n_firms": 3197,
-                "download_path": "./data/downloads/raw/usall/202512/icc_live_usall_2025_1226.csv",
-                "filename": "icc_live_usall_2025_1226.csv"
-              },
-              {
-                "date": "2025-12-25",
-                "universe": "usall",
-                "n_firms": 3198,
-                "download_path": "./data/downloads/raw/usall/202512/icc_live_usall_2025_1225.csv",
-                "filename": "icc_live_usall_2025_1225.csv"
-              },
-              {
-                "date": "2025-12-24",
-                "universe": "usall",
-                "n_firms": 3202,
-                "download_path": "./data/downloads/raw/usall/202512/icc_live_usall_2025_1224.csv",
-                "filename": "icc_live_usall_2025_1224.csv"
-              },
-              {
-                "date": "2025-12-23",
-                "universe": "usall",
-                "n_firms": 3203,
-                "download_path": "./data/downloads/raw/usall/202512/icc_live_usall_2025_1223.csv",
-                "filename": "icc_live_usall_2025_1223.csv"
-              },
-              {
-                "date": "2025-12-22",
-                "universe": "usall",
-                "n_firms": 3203,
-                "download_path": "./data/downloads/raw/usall/202512/icc_live_usall_2025_1222.csv",
-                "filename": "icc_live_usall_2025_1222.csv"
-              },
-              {
-                "date": "2025-12-19",
-                "universe": "usall",
-                "n_firms": 3202,
-                "download_path": "./data/downloads/raw/usall/202512/icc_live_usall_2025_1219.csv",
-                "filename": "icc_live_usall_2025_1219.csv"
-              },
-              {
-                "date": "2025-12-18",
-                "universe": "usall",
-                "n_firms": 3202,
-                "download_path": "./data/downloads/raw/usall/202512/icc_live_usall_2025_1218.csv",
-                "filename": "icc_live_usall_2025_1218.csv"
-              },
-              {
-                "date": "2025-12-17",
-                "universe": "usall",
-                "n_firms": 3205,
-                "download_path": "./data/downloads/raw/usall/202512/icc_live_usall_2025_1217.csv",
-                "filename": "icc_live_usall_2025_1217.csv"
-              },
-              {
-                "date": "2025-12-16",
-                "universe": "usall",
-                "n_firms": 3208,
-                "download_path": "./data/downloads/raw/usall/202512/icc_live_usall_2025_1216.csv",
-                "filename": "icc_live_usall_2025_1216.csv"
-              },
-              {
-                "date": "2025-12-15",
-                "universe": "usall",
-                "n_firms": 3210,
-                "download_path": "./data/downloads/raw/usall/202512/icc_live_usall_2025_1215.csv",
-                "filename": "icc_live_usall_2025_1215.csv"
-              },
-              {
-                "date": "2025-12-12",
-                "universe": "usall",
-                "n_firms": 3210,
-                "download_path": "./data/downloads/raw/usall/202512/icc_live_usall_2025_1212.csv",
-                "filename": "icc_live_usall_2025_1212.csv"
-              },
-              {
-                "date": "2025-12-11",
-                "universe": "usall",
-                "n_firms": 3214,
-                "download_path": "./data/downloads/raw/usall/202512/icc_live_usall_2025_1211.csv",
-                "filename": "icc_live_usall_2025_1211.csv"
-              },
-              {
-                "date": "2025-12-10",
-                "universe": "usall",
-                "n_firms": 3213,
-                "download_path": "./data/downloads/raw/usall/202512/icc_live_usall_2025_1210.csv",
-                "filename": "icc_live_usall_2025_1210.csv"
-              },
-              {
-                "date": "2025-12-09",
-                "universe": "usall",
-                "n_firms": 3193,
-                "download_path": "./data/downloads/raw/usall/202512/icc_live_usall_2025_1209.csv",
-                "filename": "icc_live_usall_2025_1209.csv"
-              },
-              {
-                "date": "2025-12-08",
-                "universe": "usall",
-                "n_firms": 3191,
-                "download_path": "./data/downloads/raw/usall/202512/icc_live_usall_2025_1208.csv",
-                "filename": "icc_live_usall_2025_1208.csv"
-              },
-              {
-                "date": "2025-12-05",
-                "universe": "usall",
-                "n_firms": 3192,
-                "download_path": "./data/downloads/raw/usall/202512/icc_live_usall_2025_1205.csv",
-                "filename": "icc_live_usall_2025_1205.csv"
-              },
-              {
-                "date": "2025-12-04",
-                "universe": "usall",
-                "n_firms": 3190,
-                "download_path": "./data/downloads/raw/usall/202512/icc_live_usall_2025_1204.csv",
-                "filename": "icc_live_usall_2025_1204.csv"
-              },
-              {
-                "date": "2025-12-03",
-                "universe": "usall",
-                "n_firms": 3188,
-                "download_path": "./data/downloads/raw/usall/202512/icc_live_usall_2025_1203.csv",
-                "filename": "icc_live_usall_2025_1203.csv"
-              },
-              {
-                "date": "2025-12-02",
-                "universe": "usall",
-                "n_firms": 3186,
-                "download_path": "./data/downloads/raw/usall/202512/icc_live_usall_2025_1202.csv",
-                "filename": "icc_live_usall_2025_1202.csv"
-              },
-              {
-                "date": "2025-12-01",
-                "universe": "usall",
-                "n_firms": 3185,
-                "download_path": "./data/downloads/raw/usall/202512/icc_live_usall_2025_1201.csv",
-                "filename": "icc_live_usall_2025_1201.csv"
-              }
-            ]
-          },
-          {
-            "yyyymm": "202511",
-            "download_all": "./data/downloads/raw/usall/202511.zip",
-            "files": [
-              {
-                "date": "2025-11-28",
-                "universe": "usall",
-                "n_firms": 3189,
-                "download_path": "./data/downloads/raw/usall/202511/icc_live_usall_2025_1128.csv",
-                "filename": "icc_live_usall_2025_1128.csv"
-              },
-              {
-                "date": "2025-11-27",
-                "universe": "usall",
-                "n_firms": 3189,
-                "download_path": "./data/downloads/raw/usall/202511/icc_live_usall_2025_1127.csv",
-                "filename": "icc_live_usall_2025_1127.csv"
-              },
-              {
-                "date": "2025-11-26",
-                "universe": "usall",
-                "n_firms": 3190,
-                "download_path": "./data/downloads/raw/usall/202511/icc_live_usall_2025_1126.csv",
-                "filename": "icc_live_usall_2025_1126.csv"
-              },
-              {
-                "date": "2025-11-24",
-                "universe": "usall",
-                "n_firms": 3186,
-                "download_path": "./data/downloads/raw/usall/202511/icc_live_usall_2025_1124.csv",
-                "filename": "icc_live_usall_2025_1124.csv"
-              },
-              {
-                "date": "2025-11-20",
-                "universe": "usall",
-                "n_firms": 3190,
-                "download_path": "./data/downloads/raw/usall/202511/icc_live_usall_2025_1120.csv",
-                "filename": "icc_live_usall_2025_1120.csv"
-              },
-              {
-                "date": "2025-11-19",
-                "universe": "usall",
-                "n_firms": 3191,
-                "download_path": "./data/downloads/raw/usall/202511/icc_live_usall_2025_1119.csv",
-                "filename": "icc_live_usall_2025_1119.csv"
-              },
-              {
-                "date": "2025-11-18",
-                "universe": "usall",
-                "n_firms": 3187,
-                "download_path": "./data/downloads/raw/usall/202511/icc_live_usall_2025_1118.csv",
-                "filename": "icc_live_usall_2025_1118.csv"
-              },
-              {
-                "date": "2025-11-17",
-                "universe": "usall",
-                "n_firms": 3187,
-                "download_path": "./data/downloads/raw/usall/202511/icc_live_usall_2025_1117.csv",
-                "filename": "icc_live_usall_2025_1117.csv"
-              },
-              {
-                "date": "2025-11-14",
-                "universe": "usall",
-                "n_firms": 3178,
-                "download_path": "./data/downloads/raw/usall/202511/icc_live_usall_2025_1114.csv",
-                "filename": "icc_live_usall_2025_1114.csv"
-              },
-              {
-                "date": "2025-11-13",
-                "universe": "usall",
-                "n_firms": 3177,
-                "download_path": "./data/downloads/raw/usall/202511/icc_live_usall_2025_1113.csv",
-                "filename": "icc_live_usall_2025_1113.csv"
-              },
-              {
-                "date": "2025-11-12",
-                "universe": "usall",
-                "n_firms": 3180,
-                "download_path": "./data/downloads/raw/usall/202511/icc_live_usall_2025_1112.csv",
-                "filename": "icc_live_usall_2025_1112.csv"
-              },
-              {
-                "date": "2025-11-11",
-                "universe": "usall",
-                "n_firms": 3180,
-                "download_path": "./data/downloads/raw/usall/202511/icc_live_usall_2025_1111.csv",
-                "filename": "icc_live_usall_2025_1111.csv"
-              },
-              {
-                "date": "2025-11-10",
-                "universe": "usall",
-                "n_firms": 3182,
-                "download_path": "./data/downloads/raw/usall/202511/icc_live_usall_2025_1110.csv",
-                "filename": "icc_live_usall_2025_1110.csv"
-              },
-              {
-                "date": "2025-11-07",
-                "universe": "usall",
-                "n_firms": 3177,
-                "download_path": "./data/downloads/raw/usall/202511/icc_live_usall_2025_1107.csv",
-                "filename": "icc_live_usall_2025_1107.csv"
-              },
-              {
-                "date": "2025-11-06",
-                "universe": "usall",
-                "n_firms": 3183,
-                "download_path": "./data/downloads/raw/usall/202511/icc_live_usall_2025_1106.csv",
-                "filename": "icc_live_usall_2025_1106.csv"
-              },
-              {
-                "date": "2025-11-05",
-                "universe": "usall",
-                "n_firms": 3175,
-                "download_path": "./data/downloads/raw/usall/202511/icc_live_usall_2025_1105.csv",
-                "filename": "icc_live_usall_2025_1105.csv"
-              },
-              {
-                "date": "2025-11-04",
-                "universe": "usall",
-                "n_firms": 3176,
-                "download_path": "./data/downloads/raw/usall/202511/icc_live_usall_2025_1104.csv",
-                "filename": "icc_live_usall_2025_1104.csv"
-              },
-              {
-                "date": "2025-11-03",
-                "universe": "usall",
-                "n_firms": 3179,
-                "download_path": "./data/downloads/raw/usall/202511/icc_live_usall_2025_1103.csv",
-                "filename": "icc_live_usall_2025_1103.csv"
-              }
-            ]
-          },
-          {
-            "yyyymm": "202510",
-            "download_all": "./data/downloads/raw/usall/202510.zip",
-            "files": [
-              {
-                "date": "2025-10-31",
-                "universe": "usall",
-                "n_firms": 3180,
-                "download_path": "./data/downloads/raw/usall/202510/icc_live_usall_2025_1031.csv",
-                "filename": "icc_live_usall_2025_1031.csv"
-              },
-              {
-                "date": "2025-10-30",
-                "universe": "usall",
-                "n_firms": 3179,
-                "download_path": "./data/downloads/raw/usall/202510/icc_live_usall_2025_1030.csv",
-                "filename": "icc_live_usall_2025_1030.csv"
-              },
-              {
-                "date": "2025-10-29",
-                "universe": "usall",
-                "n_firms": 3181,
-                "download_path": "./data/downloads/raw/usall/202510/icc_live_usall_2025_1029.csv",
-                "filename": "icc_live_usall_2025_1029.csv"
-              },
-              {
-                "date": "2025-10-28",
-                "universe": "usall",
-                "n_firms": 3182,
-                "download_path": "./data/downloads/raw/usall/202510/icc_live_usall_2025_1028.csv",
-                "filename": "icc_live_usall_2025_1028.csv"
-              }
-            ]
-          }
-        ]
-      }
-    ],
-    "sp500": [
-      {
-        "year": "2026",
-        "download_all": "./data/downloads/raw/sp500/2026.zip",
-        "months": [
-          {
-            "yyyymm": "202604",
-            "download_all": "./data/downloads/raw/sp500/202604.zip",
-            "files": [
-              {
-                "date": "2026-04-23",
-                "universe": "sp500",
-                "n_firms": 500,
-                "download_path": "./data/downloads/raw/sp500/202604/icc_live_sp500_2026_0423_r1.csv",
-                "filename": "icc_live_sp500_2026_0423_r1.csv"
-              },
-              {
-                "date": "2026-04-22",
-                "universe": "sp500",
-                "n_firms": 499,
-                "download_path": "./data/downloads/raw/sp500/202604/icc_live_sp500_2026_0422_r1.csv",
-                "filename": "icc_live_sp500_2026_0422_r1.csv"
-              },
-              {
-                "date": "2026-04-21",
-                "universe": "sp500",
-                "n_firms": 499,
-                "download_path": "./data/downloads/raw/sp500/202604/icc_live_sp500_2026_0421_r1.csv",
-                "filename": "icc_live_sp500_2026_0421_r1.csv"
-              },
-              {
-                "date": "2026-04-20",
-                "universe": "sp500",
-                "n_firms": 499,
-                "download_path": "./data/downloads/raw/sp500/202604/icc_live_sp500_2026_0420.csv",
-                "filename": "icc_live_sp500_2026_0420.csv"
-              },
-              {
-                "date": "2026-04-17",
-                "universe": "sp500",
-                "n_firms": 500,
-                "download_path": "./data/downloads/raw/sp500/202604/icc_live_sp500_2026_0417_r1.csv",
-                "filename": "icc_live_sp500_2026_0417_r1.csv"
-              },
-              {
-                "date": "2026-04-16",
-                "universe": "sp500",
-                "n_firms": 500,
-                "download_path": "./data/downloads/raw/sp500/202604/icc_live_sp500_2026_0416_r1.csv",
-                "filename": "icc_live_sp500_2026_0416_r1.csv"
-              },
-              {
-                "date": "2026-04-15",
-                "universe": "sp500",
-                "n_firms": 500,
-                "download_path": "./data/downloads/raw/sp500/202604/icc_live_sp500_2026_0415_r1.csv",
-                "filename": "icc_live_sp500_2026_0415_r1.csv"
-              },
-              {
-                "date": "2026-04-14",
-                "universe": "sp500",
-                "n_firms": 500,
-                "download_path": "./data/downloads/raw/sp500/202604/icc_live_sp500_2026_0414_r1.csv",
-                "filename": "icc_live_sp500_2026_0414_r1.csv"
-              },
-              {
-                "date": "2026-04-13",
-                "universe": "sp500",
-                "n_firms": 500,
-                "download_path": "./data/downloads/raw/sp500/202604/icc_live_sp500_2026_0413_r3.csv",
-                "filename": "icc_live_sp500_2026_0413_r3.csv"
-              },
-              {
-                "date": "2026-04-10",
-                "universe": "sp500",
-                "n_firms": 500,
-                "download_path": "./data/downloads/raw/sp500/202604/icc_live_sp500_2026_0410_r1.csv",
-                "filename": "icc_live_sp500_2026_0410_r1.csv"
-              },
-              {
-                "date": "2026-04-09",
-                "universe": "sp500",
-                "n_firms": 499,
-                "download_path": "./data/downloads/raw/sp500/202604/icc_live_sp500_2026_0409_r1.csv",
-                "filename": "icc_live_sp500_2026_0409_r1.csv"
-              },
-              {
-                "date": "2026-04-08",
-                "universe": "sp500",
-                "n_firms": 500,
-                "download_path": "./data/downloads/raw/sp500/202604/icc_live_sp500_2026_0408_r1.csv",
-                "filename": "icc_live_sp500_2026_0408_r1.csv"
-              },
-              {
-                "date": "2026-04-07",
-                "universe": "sp500",
-                "n_firms": 500,
-                "download_path": "./data/downloads/raw/sp500/202604/icc_live_sp500_2026_0407_r1.csv",
-                "filename": "icc_live_sp500_2026_0407_r1.csv"
-              },
-              {
-                "date": "2026-04-06",
-                "universe": "sp500",
-                "n_firms": 500,
-                "download_path": "./data/downloads/raw/sp500/202604/icc_live_sp500_2026_0406_r1.csv",
-                "filename": "icc_live_sp500_2026_0406_r1.csv"
-              },
-              {
-                "date": "2026-04-03",
-                "universe": "sp500",
-                "n_firms": 500,
-                "download_path": "./data/downloads/raw/sp500/202604/icc_live_sp500_2026_0403_r1.csv",
-                "filename": "icc_live_sp500_2026_0403_r1.csv"
-              },
-              {
-                "date": "2026-04-02",
-                "universe": "sp500",
-                "n_firms": 500,
-                "download_path": "./data/downloads/raw/sp500/202604/icc_live_sp500_2026_0402_r1.csv",
-                "filename": "icc_live_sp500_2026_0402_r1.csv"
-              },
-              {
-                "date": "2026-04-01",
-                "universe": "sp500",
-                "n_firms": 500,
-                "download_path": "./data/downloads/raw/sp500/202604/icc_live_sp500_2026_0401_r1.csv",
-                "filename": "icc_live_sp500_2026_0401_r1.csv"
-              }
-            ]
-          },
-          {
-            "yyyymm": "202603",
-            "download_all": "./data/downloads/raw/sp500/202603.zip",
-            "files": [
-              {
-                "date": "2026-03-31",
-                "universe": "sp500",
-                "n_firms": 500,
-                "download_path": "./data/downloads/raw/sp500/202603/icc_live_sp500_2026_0331_r1.csv",
-                "filename": "icc_live_sp500_2026_0331_r1.csv"
-              },
-              {
-                "date": "2026-03-30",
-                "universe": "sp500",
-                "n_firms": 500,
-                "download_path": "./data/downloads/raw/sp500/202603/icc_live_sp500_2026_0330_r1.csv",
-                "filename": "icc_live_sp500_2026_0330_r1.csv"
-              },
-              {
-                "date": "2026-03-27",
-                "universe": "sp500",
-                "n_firms": 500,
-                "download_path": "./data/downloads/raw/sp500/202603/icc_live_sp500_2026_0327_r1.csv",
-                "filename": "icc_live_sp500_2026_0327_r1.csv"
-              },
-              {
-                "date": "2026-03-26",
-                "universe": "sp500",
-                "n_firms": 500,
-                "download_path": "./data/downloads/raw/sp500/202603/icc_live_sp500_2026_0326_r1.csv",
-                "filename": "icc_live_sp500_2026_0326_r1.csv"
-              },
-              {
-                "date": "2026-03-25",
-                "universe": "sp500",
-                "n_firms": 500,
-                "download_path": "./data/downloads/raw/sp500/202603/icc_live_sp500_2026_0325_r1.csv",
-                "filename": "icc_live_sp500_2026_0325_r1.csv"
-              },
-              {
-                "date": "2026-03-24",
-                "universe": "sp500",
-                "n_firms": 501,
-                "download_path": "./data/downloads/raw/sp500/202603/icc_live_sp500_2026_0324_r1.csv",
-                "filename": "icc_live_sp500_2026_0324_r1.csv"
-              },
-              {
-                "date": "2026-03-23",
-                "universe": "sp500",
-                "n_firms": 501,
-                "download_path": "./data/downloads/raw/sp500/202603/icc_live_sp500_2026_0323_r1.csv",
-                "filename": "icc_live_sp500_2026_0323_r1.csv"
-              },
-              {
-                "date": "2026-03-20",
-                "universe": "sp500",
-                "n_firms": 501,
-                "download_path": "./data/downloads/raw/sp500/202603/icc_live_sp500_2026_0320_r1.csv",
-                "filename": "icc_live_sp500_2026_0320_r1.csv"
-              },
-              {
-                "date": "2026-03-19",
-                "universe": "sp500",
-                "n_firms": 501,
-                "download_path": "./data/downloads/raw/sp500/202603/icc_live_sp500_2026_0319_r1.csv",
-                "filename": "icc_live_sp500_2026_0319_r1.csv"
-              },
-              {
-                "date": "2026-03-18",
-                "universe": "sp500",
-                "n_firms": 501,
-                "download_path": "./data/downloads/raw/sp500/202603/icc_live_sp500_2026_0318_r1.csv",
-                "filename": "icc_live_sp500_2026_0318_r1.csv"
-              },
-              {
-                "date": "2026-03-17",
-                "universe": "sp500",
-                "n_firms": 501,
-                "download_path": "./data/downloads/raw/sp500/202603/icc_live_sp500_2026_0317_r1.csv",
-                "filename": "icc_live_sp500_2026_0317_r1.csv"
-              },
-              {
-                "date": "2026-03-16",
-                "universe": "sp500",
-                "n_firms": 501,
-                "download_path": "./data/downloads/raw/sp500/202603/icc_live_sp500_2026_0316_r1.csv",
-                "filename": "icc_live_sp500_2026_0316_r1.csv"
-              },
-              {
-                "date": "2026-03-13",
-                "universe": "sp500",
-                "n_firms": 501,
-                "download_path": "./data/downloads/raw/sp500/202603/icc_live_sp500_2026_0313_r1.csv",
-                "filename": "icc_live_sp500_2026_0313_r1.csv"
-              },
-              {
-                "date": "2026-03-12",
-                "universe": "sp500",
-                "n_firms": 501,
-                "download_path": "./data/downloads/raw/sp500/202603/icc_live_sp500_2026_0312_r1.csv",
-                "filename": "icc_live_sp500_2026_0312_r1.csv"
-              },
-              {
-                "date": "2026-03-11",
-                "universe": "sp500",
-                "n_firms": 501,
-                "download_path": "./data/downloads/raw/sp500/202603/icc_live_sp500_2026_0311_r1.csv",
-                "filename": "icc_live_sp500_2026_0311_r1.csv"
-              },
-              {
-                "date": "2026-03-10",
-                "universe": "sp500",
-                "n_firms": 501,
-                "download_path": "./data/downloads/raw/sp500/202603/icc_live_sp500_2026_0310_r1.csv",
-                "filename": "icc_live_sp500_2026_0310_r1.csv"
-              },
-              {
-                "date": "2026-03-09",
-                "universe": "sp500",
-                "n_firms": 501,
-                "download_path": "./data/downloads/raw/sp500/202603/icc_live_sp500_2026_0309_r1.csv",
-                "filename": "icc_live_sp500_2026_0309_r1.csv"
-              },
-              {
-                "date": "2026-03-06",
-                "universe": "sp500",
-                "n_firms": 501,
-                "download_path": "./data/downloads/raw/sp500/202603/icc_live_sp500_2026_0306_r1.csv",
-                "filename": "icc_live_sp500_2026_0306_r1.csv"
-              },
-              {
-                "date": "2026-03-05",
-                "universe": "sp500",
-                "n_firms": 501,
-                "download_path": "./data/downloads/raw/sp500/202603/icc_live_sp500_2026_0305_r1.csv",
-                "filename": "icc_live_sp500_2026_0305_r1.csv"
-              },
-              {
-                "date": "2026-03-04",
-                "universe": "sp500",
-                "n_firms": 501,
-                "download_path": "./data/downloads/raw/sp500/202603/icc_live_sp500_2026_0304_r1.csv",
-                "filename": "icc_live_sp500_2026_0304_r1.csv"
-              },
-              {
-                "date": "2026-03-03",
-                "universe": "sp500",
-                "n_firms": 495,
-                "download_path": "./data/downloads/raw/sp500/202603/icc_live_sp500_2026_0303_r1.csv",
-                "filename": "icc_live_sp500_2026_0303_r1.csv"
-              },
-              {
-                "date": "2026-03-02",
-                "universe": "sp500",
-                "n_firms": 495,
-                "download_path": "./data/downloads/raw/sp500/202603/icc_live_sp500_2026_0302_r1.csv",
-                "filename": "icc_live_sp500_2026_0302_r1.csv"
-              }
-            ]
-          },
-          {
-            "yyyymm": "202602",
-            "download_all": "./data/downloads/raw/sp500/202602.zip",
-            "files": [
-              {
-                "date": "2026-02-27",
-                "universe": "sp500",
-                "n_firms": 496,
-                "download_path": "./data/downloads/raw/sp500/202602/icc_live_sp500_2026_0227_r1.csv",
-                "filename": "icc_live_sp500_2026_0227_r1.csv"
-              },
-              {
-                "date": "2026-02-26",
-                "universe": "sp500",
-                "n_firms": 496,
-                "download_path": "./data/downloads/raw/sp500/202602/icc_live_sp500_2026_0226_r1.csv",
-                "filename": "icc_live_sp500_2026_0226_r1.csv"
-              },
-              {
-                "date": "2026-02-25",
-                "universe": "sp500",
-                "n_firms": 496,
-                "download_path": "./data/downloads/raw/sp500/202602/icc_live_sp500_2026_0225_r1.csv",
-                "filename": "icc_live_sp500_2026_0225_r1.csv"
-              },
-              {
-                "date": "2026-02-24",
-                "universe": "sp500",
-                "n_firms": 496,
-                "download_path": "./data/downloads/raw/sp500/202602/icc_live_sp500_2026_0224_r1.csv",
-                "filename": "icc_live_sp500_2026_0224_r1.csv"
-              },
-              {
-                "date": "2026-02-23",
-                "universe": "sp500",
-                "n_firms": 496,
-                "download_path": "./data/downloads/raw/sp500/202602/icc_live_sp500_2026_0223_r1.csv",
-                "filename": "icc_live_sp500_2026_0223_r1.csv"
-              },
-              {
-                "date": "2026-02-20",
-                "universe": "sp500",
-                "n_firms": 496,
-                "download_path": "./data/downloads/raw/sp500/202602/icc_live_sp500_2026_0220_r1.csv",
-                "filename": "icc_live_sp500_2026_0220_r1.csv"
-              },
-              {
-                "date": "2026-02-19",
-                "universe": "sp500",
-                "n_firms": 496,
-                "download_path": "./data/downloads/raw/sp500/202602/icc_live_sp500_2026_0219_r1.csv",
-                "filename": "icc_live_sp500_2026_0219_r1.csv"
-              },
-              {
-                "date": "2026-02-18",
-                "universe": "sp500",
-                "n_firms": 496,
-                "download_path": "./data/downloads/raw/sp500/202602/icc_live_sp500_2026_0218_r1.csv",
-                "filename": "icc_live_sp500_2026_0218_r1.csv"
-              },
-              {
-                "date": "2026-02-17",
-                "universe": "sp500",
-                "n_firms": 496,
-                "download_path": "./data/downloads/raw/sp500/202602/icc_live_sp500_2026_0217_r1.csv",
-                "filename": "icc_live_sp500_2026_0217_r1.csv"
-              },
-              {
-                "date": "2026-02-16",
-                "universe": "sp500",
-                "n_firms": 496,
-                "download_path": "./data/downloads/raw/sp500/202602/icc_live_sp500_2026_0216_r1.csv",
-                "filename": "icc_live_sp500_2026_0216_r1.csv"
-              },
-              {
-                "date": "2026-02-13",
-                "universe": "sp500",
-                "n_firms": 496,
-                "download_path": "./data/downloads/raw/sp500/202602/icc_live_sp500_2026_0213_r1.csv",
-                "filename": "icc_live_sp500_2026_0213_r1.csv"
-              },
-              {
-                "date": "2026-02-12",
-                "universe": "sp500",
-                "n_firms": 496,
-                "download_path": "./data/downloads/raw/sp500/202602/icc_live_sp500_2026_0212_r1.csv",
-                "filename": "icc_live_sp500_2026_0212_r1.csv"
-              },
-              {
-                "date": "2026-02-11",
-                "universe": "sp500",
-                "n_firms": 496,
-                "download_path": "./data/downloads/raw/sp500/202602/icc_live_sp500_2026_0211_r1.csv",
-                "filename": "icc_live_sp500_2026_0211_r1.csv"
-              },
-              {
-                "date": "2026-02-10",
-                "universe": "sp500",
-                "n_firms": 496,
-                "download_path": "./data/downloads/raw/sp500/202602/icc_live_sp500_2026_0210_r1.csv",
-                "filename": "icc_live_sp500_2026_0210_r1.csv"
-              },
-              {
-                "date": "2026-02-09",
-                "universe": "sp500",
-                "n_firms": 496,
-                "download_path": "./data/downloads/raw/sp500/202602/icc_live_sp500_2026_0209_r1.csv",
-                "filename": "icc_live_sp500_2026_0209_r1.csv"
-              },
-              {
-                "date": "2026-02-06",
-                "universe": "sp500",
-                "n_firms": 496,
-                "download_path": "./data/downloads/raw/sp500/202602/icc_live_sp500_2026_0206_r1.csv",
-                "filename": "icc_live_sp500_2026_0206_r1.csv"
-              },
-              {
-                "date": "2026-02-05",
-                "universe": "sp500",
-                "n_firms": 496,
-                "download_path": "./data/downloads/raw/sp500/202602/icc_live_sp500_2026_0205_r1.csv",
-                "filename": "icc_live_sp500_2026_0205_r1.csv"
-              },
-              {
-                "date": "2026-02-04",
-                "universe": "sp500",
-                "n_firms": 496,
-                "download_path": "./data/downloads/raw/sp500/202602/icc_live_sp500_2026_0204_r1.csv",
-                "filename": "icc_live_sp500_2026_0204_r1.csv"
-              },
-              {
-                "date": "2026-02-03",
-                "universe": "sp500",
-                "n_firms": 496,
-                "download_path": "./data/downloads/raw/sp500/202602/icc_live_sp500_2026_0203_r1.csv",
-                "filename": "icc_live_sp500_2026_0203_r1.csv"
-              }
-            ]
-          },
-          {
-            "yyyymm": "202601",
-            "download_all": "./data/downloads/raw/sp500/202601.zip",
-            "files": [
-              {
-                "date": "2026-01-30",
-                "universe": "sp500",
-                "n_firms": 497,
-                "download_path": "./data/downloads/raw/sp500/202601/icc_live_sp500_2026_0130_r1.csv",
-                "filename": "icc_live_sp500_2026_0130_r1.csv"
-              },
-              {
-                "date": "2026-01-29",
-                "universe": "sp500",
-                "n_firms": 497,
-                "download_path": "./data/downloads/raw/sp500/202601/icc_live_sp500_2026_0129_r1.csv",
-                "filename": "icc_live_sp500_2026_0129_r1.csv"
-              },
-              {
-                "date": "2026-01-28",
-                "universe": "sp500",
-                "n_firms": 495,
-                "download_path": "./data/downloads/raw/sp500/202601/icc_live_sp500_2026_0128_r1.csv",
-                "filename": "icc_live_sp500_2026_0128_r1.csv"
-              },
-              {
-                "date": "2026-01-27",
-                "universe": "sp500",
-                "n_firms": 495,
-                "download_path": "./data/downloads/raw/sp500/202601/icc_live_sp500_2026_0127_r1.csv",
-                "filename": "icc_live_sp500_2026_0127_r1.csv"
-              },
-              {
-                "date": "2026-01-26",
-                "universe": "sp500",
-                "n_firms": 495,
-                "download_path": "./data/downloads/raw/sp500/202601/icc_live_sp500_2026_0126_r1.csv",
-                "filename": "icc_live_sp500_2026_0126_r1.csv"
-              },
-              {
-                "date": "2026-01-23",
-                "universe": "sp500",
-                "n_firms": 495,
-                "download_path": "./data/downloads/raw/sp500/202601/icc_live_sp500_2026_0123_r1.csv",
-                "filename": "icc_live_sp500_2026_0123_r1.csv"
-              },
-              {
-                "date": "2026-01-22",
-                "universe": "sp500",
-                "n_firms": 495,
-                "download_path": "./data/downloads/raw/sp500/202601/icc_live_sp500_2026_0122_r1.csv",
-                "filename": "icc_live_sp500_2026_0122_r1.csv"
-              },
-              {
-                "date": "2026-01-21",
-                "universe": "sp500",
-                "n_firms": 495,
-                "download_path": "./data/downloads/raw/sp500/202601/icc_live_sp500_2026_0121_r1.csv",
-                "filename": "icc_live_sp500_2026_0121_r1.csv"
-              },
-              {
-                "date": "2026-01-20",
-                "universe": "sp500",
-                "n_firms": 496,
-                "download_path": "./data/downloads/raw/sp500/202601/icc_live_sp500_2026_0120_r1.csv",
-                "filename": "icc_live_sp500_2026_0120_r1.csv"
-              },
-              {
-                "date": "2026-01-19",
-                "universe": "sp500",
-                "n_firms": 496,
-                "download_path": "./data/downloads/raw/sp500/202601/icc_live_sp500_2026_0119_r1.csv",
-                "filename": "icc_live_sp500_2026_0119_r1.csv"
-              },
-              {
-                "date": "2026-01-16",
-                "universe": "sp500",
-                "n_firms": 496,
-                "download_path": "./data/downloads/raw/sp500/202601/icc_live_sp500_2026_0116_r1.csv",
-                "filename": "icc_live_sp500_2026_0116_r1.csv"
-              },
-              {
-                "date": "2026-01-15",
-                "universe": "sp500",
-                "n_firms": 496,
-                "download_path": "./data/downloads/raw/sp500/202601/icc_live_sp500_2026_0115_r1.csv",
-                "filename": "icc_live_sp500_2026_0115_r1.csv"
-              },
-              {
-                "date": "2026-01-14",
-                "universe": "sp500",
-                "n_firms": 496,
-                "download_path": "./data/downloads/raw/sp500/202601/icc_live_sp500_2026_0114_r1.csv",
-                "filename": "icc_live_sp500_2026_0114_r1.csv"
-              },
-              {
-                "date": "2026-01-13",
-                "universe": "sp500",
-                "n_firms": 496,
-                "download_path": "./data/downloads/raw/sp500/202601/icc_live_sp500_2026_0113_r1.csv",
-                "filename": "icc_live_sp500_2026_0113_r1.csv"
-              },
-              {
-                "date": "2026-01-12",
-                "universe": "sp500",
-                "n_firms": 496,
-                "download_path": "./data/downloads/raw/sp500/202601/icc_live_sp500_2026_0112_r1.csv",
-                "filename": "icc_live_sp500_2026_0112_r1.csv"
-              },
-              {
-                "date": "2026-01-09",
-                "universe": "sp500",
-                "n_firms": 497,
-                "download_path": "./data/downloads/raw/sp500/202601/icc_live_sp500_2026_0109_r1.csv",
-                "filename": "icc_live_sp500_2026_0109_r1.csv"
-              },
-              {
-                "date": "2026-01-08",
-                "universe": "sp500",
-                "n_firms": 497,
-                "download_path": "./data/downloads/raw/sp500/202601/icc_live_sp500_2026_0108_r1.csv",
-                "filename": "icc_live_sp500_2026_0108_r1.csv"
-              },
-              {
-                "date": "2026-01-07",
-                "universe": "sp500",
-                "n_firms": 497,
-                "download_path": "./data/downloads/raw/sp500/202601/icc_live_sp500_2026_0107_r1.csv",
-                "filename": "icc_live_sp500_2026_0107_r1.csv"
-              },
-              {
-                "date": "2026-01-06",
-                "universe": "sp500",
-                "n_firms": 497,
-                "download_path": "./data/downloads/raw/sp500/202601/icc_live_sp500_2026_0106_r1.csv",
-                "filename": "icc_live_sp500_2026_0106_r1.csv"
-              },
-              {
-                "date": "2026-01-05",
-                "universe": "sp500",
-                "n_firms": 497,
-                "download_path": "./data/downloads/raw/sp500/202601/icc_live_sp500_2026_0105_r1.csv",
-                "filename": "icc_live_sp500_2026_0105_r1.csv"
-              },
-              {
-                "date": "2026-01-02",
-                "universe": "sp500",
-                "n_firms": 501,
-                "download_path": "./data/downloads/raw/sp500/202601/icc_live_sp500_2026_0102.csv",
-                "filename": "icc_live_sp500_2026_0102.csv"
-              },
-              {
-                "date": "2026-01-01",
-                "universe": "sp500",
-                "n_firms": 500,
-                "download_path": "./data/downloads/raw/sp500/202601/icc_live_sp500_2026_0101.csv",
-                "filename": "icc_live_sp500_2026_0101.csv"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "year": "2025",
-        "download_all": "./data/downloads/raw/sp500/2025.zip",
-        "months": [
-          {
-            "yyyymm": "202512",
-            "download_all": "./data/downloads/raw/sp500/202512.zip",
-            "files": [
-              {
-                "date": "2025-12-31",
-                "universe": "sp500",
-                "n_firms": 499,
-                "download_path": "./data/downloads/raw/sp500/202512/icc_live_sp500_2025_1231.csv",
-                "filename": "icc_live_sp500_2025_1231.csv"
-              },
-              {
-                "date": "2025-12-30",
-                "universe": "sp500",
-                "n_firms": 499,
-                "download_path": "./data/downloads/raw/sp500/202512/icc_live_sp500_2025_1230.csv",
-                "filename": "icc_live_sp500_2025_1230.csv"
-              },
-              {
-                "date": "2025-12-29",
-                "universe": "sp500",
-                "n_firms": 499,
-                "download_path": "./data/downloads/raw/sp500/202512/icc_live_sp500_2025_1229.csv",
-                "filename": "icc_live_sp500_2025_1229.csv"
-              },
-              {
-                "date": "2025-12-26",
-                "universe": "sp500",
-                "n_firms": 499,
-                "download_path": "./data/downloads/raw/sp500/202512/icc_live_sp500_2025_1226.csv",
-                "filename": "icc_live_sp500_2025_1226.csv"
-              },
-              {
-                "date": "2025-12-25",
-                "universe": "sp500",
-                "n_firms": 499,
-                "download_path": "./data/downloads/raw/sp500/202512/icc_live_sp500_2025_1225.csv",
-                "filename": "icc_live_sp500_2025_1225.csv"
-              },
-              {
-                "date": "2025-12-24",
-                "universe": "sp500",
-                "n_firms": 499,
-                "download_path": "./data/downloads/raw/sp500/202512/icc_live_sp500_2025_1224.csv",
-                "filename": "icc_live_sp500_2025_1224.csv"
-              },
-              {
-                "date": "2025-12-23",
-                "universe": "sp500",
-                "n_firms": 499,
-                "download_path": "./data/downloads/raw/sp500/202512/icc_live_sp500_2025_1223.csv",
-                "filename": "icc_live_sp500_2025_1223.csv"
-              },
-              {
-                "date": "2025-12-22",
-                "universe": "sp500",
-                "n_firms": 501,
-                "download_path": "./data/downloads/raw/sp500/202512/icc_live_sp500_2025_1222.csv",
-                "filename": "icc_live_sp500_2025_1222.csv"
-              },
-              {
-                "date": "2025-12-19",
-                "universe": "sp500",
-                "n_firms": 501,
-                "download_path": "./data/downloads/raw/sp500/202512/icc_live_sp500_2025_1219.csv",
-                "filename": "icc_live_sp500_2025_1219.csv"
-              },
-              {
-                "date": "2025-12-18",
-                "universe": "sp500",
-                "n_firms": 501,
-                "download_path": "./data/downloads/raw/sp500/202512/icc_live_sp500_2025_1218.csv",
-                "filename": "icc_live_sp500_2025_1218.csv"
-              },
-              {
-                "date": "2025-12-17",
-                "universe": "sp500",
-                "n_firms": 501,
-                "download_path": "./data/downloads/raw/sp500/202512/icc_live_sp500_2025_1217.csv",
-                "filename": "icc_live_sp500_2025_1217.csv"
-              },
-              {
-                "date": "2025-12-16",
-                "universe": "sp500",
-                "n_firms": 501,
-                "download_path": "./data/downloads/raw/sp500/202512/icc_live_sp500_2025_1216.csv",
-                "filename": "icc_live_sp500_2025_1216.csv"
-              },
-              {
-                "date": "2025-12-15",
-                "universe": "sp500",
-                "n_firms": 501,
-                "download_path": "./data/downloads/raw/sp500/202512/icc_live_sp500_2025_1215.csv",
-                "filename": "icc_live_sp500_2025_1215.csv"
-              },
-              {
-                "date": "2025-12-12",
-                "universe": "sp500",
-                "n_firms": 500,
-                "download_path": "./data/downloads/raw/sp500/202512/icc_live_sp500_2025_1212.csv",
-                "filename": "icc_live_sp500_2025_1212.csv"
-              },
-              {
-                "date": "2025-12-11",
-                "universe": "sp500",
-                "n_firms": 501,
-                "download_path": "./data/downloads/raw/sp500/202512/icc_live_sp500_2025_1211.csv",
-                "filename": "icc_live_sp500_2025_1211.csv"
-              },
-              {
-                "date": "2025-12-10",
-                "universe": "sp500",
-                "n_firms": 501,
-                "download_path": "./data/downloads/raw/sp500/202512/icc_live_sp500_2025_1210.csv",
-                "filename": "icc_live_sp500_2025_1210.csv"
-              },
-              {
-                "date": "2025-12-09",
-                "universe": "sp500",
-                "n_firms": 502,
-                "download_path": "./data/downloads/raw/sp500/202512/icc_live_sp500_2025_1209.csv",
-                "filename": "icc_live_sp500_2025_1209.csv"
-              },
-              {
-                "date": "2025-12-08",
-                "universe": "sp500",
-                "n_firms": 502,
-                "download_path": "./data/downloads/raw/sp500/202512/icc_live_sp500_2025_1208.csv",
-                "filename": "icc_live_sp500_2025_1208.csv"
-              },
-              {
-                "date": "2025-12-05",
-                "universe": "sp500",
-                "n_firms": 502,
-                "download_path": "./data/downloads/raw/sp500/202512/icc_live_sp500_2025_1205.csv",
-                "filename": "icc_live_sp500_2025_1205.csv"
-              },
-              {
-                "date": "2025-12-04",
-                "universe": "sp500",
-                "n_firms": 502,
-                "download_path": "./data/downloads/raw/sp500/202512/icc_live_sp500_2025_1204.csv",
-                "filename": "icc_live_sp500_2025_1204.csv"
-              },
-              {
-                "date": "2025-12-03",
-                "universe": "sp500",
-                "n_firms": 502,
-                "download_path": "./data/downloads/raw/sp500/202512/icc_live_sp500_2025_1203.csv",
-                "filename": "icc_live_sp500_2025_1203.csv"
-              },
-              {
-                "date": "2025-12-02",
-                "universe": "sp500",
-                "n_firms": 502,
-                "download_path": "./data/downloads/raw/sp500/202512/icc_live_sp500_2025_1202.csv",
-                "filename": "icc_live_sp500_2025_1202.csv"
-              },
-              {
-                "date": "2025-12-01",
-                "universe": "sp500",
-                "n_firms": 501,
-                "download_path": "./data/downloads/raw/sp500/202512/icc_live_sp500_2025_1201.csv",
-                "filename": "icc_live_sp500_2025_1201.csv"
-              }
-            ]
-          },
-          {
-            "yyyymm": "202511",
-            "download_all": "./data/downloads/raw/sp500/202511.zip",
-            "files": [
-              {
-                "date": "2025-11-28",
-                "universe": "sp500",
-                "n_firms": 502,
-                "download_path": "./data/downloads/raw/sp500/202511/icc_live_sp500_2025_1128.csv",
-                "filename": "icc_live_sp500_2025_1128.csv"
-              },
-              {
-                "date": "2025-11-27",
-                "universe": "sp500",
-                "n_firms": 502,
-                "download_path": "./data/downloads/raw/sp500/202511/icc_live_sp500_2025_1127.csv",
-                "filename": "icc_live_sp500_2025_1127.csv"
-              },
-              {
-                "date": "2025-11-26",
-                "universe": "sp500",
-                "n_firms": 502,
-                "download_path": "./data/downloads/raw/sp500/202511/icc_live_sp500_2025_1126.csv",
-                "filename": "icc_live_sp500_2025_1126.csv"
-              },
-              {
-                "date": "2025-11-24",
-                "universe": "sp500",
-                "n_firms": 502,
-                "download_path": "./data/downloads/raw/sp500/202511/icc_live_sp500_2025_1124.csv",
-                "filename": "icc_live_sp500_2025_1124.csv"
-              },
-              {
-                "date": "2025-11-20",
-                "universe": "sp500",
-                "n_firms": 502,
-                "download_path": "./data/downloads/raw/sp500/202511/icc_live_sp500_2025_1120.csv",
-                "filename": "icc_live_sp500_2025_1120.csv"
-              },
-              {
-                "date": "2025-11-19",
-                "universe": "sp500",
-                "n_firms": 502,
-                "download_path": "./data/downloads/raw/sp500/202511/icc_live_sp500_2025_1119.csv",
-                "filename": "icc_live_sp500_2025_1119.csv"
-              },
-              {
-                "date": "2025-11-18",
-                "universe": "sp500",
-                "n_firms": 502,
-                "download_path": "./data/downloads/raw/sp500/202511/icc_live_sp500_2025_1118.csv",
-                "filename": "icc_live_sp500_2025_1118.csv"
-              },
-              {
-                "date": "2025-11-17",
-                "universe": "sp500",
-                "n_firms": 502,
-                "download_path": "./data/downloads/raw/sp500/202511/icc_live_sp500_2025_1117.csv",
-                "filename": "icc_live_sp500_2025_1117.csv"
-              },
-              {
-                "date": "2025-11-14",
-                "universe": "sp500",
-                "n_firms": 501,
-                "download_path": "./data/downloads/raw/sp500/202511/icc_live_sp500_2025_1114.csv",
-                "filename": "icc_live_sp500_2025_1114.csv"
-              },
-              {
-                "date": "2025-11-13",
-                "universe": "sp500",
-                "n_firms": 501,
-                "download_path": "./data/downloads/raw/sp500/202511/icc_live_sp500_2025_1113.csv",
-                "filename": "icc_live_sp500_2025_1113.csv"
-              },
-              {
-                "date": "2025-11-12",
-                "universe": "sp500",
-                "n_firms": 501,
-                "download_path": "./data/downloads/raw/sp500/202511/icc_live_sp500_2025_1112.csv",
-                "filename": "icc_live_sp500_2025_1112.csv"
-              },
-              {
-                "date": "2025-11-11",
-                "universe": "sp500",
-                "n_firms": 501,
-                "download_path": "./data/downloads/raw/sp500/202511/icc_live_sp500_2025_1111.csv",
-                "filename": "icc_live_sp500_2025_1111.csv"
-              },
-              {
-                "date": "2025-11-10",
-                "universe": "sp500",
-                "n_firms": 501,
-                "download_path": "./data/downloads/raw/sp500/202511/icc_live_sp500_2025_1110.csv",
-                "filename": "icc_live_sp500_2025_1110.csv"
-              },
-              {
-                "date": "2025-11-07",
-                "universe": "sp500",
-                "n_firms": 500,
-                "download_path": "./data/downloads/raw/sp500/202511/icc_live_sp500_2025_1107.csv",
-                "filename": "icc_live_sp500_2025_1107.csv"
-              },
-              {
-                "date": "2025-11-06",
-                "universe": "sp500",
-                "n_firms": 501,
-                "download_path": "./data/downloads/raw/sp500/202511/icc_live_sp500_2025_1106.csv",
-                "filename": "icc_live_sp500_2025_1106.csv"
-              },
-              {
-                "date": "2025-11-05",
-                "universe": "sp500",
-                "n_firms": 501,
-                "download_path": "./data/downloads/raw/sp500/202511/icc_live_sp500_2025_1105.csv",
-                "filename": "icc_live_sp500_2025_1105.csv"
-              },
-              {
-                "date": "2025-11-04",
-                "universe": "sp500",
-                "n_firms": 501,
-                "download_path": "./data/downloads/raw/sp500/202511/icc_live_sp500_2025_1104.csv",
-                "filename": "icc_live_sp500_2025_1104.csv"
-              },
-              {
-                "date": "2025-11-03",
-                "universe": "sp500",
-                "n_firms": 501,
-                "download_path": "./data/downloads/raw/sp500/202511/icc_live_sp500_2025_1103.csv",
-                "filename": "icc_live_sp500_2025_1103.csv"
-              }
-            ]
-          },
-          {
-            "yyyymm": "202510",
-            "download_all": "./data/downloads/raw/sp500/202510.zip",
-            "files": [
-              {
-                "date": "2025-10-31",
-                "universe": "sp500",
-                "n_firms": 501,
-                "download_path": "./data/downloads/raw/sp500/202510/icc_live_sp500_2025_1031.csv",
-                "filename": "icc_live_sp500_2025_1031.csv"
-              },
-              {
-                "date": "2025-10-30",
-                "universe": "sp500",
-                "n_firms": 502,
-                "download_path": "./data/downloads/raw/sp500/202510/icc_live_sp500_2025_1030.csv",
-                "filename": "icc_live_sp500_2025_1030.csv"
-              },
-              {
-                "date": "2025-10-29",
-                "universe": "sp500",
-                "n_firms": 502,
-                "download_path": "./data/downloads/raw/sp500/202510/icc_live_sp500_2025_1029.csv",
-                "filename": "icc_live_sp500_2025_1029.csv"
-              },
-              {
-                "date": "2025-10-28",
-                "universe": "sp500",
-                "n_firms": 502,
-                "download_path": "./data/downloads/raw/sp500/202510/icc_live_sp500_2025_1028.csv",
-                "filename": "icc_live_sp500_2025_1028.csv"
-              }
-            ]
-          }
-        ]
-      }
-    ],
-    "other_indices": [
-      {
-        "year": "2026",
-        "download_all": "./data/downloads/raw/other_indices/2026.zip",
-        "months": [
-          {
-            "yyyymm": "202604",
-            "download_all": "./data/downloads/raw/other_indices/202604.zip",
-            "files": [
-              {
-                "date": "2026-04-23",
-                "universe": "sp600",
-                "n_firms": 572,
-                "download_path": "./data/downloads/raw/other_indices/202604/icc_live_sp600_2026_0423.csv",
-                "filename": "icc_live_sp600_2026_0423.csv"
-              },
-              {
-                "date": "2026-04-23",
-                "universe": "sp400",
-                "n_firms": 396,
-                "download_path": "./data/downloads/raw/other_indices/202604/icc_live_sp400_2026_0423.csv",
-                "filename": "icc_live_sp400_2026_0423.csv"
-              },
-              {
-                "date": "2026-04-23",
-                "universe": "sp100",
-                "n_firms": 101,
-                "download_path": "./data/downloads/raw/other_indices/202604/icc_live_sp100_2026_0423.csv",
-                "filename": "icc_live_sp100_2026_0423.csv"
-              },
-              {
-                "date": "2026-04-23",
-                "universe": "rut1000",
-                "n_firms": 977,
-                "download_path": "./data/downloads/raw/other_indices/202604/icc_live_rut1000_2026_0423.csv",
-                "filename": "icc_live_rut1000_2026_0423.csv"
-              },
-              {
-                "date": "2026-04-23",
-                "universe": "ndx100",
-                "n_firms": 100,
-                "download_path": "./data/downloads/raw/other_indices/202604/icc_live_ndx100_2026_0423.csv",
-                "filename": "icc_live_ndx100_2026_0423.csv"
-              },
-              {
-                "date": "2026-04-23",
-                "universe": "dow30",
-                "n_firms": 30,
-                "download_path": "./data/downloads/raw/other_indices/202604/icc_live_dow30_2026_0423.csv",
-                "filename": "icc_live_dow30_2026_0423.csv"
-              },
-              {
-                "date": "2026-04-22",
-                "universe": "sp600",
-                "n_firms": 568,
-                "download_path": "./data/downloads/raw/other_indices/202604/icc_live_sp600_2026_0422.csv",
-                "filename": "icc_live_sp600_2026_0422.csv"
-              },
-              {
-                "date": "2026-04-22",
-                "universe": "sp400",
-                "n_firms": 392,
-                "download_path": "./data/downloads/raw/other_indices/202604/icc_live_sp400_2026_0422.csv",
-                "filename": "icc_live_sp400_2026_0422.csv"
-              },
-              {
-                "date": "2026-04-22",
-                "universe": "sp100",
-                "n_firms": 101,
-                "download_path": "./data/downloads/raw/other_indices/202604/icc_live_sp100_2026_0422.csv",
-                "filename": "icc_live_sp100_2026_0422.csv"
-              },
-              {
-                "date": "2026-04-22",
-                "universe": "rut1000",
-                "n_firms": 970,
-                "download_path": "./data/downloads/raw/other_indices/202604/icc_live_rut1000_2026_0422.csv",
-                "filename": "icc_live_rut1000_2026_0422.csv"
-              },
-              {
-                "date": "2026-04-22",
-                "universe": "ndx100",
-                "n_firms": 100,
-                "download_path": "./data/downloads/raw/other_indices/202604/icc_live_ndx100_2026_0422.csv",
-                "filename": "icc_live_ndx100_2026_0422.csv"
-              },
-              {
-                "date": "2026-04-22",
-                "universe": "dow30",
-                "n_firms": 30,
-                "download_path": "./data/downloads/raw/other_indices/202604/icc_live_dow30_2026_0422.csv",
-                "filename": "icc_live_dow30_2026_0422.csv"
-              },
-              {
-                "date": "2026-04-21",
-                "universe": "sp600",
-                "n_firms": 568,
-                "download_path": "./data/downloads/raw/other_indices/202604/icc_live_sp600_2026_0421.csv",
-                "filename": "icc_live_sp600_2026_0421.csv"
-              },
-              {
-                "date": "2026-04-21",
-                "universe": "sp400",
-                "n_firms": 392,
-                "download_path": "./data/downloads/raw/other_indices/202604/icc_live_sp400_2026_0421.csv",
-                "filename": "icc_live_sp400_2026_0421.csv"
-              },
-              {
-                "date": "2026-04-21",
-                "universe": "sp100",
-                "n_firms": 101,
-                "download_path": "./data/downloads/raw/other_indices/202604/icc_live_sp100_2026_0421.csv",
-                "filename": "icc_live_sp100_2026_0421.csv"
-              },
-              {
-                "date": "2026-04-21",
-                "universe": "rut1000",
-                "n_firms": 970,
-                "download_path": "./data/downloads/raw/other_indices/202604/icc_live_rut1000_2026_0421.csv",
-                "filename": "icc_live_rut1000_2026_0421.csv"
-              },
-              {
-                "date": "2026-04-21",
-                "universe": "ndx100",
-                "n_firms": 100,
-                "download_path": "./data/downloads/raw/other_indices/202604/icc_live_ndx100_2026_0421.csv",
-                "filename": "icc_live_ndx100_2026_0421.csv"
-              },
-              {
-                "date": "2026-04-21",
-                "universe": "dow30",
-                "n_firms": 30,
-                "download_path": "./data/downloads/raw/other_indices/202604/icc_live_dow30_2026_0421.csv",
-                "filename": "icc_live_dow30_2026_0421.csv"
-              },
-              {
-                "date": "2026-04-17",
-                "universe": "sp600",
-                "n_firms": 572,
-                "download_path": "./data/downloads/raw/other_indices/202604/icc_live_sp600_2026_0417.csv",
-                "filename": "icc_live_sp600_2026_0417.csv"
-              },
-              {
-                "date": "2026-04-17",
-                "universe": "sp400",
-                "n_firms": 396,
-                "download_path": "./data/downloads/raw/other_indices/202604/icc_live_sp400_2026_0417.csv",
-                "filename": "icc_live_sp400_2026_0417.csv"
-              },
-              {
-                "date": "2026-04-17",
-                "universe": "sp100",
-                "n_firms": 101,
-                "download_path": "./data/downloads/raw/other_indices/202604/icc_live_sp100_2026_0417.csv",
-                "filename": "icc_live_sp100_2026_0417.csv"
-              },
-              {
-                "date": "2026-04-17",
-                "universe": "rut1000",
-                "n_firms": 978,
-                "download_path": "./data/downloads/raw/other_indices/202604/icc_live_rut1000_2026_0417.csv",
-                "filename": "icc_live_rut1000_2026_0417.csv"
-              },
-              {
-                "date": "2026-04-17",
-                "universe": "ndx100",
-                "n_firms": 100,
-                "download_path": "./data/downloads/raw/other_indices/202604/icc_live_ndx100_2026_0417.csv",
-                "filename": "icc_live_ndx100_2026_0417.csv"
-              },
-              {
-                "date": "2026-04-17",
-                "universe": "dow30",
-                "n_firms": 30,
-                "download_path": "./data/downloads/raw/other_indices/202604/icc_live_dow30_2026_0417.csv",
-                "filename": "icc_live_dow30_2026_0417.csv"
-              },
-              {
-                "date": "2026-04-16",
-                "universe": "sp600",
-                "n_firms": 572,
-                "download_path": "./data/downloads/raw/other_indices/202604/icc_live_sp600_2026_0416.csv",
-                "filename": "icc_live_sp600_2026_0416.csv"
-              },
-              {
-                "date": "2026-04-16",
-                "universe": "sp400",
-                "n_firms": 396,
-                "download_path": "./data/downloads/raw/other_indices/202604/icc_live_sp400_2026_0416.csv",
-                "filename": "icc_live_sp400_2026_0416.csv"
-              },
-              {
-                "date": "2026-04-16",
-                "universe": "sp100",
-                "n_firms": 101,
-                "download_path": "./data/downloads/raw/other_indices/202604/icc_live_sp100_2026_0416.csv",
-                "filename": "icc_live_sp100_2026_0416.csv"
-              },
-              {
-                "date": "2026-04-16",
-                "universe": "rut1000",
-                "n_firms": 978,
-                "download_path": "./data/downloads/raw/other_indices/202604/icc_live_rut1000_2026_0416.csv",
-                "filename": "icc_live_rut1000_2026_0416.csv"
-              },
-              {
-                "date": "2026-04-16",
-                "universe": "ndx100",
-                "n_firms": 100,
-                "download_path": "./data/downloads/raw/other_indices/202604/icc_live_ndx100_2026_0416.csv",
-                "filename": "icc_live_ndx100_2026_0416.csv"
-              },
-              {
-                "date": "2026-04-16",
-                "universe": "dow30",
-                "n_firms": 30,
-                "download_path": "./data/downloads/raw/other_indices/202604/icc_live_dow30_2026_0416.csv",
-                "filename": "icc_live_dow30_2026_0416.csv"
-              },
-              {
-                "date": "2026-04-15",
-                "universe": "sp600",
-                "n_firms": 572,
-                "download_path": "./data/downloads/raw/other_indices/202604/icc_live_sp600_2026_0415.csv",
-                "filename": "icc_live_sp600_2026_0415.csv"
-              },
-              {
-                "date": "2026-04-15",
-                "universe": "sp400",
-                "n_firms": 396,
-                "download_path": "./data/downloads/raw/other_indices/202604/icc_live_sp400_2026_0415.csv",
-                "filename": "icc_live_sp400_2026_0415.csv"
-              },
-              {
-                "date": "2026-04-15",
-                "universe": "sp100",
-                "n_firms": 101,
-                "download_path": "./data/downloads/raw/other_indices/202604/icc_live_sp100_2026_0415.csv",
-                "filename": "icc_live_sp100_2026_0415.csv"
-              },
-              {
-                "date": "2026-04-15",
-                "universe": "rut1000",
-                "n_firms": 979,
-                "download_path": "./data/downloads/raw/other_indices/202604/icc_live_rut1000_2026_0415.csv",
-                "filename": "icc_live_rut1000_2026_0415.csv"
-              },
-              {
-                "date": "2026-04-15",
-                "universe": "ndx100",
-                "n_firms": 100,
-                "download_path": "./data/downloads/raw/other_indices/202604/icc_live_ndx100_2026_0415.csv",
-                "filename": "icc_live_ndx100_2026_0415.csv"
-              },
-              {
-                "date": "2026-04-15",
-                "universe": "dow30",
-                "n_firms": 30,
-                "download_path": "./data/downloads/raw/other_indices/202604/icc_live_dow30_2026_0415.csv",
-                "filename": "icc_live_dow30_2026_0415.csv"
-              },
-              {
-                "date": "2026-04-14",
-                "universe": "sp600",
-                "n_firms": 573,
-                "download_path": "./data/downloads/raw/other_indices/202604/icc_live_sp600_2026_0414.csv",
-                "filename": "icc_live_sp600_2026_0414.csv"
-              },
-              {
-                "date": "2026-04-14",
-                "universe": "sp400",
-                "n_firms": 396,
-                "download_path": "./data/downloads/raw/other_indices/202604/icc_live_sp400_2026_0414.csv",
-                "filename": "icc_live_sp400_2026_0414.csv"
-              },
-              {
-                "date": "2026-04-14",
-                "universe": "sp100",
-                "n_firms": 101,
-                "download_path": "./data/downloads/raw/other_indices/202604/icc_live_sp100_2026_0414.csv",
-                "filename": "icc_live_sp100_2026_0414.csv"
-              },
-              {
-                "date": "2026-04-14",
-                "universe": "rut1000",
-                "n_firms": 981,
-                "download_path": "./data/downloads/raw/other_indices/202604/icc_live_rut1000_2026_0414.csv",
-                "filename": "icc_live_rut1000_2026_0414.csv"
-              },
-              {
-                "date": "2026-04-14",
-                "universe": "ndx100",
-                "n_firms": 100,
-                "download_path": "./data/downloads/raw/other_indices/202604/icc_live_ndx100_2026_0414.csv",
-                "filename": "icc_live_ndx100_2026_0414.csv"
-              },
-              {
-                "date": "2026-04-14",
-                "universe": "dow30",
-                "n_firms": 30,
-                "download_path": "./data/downloads/raw/other_indices/202604/icc_live_dow30_2026_0414.csv",
-                "filename": "icc_live_dow30_2026_0414.csv"
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  }
+  "raw_snapshots": [
+    {
+      "date": "2026-04-14",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "dow30",
+      "raw_group": "other_indices",
+      "n_firms": 30,
+      "download_path": "./data/downloads/raw/other_indices/202604/icc_live_dow30_2026_0414.csv"
+    },
+    {
+      "date": "2026-04-14",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "ndx100",
+      "raw_group": "other_indices",
+      "n_firms": 100,
+      "download_path": "./data/downloads/raw/other_indices/202604/icc_live_ndx100_2026_0414.csv"
+    },
+    {
+      "date": "2026-04-14",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "rut1000",
+      "raw_group": "other_indices",
+      "n_firms": 981,
+      "download_path": "./data/downloads/raw/other_indices/202604/icc_live_rut1000_2026_0414.csv"
+    },
+    {
+      "date": "2026-04-14",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "sp100",
+      "raw_group": "other_indices",
+      "n_firms": 101,
+      "download_path": "./data/downloads/raw/other_indices/202604/icc_live_sp100_2026_0414.csv"
+    },
+    {
+      "date": "2026-04-14",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "sp400",
+      "raw_group": "other_indices",
+      "n_firms": 396,
+      "download_path": "./data/downloads/raw/other_indices/202604/icc_live_sp400_2026_0414.csv"
+    },
+    {
+      "date": "2026-04-14",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "sp600",
+      "raw_group": "other_indices",
+      "n_firms": 573,
+      "download_path": "./data/downloads/raw/other_indices/202604/icc_live_sp600_2026_0414.csv"
+    },
+    {
+      "date": "2026-04-15",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "dow30",
+      "raw_group": "other_indices",
+      "n_firms": 30,
+      "download_path": "./data/downloads/raw/other_indices/202604/icc_live_dow30_2026_0415.csv"
+    },
+    {
+      "date": "2026-04-15",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "ndx100",
+      "raw_group": "other_indices",
+      "n_firms": 100,
+      "download_path": "./data/downloads/raw/other_indices/202604/icc_live_ndx100_2026_0415.csv"
+    },
+    {
+      "date": "2026-04-15",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "rut1000",
+      "raw_group": "other_indices",
+      "n_firms": 979,
+      "download_path": "./data/downloads/raw/other_indices/202604/icc_live_rut1000_2026_0415.csv"
+    },
+    {
+      "date": "2026-04-15",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "sp100",
+      "raw_group": "other_indices",
+      "n_firms": 101,
+      "download_path": "./data/downloads/raw/other_indices/202604/icc_live_sp100_2026_0415.csv"
+    },
+    {
+      "date": "2026-04-15",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "sp400",
+      "raw_group": "other_indices",
+      "n_firms": 396,
+      "download_path": "./data/downloads/raw/other_indices/202604/icc_live_sp400_2026_0415.csv"
+    },
+    {
+      "date": "2026-04-15",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "sp600",
+      "raw_group": "other_indices",
+      "n_firms": 572,
+      "download_path": "./data/downloads/raw/other_indices/202604/icc_live_sp600_2026_0415.csv"
+    },
+    {
+      "date": "2026-04-16",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "dow30",
+      "raw_group": "other_indices",
+      "n_firms": 30,
+      "download_path": "./data/downloads/raw/other_indices/202604/icc_live_dow30_2026_0416.csv"
+    },
+    {
+      "date": "2026-04-16",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "ndx100",
+      "raw_group": "other_indices",
+      "n_firms": 100,
+      "download_path": "./data/downloads/raw/other_indices/202604/icc_live_ndx100_2026_0416.csv"
+    },
+    {
+      "date": "2026-04-16",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "rut1000",
+      "raw_group": "other_indices",
+      "n_firms": 978,
+      "download_path": "./data/downloads/raw/other_indices/202604/icc_live_rut1000_2026_0416.csv"
+    },
+    {
+      "date": "2026-04-16",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "sp100",
+      "raw_group": "other_indices",
+      "n_firms": 101,
+      "download_path": "./data/downloads/raw/other_indices/202604/icc_live_sp100_2026_0416.csv"
+    },
+    {
+      "date": "2026-04-16",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "sp400",
+      "raw_group": "other_indices",
+      "n_firms": 396,
+      "download_path": "./data/downloads/raw/other_indices/202604/icc_live_sp400_2026_0416.csv"
+    },
+    {
+      "date": "2026-04-16",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "sp600",
+      "raw_group": "other_indices",
+      "n_firms": 572,
+      "download_path": "./data/downloads/raw/other_indices/202604/icc_live_sp600_2026_0416.csv"
+    },
+    {
+      "date": "2026-04-17",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "dow30",
+      "raw_group": "other_indices",
+      "n_firms": 30,
+      "download_path": "./data/downloads/raw/other_indices/202604/icc_live_dow30_2026_0417.csv"
+    },
+    {
+      "date": "2026-04-17",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "ndx100",
+      "raw_group": "other_indices",
+      "n_firms": 100,
+      "download_path": "./data/downloads/raw/other_indices/202604/icc_live_ndx100_2026_0417.csv"
+    },
+    {
+      "date": "2026-04-17",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "rut1000",
+      "raw_group": "other_indices",
+      "n_firms": 978,
+      "download_path": "./data/downloads/raw/other_indices/202604/icc_live_rut1000_2026_0417.csv"
+    },
+    {
+      "date": "2026-04-17",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "sp100",
+      "raw_group": "other_indices",
+      "n_firms": 101,
+      "download_path": "./data/downloads/raw/other_indices/202604/icc_live_sp100_2026_0417.csv"
+    },
+    {
+      "date": "2026-04-17",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "sp400",
+      "raw_group": "other_indices",
+      "n_firms": 396,
+      "download_path": "./data/downloads/raw/other_indices/202604/icc_live_sp400_2026_0417.csv"
+    },
+    {
+      "date": "2026-04-17",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "sp600",
+      "raw_group": "other_indices",
+      "n_firms": 572,
+      "download_path": "./data/downloads/raw/other_indices/202604/icc_live_sp600_2026_0417.csv"
+    },
+    {
+      "date": "2026-04-21",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "dow30",
+      "raw_group": "other_indices",
+      "n_firms": 30,
+      "download_path": "./data/downloads/raw/other_indices/202604/icc_live_dow30_2026_0421.csv"
+    },
+    {
+      "date": "2026-04-21",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "ndx100",
+      "raw_group": "other_indices",
+      "n_firms": 100,
+      "download_path": "./data/downloads/raw/other_indices/202604/icc_live_ndx100_2026_0421.csv"
+    },
+    {
+      "date": "2026-04-21",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "rut1000",
+      "raw_group": "other_indices",
+      "n_firms": 970,
+      "download_path": "./data/downloads/raw/other_indices/202604/icc_live_rut1000_2026_0421.csv"
+    },
+    {
+      "date": "2026-04-21",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "sp100",
+      "raw_group": "other_indices",
+      "n_firms": 101,
+      "download_path": "./data/downloads/raw/other_indices/202604/icc_live_sp100_2026_0421.csv"
+    },
+    {
+      "date": "2026-04-21",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "sp400",
+      "raw_group": "other_indices",
+      "n_firms": 392,
+      "download_path": "./data/downloads/raw/other_indices/202604/icc_live_sp400_2026_0421.csv"
+    },
+    {
+      "date": "2026-04-21",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "sp600",
+      "raw_group": "other_indices",
+      "n_firms": 568,
+      "download_path": "./data/downloads/raw/other_indices/202604/icc_live_sp600_2026_0421.csv"
+    },
+    {
+      "date": "2026-04-22",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "dow30",
+      "raw_group": "other_indices",
+      "n_firms": 30,
+      "download_path": "./data/downloads/raw/other_indices/202604/icc_live_dow30_2026_0422.csv"
+    },
+    {
+      "date": "2026-04-22",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "ndx100",
+      "raw_group": "other_indices",
+      "n_firms": 100,
+      "download_path": "./data/downloads/raw/other_indices/202604/icc_live_ndx100_2026_0422.csv"
+    },
+    {
+      "date": "2026-04-22",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "rut1000",
+      "raw_group": "other_indices",
+      "n_firms": 970,
+      "download_path": "./data/downloads/raw/other_indices/202604/icc_live_rut1000_2026_0422.csv"
+    },
+    {
+      "date": "2026-04-22",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "sp100",
+      "raw_group": "other_indices",
+      "n_firms": 101,
+      "download_path": "./data/downloads/raw/other_indices/202604/icc_live_sp100_2026_0422.csv"
+    },
+    {
+      "date": "2026-04-22",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "sp400",
+      "raw_group": "other_indices",
+      "n_firms": 392,
+      "download_path": "./data/downloads/raw/other_indices/202604/icc_live_sp400_2026_0422.csv"
+    },
+    {
+      "date": "2026-04-22",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "sp600",
+      "raw_group": "other_indices",
+      "n_firms": 568,
+      "download_path": "./data/downloads/raw/other_indices/202604/icc_live_sp600_2026_0422.csv"
+    },
+    {
+      "date": "2026-04-23",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "dow30",
+      "raw_group": "other_indices",
+      "n_firms": 30,
+      "download_path": "./data/downloads/raw/other_indices/202604/icc_live_dow30_2026_0423.csv"
+    },
+    {
+      "date": "2026-04-23",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "ndx100",
+      "raw_group": "other_indices",
+      "n_firms": 100,
+      "download_path": "./data/downloads/raw/other_indices/202604/icc_live_ndx100_2026_0423.csv"
+    },
+    {
+      "date": "2026-04-23",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "rut1000",
+      "raw_group": "other_indices",
+      "n_firms": 977,
+      "download_path": "./data/downloads/raw/other_indices/202604/icc_live_rut1000_2026_0423.csv"
+    },
+    {
+      "date": "2026-04-23",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "sp100",
+      "raw_group": "other_indices",
+      "n_firms": 101,
+      "download_path": "./data/downloads/raw/other_indices/202604/icc_live_sp100_2026_0423.csv"
+    },
+    {
+      "date": "2026-04-23",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "sp400",
+      "raw_group": "other_indices",
+      "n_firms": 396,
+      "download_path": "./data/downloads/raw/other_indices/202604/icc_live_sp400_2026_0423.csv"
+    },
+    {
+      "date": "2026-04-23",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "sp600",
+      "raw_group": "other_indices",
+      "n_firms": 572,
+      "download_path": "./data/downloads/raw/other_indices/202604/icc_live_sp600_2026_0423.csv"
+    },
+    {
+      "date": "2025-10-28",
+      "year": "2025",
+      "month": "10",
+      "yyyymm": "202510",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 502,
+      "download_path": "./data/downloads/raw/sp500/202510/icc_live_sp500_2025_1028.csv"
+    },
+    {
+      "date": "2025-10-29",
+      "year": "2025",
+      "month": "10",
+      "yyyymm": "202510",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 502,
+      "download_path": "./data/downloads/raw/sp500/202510/icc_live_sp500_2025_1029.csv"
+    },
+    {
+      "date": "2025-10-30",
+      "year": "2025",
+      "month": "10",
+      "yyyymm": "202510",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 502,
+      "download_path": "./data/downloads/raw/sp500/202510/icc_live_sp500_2025_1030.csv"
+    },
+    {
+      "date": "2025-11-01",
+      "year": "2025",
+      "month": "10",
+      "yyyymm": "202510",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 501,
+      "download_path": "./data/downloads/raw/sp500/202510/icc_live_sp500_2025_1031.csv"
+    },
+    {
+      "date": "2025-11-03",
+      "year": "2025",
+      "month": "11",
+      "yyyymm": "202511",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 501,
+      "download_path": "./data/downloads/raw/sp500/202511/icc_live_sp500_2025_1103.csv"
+    },
+    {
+      "date": "2025-11-04",
+      "year": "2025",
+      "month": "11",
+      "yyyymm": "202511",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 501,
+      "download_path": "./data/downloads/raw/sp500/202511/icc_live_sp500_2025_1104.csv"
+    },
+    {
+      "date": "2025-11-05",
+      "year": "2025",
+      "month": "11",
+      "yyyymm": "202511",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 501,
+      "download_path": "./data/downloads/raw/sp500/202511/icc_live_sp500_2025_1105.csv"
+    },
+    {
+      "date": "2025-11-06",
+      "year": "2025",
+      "month": "11",
+      "yyyymm": "202511",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 501,
+      "download_path": "./data/downloads/raw/sp500/202511/icc_live_sp500_2025_1106.csv"
+    },
+    {
+      "date": "2025-11-07",
+      "year": "2025",
+      "month": "11",
+      "yyyymm": "202511",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 500,
+      "download_path": "./data/downloads/raw/sp500/202511/icc_live_sp500_2025_1107.csv"
+    },
+    {
+      "date": "2025-11-10",
+      "year": "2025",
+      "month": "11",
+      "yyyymm": "202511",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 501,
+      "download_path": "./data/downloads/raw/sp500/202511/icc_live_sp500_2025_1110.csv"
+    },
+    {
+      "date": "2025-11-11",
+      "year": "2025",
+      "month": "11",
+      "yyyymm": "202511",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 501,
+      "download_path": "./data/downloads/raw/sp500/202511/icc_live_sp500_2025_1111.csv"
+    },
+    {
+      "date": "2025-11-12",
+      "year": "2025",
+      "month": "11",
+      "yyyymm": "202511",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 501,
+      "download_path": "./data/downloads/raw/sp500/202511/icc_live_sp500_2025_1112.csv"
+    },
+    {
+      "date": "2025-11-13",
+      "year": "2025",
+      "month": "11",
+      "yyyymm": "202511",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 501,
+      "download_path": "./data/downloads/raw/sp500/202511/icc_live_sp500_2025_1113.csv"
+    },
+    {
+      "date": "2025-11-14",
+      "year": "2025",
+      "month": "11",
+      "yyyymm": "202511",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 501,
+      "download_path": "./data/downloads/raw/sp500/202511/icc_live_sp500_2025_1114.csv"
+    },
+    {
+      "date": "2025-11-17",
+      "year": "2025",
+      "month": "11",
+      "yyyymm": "202511",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 502,
+      "download_path": "./data/downloads/raw/sp500/202511/icc_live_sp500_2025_1117.csv"
+    },
+    {
+      "date": "2025-11-18",
+      "year": "2025",
+      "month": "11",
+      "yyyymm": "202511",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 502,
+      "download_path": "./data/downloads/raw/sp500/202511/icc_live_sp500_2025_1118.csv"
+    },
+    {
+      "date": "2025-11-19",
+      "year": "2025",
+      "month": "11",
+      "yyyymm": "202511",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 502,
+      "download_path": "./data/downloads/raw/sp500/202511/icc_live_sp500_2025_1119.csv"
+    },
+    {
+      "date": "2025-11-20",
+      "year": "2025",
+      "month": "11",
+      "yyyymm": "202511",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 502,
+      "download_path": "./data/downloads/raw/sp500/202511/icc_live_sp500_2025_1120.csv"
+    },
+    {
+      "date": "2025-11-25",
+      "year": "2025",
+      "month": "11",
+      "yyyymm": "202511",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 502,
+      "download_path": "./data/downloads/raw/sp500/202511/icc_live_sp500_2025_1124.csv"
+    },
+    {
+      "date": "2025-11-26",
+      "year": "2025",
+      "month": "11",
+      "yyyymm": "202511",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 502,
+      "download_path": "./data/downloads/raw/sp500/202511/icc_live_sp500_2025_1126.csv"
+    },
+    {
+      "date": "2025-11-27",
+      "year": "2025",
+      "month": "11",
+      "yyyymm": "202511",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 502,
+      "download_path": "./data/downloads/raw/sp500/202511/icc_live_sp500_2025_1127.csv"
+    },
+    {
+      "date": "2025-11-28",
+      "year": "2025",
+      "month": "11",
+      "yyyymm": "202511",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 502,
+      "download_path": "./data/downloads/raw/sp500/202511/icc_live_sp500_2025_1128.csv"
+    },
+    {
+      "date": "2025-12-01",
+      "year": "2025",
+      "month": "12",
+      "yyyymm": "202512",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 501,
+      "download_path": "./data/downloads/raw/sp500/202512/icc_live_sp500_2025_1201.csv"
+    },
+    {
+      "date": "2025-12-02",
+      "year": "2025",
+      "month": "12",
+      "yyyymm": "202512",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 502,
+      "download_path": "./data/downloads/raw/sp500/202512/icc_live_sp500_2025_1202.csv"
+    },
+    {
+      "date": "2025-12-03",
+      "year": "2025",
+      "month": "12",
+      "yyyymm": "202512",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 502,
+      "download_path": "./data/downloads/raw/sp500/202512/icc_live_sp500_2025_1203.csv"
+    },
+    {
+      "date": "2025-12-04",
+      "year": "2025",
+      "month": "12",
+      "yyyymm": "202512",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 502,
+      "download_path": "./data/downloads/raw/sp500/202512/icc_live_sp500_2025_1204.csv"
+    },
+    {
+      "date": "2025-12-05",
+      "year": "2025",
+      "month": "12",
+      "yyyymm": "202512",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 502,
+      "download_path": "./data/downloads/raw/sp500/202512/icc_live_sp500_2025_1205.csv"
+    },
+    {
+      "date": "2025-12-08",
+      "year": "2025",
+      "month": "12",
+      "yyyymm": "202512",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 502,
+      "download_path": "./data/downloads/raw/sp500/202512/icc_live_sp500_2025_1208.csv"
+    },
+    {
+      "date": "2025-12-09",
+      "year": "2025",
+      "month": "12",
+      "yyyymm": "202512",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 502,
+      "download_path": "./data/downloads/raw/sp500/202512/icc_live_sp500_2025_1209.csv"
+    },
+    {
+      "date": "2025-12-10",
+      "year": "2025",
+      "month": "12",
+      "yyyymm": "202512",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 501,
+      "download_path": "./data/downloads/raw/sp500/202512/icc_live_sp500_2025_1210.csv"
+    },
+    {
+      "date": "2025-12-11",
+      "year": "2025",
+      "month": "12",
+      "yyyymm": "202512",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 501,
+      "download_path": "./data/downloads/raw/sp500/202512/icc_live_sp500_2025_1211.csv"
+    },
+    {
+      "date": "2025-12-12",
+      "year": "2025",
+      "month": "12",
+      "yyyymm": "202512",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 500,
+      "download_path": "./data/downloads/raw/sp500/202512/icc_live_sp500_2025_1212.csv"
+    },
+    {
+      "date": "2025-12-15",
+      "year": "2025",
+      "month": "12",
+      "yyyymm": "202512",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 501,
+      "download_path": "./data/downloads/raw/sp500/202512/icc_live_sp500_2025_1215.csv"
+    },
+    {
+      "date": "2025-12-16",
+      "year": "2025",
+      "month": "12",
+      "yyyymm": "202512",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 501,
+      "download_path": "./data/downloads/raw/sp500/202512/icc_live_sp500_2025_1216.csv"
+    },
+    {
+      "date": "2025-12-17",
+      "year": "2025",
+      "month": "12",
+      "yyyymm": "202512",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 501,
+      "download_path": "./data/downloads/raw/sp500/202512/icc_live_sp500_2025_1217.csv"
+    },
+    {
+      "date": "2025-12-18",
+      "year": "2025",
+      "month": "12",
+      "yyyymm": "202512",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 501,
+      "download_path": "./data/downloads/raw/sp500/202512/icc_live_sp500_2025_1218.csv"
+    },
+    {
+      "date": "2025-12-19",
+      "year": "2025",
+      "month": "12",
+      "yyyymm": "202512",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 501,
+      "download_path": "./data/downloads/raw/sp500/202512/icc_live_sp500_2025_1219.csv"
+    },
+    {
+      "date": "2025-12-22",
+      "year": "2025",
+      "month": "12",
+      "yyyymm": "202512",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 501,
+      "download_path": "./data/downloads/raw/sp500/202512/icc_live_sp500_2025_1222.csv"
+    },
+    {
+      "date": "2025-12-23",
+      "year": "2025",
+      "month": "12",
+      "yyyymm": "202512",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 499,
+      "download_path": "./data/downloads/raw/sp500/202512/icc_live_sp500_2025_1223.csv"
+    },
+    {
+      "date": "2025-12-24",
+      "year": "2025",
+      "month": "12",
+      "yyyymm": "202512",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 499,
+      "download_path": "./data/downloads/raw/sp500/202512/icc_live_sp500_2025_1224.csv"
+    },
+    {
+      "date": "2025-12-25",
+      "year": "2025",
+      "month": "12",
+      "yyyymm": "202512",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 499,
+      "download_path": "./data/downloads/raw/sp500/202512/icc_live_sp500_2025_1225.csv"
+    },
+    {
+      "date": "2025-12-26",
+      "year": "2025",
+      "month": "12",
+      "yyyymm": "202512",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 499,
+      "download_path": "./data/downloads/raw/sp500/202512/icc_live_sp500_2025_1226.csv"
+    },
+    {
+      "date": "2025-12-29",
+      "year": "2025",
+      "month": "12",
+      "yyyymm": "202512",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 499,
+      "download_path": "./data/downloads/raw/sp500/202512/icc_live_sp500_2025_1229.csv"
+    },
+    {
+      "date": "2025-12-30",
+      "year": "2025",
+      "month": "12",
+      "yyyymm": "202512",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 499,
+      "download_path": "./data/downloads/raw/sp500/202512/icc_live_sp500_2025_1230.csv"
+    },
+    {
+      "date": "2025-12-31",
+      "year": "2025",
+      "month": "12",
+      "yyyymm": "202512",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 499,
+      "download_path": "./data/downloads/raw/sp500/202512/icc_live_sp500_2025_1231.csv"
+    },
+    {
+      "date": "2026-01-01",
+      "year": "2026",
+      "month": "01",
+      "yyyymm": "202601",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 500,
+      "download_path": "./data/downloads/raw/sp500/202601/icc_live_sp500_2026_0101.csv"
+    },
+    {
+      "date": "2026-01-02",
+      "year": "2026",
+      "month": "01",
+      "yyyymm": "202601",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 501,
+      "download_path": "./data/downloads/raw/sp500/202601/icc_live_sp500_2026_0102.csv"
+    },
+    {
+      "date": "2026-01-05",
+      "year": "2026",
+      "month": "01",
+      "yyyymm": "202601",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 497,
+      "download_path": "./data/downloads/raw/sp500/202601/icc_live_sp500_2026_0105_r1.csv"
+    },
+    {
+      "date": "2026-01-06",
+      "year": "2026",
+      "month": "01",
+      "yyyymm": "202601",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 497,
+      "download_path": "./data/downloads/raw/sp500/202601/icc_live_sp500_2026_0106_r1.csv"
+    },
+    {
+      "date": "2026-01-07",
+      "year": "2026",
+      "month": "01",
+      "yyyymm": "202601",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 497,
+      "download_path": "./data/downloads/raw/sp500/202601/icc_live_sp500_2026_0107_r1.csv"
+    },
+    {
+      "date": "2026-01-08",
+      "year": "2026",
+      "month": "01",
+      "yyyymm": "202601",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 497,
+      "download_path": "./data/downloads/raw/sp500/202601/icc_live_sp500_2026_0108_r1.csv"
+    },
+    {
+      "date": "2026-01-09",
+      "year": "2026",
+      "month": "01",
+      "yyyymm": "202601",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 497,
+      "download_path": "./data/downloads/raw/sp500/202601/icc_live_sp500_2026_0109_r1.csv"
+    },
+    {
+      "date": "2026-01-12",
+      "year": "2026",
+      "month": "01",
+      "yyyymm": "202601",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 496,
+      "download_path": "./data/downloads/raw/sp500/202601/icc_live_sp500_2026_0112_r1.csv"
+    },
+    {
+      "date": "2026-01-13",
+      "year": "2026",
+      "month": "01",
+      "yyyymm": "202601",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 496,
+      "download_path": "./data/downloads/raw/sp500/202601/icc_live_sp500_2026_0113_r1.csv"
+    },
+    {
+      "date": "2026-01-14",
+      "year": "2026",
+      "month": "01",
+      "yyyymm": "202601",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 496,
+      "download_path": "./data/downloads/raw/sp500/202601/icc_live_sp500_2026_0114_r1.csv"
+    },
+    {
+      "date": "2026-01-15",
+      "year": "2026",
+      "month": "01",
+      "yyyymm": "202601",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 496,
+      "download_path": "./data/downloads/raw/sp500/202601/icc_live_sp500_2026_0115_r1.csv"
+    },
+    {
+      "date": "2026-01-16",
+      "year": "2026",
+      "month": "01",
+      "yyyymm": "202601",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 496,
+      "download_path": "./data/downloads/raw/sp500/202601/icc_live_sp500_2026_0116_r1.csv"
+    },
+    {
+      "date": "2026-01-19",
+      "year": "2026",
+      "month": "01",
+      "yyyymm": "202601",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 496,
+      "download_path": "./data/downloads/raw/sp500/202601/icc_live_sp500_2026_0119_r1.csv"
+    },
+    {
+      "date": "2026-01-20",
+      "year": "2026",
+      "month": "01",
+      "yyyymm": "202601",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 496,
+      "download_path": "./data/downloads/raw/sp500/202601/icc_live_sp500_2026_0120_r1.csv"
+    },
+    {
+      "date": "2026-01-21",
+      "year": "2026",
+      "month": "01",
+      "yyyymm": "202601",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 495,
+      "download_path": "./data/downloads/raw/sp500/202601/icc_live_sp500_2026_0121_r1.csv"
+    },
+    {
+      "date": "2026-01-22",
+      "year": "2026",
+      "month": "01",
+      "yyyymm": "202601",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 495,
+      "download_path": "./data/downloads/raw/sp500/202601/icc_live_sp500_2026_0122_r1.csv"
+    },
+    {
+      "date": "2026-01-23",
+      "year": "2026",
+      "month": "01",
+      "yyyymm": "202601",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 495,
+      "download_path": "./data/downloads/raw/sp500/202601/icc_live_sp500_2026_0123_r1.csv"
+    },
+    {
+      "date": "2026-01-26",
+      "year": "2026",
+      "month": "01",
+      "yyyymm": "202601",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 495,
+      "download_path": "./data/downloads/raw/sp500/202601/icc_live_sp500_2026_0126_r1.csv"
+    },
+    {
+      "date": "2026-01-27",
+      "year": "2026",
+      "month": "01",
+      "yyyymm": "202601",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 495,
+      "download_path": "./data/downloads/raw/sp500/202601/icc_live_sp500_2026_0127_r1.csv"
+    },
+    {
+      "date": "2026-01-28",
+      "year": "2026",
+      "month": "01",
+      "yyyymm": "202601",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 495,
+      "download_path": "./data/downloads/raw/sp500/202601/icc_live_sp500_2026_0128_r1.csv"
+    },
+    {
+      "date": "2026-01-29",
+      "year": "2026",
+      "month": "01",
+      "yyyymm": "202601",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 497,
+      "download_path": "./data/downloads/raw/sp500/202601/icc_live_sp500_2026_0129_r1.csv"
+    },
+    {
+      "date": "2026-01-30",
+      "year": "2026",
+      "month": "01",
+      "yyyymm": "202601",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 497,
+      "download_path": "./data/downloads/raw/sp500/202601/icc_live_sp500_2026_0130_r1.csv"
+    },
+    {
+      "date": "2026-02-03",
+      "year": "2026",
+      "month": "02",
+      "yyyymm": "202602",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 496,
+      "download_path": "./data/downloads/raw/sp500/202602/icc_live_sp500_2026_0203_r1.csv"
+    },
+    {
+      "date": "2026-02-04",
+      "year": "2026",
+      "month": "02",
+      "yyyymm": "202602",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 496,
+      "download_path": "./data/downloads/raw/sp500/202602/icc_live_sp500_2026_0204_r1.csv"
+    },
+    {
+      "date": "2026-02-05",
+      "year": "2026",
+      "month": "02",
+      "yyyymm": "202602",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 496,
+      "download_path": "./data/downloads/raw/sp500/202602/icc_live_sp500_2026_0205_r1.csv"
+    },
+    {
+      "date": "2026-02-06",
+      "year": "2026",
+      "month": "02",
+      "yyyymm": "202602",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 496,
+      "download_path": "./data/downloads/raw/sp500/202602/icc_live_sp500_2026_0206_r1.csv"
+    },
+    {
+      "date": "2026-02-09",
+      "year": "2026",
+      "month": "02",
+      "yyyymm": "202602",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 496,
+      "download_path": "./data/downloads/raw/sp500/202602/icc_live_sp500_2026_0209_r1.csv"
+    },
+    {
+      "date": "2026-02-10",
+      "year": "2026",
+      "month": "02",
+      "yyyymm": "202602",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 496,
+      "download_path": "./data/downloads/raw/sp500/202602/icc_live_sp500_2026_0210_r1.csv"
+    },
+    {
+      "date": "2026-02-11",
+      "year": "2026",
+      "month": "02",
+      "yyyymm": "202602",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 496,
+      "download_path": "./data/downloads/raw/sp500/202602/icc_live_sp500_2026_0211_r1.csv"
+    },
+    {
+      "date": "2026-02-12",
+      "year": "2026",
+      "month": "02",
+      "yyyymm": "202602",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 496,
+      "download_path": "./data/downloads/raw/sp500/202602/icc_live_sp500_2026_0212_r1.csv"
+    },
+    {
+      "date": "2026-02-13",
+      "year": "2026",
+      "month": "02",
+      "yyyymm": "202602",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 496,
+      "download_path": "./data/downloads/raw/sp500/202602/icc_live_sp500_2026_0213_r1.csv"
+    },
+    {
+      "date": "2026-02-16",
+      "year": "2026",
+      "month": "02",
+      "yyyymm": "202602",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 496,
+      "download_path": "./data/downloads/raw/sp500/202602/icc_live_sp500_2026_0216_r1.csv"
+    },
+    {
+      "date": "2026-02-17",
+      "year": "2026",
+      "month": "02",
+      "yyyymm": "202602",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 496,
+      "download_path": "./data/downloads/raw/sp500/202602/icc_live_sp500_2026_0217_r1.csv"
+    },
+    {
+      "date": "2026-02-18",
+      "year": "2026",
+      "month": "02",
+      "yyyymm": "202602",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 496,
+      "download_path": "./data/downloads/raw/sp500/202602/icc_live_sp500_2026_0218_r1.csv"
+    },
+    {
+      "date": "2026-02-19",
+      "year": "2026",
+      "month": "02",
+      "yyyymm": "202602",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 496,
+      "download_path": "./data/downloads/raw/sp500/202602/icc_live_sp500_2026_0219_r1.csv"
+    },
+    {
+      "date": "2026-02-20",
+      "year": "2026",
+      "month": "02",
+      "yyyymm": "202602",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 496,
+      "download_path": "./data/downloads/raw/sp500/202602/icc_live_sp500_2026_0220_r1.csv"
+    },
+    {
+      "date": "2026-02-23",
+      "year": "2026",
+      "month": "02",
+      "yyyymm": "202602",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 496,
+      "download_path": "./data/downloads/raw/sp500/202602/icc_live_sp500_2026_0223_r1.csv"
+    },
+    {
+      "date": "2026-02-24",
+      "year": "2026",
+      "month": "02",
+      "yyyymm": "202602",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 496,
+      "download_path": "./data/downloads/raw/sp500/202602/icc_live_sp500_2026_0224_r1.csv"
+    },
+    {
+      "date": "2026-02-25",
+      "year": "2026",
+      "month": "02",
+      "yyyymm": "202602",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 496,
+      "download_path": "./data/downloads/raw/sp500/202602/icc_live_sp500_2026_0225_r1.csv"
+    },
+    {
+      "date": "2026-02-26",
+      "year": "2026",
+      "month": "02",
+      "yyyymm": "202602",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 496,
+      "download_path": "./data/downloads/raw/sp500/202602/icc_live_sp500_2026_0226_r1.csv"
+    },
+    {
+      "date": "2026-02-27",
+      "year": "2026",
+      "month": "02",
+      "yyyymm": "202602",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 496,
+      "download_path": "./data/downloads/raw/sp500/202602/icc_live_sp500_2026_0227_r1.csv"
+    },
+    {
+      "date": "2026-03-02",
+      "year": "2026",
+      "month": "03",
+      "yyyymm": "202603",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 495,
+      "download_path": "./data/downloads/raw/sp500/202603/icc_live_sp500_2026_0302_r1.csv"
+    },
+    {
+      "date": "2026-03-03",
+      "year": "2026",
+      "month": "03",
+      "yyyymm": "202603",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 495,
+      "download_path": "./data/downloads/raw/sp500/202603/icc_live_sp500_2026_0303_r1.csv"
+    },
+    {
+      "date": "2026-03-04",
+      "year": "2026",
+      "month": "03",
+      "yyyymm": "202603",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 501,
+      "download_path": "./data/downloads/raw/sp500/202603/icc_live_sp500_2026_0304_r1.csv"
+    },
+    {
+      "date": "2026-03-05",
+      "year": "2026",
+      "month": "03",
+      "yyyymm": "202603",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 501,
+      "download_path": "./data/downloads/raw/sp500/202603/icc_live_sp500_2026_0305_r1.csv"
+    },
+    {
+      "date": "2026-03-06",
+      "year": "2026",
+      "month": "03",
+      "yyyymm": "202603",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 501,
+      "download_path": "./data/downloads/raw/sp500/202603/icc_live_sp500_2026_0306_r1.csv"
+    },
+    {
+      "date": "2026-03-09",
+      "year": "2026",
+      "month": "03",
+      "yyyymm": "202603",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 501,
+      "download_path": "./data/downloads/raw/sp500/202603/icc_live_sp500_2026_0309_r1.csv"
+    },
+    {
+      "date": "2026-03-10",
+      "year": "2026",
+      "month": "03",
+      "yyyymm": "202603",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 501,
+      "download_path": "./data/downloads/raw/sp500/202603/icc_live_sp500_2026_0310_r1.csv"
+    },
+    {
+      "date": "2026-03-11",
+      "year": "2026",
+      "month": "03",
+      "yyyymm": "202603",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 501,
+      "download_path": "./data/downloads/raw/sp500/202603/icc_live_sp500_2026_0311_r1.csv"
+    },
+    {
+      "date": "2026-03-12",
+      "year": "2026",
+      "month": "03",
+      "yyyymm": "202603",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 501,
+      "download_path": "./data/downloads/raw/sp500/202603/icc_live_sp500_2026_0312_r1.csv"
+    },
+    {
+      "date": "2026-03-13",
+      "year": "2026",
+      "month": "03",
+      "yyyymm": "202603",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 501,
+      "download_path": "./data/downloads/raw/sp500/202603/icc_live_sp500_2026_0313_r1.csv"
+    },
+    {
+      "date": "2026-03-16",
+      "year": "2026",
+      "month": "03",
+      "yyyymm": "202603",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 501,
+      "download_path": "./data/downloads/raw/sp500/202603/icc_live_sp500_2026_0316_r1.csv"
+    },
+    {
+      "date": "2026-03-17",
+      "year": "2026",
+      "month": "03",
+      "yyyymm": "202603",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 501,
+      "download_path": "./data/downloads/raw/sp500/202603/icc_live_sp500_2026_0317_r1.csv"
+    },
+    {
+      "date": "2026-03-18",
+      "year": "2026",
+      "month": "03",
+      "yyyymm": "202603",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 501,
+      "download_path": "./data/downloads/raw/sp500/202603/icc_live_sp500_2026_0318_r1.csv"
+    },
+    {
+      "date": "2026-03-19",
+      "year": "2026",
+      "month": "03",
+      "yyyymm": "202603",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 501,
+      "download_path": "./data/downloads/raw/sp500/202603/icc_live_sp500_2026_0319_r1.csv"
+    },
+    {
+      "date": "2026-03-20",
+      "year": "2026",
+      "month": "03",
+      "yyyymm": "202603",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 501,
+      "download_path": "./data/downloads/raw/sp500/202603/icc_live_sp500_2026_0320_r1.csv"
+    },
+    {
+      "date": "2026-03-23",
+      "year": "2026",
+      "month": "03",
+      "yyyymm": "202603",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 501,
+      "download_path": "./data/downloads/raw/sp500/202603/icc_live_sp500_2026_0323_r1.csv"
+    },
+    {
+      "date": "2026-03-24",
+      "year": "2026",
+      "month": "03",
+      "yyyymm": "202603",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 501,
+      "download_path": "./data/downloads/raw/sp500/202603/icc_live_sp500_2026_0324_r1.csv"
+    },
+    {
+      "date": "2026-03-25",
+      "year": "2026",
+      "month": "03",
+      "yyyymm": "202603",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 500,
+      "download_path": "./data/downloads/raw/sp500/202603/icc_live_sp500_2026_0325_r1.csv"
+    },
+    {
+      "date": "2026-03-26",
+      "year": "2026",
+      "month": "03",
+      "yyyymm": "202603",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 500,
+      "download_path": "./data/downloads/raw/sp500/202603/icc_live_sp500_2026_0326_r1.csv"
+    },
+    {
+      "date": "2026-03-27",
+      "year": "2026",
+      "month": "03",
+      "yyyymm": "202603",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 500,
+      "download_path": "./data/downloads/raw/sp500/202603/icc_live_sp500_2026_0327_r1.csv"
+    },
+    {
+      "date": "2026-03-30",
+      "year": "2026",
+      "month": "03",
+      "yyyymm": "202603",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 500,
+      "download_path": "./data/downloads/raw/sp500/202603/icc_live_sp500_2026_0330_r1.csv"
+    },
+    {
+      "date": "2026-03-31",
+      "year": "2026",
+      "month": "03",
+      "yyyymm": "202603",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 500,
+      "download_path": "./data/downloads/raw/sp500/202603/icc_live_sp500_2026_0331_r1.csv"
+    },
+    {
+      "date": "2026-04-01",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 500,
+      "download_path": "./data/downloads/raw/sp500/202604/icc_live_sp500_2026_0401_r1.csv"
+    },
+    {
+      "date": "2026-04-02",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 500,
+      "download_path": "./data/downloads/raw/sp500/202604/icc_live_sp500_2026_0402_r1.csv"
+    },
+    {
+      "date": "2026-04-03",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 500,
+      "download_path": "./data/downloads/raw/sp500/202604/icc_live_sp500_2026_0403_r1.csv"
+    },
+    {
+      "date": "2026-04-06",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 500,
+      "download_path": "./data/downloads/raw/sp500/202604/icc_live_sp500_2026_0406_r1.csv"
+    },
+    {
+      "date": "2026-04-07",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 500,
+      "download_path": "./data/downloads/raw/sp500/202604/icc_live_sp500_2026_0407_r1.csv"
+    },
+    {
+      "date": "2026-04-08",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 500,
+      "download_path": "./data/downloads/raw/sp500/202604/icc_live_sp500_2026_0408_r1.csv"
+    },
+    {
+      "date": "2026-04-09",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 499,
+      "download_path": "./data/downloads/raw/sp500/202604/icc_live_sp500_2026_0409_r1.csv"
+    },
+    {
+      "date": "2026-04-10",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 500,
+      "download_path": "./data/downloads/raw/sp500/202604/icc_live_sp500_2026_0410_r1.csv"
+    },
+    {
+      "date": "2026-04-13",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 500,
+      "download_path": "./data/downloads/raw/sp500/202604/icc_live_sp500_2026_0413_r3.csv"
+    },
+    {
+      "date": "2026-04-14",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 500,
+      "download_path": "./data/downloads/raw/sp500/202604/icc_live_sp500_2026_0414_r1.csv"
+    },
+    {
+      "date": "2026-04-15",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 500,
+      "download_path": "./data/downloads/raw/sp500/202604/icc_live_sp500_2026_0415_r1.csv"
+    },
+    {
+      "date": "2026-04-16",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 500,
+      "download_path": "./data/downloads/raw/sp500/202604/icc_live_sp500_2026_0416_r1.csv"
+    },
+    {
+      "date": "2026-04-17",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 500,
+      "download_path": "./data/downloads/raw/sp500/202604/icc_live_sp500_2026_0417_r1.csv"
+    },
+    {
+      "date": "2026-04-20",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 499,
+      "download_path": "./data/downloads/raw/sp500/202604/icc_live_sp500_2026_0420.csv"
+    },
+    {
+      "date": "2026-04-21",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 499,
+      "download_path": "./data/downloads/raw/sp500/202604/icc_live_sp500_2026_0421_r1.csv"
+    },
+    {
+      "date": "2026-04-22",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 499,
+      "download_path": "./data/downloads/raw/sp500/202604/icc_live_sp500_2026_0422_r1.csv"
+    },
+    {
+      "date": "2026-04-23",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "sp500",
+      "raw_group": "sp500",
+      "n_firms": 500,
+      "download_path": "./data/downloads/raw/sp500/202604/icc_live_sp500_2026_0423_r1.csv"
+    },
+    {
+      "date": "2025-10-28",
+      "year": "2025",
+      "month": "10",
+      "yyyymm": "202510",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3182,
+      "download_path": "./data/downloads/raw/usall/202510/icc_live_usall_2025_1028.csv"
+    },
+    {
+      "date": "2025-10-29",
+      "year": "2025",
+      "month": "10",
+      "yyyymm": "202510",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3181,
+      "download_path": "./data/downloads/raw/usall/202510/icc_live_usall_2025_1029.csv"
+    },
+    {
+      "date": "2025-10-30",
+      "year": "2025",
+      "month": "10",
+      "yyyymm": "202510",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3179,
+      "download_path": "./data/downloads/raw/usall/202510/icc_live_usall_2025_1030.csv"
+    },
+    {
+      "date": "2025-11-01",
+      "year": "2025",
+      "month": "10",
+      "yyyymm": "202510",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3180,
+      "download_path": "./data/downloads/raw/usall/202510/icc_live_usall_2025_1031.csv"
+    },
+    {
+      "date": "2025-11-03",
+      "year": "2025",
+      "month": "11",
+      "yyyymm": "202511",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3179,
+      "download_path": "./data/downloads/raw/usall/202511/icc_live_usall_2025_1103.csv"
+    },
+    {
+      "date": "2025-11-04",
+      "year": "2025",
+      "month": "11",
+      "yyyymm": "202511",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3176,
+      "download_path": "./data/downloads/raw/usall/202511/icc_live_usall_2025_1104.csv"
+    },
+    {
+      "date": "2025-11-05",
+      "year": "2025",
+      "month": "11",
+      "yyyymm": "202511",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3175,
+      "download_path": "./data/downloads/raw/usall/202511/icc_live_usall_2025_1105.csv"
+    },
+    {
+      "date": "2025-11-06",
+      "year": "2025",
+      "month": "11",
+      "yyyymm": "202511",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3183,
+      "download_path": "./data/downloads/raw/usall/202511/icc_live_usall_2025_1106.csv"
+    },
+    {
+      "date": "2025-11-07",
+      "year": "2025",
+      "month": "11",
+      "yyyymm": "202511",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3177,
+      "download_path": "./data/downloads/raw/usall/202511/icc_live_usall_2025_1107.csv"
+    },
+    {
+      "date": "2025-11-10",
+      "year": "2025",
+      "month": "11",
+      "yyyymm": "202511",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3182,
+      "download_path": "./data/downloads/raw/usall/202511/icc_live_usall_2025_1110.csv"
+    },
+    {
+      "date": "2025-11-11",
+      "year": "2025",
+      "month": "11",
+      "yyyymm": "202511",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3180,
+      "download_path": "./data/downloads/raw/usall/202511/icc_live_usall_2025_1111.csv"
+    },
+    {
+      "date": "2025-11-12",
+      "year": "2025",
+      "month": "11",
+      "yyyymm": "202511",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3180,
+      "download_path": "./data/downloads/raw/usall/202511/icc_live_usall_2025_1112.csv"
+    },
+    {
+      "date": "2025-11-13",
+      "year": "2025",
+      "month": "11",
+      "yyyymm": "202511",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3177,
+      "download_path": "./data/downloads/raw/usall/202511/icc_live_usall_2025_1113.csv"
+    },
+    {
+      "date": "2025-11-14",
+      "year": "2025",
+      "month": "11",
+      "yyyymm": "202511",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3178,
+      "download_path": "./data/downloads/raw/usall/202511/icc_live_usall_2025_1114.csv"
+    },
+    {
+      "date": "2025-11-17",
+      "year": "2025",
+      "month": "11",
+      "yyyymm": "202511",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3187,
+      "download_path": "./data/downloads/raw/usall/202511/icc_live_usall_2025_1117.csv"
+    },
+    {
+      "date": "2025-11-18",
+      "year": "2025",
+      "month": "11",
+      "yyyymm": "202511",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3187,
+      "download_path": "./data/downloads/raw/usall/202511/icc_live_usall_2025_1118.csv"
+    },
+    {
+      "date": "2025-11-19",
+      "year": "2025",
+      "month": "11",
+      "yyyymm": "202511",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3191,
+      "download_path": "./data/downloads/raw/usall/202511/icc_live_usall_2025_1119.csv"
+    },
+    {
+      "date": "2025-11-20",
+      "year": "2025",
+      "month": "11",
+      "yyyymm": "202511",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3190,
+      "download_path": "./data/downloads/raw/usall/202511/icc_live_usall_2025_1120.csv"
+    },
+    {
+      "date": "2025-11-25",
+      "year": "2025",
+      "month": "11",
+      "yyyymm": "202511",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3186,
+      "download_path": "./data/downloads/raw/usall/202511/icc_live_usall_2025_1124.csv"
+    },
+    {
+      "date": "2025-11-26",
+      "year": "2025",
+      "month": "11",
+      "yyyymm": "202511",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3190,
+      "download_path": "./data/downloads/raw/usall/202511/icc_live_usall_2025_1126.csv"
+    },
+    {
+      "date": "2025-11-27",
+      "year": "2025",
+      "month": "11",
+      "yyyymm": "202511",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3189,
+      "download_path": "./data/downloads/raw/usall/202511/icc_live_usall_2025_1127.csv"
+    },
+    {
+      "date": "2025-11-28",
+      "year": "2025",
+      "month": "11",
+      "yyyymm": "202511",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3189,
+      "download_path": "./data/downloads/raw/usall/202511/icc_live_usall_2025_1128.csv"
+    },
+    {
+      "date": "2025-12-01",
+      "year": "2025",
+      "month": "12",
+      "yyyymm": "202512",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3185,
+      "download_path": "./data/downloads/raw/usall/202512/icc_live_usall_2025_1201.csv"
+    },
+    {
+      "date": "2025-12-02",
+      "year": "2025",
+      "month": "12",
+      "yyyymm": "202512",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3186,
+      "download_path": "./data/downloads/raw/usall/202512/icc_live_usall_2025_1202.csv"
+    },
+    {
+      "date": "2025-12-03",
+      "year": "2025",
+      "month": "12",
+      "yyyymm": "202512",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3188,
+      "download_path": "./data/downloads/raw/usall/202512/icc_live_usall_2025_1203.csv"
+    },
+    {
+      "date": "2025-12-04",
+      "year": "2025",
+      "month": "12",
+      "yyyymm": "202512",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3190,
+      "download_path": "./data/downloads/raw/usall/202512/icc_live_usall_2025_1204.csv"
+    },
+    {
+      "date": "2025-12-05",
+      "year": "2025",
+      "month": "12",
+      "yyyymm": "202512",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3192,
+      "download_path": "./data/downloads/raw/usall/202512/icc_live_usall_2025_1205.csv"
+    },
+    {
+      "date": "2025-12-08",
+      "year": "2025",
+      "month": "12",
+      "yyyymm": "202512",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3191,
+      "download_path": "./data/downloads/raw/usall/202512/icc_live_usall_2025_1208.csv"
+    },
+    {
+      "date": "2025-12-09",
+      "year": "2025",
+      "month": "12",
+      "yyyymm": "202512",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3193,
+      "download_path": "./data/downloads/raw/usall/202512/icc_live_usall_2025_1209.csv"
+    },
+    {
+      "date": "2025-12-10",
+      "year": "2025",
+      "month": "12",
+      "yyyymm": "202512",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3213,
+      "download_path": "./data/downloads/raw/usall/202512/icc_live_usall_2025_1210.csv"
+    },
+    {
+      "date": "2025-12-11",
+      "year": "2025",
+      "month": "12",
+      "yyyymm": "202512",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3214,
+      "download_path": "./data/downloads/raw/usall/202512/icc_live_usall_2025_1211.csv"
+    },
+    {
+      "date": "2025-12-12",
+      "year": "2025",
+      "month": "12",
+      "yyyymm": "202512",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3210,
+      "download_path": "./data/downloads/raw/usall/202512/icc_live_usall_2025_1212.csv"
+    },
+    {
+      "date": "2025-12-15",
+      "year": "2025",
+      "month": "12",
+      "yyyymm": "202512",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3210,
+      "download_path": "./data/downloads/raw/usall/202512/icc_live_usall_2025_1215.csv"
+    },
+    {
+      "date": "2025-12-16",
+      "year": "2025",
+      "month": "12",
+      "yyyymm": "202512",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3208,
+      "download_path": "./data/downloads/raw/usall/202512/icc_live_usall_2025_1216.csv"
+    },
+    {
+      "date": "2025-12-17",
+      "year": "2025",
+      "month": "12",
+      "yyyymm": "202512",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3205,
+      "download_path": "./data/downloads/raw/usall/202512/icc_live_usall_2025_1217.csv"
+    },
+    {
+      "date": "2025-12-18",
+      "year": "2025",
+      "month": "12",
+      "yyyymm": "202512",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3202,
+      "download_path": "./data/downloads/raw/usall/202512/icc_live_usall_2025_1218.csv"
+    },
+    {
+      "date": "2025-12-19",
+      "year": "2025",
+      "month": "12",
+      "yyyymm": "202512",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3202,
+      "download_path": "./data/downloads/raw/usall/202512/icc_live_usall_2025_1219.csv"
+    },
+    {
+      "date": "2025-12-22",
+      "year": "2025",
+      "month": "12",
+      "yyyymm": "202512",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3203,
+      "download_path": "./data/downloads/raw/usall/202512/icc_live_usall_2025_1222.csv"
+    },
+    {
+      "date": "2025-12-23",
+      "year": "2025",
+      "month": "12",
+      "yyyymm": "202512",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3203,
+      "download_path": "./data/downloads/raw/usall/202512/icc_live_usall_2025_1223.csv"
+    },
+    {
+      "date": "2025-12-24",
+      "year": "2025",
+      "month": "12",
+      "yyyymm": "202512",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3202,
+      "download_path": "./data/downloads/raw/usall/202512/icc_live_usall_2025_1224.csv"
+    },
+    {
+      "date": "2025-12-25",
+      "year": "2025",
+      "month": "12",
+      "yyyymm": "202512",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3198,
+      "download_path": "./data/downloads/raw/usall/202512/icc_live_usall_2025_1225.csv"
+    },
+    {
+      "date": "2025-12-26",
+      "year": "2025",
+      "month": "12",
+      "yyyymm": "202512",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3197,
+      "download_path": "./data/downloads/raw/usall/202512/icc_live_usall_2025_1226.csv"
+    },
+    {
+      "date": "2025-12-29",
+      "year": "2025",
+      "month": "12",
+      "yyyymm": "202512",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3197,
+      "download_path": "./data/downloads/raw/usall/202512/icc_live_usall_2025_1229.csv"
+    },
+    {
+      "date": "2025-12-30",
+      "year": "2025",
+      "month": "12",
+      "yyyymm": "202512",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3197,
+      "download_path": "./data/downloads/raw/usall/202512/icc_live_usall_2025_1230.csv"
+    },
+    {
+      "date": "2025-12-31",
+      "year": "2025",
+      "month": "12",
+      "yyyymm": "202512",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3197,
+      "download_path": "./data/downloads/raw/usall/202512/icc_live_usall_2025_1231.csv"
+    },
+    {
+      "date": "2026-01-01",
+      "year": "2026",
+      "month": "01",
+      "yyyymm": "202601",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3198,
+      "download_path": "./data/downloads/raw/usall/202601/icc_live_usall_2026_0101.csv"
+    },
+    {
+      "date": "2026-01-02",
+      "year": "2026",
+      "month": "01",
+      "yyyymm": "202601",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3200,
+      "download_path": "./data/downloads/raw/usall/202601/icc_live_usall_2026_0102.csv"
+    },
+    {
+      "date": "2026-01-06",
+      "year": "2026",
+      "month": "01",
+      "yyyymm": "202601",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3277,
+      "download_path": "./data/downloads/raw/usall/202601/icc_live_usall_2026_0106_r1.csv"
+    },
+    {
+      "date": "2026-01-07",
+      "year": "2026",
+      "month": "01",
+      "yyyymm": "202601",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3276,
+      "download_path": "./data/downloads/raw/usall/202601/icc_live_usall_2026_0107_r1.csv"
+    },
+    {
+      "date": "2026-01-08",
+      "year": "2026",
+      "month": "01",
+      "yyyymm": "202601",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3276,
+      "download_path": "./data/downloads/raw/usall/202601/icc_live_usall_2026_0108_r1.csv"
+    },
+    {
+      "date": "2026-01-09",
+      "year": "2026",
+      "month": "01",
+      "yyyymm": "202601",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3276,
+      "download_path": "./data/downloads/raw/usall/202601/icc_live_usall_2026_0109_r1.csv"
+    },
+    {
+      "date": "2026-01-12",
+      "year": "2026",
+      "month": "01",
+      "yyyymm": "202601",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3277,
+      "download_path": "./data/downloads/raw/usall/202601/icc_live_usall_2026_0112_r1.csv"
+    },
+    {
+      "date": "2026-01-13",
+      "year": "2026",
+      "month": "01",
+      "yyyymm": "202601",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3278,
+      "download_path": "./data/downloads/raw/usall/202601/icc_live_usall_2026_0113_r1.csv"
+    },
+    {
+      "date": "2026-01-14",
+      "year": "2026",
+      "month": "01",
+      "yyyymm": "202601",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3279,
+      "download_path": "./data/downloads/raw/usall/202601/icc_live_usall_2026_0114_r1.csv"
+    },
+    {
+      "date": "2026-01-15",
+      "year": "2026",
+      "month": "01",
+      "yyyymm": "202601",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3277,
+      "download_path": "./data/downloads/raw/usall/202601/icc_live_usall_2026_0115_r1.csv"
+    },
+    {
+      "date": "2026-01-16",
+      "year": "2026",
+      "month": "01",
+      "yyyymm": "202601",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3277,
+      "download_path": "./data/downloads/raw/usall/202601/icc_live_usall_2026_0116_r1.csv"
+    },
+    {
+      "date": "2026-01-19",
+      "year": "2026",
+      "month": "01",
+      "yyyymm": "202601",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3277,
+      "download_path": "./data/downloads/raw/usall/202601/icc_live_usall_2026_0119_r1.csv"
+    },
+    {
+      "date": "2026-01-20",
+      "year": "2026",
+      "month": "01",
+      "yyyymm": "202601",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 3281,
+      "download_path": "./data/downloads/raw/usall/202601/icc_live_usall_2026_0120_r1.csv"
+    },
+    {
+      "date": "2026-01-21",
+      "year": "2026",
+      "month": "01",
+      "yyyymm": "202601",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2684,
+      "download_path": "./data/downloads/raw/usall/202601/icc_live_usall_2026_0121_r1.csv"
+    },
+    {
+      "date": "2026-01-22",
+      "year": "2026",
+      "month": "01",
+      "yyyymm": "202601",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2685,
+      "download_path": "./data/downloads/raw/usall/202601/icc_live_usall_2026_0122_r1.csv"
+    },
+    {
+      "date": "2026-01-23",
+      "year": "2026",
+      "month": "01",
+      "yyyymm": "202601",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2686,
+      "download_path": "./data/downloads/raw/usall/202601/icc_live_usall_2026_0123_r1.csv"
+    },
+    {
+      "date": "2026-01-26",
+      "year": "2026",
+      "month": "01",
+      "yyyymm": "202601",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2686,
+      "download_path": "./data/downloads/raw/usall/202601/icc_live_usall_2026_0126_r1.csv"
+    },
+    {
+      "date": "2026-01-27",
+      "year": "2026",
+      "month": "01",
+      "yyyymm": "202601",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2685,
+      "download_path": "./data/downloads/raw/usall/202601/icc_live_usall_2026_0127_r1.csv"
+    },
+    {
+      "date": "2026-01-28",
+      "year": "2026",
+      "month": "01",
+      "yyyymm": "202601",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2685,
+      "download_path": "./data/downloads/raw/usall/202601/icc_live_usall_2026_0128_r1.csv"
+    },
+    {
+      "date": "2026-01-29",
+      "year": "2026",
+      "month": "01",
+      "yyyymm": "202601",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2686,
+      "download_path": "./data/downloads/raw/usall/202601/icc_live_usall_2026_0129_r1.csv"
+    },
+    {
+      "date": "2026-01-30",
+      "year": "2026",
+      "month": "01",
+      "yyyymm": "202601",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2684,
+      "download_path": "./data/downloads/raw/usall/202601/icc_live_usall_2026_0130_r1.csv"
+    },
+    {
+      "date": "2026-02-03",
+      "year": "2026",
+      "month": "02",
+      "yyyymm": "202602",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2679,
+      "download_path": "./data/downloads/raw/usall/202602/icc_live_usall_2026_0203_r1.csv"
+    },
+    {
+      "date": "2026-02-04",
+      "year": "2026",
+      "month": "02",
+      "yyyymm": "202602",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2679,
+      "download_path": "./data/downloads/raw/usall/202602/icc_live_usall_2026_0204_r1.csv"
+    },
+    {
+      "date": "2026-02-05",
+      "year": "2026",
+      "month": "02",
+      "yyyymm": "202602",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2680,
+      "download_path": "./data/downloads/raw/usall/202602/icc_live_usall_2026_0205_r1.csv"
+    },
+    {
+      "date": "2026-02-06",
+      "year": "2026",
+      "month": "02",
+      "yyyymm": "202602",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2678,
+      "download_path": "./data/downloads/raw/usall/202602/icc_live_usall_2026_0206_r1.csv"
+    },
+    {
+      "date": "2026-02-09",
+      "year": "2026",
+      "month": "02",
+      "yyyymm": "202602",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2675,
+      "download_path": "./data/downloads/raw/usall/202602/icc_live_usall_2026_0209_r1.csv"
+    },
+    {
+      "date": "2026-02-10",
+      "year": "2026",
+      "month": "02",
+      "yyyymm": "202602",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2677,
+      "download_path": "./data/downloads/raw/usall/202602/icc_live_usall_2026_0210_r1.csv"
+    },
+    {
+      "date": "2026-02-11",
+      "year": "2026",
+      "month": "02",
+      "yyyymm": "202602",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2670,
+      "download_path": "./data/downloads/raw/usall/202602/icc_live_usall_2026_0211_r1.csv"
+    },
+    {
+      "date": "2026-02-12",
+      "year": "2026",
+      "month": "02",
+      "yyyymm": "202602",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2670,
+      "download_path": "./data/downloads/raw/usall/202602/icc_live_usall_2026_0212_r1.csv"
+    },
+    {
+      "date": "2026-02-13",
+      "year": "2026",
+      "month": "02",
+      "yyyymm": "202602",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2671,
+      "download_path": "./data/downloads/raw/usall/202602/icc_live_usall_2026_0213_r1.csv"
+    },
+    {
+      "date": "2026-02-16",
+      "year": "2026",
+      "month": "02",
+      "yyyymm": "202602",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2667,
+      "download_path": "./data/downloads/raw/usall/202602/icc_live_usall_2026_0216_r1.csv"
+    },
+    {
+      "date": "2026-02-17",
+      "year": "2026",
+      "month": "02",
+      "yyyymm": "202602",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2669,
+      "download_path": "./data/downloads/raw/usall/202602/icc_live_usall_2026_0217_r1.csv"
+    },
+    {
+      "date": "2026-02-18",
+      "year": "2026",
+      "month": "02",
+      "yyyymm": "202602",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2674,
+      "download_path": "./data/downloads/raw/usall/202602/icc_live_usall_2026_0218_r1.csv"
+    },
+    {
+      "date": "2026-02-19",
+      "year": "2026",
+      "month": "02",
+      "yyyymm": "202602",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2677,
+      "download_path": "./data/downloads/raw/usall/202602/icc_live_usall_2026_0219_r1.csv"
+    },
+    {
+      "date": "2026-02-20",
+      "year": "2026",
+      "month": "02",
+      "yyyymm": "202602",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2680,
+      "download_path": "./data/downloads/raw/usall/202602/icc_live_usall_2026_0220_r1.csv"
+    },
+    {
+      "date": "2026-02-23",
+      "year": "2026",
+      "month": "02",
+      "yyyymm": "202602",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2675,
+      "download_path": "./data/downloads/raw/usall/202602/icc_live_usall_2026_0223_r1.csv"
+    },
+    {
+      "date": "2026-02-24",
+      "year": "2026",
+      "month": "02",
+      "yyyymm": "202602",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2677,
+      "download_path": "./data/downloads/raw/usall/202602/icc_live_usall_2026_0224_r1.csv"
+    },
+    {
+      "date": "2026-02-25",
+      "year": "2026",
+      "month": "02",
+      "yyyymm": "202602",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2681,
+      "download_path": "./data/downloads/raw/usall/202602/icc_live_usall_2026_0225_r1.csv"
+    },
+    {
+      "date": "2026-02-26",
+      "year": "2026",
+      "month": "02",
+      "yyyymm": "202602",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2684,
+      "download_path": "./data/downloads/raw/usall/202602/icc_live_usall_2026_0226_r1.csv"
+    },
+    {
+      "date": "2026-02-27",
+      "year": "2026",
+      "month": "02",
+      "yyyymm": "202602",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2686,
+      "download_path": "./data/downloads/raw/usall/202602/icc_live_usall_2026_0227_r1.csv"
+    },
+    {
+      "date": "2026-03-02",
+      "year": "2026",
+      "month": "03",
+      "yyyymm": "202603",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2686,
+      "download_path": "./data/downloads/raw/usall/202603/icc_live_usall_2026_0302_r1.csv"
+    },
+    {
+      "date": "2026-03-03",
+      "year": "2026",
+      "month": "03",
+      "yyyymm": "202603",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2685,
+      "download_path": "./data/downloads/raw/usall/202603/icc_live_usall_2026_0303_r1.csv"
+    },
+    {
+      "date": "2026-03-04",
+      "year": "2026",
+      "month": "03",
+      "yyyymm": "202603",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2684,
+      "download_path": "./data/downloads/raw/usall/202603/icc_live_usall_2026_0304_r1.csv"
+    },
+    {
+      "date": "2026-03-05",
+      "year": "2026",
+      "month": "03",
+      "yyyymm": "202603",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2689,
+      "download_path": "./data/downloads/raw/usall/202603/icc_live_usall_2026_0305_r1.csv"
+    },
+    {
+      "date": "2026-03-06",
+      "year": "2026",
+      "month": "03",
+      "yyyymm": "202603",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2691,
+      "download_path": "./data/downloads/raw/usall/202603/icc_live_usall_2026_0306_r1.csv"
+    },
+    {
+      "date": "2026-03-09",
+      "year": "2026",
+      "month": "03",
+      "yyyymm": "202603",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2692,
+      "download_path": "./data/downloads/raw/usall/202603/icc_live_usall_2026_0309_r1.csv"
+    },
+    {
+      "date": "2026-03-10",
+      "year": "2026",
+      "month": "03",
+      "yyyymm": "202603",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2694,
+      "download_path": "./data/downloads/raw/usall/202603/icc_live_usall_2026_0310_r1.csv"
+    },
+    {
+      "date": "2026-03-11",
+      "year": "2026",
+      "month": "03",
+      "yyyymm": "202603",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2696,
+      "download_path": "./data/downloads/raw/usall/202603/icc_live_usall_2026_0311_r1.csv"
+    },
+    {
+      "date": "2026-03-12",
+      "year": "2026",
+      "month": "03",
+      "yyyymm": "202603",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2696,
+      "download_path": "./data/downloads/raw/usall/202603/icc_live_usall_2026_0312_r1.csv"
+    },
+    {
+      "date": "2026-03-13",
+      "year": "2026",
+      "month": "03",
+      "yyyymm": "202603",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2700,
+      "download_path": "./data/downloads/raw/usall/202603/icc_live_usall_2026_0313_r1.csv"
+    },
+    {
+      "date": "2026-03-16",
+      "year": "2026",
+      "month": "03",
+      "yyyymm": "202603",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2700,
+      "download_path": "./data/downloads/raw/usall/202603/icc_live_usall_2026_0316_r1.csv"
+    },
+    {
+      "date": "2026-03-17",
+      "year": "2026",
+      "month": "03",
+      "yyyymm": "202603",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2703,
+      "download_path": "./data/downloads/raw/usall/202603/icc_live_usall_2026_0317_r1.csv"
+    },
+    {
+      "date": "2026-03-18",
+      "year": "2026",
+      "month": "03",
+      "yyyymm": "202603",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2708,
+      "download_path": "./data/downloads/raw/usall/202603/icc_live_usall_2026_0318_r1.csv"
+    },
+    {
+      "date": "2026-03-19",
+      "year": "2026",
+      "month": "03",
+      "yyyymm": "202603",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2709,
+      "download_path": "./data/downloads/raw/usall/202603/icc_live_usall_2026_0319_r1.csv"
+    },
+    {
+      "date": "2026-03-20",
+      "year": "2026",
+      "month": "03",
+      "yyyymm": "202603",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2711,
+      "download_path": "./data/downloads/raw/usall/202603/icc_live_usall_2026_0320_r1.csv"
+    },
+    {
+      "date": "2026-03-23",
+      "year": "2026",
+      "month": "03",
+      "yyyymm": "202603",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2709,
+      "download_path": "./data/downloads/raw/usall/202603/icc_live_usall_2026_0323_r1.csv"
+    },
+    {
+      "date": "2026-03-24",
+      "year": "2026",
+      "month": "03",
+      "yyyymm": "202603",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2708,
+      "download_path": "./data/downloads/raw/usall/202603/icc_live_usall_2026_0324_r1.csv"
+    },
+    {
+      "date": "2026-03-25",
+      "year": "2026",
+      "month": "03",
+      "yyyymm": "202603",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2711,
+      "download_path": "./data/downloads/raw/usall/202603/icc_live_usall_2026_0325_r1.csv"
+    },
+    {
+      "date": "2026-03-26",
+      "year": "2026",
+      "month": "03",
+      "yyyymm": "202603",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2719,
+      "download_path": "./data/downloads/raw/usall/202603/icc_live_usall_2026_0326_r1.csv"
+    },
+    {
+      "date": "2026-03-27",
+      "year": "2026",
+      "month": "03",
+      "yyyymm": "202603",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2721,
+      "download_path": "./data/downloads/raw/usall/202603/icc_live_usall_2026_0327_r1.csv"
+    },
+    {
+      "date": "2026-03-30",
+      "year": "2026",
+      "month": "03",
+      "yyyymm": "202603",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2721,
+      "download_path": "./data/downloads/raw/usall/202603/icc_live_usall_2026_0330_r1.csv"
+    },
+    {
+      "date": "2026-03-31",
+      "year": "2026",
+      "month": "03",
+      "yyyymm": "202603",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2721,
+      "download_path": "./data/downloads/raw/usall/202603/icc_live_usall_2026_0331_r1.csv"
+    },
+    {
+      "date": "2026-04-01",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2729,
+      "download_path": "./data/downloads/raw/usall/202604/icc_live_usall_2026_0401_r1.csv"
+    },
+    {
+      "date": "2026-04-02",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2728,
+      "download_path": "./data/downloads/raw/usall/202604/icc_live_usall_2026_0402_r1.csv"
+    },
+    {
+      "date": "2026-04-03",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2724,
+      "download_path": "./data/downloads/raw/usall/202604/icc_live_usall_2026_0403_r1.csv"
+    },
+    {
+      "date": "2026-04-06",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2726,
+      "download_path": "./data/downloads/raw/usall/202604/icc_live_usall_2026_0406_r1.csv"
+    },
+    {
+      "date": "2026-04-07",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2726,
+      "download_path": "./data/downloads/raw/usall/202604/icc_live_usall_2026_0407_r1.csv"
+    },
+    {
+      "date": "2026-04-08",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2724,
+      "download_path": "./data/downloads/raw/usall/202604/icc_live_usall_2026_0408_r1.csv"
+    },
+    {
+      "date": "2026-04-09",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2726,
+      "download_path": "./data/downloads/raw/usall/202604/icc_live_usall_2026_0409_r1.csv"
+    },
+    {
+      "date": "2026-04-10",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2721,
+      "download_path": "./data/downloads/raw/usall/202604/icc_live_usall_2026_0410_r1.csv"
+    },
+    {
+      "date": "2026-04-13",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2719,
+      "download_path": "./data/downloads/raw/usall/202604/icc_live_usall_2026_0413_r2.csv"
+    },
+    {
+      "date": "2026-04-14",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2719,
+      "download_path": "./data/downloads/raw/usall/202604/icc_live_usall_2026_0413_r3.csv"
+    },
+    {
+      "date": "2026-04-15",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2720,
+      "download_path": "./data/downloads/raw/usall/202604/icc_live_usall_2026_0415_r1.csv"
+    },
+    {
+      "date": "2026-04-16",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2724,
+      "download_path": "./data/downloads/raw/usall/202604/icc_live_usall_2026_0416_r1.csv"
+    },
+    {
+      "date": "2026-04-17",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2723,
+      "download_path": "./data/downloads/raw/usall/202604/icc_live_usall_2026_0417_r1.csv"
+    },
+    {
+      "date": "2026-04-20",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2706,
+      "download_path": "./data/downloads/raw/usall/202604/icc_live_usall_2026_0420.csv"
+    },
+    {
+      "date": "2026-04-21",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2706,
+      "download_path": "./data/downloads/raw/usall/202604/icc_live_usall_2026_0421_r1.csv"
+    },
+    {
+      "date": "2026-04-22",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2709,
+      "download_path": "./data/downloads/raw/usall/202604/icc_live_usall_2026_0422_r1.csv"
+    },
+    {
+      "date": "2026-04-23",
+      "year": "2026",
+      "month": "04",
+      "yyyymm": "202604",
+      "universe": "usall",
+      "raw_group": "usall",
+      "n_firms": 2724,
+      "download_path": "./data/downloads/raw/usall/202604/icc_live_usall_2026_0423_r1.csv"
+    }
+  ]
 }

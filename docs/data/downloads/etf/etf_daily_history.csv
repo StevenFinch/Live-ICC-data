@@ -1,0 +1,18 @@
+date,ticker,label,category,icc,coverage_weight,n_holdings_total,n_holdings_matched,method,holding_source,status
+2026-04-23,SPY,SPDR S&P 500 ETF Trust,US equity,0.0772282228655415,1.0000000000000002,25,25,ICC calculation,stockanalysis_full_holdings,icc_calculation
+2026-04-23,IVV,iShares Core S&P 500 ETF,US equity,0.076373943408392,0.8174912543728136,505,439,ICC calculation,ishares_full_holdings,icc_calculation
+2026-04-23,VOO,Vanguard S&P 500 ETF,US equity,0.0738398278425147,1.0,25,25,ICC calculation,stockanalysis_full_holdings,icc_calculation
+2026-04-23,VTI,Vanguard Total Stock Market ETF,US equity,0.0737946512662859,1.0,25,25,ICC calculation,stockanalysis_full_holdings,icc_calculation
+2026-04-23,QQQ,Invesco QQQ Trust,US equity,0.0789606357333245,1.0,25,25,ICC calculation,stockanalysis_full_holdings,icc_calculation
+2026-04-23,DIA,SPDR Dow Jones Industrial Average ETF Trust,US equity,0.0703589408576189,0.9566446748350612,25,23,ICC calculation,stockanalysis_full_holdings,icc_calculation
+2026-04-23,IWM,iShares Russell 2000 ETF,US equity,0.064597569353386,0.8087105038428695,25,20,ICC calculation,stockanalysis_full_holdings,icc_calculation
+2026-04-23,IWB,iShares Russell 1000 ETF,US equity,0.0765544817747846,1.0,25,25,ICC calculation,stockanalysis_full_holdings,icc_calculation
+2026-04-23,IWD,iShares Russell 1000 Value ETF,US value,0.0840471952558923,0.9508859185576626,25,24,ICC calculation,stockanalysis_full_holdings,icc_calculation
+2026-04-23,IWF,iShares Russell 1000 Growth ETF,US growth,0.0732757290241773,1.0,25,25,ICC calculation,stockanalysis_full_holdings,icc_calculation
+2026-04-23,EFA,iShares MSCI EAFE ETF,International equity,0.0964356901413256,0.2647176611934321,690,97,Partial holdings estimate,ishares_full_holdings,partial_holdings
+2026-04-23,EEM,iShares MSCI Emerging Markets ETF,Emerging markets,0.2449245886251108,0.5895953757225434,3,2,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-04-23,EWJ,iShares MSCI Japan ETF,Country ETF,,0.0,10,0,Unavailable,yfinance_top_holdings,unavailable
+2026-04-23,EWG,iShares MSCI Germany ETF,Country ETF,0.1110726942335507,0.3868226354729053,57,12,Partial holdings estimate,ishares_full_holdings,partial_holdings
+2026-04-23,MCHI,iShares MSCI China ETF,Country ETF,0.3334643704006036,1.0,1,1,ICC calculation,stockanalysis_full_holdings,icc_calculation
+2026-04-23,INDA,iShares MSCI India ETF,Country ETF,0.0895170422166877,0.0393511565034544,164,3,Partial holdings estimate,ishares_full_holdings,partial_holdings
+2026-04-23,EWZ,iShares MSCI Brazil ETF,Country ETF,0.1534075368314095,0.8918705603788477,4,3,ICC calculation,stockanalysis_full_holdings,icc_calculation
