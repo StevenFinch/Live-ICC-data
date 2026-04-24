@@ -1,42 +1,2909 @@
 {
   "title": "Live ICC data library",
-  "asof_date": "2026-04-23",
-  "downloads": {
+  "rows": [
+    {
+      "dataset": "All market",
+      "latest_daily": 0.08143800904361662,
+      "method": "ICC calculation",
+      "month_1": 0.08143800904361662,
+      "month_2": 0.0846043873892946,
+      "month_3": 0.08042145131520971
+    },
+    {
+      "dataset": "S&P 500",
+      "latest_daily": 0.07579001753110064,
+      "method": "ICC calculation",
+      "month_1": 0.07579001753110064,
+      "month_2": 0.07889568917176408,
+      "month_3": 0.07395991999074679
+    },
+    {
+      "dataset": "Value premium ICC",
+      "latest_daily": 0.037161204625492855,
+      "method": "ICC calculation",
+      "month_1": 0.037161204625492855,
+      "month_2": 0.03551502878898988,
+      "month_3": 0.04258253104764308
+    },
+    {
+      "dataset": "Industry ICC",
+      "latest_daily": 0.08188431696664206,
+      "method": "ICC calculation",
+      "month_1": 0.08188431696664206,
+      "month_2": 0.08283637001403374,
+      "month_3": 0.07600533054393632
+    },
+    {
+      "dataset": "Index ICC",
+      "latest_daily": 0.07331066141433833,
+      "method": "ICC calculation",
+      "month_1": 0.07331066141433833,
+      "month_2": 0.07548196973585825,
+      "month_3": 0.07575023127006587
+    },
+    {
+      "dataset": "ETF ICC",
+      "latest_daily": 0.0703589408576189,
+      "method": "ICC calculation",
+      "month_1": 0.0703589408576189,
+      "month_2": 0.2449245886251108,
+      "month_3": 0.0964356901413256
+    },
+    {
+      "dataset": "Country ADR Top-10 ICC",
+      "latest_daily": 0.242903044114228,
+      "method": "Partial ADR estimate",
+      "month_1": 0.242903044114228,
+      "month_2": null,
+      "month_3": null
+    }
+  ],
+  "families": {
     "marketwide": {
-      "latest": "./data/downloads/marketwide/marketwide_latest.csv",
-      "daily": "./data/downloads/marketwide/marketwide_daily_history.csv",
-      "monthly": "./data/downloads/marketwide/marketwide_monthly_history.csv",
-      "zip": "./data/downloads/zip/marketwide_all.zip"
+      "family": "marketwide",
+      "label": "Marketwide ICC",
+      "note": "All U.S. market and S&P 500 aggregate ICC series.",
+      "latest_csv": "./data/downloads/families/marketwide/marketwide_latest.csv",
+      "daily_history_csv": "./data/downloads/families/marketwide/marketwide_daily_history.csv",
+      "monthly_history_csv": "./data/downloads/families/marketwide/marketwide_monthly_history.csv",
+      "all_zip": "./data/downloads/families/marketwide/marketwide_all.zip",
+      "tree": [
+        {
+          "year": "2026",
+          "n_files": 80,
+          "download_all_zip": "./data/downloads/families/marketwide/archive/marketwide_2026_all.zip",
+          "months": [
+            {
+              "month": "2026-04",
+              "n_files": 17,
+              "download_all_zip": "./data/downloads/families/marketwide/archive/2026/marketwide_2026_04_all.zip",
+              "days": [
+                {
+                  "date": "2026-04-23",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/04/marketwide_2026-04-23.csv"
+                },
+                {
+                  "date": "2026-04-22",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/04/marketwide_2026-04-22.csv"
+                },
+                {
+                  "date": "2026-04-21",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/04/marketwide_2026-04-21.csv"
+                },
+                {
+                  "date": "2026-04-20",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/04/marketwide_2026-04-20.csv"
+                },
+                {
+                  "date": "2026-04-17",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/04/marketwide_2026-04-17.csv"
+                },
+                {
+                  "date": "2026-04-16",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/04/marketwide_2026-04-16.csv"
+                },
+                {
+                  "date": "2026-04-15",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/04/marketwide_2026-04-15.csv"
+                },
+                {
+                  "date": "2026-04-14",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/04/marketwide_2026-04-14.csv"
+                },
+                {
+                  "date": "2026-04-13",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/04/marketwide_2026-04-13.csv"
+                },
+                {
+                  "date": "2026-04-10",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/04/marketwide_2026-04-10.csv"
+                },
+                {
+                  "date": "2026-04-09",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/04/marketwide_2026-04-09.csv"
+                },
+                {
+                  "date": "2026-04-08",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/04/marketwide_2026-04-08.csv"
+                },
+                {
+                  "date": "2026-04-07",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/04/marketwide_2026-04-07.csv"
+                },
+                {
+                  "date": "2026-04-06",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/04/marketwide_2026-04-06.csv"
+                },
+                {
+                  "date": "2026-04-03",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/04/marketwide_2026-04-03.csv"
+                },
+                {
+                  "date": "2026-04-02",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/04/marketwide_2026-04-02.csv"
+                },
+                {
+                  "date": "2026-04-01",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/04/marketwide_2026-04-01.csv"
+                }
+              ]
+            },
+            {
+              "month": "2026-03",
+              "n_files": 22,
+              "download_all_zip": "./data/downloads/families/marketwide/archive/2026/marketwide_2026_03_all.zip",
+              "days": [
+                {
+                  "date": "2026-03-31",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/03/marketwide_2026-03-31.csv"
+                },
+                {
+                  "date": "2026-03-30",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/03/marketwide_2026-03-30.csv"
+                },
+                {
+                  "date": "2026-03-27",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/03/marketwide_2026-03-27.csv"
+                },
+                {
+                  "date": "2026-03-26",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/03/marketwide_2026-03-26.csv"
+                },
+                {
+                  "date": "2026-03-25",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/03/marketwide_2026-03-25.csv"
+                },
+                {
+                  "date": "2026-03-24",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/03/marketwide_2026-03-24.csv"
+                },
+                {
+                  "date": "2026-03-23",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/03/marketwide_2026-03-23.csv"
+                },
+                {
+                  "date": "2026-03-20",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/03/marketwide_2026-03-20.csv"
+                },
+                {
+                  "date": "2026-03-19",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/03/marketwide_2026-03-19.csv"
+                },
+                {
+                  "date": "2026-03-18",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/03/marketwide_2026-03-18.csv"
+                },
+                {
+                  "date": "2026-03-17",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/03/marketwide_2026-03-17.csv"
+                },
+                {
+                  "date": "2026-03-16",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/03/marketwide_2026-03-16.csv"
+                },
+                {
+                  "date": "2026-03-13",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/03/marketwide_2026-03-13.csv"
+                },
+                {
+                  "date": "2026-03-12",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/03/marketwide_2026-03-12.csv"
+                },
+                {
+                  "date": "2026-03-11",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/03/marketwide_2026-03-11.csv"
+                },
+                {
+                  "date": "2026-03-10",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/03/marketwide_2026-03-10.csv"
+                },
+                {
+                  "date": "2026-03-09",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/03/marketwide_2026-03-09.csv"
+                },
+                {
+                  "date": "2026-03-06",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/03/marketwide_2026-03-06.csv"
+                },
+                {
+                  "date": "2026-03-05",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/03/marketwide_2026-03-05.csv"
+                },
+                {
+                  "date": "2026-03-04",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/03/marketwide_2026-03-04.csv"
+                },
+                {
+                  "date": "2026-03-03",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/03/marketwide_2026-03-03.csv"
+                },
+                {
+                  "date": "2026-03-02",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/03/marketwide_2026-03-02.csv"
+                }
+              ]
+            },
+            {
+              "month": "2026-02",
+              "n_files": 19,
+              "download_all_zip": "./data/downloads/families/marketwide/archive/2026/marketwide_2026_02_all.zip",
+              "days": [
+                {
+                  "date": "2026-02-27",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/02/marketwide_2026-02-27.csv"
+                },
+                {
+                  "date": "2026-02-26",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/02/marketwide_2026-02-26.csv"
+                },
+                {
+                  "date": "2026-02-25",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/02/marketwide_2026-02-25.csv"
+                },
+                {
+                  "date": "2026-02-24",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/02/marketwide_2026-02-24.csv"
+                },
+                {
+                  "date": "2026-02-23",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/02/marketwide_2026-02-23.csv"
+                },
+                {
+                  "date": "2026-02-20",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/02/marketwide_2026-02-20.csv"
+                },
+                {
+                  "date": "2026-02-19",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/02/marketwide_2026-02-19.csv"
+                },
+                {
+                  "date": "2026-02-18",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/02/marketwide_2026-02-18.csv"
+                },
+                {
+                  "date": "2026-02-17",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/02/marketwide_2026-02-17.csv"
+                },
+                {
+                  "date": "2026-02-16",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/02/marketwide_2026-02-16.csv"
+                },
+                {
+                  "date": "2026-02-13",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/02/marketwide_2026-02-13.csv"
+                },
+                {
+                  "date": "2026-02-12",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/02/marketwide_2026-02-12.csv"
+                },
+                {
+                  "date": "2026-02-11",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/02/marketwide_2026-02-11.csv"
+                },
+                {
+                  "date": "2026-02-10",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/02/marketwide_2026-02-10.csv"
+                },
+                {
+                  "date": "2026-02-09",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/02/marketwide_2026-02-09.csv"
+                },
+                {
+                  "date": "2026-02-06",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/02/marketwide_2026-02-06.csv"
+                },
+                {
+                  "date": "2026-02-05",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/02/marketwide_2026-02-05.csv"
+                },
+                {
+                  "date": "2026-02-04",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/02/marketwide_2026-02-04.csv"
+                },
+                {
+                  "date": "2026-02-03",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/02/marketwide_2026-02-03.csv"
+                }
+              ]
+            },
+            {
+              "month": "2026-01",
+              "n_files": 22,
+              "download_all_zip": "./data/downloads/families/marketwide/archive/2026/marketwide_2026_01_all.zip",
+              "days": [
+                {
+                  "date": "2026-01-30",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/01/marketwide_2026-01-30.csv"
+                },
+                {
+                  "date": "2026-01-29",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/01/marketwide_2026-01-29.csv"
+                },
+                {
+                  "date": "2026-01-28",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/01/marketwide_2026-01-28.csv"
+                },
+                {
+                  "date": "2026-01-27",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/01/marketwide_2026-01-27.csv"
+                },
+                {
+                  "date": "2026-01-26",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/01/marketwide_2026-01-26.csv"
+                },
+                {
+                  "date": "2026-01-23",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/01/marketwide_2026-01-23.csv"
+                },
+                {
+                  "date": "2026-01-22",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/01/marketwide_2026-01-22.csv"
+                },
+                {
+                  "date": "2026-01-21",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/01/marketwide_2026-01-21.csv"
+                },
+                {
+                  "date": "2026-01-20",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/01/marketwide_2026-01-20.csv"
+                },
+                {
+                  "date": "2026-01-19",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/01/marketwide_2026-01-19.csv"
+                },
+                {
+                  "date": "2026-01-16",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/01/marketwide_2026-01-16.csv"
+                },
+                {
+                  "date": "2026-01-15",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/01/marketwide_2026-01-15.csv"
+                },
+                {
+                  "date": "2026-01-14",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/01/marketwide_2026-01-14.csv"
+                },
+                {
+                  "date": "2026-01-13",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/01/marketwide_2026-01-13.csv"
+                },
+                {
+                  "date": "2026-01-12",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/01/marketwide_2026-01-12.csv"
+                },
+                {
+                  "date": "2026-01-09",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/01/marketwide_2026-01-09.csv"
+                },
+                {
+                  "date": "2026-01-08",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/01/marketwide_2026-01-08.csv"
+                },
+                {
+                  "date": "2026-01-07",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/01/marketwide_2026-01-07.csv"
+                },
+                {
+                  "date": "2026-01-06",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/01/marketwide_2026-01-06.csv"
+                },
+                {
+                  "date": "2026-01-05",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/01/marketwide_2026-01-05.csv"
+                },
+                {
+                  "date": "2026-01-02",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/01/marketwide_2026-01-02.csv"
+                },
+                {
+                  "date": "2026-01-01",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/01/marketwide_2026-01-01.csv"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "year": "2025",
+          "n_files": 45,
+          "download_all_zip": "./data/downloads/families/marketwide/archive/marketwide_2025_all.zip",
+          "months": [
+            {
+              "month": "2025-12",
+              "n_files": 23,
+              "download_all_zip": "./data/downloads/families/marketwide/archive/2025/marketwide_2025_12_all.zip",
+              "days": [
+                {
+                  "date": "2025-12-31",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2025/12/marketwide_2025-12-31.csv"
+                },
+                {
+                  "date": "2025-12-30",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2025/12/marketwide_2025-12-30.csv"
+                },
+                {
+                  "date": "2025-12-29",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2025/12/marketwide_2025-12-29.csv"
+                },
+                {
+                  "date": "2025-12-26",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2025/12/marketwide_2025-12-26.csv"
+                },
+                {
+                  "date": "2025-12-25",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2025/12/marketwide_2025-12-25.csv"
+                },
+                {
+                  "date": "2025-12-24",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2025/12/marketwide_2025-12-24.csv"
+                },
+                {
+                  "date": "2025-12-23",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2025/12/marketwide_2025-12-23.csv"
+                },
+                {
+                  "date": "2025-12-22",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2025/12/marketwide_2025-12-22.csv"
+                },
+                {
+                  "date": "2025-12-19",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2025/12/marketwide_2025-12-19.csv"
+                },
+                {
+                  "date": "2025-12-18",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2025/12/marketwide_2025-12-18.csv"
+                },
+                {
+                  "date": "2025-12-17",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2025/12/marketwide_2025-12-17.csv"
+                },
+                {
+                  "date": "2025-12-16",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2025/12/marketwide_2025-12-16.csv"
+                },
+                {
+                  "date": "2025-12-15",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2025/12/marketwide_2025-12-15.csv"
+                },
+                {
+                  "date": "2025-12-12",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2025/12/marketwide_2025-12-12.csv"
+                },
+                {
+                  "date": "2025-12-11",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2025/12/marketwide_2025-12-11.csv"
+                },
+                {
+                  "date": "2025-12-10",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2025/12/marketwide_2025-12-10.csv"
+                },
+                {
+                  "date": "2025-12-09",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2025/12/marketwide_2025-12-09.csv"
+                },
+                {
+                  "date": "2025-12-08",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2025/12/marketwide_2025-12-08.csv"
+                },
+                {
+                  "date": "2025-12-05",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2025/12/marketwide_2025-12-05.csv"
+                },
+                {
+                  "date": "2025-12-04",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2025/12/marketwide_2025-12-04.csv"
+                },
+                {
+                  "date": "2025-12-03",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2025/12/marketwide_2025-12-03.csv"
+                },
+                {
+                  "date": "2025-12-02",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2025/12/marketwide_2025-12-02.csv"
+                },
+                {
+                  "date": "2025-12-01",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2025/12/marketwide_2025-12-01.csv"
+                }
+              ]
+            },
+            {
+              "month": "2025-11",
+              "n_files": 19,
+              "download_all_zip": "./data/downloads/families/marketwide/archive/2025/marketwide_2025_11_all.zip",
+              "days": [
+                {
+                  "date": "2025-11-28",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2025/11/marketwide_2025-11-28.csv"
+                },
+                {
+                  "date": "2025-11-27",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2025/11/marketwide_2025-11-27.csv"
+                },
+                {
+                  "date": "2025-11-26",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2025/11/marketwide_2025-11-26.csv"
+                },
+                {
+                  "date": "2025-11-25",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2025/11/marketwide_2025-11-25.csv"
+                },
+                {
+                  "date": "2025-11-20",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2025/11/marketwide_2025-11-20.csv"
+                },
+                {
+                  "date": "2025-11-19",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2025/11/marketwide_2025-11-19.csv"
+                },
+                {
+                  "date": "2025-11-18",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2025/11/marketwide_2025-11-18.csv"
+                },
+                {
+                  "date": "2025-11-17",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2025/11/marketwide_2025-11-17.csv"
+                },
+                {
+                  "date": "2025-11-14",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2025/11/marketwide_2025-11-14.csv"
+                },
+                {
+                  "date": "2025-11-13",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2025/11/marketwide_2025-11-13.csv"
+                },
+                {
+                  "date": "2025-11-12",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2025/11/marketwide_2025-11-12.csv"
+                },
+                {
+                  "date": "2025-11-11",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2025/11/marketwide_2025-11-11.csv"
+                },
+                {
+                  "date": "2025-11-10",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2025/11/marketwide_2025-11-10.csv"
+                },
+                {
+                  "date": "2025-11-07",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2025/11/marketwide_2025-11-07.csv"
+                },
+                {
+                  "date": "2025-11-06",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2025/11/marketwide_2025-11-06.csv"
+                },
+                {
+                  "date": "2025-11-05",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2025/11/marketwide_2025-11-05.csv"
+                },
+                {
+                  "date": "2025-11-04",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2025/11/marketwide_2025-11-04.csv"
+                },
+                {
+                  "date": "2025-11-03",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2025/11/marketwide_2025-11-03.csv"
+                },
+                {
+                  "date": "2025-11-01",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2025/11/marketwide_2025-11-01.csv"
+                }
+              ]
+            },
+            {
+              "month": "2025-10",
+              "n_files": 3,
+              "download_all_zip": "./data/downloads/families/marketwide/archive/2025/marketwide_2025_10_all.zip",
+              "days": [
+                {
+                  "date": "2025-10-30",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2025/10/marketwide_2025-10-30.csv"
+                },
+                {
+                  "date": "2025-10-29",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2025/10/marketwide_2025-10-29.csv"
+                },
+                {
+                  "date": "2025-10-28",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2025/10/marketwide_2025-10-28.csv"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     },
     "value": {
-      "latest": "./data/downloads/value/value_latest.csv",
-      "daily": "./data/downloads/value/value_daily_history.csv",
-      "monthly": "./data/downloads/value/value_monthly_history.csv",
-      "zip": "./data/downloads/zip/value_all.zip"
+      "family": "value",
+      "label": "Value premium ICC",
+      "note": "Value, growth, and implied value premium series built from firm-level ICC snapshots.",
+      "latest_csv": "./data/downloads/families/value/value_latest.csv",
+      "daily_history_csv": "./data/downloads/families/value/value_daily_history.csv",
+      "monthly_history_csv": "./data/downloads/families/value/value_monthly_history.csv",
+      "all_zip": "./data/downloads/families/value/value_all.zip",
+      "tree": [
+        {
+          "year": "2026",
+          "n_files": 79,
+          "download_all_zip": "./data/downloads/families/value/archive/value_2026_all.zip",
+          "months": [
+            {
+              "month": "2026-04",
+              "n_files": 17,
+              "download_all_zip": "./data/downloads/families/value/archive/2026/value_2026_04_all.zip",
+              "days": [
+                {
+                  "date": "2026-04-23",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/04/value_2026-04-23.csv"
+                },
+                {
+                  "date": "2026-04-22",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/04/value_2026-04-22.csv"
+                },
+                {
+                  "date": "2026-04-21",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/04/value_2026-04-21.csv"
+                },
+                {
+                  "date": "2026-04-20",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/04/value_2026-04-20.csv"
+                },
+                {
+                  "date": "2026-04-17",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/04/value_2026-04-17.csv"
+                },
+                {
+                  "date": "2026-04-16",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/04/value_2026-04-16.csv"
+                },
+                {
+                  "date": "2026-04-15",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/04/value_2026-04-15.csv"
+                },
+                {
+                  "date": "2026-04-14",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/04/value_2026-04-14.csv"
+                },
+                {
+                  "date": "2026-04-13",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/04/value_2026-04-13.csv"
+                },
+                {
+                  "date": "2026-04-10",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/04/value_2026-04-10.csv"
+                },
+                {
+                  "date": "2026-04-09",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/04/value_2026-04-09.csv"
+                },
+                {
+                  "date": "2026-04-08",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/04/value_2026-04-08.csv"
+                },
+                {
+                  "date": "2026-04-07",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/04/value_2026-04-07.csv"
+                },
+                {
+                  "date": "2026-04-06",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/04/value_2026-04-06.csv"
+                },
+                {
+                  "date": "2026-04-03",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/04/value_2026-04-03.csv"
+                },
+                {
+                  "date": "2026-04-02",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/04/value_2026-04-02.csv"
+                },
+                {
+                  "date": "2026-04-01",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/04/value_2026-04-01.csv"
+                }
+              ]
+            },
+            {
+              "month": "2026-03",
+              "n_files": 22,
+              "download_all_zip": "./data/downloads/families/value/archive/2026/value_2026_03_all.zip",
+              "days": [
+                {
+                  "date": "2026-03-31",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/03/value_2026-03-31.csv"
+                },
+                {
+                  "date": "2026-03-30",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/03/value_2026-03-30.csv"
+                },
+                {
+                  "date": "2026-03-27",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/03/value_2026-03-27.csv"
+                },
+                {
+                  "date": "2026-03-26",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/03/value_2026-03-26.csv"
+                },
+                {
+                  "date": "2026-03-25",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/03/value_2026-03-25.csv"
+                },
+                {
+                  "date": "2026-03-24",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/03/value_2026-03-24.csv"
+                },
+                {
+                  "date": "2026-03-23",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/03/value_2026-03-23.csv"
+                },
+                {
+                  "date": "2026-03-20",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/03/value_2026-03-20.csv"
+                },
+                {
+                  "date": "2026-03-19",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/03/value_2026-03-19.csv"
+                },
+                {
+                  "date": "2026-03-18",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/03/value_2026-03-18.csv"
+                },
+                {
+                  "date": "2026-03-17",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/03/value_2026-03-17.csv"
+                },
+                {
+                  "date": "2026-03-16",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/03/value_2026-03-16.csv"
+                },
+                {
+                  "date": "2026-03-13",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/03/value_2026-03-13.csv"
+                },
+                {
+                  "date": "2026-03-12",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/03/value_2026-03-12.csv"
+                },
+                {
+                  "date": "2026-03-11",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/03/value_2026-03-11.csv"
+                },
+                {
+                  "date": "2026-03-10",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/03/value_2026-03-10.csv"
+                },
+                {
+                  "date": "2026-03-09",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/03/value_2026-03-09.csv"
+                },
+                {
+                  "date": "2026-03-06",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/03/value_2026-03-06.csv"
+                },
+                {
+                  "date": "2026-03-05",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/03/value_2026-03-05.csv"
+                },
+                {
+                  "date": "2026-03-04",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/03/value_2026-03-04.csv"
+                },
+                {
+                  "date": "2026-03-03",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/03/value_2026-03-03.csv"
+                },
+                {
+                  "date": "2026-03-02",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/03/value_2026-03-02.csv"
+                }
+              ]
+            },
+            {
+              "month": "2026-02",
+              "n_files": 19,
+              "download_all_zip": "./data/downloads/families/value/archive/2026/value_2026_02_all.zip",
+              "days": [
+                {
+                  "date": "2026-02-27",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/02/value_2026-02-27.csv"
+                },
+                {
+                  "date": "2026-02-26",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/02/value_2026-02-26.csv"
+                },
+                {
+                  "date": "2026-02-25",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/02/value_2026-02-25.csv"
+                },
+                {
+                  "date": "2026-02-24",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/02/value_2026-02-24.csv"
+                },
+                {
+                  "date": "2026-02-23",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/02/value_2026-02-23.csv"
+                },
+                {
+                  "date": "2026-02-20",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/02/value_2026-02-20.csv"
+                },
+                {
+                  "date": "2026-02-19",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/02/value_2026-02-19.csv"
+                },
+                {
+                  "date": "2026-02-18",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/02/value_2026-02-18.csv"
+                },
+                {
+                  "date": "2026-02-17",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/02/value_2026-02-17.csv"
+                },
+                {
+                  "date": "2026-02-16",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/02/value_2026-02-16.csv"
+                },
+                {
+                  "date": "2026-02-13",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/02/value_2026-02-13.csv"
+                },
+                {
+                  "date": "2026-02-12",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/02/value_2026-02-12.csv"
+                },
+                {
+                  "date": "2026-02-11",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/02/value_2026-02-11.csv"
+                },
+                {
+                  "date": "2026-02-10",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/02/value_2026-02-10.csv"
+                },
+                {
+                  "date": "2026-02-09",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/02/value_2026-02-09.csv"
+                },
+                {
+                  "date": "2026-02-06",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/02/value_2026-02-06.csv"
+                },
+                {
+                  "date": "2026-02-05",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/02/value_2026-02-05.csv"
+                },
+                {
+                  "date": "2026-02-04",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/02/value_2026-02-04.csv"
+                },
+                {
+                  "date": "2026-02-03",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/02/value_2026-02-03.csv"
+                }
+              ]
+            },
+            {
+              "month": "2026-01",
+              "n_files": 21,
+              "download_all_zip": "./data/downloads/families/value/archive/2026/value_2026_01_all.zip",
+              "days": [
+                {
+                  "date": "2026-01-30",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/01/value_2026-01-30.csv"
+                },
+                {
+                  "date": "2026-01-29",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/01/value_2026-01-29.csv"
+                },
+                {
+                  "date": "2026-01-28",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/01/value_2026-01-28.csv"
+                },
+                {
+                  "date": "2026-01-27",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/01/value_2026-01-27.csv"
+                },
+                {
+                  "date": "2026-01-26",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/01/value_2026-01-26.csv"
+                },
+                {
+                  "date": "2026-01-23",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/01/value_2026-01-23.csv"
+                },
+                {
+                  "date": "2026-01-22",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/01/value_2026-01-22.csv"
+                },
+                {
+                  "date": "2026-01-21",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/01/value_2026-01-21.csv"
+                },
+                {
+                  "date": "2026-01-20",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/01/value_2026-01-20.csv"
+                },
+                {
+                  "date": "2026-01-19",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/01/value_2026-01-19.csv"
+                },
+                {
+                  "date": "2026-01-16",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/01/value_2026-01-16.csv"
+                },
+                {
+                  "date": "2026-01-15",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/01/value_2026-01-15.csv"
+                },
+                {
+                  "date": "2026-01-14",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/01/value_2026-01-14.csv"
+                },
+                {
+                  "date": "2026-01-13",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/01/value_2026-01-13.csv"
+                },
+                {
+                  "date": "2026-01-12",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/01/value_2026-01-12.csv"
+                },
+                {
+                  "date": "2026-01-09",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/01/value_2026-01-09.csv"
+                },
+                {
+                  "date": "2026-01-08",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/01/value_2026-01-08.csv"
+                },
+                {
+                  "date": "2026-01-07",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/01/value_2026-01-07.csv"
+                },
+                {
+                  "date": "2026-01-06",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/01/value_2026-01-06.csv"
+                },
+                {
+                  "date": "2026-01-02",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/01/value_2026-01-02.csv"
+                },
+                {
+                  "date": "2026-01-01",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/01/value_2026-01-01.csv"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "year": "2025",
+          "n_files": 45,
+          "download_all_zip": "./data/downloads/families/value/archive/value_2025_all.zip",
+          "months": [
+            {
+              "month": "2025-12",
+              "n_files": 23,
+              "download_all_zip": "./data/downloads/families/value/archive/2025/value_2025_12_all.zip",
+              "days": [
+                {
+                  "date": "2025-12-31",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2025/12/value_2025-12-31.csv"
+                },
+                {
+                  "date": "2025-12-30",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2025/12/value_2025-12-30.csv"
+                },
+                {
+                  "date": "2025-12-29",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2025/12/value_2025-12-29.csv"
+                },
+                {
+                  "date": "2025-12-26",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2025/12/value_2025-12-26.csv"
+                },
+                {
+                  "date": "2025-12-25",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2025/12/value_2025-12-25.csv"
+                },
+                {
+                  "date": "2025-12-24",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2025/12/value_2025-12-24.csv"
+                },
+                {
+                  "date": "2025-12-23",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2025/12/value_2025-12-23.csv"
+                },
+                {
+                  "date": "2025-12-22",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2025/12/value_2025-12-22.csv"
+                },
+                {
+                  "date": "2025-12-19",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2025/12/value_2025-12-19.csv"
+                },
+                {
+                  "date": "2025-12-18",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2025/12/value_2025-12-18.csv"
+                },
+                {
+                  "date": "2025-12-17",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2025/12/value_2025-12-17.csv"
+                },
+                {
+                  "date": "2025-12-16",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2025/12/value_2025-12-16.csv"
+                },
+                {
+                  "date": "2025-12-15",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2025/12/value_2025-12-15.csv"
+                },
+                {
+                  "date": "2025-12-12",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2025/12/value_2025-12-12.csv"
+                },
+                {
+                  "date": "2025-12-11",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2025/12/value_2025-12-11.csv"
+                },
+                {
+                  "date": "2025-12-10",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2025/12/value_2025-12-10.csv"
+                },
+                {
+                  "date": "2025-12-09",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2025/12/value_2025-12-09.csv"
+                },
+                {
+                  "date": "2025-12-08",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2025/12/value_2025-12-08.csv"
+                },
+                {
+                  "date": "2025-12-05",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2025/12/value_2025-12-05.csv"
+                },
+                {
+                  "date": "2025-12-04",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2025/12/value_2025-12-04.csv"
+                },
+                {
+                  "date": "2025-12-03",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2025/12/value_2025-12-03.csv"
+                },
+                {
+                  "date": "2025-12-02",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2025/12/value_2025-12-02.csv"
+                },
+                {
+                  "date": "2025-12-01",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2025/12/value_2025-12-01.csv"
+                }
+              ]
+            },
+            {
+              "month": "2025-11",
+              "n_files": 19,
+              "download_all_zip": "./data/downloads/families/value/archive/2025/value_2025_11_all.zip",
+              "days": [
+                {
+                  "date": "2025-11-28",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2025/11/value_2025-11-28.csv"
+                },
+                {
+                  "date": "2025-11-27",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2025/11/value_2025-11-27.csv"
+                },
+                {
+                  "date": "2025-11-26",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2025/11/value_2025-11-26.csv"
+                },
+                {
+                  "date": "2025-11-25",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2025/11/value_2025-11-25.csv"
+                },
+                {
+                  "date": "2025-11-20",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2025/11/value_2025-11-20.csv"
+                },
+                {
+                  "date": "2025-11-19",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2025/11/value_2025-11-19.csv"
+                },
+                {
+                  "date": "2025-11-18",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2025/11/value_2025-11-18.csv"
+                },
+                {
+                  "date": "2025-11-17",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2025/11/value_2025-11-17.csv"
+                },
+                {
+                  "date": "2025-11-14",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2025/11/value_2025-11-14.csv"
+                },
+                {
+                  "date": "2025-11-13",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2025/11/value_2025-11-13.csv"
+                },
+                {
+                  "date": "2025-11-12",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2025/11/value_2025-11-12.csv"
+                },
+                {
+                  "date": "2025-11-11",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2025/11/value_2025-11-11.csv"
+                },
+                {
+                  "date": "2025-11-10",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2025/11/value_2025-11-10.csv"
+                },
+                {
+                  "date": "2025-11-07",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2025/11/value_2025-11-07.csv"
+                },
+                {
+                  "date": "2025-11-06",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2025/11/value_2025-11-06.csv"
+                },
+                {
+                  "date": "2025-11-05",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2025/11/value_2025-11-05.csv"
+                },
+                {
+                  "date": "2025-11-04",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2025/11/value_2025-11-04.csv"
+                },
+                {
+                  "date": "2025-11-03",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2025/11/value_2025-11-03.csv"
+                },
+                {
+                  "date": "2025-11-01",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2025/11/value_2025-11-01.csv"
+                }
+              ]
+            },
+            {
+              "month": "2025-10",
+              "n_files": 3,
+              "download_all_zip": "./data/downloads/families/value/archive/2025/value_2025_10_all.zip",
+              "days": [
+                {
+                  "date": "2025-10-30",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2025/10/value_2025-10-30.csv"
+                },
+                {
+                  "date": "2025-10-29",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2025/10/value_2025-10-29.csv"
+                },
+                {
+                  "date": "2025-10-28",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2025/10/value_2025-10-28.csv"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     },
     "industry": {
-      "latest": "./data/downloads/industry/industry_latest.csv",
-      "daily": "./data/downloads/industry/industry_daily_history.csv",
-      "monthly": "./data/downloads/industry/industry_monthly_history.csv",
-      "zip": "./data/downloads/zip/industry_all.zip"
+      "family": "industry",
+      "label": "Industry ICC",
+      "note": "Industry-level ICC series aggregated from the all-market firm-level ICC panel.",
+      "latest_csv": "./data/downloads/families/industry/industry_latest.csv",
+      "daily_history_csv": "./data/downloads/families/industry/industry_daily_history.csv",
+      "monthly_history_csv": "./data/downloads/families/industry/industry_monthly_history.csv",
+      "all_zip": "./data/downloads/families/industry/industry_all.zip",
+      "tree": [
+        {
+          "year": "2026",
+          "n_files": 79,
+          "download_all_zip": "./data/downloads/families/industry/archive/industry_2026_all.zip",
+          "months": [
+            {
+              "month": "2026-04",
+              "n_files": 17,
+              "download_all_zip": "./data/downloads/families/industry/archive/2026/industry_2026_04_all.zip",
+              "days": [
+                {
+                  "date": "2026-04-23",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/04/industry_2026-04-23.csv"
+                },
+                {
+                  "date": "2026-04-22",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/04/industry_2026-04-22.csv"
+                },
+                {
+                  "date": "2026-04-21",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/04/industry_2026-04-21.csv"
+                },
+                {
+                  "date": "2026-04-20",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/04/industry_2026-04-20.csv"
+                },
+                {
+                  "date": "2026-04-17",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/04/industry_2026-04-17.csv"
+                },
+                {
+                  "date": "2026-04-16",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/04/industry_2026-04-16.csv"
+                },
+                {
+                  "date": "2026-04-15",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/04/industry_2026-04-15.csv"
+                },
+                {
+                  "date": "2026-04-14",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/04/industry_2026-04-14.csv"
+                },
+                {
+                  "date": "2026-04-13",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/04/industry_2026-04-13.csv"
+                },
+                {
+                  "date": "2026-04-10",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/04/industry_2026-04-10.csv"
+                },
+                {
+                  "date": "2026-04-09",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/04/industry_2026-04-09.csv"
+                },
+                {
+                  "date": "2026-04-08",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/04/industry_2026-04-08.csv"
+                },
+                {
+                  "date": "2026-04-07",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/04/industry_2026-04-07.csv"
+                },
+                {
+                  "date": "2026-04-06",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/04/industry_2026-04-06.csv"
+                },
+                {
+                  "date": "2026-04-03",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/04/industry_2026-04-03.csv"
+                },
+                {
+                  "date": "2026-04-02",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/04/industry_2026-04-02.csv"
+                },
+                {
+                  "date": "2026-04-01",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/04/industry_2026-04-01.csv"
+                }
+              ]
+            },
+            {
+              "month": "2026-03",
+              "n_files": 22,
+              "download_all_zip": "./data/downloads/families/industry/archive/2026/industry_2026_03_all.zip",
+              "days": [
+                {
+                  "date": "2026-03-31",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/03/industry_2026-03-31.csv"
+                },
+                {
+                  "date": "2026-03-30",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/03/industry_2026-03-30.csv"
+                },
+                {
+                  "date": "2026-03-27",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/03/industry_2026-03-27.csv"
+                },
+                {
+                  "date": "2026-03-26",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/03/industry_2026-03-26.csv"
+                },
+                {
+                  "date": "2026-03-25",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/03/industry_2026-03-25.csv"
+                },
+                {
+                  "date": "2026-03-24",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/03/industry_2026-03-24.csv"
+                },
+                {
+                  "date": "2026-03-23",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/03/industry_2026-03-23.csv"
+                },
+                {
+                  "date": "2026-03-20",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/03/industry_2026-03-20.csv"
+                },
+                {
+                  "date": "2026-03-19",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/03/industry_2026-03-19.csv"
+                },
+                {
+                  "date": "2026-03-18",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/03/industry_2026-03-18.csv"
+                },
+                {
+                  "date": "2026-03-17",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/03/industry_2026-03-17.csv"
+                },
+                {
+                  "date": "2026-03-16",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/03/industry_2026-03-16.csv"
+                },
+                {
+                  "date": "2026-03-13",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/03/industry_2026-03-13.csv"
+                },
+                {
+                  "date": "2026-03-12",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/03/industry_2026-03-12.csv"
+                },
+                {
+                  "date": "2026-03-11",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/03/industry_2026-03-11.csv"
+                },
+                {
+                  "date": "2026-03-10",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/03/industry_2026-03-10.csv"
+                },
+                {
+                  "date": "2026-03-09",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/03/industry_2026-03-09.csv"
+                },
+                {
+                  "date": "2026-03-06",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/03/industry_2026-03-06.csv"
+                },
+                {
+                  "date": "2026-03-05",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/03/industry_2026-03-05.csv"
+                },
+                {
+                  "date": "2026-03-04",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/03/industry_2026-03-04.csv"
+                },
+                {
+                  "date": "2026-03-03",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/03/industry_2026-03-03.csv"
+                },
+                {
+                  "date": "2026-03-02",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/03/industry_2026-03-02.csv"
+                }
+              ]
+            },
+            {
+              "month": "2026-02",
+              "n_files": 19,
+              "download_all_zip": "./data/downloads/families/industry/archive/2026/industry_2026_02_all.zip",
+              "days": [
+                {
+                  "date": "2026-02-27",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/02/industry_2026-02-27.csv"
+                },
+                {
+                  "date": "2026-02-26",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/02/industry_2026-02-26.csv"
+                },
+                {
+                  "date": "2026-02-25",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/02/industry_2026-02-25.csv"
+                },
+                {
+                  "date": "2026-02-24",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/02/industry_2026-02-24.csv"
+                },
+                {
+                  "date": "2026-02-23",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/02/industry_2026-02-23.csv"
+                },
+                {
+                  "date": "2026-02-20",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/02/industry_2026-02-20.csv"
+                },
+                {
+                  "date": "2026-02-19",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/02/industry_2026-02-19.csv"
+                },
+                {
+                  "date": "2026-02-18",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/02/industry_2026-02-18.csv"
+                },
+                {
+                  "date": "2026-02-17",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/02/industry_2026-02-17.csv"
+                },
+                {
+                  "date": "2026-02-16",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/02/industry_2026-02-16.csv"
+                },
+                {
+                  "date": "2026-02-13",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/02/industry_2026-02-13.csv"
+                },
+                {
+                  "date": "2026-02-12",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/02/industry_2026-02-12.csv"
+                },
+                {
+                  "date": "2026-02-11",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/02/industry_2026-02-11.csv"
+                },
+                {
+                  "date": "2026-02-10",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/02/industry_2026-02-10.csv"
+                },
+                {
+                  "date": "2026-02-09",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/02/industry_2026-02-09.csv"
+                },
+                {
+                  "date": "2026-02-06",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/02/industry_2026-02-06.csv"
+                },
+                {
+                  "date": "2026-02-05",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/02/industry_2026-02-05.csv"
+                },
+                {
+                  "date": "2026-02-04",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/02/industry_2026-02-04.csv"
+                },
+                {
+                  "date": "2026-02-03",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/02/industry_2026-02-03.csv"
+                }
+              ]
+            },
+            {
+              "month": "2026-01",
+              "n_files": 21,
+              "download_all_zip": "./data/downloads/families/industry/archive/2026/industry_2026_01_all.zip",
+              "days": [
+                {
+                  "date": "2026-01-30",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/01/industry_2026-01-30.csv"
+                },
+                {
+                  "date": "2026-01-29",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/01/industry_2026-01-29.csv"
+                },
+                {
+                  "date": "2026-01-28",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/01/industry_2026-01-28.csv"
+                },
+                {
+                  "date": "2026-01-27",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/01/industry_2026-01-27.csv"
+                },
+                {
+                  "date": "2026-01-26",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/01/industry_2026-01-26.csv"
+                },
+                {
+                  "date": "2026-01-23",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/01/industry_2026-01-23.csv"
+                },
+                {
+                  "date": "2026-01-22",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/01/industry_2026-01-22.csv"
+                },
+                {
+                  "date": "2026-01-21",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/01/industry_2026-01-21.csv"
+                },
+                {
+                  "date": "2026-01-20",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/01/industry_2026-01-20.csv"
+                },
+                {
+                  "date": "2026-01-19",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/01/industry_2026-01-19.csv"
+                },
+                {
+                  "date": "2026-01-16",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/01/industry_2026-01-16.csv"
+                },
+                {
+                  "date": "2026-01-15",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/01/industry_2026-01-15.csv"
+                },
+                {
+                  "date": "2026-01-14",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/01/industry_2026-01-14.csv"
+                },
+                {
+                  "date": "2026-01-13",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/01/industry_2026-01-13.csv"
+                },
+                {
+                  "date": "2026-01-12",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/01/industry_2026-01-12.csv"
+                },
+                {
+                  "date": "2026-01-09",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/01/industry_2026-01-09.csv"
+                },
+                {
+                  "date": "2026-01-08",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/01/industry_2026-01-08.csv"
+                },
+                {
+                  "date": "2026-01-07",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/01/industry_2026-01-07.csv"
+                },
+                {
+                  "date": "2026-01-06",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/01/industry_2026-01-06.csv"
+                },
+                {
+                  "date": "2026-01-02",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/01/industry_2026-01-02.csv"
+                },
+                {
+                  "date": "2026-01-01",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/01/industry_2026-01-01.csv"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "year": "2025",
+          "n_files": 45,
+          "download_all_zip": "./data/downloads/families/industry/archive/industry_2025_all.zip",
+          "months": [
+            {
+              "month": "2025-12",
+              "n_files": 23,
+              "download_all_zip": "./data/downloads/families/industry/archive/2025/industry_2025_12_all.zip",
+              "days": [
+                {
+                  "date": "2025-12-31",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2025/12/industry_2025-12-31.csv"
+                },
+                {
+                  "date": "2025-12-30",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2025/12/industry_2025-12-30.csv"
+                },
+                {
+                  "date": "2025-12-29",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2025/12/industry_2025-12-29.csv"
+                },
+                {
+                  "date": "2025-12-26",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2025/12/industry_2025-12-26.csv"
+                },
+                {
+                  "date": "2025-12-25",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2025/12/industry_2025-12-25.csv"
+                },
+                {
+                  "date": "2025-12-24",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2025/12/industry_2025-12-24.csv"
+                },
+                {
+                  "date": "2025-12-23",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2025/12/industry_2025-12-23.csv"
+                },
+                {
+                  "date": "2025-12-22",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2025/12/industry_2025-12-22.csv"
+                },
+                {
+                  "date": "2025-12-19",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2025/12/industry_2025-12-19.csv"
+                },
+                {
+                  "date": "2025-12-18",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2025/12/industry_2025-12-18.csv"
+                },
+                {
+                  "date": "2025-12-17",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2025/12/industry_2025-12-17.csv"
+                },
+                {
+                  "date": "2025-12-16",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2025/12/industry_2025-12-16.csv"
+                },
+                {
+                  "date": "2025-12-15",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2025/12/industry_2025-12-15.csv"
+                },
+                {
+                  "date": "2025-12-12",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2025/12/industry_2025-12-12.csv"
+                },
+                {
+                  "date": "2025-12-11",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2025/12/industry_2025-12-11.csv"
+                },
+                {
+                  "date": "2025-12-10",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2025/12/industry_2025-12-10.csv"
+                },
+                {
+                  "date": "2025-12-09",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2025/12/industry_2025-12-09.csv"
+                },
+                {
+                  "date": "2025-12-08",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2025/12/industry_2025-12-08.csv"
+                },
+                {
+                  "date": "2025-12-05",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2025/12/industry_2025-12-05.csv"
+                },
+                {
+                  "date": "2025-12-04",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2025/12/industry_2025-12-04.csv"
+                },
+                {
+                  "date": "2025-12-03",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2025/12/industry_2025-12-03.csv"
+                },
+                {
+                  "date": "2025-12-02",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2025/12/industry_2025-12-02.csv"
+                },
+                {
+                  "date": "2025-12-01",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2025/12/industry_2025-12-01.csv"
+                }
+              ]
+            },
+            {
+              "month": "2025-11",
+              "n_files": 19,
+              "download_all_zip": "./data/downloads/families/industry/archive/2025/industry_2025_11_all.zip",
+              "days": [
+                {
+                  "date": "2025-11-28",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2025/11/industry_2025-11-28.csv"
+                },
+                {
+                  "date": "2025-11-27",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2025/11/industry_2025-11-27.csv"
+                },
+                {
+                  "date": "2025-11-26",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2025/11/industry_2025-11-26.csv"
+                },
+                {
+                  "date": "2025-11-25",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2025/11/industry_2025-11-25.csv"
+                },
+                {
+                  "date": "2025-11-20",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2025/11/industry_2025-11-20.csv"
+                },
+                {
+                  "date": "2025-11-19",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2025/11/industry_2025-11-19.csv"
+                },
+                {
+                  "date": "2025-11-18",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2025/11/industry_2025-11-18.csv"
+                },
+                {
+                  "date": "2025-11-17",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2025/11/industry_2025-11-17.csv"
+                },
+                {
+                  "date": "2025-11-14",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2025/11/industry_2025-11-14.csv"
+                },
+                {
+                  "date": "2025-11-13",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2025/11/industry_2025-11-13.csv"
+                },
+                {
+                  "date": "2025-11-12",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2025/11/industry_2025-11-12.csv"
+                },
+                {
+                  "date": "2025-11-11",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2025/11/industry_2025-11-11.csv"
+                },
+                {
+                  "date": "2025-11-10",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2025/11/industry_2025-11-10.csv"
+                },
+                {
+                  "date": "2025-11-07",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2025/11/industry_2025-11-07.csv"
+                },
+                {
+                  "date": "2025-11-06",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2025/11/industry_2025-11-06.csv"
+                },
+                {
+                  "date": "2025-11-05",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2025/11/industry_2025-11-05.csv"
+                },
+                {
+                  "date": "2025-11-04",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2025/11/industry_2025-11-04.csv"
+                },
+                {
+                  "date": "2025-11-03",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2025/11/industry_2025-11-03.csv"
+                },
+                {
+                  "date": "2025-11-01",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2025/11/industry_2025-11-01.csv"
+                }
+              ]
+            },
+            {
+              "month": "2025-10",
+              "n_files": 3,
+              "download_all_zip": "./data/downloads/families/industry/archive/2025/industry_2025_10_all.zip",
+              "days": [
+                {
+                  "date": "2025-10-30",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2025/10/industry_2025-10-30.csv"
+                },
+                {
+                  "date": "2025-10-29",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2025/10/industry_2025-10-29.csv"
+                },
+                {
+                  "date": "2025-10-28",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2025/10/industry_2025-10-28.csv"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     },
     "indices": {
-      "latest": "./data/downloads/indices/indices_latest.csv",
-      "daily": "./data/downloads/indices/indices_daily_history.csv",
-      "monthly": "./data/downloads/indices/indices_monthly_history.csv",
-      "zip": "./data/downloads/zip/indices_all.zip"
+      "family": "indices",
+      "label": "Index ICC",
+      "note": "Index-level ICC series aggregated from available index constituent snapshots.",
+      "latest_csv": "./data/downloads/families/indices/indices_latest.csv",
+      "daily_history_csv": "./data/downloads/families/indices/indices_daily_history.csv",
+      "monthly_history_csv": "./data/downloads/families/indices/indices_monthly_history.csv",
+      "all_zip": "./data/downloads/families/indices/indices_all.zip",
+      "tree": [
+        {
+          "year": "2026",
+          "n_files": 80,
+          "download_all_zip": "./data/downloads/families/indices/archive/indices_2026_all.zip",
+          "months": [
+            {
+              "month": "2026-04",
+              "n_files": 17,
+              "download_all_zip": "./data/downloads/families/indices/archive/2026/indices_2026_04_all.zip",
+              "days": [
+                {
+                  "date": "2026-04-23",
+                  "n_rows": 7,
+                  "csv": "./data/downloads/families/indices/archive/2026/04/indices_2026-04-23.csv"
+                },
+                {
+                  "date": "2026-04-22",
+                  "n_rows": 7,
+                  "csv": "./data/downloads/families/indices/archive/2026/04/indices_2026-04-22.csv"
+                },
+                {
+                  "date": "2026-04-21",
+                  "n_rows": 7,
+                  "csv": "./data/downloads/families/indices/archive/2026/04/indices_2026-04-21.csv"
+                },
+                {
+                  "date": "2026-04-20",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/04/indices_2026-04-20.csv"
+                },
+                {
+                  "date": "2026-04-17",
+                  "n_rows": 7,
+                  "csv": "./data/downloads/families/indices/archive/2026/04/indices_2026-04-17.csv"
+                },
+                {
+                  "date": "2026-04-16",
+                  "n_rows": 7,
+                  "csv": "./data/downloads/families/indices/archive/2026/04/indices_2026-04-16.csv"
+                },
+                {
+                  "date": "2026-04-15",
+                  "n_rows": 7,
+                  "csv": "./data/downloads/families/indices/archive/2026/04/indices_2026-04-15.csv"
+                },
+                {
+                  "date": "2026-04-14",
+                  "n_rows": 7,
+                  "csv": "./data/downloads/families/indices/archive/2026/04/indices_2026-04-14.csv"
+                },
+                {
+                  "date": "2026-04-13",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/04/indices_2026-04-13.csv"
+                },
+                {
+                  "date": "2026-04-10",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/04/indices_2026-04-10.csv"
+                },
+                {
+                  "date": "2026-04-09",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/04/indices_2026-04-09.csv"
+                },
+                {
+                  "date": "2026-04-08",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/04/indices_2026-04-08.csv"
+                },
+                {
+                  "date": "2026-04-07",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/04/indices_2026-04-07.csv"
+                },
+                {
+                  "date": "2026-04-06",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/04/indices_2026-04-06.csv"
+                },
+                {
+                  "date": "2026-04-03",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/04/indices_2026-04-03.csv"
+                },
+                {
+                  "date": "2026-04-02",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/04/indices_2026-04-02.csv"
+                },
+                {
+                  "date": "2026-04-01",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/04/indices_2026-04-01.csv"
+                }
+              ]
+            },
+            {
+              "month": "2026-03",
+              "n_files": 22,
+              "download_all_zip": "./data/downloads/families/indices/archive/2026/indices_2026_03_all.zip",
+              "days": [
+                {
+                  "date": "2026-03-31",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/03/indices_2026-03-31.csv"
+                },
+                {
+                  "date": "2026-03-30",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/03/indices_2026-03-30.csv"
+                },
+                {
+                  "date": "2026-03-27",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/03/indices_2026-03-27.csv"
+                },
+                {
+                  "date": "2026-03-26",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/03/indices_2026-03-26.csv"
+                },
+                {
+                  "date": "2026-03-25",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/03/indices_2026-03-25.csv"
+                },
+                {
+                  "date": "2026-03-24",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/03/indices_2026-03-24.csv"
+                },
+                {
+                  "date": "2026-03-23",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/03/indices_2026-03-23.csv"
+                },
+                {
+                  "date": "2026-03-20",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/03/indices_2026-03-20.csv"
+                },
+                {
+                  "date": "2026-03-19",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/03/indices_2026-03-19.csv"
+                },
+                {
+                  "date": "2026-03-18",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/03/indices_2026-03-18.csv"
+                },
+                {
+                  "date": "2026-03-17",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/03/indices_2026-03-17.csv"
+                },
+                {
+                  "date": "2026-03-16",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/03/indices_2026-03-16.csv"
+                },
+                {
+                  "date": "2026-03-13",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/03/indices_2026-03-13.csv"
+                },
+                {
+                  "date": "2026-03-12",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/03/indices_2026-03-12.csv"
+                },
+                {
+                  "date": "2026-03-11",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/03/indices_2026-03-11.csv"
+                },
+                {
+                  "date": "2026-03-10",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/03/indices_2026-03-10.csv"
+                },
+                {
+                  "date": "2026-03-09",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/03/indices_2026-03-09.csv"
+                },
+                {
+                  "date": "2026-03-06",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/03/indices_2026-03-06.csv"
+                },
+                {
+                  "date": "2026-03-05",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/03/indices_2026-03-05.csv"
+                },
+                {
+                  "date": "2026-03-04",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/03/indices_2026-03-04.csv"
+                },
+                {
+                  "date": "2026-03-03",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/03/indices_2026-03-03.csv"
+                },
+                {
+                  "date": "2026-03-02",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/03/indices_2026-03-02.csv"
+                }
+              ]
+            },
+            {
+              "month": "2026-02",
+              "n_files": 19,
+              "download_all_zip": "./data/downloads/families/indices/archive/2026/indices_2026_02_all.zip",
+              "days": [
+                {
+                  "date": "2026-02-27",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/02/indices_2026-02-27.csv"
+                },
+                {
+                  "date": "2026-02-26",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/02/indices_2026-02-26.csv"
+                },
+                {
+                  "date": "2026-02-25",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/02/indices_2026-02-25.csv"
+                },
+                {
+                  "date": "2026-02-24",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/02/indices_2026-02-24.csv"
+                },
+                {
+                  "date": "2026-02-23",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/02/indices_2026-02-23.csv"
+                },
+                {
+                  "date": "2026-02-20",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/02/indices_2026-02-20.csv"
+                },
+                {
+                  "date": "2026-02-19",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/02/indices_2026-02-19.csv"
+                },
+                {
+                  "date": "2026-02-18",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/02/indices_2026-02-18.csv"
+                },
+                {
+                  "date": "2026-02-17",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/02/indices_2026-02-17.csv"
+                },
+                {
+                  "date": "2026-02-16",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/02/indices_2026-02-16.csv"
+                },
+                {
+                  "date": "2026-02-13",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/02/indices_2026-02-13.csv"
+                },
+                {
+                  "date": "2026-02-12",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/02/indices_2026-02-12.csv"
+                },
+                {
+                  "date": "2026-02-11",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/02/indices_2026-02-11.csv"
+                },
+                {
+                  "date": "2026-02-10",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/02/indices_2026-02-10.csv"
+                },
+                {
+                  "date": "2026-02-09",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/02/indices_2026-02-09.csv"
+                },
+                {
+                  "date": "2026-02-06",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/02/indices_2026-02-06.csv"
+                },
+                {
+                  "date": "2026-02-05",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/02/indices_2026-02-05.csv"
+                },
+                {
+                  "date": "2026-02-04",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/02/indices_2026-02-04.csv"
+                },
+                {
+                  "date": "2026-02-03",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/02/indices_2026-02-03.csv"
+                }
+              ]
+            },
+            {
+              "month": "2026-01",
+              "n_files": 22,
+              "download_all_zip": "./data/downloads/families/indices/archive/2026/indices_2026_01_all.zip",
+              "days": [
+                {
+                  "date": "2026-01-30",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/01/indices_2026-01-30.csv"
+                },
+                {
+                  "date": "2026-01-29",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/01/indices_2026-01-29.csv"
+                },
+                {
+                  "date": "2026-01-28",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/01/indices_2026-01-28.csv"
+                },
+                {
+                  "date": "2026-01-27",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/01/indices_2026-01-27.csv"
+                },
+                {
+                  "date": "2026-01-26",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/01/indices_2026-01-26.csv"
+                },
+                {
+                  "date": "2026-01-23",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/01/indices_2026-01-23.csv"
+                },
+                {
+                  "date": "2026-01-22",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/01/indices_2026-01-22.csv"
+                },
+                {
+                  "date": "2026-01-21",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/01/indices_2026-01-21.csv"
+                },
+                {
+                  "date": "2026-01-20",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/01/indices_2026-01-20.csv"
+                },
+                {
+                  "date": "2026-01-19",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/01/indices_2026-01-19.csv"
+                },
+                {
+                  "date": "2026-01-16",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/01/indices_2026-01-16.csv"
+                },
+                {
+                  "date": "2026-01-15",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/01/indices_2026-01-15.csv"
+                },
+                {
+                  "date": "2026-01-14",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/01/indices_2026-01-14.csv"
+                },
+                {
+                  "date": "2026-01-13",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/01/indices_2026-01-13.csv"
+                },
+                {
+                  "date": "2026-01-12",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/01/indices_2026-01-12.csv"
+                },
+                {
+                  "date": "2026-01-09",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/01/indices_2026-01-09.csv"
+                },
+                {
+                  "date": "2026-01-08",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/01/indices_2026-01-08.csv"
+                },
+                {
+                  "date": "2026-01-07",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/01/indices_2026-01-07.csv"
+                },
+                {
+                  "date": "2026-01-06",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/01/indices_2026-01-06.csv"
+                },
+                {
+                  "date": "2026-01-05",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/01/indices_2026-01-05.csv"
+                },
+                {
+                  "date": "2026-01-02",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/01/indices_2026-01-02.csv"
+                },
+                {
+                  "date": "2026-01-01",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2026/01/indices_2026-01-01.csv"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "year": "2025",
+          "n_files": 45,
+          "download_all_zip": "./data/downloads/families/indices/archive/indices_2025_all.zip",
+          "months": [
+            {
+              "month": "2025-12",
+              "n_files": 23,
+              "download_all_zip": "./data/downloads/families/indices/archive/2025/indices_2025_12_all.zip",
+              "days": [
+                {
+                  "date": "2025-12-31",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2025/12/indices_2025-12-31.csv"
+                },
+                {
+                  "date": "2025-12-30",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2025/12/indices_2025-12-30.csv"
+                },
+                {
+                  "date": "2025-12-29",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2025/12/indices_2025-12-29.csv"
+                },
+                {
+                  "date": "2025-12-26",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2025/12/indices_2025-12-26.csv"
+                },
+                {
+                  "date": "2025-12-25",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2025/12/indices_2025-12-25.csv"
+                },
+                {
+                  "date": "2025-12-24",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2025/12/indices_2025-12-24.csv"
+                },
+                {
+                  "date": "2025-12-23",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2025/12/indices_2025-12-23.csv"
+                },
+                {
+                  "date": "2025-12-22",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2025/12/indices_2025-12-22.csv"
+                },
+                {
+                  "date": "2025-12-19",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2025/12/indices_2025-12-19.csv"
+                },
+                {
+                  "date": "2025-12-18",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2025/12/indices_2025-12-18.csv"
+                },
+                {
+                  "date": "2025-12-17",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2025/12/indices_2025-12-17.csv"
+                },
+                {
+                  "date": "2025-12-16",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2025/12/indices_2025-12-16.csv"
+                },
+                {
+                  "date": "2025-12-15",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2025/12/indices_2025-12-15.csv"
+                },
+                {
+                  "date": "2025-12-12",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2025/12/indices_2025-12-12.csv"
+                },
+                {
+                  "date": "2025-12-11",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2025/12/indices_2025-12-11.csv"
+                },
+                {
+                  "date": "2025-12-10",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2025/12/indices_2025-12-10.csv"
+                },
+                {
+                  "date": "2025-12-09",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2025/12/indices_2025-12-09.csv"
+                },
+                {
+                  "date": "2025-12-08",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2025/12/indices_2025-12-08.csv"
+                },
+                {
+                  "date": "2025-12-05",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2025/12/indices_2025-12-05.csv"
+                },
+                {
+                  "date": "2025-12-04",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2025/12/indices_2025-12-04.csv"
+                },
+                {
+                  "date": "2025-12-03",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2025/12/indices_2025-12-03.csv"
+                },
+                {
+                  "date": "2025-12-02",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2025/12/indices_2025-12-02.csv"
+                },
+                {
+                  "date": "2025-12-01",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2025/12/indices_2025-12-01.csv"
+                }
+              ]
+            },
+            {
+              "month": "2025-11",
+              "n_files": 19,
+              "download_all_zip": "./data/downloads/families/indices/archive/2025/indices_2025_11_all.zip",
+              "days": [
+                {
+                  "date": "2025-11-28",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2025/11/indices_2025-11-28.csv"
+                },
+                {
+                  "date": "2025-11-27",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2025/11/indices_2025-11-27.csv"
+                },
+                {
+                  "date": "2025-11-26",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2025/11/indices_2025-11-26.csv"
+                },
+                {
+                  "date": "2025-11-25",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2025/11/indices_2025-11-25.csv"
+                },
+                {
+                  "date": "2025-11-20",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2025/11/indices_2025-11-20.csv"
+                },
+                {
+                  "date": "2025-11-19",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2025/11/indices_2025-11-19.csv"
+                },
+                {
+                  "date": "2025-11-18",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2025/11/indices_2025-11-18.csv"
+                },
+                {
+                  "date": "2025-11-17",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2025/11/indices_2025-11-17.csv"
+                },
+                {
+                  "date": "2025-11-14",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2025/11/indices_2025-11-14.csv"
+                },
+                {
+                  "date": "2025-11-13",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2025/11/indices_2025-11-13.csv"
+                },
+                {
+                  "date": "2025-11-12",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2025/11/indices_2025-11-12.csv"
+                },
+                {
+                  "date": "2025-11-11",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2025/11/indices_2025-11-11.csv"
+                },
+                {
+                  "date": "2025-11-10",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2025/11/indices_2025-11-10.csv"
+                },
+                {
+                  "date": "2025-11-07",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2025/11/indices_2025-11-07.csv"
+                },
+                {
+                  "date": "2025-11-06",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2025/11/indices_2025-11-06.csv"
+                },
+                {
+                  "date": "2025-11-05",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2025/11/indices_2025-11-05.csv"
+                },
+                {
+                  "date": "2025-11-04",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2025/11/indices_2025-11-04.csv"
+                },
+                {
+                  "date": "2025-11-03",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2025/11/indices_2025-11-03.csv"
+                },
+                {
+                  "date": "2025-11-01",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2025/11/indices_2025-11-01.csv"
+                }
+              ]
+            },
+            {
+              "month": "2025-10",
+              "n_files": 3,
+              "download_all_zip": "./data/downloads/families/indices/archive/2025/indices_2025_10_all.zip",
+              "days": [
+                {
+                  "date": "2025-10-30",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2025/10/indices_2025-10-30.csv"
+                },
+                {
+                  "date": "2025-10-29",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2025/10/indices_2025-10-29.csv"
+                },
+                {
+                  "date": "2025-10-28",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/indices/archive/2025/10/indices_2025-10-28.csv"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     },
     "etf": {
-      "latest": "./data/downloads/etf/etf_latest.csv",
-      "daily": "./data/downloads/etf/etf_daily_history.csv",
-      "monthly": "./data/downloads/etf/etf_monthly_history.csv",
-      "zip": "./data/downloads/zip/etf_all.zip"
+      "family": "etf",
+      "label": "ETF ICC",
+      "note": "ETF ICC series from archived ETF holdings calculations where available. History starts when archiving begins.",
+      "latest_csv": "./data/downloads/families/etf/etf_latest.csv",
+      "daily_history_csv": "./data/downloads/families/etf/etf_daily_history.csv",
+      "monthly_history_csv": "./data/downloads/families/etf/etf_monthly_history.csv",
+      "all_zip": "./data/downloads/families/etf/etf_all.zip",
+      "tree": [
+        {
+          "year": "2026",
+          "n_files": 1,
+          "download_all_zip": "./data/downloads/families/etf/archive/etf_2026_all.zip",
+          "months": [
+            {
+              "month": "2026-04",
+              "n_files": 1,
+              "download_all_zip": "./data/downloads/families/etf/archive/2026/etf_2026_04_all.zip",
+              "days": [
+                {
+                  "date": "2026-04-23",
+                  "n_rows": 17,
+                  "csv": "./data/downloads/families/etf/archive/2026/04/etf_2026-04-23.csv"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     },
     "country": {
-      "latest": "./data/downloads/country/country_latest.csv",
-      "daily": "./data/downloads/country/country_daily_history.csv",
-      "monthly": "./data/downloads/country/country_monthly_history.csv",
-      "zip": "./data/downloads/zip/country_all.zip"
+      "family": "country",
+      "label": "Country ADR Top-10 ICC",
+      "note": "Country ADR Top-10 ICC series from archived ADR composite calculations where available. History starts when archiving begins.",
+      "latest_csv": "./data/downloads/families/country/country_latest.csv",
+      "daily_history_csv": "./data/downloads/families/country/country_daily_history.csv",
+      "monthly_history_csv": "./data/downloads/families/country/country_monthly_history.csv",
+      "all_zip": "./data/downloads/families/country/country_all.zip",
+      "tree": [
+        {
+          "year": "2026",
+          "n_files": 1,
+          "download_all_zip": "./data/downloads/families/country/archive/country_2026_all.zip",
+          "months": [
+            {
+              "month": "2026-04",
+              "n_files": 1,
+              "download_all_zip": "./data/downloads/families/country/archive/2026/country_2026_04_all.zip",
+              "days": [
+                {
+                  "date": "2026-04-23",
+                  "n_rows": 37,
+                  "csv": "./data/downloads/families/country/archive/2026/04/country_2026-04-23.csv"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   }
 }

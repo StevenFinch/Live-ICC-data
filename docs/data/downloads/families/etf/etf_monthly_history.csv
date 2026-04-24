@@ -1,0 +1,18 @@
+ticker,month,month_end_date,label,icc,coverage_weight,method,holding_source,status,source_file
+DIA,2026-04,2026-04-23,SPDR Dow Jones Industrial Average ETF Trust,0.0703589408576189,0.9566446748350612,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202604/etf_icc_2026_04_23.csv
+EEM,2026-04,2026-04-23,iShares MSCI Emerging Markets ETF,0.2449245886251108,0.5895953757225434,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings,data/derived/etf/202604/etf_icc_2026_04_23.csv
+EFA,2026-04,2026-04-23,iShares MSCI EAFE ETF,0.0964356901413256,0.2647176611934321,Partial holdings estimate,ishares_full_holdings,partial_holdings,data/derived/etf/202604/etf_icc_2026_04_23.csv
+EWG,2026-04,2026-04-23,iShares MSCI Germany ETF,0.1110726942335507,0.3868226354729053,Partial holdings estimate,ishares_full_holdings,partial_holdings,data/derived/etf/202604/etf_icc_2026_04_23.csv
+EWJ,2026-04,2026-04-23,iShares MSCI Japan ETF,,0.0,Unavailable,yfinance_top_holdings,unavailable,data/derived/etf/202604/etf_icc_2026_04_23.csv
+EWZ,2026-04,2026-04-23,iShares MSCI Brazil ETF,0.1534075368314095,0.8918705603788477,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202604/etf_icc_2026_04_23.csv
+INDA,2026-04,2026-04-23,iShares MSCI India ETF,0.0895170422166877,0.0393511565034544,Partial holdings estimate,ishares_full_holdings,partial_holdings,data/derived/etf/202604/etf_icc_2026_04_23.csv
+IVV,2026-04,2026-04-23,iShares Core S&P 500 ETF,0.076373943408392,0.8174912543728136,ICC calculation,ishares_full_holdings,icc_calculation,data/derived/etf/202604/etf_icc_2026_04_23.csv
+IWB,2026-04,2026-04-23,iShares Russell 1000 ETF,0.0765544817747846,1.0,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202604/etf_icc_2026_04_23.csv
+IWD,2026-04,2026-04-23,iShares Russell 1000 Value ETF,0.0840471952558923,0.9508859185576626,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202604/etf_icc_2026_04_23.csv
+IWF,2026-04,2026-04-23,iShares Russell 1000 Growth ETF,0.0732757290241773,1.0,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202604/etf_icc_2026_04_23.csv
+IWM,2026-04,2026-04-23,iShares Russell 2000 ETF,0.064597569353386,0.8087105038428695,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202604/etf_icc_2026_04_23.csv
+MCHI,2026-04,2026-04-23,iShares MSCI China ETF,0.3334643704006036,1.0,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202604/etf_icc_2026_04_23.csv
+QQQ,2026-04,2026-04-23,Invesco QQQ Trust,0.0789606357333245,1.0,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202604/etf_icc_2026_04_23.csv
+SPY,2026-04,2026-04-23,SPDR S&P 500 ETF Trust,0.0772282228655415,1.0000000000000002,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202604/etf_icc_2026_04_23.csv
+VOO,2026-04,2026-04-23,Vanguard S&P 500 ETF,0.0738398278425147,1.0,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202604/etf_icc_2026_04_23.csv
+VTI,2026-04,2026-04-23,Vanguard Total Stock Market ETF,0.0737946512662859,1.0,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202604/etf_icc_2026_04_23.csv
