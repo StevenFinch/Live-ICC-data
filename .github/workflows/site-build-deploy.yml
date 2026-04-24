@@ -95,7 +95,6 @@ jobs:
           repo = Path(".").resolve()
           data_dir = repo / "data"
           now = datetime.now(ZoneInfo("America/New_York"))
-
           snap_re = re.compile(r"^icc_live_usall_(\d{4})_(\d{4})(?:_r\d+)?\.csv$")
 
           def previous_business_day(d):
@@ -117,39 +116,31 @@ jobs:
 
           latest_valid_date = None
           latest_valid_file = None
-
-          # Find the latest valid non-empty usall snapshot.
           for p in data_dir.glob("*/*.csv"):
               m = snap_re.match(p.name)
               if not m:
                   continue
-
               try:
                   if p.stat().st_size <= 0:
                       continue
               except FileNotFoundError:
                   continue
-
-              year = m.group(1)
-              mmdd = m.group(2)
-              dt = datetime.strptime(f"{year}{mmdd}", "%Y%m%d").date()
-
+              dt = datetime.strptime(f"{m.group(1)}{m.group(2)}", "%Y%m%d").date()
               if latest_valid_date is None or dt > latest_valid_date:
                   latest_valid_date = dt
                   latest_valid_file = str(p)
 
-          # Recalculate only when the latest valid usall date is older than the target date.
+          # Recalculate only when the latest valid all-market file is older than the target date.
           need_recalc = (latest_valid_date is None) or (latest_valid_date < target_date)
 
           print(f"now_et={now.isoformat()}")
-          print(f"timing_reason={timing_reason}")
           print(f"target_date={target_date.isoformat()}")
           print(f"latest_valid_usall_date={latest_valid_date.isoformat() if latest_valid_date else ''}")
           print(f"latest_valid_usall_file={latest_valid_file or ''}")
           print(f"need_recalc={str(need_recalc).lower()}")
+          print(f"reason={timing_reason}")
 
-          out = os.environ["GITHUB_OUTPUT"]
-          with open(out, "a", encoding="utf-8") as f:
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as f:
               f.write(f"target_date={target_date.isoformat()}\n")
               f.write(f"latest_valid_usall_date={latest_valid_date.isoformat() if latest_valid_date else ''}\n")
               f.write(f"latest_valid_usall_file={latest_valid_file or ''}\n")
@@ -175,7 +166,7 @@ jobs:
         if: steps.guard.outputs.need_recalc == 'true'
         run: python -m backend.run_extra_indices
 
-      - name: Build website data under docs/data
+      - name: Build website data and organized downloads
         run: python -m backend.build_docs_data --universe usall
 
       - name: Generate FILES.md manifest if tool exists
@@ -197,7 +188,6 @@ jobs:
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
           git fetch origin "${BRANCH}" || true
 
           ts=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
@@ -208,7 +198,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
-            git commit -m "Update ICC raw/site data ${ts} [skip ci]" || true
+            git commit -m "Update ICC downloads and site data ${ts} [skip ci]" || true
             git pull --rebase --autostash origin "${BRANCH}" || true
             git push origin HEAD:"${BRANCH}" || true
           fi
