@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Live ICC data library - ETF ICC</title>
   <link rel="stylesheet" href="./styles.css" />
 </head>
@@ -23,8 +23,11 @@
   </header>
   <main class="page">
     <section class="panel">
-      <h2>ETF ICC</h2>
-      <p class="note">ETF ICC uses online full holdings when available; partial holdings estimates are labeled clearly.</p>
+      <h2 id="family-title">ETF ICC</h2>
+      <p id="family-note" class="note">ETF downloads use archived ETF ICC calculations where available; history starts when ETF archiving begins.</p>
+    </section>
+    <section class="panel">
+      <h2>Latest daily data</h2>
       <div id="latest-table"></div>
     </section>
     <section class="panel">
@@ -32,8 +35,13 @@
       <div id="monthly-table"></div>
     </section>
     <section class="panel">
-      <h2>Downloads</h2>
+      <h2>Downloads for this dataset</h2>
+      <p class="note">Use these standard files for this dataset only. The archive below gives year/month/day files and true ZIP downloads.</p>
       <div id="family-downloads"></div>
+    </section>
+    <section class="panel">
+      <h2>Historical archive</h2>
+      <div id="family-archive-tree"></div>
     </section>
   </main>
   <script src="./app.js"></script>

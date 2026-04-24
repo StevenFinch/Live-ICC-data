@@ -1,8 +1,7 @@
-
 async function fetchJson(path) {
-  const r = await fetch(path, { cache: "no-store" });
-  if (!r.ok) throw new Error(`HTTP ${r.status}: ${path}`);
-  return await r.json();
+  const response = await fetch(path, { cache: "no-store" });
+  if (!response.ok) throw new Error(`HTTP ${response.status}: ${path}`);
+  return await response.json();
 }
 
 function $(id) {
@@ -13,246 +12,301 @@ function pageName() {
   return document.body.dataset.page || "overview";
 }
 
-function status(msg, isError = false) {
+function setStatus(message, isError = false) {
   const el = $("status");
   if (!el) return;
-  el.textContent = msg || "";
+  el.textContent = message || "";
   el.className = isError ? "status error" : "status";
 }
 
-function pct(x) {
-  if (x === null || x === undefined || Number.isNaN(Number(x))) return "";
-  return `${(Number(x) * 100).toFixed(2)}%`;
+function fmtPct(value) {
+  if (value === null || value === undefined || Number.isNaN(Number(value))) return "";
+  return `${(Number(value) * 100).toFixed(2)}%`;
 }
 
-function num(x) {
-  if (x === null || x === undefined || Number.isNaN(Number(x))) return "";
-  return Number(x).toLocaleString();
+function fmtNum(value) {
+  if (value === null || value === undefined || Number.isNaN(Number(value))) return "";
+  return Number(value).toLocaleString();
 }
 
-function clean(x) {
-  return x === null || x === undefined ? "" : String(x);
+function fmtText(value) {
+  if (value === null || value === undefined) return "";
+  return String(value);
 }
 
-function table(id, rows, cols) {
+function table(id, rows, columns) {
   const el = $(id);
   if (!el) return;
-  if (!rows || !rows.length) {
+  if (!rows || rows.length === 0) {
     el.innerHTML = `<div class="empty">No data available.</div>`;
     return;
   }
-  const head = `<thead><tr>${cols.map(c => `<th>${c[1]}</th>`).join("")}</tr></thead>`;
-  const body = rows.map(r => `<tr>${cols.map(c => {
-    const v = r[c[0]];
-    return `<td>${typeof c[2] === "function" ? c[2](v, r) : clean(v)}</td>`;
-  }).join("")}</tr>`).join("");
+  const head = `<thead><tr>${columns.map(c => `<th>${c.label}</th>`).join("")}</tr></thead>`;
+  const body = rows.map(row => {
+    return `<tr>${columns.map(c => {
+      const raw = row[c.key];
+      const value = c.format ? c.format(raw, row) : fmtText(raw);
+      return `<td>${value}</td>`;
+    }).join("")}</tr>`;
+  }).join("");
   el.innerHTML = `<table>${head}<tbody>${body}</tbody></table>`;
 }
 
-function downloadsBox(id, d) {
+function methodBadge(method) {
+  const m = fmtText(method);
+  if (!m) return "";
+  const cls = m.includes("P/E") ? "badge estimate" : m.includes("Partial") ? "badge partial" : m.includes("Unavailable") ? "badge unavailable" : "badge icc";
+  return `<span class="${cls}">${m}</span>`;
+}
+
+function downloadCards(id, downloads) {
   const el = $(id);
   if (!el) return;
-  if (!d) {
+  if (!downloads) {
     el.innerHTML = `<div class="empty">No downloads available.</div>`;
     return;
   }
-  el.innerHTML = `
-    <div class="download-grid">
-      <a class="download-card" href="${d.latest}" target="_blank">Latest CSV</a>
-      <a class="download-card" href="${d.daily}" target="_blank">Daily history CSV</a>
-      <a class="download-card" href="${d.monthly}" target="_blank">Monthly history CSV</a>
-      <a class="download-card primary" href="${d.zip}" target="_blank">Download all ZIP</a>
-    </div>`;
+  const cards = [
+    ["Latest", downloads.latest_csv, "Latest observation CSV"],
+    ["Daily history", downloads.daily_history_csv, "All daily observations"],
+    ["Monthly history", downloads.monthly_history_csv, "Month-end observations"],
+    ["All standard files", downloads.all_zip, "ZIP: latest + daily + monthly"],
+  ];
+  el.innerHTML = `<div class="download-grid">${cards.map(([title, url, desc]) => {
+    if (!url) return "";
+    return `<a class="download-card" href="${url}" download><strong>${title}</strong><span>${desc}</span></a>`;
+  }).join("")}</div>`;
 }
 
-function lastThreeMonthly(rows, groupKey) {
-  if (!rows) return [];
-  if (!groupKey) return rows.slice().sort((a,b)=>clean(b.month_end_date).localeCompare(clean(a.month_end_date))).slice(0,3);
-  const out = [];
-  const groups = {};
-  for (const r of rows) {
-    const g = clean(r[groupKey]);
-    if (!groups[g]) groups[g] = [];
-    groups[g].push(r);
-  }
-  for (const g of Object.keys(groups).sort()) {
-    out.push(...groups[g].sort((a,b)=>clean(b.month_end_date).localeCompare(clean(a.month_end_date))).slice(0,3));
-  }
-  return out;
-}
-
-async function renderOverview() {
-  const [m, v, i, e, c, idx] = await Promise.all([
-    fetchJson("./data/marketwide.json"),
-    fetchJson("./data/value.json"),
-    fetchJson("./data/industry.json"),
-    fetchJson("./data/etf.json"),
-    fetchJson("./data/country.json"),
-    fetchJson("./data/indices.json"),
-  ]);
-
-  const rows = [];
-  function add(family, latestRows, monthlyRows, latestKey="daily_icc", groupKey=null) {
-    const latest = latestRows && latestRows.length ? latestRows[0] : {};
-    const monthly = lastThreeMonthly(monthlyRows || [], groupKey);
-    rows.push({
-      family,
-      latest_daily: latest[latestKey],
-      method: latest.method || "",
-      m1: monthly[0] ? (monthly[0][latestKey] ?? monthly[0].daily_icc ?? monthly[0].ivp) : null,
-      m2: monthly[1] ? (monthly[1][latestKey] ?? monthly[1].daily_icc ?? monthly[1].ivp) : null,
-      m3: monthly[2] ? (monthly[2][latestKey] ?? monthly[2].daily_icc ?? monthly[2].ivp) : null,
-    });
-  }
-
-  const allLatest = (m.latest || []).filter(x => x.family === "all_market");
-  const spLatest = (m.latest || []).filter(x => x.family === "sp500");
-  add("All market", allLatest, (m.monthly || []).filter(x => x.family === "all_market"), "daily_icc");
-  add("S&P 500", spLatest, (m.monthly || []).filter(x => x.family === "sp500"), "daily_icc");
-  add("Value premium", v.latest || [], v.monthly || [], "ivp");
-  add("Industry", i.latest || [], i.monthly || [], "daily_icc", "group");
-  add("ETF", e.latest || [], e.monthly || [], "icc", "ticker");
-  add("Country ADR", c.latest || [], c.monthly || [], "icc", "country");
-  add("Indices", idx.latest || [], idx.monthly || [], "daily_icc", "family");
-
-  table("overview-table", rows, [
-    ["family", "Dataset"],
-    ["latest_daily", "Latest daily", pct],
-    ["method", "Method"],
-    ["m1", "Latest month", pct],
-    ["m2", "Previous month", pct],
-    ["m3", "Third month", pct],
-  ]);
-}
-
-async function renderFamily(name) {
-  const data = await fetchJson(`./data/${name}.json`);
-  downloadsBox("family-downloads", data.downloads);
-
-  if (name === "marketwide") {
-    const allLatest = (data.latest || []).filter(x => x.family === "all_market");
-    const spLatest = (data.latest || []).filter(x => x.family === "sp500");
-    table("latest-table", [...allLatest, ...spLatest], [
-      ["family", "Family"],
-      ["date", "Date"],
-      ["daily_icc", "Daily ICC", pct],
-      ["ew_icc", "EW ICC", pct],
-      ["n_firms", "N firms", num],
-      ["method", "Method"],
-    ]);
-    const rows = [
-      ...lastThreeMonthly((data.monthly || []).filter(x => x.family === "all_market"), "family"),
-      ...lastThreeMonthly((data.monthly || []).filter(x => x.family === "sp500"), "family"),
-    ];
-    table("monthly-table", rows, [
-      ["family", "Family"],
-      ["month_end_date", "Month-end date"],
-      ["daily_icc", "Monthly ICC", pct],
-      ["n_firms", "N firms", num],
-      ["method", "Method"],
-    ]);
+function archiveTree(id, tree) {
+  const el = $(id);
+  if (!el) return;
+  if (!tree || tree.length === 0) {
+    el.innerHTML = `<div class="empty">No archived files yet.</div>`;
     return;
   }
-
-  const groupKey = name === "industry" ? "group" : name === "indices" ? "family" : name === "etf" ? "ticker" : name === "country" ? "country" : null;
-  table("latest-table", data.latest || [], genericCols(name, false));
-  table("monthly-table", lastThreeMonthly(data.monthly || [], groupKey), genericCols(name, true));
+  el.innerHTML = tree.map(year => `
+    <details class="tree" open>
+      <summary>
+        <span>${year.year}</span>
+        <a class="small-link" href="${year.download_all_zip}" download>Download year ZIP</a>
+      </summary>
+      <div class="tree-body">
+        ${(year.months || []).map(month => `
+          <details class="tree nested">
+            <summary>
+              <span>${month.month}</span>
+              <a class="small-link" href="${month.download_all_zip}" download>Download month ZIP</a>
+            </summary>
+            <div class="tree-body">
+              ${(month.days || []).map(day => `
+                <div class="leaf">
+                  <span>${day.date || ""} · ${fmtNum(day.n_rows || day.n_firms)} rows</span>
+                  <a href="${day.csv}" download>CSV</a>
+                </div>
+              `).join("")}
+            </div>
+          </details>
+        `).join("")}
+      </div>
+    </details>
+  `).join("");
 }
 
-function genericCols(name, monthly) {
-  if (name === "value") {
-    return [
-      [monthly ? "month_end_date" : "date", monthly ? "Month-end date" : "Date"],
-      ["value_icc", "Value ICC", pct],
-      ["growth_icc", "Growth ICC", pct],
-      ["ivp", "IVP", pct],
-      ["method", "Method"],
-    ];
-  }
-  if (name === "etf") {
-    return [
-      [monthly ? "month_end_date" : "date", monthly ? "Month-end date" : "Date"],
-      ["ticker", "ETF"],
-      ["label", "Name"],
-      [monthly ? "daily_icc" : "icc", "ICC", pct],
-      ["coverage_weight", "Coverage", pct],
-      ["method", "Method"],
-      ["holding_source", "Source"],
-    ];
-  }
-  if (name === "country") {
-    return [
-      [monthly ? "month_end_date" : "date", monthly ? "Month-end date" : "Date"],
-      ["country", "Country"],
-      [monthly ? "daily_icc" : "icc", "ICC", pct],
-      ["n_icc_available", "Available ADRs", num],
-      ["coverage_mktcap", "Coverage", pct],
-      ["method", "Method"],
-    ];
-  }
-  return [
-    [monthly ? "month_end_date" : "date", monthly ? "Month-end date" : "Date"],
-    [name === "industry" ? "group" : "family", name === "industry" ? "Group" : "Family"],
-    ["daily_icc", "ICC", pct],
-    ["n_firms", "N firms", num],
-    ["method", "Method"],
-  ];
-}
-
-function renderRawTree(rows, group) {
-  const el = $("raw-tree");
+function rawTree(id, rawGroup) {
+  const el = $(id);
   if (!el) return;
-  const filtered = (rows || []).filter(r => r.raw_group === group);
-  if (!filtered.length) {
+  if (!rawGroup || !rawGroup.years || rawGroup.years.length === 0) {
     el.innerHTML = `<div class="empty">No raw snapshots in this group.</div>`;
     return;
   }
-  const byYear = {};
-  for (const r of filtered) {
-    if (!byYear[r.year]) byYear[r.year] = {};
-    if (!byYear[r.year][r.month]) byYear[r.year][r.month] = [];
-    byYear[r.year][r.month].push(r);
-  }
-  el.innerHTML = Object.keys(byYear).sort().reverse().map(year => `
+  el.innerHTML = rawGroup.years.map(year => `
     <details class="tree" open>
-      <summary>${year}</summary>
-      ${Object.keys(byYear[year]).sort().reverse().map(month => `
-        <details class="tree nested">
-          <summary>${year}-${month}</summary>
-          ${byYear[year][month].sort((a,b)=>clean(b.date).localeCompare(clean(a.date))).map(r => `
-            <div class="leaf">
-              <span>${r.date} · ${r.universe} · ${num(r.n_firms)} firms</span>
-              <a href="${r.download_path}" target="_blank">CSV</a>
+      <summary>
+        <span>${year.year}</span>
+        <a class="small-link" href="${year.download_all_zip}" download>Download year ZIP</a>
+      </summary>
+      <div class="tree-body">
+        ${(year.months || []).map(month => `
+          <details class="tree nested">
+            <summary>
+              <span>${month.month}</span>
+              <a class="small-link" href="${month.download_all_zip}" download>Download month ZIP</a>
+            </summary>
+            <div class="tree-body">
+              ${(month.days || []).map(day => `
+                <div class="leaf">
+                  <span>${day.date} · ${day.universe} · ${fmtNum(day.n_firms)} firms</span>
+                  <a href="${day.csv}" download>CSV</a>
+                </div>
+              `).join("")}
             </div>
-          `).join("")}
-        </details>`).join("")}
-    </details>`).join("");
+          </details>
+        `).join("")}
+      </div>
+    </details>
+  `).join("");
+}
+
+function familyColumns(family, monthly = false) {
+  const dateKey = monthly ? "month_end_date" : "date";
+  if (family === "marketwide") {
+    return [
+      { key: "family", label: "Series" },
+      { key: dateKey, label: monthly ? "Month-end date" : "Date" },
+      { key: "daily_icc", label: "ICC", format: fmtPct },
+      { key: "ew_icc", label: "EW ICC", format: fmtPct },
+      { key: "n_firms", label: "N firms", format: fmtNum },
+      { key: "method", label: "Method", format: methodBadge },
+    ];
+  }
+  if (family === "value") {
+    return [
+      { key: dateKey, label: monthly ? "Month-end date" : "Date" },
+      { key: "value_icc", label: "Value ICC", format: fmtPct },
+      { key: "growth_icc", label: "Growth ICC", format: fmtPct },
+      { key: "ivp", label: "IVP", format: fmtPct },
+      { key: "n_firms", label: "N firms", format: fmtNum },
+      { key: "method", label: "Method", format: methodBadge },
+    ];
+  }
+  if (family === "industry") {
+    return [
+      { key: "group", label: "Industry" },
+      { key: dateKey, label: monthly ? "Month-end date" : "Date" },
+      { key: "daily_icc", label: "ICC", format: fmtPct },
+      { key: "ew_icc", label: "EW ICC", format: fmtPct },
+      { key: "n_firms", label: "N firms", format: fmtNum },
+      { key: "method", label: "Method", format: methodBadge },
+    ];
+  }
+  if (family === "indices") {
+    return [
+      { key: "family", label: "Index" },
+      { key: dateKey, label: monthly ? "Month-end date" : "Date" },
+      { key: "daily_icc", label: "ICC", format: fmtPct },
+      { key: "ew_icc", label: "EW ICC", format: fmtPct },
+      { key: "n_firms", label: "N firms", format: fmtNum },
+      { key: "method", label: "Method", format: methodBadge },
+    ];
+  }
+  if (family === "etf") {
+    return [
+      { key: "ticker", label: "ETF" },
+      { key: "label", label: "Name" },
+      { key: dateKey, label: monthly ? "Month-end date" : "Date" },
+      { key: monthly ? "icc" : "icc", label: "ICC / estimate", format: fmtPct },
+      { key: "coverage_weight", label: "Coverage", format: fmtPct },
+      { key: "method", label: "Method", format: methodBadge },
+      { key: "holding_source", label: "Source" },
+    ];
+  }
+  if (family === "country") {
+    return [
+      { key: "country", label: "Country" },
+      { key: dateKey, label: monthly ? "Month-end date" : "Date" },
+      { key: "icc", label: "ICC / estimate", format: fmtPct },
+      { key: "n_icc_available", label: "Available ADRs", format: fmtNum },
+      { key: "coverage_mktcap", label: "Coverage", format: fmtPct },
+      { key: "method", label: "Method", format: methodBadge },
+    ];
+  }
+  return [];
+}
+
+function renderFamilyDownloadPanel(data) {
+  downloadCards("family-downloads", data.downloads);
+  archiveTree("family-archive-tree", data.downloads ? data.downloads.tree : []);
+}
+
+async function renderOverview() {
+  const data = await fetchJson("./data/overview.json");
+  table("overview-table", data.rows || [], [
+    { key: "dataset", label: "Dataset" },
+    { key: "latest_daily", label: "Latest daily", format: fmtPct },
+    { key: "method", label: "Method", format: methodBadge },
+    { key: "month_1", label: "Latest month", format: fmtPct },
+    { key: "month_2", label: "Previous month", format: fmtPct },
+    { key: "month_3", label: "Third month", format: fmtPct },
+  ]);
+  const el = $("overview-downloads");
+  if (el && data.families) {
+    el.innerHTML = Object.keys(data.families).map(key => {
+      const d = data.families[key];
+      return `<a class="download-card" href="${d.all_zip}" download><strong>${d.label}</strong><span>Download all standard files</span></a>`;
+    }).join("");
+  }
+}
+
+async function renderFamily(family) {
+  const data = await fetchJson(`./data/${family}.json`);
+  const title = $("family-title");
+  const note = $("family-note");
+  if (title) title.textContent = data.label || "";
+  if (note) note.textContent = data.note || "";
+  table("latest-table", data.latest || [], familyColumns(family, false));
+  table("monthly-table", data.monthly || [], familyColumns(family, true));
+  renderFamilyDownloadPanel(data);
 }
 
 async function renderDownloads() {
   const data = await fetchJson("./data/downloads_catalog.json");
-  const families = data.families || {};
-  $("category-downloads").innerHTML = Object.keys(families).map(k => `
-    <div class="download-section">
-      <h3>${k}</h3>
-      <div class="download-grid">
-        <a class="download-card" href="${families[k].latest}" target="_blank">Latest CSV</a>
-        <a class="download-card" href="${families[k].daily}" target="_blank">Daily history CSV</a>
-        <a class="download-card" href="${families[k].monthly}" target="_blank">Monthly history CSV</a>
-        <a class="download-card primary" href="${families[k].zip}" target="_blank">Download all ZIP</a>
+  const familyBox = $("category-downloads");
+  if (familyBox) {
+    const families = data.families || {};
+    familyBox.innerHTML = Object.keys(families).map(key => {
+      const d = families[key];
+      return `
+        <section class="download-section">
+          <h3>${d.label}</h3>
+          <p class="note">${d.note || ""}</p>
+          <div class="download-grid">
+            <a class="download-card" href="${d.latest_csv}" download><strong>Latest</strong><span>Latest CSV</span></a>
+            <a class="download-card" href="${d.daily_history_csv}" download><strong>Daily history</strong><span>Full daily CSV</span></a>
+            <a class="download-card" href="${d.monthly_history_csv}" download><strong>Monthly history</strong><span>Month-end CSV</span></a>
+            <a class="download-card primary" href="${d.all_zip}" download><strong>Download all</strong><span>ZIP package</span></a>
+          </div>
+          <details class="tree compact">
+            <summary>Open year/month/day archive</summary>
+            <div class="tree-body">${renderArchiveTreeHtml(d.tree || [])}</div>
+          </details>
+        </section>
+      `;
+    }).join("");
+  }
+  setupRawTabs(data.raw_snapshots || {});
+}
+
+function renderArchiveTreeHtml(tree) {
+  if (!tree.length) return `<div class="empty">No archive yet.</div>`;
+  return tree.map(year => `
+    <details class="tree" open>
+      <summary><span>${year.year}</span><a class="small-link" href="${year.download_all_zip}" download>Download year ZIP</a></summary>
+      <div class="tree-body">
+        ${(year.months || []).map(month => `
+          <details class="tree nested">
+            <summary><span>${month.month}</span><a class="small-link" href="${month.download_all_zip}" download>Download month ZIP</a></summary>
+            <div class="tree-body">
+              ${(month.days || []).map(day => `<div class="leaf"><span>${day.date} · ${fmtNum(day.n_rows)} rows</span><a href="${day.csv}" download>CSV</a></div>`).join("")}
+            </div>
+          </details>
+        `).join("")}
       </div>
-    </div>
+    </details>
   `).join("");
+}
+
+function setupRawTabs(raw) {
   const buttons = document.querySelectorAll("[data-raw-tab]");
-  let current = "usall";
-  const draw = () => renderRawTree(data.raw_snapshots || [], current);
-  buttons.forEach(b => b.addEventListener("click", () => {
-    buttons.forEach(x => x.classList.remove("active"));
-    b.classList.add("active");
-    current = b.dataset.rawTab;
-    draw();
-  }));
-  draw();
+  const draw = group => rawTree("raw-tree", raw[group]);
+  buttons.forEach(button => {
+    button.addEventListener("click", () => {
+      buttons.forEach(b => b.classList.remove("active"));
+      button.classList.add("active");
+      draw(button.dataset.rawTab);
+    });
+  });
+  draw("usall");
 }
 
 (async function main() {
@@ -261,9 +315,9 @@ async function renderDownloads() {
     if (page === "overview") await renderOverview();
     else if (page === "downloads") await renderDownloads();
     else await renderFamily(page);
-    status("");
-  } catch (e) {
-    console.error(e);
-    status(`Failed to load page data: ${e.message}`, true);
+    setStatus("");
+  } catch (error) {
+    console.error(error);
+    setStatus(`Failed to load page data: ${error.message}`, true);
   }
 })();

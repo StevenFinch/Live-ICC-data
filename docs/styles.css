@@ -1,46 +1,42 @@
-
 :root {
-  --bg: #f7f7f4;
+  --bg: #f7f7f2;
   --paper: #ffffff;
   --ink: #1f2937;
   --muted: #6b7280;
-  --line: #d8d8d2;
+  --line: #d9d9d0;
   --blue: #174ea6;
   --blue-soft: #eef4ff;
+  --green-soft: #eef8f0;
+  --yellow-soft: #fff7d6;
+  --red-soft: #fff0f0;
   --danger: #b91c1c;
 }
-
 * { box-sizing: border-box; }
-
 body {
   margin: 0;
   background: var(--bg);
   color: var(--ink);
   font-family: Georgia, "Times New Roman", serif;
 }
-
 .site-header {
-  max-width: 1240px;
+  max-width: 1260px;
   margin: 0 auto;
-  padding: 34px 24px 18px;
+  padding: 38px 24px 18px;
   text-align: center;
 }
-
 .site-header h1 {
-  margin: 0 0 18px;
-  font-size: 38px;
+  margin: 0 0 20px;
+  font-size: 40px;
   font-weight: 600;
   letter-spacing: -0.02em;
 }
-
 nav {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
-
 nav a {
   color: var(--blue);
   background: var(--paper);
@@ -51,54 +47,48 @@ nav a {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
   font-size: 14px;
 }
-
-nav a:hover {
-  background: var(--blue-soft);
-}
-
+nav a:hover, nav a.active { background: var(--blue-soft); }
 .status {
   min-height: 20px;
   color: var(--muted);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
   font-size: 14px;
 }
-
 .status.error { color: var(--danger); font-weight: 600; }
-
 .page {
-  max-width: 1240px;
+  max-width: 1260px;
   margin: 0 auto;
-  padding: 0 24px 48px;
+  padding: 0 24px 54px;
 }
-
 .panel {
   background: var(--paper);
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 20px;
   margin: 18px 0;
   box-shadow: 0 1px 2px rgba(0,0,0,0.03);
 }
-
 .panel h2 {
   margin: 0 0 14px;
   font-size: 23px;
   font-weight: 600;
 }
-
+.panel h3 {
+  margin: 0 0 10px;
+  font-size: 18px;
+}
 .note {
   color: var(--muted);
-  margin-top: -4px;
+  margin: 0 0 14px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  line-height: 1.5;
 }
-
 table {
   width: 100%;
   border-collapse: collapse;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
   font-size: 14px;
 }
-
 th {
   text-align: left;
   background: #f0f0eb;
@@ -106,101 +96,81 @@ th {
   padding: 10px 9px;
   white-space: nowrap;
 }
-
 td {
   border-bottom: 1px solid #ecece7;
   padding: 10px 9px;
   vertical-align: top;
   white-space: nowrap;
 }
-
 tr:hover td { background: #fbfbf8; }
-
 .empty {
   color: var(--muted);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
   padding: 10px 0;
 }
-
 .download-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
   gap: 12px;
 }
-
 .download-card {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
   text-align: center;
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: 9px;
   padding: 13px;
   text-decoration: none;
   color: var(--blue);
   background: #fbfbf8;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 }
-
+.download-card strong { font-size: 15px; }
+.download-card span { color: var(--muted); font-size: 12px; }
 .download-card.primary {
   background: var(--blue-soft);
   border-color: #b8cdfa;
-  font-weight: 700;
 }
-
 .download-card:hover { filter: brightness(0.98); }
-
 .download-section {
   border-top: 1px solid var(--line);
-  padding-top: 14px;
-  margin-top: 14px;
+  padding-top: 18px;
+  margin-top: 18px;
 }
-
-.download-section:first-child {
-  border-top: 0;
-  padding-top: 0;
-  margin-top: 0;
-}
-
-.download-section h3 {
-  margin: 0 0 10px;
-  text-transform: capitalize;
-}
-
+.download-section:first-child { border-top: 0; padding-top: 0; margin-top: 0; }
 .tabs {
   display: flex;
   gap: 8px;
   margin-bottom: 14px;
   flex-wrap: wrap;
 }
-
 .tabs button {
   border: 1px solid var(--line);
   background: var(--paper);
   padding: 8px 13px;
   border-radius: 999px;
   cursor: pointer;
-}
-
-.tabs button.active {
-  background: var(--blue-soft);
   color: var(--blue);
-  font-weight: 700;
 }
-
+.tabs button.active { background: var(--blue-soft); font-weight: 700; }
 .tree {
   border-top: 1px solid #ecece7;
   padding: 10px 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 }
-
+.tree.compact { margin-top: 12px; }
 .tree summary {
   cursor: pointer;
   font-weight: 700;
   color: var(--blue);
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
 }
-
-.tree.nested {
-  margin-left: 18px;
-}
-
+.tree.nested { margin-left: 18px; }
+.tree-body { padding-top: 8px; }
 .leaf {
   display: flex;
   justify-content: space-between;
@@ -208,18 +178,28 @@ tr:hover td { background: #fbfbf8; }
   gap: 12px;
   padding: 8px 0 8px 24px;
   border-bottom: 1px dashed #ecece7;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
   font-size: 14px;
 }
-
-.leaf a {
+.leaf a, .small-link {
   color: var(--blue);
   text-decoration: none;
   font-weight: 700;
+  font-size: 13px;
 }
-
+.badge {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 3px 8px;
+  font-size: 12px;
+  font-weight: 700;
+}
+.badge.icc { background: var(--green-soft); color: #166534; }
+.badge.partial { background: var(--yellow-soft); color: #854d0e; }
+.badge.estimate { background: var(--yellow-soft); color: #854d0e; }
+.badge.unavailable { background: var(--red-soft); color: #991b1b; }
 @media (max-width: 760px) {
   .site-header h1 { font-size: 30px; }
   .page, .site-header { padding-left: 14px; padding-right: 14px; }
   td, th { font-size: 12px; }
+  .leaf { flex-direction: column; align-items: flex-start; }
 }
