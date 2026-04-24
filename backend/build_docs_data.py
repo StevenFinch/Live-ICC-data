@@ -52,7 +52,7 @@ FAMILY_LABELS = {
     "industry": "Industry ICC",
     "indices": "Index ICC",
     "etf": "ETF ICC",
-    "country": "Country ADR Top-10 ICC",
+    "country": "Country / Region Level ICC",
 }
 
 FAMILY_NOTES = {
@@ -61,7 +61,7 @@ FAMILY_NOTES = {
     "industry": "Industry-level ICC series aggregated from the all-market firm-level ICC panel.",
     "indices": "Index-level ICC series aggregated from available index constituent snapshots.",
     "etf": "ETF ICC series from archived ETF holdings calculations where available. History starts when archiving begins.",
-    "country": "Country ADR Top-10 ICC series from archived ADR composite calculations where available. History starts when archiving begins.",
+    "country": "Country / Region Level ICC series from archived ADR composite calculations where available. History starts when archiving begins.",
 }
 
 
