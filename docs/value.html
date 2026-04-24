@@ -3,35 +3,39 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Live ICC data library</title>
+  <title>Live ICC data library - Value Premium ICC</title>
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body data-page="value">
-  <div class="page">
-    <header class="site-header">
-      <h1 class="site-title">Live ICC data library</h1>
-      <div id="asof" class="asof"></div>
-      <div id="status" class="status"></div>
-    </header>
-
-    <nav class="nav">
-      <a href="./index.html" data-nav="index">Overview</a>
-      <a href="./marketwide.html" data-nav="marketwide">Marketwide</a>
-      <a href="./value.html" data-nav="value">Value Premium</a>
-      <a href="./industry.html" data-nav="industry">Industry</a>
-      <a href="./etf.html" data-nav="etf">ETF</a>
-      <a href="./country.html" data-nav="country">Country</a>
-      <a href="./indices.html" data-nav="indices">Indices</a>
-      <a href="./downloads.html" data-nav="downloads">Downloads</a>
+  <header class="site-header">
+    <h1>Live ICC data library</h1>
+    <nav>
+      <a href="./index.html">Overview</a>
+      <a href="./marketwide.html">Marketwide</a>
+      <a href="./value.html">Value Premium</a>
+      <a href="./industry.html">Industry</a>
+      <a href="./etf.html">ETF</a>
+      <a href="./country.html">Country ADR</a>
+      <a href="./indices.html">Indices</a>
+      <a href="./downloads.html">Downloads</a>
     </nav>
-
-    <main id="app"></main>
-
-    <div class="footer-note">
-      Method is always labeled explicitly as ICC calculation or P/E estimate.
-    </div>
-  </div>
-
+    <div id="status" class="status"></div>
+  </header>
+  <main class="page">
+    <section class="panel">
+      <h2>Value Premium ICC</h2>
+      <p class="note">Value, growth, and implied value premium are calculated from the firm-level ICC panel.</p>
+      <div id="latest-table"></div>
+    </section>
+    <section class="panel">
+      <h2>Last three monthly observations</h2>
+      <div id="monthly-table"></div>
+    </section>
+    <section class="panel">
+      <h2>Downloads</h2>
+      <div id="family-downloads"></div>
+    </section>
+  </main>
   <script src="./app.js"></script>
 </body>
 </html>
