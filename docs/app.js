@@ -203,7 +203,7 @@ function familyColumns(family, monthly = false) {
   }
   if (family === "country") {
     return [
-      { key: "country", label: "Country" },
+      { key: "country", label: "Country / Region" },
       { key: dateKey, label: monthly ? "Month-end date" : "Date" },
       { key: "icc", label: "ICC / estimate", format: fmtPct },
       { key: "n_icc_available", label: "Available ADRs", format: fmtNum },
