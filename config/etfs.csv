@@ -1,7 +1,18 @@
-ticker,label,category,url,allow_holdings
-IVV,iShares Core S&P 500 ETF,Core US,https://www.ishares.com/us/products/239726/ishares-core-sp-500-etf,1
-SPY,State Street SPDR S&P 500 ETF,Core US,https://www.ssga.com/us/en/intermediary/etfs/state-street-spdr-sp-500-etf-trust-spy,1
-IVE,iShares S&P 500 Value ETF,Style US,https://www.ishares.com/us/products/239728/ishares-sp-500-value-etf,0
-IVW,iShares S&P 500 Growth ETF,Style US,https://www.ishares.com/us/products/239725/ishares-sp-500-growth-etf,0
-IYW,iShares U.S. Technology ETF,Sector US,https://www.ishares.com/us/products/239522/ishares-us-technology-etf,0
-IWD,iShares Russell 1000 Value ETF,Style US,https://www.ishares.com/us/products/239708/ishares-russell-1000-value-etf,0
+ticker,label,category,provider,product_id,slug
+SPY,SPDR S&P 500 ETF Trust,US equity,spdr,,
+IVV,iShares Core S&P 500 ETF,US equity,ishares,239726,ishares-core-sp-500-etf
+VOO,Vanguard S&P 500 ETF,US equity,stockanalysis,,
+VTI,Vanguard Total Stock Market ETF,US equity,stockanalysis,,
+QQQ,Invesco QQQ Trust,US equity,stockanalysis,,
+DIA,SPDR Dow Jones Industrial Average ETF Trust,US equity,spdr,,
+IWM,iShares Russell 2000 ETF,US equity,ishares,,
+IWB,iShares Russell 1000 ETF,US equity,ishares,,
+IWD,iShares Russell 1000 Value ETF,US value,ishares,,
+IWF,iShares Russell 1000 Growth ETF,US growth,ishares,,
+EFA,iShares MSCI EAFE ETF,International equity,ishares,239623,ishares-msci-eafe-etf
+EEM,iShares MSCI Emerging Markets ETF,Emerging markets,ishares,,
+EWJ,iShares MSCI Japan ETF,Country ETF,ishares,,
+EWG,iShares MSCI Germany ETF,Country ETF,ishares,239650,ishares-msci-germany-etf
+MCHI,iShares MSCI China ETF,Country ETF,ishares,,
+INDA,iShares MSCI India ETF,Country ETF,ishares,239659,ishares-msci-india-etf
+EWZ,iShares MSCI Brazil ETF,Country ETF,ishares,,
