@@ -80,11 +80,6 @@ jobs:
           else
             pip install pandas numpy yfinance requests lxml html5lib openpyxl python-dateutil tzdata
           fi
-          
-      - name: Build website data under docs/data
-        env:
-          COUNTRY_ADR_FORCE_REBUILD: "1"
-        run: python -m backend.build_docs_data --universe usall
 
       - name: Decide target trading date and whether recalculation is needed
         id: guard
