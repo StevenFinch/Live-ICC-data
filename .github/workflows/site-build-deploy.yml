@@ -25,7 +25,7 @@ jobs:
       - name: Build website data under docs/data
         env:
           COUNTRY_ADR_FORCE_REBUILD: "1"
-        run: python -m backend.build_docs_data --universe usall
+        run: python -m backend.build_docs_data.py --universe usall
     
       - name: Decide whether to run
         id: check
