@@ -22,6 +22,11 @@ jobs:
     outputs:
       proceed: ${{ steps.check.outputs.proceed }}
     steps:
+      - name: Build website data under docs/data
+        env:
+          COUNTRY_ADR_FORCE_REBUILD: "1"
+        run: python -m backend.build_docs_data --universe usall
+    
       - name: Decide whether to run
         id: check
         shell: bash
