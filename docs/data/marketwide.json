@@ -3,26 +3,26 @@
     {
       "family": "all_market",
       "label": "All market",
-      "date": "2026-04-23",
-      "value": 0.0814380090436166,
+      "date": "2026-04-27",
+      "value": 0.0816038436146909,
       "method": "ICC calculation",
       "source": "Constituent ICC aggregation",
-      "n_items": 2724,
+      "n_items": 2713,
       "coverage_weight": null,
       "status": "available",
-      "__source_file": "data/library/marketwide/daily/202604/marketwide_2026_0423.csv"
+      "__source_file": "data/library/marketwide/daily/202604/marketwide_2026_0427.csv"
     },
     {
       "family": "sp500",
       "label": "S&P 500",
-      "date": "2026-04-23",
-      "value": 0.0757900175311006,
+      "date": "2026-04-27",
+      "value": 0.0748247913636943,
       "method": "ICC calculation",
       "source": "Constituent ICC aggregation",
       "n_items": 500,
       "coverage_weight": null,
       "status": "available",
-      "__source_file": "data/library/marketwide/daily/202604/marketwide_2026_0423.csv"
+      "__source_file": "data/library/marketwide/daily/202604/marketwide_2026_0427.csv"
     }
   ],
   "daily": [
@@ -75,6 +75,18 @@
       "__source_file": "data/library/marketwide/daily/202604/marketwide_2026_0423.csv"
     },
     {
+      "family": "all_market",
+      "label": "All market",
+      "date": "2026-04-27",
+      "value": 0.0816038436146909,
+      "method": "ICC calculation",
+      "source": "Constituent ICC aggregation",
+      "n_items": 2713,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/marketwide/daily/202604/marketwide_2026_0427.csv"
+    },
+    {
       "family": "sp500",
       "label": "S&P 500",
       "date": "2026-04-17",
@@ -121,32 +133,44 @@
       "coverage_weight": null,
       "status": "available",
       "__source_file": "data/library/marketwide/daily/202604/marketwide_2026_0423.csv"
+    },
+    {
+      "family": "sp500",
+      "label": "S&P 500",
+      "date": "2026-04-27",
+      "value": 0.0748247913636943,
+      "method": "ICC calculation",
+      "source": "Constituent ICC aggregation",
+      "n_items": 500,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/marketwide/daily/202604/marketwide_2026_0427.csv"
     }
   ],
   "monthly": [
     {
       "family": "all_market",
       "label": "All market",
-      "date": "2026-04-23",
-      "value": 0.0814380090436166,
+      "date": "2026-04-27",
+      "value": 0.0816038436146909,
       "method": "ICC calculation",
       "source": "Constituent ICC aggregation",
-      "n_items": 2724,
+      "n_items": 2713,
       "coverage_weight": null,
       "status": "available",
-      "__source_file": "data/library/marketwide/daily/202604/marketwide_2026_0423.csv"
+      "__source_file": "data/library/marketwide/daily/202604/marketwide_2026_0427.csv"
     },
     {
       "family": "sp500",
       "label": "S&P 500",
-      "date": "2026-04-23",
-      "value": 0.0757900175311006,
+      "date": "2026-04-27",
+      "value": 0.0748247913636943,
       "method": "ICC calculation",
       "source": "Constituent ICC aggregation",
       "n_items": 500,
       "coverage_weight": null,
       "status": "available",
-      "__source_file": "data/library/marketwide/daily/202604/marketwide_2026_0423.csv"
+      "__source_file": "data/library/marketwide/daily/202604/marketwide_2026_0427.csv"
     }
   ],
   "monthly_groups": {
@@ -154,28 +178,28 @@
       {
         "family": "all_market",
         "label": "All market",
-        "date": "2026-04-23",
-        "value": 0.0814380090436166,
+        "date": "2026-04-27",
+        "value": 0.0816038436146909,
         "method": "ICC calculation",
         "source": "Constituent ICC aggregation",
-        "n_items": 2724,
+        "n_items": 2713,
         "coverage_weight": null,
         "status": "available",
-        "__source_file": "data/library/marketwide/daily/202604/marketwide_2026_0423.csv"
+        "__source_file": "data/library/marketwide/daily/202604/marketwide_2026_0427.csv"
       }
     ],
     "sp500": [
       {
         "family": "sp500",
         "label": "S&P 500",
-        "date": "2026-04-23",
-        "value": 0.0757900175311006,
+        "date": "2026-04-27",
+        "value": 0.0748247913636943,
         "method": "ICC calculation",
         "source": "Constituent ICC aggregation",
         "n_items": 500,
         "coverage_weight": null,
         "status": "available",
-        "__source_file": "data/library/marketwide/daily/202604/marketwide_2026_0423.csv"
+        "__source_file": "data/library/marketwide/daily/202604/marketwide_2026_0427.csv"
       }
     ]
   },
@@ -193,6 +217,11 @@
             "yyyymm": "202604",
             "download_all": "./data/downloads/family/marketwide/archive/202604.zip",
             "files": [
+              {
+                "date": "2026-04-27",
+                "download_path": "./data/downloads/family/marketwide/archive/202604/marketwide_2026_0427.csv",
+                "filename": "marketwide_2026_0427.csv"
+              },
               {
                 "date": "2026-04-23",
                 "download_path": "./data/downloads/family/marketwide/archive/202604/marketwide_2026_0423.csv",
