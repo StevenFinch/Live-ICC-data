@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       proceed: ${{ steps.check.outputs.proceed }}
-    steps:    
+    steps:
       - name: Decide whether to run
         id: check
         shell: bash
