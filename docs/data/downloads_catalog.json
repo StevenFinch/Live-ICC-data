@@ -21,7 +21,7 @@
               "days": [
                 {
                   "date": "2026-04-29",
-                  "n_rows": 1,
+                  "n_rows": 2,
                   "csv": "./data/downloads/families/marketwide/archive/2026/04/marketwide_2026-04-29.csv"
                 },
                 {
@@ -2158,7 +2158,7 @@
               "days": [
                 {
                   "date": "2026-04-29",
-                  "n_rows": 6,
+                  "n_rows": 7,
                   "csv": "./data/downloads/families/indices/archive/2026/04/indices_2026-04-29.csv"
                 },
                 {
@@ -2938,7 +2938,7 @@
                   "month": "04",
                   "universe": "usall",
                   "n_firms": 2715,
-                  "csv": "./data/downloads/raw_snapshots/usall/2026/04/icc_live_usall_2026_0429.csv"
+                  "csv": "./data/downloads/raw_snapshots/usall/2026/04/icc_live_usall_2026_0429_r1.csv"
                 },
                 {
                   "raw_group": "usall",
@@ -4134,14 +4134,23 @@
       "years": [
         {
           "year": "2026",
-          "n_files": 83,
+          "n_files": 84,
           "download_all_zip": "./data/downloads/raw_snapshots/sp500/raw_sp500_2026_all.zip",
           "months": [
             {
               "month": "2026-04",
-              "n_files": 20,
+              "n_files": 21,
               "download_all_zip": "./data/downloads/raw_snapshots/sp500/2026/raw_sp500_2026_04_all.zip",
               "days": [
+                {
+                  "raw_group": "sp500",
+                  "date": "2026-04-29",
+                  "year": "2026",
+                  "month": "04",
+                  "universe": "sp500",
+                  "n_firms": 500,
+                  "csv": "./data/downloads/raw_snapshots/sp500/2026/04/icc_live_sp500_2026_0429_r1.csv"
+                },
                 {
                   "raw_group": "sp500",
                   "date": "2026-04-28",

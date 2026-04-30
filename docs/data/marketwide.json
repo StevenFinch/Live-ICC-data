@@ -6,20 +6,20 @@
     {
       "date": "2026-04-29",
       "family": "all_market",
-      "daily_icc": 0.08183994807869033,
-      "ew_icc": 0.10615853507757944,
+      "daily_icc": 0.08169965636190622,
+      "ew_icc": 0.10670866259324283,
       "n_firms": 2715,
       "method": "ICC calculation",
-      "source_file": "data/202604/icc_live_usall_2026_0429.csv"
+      "source_file": "data/202604/icc_live_usall_2026_0429_r1.csv"
     },
     {
-      "date": "2026-04-28",
+      "date": "2026-04-29",
       "family": "sp500",
-      "daily_icc": 0.07498051520289939,
-      "ew_icc": 0.08124440436628828,
+      "daily_icc": 0.07508200259993175,
+      "ew_icc": 0.08148046785109216,
       "n_firms": 500,
       "method": "ICC calculation",
-      "source_file": "data/202604/icc_live_sp500_2026_0428_r1.csv"
+      "source_file": "data/202604/icc_live_sp500_2026_0429_r1.csv"
     }
   ],
   "monthly": [
@@ -27,11 +27,11 @@
       "family": "all_market",
       "month": "2026-04",
       "month_end_date": "2026-04-29",
-      "daily_icc": 0.08183994807869033,
-      "ew_icc": 0.10615853507757944,
+      "daily_icc": 0.08169965636190622,
+      "ew_icc": 0.10670866259324283,
       "n_firms": 2715,
       "method": "ICC calculation",
-      "source_file": "data/202604/icc_live_usall_2026_0429.csv"
+      "source_file": "data/202604/icc_live_usall_2026_0429_r1.csv"
     },
     {
       "family": "all_market",
@@ -56,12 +56,12 @@
     {
       "family": "sp500",
       "month": "2026-04",
-      "month_end_date": "2026-04-28",
-      "daily_icc": 0.07498051520289939,
-      "ew_icc": 0.08124440436628828,
+      "month_end_date": "2026-04-29",
+      "daily_icc": 0.07508200259993175,
+      "ew_icc": 0.08148046785109216,
       "n_firms": 500,
       "method": "ICC calculation",
-      "source_file": "data/202604/icc_live_sp500_2026_0428_r1.csv"
+      "source_file": "data/202604/icc_live_sp500_2026_0429_r1.csv"
     },
     {
       "family": "sp500",
@@ -105,7 +105,7 @@
             "days": [
               {
                 "date": "2026-04-29",
-                "n_rows": 1,
+                "n_rows": 2,
                 "csv": "./data/downloads/families/marketwide/archive/2026/04/marketwide_2026-04-29.csv"
               },
               {

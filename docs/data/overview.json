@@ -3,33 +3,33 @@
   "rows": [
     {
       "dataset": "All market",
-      "latest_daily": 0.08183994807869033,
+      "latest_daily": 0.08169965636190622,
       "method": "ICC calculation",
-      "month_1": 0.08183994807869033,
+      "month_1": 0.08169965636190622,
       "month_2": 0.0846043873892946,
       "month_3": 0.08042145131520971
     },
     {
       "dataset": "S&P 500",
-      "latest_daily": 0.07498051520289939,
+      "latest_daily": 0.07508200259993175,
       "method": "ICC calculation",
-      "month_1": 0.07498051520289939,
+      "month_1": 0.07508200259993175,
       "month_2": 0.07889568917176408,
       "month_3": 0.07395991999074679
     },
     {
       "dataset": "Value premium ICC",
-      "latest_daily": 0.036652294876890715,
+      "latest_daily": 0.03595021249222208,
       "method": "ICC calculation",
-      "month_1": 0.036652294876890715,
+      "month_1": 0.03595021249222208,
       "month_2": 0.03551502878898988,
       "month_3": 0.04258253104764308
     },
     {
       "dataset": "Industry ICC",
-      "latest_daily": 0.08278611387371437,
+      "latest_daily": 0.08360359153445933,
       "method": "ICC calculation",
-      "month_1": 0.08278611387371437,
+      "month_1": 0.08360359153445933,
       "month_2": 0.08283637001403374,
       "month_3": 0.07600533054393632
     },
@@ -80,7 +80,7 @@
               "days": [
                 {
                   "date": "2026-04-29",
-                  "n_rows": 1,
+                  "n_rows": 2,
                   "csv": "./data/downloads/families/marketwide/archive/2026/04/marketwide_2026-04-29.csv"
                 },
                 {
@@ -2217,7 +2217,7 @@
               "days": [
                 {
                   "date": "2026-04-29",
-                  "n_rows": 6,
+                  "n_rows": 7,
                   "csv": "./data/downloads/families/indices/archive/2026/04/indices_2026-04-29.csv"
                 },
                 {
