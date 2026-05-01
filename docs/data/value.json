@@ -4,16 +4,26 @@
   "note": "Value, growth, and implied value premium series built from firm-level ICC snapshots.",
   "latest": [
     {
-      "date": "2026-04-30",
-      "value_icc": 0.1191720693883774,
-      "growth_icc": 0.08416967541482948,
-      "ivp": 0.03500239397354793,
-      "n_firms": 2566,
+      "date": "2026-05-01",
+      "value_icc": 0.11957066146091955,
+      "growth_icc": 0.08227578818020896,
+      "ivp": 0.037294873280710586,
+      "n_firms": 2563,
       "method": "ICC calculation",
-      "source_file": "data/202604/icc_live_usall_2026_0430_r1.csv"
+      "source_file": "data/202605/icc_live_usall_2026_0501_r1.csv"
     }
   ],
   "monthly": [
+    {
+      "month": "2026-05",
+      "month_end_date": "2026-05-01",
+      "value_icc": 0.11957066146091955,
+      "growth_icc": 0.08227578818020896,
+      "ivp": 0.037294873280710586,
+      "n_firms": 2563,
+      "method": "ICC calculation",
+      "source_file": "data/202605/icc_live_usall_2026_0501_r1.csv"
+    },
     {
       "month": "2026-04",
       "month_end_date": "2026-04-30",
@@ -33,16 +43,6 @@
       "n_firms": 2577,
       "method": "ICC calculation",
       "source_file": "data/202603/icc_live_usall_2026_0331_r1.csv"
-    },
-    {
-      "month": "2026-02",
-      "month_end_date": "2026-02-27",
-      "value_icc": 0.1208263678209743,
-      "growth_icc": 0.07824383677333123,
-      "ivp": 0.04258253104764308,
-      "n_firms": 2547,
-      "method": "ICC calculation",
-      "source_file": "data/202602/icc_live_usall_2026_0227_r1.csv"
     }
   ],
   "downloads": {
@@ -56,9 +56,21 @@
     "tree": [
       {
         "year": "2026",
-        "n_files": 83,
+        "n_files": 84,
         "download_all_zip": "./data/downloads/families/value/archive/value_2026_all.zip",
         "months": [
+          {
+            "month": "2026-05",
+            "n_files": 1,
+            "download_all_zip": "./data/downloads/families/value/archive/2026/value_2026_05_all.zip",
+            "days": [
+              {
+                "date": "2026-05-01",
+                "n_rows": 1,
+                "csv": "./data/downloads/families/value/archive/2026/05/value_2026-05-01.csv"
+              }
+            ]
+          },
           {
             "month": "2026-04",
             "n_files": 21,
