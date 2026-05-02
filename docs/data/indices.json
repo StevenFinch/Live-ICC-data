@@ -3,86 +3,86 @@
     {
       "family": "dow30",
       "label": "Dow 30",
-      "date": "2026-04-29",
-      "value": 0.0729588882561318,
+      "date": "2026-05-01",
+      "value": 0.0710376593382135,
       "method": "ICC calculation",
       "source": "Constituent ICC aggregation",
       "n_items": 30,
       "coverage_weight": null,
       "status": "available",
-      "__source_file": "data/library/indices/daily/202604/indices_2026_0429.csv"
+      "__source_file": "data/library/indices/daily/202605/indices_2026_0501.csv"
     },
     {
       "family": "ndx100",
       "label": "Nasdaq-100",
-      "date": "2026-04-29",
-      "value": 0.0748301054957411,
+      "date": "2026-05-01",
+      "value": 0.0689616867317113,
       "method": "ICC calculation",
       "source": "Constituent ICC aggregation",
       "n_items": 100,
       "coverage_weight": null,
       "status": "available",
-      "__source_file": "data/library/indices/daily/202604/indices_2026_0429.csv"
+      "__source_file": "data/library/indices/daily/202605/indices_2026_0501.csv"
     },
     {
       "family": "rut1000",
       "label": "Russell 1000",
-      "date": "2026-04-29",
-      "value": 0.0755875218487472,
+      "date": "2026-05-01",
+      "value": 0.075223050609573,
       "method": "ICC calculation",
       "source": "Constituent ICC aggregation",
-      "n_items": 976,
+      "n_items": 972,
       "coverage_weight": null,
       "status": "available",
-      "__source_file": "data/library/indices/daily/202604/indices_2026_0429.csv"
+      "__source_file": "data/library/indices/daily/202605/indices_2026_0501.csv"
     },
     {
       "family": "sp100",
       "label": "S&P 100",
-      "date": "2026-04-29",
-      "value": 0.0743075487273753,
+      "date": "2026-05-01",
+      "value": 0.0694503806269637,
       "method": "ICC calculation",
       "source": "Constituent ICC aggregation",
       "n_items": 101,
       "coverage_weight": null,
       "status": "available",
-      "__source_file": "data/library/indices/daily/202604/indices_2026_0429.csv"
+      "__source_file": "data/library/indices/daily/202605/indices_2026_0501.csv"
     },
     {
       "family": "sp400",
       "label": "S&P 400",
-      "date": "2026-04-29",
-      "value": 0.0845993901717787,
+      "date": "2026-05-01",
+      "value": 0.0837352350044233,
       "method": "ICC calculation",
       "source": "Constituent ICC aggregation",
-      "n_items": 395,
+      "n_items": 393,
       "coverage_weight": null,
       "status": "available",
-      "__source_file": "data/library/indices/daily/202604/indices_2026_0429.csv"
+      "__source_file": "data/library/indices/daily/202605/indices_2026_0501.csv"
     },
     {
       "family": "sp500",
       "label": "S&P 500",
-      "date": "2026-04-29",
-      "value": 0.075067164226114,
+      "date": "2026-05-01",
+      "value": 0.0714345785881318,
       "method": "ICC calculation",
       "source": "Constituent ICC aggregation",
       "n_items": 500,
       "coverage_weight": null,
       "status": "available",
-      "__source_file": "data/library/indices/daily/202604/indices_2026_0429.csv"
+      "__source_file": "data/library/indices/daily/202605/indices_2026_0501.csv"
     },
     {
       "family": "sp600",
       "label": "S&P 600",
-      "date": "2026-04-29",
-      "value": 0.0923873972871924,
+      "date": "2026-05-01",
+      "value": 0.0925862403581302,
       "method": "ICC calculation",
       "source": "Constituent ICC aggregation",
-      "n_items": 573,
+      "n_items": 568,
       "coverage_weight": null,
       "status": "available",
-      "__source_file": "data/library/indices/daily/202604/indices_2026_0429.csv"
+      "__source_file": "data/library/indices/daily/202605/indices_2026_0501.csv"
     }
   ],
   "daily": [
@@ -171,6 +171,18 @@
       "__source_file": "data/library/indices/daily/202604/indices_2026_0429.csv"
     },
     {
+      "family": "dow30",
+      "label": "Dow 30",
+      "date": "2026-05-01",
+      "value": 0.0710376593382135,
+      "method": "ICC calculation",
+      "source": "Constituent ICC aggregation",
+      "n_items": 30,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/indices/daily/202605/indices_2026_0501.csv"
+    },
+    {
       "family": "ndx100",
       "label": "Nasdaq-100",
       "date": "2026-04-17",
@@ -253,6 +265,18 @@
       "coverage_weight": null,
       "status": "available",
       "__source_file": "data/library/indices/daily/202604/indices_2026_0429.csv"
+    },
+    {
+      "family": "ndx100",
+      "label": "Nasdaq-100",
+      "date": "2026-05-01",
+      "value": 0.0689616867317113,
+      "method": "ICC calculation",
+      "source": "Constituent ICC aggregation",
+      "n_items": 100,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/indices/daily/202605/indices_2026_0501.csv"
     },
     {
       "family": "rut1000",
@@ -339,6 +363,18 @@
       "__source_file": "data/library/indices/daily/202604/indices_2026_0429.csv"
     },
     {
+      "family": "rut1000",
+      "label": "Russell 1000",
+      "date": "2026-05-01",
+      "value": 0.075223050609573,
+      "method": "ICC calculation",
+      "source": "Constituent ICC aggregation",
+      "n_items": 972,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/indices/daily/202605/indices_2026_0501.csv"
+    },
+    {
       "family": "sp100",
       "label": "S&P 100",
       "date": "2026-04-17",
@@ -421,6 +457,18 @@
       "coverage_weight": null,
       "status": "available",
       "__source_file": "data/library/indices/daily/202604/indices_2026_0429.csv"
+    },
+    {
+      "family": "sp100",
+      "label": "S&P 100",
+      "date": "2026-05-01",
+      "value": 0.0694503806269637,
+      "method": "ICC calculation",
+      "source": "Constituent ICC aggregation",
+      "n_items": 101,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/indices/daily/202605/indices_2026_0501.csv"
     },
     {
       "family": "sp400",
@@ -507,6 +555,18 @@
       "__source_file": "data/library/indices/daily/202604/indices_2026_0429.csv"
     },
     {
+      "family": "sp400",
+      "label": "S&P 400",
+      "date": "2026-05-01",
+      "value": 0.0837352350044233,
+      "method": "ICC calculation",
+      "source": "Constituent ICC aggregation",
+      "n_items": 393,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/indices/daily/202605/indices_2026_0501.csv"
+    },
+    {
       "family": "sp500",
       "label": "S&P 500",
       "date": "2026-04-17",
@@ -591,6 +651,18 @@
       "__source_file": "data/library/indices/daily/202604/indices_2026_0429.csv"
     },
     {
+      "family": "sp500",
+      "label": "S&P 500",
+      "date": "2026-05-01",
+      "value": 0.0714345785881318,
+      "method": "ICC calculation",
+      "source": "Constituent ICC aggregation",
+      "n_items": 500,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/indices/daily/202605/indices_2026_0501.csv"
+    },
+    {
       "family": "sp600",
       "label": "S&P 600",
       "date": "2026-04-17",
@@ -673,6 +745,18 @@
       "coverage_weight": null,
       "status": "available",
       "__source_file": "data/library/indices/daily/202604/indices_2026_0429.csv"
+    },
+    {
+      "family": "sp600",
+      "label": "S&P 600",
+      "date": "2026-05-01",
+      "value": 0.0925862403581302,
+      "method": "ICC calculation",
+      "source": "Constituent ICC aggregation",
+      "n_items": 568,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/indices/daily/202605/indices_2026_0501.csv"
     }
   ],
   "monthly": [
@@ -689,6 +773,18 @@
       "__source_file": "data/library/indices/daily/202604/indices_2026_0429.csv"
     },
     {
+      "family": "dow30",
+      "label": "Dow 30",
+      "date": "2026-05-01",
+      "value": 0.0710376593382135,
+      "method": "ICC calculation",
+      "source": "Constituent ICC aggregation",
+      "n_items": 30,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/indices/daily/202605/indices_2026_0501.csv"
+    },
+    {
       "family": "ndx100",
       "label": "Nasdaq-100",
       "date": "2026-04-29",
@@ -699,6 +795,18 @@
       "coverage_weight": null,
       "status": "available",
       "__source_file": "data/library/indices/daily/202604/indices_2026_0429.csv"
+    },
+    {
+      "family": "ndx100",
+      "label": "Nasdaq-100",
+      "date": "2026-05-01",
+      "value": 0.0689616867317113,
+      "method": "ICC calculation",
+      "source": "Constituent ICC aggregation",
+      "n_items": 100,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/indices/daily/202605/indices_2026_0501.csv"
     },
     {
       "family": "rut1000",
@@ -713,6 +821,18 @@
       "__source_file": "data/library/indices/daily/202604/indices_2026_0429.csv"
     },
     {
+      "family": "rut1000",
+      "label": "Russell 1000",
+      "date": "2026-05-01",
+      "value": 0.075223050609573,
+      "method": "ICC calculation",
+      "source": "Constituent ICC aggregation",
+      "n_items": 972,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/indices/daily/202605/indices_2026_0501.csv"
+    },
+    {
       "family": "sp100",
       "label": "S&P 100",
       "date": "2026-04-29",
@@ -723,6 +843,18 @@
       "coverage_weight": null,
       "status": "available",
       "__source_file": "data/library/indices/daily/202604/indices_2026_0429.csv"
+    },
+    {
+      "family": "sp100",
+      "label": "S&P 100",
+      "date": "2026-05-01",
+      "value": 0.0694503806269637,
+      "method": "ICC calculation",
+      "source": "Constituent ICC aggregation",
+      "n_items": 101,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/indices/daily/202605/indices_2026_0501.csv"
     },
     {
       "family": "sp400",
@@ -737,6 +869,18 @@
       "__source_file": "data/library/indices/daily/202604/indices_2026_0429.csv"
     },
     {
+      "family": "sp400",
+      "label": "S&P 400",
+      "date": "2026-05-01",
+      "value": 0.0837352350044233,
+      "method": "ICC calculation",
+      "source": "Constituent ICC aggregation",
+      "n_items": 393,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/indices/daily/202605/indices_2026_0501.csv"
+    },
+    {
       "family": "sp500",
       "label": "S&P 500",
       "date": "2026-04-29",
@@ -749,6 +893,18 @@
       "__source_file": "data/library/indices/daily/202604/indices_2026_0429.csv"
     },
     {
+      "family": "sp500",
+      "label": "S&P 500",
+      "date": "2026-05-01",
+      "value": 0.0714345785881318,
+      "method": "ICC calculation",
+      "source": "Constituent ICC aggregation",
+      "n_items": 500,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/indices/daily/202605/indices_2026_0501.csv"
+    },
+    {
       "family": "sp600",
       "label": "S&P 600",
       "date": "2026-04-29",
@@ -759,10 +915,34 @@
       "coverage_weight": null,
       "status": "available",
       "__source_file": "data/library/indices/daily/202604/indices_2026_0429.csv"
+    },
+    {
+      "family": "sp600",
+      "label": "S&P 600",
+      "date": "2026-05-01",
+      "value": 0.0925862403581302,
+      "method": "ICC calculation",
+      "source": "Constituent ICC aggregation",
+      "n_items": 568,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/indices/daily/202605/indices_2026_0501.csv"
     }
   ],
   "monthly_groups": {
     "dow30": [
+      {
+        "family": "dow30",
+        "label": "Dow 30",
+        "date": "2026-05-01",
+        "value": 0.0710376593382135,
+        "method": "ICC calculation",
+        "source": "Constituent ICC aggregation",
+        "n_items": 30,
+        "coverage_weight": null,
+        "status": "available",
+        "__source_file": "data/library/indices/daily/202605/indices_2026_0501.csv"
+      },
       {
         "family": "dow30",
         "label": "Dow 30",
@@ -780,6 +960,18 @@
       {
         "family": "ndx100",
         "label": "Nasdaq-100",
+        "date": "2026-05-01",
+        "value": 0.0689616867317113,
+        "method": "ICC calculation",
+        "source": "Constituent ICC aggregation",
+        "n_items": 100,
+        "coverage_weight": null,
+        "status": "available",
+        "__source_file": "data/library/indices/daily/202605/indices_2026_0501.csv"
+      },
+      {
+        "family": "ndx100",
+        "label": "Nasdaq-100",
         "date": "2026-04-29",
         "value": 0.0748301054957411,
         "method": "ICC calculation",
@@ -791,6 +983,18 @@
       }
     ],
     "rut1000": [
+      {
+        "family": "rut1000",
+        "label": "Russell 1000",
+        "date": "2026-05-01",
+        "value": 0.075223050609573,
+        "method": "ICC calculation",
+        "source": "Constituent ICC aggregation",
+        "n_items": 972,
+        "coverage_weight": null,
+        "status": "available",
+        "__source_file": "data/library/indices/daily/202605/indices_2026_0501.csv"
+      },
       {
         "family": "rut1000",
         "label": "Russell 1000",
@@ -808,6 +1012,18 @@
       {
         "family": "sp100",
         "label": "S&P 100",
+        "date": "2026-05-01",
+        "value": 0.0694503806269637,
+        "method": "ICC calculation",
+        "source": "Constituent ICC aggregation",
+        "n_items": 101,
+        "coverage_weight": null,
+        "status": "available",
+        "__source_file": "data/library/indices/daily/202605/indices_2026_0501.csv"
+      },
+      {
+        "family": "sp100",
+        "label": "S&P 100",
         "date": "2026-04-29",
         "value": 0.0743075487273753,
         "method": "ICC calculation",
@@ -819,6 +1035,18 @@
       }
     ],
     "sp400": [
+      {
+        "family": "sp400",
+        "label": "S&P 400",
+        "date": "2026-05-01",
+        "value": 0.0837352350044233,
+        "method": "ICC calculation",
+        "source": "Constituent ICC aggregation",
+        "n_items": 393,
+        "coverage_weight": null,
+        "status": "available",
+        "__source_file": "data/library/indices/daily/202605/indices_2026_0501.csv"
+      },
       {
         "family": "sp400",
         "label": "S&P 400",
@@ -836,6 +1064,18 @@
       {
         "family": "sp500",
         "label": "S&P 500",
+        "date": "2026-05-01",
+        "value": 0.0714345785881318,
+        "method": "ICC calculation",
+        "source": "Constituent ICC aggregation",
+        "n_items": 500,
+        "coverage_weight": null,
+        "status": "available",
+        "__source_file": "data/library/indices/daily/202605/indices_2026_0501.csv"
+      },
+      {
+        "family": "sp500",
+        "label": "S&P 500",
         "date": "2026-04-29",
         "value": 0.075067164226114,
         "method": "ICC calculation",
@@ -847,6 +1087,18 @@
       }
     ],
     "sp600": [
+      {
+        "family": "sp600",
+        "label": "S&P 600",
+        "date": "2026-05-01",
+        "value": 0.0925862403581302,
+        "method": "ICC calculation",
+        "source": "Constituent ICC aggregation",
+        "n_items": 568,
+        "coverage_weight": null,
+        "status": "available",
+        "__source_file": "data/library/indices/daily/202605/indices_2026_0501.csv"
+      },
       {
         "family": "sp600",
         "label": "S&P 600",
@@ -871,6 +1123,17 @@
         "year": "2026",
         "download_all": "./data/downloads/family/indices/archive/2026.zip",
         "months": [
+          {
+            "yyyymm": "202605",
+            "download_all": "./data/downloads/family/indices/archive/202605.zip",
+            "files": [
+              {
+                "date": "2026-05-01",
+                "download_path": "./data/downloads/family/indices/archive/202605/indices_2026_0501.csv",
+                "filename": "indices_2026_0501.csv"
+              }
+            ]
+          },
           {
             "yyyymm": "202604",
             "download_all": "./data/downloads/family/indices/archive/202604.zip",
