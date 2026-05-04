@@ -29,7 +29,6 @@ jobs:
           if [ "${{ github.event_name }}" = "schedule" ]; then
             NY_HOUR=$(TZ=America/New_York date +%H)
             NY_MIN=$(TZ=America/New_York date +%M)
-
             # Only scheduled jobs during 5pm ET should proceed.
             if [ "$NY_HOUR" -eq 17 ]; then
               echo "proceed=true" >> "$GITHUB_OUTPUT"
@@ -52,6 +51,17 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
 
+    defaults:
+      run:
+        shell: bash
+        working-directory: ${{ github.workspace }}
+
+    env:
+      PYTHONPATH: ${{ github.workspace }}
+      COUNTRY_ADR_MIN_AVAILABLE: "4"
+      COUNTRY_ADR_CACHE_MAX_AGE_DAYS: "1"
+      COUNTRY_ADR_MAX_ENRICH: "2000"
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -61,10 +71,29 @@ jobs:
       - name: Mark workspace as safe
         run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
 
-      - name: Set Python import path
-        shell: bash
+      - name: Debug workspace
         run: |
-          echo "PYTHONPATH=${GITHUB_WORKSPACE}" >> "$GITHUB_ENV"
+          echo "GITHUB_WORKSPACE=$GITHUB_WORKSPACE"
+          pwd
+          ls -la
+          echo "Backend directory:"
+          ls -la backend || true
+
+      - name: Ensure backend is a package
+        run: |
+          mkdir -p backend
+          if [ ! -f backend/__init__.py ]; then
+            echo '"""Backend package for Live ICC data library."""' > backend/__init__.py
+          fi
+          python - <<'PY'
+          import os
+          import sys
+          print("cwd =", os.getcwd())
+          print("PYTHONPATH =", os.environ.get("PYTHONPATH"))
+          print("sys.path[0:5] =", sys.path[0:5])
+          import backend
+          print("backend package import OK:", backend.__file__)
+          PY
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -72,18 +101,17 @@ jobs:
           python-version: "3.11"
 
       - name: Install dependencies
-        shell: bash
         run: |
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then
             pip install -r requirements.txt
+            pip install openpyxl tzdata || true
           else
             pip install pandas numpy yfinance requests lxml html5lib openpyxl python-dateutil tzdata
           fi
 
       - name: Decide target trading date and whether recalculation is needed
         id: guard
-        shell: bash
         run: |
           python - <<'PY'
           import os
@@ -125,22 +153,23 @@ jobs:
                       continue
               except FileNotFoundError:
                   continue
-              dt = datetime.strptime(f"{m.group(1)}{m.group(2)}", "%Y%m%d").date()
+              year = m.group(1)
+              mmdd = m.group(2)
+              dt = datetime.strptime(f"{year}{mmdd}", "%Y%m%d").date()
               if latest_valid_date is None or dt > latest_valid_date:
                   latest_valid_date = dt
                   latest_valid_file = str(p)
 
-          # Recalculate only when the latest valid all-market file is older than the target date.
+          # Recalculate only when the latest valid usall date is older than the target date.
           need_recalc = (latest_valid_date is None) or (latest_valid_date < target_date)
-
           print(f"now_et={now.isoformat()}")
+          print(f"timing_reason={timing_reason}")
           print(f"target_date={target_date.isoformat()}")
           print(f"latest_valid_usall_date={latest_valid_date.isoformat() if latest_valid_date else ''}")
           print(f"latest_valid_usall_file={latest_valid_file or ''}")
           print(f"need_recalc={str(need_recalc).lower()}")
-          print(f"reason={timing_reason}")
-
-          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as f:
+          out = os.environ["GITHUB_OUTPUT"]
+          with open(out, "a", encoding="utf-8") as f:
               f.write(f"target_date={target_date.isoformat()}\n")
               f.write(f"latest_valid_usall_date={latest_valid_date.isoformat() if latest_valid_date else ''}\n")
               f.write(f"latest_valid_usall_file={latest_valid_file or ''}\n")
@@ -166,11 +195,26 @@ jobs:
         if: steps.guard.outputs.need_recalc == 'true'
         run: python -m backend.run_extra_indices
 
-      - name: Build website data and organized downloads
+      - name: Ensure daily ETF and Country / Region derived data
+        env:
+          COUNTRY_ADR_MIN_AVAILABLE: "4"
+          COUNTRY_ADR_CACHE_MAX_AGE_DAYS: "1"
+          COUNTRY_ADR_MAX_ENRICH: "2000"
+        run: |
+          if [ -f backend/ensure_daily_derived.py ]; then
+            python -m backend.ensure_daily_derived
+          else
+            echo "backend/ensure_daily_derived.py not found, skip."
+          fi
+
+      - name: Build website data under docs/data
+        env:
+          COUNTRY_ADR_MIN_AVAILABLE: "4"
+          COUNTRY_ADR_CACHE_MAX_AGE_DAYS: "1"
+          COUNTRY_ADR_MAX_ENRICH: "2000"
         run: python -m backend.build_docs_data --universe usall
 
       - name: Generate FILES.md manifest if tool exists
-        shell: bash
         run: |
           if [ -f tools/generate_files_manifest.py ]; then
             python tools/generate_files_manifest.py
@@ -179,26 +223,21 @@ jobs:
           fi
 
       - name: Commit raw data and site data back to repo
-        shell: bash
         env:
           BRANCH_NAME: ${{ github.ref_name }}
         run: |
           set -euo pipefail
           BRANCH="${BRANCH_NAME}"
-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git fetch origin "${BRANCH}" || true
-
           ts=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
-
           # Add all generated raw data, derived data, docs data, and manifests.
-          git add -A data docs FILES.md || true
-
+          git add -A data docs backend/__init__.py FILES.md || true
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
-            git commit -m "Update ICC downloads and site data ${ts} [skip ci]" || true
+            git commit -m "Update ICC raw/site data ${ts} [skip ci]" || true
             git pull --rebase --autostash origin "${BRANCH}" || true
             git push origin HEAD:"${BRANCH}" || true
           fi
