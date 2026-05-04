@@ -1,58 +1,47 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Index ICC | Live ICC data library</title>
+  <title>Live ICC data library - Index ICC</title>
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body data-page="indices">
-  <header class="site-header compact">
-    <div class="brand-block"><h1>Live ICC data library</h1></div>
-    <nav class="topnav" aria-label="Primary navigation">
-      <a class="nav-link " href="./index.html">Overview</a>
-      <a class="nav-link " href="./marketwide.html">Marketwide</a>
-      <a class="nav-link " href="./value.html">Value Premium</a>
-      <a class="nav-link " href="./industry.html">Industry</a>
-      <a class="nav-link " href="./etf.html">ETF</a>
-      <a class="nav-link " href="./country.html">Country / Region</a>
-      <a class="nav-link active" href="./indices.html">Indices</a>
-      <a class="nav-link " href="./downloads.html">Downloads</a>
+  <header class="site-header">
+    <h1>Live ICC data library</h1>
+    <nav>
+      <a href="./index.html">Overview</a>
+      <a href="./marketwide.html">Marketwide</a>
+      <a href="./value.html">Value Premium</a>
+      <a href="./industry.html">Industry</a>
+      <a href="./etf.html">ETF</a>
+      <a href="./country.html">Country / Region</a>
+      <a href="./indices.html">Indices</a>
+      <a href="./downloads.html">Downloads</a>
     </nav>
-    <div id="status" class="status" role="status"></div>
+    <div id="status" class="status"></div>
   </header>
-
-  <main class="page-shell">
-    <section class="intro-panel family-hero">
-      <div>
-        <p class="eyebrow">Dataset family</p>
-        <h2>Index ICC</h2>
-        <p class="note">Index-level ICC for supported index families.</p>
-      </div>
-      <div class="asof-card">
-        <span class="asof-label">Data date</span>
-        <strong id="asof-date">Loading…</strong>
-      </div>
-    </section>
-
+  <main class="page">
     <section class="panel">
-      <div class="panel-header"><div><h3>Downloads</h3><p class="note">Latest, daily history, monthly history, full package, and historical archive.</p></div></div>
-      <div id="family-downloads" class="family-downloads"></div>
+      <h2 id="family-title">Index ICC</h2>
+      <p id="family-note" class="note">Index downloads are grouped by index family and archived by date.</p>
     </section>
-
-    <section class="panel table-panel">
-      <div class="panel-header"><div><h3>Latest daily observations</h3><p class="note">Most recent available records for this dataset family.</p></div></div>
-      <div id="latest-table" class="table-wrap"></div>
-    </section>
-
-    <section class="panel table-panel">
-      <div class="panel-header"><div><h3>Last three monthly observations</h3><p class="note">Shown separately by series when multiple series exist.</p></div></div>
-      <div id="monthly-table" class="table-wrap"></div>
-    </section>
-
     <section class="panel">
-      <div class="panel-header"><div><h3>Historical archive</h3><p class="note">Browse by year, month, and day. ZIP packages are provided when available.</p></div></div>
-      <div id="family-archive" class="archive-tree"></div>
+      <h2>Latest daily data</h2>
+      <div id="latest-table"></div>
+    </section>
+    <section class="panel">
+      <h2>Last three monthly observations</h2>
+      <div id="monthly-table"></div>
+    </section>
+    <section class="panel">
+      <h2>Downloads for this dataset</h2>
+      <p class="note">Use these standard files for this dataset only. The archive below gives year/month/day files and true ZIP downloads.</p>
+      <div id="family-downloads"></div>
+    </section>
+    <section class="panel">
+      <h2>Historical archive</h2>
+      <div id="family-archive-tree"></div>
     </section>
   </main>
   <script src="./app.js"></script>

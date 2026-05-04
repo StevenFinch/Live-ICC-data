@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -8,58 +8,31 @@
 </head>
 <body data-page="overview">
   <header class="site-header">
-    <div class="brand-block">
-      <h1>Live ICC data library</h1>
-      <p class="site-kicker">Daily-updated implied cost of capital datasets and downloadable archives.</p>
-    </div>
-    <nav class="topnav" aria-label="Primary navigation">
-      <a class="nav-link active" href="./index.html">Overview</a>
-      <a class="nav-link " href="./marketwide.html">Marketwide</a>
-      <a class="nav-link " href="./value.html">Value Premium</a>
-      <a class="nav-link " href="./industry.html">Industry</a>
-      <a class="nav-link " href="./etf.html">ETF</a>
-      <a class="nav-link " href="./country.html">Country / Region</a>
-      <a class="nav-link " href="./indices.html">Indices</a>
-      <a class="nav-link " href="./downloads.html">Downloads</a>
+    <h1>Live ICC data library</h1>
+    <nav>
+      <a href="./index.html">Overview</a>
+      <a href="./marketwide.html">Marketwide</a>
+      <a href="./value.html">Value Premium</a>
+      <a href="./industry.html">Industry</a>
+      <a href="./etf.html">ETF</a>
+      <a href="./country.html">Country / Region</a>
+      <a href="./indices.html">Indices</a>
+      <a href="./downloads.html">Downloads</a>
     </nav>
-    <div id="status" class="status" role="status"></div>
+    <div id="status" class="status"></div>
   </header>
-
-  <main class="page-shell">
-    <section class="intro-panel">
-      <div>
-        <p class="eyebrow">Overview</p>
-        <h2>Latest daily values and recent monthly observations</h2>
-        <p class="note">The table below summarizes each dataset family. Dataset-specific downloads are available on each tab and on the Downloads page.</p>
-      </div>
-      <div class="asof-card">
-        <span class="asof-label">Data date</span>
-        <strong id="asof-date">Loading…</strong>
-      </div>
-    </section>
-
-    <section class="panel table-panel">
-      <div class="panel-header">
-        <div>
-          <h3>Dataset summary</h3>
-          <p class="note">Latest daily estimate plus the last three monthly observations.</p>
-        </div>
-      </div>
-      <div id="overview-table" class="table-wrap"></div>
-    </section>
-
+  <main class="page">
     <section class="panel">
-      <div class="panel-header">
-        <div>
-          <h3>Quick download packages</h3>
-          <p class="note">Curated CSV and ZIP packages by dataset family.</p>
-        </div>
-        <a class="button-link" href="./downloads.html">Open full downloads</a>
-      </div>
-      <div id="overview-downloads" class="download-card-grid"></div>
+      <h2>Latest daily and last three monthly observations</h2>
+      <p class="note">This table summarizes each dataset family. Download links are organized by dataset on each tab and on the Downloads page.</p>
+      <div id="overview-table"></div>
+    </section>
+    <section class="panel">
+      <h2>Quick download packages</h2>
+      <p class="note">Each package contains latest, daily-history, and monthly-history CSV files for one dataset family.</p>
+      <div id="overview-downloads" class="download-grid"></div>
     </section>
   </main>
-
   <script src="./app.js"></script>
 </body>
 </html>
