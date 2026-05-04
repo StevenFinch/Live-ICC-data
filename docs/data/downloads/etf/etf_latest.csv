@@ -1,2 +1,18 @@
-date,ticker,label,category,icc,coverage_weight,n_holdings_total,n_holdings_matched,method,holding_source,status
-2026-04-23,EWZ,iShares MSCI Brazil ETF,Country ETF,0.1534075368314095,0.8918705603788477,4,3,ICC calculation,stockanalysis_full_holdings,icc_calculation
+date,ticker,label,category,icc,coverage_weight,n_holdings_total,n_holdings_matched,method,holding_source,status,daily_icc
+2026-05-04,MCHI,iShares MSCI China ETF,Country ETF,,0.0,25,0,Unavailable,stockanalysis_holdings,unavailable,
+2026-05-04,EWG,iShares MSCI Germany ETF,Country ETF,,0.0,25,0,Unavailable,stockanalysis_holdings,unavailable,
+2026-05-04,EWJ,iShares MSCI Japan ETF,Country ETF,,0.0,25,0,Unavailable,stockanalysis_holdings,unavailable,
+2026-05-04,EEM,iShares MSCI Emerging Markets ETF,Emerging markets,0.1240762093014322,0.0329458276462559,25,1,Partial holdings estimate,stockanalysis_holdings,partial_holdings,0.1240762093014322
+2026-05-04,EFA,iShares MSCI EAFE ETF,International equity,,0.0,25,0,Unavailable,stockanalysis_holdings,unavailable,
+2026-05-04,IWF,iShares Russell 1000 Growth ETF,US growth,0.0678152170379418,0.8321368491737682,25,21,Partial holdings estimate,stockanalysis_holdings,partial_holdings,0.0678152170379418
+2026-05-04,IWD,iShares Russell 1000 Value ETF,US value,0.0816371519199022,0.9989161676235948,25,24,Partial holdings estimate,stockanalysis_holdings,partial_holdings,0.0816371519199022
+2026-05-04,QQQ,Invesco QQQ Trust,US equity,0.0631668905380753,0.5091081276809092,25,17,Partial holdings estimate,stockanalysis_holdings,partial_holdings,0.0631668905380753
+2026-05-04,IWM,iShares Russell 2000 ETF,US equity,0.0705314888276686,0.4704920526275763,25,12,Partial holdings estimate,stockanalysis_holdings,partial_holdings,0.0705314888276686
+2026-05-04,DIA,SPDR Dow Jones Industrial Average ETF Trust,US equity,0.1104877212752421,0.9825262025014696,31,28,ICC calculation,spdr_full_holdings,icc_calculation,0.1104877212752421
+2026-05-04,VTI,Vanguard Total Stock Market ETF,US equity,0.0774881334595076,0.8787954507594687,25,21,Partial holdings estimate,stockanalysis_holdings,partial_holdings,0.0774881334595076
+2026-05-04,VOO,Vanguard S&P 500 ETF,US equity,0.0829045720677498,0.8197618402432783,25,20,Partial holdings estimate,stockanalysis_holdings,partial_holdings,0.0829045720677498
+2026-05-04,IVV,iShares Core S&P 500 ETF,US equity,0.0833638710157328,0.8852176057206262,25,21,Partial holdings estimate,stockanalysis_holdings,partial_holdings,0.0833638710157328
+2026-05-04,SPY,SPDR S&P 500 ETF Trust,US equity,0.0792727025490044,0.886645237228406,505,441,ICC calculation,spdr_full_holdings,icc_calculation,0.0792727025490044
+2026-05-04,INDA,iShares MSCI India ETF,Country ETF,,0.0,25,0,Unavailable,stockanalysis_holdings,unavailable,
+2026-05-04,IWB,iShares Russell 1000 ETF,US equity,0.0834568947235886,0.8860139655399569,25,21,Partial holdings estimate,stockanalysis_holdings,partial_holdings,0.0834568947235886
+2026-05-04,EWZ,iShares MSCI Brazil ETF,Country ETF,0.2511215978535865,0.1147502694933525,25,2,Partial holdings estimate,stockanalysis_holdings,partial_holdings,0.2511215978535865

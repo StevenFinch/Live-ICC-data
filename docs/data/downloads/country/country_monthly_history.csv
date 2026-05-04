@@ -1,38 +1,75 @@
-month_end_date,country,daily_icc,method,n_candidates,n_selected,n_icc_available,coverage_mktcap,status,month
-2026-04-23,United Kingdom,0.0824416320199142,ADR Top-10 ICC calculation,26,10,10,1.0,icc_calculation,2026-04
-2026-04-23,Ireland,,Unavailable,4,4,3,0.9999256041209768,unavailable,2026-04
-2026-04-23,Israel,,Unavailable,16,10,4,0.9494199746622394,unavailable,2026-04
-2026-04-23,Italy,,Unavailable,1,1,0,0.0,unavailable,2026-04
-2026-04-23,Kazakhstan,,Unavailable,1,1,1,1.0,unavailable,2026-04
-2026-04-23,Luxembourg,,Unavailable,2,2,2,1.0,unavailable,2026-04
-2026-04-23,Macau,,Unavailable,1,1,0,0.0,unavailable,2026-04
-2026-04-23,Netherlands,,Unavailable,3,3,3,1.0,unavailable,2026-04
-2026-04-23,Norway,,Unavailable,1,1,1,1.0,unavailable,2026-04
-2026-04-23,Peru,,Unavailable,1,1,1,1.0,unavailable,2026-04
-2026-04-23,Philippines,,Unavailable,1,1,1,1.0,unavailable,2026-04
-2026-04-23,South Africa,,Unavailable,4,4,4,1.0,unavailable,2026-04
-2026-04-23,Spain,,Unavailable,3,3,2,0.9998660421481091,unavailable,2026-04
-2026-04-23,Sweden,,Unavailable,5,5,1,0.5330496512671264,unavailable,2026-04
-2026-04-23,Switzerland,,Unavailable,4,4,1,0.9924104822661688,unavailable,2026-04
-2026-04-23,Taiwan,,Unavailable,3,3,3,1.0,unavailable,2026-04
-2026-04-23,India,,Unavailable,2,2,2,1.0,unavailable,2026-04
-2026-04-23,Turkey,,Unavailable,1,1,1,1.0,unavailable,2026-04
-2026-04-23,Germany,,Unavailable,8,8,3,0.8722901970917357,unavailable,2026-04
-2026-04-23,Finland,,Unavailable,1,1,1,1.0,unavailable,2026-04
-2026-04-23,Argentina,0.242903044114228,Partial ADR estimate,9,9,9,1.0,partial_adr_estimate,2026-04
-2026-04-23,Brazil,0.1314923254795482,Partial ADR estimate,18,10,9,0.9157737193433296,partial_adr_estimate,2026-04
-2026-04-23,China,0.2696887669370765,Partial ADR estimate,104,10,9,0.9417226320327968,partial_adr_estimate,2026-04
-2026-04-23,Hong Kong,0.31086076193229,Partial ADR estimate,7,7,6,0.998649966429188,partial_adr_estimate,2026-04
-2026-04-23,Japan,0.1314893357567844,Partial ADR estimate,14,10,7,0.9994744801882716,partial_adr_estimate,2026-04
-2026-04-23,Mexico,0.1438391537430831,Partial ADR estimate,7,7,7,1.0,partial_adr_estimate,2026-04
-2026-04-23,Singapore,0.1643130768761475,Partial ADR estimate,12,10,6,0.991149585240037,partial_adr_estimate,2026-04
-2026-04-23,South Korea,0.0383106908780968,Partial ADR estimate,6,6,5,0.994338128571,partial_adr_estimate,2026-04
-2026-04-23,Australia,,Unavailable,12,10,3,0.9857179124108252,unavailable,2026-04
-2026-04-23,Belgium,,Unavailable,4,4,2,0.982823469337271,unavailable,2026-04
-2026-04-23,Canada,,Unavailable,1,1,0,0.0,unavailable,2026-04
-2026-04-23,Cayman Islands,,Unavailable,1,1,0,0.0,unavailable,2026-04
-2026-04-23,Chile,,Unavailable,4,4,4,1.0,unavailable,2026-04
-2026-04-23,Colombia,,Unavailable,1,1,1,1.0,unavailable,2026-04
-2026-04-23,Denmark,,Unavailable,3,3,1,0.8679874445643015,unavailable,2026-04
-2026-04-23,France,,Unavailable,13,10,4,0.9052204872317968,unavailable,2026-04
-2026-04-23,United Arab Emirates,,Unavailable,2,2,2,1.0,unavailable,2026-04
+month_end_date,country,icc,method,n_candidates,n_selected,n_icc_available,coverage_mktcap,status,country_region,vw_icc,constituents,source_note,daily_icc,month
+2026-04-23,United Kingdom,0.0824416320199142,ADR Top-10 ICC calculation,26,10,10,1.0,icc_calculation,,,,,0.0824416320199142,2026-04
+2026-04-23,Israel,,Unavailable,16,10,4,0.9494199746622394,unavailable,,,,,,2026-04
+2026-04-23,Italy,,Unavailable,1,1,0,0.0,unavailable,,,,,,2026-04
+2026-04-23,Kazakhstan,,Unavailable,1,1,1,1.0,unavailable,,,,,,2026-04
+2026-04-23,Luxembourg,,Unavailable,2,2,2,1.0,unavailable,,,,,,2026-04
+2026-04-23,Macau,,Unavailable,1,1,0,0.0,unavailable,,,,,,2026-04
+2026-04-23,Netherlands,,Unavailable,3,3,3,1.0,unavailable,,,,,,2026-04
+2026-04-23,Norway,,Unavailable,1,1,1,1.0,unavailable,,,,,,2026-04
+2026-04-23,Peru,,Unavailable,1,1,1,1.0,unavailable,,,,,,2026-04
+2026-04-23,Philippines,,Unavailable,1,1,1,1.0,unavailable,,,,,,2026-04
+2026-04-23,South Africa,,Unavailable,4,4,4,1.0,unavailable,,,,,,2026-04
+2026-04-23,Spain,,Unavailable,3,3,2,0.9998660421481091,unavailable,,,,,,2026-04
+2026-04-23,Sweden,,Unavailable,5,5,1,0.5330496512671264,unavailable,,,,,,2026-04
+2026-04-23,Switzerland,,Unavailable,4,4,1,0.9924104822661688,unavailable,,,,,,2026-04
+2026-04-23,Taiwan,,Unavailable,3,3,3,1.0,unavailable,,,,,,2026-04
+2026-04-23,Turkey,,Unavailable,1,1,1,1.0,unavailable,,,,,,2026-04
+2026-04-23,Ireland,,Unavailable,4,4,3,0.9999256041209768,unavailable,,,,,,2026-04
+2026-04-23,India,,Unavailable,2,2,2,1.0,unavailable,,,,,,2026-04
+2026-04-23,United Arab Emirates,,Unavailable,2,2,2,1.0,unavailable,,,,,,2026-04
+2026-04-23,France,,Unavailable,13,10,4,0.9052204872317968,unavailable,,,,,,2026-04
+2026-04-23,Germany,,Unavailable,8,8,3,0.8722901970917357,unavailable,,,,,,2026-04
+2026-04-23,Argentina,0.242903044114228,Partial ADR estimate,9,9,9,1.0,partial_adr_estimate,,,,,0.242903044114228,2026-04
+2026-04-23,Brazil,0.1314923254795482,Partial ADR estimate,18,10,9,0.9157737193433296,partial_adr_estimate,,,,,0.1314923254795482,2026-04
+2026-04-23,China,0.2696887669370765,Partial ADR estimate,104,10,9,0.9417226320327968,partial_adr_estimate,,,,,0.2696887669370765,2026-04
+2026-04-23,Hong Kong,0.31086076193229,Partial ADR estimate,7,7,6,0.998649966429188,partial_adr_estimate,,,,,0.31086076193229,2026-04
+2026-04-23,Mexico,0.1438391537430831,Partial ADR estimate,7,7,7,1.0,partial_adr_estimate,,,,,0.1438391537430831,2026-04
+2026-04-23,Singapore,0.1643130768761475,Partial ADR estimate,12,10,6,0.991149585240037,partial_adr_estimate,,,,,0.1643130768761475,2026-04
+2026-04-23,South Korea,0.0383106908780968,Partial ADR estimate,6,6,5,0.994338128571,partial_adr_estimate,,,,,0.0383106908780968,2026-04
+2026-04-23,Japan,0.1314893357567844,Partial ADR estimate,14,10,7,0.9994744801882716,partial_adr_estimate,,,,,0.1314893357567844,2026-04
+2026-04-23,Belgium,,Unavailable,4,4,2,0.982823469337271,unavailable,,,,,,2026-04
+2026-04-23,Canada,,Unavailable,1,1,0,0.0,unavailable,,,,,,2026-04
+2026-04-23,Cayman Islands,,Unavailable,1,1,0,0.0,unavailable,,,,,,2026-04
+2026-04-23,Chile,,Unavailable,4,4,4,1.0,unavailable,,,,,,2026-04
+2026-04-23,Colombia,,Unavailable,1,1,1,1.0,unavailable,,,,,,2026-04
+2026-04-23,Denmark,,Unavailable,3,3,1,0.8679874445643015,unavailable,,,,,,2026-04
+2026-04-23,Finland,,Unavailable,1,1,1,1.0,unavailable,,,,,,2026-04
+2026-04-23,Australia,,Unavailable,12,10,3,0.9857179124108252,unavailable,,,,,,2026-04
+2026-05-04,Luxembourg,,Unavailable,2,2,2,1.0,unavailable,Luxembourg,,"TS, TX",Multi-source ADR universe; top-10 by market cap; minimum 4 valid ICC constituents.,,2026-05
+2026-05-04,Germany,,Unavailable,8,8,3,0.8772927103104321,unavailable,Germany,,"SAP, BNTX, FMS, LUXE, EVO, JMIA, TRVG, XCH",Multi-source ADR universe; top-10 by market cap; minimum 4 valid ICC constituents.,,2026-05
+2026-05-04,India,,Unavailable,2,2,2,1.0,unavailable,India,,"INFY, SIFY",Multi-source ADR universe; top-10 by market cap; minimum 4 valid ICC constituents.,,2026-05
+2026-05-04,Ireland,,Unavailable,4,4,3,0.9999249322508637,unavailable,Ireland,,"PDD, RYAAY, AMRN, TRIB",Multi-source ADR universe; top-10 by market cap; minimum 4 valid ICC constituents.,,2026-05
+2026-05-04,Italy,,Unavailable,1,1,0,0.0,unavailable,Italy,,GNTA,Multi-source ADR universe; top-10 by market cap; minimum 4 valid ICC constituents.,,2026-05
+2026-05-04,Kazakhstan,,Unavailable,1,1,1,1.0,unavailable,Kazakhstan,,KSPI,Multi-source ADR universe; top-10 by market cap; minimum 4 valid ICC constituents.,,2026-05
+2026-05-04,Macau,,Unavailable,1,1,0,0.0,unavailable,Macau,,NWGL,Multi-source ADR universe; top-10 by market cap; minimum 4 valid ICC constituents.,,2026-05
+2026-05-04,Taiwan,,Unavailable,3,3,3,1.0,unavailable,Taiwan,,"ASX, HIMX, IMOS",Multi-source ADR universe; top-10 by market cap; minimum 4 valid ICC constituents.,,2026-05
+2026-05-04,Norway,,Unavailable,1,1,1,1.0,unavailable,Norway,,OPRA,Multi-source ADR universe; top-10 by market cap; minimum 4 valid ICC constituents.,,2026-05
+2026-05-04,Peru,,Unavailable,1,1,1,1.0,unavailable,Peru,,CPAC,Multi-source ADR universe; top-10 by market cap; minimum 4 valid ICC constituents.,,2026-05
+2026-05-04,Philippines,,Unavailable,1,1,1,1.0,unavailable,Philippines,,PHI,Multi-source ADR universe; top-10 by market cap; minimum 4 valid ICC constituents.,,2026-05
+2026-05-04,Spain,,Unavailable,3,3,2,0.9998609232192812,unavailable,Spain,,"SAN, GRFS, TURB",Multi-source ADR universe; top-10 by market cap; minimum 4 valid ICC constituents.,,2026-05
+2026-05-04,Sweden,,Unavailable,5,5,1,0.5395890165495261,unavailable,Sweden,,"ERIC, PSNYW, PSNY, OTLY, NIPG",Multi-source ADR universe; top-10 by market cap; minimum 4 valid ICC constituents.,,2026-05
+2026-05-04,Switzerland,,Unavailable,4,4,2,0.9948249504523063,unavailable,Switzerland,,"ONC, MOLN, WKEY, ADXN",Multi-source ADR universe; top-10 by market cap; minimum 4 valid ICC constituents.,,2026-05
+2026-05-04,Finland,,Unavailable,1,1,1,1.0,unavailable,Finland,,NOK,Multi-source ADR universe; top-10 by market cap; minimum 4 valid ICC constituents.,,2026-05
+2026-05-04,Netherlands,,Unavailable,3,3,3,1.0,unavailable,Netherlands,,"ARGX, PHAR, ZEPP",Multi-source ADR universe; top-10 by market cap; minimum 4 valid ICC constituents.,,2026-05
+2026-05-04,Denmark,,Unavailable,3,3,1,0.8682417810317766,unavailable,Denmark,,"GMAB, CDLR, EVAX",Multi-source ADR universe; top-10 by market cap; minimum 4 valid ICC constituents.,,2026-05
+2026-05-04,Mexico,0.1464565490604017,Partial ADR ICC calculation,7,7,6,0.9789614642285336,partial_adr_icc_calculation,Mexico,0.1464565490604017,"CX, VIST, OMAB, SIM, VTMX, AERO",Multi-source ADR universe; top-10 by market cap; minimum 4 valid ICC constituents.,0.1464565490604017,2026-05
+2026-05-04,Cayman Islands,,Unavailable,1,1,0,0.0,unavailable,Cayman Islands,,ANL,Multi-source ADR universe; top-10 by market cap; minimum 4 valid ICC constituents.,,2026-05
+2026-05-04,Turkey,,Unavailable,1,1,1,1.0,unavailable,Turkey,,HEPS,Multi-source ADR universe; top-10 by market cap; minimum 4 valid ICC constituents.,,2026-05
+2026-05-04,United Kingdom,0.0838200830013707,ICC calculation,26,10,10,1.0,icc_calculation,United Kingdom,0.0838200830013707,"SHEL, ARM, UL, BTI, GSK, NGG, LYG, RELX, NWG, HLN",Multi-source ADR universe; top-10 by market cap; minimum 4 valid ICC constituents.,0.0838200830013707,2026-05
+2026-05-04,Argentina,0.2454846691311192,Partial ADR ICC calculation,9,9,9,1.0,partial_adr_icc_calculation,Argentina,0.2454846691311192,"GGAL, BMA, BBAR, CEPU, LOMA, EDN, IRS, CRESY, SUPV",Multi-source ADR universe; top-10 by market cap; minimum 4 valid ICC constituents.,0.2454846691311192,2026-05
+2026-05-04,Brazil,0.1020399020969463,Partial ADR ICC calculation,18,10,9,0.9298291397163088,partial_adr_icc_calculation,Brazil,0.1020399020969463,"PBR, SBS, VALE, ABEV, BBD, AXIA, VIV, TIMB, SUZ",Multi-source ADR universe; top-10 by market cap; minimum 4 valid ICC constituents.,0.1020399020969463,2026-05
+2026-05-04,Chile,0.1715460623041977,Partial ADR ICC calculation,4,4,4,1.0,partial_adr_icc_calculation,Chile,0.1715460623041977,"BCH, BSAC, LTM, ENIC",Multi-source ADR universe; top-10 by market cap; minimum 4 valid ICC constituents.,0.1715460623041977,2026-05
+2026-05-04,China,0.2636526924903519,Partial ADR ICC calculation,104,10,9,0.9429145352176674,partial_adr_icc_calculation,China,0.2636526924903519,"NTES, BIDU, JD, BEKE, ZTO, LI, XPEV, HTHT, TME",Multi-source ADR universe; top-10 by market cap; minimum 4 valid ICC constituents.,0.2636526924903519,2026-05
+2026-05-04,France,0.1194308054718689,Partial ADR ICC calculation,13,10,4,0.8971546752722643,partial_adr_icc_calculation,France,0.1194308054718689,"SNY, NBTX, CRTO, VALN",Multi-source ADR universe; top-10 by market cap; minimum 4 valid ICC constituents.,0.1194308054718689,2026-05
+2026-05-04,Colombia,,Unavailable,1,1,1,1.0,unavailable,Colombia,,EC,Multi-source ADR universe; top-10 by market cap; minimum 4 valid ICC constituents.,,2026-05
+2026-05-04,Hong Kong,0.3101026841066058,Partial ADR ICC calculation,7,7,6,0.998675356589616,partial_adr_icc_calculation,Hong Kong,0.3101026841066058,"BABA, FUTU, SIMO, HCM, MLCO, UCL",Multi-source ADR universe; top-10 by market cap; minimum 4 valid ICC constituents.,0.3101026841066058,2026-05
+2026-05-04,Japan,0.1273615903339697,Partial ADR ICC calculation,14,10,7,0.9994808567119696,partial_adr_icc_calculation,Japan,0.1273615903339697,"SMFG, SONY, MFG, TAK, IX, NMR, PAYP",Multi-source ADR universe; top-10 by market cap; minimum 4 valid ICC constituents.,0.1273615903339697,2026-05
+2026-05-04,Singapore,0.1599093363555316,Partial ADR ICC calculation,12,10,6,0.9911489734336364,partial_adr_icc_calculation,Singapore,0.1599093363555316,"SE, TCOM, JOYY, TIGR, HDL, LITB",Multi-source ADR universe; top-10 by market cap; minimum 4 valid ICC constituents.,0.1599093363555316,2026-05
+2026-05-04,South Africa,0.1389526014170044,Partial ADR ICC calculation,4,4,4,1.0,partial_adr_icc_calculation,South Africa,0.1389526014170044,"GFI, SSL, SBSW, DRD",Multi-source ADR universe; top-10 by market cap; minimum 4 valid ICC constituents.,0.1389526014170044,2026-05
+2026-05-04,South Korea,0.1700185093761035,Partial ADR ICC calculation,6,6,5,0.9945760238077064,partial_adr_icc_calculation,South Korea,0.1700185093761035,"SHG, PKX, WF, LPL, DDI",Multi-source ADR universe; top-10 by market cap; minimum 4 valid ICC constituents.,0.1700185093761035,2026-05
+2026-05-04,Australia,,Unavailable,12,10,3,0.9854124959646148,unavailable,Australia,,"BHP, TLX, MESO, ELVR, IONR, NVA, NVX, KZIA, IMMP, ATHE",Multi-source ADR universe; top-10 by market cap; minimum 4 valid ICC constituents.,,2026-05
+2026-05-04,Belgium,,Unavailable,4,4,2,0.9832009758166494,unavailable,Belgium,,"BUD, GLPG, AGMB, MTLS",Multi-source ADR universe; top-10 by market cap; minimum 4 valid ICC constituents.,,2026-05
+2026-05-04,Canada,,Unavailable,1,1,0,0.0,unavailable,Canada,,NICM,Multi-source ADR universe; top-10 by market cap; minimum 4 valid ICC constituents.,,2026-05
+2026-05-04,Israel,0.1169557675975384,Partial ADR ICC calculation,16,10,4,0.9554214850027144,partial_adr_icc_calculation,Israel,0.1169557675975384,"TEVA, NICE, BWAY, ALAR",Multi-source ADR universe; top-10 by market cap; minimum 4 valid ICC constituents.,0.1169557675975384,2026-05
+2026-05-04,United Arab Emirates,,Unavailable,2,2,2,1.0,unavailable,United Arab Emirates,,"VEON, YALA",Multi-source ADR universe; top-10 by market cap; minimum 4 valid ICC constituents.,,2026-05
