@@ -4,9 +4,8 @@ import io
 import os
 import re
 import time
-from datetime import datetime, timezone
 from pathlib import Path
-from typing import Iterable
+from typing import Any
 
 import numpy as np
 import pandas as pd
@@ -18,578 +17,521 @@ try:
 except Exception:
     get_live_panel = None  # type: ignore
 
-
-SCHEMA_VERSION = "country_adr_sources_v12_multi_source"
-
 USER_AGENT = (
-    os.getenv("SEC_USER_AGENT")
-    or os.getenv("SEC_CONTACT_EMAIL")
-    or "LiveICCDataLibrary/1.0 contact@example.com"
-)
-BROWSER_USER_AGENT = (
-    "Mozilla/5.0 (X11; Linux x86_64) "
-    "AppleWebKit/537.36 (KHTML, like Gecko) "
-    "Chrome/122.0.0.0 Safari/537.36"
+    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
+    "(KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
 )
 
 NASDAQ_LISTED_URL = "https://www.nasdaqtrader.com/dynamic/symdir/nasdaqlisted.txt"
 OTHER_LISTED_URL = "https://www.nasdaqtrader.com/dynamic/symdir/otherlisted.txt"
-SEC_TICKERS_EXCHANGE_URL = "https://www.sec.gov/files/company_tickers_exchange.json"
-SEC_SUBMISSIONS_URL = "https://data.sec.gov/submissions/CIK{cik10}.json"
 
-CITI_BASE_URL = (
-    "https://depositaryreceipts.citi.com/adr/guides/uig.aspx"
-    "?active=A&company_name={query}&pageId=8&subPageId=159"
-)
-CITI_QUERIES = ["0-9"] + list("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+CITI_GLOBAL_URLS = [
+    "https://depositaryreceipts.citi.com/adr/guides/uig.aspx?active=A&pageId=8&subPageId=34",
+    "https://depositaryreceipts.citi.com/adr/guides/uig.aspx?active=A&pageId=4&subpageid=34",
+    "https://depositaryreceipts.citi.com/adr/guides/uig.aspx?pageId=4&subpageid=34",
+]
 
-ADR_NAME_RE = re.compile(
-    r"(american depositar|american depositar?y| depository | depositary |\badr\b|\bads\b|"
-    r"global depositary|global depository|\bgdr\b)",
+CITI_UNSPONSORED_URLS = [
+    "https://depositaryreceipts.citi.com/adr/guides/unspresource.aspx?pageId=5&subpageid=173",
+]
+
+DB_DR_DIRECTORY_URLS = [
+    "https://adr.db.com/drwebrebrand/dr-universe/dr_universe_type_e.html",
+]
+
+ADR_TERMS = re.compile(
+    r"(american depositary|american depository|\badr\b|\bads\b|depositary shares|depository shares|global depositary|\bgdr\b)",
     re.I,
 )
-FOREIGN_LISTING_HINT_RE = re.compile(
-    r"(ordinary shares|common shares|class a ordinary|class b ordinary|\bplc\b|\bn\.v\.\b|"
-    r"\bs\.a\.\b|\bs\.a\.b\.\b|\bse\b|\bag\b|\bltd\b|\blimited\b)",
-    re.I,
-)
-EXCLUDE_NAME_RE = re.compile(
-    r"(etf|exchange traded fund|fund|warrant|rights?|units?|notes due|preferred|preference|"
-    r"closed end|closed-end|bond|debenture|trust preferred|series [a-z] preferred)",
-    re.I,
-)
-BAD_SYMBOL_RE = re.compile(r"[^A-Z0-9\.-]")
 
-US_COUNTRY_NAMES = {
-    "United States",
-    "United States of America",
-    "USA",
-    "U.S.A.",
-    "US",
-}
+FOREIGN_EQUITY_TERMS = re.compile(
+    r"(ordinary shares|ord shares|common shares|\bplc\b|\bn\.v\.\b|\bs\.a\.\b|\bag\b|\bse\b|\bltd\b)",
+    re.I,
+)
+
+EXCLUDE_TERMS = re.compile(
+    r"(etf|fund|warrant|right|unit|notes due|preferred|preference|closed end|bond|etn|trust preferred|debt)",
+    re.I,
+)
+
+BAD_SYM = re.compile(r"[^A-Z0-9\.\-]")
 
 COUNTRY_ALIASES = {
     "UK": "United Kingdom",
     "U.K.": "United Kingdom",
-    "Britain": "United Kingdom",
     "Great Britain": "United Kingdom",
-    "Korea": "South Korea",
+    "England": "United Kingdom",
+    "PRC": "China",
+    "People's Republic of China": "China",
+    "Hong Kong SAR": "Hong Kong",
+    "Russian Federation": "Russia",
     "Korea, Republic of": "South Korea",
     "Republic of Korea": "South Korea",
-    "S. Korea": "South Korea",
-    "S. Africa": "South Africa",
-    "Russia": "Russian Federation",
-    "UAE": "United Arab Emirates",
-    "Czechia": "Czech Republic",
-    "China, People's Republic of": "China",
-    "People's Republic of China": "China",
-    "Hong Kong, China": "Hong Kong",
-    "Macao": "Macau",
+    "Taiwan, Province of China": "Taiwan",
+    "Brasil": "Brazil",
+}
+
+SOURCE_PRIORITY = {
+    "citi_global_dr_directory": 1,
+    "citi_unsponsored_adr_center": 2,
+    "deutsche_bank_dr_directory": 3,
+    "nasdaq_trader_adr_like": 4,
+    "nasdaq_trader_foreign_listing": 5,
+    "yfinance_enrichment": 9,
 }
 
 
-def now_utc_iso() -> str:
-    """Return current UTC timestamp as an ISO string."""
-    return datetime.now(timezone.utc).replace(microsecond=0).isoformat()
+def _env_int(name: str, default: int) -> int:
+    try:
+        return int(os.environ.get(name, str(default)))
+    except Exception:
+        return default
 
 
-def http_get_text(url: str, *, sec: bool = False, timeout: int = 30, retries: int = 3) -> str:
-    """Fetch text content with retries."""
-    headers = {"User-Agent": USER_AGENT if sec else BROWSER_USER_AGENT}
-    last_error: Exception | None = None
+def _env_float(name: str, default: float) -> float:
+    try:
+        return float(os.environ.get(name, str(default)))
+    except Exception:
+        return default
+
+
+def request_text(url: str, timeout: int = 35, retries: int = 3) -> str:
+    """Fetch text with retries and a browser-like user agent."""
+    headers = {"User-Agent": USER_AGENT}
+    last_err: Exception | None = None
     for attempt in range(1, retries + 1):
         try:
-            r = requests.get(url, headers=headers, timeout=timeout)
-            r.raise_for_status()
-            return r.text
+            resp = requests.get(url, headers=headers, timeout=timeout)
+            resp.raise_for_status()
+            return resp.text
         except Exception as exc:
-            last_error = exc
-            time.sleep(0.8 * attempt)
-    raise RuntimeError(f"Failed to fetch {url}: {last_error}")
+            last_err = exc
+            time.sleep(0.9 * attempt)
+    raise RuntimeError(f"Failed to fetch {url}: {last_err}")
 
 
-def normalize_symbol(x: object) -> str:
-    """Normalize a ticker for Yahoo-style lookup."""
-    s = str(x or "").strip().upper()
-    s = s.replace("/", "-").replace(".", "-").replace(" ", "")
+def normalize_ticker(x: Any) -> str | None:
+    """Normalize ticker symbols to Yahoo-compatible notation where possible."""
+    if x is None:
+        return None
+    if isinstance(x, float) and np.isnan(x):
+        return None
+    s = str(x).strip().upper()
+    if not s or s in {"NAN", "--", "-", "NONE"}:
+        return None
+    s = s.replace(" ", "")
+    s = s.replace("/", "-")
+    s = s.replace(".", "-")
+    s = re.sub(r"[^A-Z0-9\-]", "", s)
+    if not s or BAD_SYM.search(s):
+        return None
+    if len(s) > 12:
+        return None
     return s
 
 
-def normalize_country(x: object) -> str | None:
-    """Normalize country names and remove empty values."""
-    if x is None or pd.isna(x):
+def normalize_country(x: Any) -> str | None:
+    """Normalize country names."""
+    if x is None:
         return None
-    s = str(x).strip()
-    if not s or s.lower() in {"nan", "none", "n/a", "--"}:
+    if isinstance(x, float) and np.isnan(x):
         return None
-    s = re.sub(r"\s+", " ", s)
+    s = re.sub(r"\s+", " ", str(x).strip())
+    if not s or s.lower() in {"nan", "none", "--", "-"}:
+        return None
     return COUNTRY_ALIASES.get(s, s)
 
 
-def is_us_country(country: object) -> bool:
-    """Return whether a country label should be treated as the United States."""
-    c = normalize_country(country)
-    return bool(c and c in US_COUNTRY_NAMES)
+def first_existing_col(df: pd.DataFrame, candidates: list[str]) -> str | None:
+    """Return the first matching column by case-insensitive name."""
+    lower = {str(c).strip().lower(): c for c in df.columns}
+    for c in candidates:
+        if c.lower() in lower:
+            return lower[c.lower()]
+    return None
 
 
-def dedupe_rows(rows: Iterable[dict]) -> pd.DataFrame:
-    """Deduplicate candidate rows while preserving useful source metadata."""
-    df = pd.DataFrame(list(rows))
-    if df.empty:
-        return pd.DataFrame(columns=["ticker", "name", "exchange", "country_hint", "source"])
+def make_records(
+    df: pd.DataFrame,
+    ticker_candidates: list[str],
+    country_candidates: list[str],
+    name_candidates: list[str],
+    exchange_candidates: list[str],
+    source: str,
+) -> pd.DataFrame:
+    """Convert a source table into normalized ADR candidate rows."""
+    if df is None or df.empty:
+        return pd.DataFrame(columns=["ticker", "company", "country", "exchange", "source"])
 
-    for col in ["ticker", "name", "exchange", "country_hint", "source"]:
-        if col not in df.columns:
-            df[col] = None
+    df = df.copy()
+    df.columns = [str(c).strip() for c in df.columns]
+    tcol = first_existing_col(df, ticker_candidates)
+    ccol = first_existing_col(df, country_candidates)
+    ncol = first_existing_col(df, name_candidates)
+    ecol = first_existing_col(df, exchange_candidates)
 
-    df["ticker"] = df["ticker"].map(normalize_symbol)
-    df = df[df["ticker"].astype(str).ne("")]
-    df = df[~df["ticker"].astype(str).str.contains(BAD_SYMBOL_RE, na=False)]
-    df["country_hint"] = df["country_hint"].map(normalize_country)
+    if tcol is None:
+        return pd.DataFrame(columns=["ticker", "company", "country", "exchange", "source"])
 
-    # Prefer rows with explicit country information, then rows from DR directories.
-    df["_priority"] = 0
-    df.loc[df["country_hint"].notna(), "_priority"] += 10
-    df.loc[df["source"].astype(str).str.contains("citi|deutsche|bny|adr", case=False, na=False), "_priority"] += 5
-    df = df.sort_values(["ticker", "_priority"], ascending=[True, False])
-
-    agg = (
-        df.groupby("ticker", as_index=False)
-        .agg(
-            name=("name", lambda x: next((v for v in x if isinstance(v, str) and v.strip()), None)),
-            exchange=("exchange", lambda x: next((v for v in x if isinstance(v, str) and v.strip()), None)),
-            country_hint=("country_hint", lambda x: next((v for v in x if isinstance(v, str) and v.strip()), None)),
-            source=("source", lambda x: ",".join(sorted(set(str(v) for v in x if str(v).strip())))),
-        )
-    )
-    return agg.reset_index(drop=True)
+    out = pd.DataFrame()
+    out["ticker"] = df[tcol].map(normalize_ticker)
+    out["company"] = df[ncol].astype(str).str.strip() if ncol else ""
+    out["country"] = df[ccol].map(normalize_country) if ccol else None
+    out["exchange"] = df[ecol].astype(str).str.strip() if ecol else ""
+    out["source"] = source
+    out = out.dropna(subset=["ticker"]).drop_duplicates("ticker")
+    return out[["ticker", "company", "country", "exchange", "source"]]
 
 
 def read_pipe_directory(url: str) -> pd.DataFrame:
-    """Read Nasdaq Trader pipe-delimited symbol directory."""
-    text = http_get_text(url)
+    """Read a Nasdaq Trader pipe-delimited symbol directory."""
+    text = request_text(url)
     lines = [ln for ln in text.splitlines() if "|" in ln and not ln.startswith("File Creation Time")]
-    if not lines:
-        return pd.DataFrame()
     return pd.read_csv(io.StringIO("\n".join(lines)), sep="|", dtype=str).fillna("")
 
 
-def fetch_nasdaq_adr_like_candidates() -> pd.DataFrame:
-    """Build ADR-like and foreign-listing candidates from Nasdaq Trader symbol directories."""
-    rows: list[dict] = []
+def fetch_nasdaq_trader_candidates() -> pd.DataFrame:
+    """Fetch ADR-like and foreign-listing candidates from Nasdaq Trader symbol directories."""
+    frames: list[pd.DataFrame] = []
 
     try:
         n = read_pipe_directory(NASDAQ_LISTED_URL)
-        for _, r in n.iterrows():
-            name = str(r.get("Security Name", ""))
-            etf = str(r.get("ETF", "")).upper()
-            test = str(r.get("Test Issue", "")).upper()
-            if etf == "Y" or test == "Y" or EXCLUDE_NAME_RE.search(name):
-                continue
-            if not (ADR_NAME_RE.search(name) or FOREIGN_LISTING_HINT_RE.search(name)):
-                continue
-            rows.append(
-                {
-                    "ticker": r.get("Symbol"),
-                    "name": name,
-                    "exchange": "NASDAQ",
-                    "country_hint": None,
-                    "source": "nasdaq_trader_nasdaqlisted",
-                }
-            )
+        n = n.rename(columns={"Symbol": "ticker", "Security Name": "company", "ETF": "etf"})
+        n["exchange"] = "NASDAQ"
+        frames.append(n[["ticker", "company", "exchange", "etf"]])
     except Exception as exc:
-        print(f"[country_adr] Nasdaq listed source failed: {type(exc).__name__}: {exc}")
+        print(f"[country_adr] Nasdaq listed directory failed: {type(exc).__name__}: {exc}")
 
     try:
         o = read_pipe_directory(OTHER_LISTED_URL)
-        exchange_map = {"A": "NYSE American", "N": "NYSE", "P": "NYSE Arca", "Z": "BATS", "V": "IEX"}
-        for _, r in o.iterrows():
-            name = str(r.get("Security Name", ""))
-            etf = str(r.get("ETF", "")).upper()
-            test = str(r.get("Test Issue", "")).upper()
-            if etf == "Y" or test == "Y" or EXCLUDE_NAME_RE.search(name):
-                continue
-            if not (ADR_NAME_RE.search(name) or FOREIGN_LISTING_HINT_RE.search(name)):
-                continue
-            rows.append(
-                {
-                    "ticker": r.get("ACT Symbol"),
-                    "name": name,
-                    "exchange": exchange_map.get(str(r.get("Exchange", "")).upper(), r.get("Exchange")),
-                    "country_hint": None,
-                    "source": "nasdaq_trader_otherlisted",
-                }
-            )
+        o = o.rename(columns={"ACT Symbol": "ticker", "Security Name": "company", "Exchange": "exchange", "ETF": "etf"})
+        frames.append(o[["ticker", "company", "exchange", "etf"]])
     except Exception as exc:
-        print(f"[country_adr] Other-listed source failed: {type(exc).__name__}: {exc}")
-
-    return dedupe_rows(rows)
-
-
-def parse_citi_table_from_html(html: str) -> pd.DataFrame:
-    """Parse Citi DR directory search results from static HTML tables."""
-    try:
-        tables = pd.read_html(io.StringIO(html))
-    except Exception:
-        return pd.DataFrame()
-
-    frames: list[pd.DataFrame] = []
-    for t in tables:
-        cols = [str(c).strip() for c in t.columns]
-        lower = {c.lower(): c for c in cols}
-        if "ticker" in lower and "country" in lower:
-            df = t.copy()
-            df.columns = cols
-            frames.append(df)
+        print(f"[country_adr] Other listed directory failed: {type(exc).__name__}: {exc}")
 
     if not frames:
-        return pd.DataFrame()
-    return pd.concat(frames, ignore_index=True)
+        return pd.DataFrame(columns=["ticker", "company", "country", "exchange", "source"])
+
+    raw = pd.concat(frames, ignore_index=True)
+    raw["ticker"] = raw["ticker"].map(normalize_ticker)
+    raw["company"] = raw["company"].astype(str)
+    raw["etf"] = raw["etf"].astype(str).str.upper()
+    raw = raw[(raw["ticker"].notna()) & (raw["etf"] != "Y")]
+    raw = raw[~raw["company"].str.contains(EXCLUDE_TERMS, na=False)]
+
+    adr_like = raw[raw["company"].str.contains(ADR_TERMS, na=False)].copy()
+    adr_like["source"] = "nasdaq_trader_adr_like"
+
+    foreign_like = raw[raw["company"].str.contains(FOREIGN_EQUITY_TERMS, na=False)].copy()
+    foreign_like["source"] = "nasdaq_trader_foreign_listing"
+
+    out = pd.concat([adr_like, foreign_like], ignore_index=True)
+    out["country"] = None
+    out = out.drop_duplicates("ticker")
+    return out[["ticker", "company", "country", "exchange", "source"]]
 
 
-def fetch_citi_dr_candidates() -> pd.DataFrame:
-    """Fetch active DR candidates from Citi's public DR directory pages."""
-    rows: list[dict] = []
-    for q in CITI_QUERIES:
-        url = CITI_BASE_URL.format(query=q)
+def fetch_citi_unsponsored() -> pd.DataFrame:
+    """Fetch Citi unsponsored ADR center tables."""
+    frames: list[pd.DataFrame] = []
+    for url in CITI_UNSPONSORED_URLS:
         try:
-            html = http_get_text(url)
-            df = parse_citi_table_from_html(html)
-            if df.empty:
-                continue
-            cols = {str(c).strip().lower(): c for c in df.columns}
-            ticker_col = cols.get("ticker")
-            country_col = cols.get("country")
-            issuer_col = cols.get("issuer") or cols.get("company") or cols.get("company name")
-            exchange_col = cols.get("exchange")
-            active_col = cols.get("active")
-            if ticker_col is None or country_col is None:
-                continue
-            for _, r in df.iterrows():
-                if active_col is not None and str(r.get(active_col, "")).strip().upper() not in {"A", "ACTIVE", ""}:
-                    continue
-                ticker = r.get(ticker_col)
-                country = normalize_country(r.get(country_col))
-                if not ticker or not country or is_us_country(country):
-                    continue
-                rows.append(
-                    {
-                        "ticker": ticker,
-                        "name": r.get(issuer_col) if issuer_col else None,
-                        "exchange": r.get(exchange_col) if exchange_col else None,
-                        "country_hint": country,
-                        "source": "citi_dr_directory",
-                    }
+            html = request_text(url)
+            tables = pd.read_html(io.StringIO(html))
+            for tb in tables:
+                rec = make_records(
+                    tb,
+                    ticker_candidates=["DR Ticker", "Ticker", "Symbol"],
+                    country_candidates=["Country"],
+                    name_candidates=["Company", "Issuer"],
+                    exchange_candidates=["Exchange"],
+                    source="citi_unsponsored_adr_center",
                 )
+                if not rec.empty and rec["country"].notna().any():
+                    frames.append(rec)
         except Exception as exc:
-            print(f"[country_adr] Citi DR query {q!r} failed: {type(exc).__name__}: {exc}")
-        time.sleep(0.2)
-    return dedupe_rows(rows)
+            print(f"[country_adr] Citi unsponsored failed: {type(exc).__name__}: {exc}")
+    return pd.concat(frames, ignore_index=True).drop_duplicates("ticker") if frames else pd.DataFrame(columns=["ticker", "company", "country", "exchange", "source"])
 
 
-def load_sec_ticker_map(cache_dir: Path) -> pd.DataFrame:
-    """Load SEC ticker-CIK-exchange associations."""
-    cache_dir.mkdir(parents=True, exist_ok=True)
-    cache_path = cache_dir / "sec_company_tickers_exchange.csv"
-    if cache_path.exists():
+def fetch_citi_global_directory() -> pd.DataFrame:
+    """Fetch Citi global DR directory when static tables are available."""
+    frames: list[pd.DataFrame] = []
+    for url in CITI_GLOBAL_URLS:
         try:
-            df = pd.read_csv(cache_path, dtype=str)
-            if {"ticker", "cik"}.issubset(df.columns):
-                return df
-        except Exception:
-            pass
-
-    try:
-        text = http_get_text(SEC_TICKERS_EXCHANGE_URL, sec=True)
-        data = pd.read_json(io.StringIO(text))
-        fields = data.get("fields")
-        records = data.get("data")
-        if fields is not None and records is not None:
-            df = pd.DataFrame(records, columns=list(fields))
-        else:
-            df = data
-        df.columns = [str(c).lower() for c in df.columns]
-        if "ticker" in df.columns and "cik" in df.columns:
-            df["ticker"] = df["ticker"].map(normalize_symbol)
-            df.to_csv(cache_path, index=False)
-            return df
-    except Exception as exc:
-        print(f"[country_adr] SEC ticker map failed: {type(exc).__name__}: {exc}")
-
-    return pd.DataFrame(columns=["ticker", "cik", "title", "exchange"])
+            html = request_text(url)
+            tables = pd.read_html(io.StringIO(html))
+            for tb in tables:
+                rec = make_records(
+                    tb,
+                    ticker_candidates=["DR Ticker", "Ticker", "Symbol", "DR Symbol"],
+                    country_candidates=["Country"],
+                    name_candidates=["Company", "Issuer", "Issuer Name"],
+                    exchange_candidates=["Exchange"],
+                    source="citi_global_dr_directory",
+                )
+                if not rec.empty and rec["country"].notna().any():
+                    frames.append(rec)
+        except Exception as exc:
+            print(f"[country_adr] Citi global directory failed: {type(exc).__name__}: {exc}")
+    return pd.concat(frames, ignore_index=True).drop_duplicates("ticker") if frames else pd.DataFrame(columns=["ticker", "company", "country", "exchange", "source"])
 
 
-def sec_country_for_cik(cik: object, cache_dir: Path) -> str | None:
-    """Fetch issuer country from SEC submissions JSON when available."""
-    if cik is None or pd.isna(cik):
-        return None
-    try:
-        cik_int = int(float(cik))
-    except Exception:
-        return None
-    cik10 = f"{cik_int:010d}"
-    cache_dir.mkdir(parents=True, exist_ok=True)
-    cache_path = cache_dir / f"CIK{cik10}.json"
-
-    try:
-        if cache_path.exists():
-            text = cache_path.read_text(encoding="utf-8")
-        else:
-            text = http_get_text(SEC_SUBMISSIONS_URL.format(cik10=cik10), sec=True, timeout=20, retries=2)
-            cache_path.write_text(text, encoding="utf-8")
-            time.sleep(0.12)
-        import json
-
-        obj = json.loads(text)
-        addresses = obj.get("addresses") or {}
-        business = addresses.get("business") or {}
-        country = (
-            business.get("stateOrCountryDescription")
-            or obj.get("stateOfIncorporationDescription")
-            or obj.get("stateOfIncorporation")
-        )
-        return normalize_country(country)
-    except Exception:
-        return None
+def fetch_deutsche_bank_directory() -> pd.DataFrame:
+    """Fetch Deutsche Bank DR directory when static tables are available."""
+    frames: list[pd.DataFrame] = []
+    for url in DB_DR_DIRECTORY_URLS:
+        try:
+            html = request_text(url)
+            tables = pd.read_html(io.StringIO(html))
+            for tb in tables:
+                rec = make_records(
+                    tb,
+                    ticker_candidates=["DR Ticker", "Ticker", "Symbol"],
+                    country_candidates=["Country"],
+                    name_candidates=["Company", "Issuer"],
+                    exchange_candidates=["Exchange"],
+                    source="deutsche_bank_dr_directory",
+                )
+                if not rec.empty and rec["country"].notna().any():
+                    frames.append(rec)
+        except Exception as exc:
+            print(f"[country_adr] Deutsche Bank directory failed: {type(exc).__name__}: {exc}")
+    return pd.concat(frames, ignore_index=True).drop_duplicates("ticker") if frames else pd.DataFrame(columns=["ticker", "company", "country", "exchange", "source"])
 
 
-def yfinance_profile(ticker: str) -> dict:
-    """Fetch market cap, country, and descriptive fields from yfinance."""
+def merge_candidates(frames: list[pd.DataFrame]) -> pd.DataFrame:
+    """Merge ADR candidate sources while preserving best country attribution."""
+    frames = [f for f in frames if f is not None and not f.empty]
+    if not frames:
+        return pd.DataFrame(columns=["ticker", "company", "country", "exchange", "source"])
+
+    raw = pd.concat(frames, ignore_index=True)
+    raw["ticker"] = raw["ticker"].map(normalize_ticker)
+    raw["country"] = raw["country"].map(normalize_country)
+    raw["company"] = raw["company"].fillna("").astype(str)
+    raw["exchange"] = raw["exchange"].fillna("").astype(str)
+    raw["source"] = raw["source"].fillna("unknown").astype(str)
+    raw = raw.dropna(subset=["ticker"])
+    raw = raw[~raw["ticker"].str.contains(r"\$|\^", regex=True, na=False)]
+    raw["source_priority"] = raw["source"].map(SOURCE_PRIORITY).fillna(99)
+    raw["has_country"] = raw["country"].notna().astype(int)
+    raw = raw.sort_values(["ticker", "has_country", "source_priority"], ascending=[True, False, True])
+
+    rows = []
+    for ticker, g in raw.groupby("ticker", sort=False):
+        best = g.iloc[0].to_dict()
+        country_rows = g[g["country"].notna()]
+        if not country_rows.empty:
+            best["country"] = country_rows.iloc[0]["country"]
+        best["sources_all"] = ";".join(sorted(set(g["source"].astype(str))))
+        rows.append(best)
+
+    out = pd.DataFrame(rows)
+    return out[["ticker", "company", "country", "exchange", "source", "sources_all"]].drop_duplicates("ticker")
+
+
+def fetch_yfinance_metadata(ticker: str) -> dict[str, Any]:
+    """Fetch country, market cap, sector, and name from yfinance."""
+    rec: dict[str, Any] = {"ticker": ticker}
     try:
         t = yf.Ticker(ticker)
         info = t.info or {}
+        country = normalize_country(info.get("country") or info.get("headquartersCountry"))
         market_cap = info.get("marketCap")
         if not market_cap:
             try:
-                market_cap = getattr(t, "fast_info", {}).get("market_cap")
+                market_cap = getattr(t.fast_info, "market_cap", None) or t.fast_info.get("market_cap")
             except Exception:
                 market_cap = None
-        return {
-            "ticker": ticker,
-            "yf_country": normalize_country(info.get("country")),
+        rec.update({
+            "yf_country": country,
             "market_cap": float(market_cap) if market_cap and float(market_cap) > 0 else np.nan,
-            "yf_name": info.get("shortName") or info.get("longName"),
             "sector": info.get("sector"),
-            "industry": info.get("industry"),
+            "yf_name": info.get("shortName") or info.get("longName"),
             "quote_type": info.get("quoteType"),
-        }
+        })
     except Exception:
-        return {"ticker": ticker, "yf_country": None, "market_cap": np.nan}
+        rec.update({
+            "yf_country": None,
+            "market_cap": np.nan,
+            "sector": None,
+            "yf_name": None,
+            "quote_type": None,
+        })
+    return rec
 
 
-def build_candidate_universe(cache_path: Path, *, max_age_days: int = 5) -> pd.DataFrame:
-    """Build or load a multi-source ADR and foreign-listing candidate universe."""
-    force = os.getenv("COUNTRY_ADR_FORCE_REBUILD", "0") == "1"
-    if cache_path.exists() and not force:
+def enrich_candidates(candidates: pd.DataFrame, cache_path: Path) -> pd.DataFrame:
+    """Enrich candidates with yfinance metadata, using a persistent cache."""
+    cache_meta = cache_path.with_name(cache_path.stem + "_yf_meta.csv")
+    existing = pd.DataFrame()
+    if cache_meta.exists():
         try:
-            cached = pd.read_csv(cache_path)
-            if not cached.empty and "schema_version" in cached.columns:
-                version_ok = str(cached["schema_version"].iloc[0]) == SCHEMA_VERSION
-                mtime = pd.Timestamp(cache_path.stat().st_mtime, unit="s")
-                age = (pd.Timestamp.utcnow().tz_localize(None) - mtime.tz_localize(None)).days
-                if version_ok and age <= max_age_days:
-                    return cached
+            existing = pd.read_csv(cache_meta)
+            existing["ticker"] = existing["ticker"].map(normalize_ticker)
         except Exception:
-            pass
+            existing = pd.DataFrame()
 
-    candidate_frames = []
-    citi = fetch_citi_dr_candidates()
-    if not citi.empty:
-        candidate_frames.append(citi)
-    nasdaq = fetch_nasdaq_adr_like_candidates()
-    if not nasdaq.empty:
-        candidate_frames.append(nasdaq)
+    existing_tickers = set(existing["ticker"].dropna().astype(str)) if not existing.empty else set()
+    all_tickers = candidates["ticker"].dropna().astype(str).unique().tolist()
 
-    if not candidate_frames:
-        return pd.DataFrame(columns=["ticker", "name", "exchange", "country", "market_cap", "source", "schema_version"])
+    max_enrich = _env_int("COUNTRY_ADR_MAX_ENRICH", 2000)
+    missing = [t for t in all_tickers if t not in existing_tickers]
+    missing = missing[:max_enrich]
 
-    candidates = dedupe_rows(pd.concat(candidate_frames, ignore_index=True).to_dict(orient="records"))
-    candidates = candidates[~candidates["ticker"].astype(str).str.endswith(("W", "R", "U"))].copy()
-
-    # Prioritize candidates with explicit countries and ADR directory sources, then enrich with profiles.
-    candidates["_priority"] = 0
-    candidates.loc[candidates["country_hint"].notna(), "_priority"] += 10
-    candidates.loc[candidates["source"].astype(str).str.contains("citi", case=False, na=False), "_priority"] += 5
-    candidates = candidates.sort_values(["_priority", "ticker"], ascending=[False, True]).reset_index(drop=True)
-
-    max_candidates = int(os.getenv("COUNTRY_ADR_MAX_CANDIDATES", "1500"))
-    candidates = candidates.head(max_candidates).copy()
-
-    sec_cache = cache_path.parent / "sec_submissions_cache"
-    sec_map = load_sec_ticker_map(cache_path.parent)
-    sec_map = sec_map[[c for c in ["ticker", "cik", "exchange", "title"] if c in sec_map.columns]].copy()
-    if "ticker" in sec_map.columns:
-        sec_map["ticker"] = sec_map["ticker"].map(normalize_symbol)
-
-    rows: list[dict] = []
-    for i, r in candidates.iterrows():
-        ticker = str(r["ticker"])
-        profile = yfinance_profile(ticker)
-        country = normalize_country(r.get("country_hint")) or profile.get("yf_country")
-
-        if not country and not sec_map.empty:
-            m = sec_map.loc[sec_map["ticker"] == ticker]
-            if not m.empty:
-                country = sec_country_for_cik(m.iloc[0].get("cik"), sec_cache)
-
-        country = normalize_country(country)
-        if not country or is_us_country(country):
-            continue
-
-        market_cap = profile.get("market_cap")
-        if market_cap is None or pd.isna(market_cap) or float(market_cap) <= 0:
-            continue
-
-        rows.append(
-            {
-                "ticker": ticker,
-                "name": r.get("name") or profile.get("yf_name"),
-                "exchange": r.get("exchange"),
-                "country": country,
-                "market_cap": float(market_cap),
-                "sector": profile.get("sector"),
-                "industry": profile.get("industry"),
-                "quote_type": profile.get("quote_type"),
-                "source": r.get("source"),
-                "schema_version": SCHEMA_VERSION,
-                "built_at_utc": now_utc_iso(),
-            }
-        )
-
-        if (i + 1) % 25 == 0:
+    rows = []
+    for i, ticker in enumerate(missing, start=1):
+        rows.append(fetch_yfinance_metadata(ticker))
+        if i % 40 == 0:
+            print(f"[country_adr] yfinance enriched {i}/{len(missing)} new tickers")
             time.sleep(0.5)
 
-    out = pd.DataFrame(rows)
-    if not out.empty:
-        out = out.sort_values(["country", "market_cap"], ascending=[True, False]).reset_index(drop=True)
-    cache_path.parent.mkdir(parents=True, exist_ok=True)
-    out.to_csv(cache_path, index=False)
+    new_meta = pd.DataFrame(rows)
+    combined = pd.concat([existing, new_meta], ignore_index=True) if not new_meta.empty else existing
+    if not combined.empty:
+        combined = combined.drop_duplicates("ticker", keep="last")
+        cache_meta.parent.mkdir(parents=True, exist_ok=True)
+        combined.to_csv(cache_meta, index=False)
+
+    out = candidates.merge(combined, on="ticker", how="left") if not combined.empty else candidates.copy()
+    out["country_final"] = out["country"].where(out["country"].notna(), out.get("yf_country"))
+    out["country_final"] = out["country_final"].map(normalize_country)
+    out["company_final"] = out["company"].where(out["company"].astype(str).str.len() > 0, out.get("yf_name"))
+    out["market_cap"] = pd.to_numeric(out.get("market_cap"), errors="coerce")
+
+    out = out[out["country_final"].notna()].copy()
+    out = out[out["country_final"] != "United States"].copy()
+    out = out[out["market_cap"].notna() & (out["market_cap"] > 0)].copy()
+    out = out.drop_duplicates("ticker")
     return out
 
 
-def select_country_top_n(adr: pd.DataFrame, top_n: int = 10) -> pd.DataFrame:
-    """Select top-N securities by market cap within each country or region."""
-    if adr.empty:
-        return pd.DataFrame()
-    selected = []
-    for country, g in adr.groupby("country"):
-        g2 = g.sort_values("market_cap", ascending=False).head(top_n).copy()
+def load_cached_or_build_adr_universe(cache_path: Path, max_age_days: int | None = None) -> pd.DataFrame:
+    """Build or load the multi-source ADR universe."""
+    force = os.environ.get("COUNTRY_ADR_FORCE_REBUILD", "0") == "1"
+    max_age_days = max_age_days if max_age_days is not None else _env_int("COUNTRY_ADR_CACHE_MAX_AGE_DAYS", 2)
+
+    if cache_path.exists() and not force:
+        try:
+            mtime = pd.Timestamp(cache_path.stat().st_mtime, unit="s")
+            age_days = (pd.Timestamp.utcnow().tz_localize(None) - mtime.tz_localize(None)).days
+            cached = pd.read_csv(cache_path)
+            if age_days <= max_age_days and not cached.empty:
+                print(f"[country_adr] using cached ADR universe: {cache_path}")
+                return cached
+        except Exception:
+            pass
+
+    print("[country_adr] rebuilding ADR universe from online sources")
+    frames = [
+        fetch_citi_unsponsored(),
+        fetch_citi_global_directory(),
+        fetch_deutsche_bank_directory(),
+        fetch_nasdaq_trader_candidates(),
+    ]
+    candidates = merge_candidates(frames)
+    print(f"[country_adr] raw merged candidates = {len(candidates)}")
+
+    enriched = enrich_candidates(candidates, cache_path)
+    enriched = enriched.sort_values(["country_final", "market_cap"], ascending=[True, False]).reset_index(drop=True)
+    cache_path.parent.mkdir(parents=True, exist_ok=True)
+    enriched.to_csv(cache_path, index=False)
+    print(f"[country_adr] enriched ADR universe = {len(enriched)}")
+    return enriched
+
+
+def build_country_adr_icc_panel(cache_path: Path, min_available: int | None = None) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Compute Country / Region Level ICC from ADR composites.
+
+    The standard portfolio uses up to the 10 largest ADR-like U.S.-listed firms by market cap.
+    A country / region is still computed when at least 4 constituents have valid ICC estimates.
+    """
+    min_available = min_available if min_available is not None else _env_int("COUNTRY_ADR_MIN_AVAILABLE", 4)
+    min_available = max(1, min_available)
+
+    adr = load_cached_or_build_adr_universe(cache_path)
+    output_cols = [
+        "country", "country_region", "icc", "vw_icc", "method", "n_candidates", "n_selected",
+        "n_icc_available", "coverage_mktcap", "status", "constituents", "source_note",
+    ]
+    if adr.empty or get_live_panel is None:
+        return pd.DataFrame(columns=output_cols), pd.DataFrame()
+
+    selected_rows = []
+    for country, g in adr.groupby("country_final"):
+        g2 = g.sort_values("market_cap", ascending=False).head(10).copy()
         g2["rank_in_country"] = range(1, len(g2) + 1)
-        selected.append(g2)
-    return pd.concat(selected, ignore_index=True) if selected else pd.DataFrame()
+        selected_rows.append(g2)
+    selected = pd.concat(selected_rows, ignore_index=True) if selected_rows else pd.DataFrame()
 
+    if selected.empty:
+        return pd.DataFrame(columns=output_cols), pd.DataFrame()
 
-def compute_country_panel(selected: pd.DataFrame, *, min_available: int = 3, full_threshold: int = 8) -> tuple[pd.DataFrame, pd.DataFrame]:
-    """Compute Country / Region Level ICC from selected ADR or foreign-listing constituents."""
-    if selected.empty or get_live_panel is None:
-        return (
-            pd.DataFrame(
-                columns=[
-                    "country",
-                    "icc",
-                    "method",
-                    "n_candidates",
-                    "n_selected",
-                    "n_icc_available",
-                    "coverage_mktcap",
-                    "status",
-                ]
-            ),
-            pd.DataFrame(),
-        )
+    tickers = selected["ticker"].dropna().astype(str).unique().tolist()
+    print(f"[country_adr] computing firm-level ICC for {len(tickers)} selected ADR tickers")
+    try:
+        live = get_live_panel(tickers)
+    except Exception as exc:
+        print(f"[country_adr] get_live_panel failed: {type(exc).__name__}: {exc}")
+        live = pd.DataFrame(columns=["ticker", "ICC", "mktcap", "name", "sector"])
 
-    tickers = selected["ticker"].dropna().astype(str).map(normalize_symbol).drop_duplicates().tolist()
-    live = get_live_panel(tickers)
     if live is None or live.empty:
         live = pd.DataFrame(columns=["ticker", "ICC", "mktcap", "name", "sector"])
 
     live = live.copy()
-    live["ticker"] = live["ticker"].astype(str).map(normalize_symbol)
-    if "ICC" not in live.columns:
-        live["ICC"] = np.nan
-    if "mktcap" not in live.columns:
-        live["mktcap"] = np.nan
-
-    selected = selected.copy()
-    selected["ticker"] = selected["ticker"].astype(str).map(normalize_symbol)
-    merged = selected.merge(
-        live[[c for c in ["ticker", "ICC", "mktcap", "name", "sector"] if c in live.columns]],
-        on="ticker",
-        how="left",
-        suffixes=("", "_icc"),
-    )
+    live["ticker"] = live["ticker"].astype(str).str.upper().str.replace(".", "-", regex=False)
+    selected["ticker"] = selected["ticker"].astype(str).str.upper().str.replace(".", "-", regex=False)
+    merged = selected.merge(live[["ticker", "ICC", "mktcap", "name", "sector"]], on="ticker", how="left", suffixes=("", "_icc"))
 
     rows = []
-    for country, g in merged.groupby("country"):
-        total_mcap = float(g["market_cap"].sum()) if len(g) else 0.0
+    for country, g in merged.groupby("country_final"):
+        total_selected_mcap = float(g["market_cap"].sum()) if len(g) else 0.0
         valid = g[g["ICC"].notna() & g["market_cap"].notna() & (g["market_cap"] > 0)].copy()
+        n_candidates = int((adr["country_final"] == country).sum())
         n_selected = int(len(g))
         n_available = int(len(valid))
-        coverage = float(valid["market_cap"].sum() / total_mcap) if total_mcap > 0 and n_available > 0 else 0.0
+        coverage = float(valid["market_cap"].sum() / total_selected_mcap) if total_selected_mcap > 0 and n_available > 0 else 0.0
 
-        if n_available >= full_threshold:
+        if n_available >= 10:
             method = "ICC calculation"
             status = "icc_calculation"
-            icc = float(np.average(valid["ICC"], weights=valid["market_cap"]))
         elif n_available >= min_available:
-            method = "Partial ADR estimate"
-            status = "partial_adr_estimate"
-            icc = float(np.average(valid["ICC"], weights=valid["market_cap"]))
+            method = "Partial ADR ICC calculation"
+            status = "partial_adr_icc_calculation"
         else:
             method = "Unavailable"
             status = "unavailable"
-            icc = None
 
-        rows.append(
-            {
-                "country": country,
-                "icc": icc,
-                "method": method,
-                "n_candidates": int((merged["country"] == country).sum()),
-                "n_selected": n_selected,
-                "n_icc_available": n_available,
-                "coverage_mktcap": coverage,
-                "status": status,
-            }
-        )
+        if n_available >= min_available:
+            icc_value = float(np.average(valid["ICC"], weights=valid["market_cap"]))
+            constituents = ", ".join(valid.sort_values("market_cap", ascending=False)["ticker"].astype(str).tolist())
+        else:
+            icc_value = None
+            constituents = ", ".join(g.sort_values("market_cap", ascending=False)["ticker"].astype(str).head(10).tolist())
+
+        rows.append({
+            "country": country,
+            "country_region": country,
+            "icc": icc_value,
+            "vw_icc": icc_value,
+            "method": method,
+            "n_candidates": n_candidates,
+            "n_selected": n_selected,
+            "n_icc_available": n_available,
+            "coverage_mktcap": coverage,
+            "status": status,
+            "constituents": constituents,
+            "source_note": "Multi-source ADR universe; top-10 by market cap; minimum 4 valid ICC constituents.",
+        })
 
     panel = pd.DataFrame(rows)
-    if not panel.empty:
-        status_order = {"icc_calculation": 0, "partial_adr_estimate": 1, "unavailable": 2}
-        panel["_status_order"] = panel["status"].map(status_order).fillna(9)
-        panel = panel.sort_values(["_status_order", "country"]).drop(columns="_status_order").reset_index(drop=True)
-    return panel, merged
+    status_order = {"icc_calculation": 0, "partial_adr_icc_calculation": 1, "unavailable": 2}
+    panel["_status_order"] = panel["status"].map(status_order).fillna(9)
+    panel = panel.sort_values(["_status_order", "country_region"]).drop(columns=["_status_order"]).reset_index(drop=True)
 
-
-def build_country_adr_icc_panel(cache_path: Path, min_available: int = 3) -> tuple[pd.DataFrame, pd.DataFrame]:
-    """Build Country / Region Level ICC using top ADR or foreign-listing constituents by market cap."""
-    adr = build_candidate_universe(cache_path)
-    if adr.empty:
-        return (
-            pd.DataFrame(
-                columns=[
-                    "country",
-                    "icc",
-                    "method",
-                    "n_candidates",
-                    "n_selected",
-                    "n_icc_available",
-                    "coverage_mktcap",
-                    "status",
-                ]
-            ),
-            pd.DataFrame(),
-        )
-    selected = select_country_top_n(adr, top_n=10)
-    return compute_country_panel(selected, min_available=min_available, full_threshold=8)
-
-
-# Backward-compatible aliases for older build scripts.
-def build_country_region_icc_panel(cache_path: Path, min_available: int = 3) -> tuple[pd.DataFrame, pd.DataFrame]:
-    """Alias for build_country_adr_icc_panel."""
-    return build_country_adr_icc_panel(cache_path, min_available=min_available)
-
-
-def build_country_icc_panel(cache_path: Path, min_available: int = 3) -> tuple[pd.DataFrame, pd.DataFrame]:
-    """Alias for build_country_adr_icc_panel."""
-    return build_country_adr_icc_panel(cache_path, min_available=min_available)
+    members = merged.copy()
+    members["country"] = members["country_final"]
+    members["country_region"] = members["country_final"]
+    members = members.sort_values(["country_region", "rank_in_country"]).reset_index(drop=True)
+    return panel[output_cols], members

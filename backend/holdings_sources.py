@@ -1,10 +1,8 @@
-
 from __future__ import annotations
 
 import io
 import re
 import time
-from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
@@ -13,388 +11,252 @@ import pandas as pd
 import requests
 import yfinance as yf
 
-try:
-    from backend.icc_market_live import get_live_panel
-except Exception:
-    get_live_panel = None  # type: ignore
-
-
 USER_AGENT = (
-    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
-    "(KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+    "Mozilla/5.0 (X11; Linux x86_64) "
+    "AppleWebKit/537.36 (KHTML, like Gecko) "
+    "Chrome/122.0.0.0 Safari/537.36"
 )
 
-BAD_SYM = re.compile(r"[^A-Z0-9\.\-]")
-
-
-@dataclass
-class ETFSpec:
-    ticker: str
-    label: str
-    category: str = "Core"
-    provider: str = "auto"
-    product_id: str = ""
-    slug: str = ""
-
-
-DEFAULT_ETFS: list[ETFSpec] = [
-    ETFSpec("SPY", "SPDR S&P 500 ETF Trust", "US equity", "spdr"),
-    ETFSpec("IVV", "iShares Core S&P 500 ETF", "US equity", "ishares", "239726", "ishares-core-sp-500-etf"),
-    ETFSpec("VOO", "Vanguard S&P 500 ETF", "US equity", "stockanalysis"),
-    ETFSpec("VTI", "Vanguard Total Stock Market ETF", "US equity", "stockanalysis"),
-    ETFSpec("QQQ", "Invesco QQQ Trust", "US equity", "stockanalysis"),
-    ETFSpec("DIA", "SPDR Dow Jones Industrial Average ETF Trust", "US equity", "spdr"),
-    ETFSpec("IWM", "iShares Russell 2000 ETF", "US equity", "ishares"),
-    ETFSpec("IWB", "iShares Russell 1000 ETF", "US equity", "ishares"),
-    ETFSpec("IWD", "iShares Russell 1000 Value ETF", "US value", "ishares"),
-    ETFSpec("IWF", "iShares Russell 1000 Growth ETF", "US growth", "ishares"),
-    ETFSpec("EFA", "iShares MSCI EAFE ETF", "International equity", "ishares", "239623", "ishares-msci-eafe-etf"),
-    ETFSpec("EEM", "iShares MSCI Emerging Markets ETF", "Emerging markets", "ishares"),
-    ETFSpec("EWJ", "iShares MSCI Japan ETF", "Country ETF", "ishares"),
-    ETFSpec("EWG", "iShares MSCI Germany ETF", "Country ETF", "ishares", "239650", "ishares-msci-germany-etf"),
-    ETFSpec("MCHI", "iShares MSCI China ETF", "Country ETF", "ishares"),
-    ETFSpec("INDA", "iShares MSCI India ETF", "Country ETF", "ishares", "239659", "ishares-msci-india-etf"),
-    ETFSpec("EWZ", "iShares MSCI Brazil ETF", "Country ETF", "ishares"),
+DEFAULT_ETFS = [
+    {"ticker": "SPY", "label": "SPDR S&P 500 ETF Trust", "category": "US equity"},
+    {"ticker": "IVV", "label": "iShares Core S&P 500 ETF", "category": "US equity", "ishares_id": "239726", "ishares_slug": "ishares-core-sp-500-etf"},
+    {"ticker": "VOO", "label": "Vanguard S&P 500 ETF", "category": "US equity"},
+    {"ticker": "VTI", "label": "Vanguard Total Stock Market ETF", "category": "US equity"},
+    {"ticker": "QQQ", "label": "Invesco QQQ Trust", "category": "US equity"},
+    {"ticker": "DIA", "label": "SPDR Dow Jones Industrial Average ETF Trust", "category": "US equity"},
+    {"ticker": "IWB", "label": "iShares Russell 1000 ETF", "category": "US equity", "ishares_id": "239707", "ishares_slug": "ishares-russell-1000-etf"},
+    {"ticker": "IWM", "label": "iShares Russell 2000 ETF", "category": "US equity", "ishares_id": "239710", "ishares_slug": "ishares-russell-2000-etf"},
+    {"ticker": "IWD", "label": "iShares Russell 1000 Value ETF", "category": "US value", "ishares_id": "239708", "ishares_slug": "ishares-russell-1000-value-etf"},
+    {"ticker": "IWF", "label": "iShares Russell 1000 Growth ETF", "category": "US growth", "ishares_id": "239725", "ishares_slug": "ishares-russell-1000-growth-etf"},
+    {"ticker": "EFA", "label": "iShares MSCI EAFE ETF", "category": "International equity", "ishares_id": "239623", "ishares_slug": "ishares-msci-eafe-etf"},
+    {"ticker": "EEM", "label": "iShares MSCI Emerging Markets ETF", "category": "Emerging markets", "ishares_id": "239637", "ishares_slug": "ishares-msci-emerging-markets-etf"},
+    {"ticker": "EWJ", "label": "iShares MSCI Japan ETF", "category": "Country ETF", "ishares_id": "239665", "ishares_slug": "ishares-msci-japan-etf"},
+    {"ticker": "EWG", "label": "iShares MSCI Germany ETF", "category": "Country ETF", "ishares_id": "239650", "ishares_slug": "ishares-msci-germany-etf"},
+    {"ticker": "MCHI", "label": "iShares MSCI China ETF", "category": "Country ETF", "ishares_id": "239619", "ishares_slug": "ishares-msci-china-etf"},
+    {"ticker": "INDA", "label": "iShares MSCI India ETF", "category": "Country ETF", "ishares_id": "239659", "ishares_slug": "ishares-msci-india-etf"},
+    {"ticker": "EWZ", "label": "iShares MSCI Brazil ETF", "category": "Country ETF", "ishares_id": "239612", "ishares_slug": "ishares-msci-brazil-etf"},
+    {"ticker": "XLK", "label": "Technology Select Sector SPDR Fund", "category": "Sector US"},
+    {"ticker": "XLF", "label": "Financial Select Sector SPDR Fund", "category": "Sector US"},
+    {"ticker": "XLE", "label": "Energy Select Sector SPDR Fund", "category": "Sector US"},
 ]
 
-
-def http_get(url: str, timeout: int = 30, retries: int = 3) -> bytes:
-    """Download URL content with retries."""
-    headers = {"User-Agent": USER_AGENT, "Accept": "*/*"}
-    last_error: Exception | None = None
-    for attempt in range(1, retries + 1):
-        try:
-            response = requests.get(url, headers=headers, timeout=timeout)
-            response.raise_for_status()
-            return response.content
-        except Exception as exc:
-            last_error = exc
-            time.sleep(0.8 * attempt)
-    raise RuntimeError(f"Failed to fetch {url}: {last_error}")
+SPDR_TICKERS = {"SPY", "DIA", "XLK", "XLF", "XLE", "XLY", "XLP", "XLV", "XLI", "XLB", "XLU", "XLRE", "XLC"}
 
 
-def normalize_symbol(x: Any) -> str | None:
-    """Normalize a holding symbol to Yahoo-style US ticker format when possible."""
-    if x is None or pd.isna(x):
-        return None
+def _clean_symbol(x: Any) -> str:
     s = str(x).strip().upper()
-    if not s or s in {"-", "--", "NAN", "CASH", "USD", "US DOLLAR"}:
-        return None
     s = re.sub(r"\s+", "", s)
     s = s.replace(".", "-")
-    s = s.replace("/", "-")
-    if BAD_SYM.search(s):
-        return None
+    s = re.sub(r"[^A-Z0-9\-]", "", s)
     return s
 
 
-def clean_holdings(df: pd.DataFrame, ticker_col: str, weight_col: str, name_col: str | None = None) -> pd.DataFrame:
-    """Return normalized holdings with symbol, weight, and optional name."""
-    out = pd.DataFrame()
-    out["symbol"] = df[ticker_col].map(normalize_symbol)
-    out["weight"] = pd.to_numeric(
-        df[weight_col].astype(str).str.replace("%", "", regex=False).str.replace(",", "", regex=False),
-        errors="coerce",
-    )
-    if out["weight"].dropna().max() is not None and out["weight"].dropna().max() > 1.5:
-        out["weight"] = out["weight"] / 100.0
-    out["name"] = df[name_col].astype(str) if name_col and name_col in df.columns else None
-    out = out[out["symbol"].notna() & out["weight"].notna() & (out["weight"] > 0)].copy()
-    out = out.groupby("symbol", as_index=False).agg(weight=("weight", "sum"), name=("name", "first"))
-    total = out["weight"].sum()
+def _clean_weight(x: Any) -> float | None:
+    if x is None or (isinstance(x, float) and np.isnan(x)):
+        return None
+    s = str(x).replace("%", "").replace(",", "").strip()
+    try:
+        v = float(s)
+    except Exception:
+        return None
+    if not np.isfinite(v) or v <= 0:
+        return None
+    if v > 1.5:
+        v = v / 100.0
+    return float(v)
+
+
+def _request(url: str, timeout: int = 30) -> requests.Response:
+    r = requests.get(url, headers={"User-Agent": USER_AGENT}, timeout=timeout)
+    r.raise_for_status()
+    return r
+
+
+def _standardize_holdings(df: pd.DataFrame, source: str) -> pd.DataFrame:
+    if df.empty:
+        return pd.DataFrame(columns=["symbol", "weight", "holding_source"])
+    cols = {str(c).strip().lower(): c for c in df.columns}
+    symbol_col = None
+    weight_col = None
+    for c in ["ticker", "symbol", "identifier", "holding ticker", "ticker symbol"]:
+        if c in cols:
+            symbol_col = cols[c]
+            break
+    for c in ["weight (%)", "weight", "% weight", "market value weight", "weighting", "holding percent", "holdingpercent"]:
+        if c in cols:
+            weight_col = cols[c]
+            break
+    if symbol_col is None:
+        for c in df.columns:
+            vals = df[c].astype(str).str.upper().str.strip()
+            hit = vals.str.match(r"^[A-Z][A-Z0-9\.-]{0,8}$", na=False).sum()
+            if hit >= max(3, int(len(df) * 0.2)):
+                symbol_col = c
+                break
+    if weight_col is None:
+        for c in df.columns:
+            vals = pd.to_numeric(df[c].astype(str).str.replace("%", "", regex=False).str.replace(",", "", regex=False), errors="coerce")
+            if vals.notna().sum() >= max(3, int(len(df) * 0.2)) and vals.max(skipna=True) > 0:
+                weight_col = c
+                break
+    if symbol_col is None or weight_col is None:
+        return pd.DataFrame(columns=["symbol", "weight", "holding_source"])
+    out = pd.DataFrame({
+        "symbol": df[symbol_col].map(_clean_symbol),
+        "weight": df[weight_col].map(_clean_weight),
+    })
+    out = out[(out["symbol"] != "") & out["weight"].notna() & (out["weight"] > 0)].copy()
+    if out.empty:
+        return pd.DataFrame(columns=["symbol", "weight", "holding_source"])
+    out = out.drop_duplicates("symbol", keep="first")
+    total = float(out["weight"].sum())
     if total > 0:
         out["weight"] = out["weight"] / total
-    return out.sort_values("weight", ascending=False).reset_index(drop=True)
-
-
-def find_col(cols: list[str], patterns: list[str]) -> str | None:
-    """Find a column by case-insensitive pattern matching."""
-    for pat in patterns:
-        rx = re.compile(pat, re.I)
-        for c in cols:
-            if rx.search(str(c)):
-                return c
-    return None
-
-
-def fetch_stockanalysis_holdings(ticker: str) -> pd.DataFrame:
-    """Fetch full ETF holdings from stockanalysis.com when available."""
-    url = f"https://stockanalysis.com/etf/{ticker.lower()}/holdings/"
-    html = http_get(url).decode("utf-8", errors="ignore")
-    tables = pd.read_html(io.StringIO(html))
-    if not tables:
-        raise RuntimeError(f"No holdings table found at {url}")
-    candidates = []
-    for df in tables:
-        cols = [str(c).strip() for c in df.columns]
-        df.columns = cols
-        sym_col = find_col(cols, [r"^symbol$", r"ticker"])
-        weight_col = find_col(cols, [r"^weight$", r"%\s*weight", r"weight\s*\(%" ])
-        name_col = find_col(cols, [r"^name$", r"company", r"holding"])
-        if sym_col and weight_col and len(df) >= 10:
-            candidates.append((len(df), df, sym_col, weight_col, name_col))
-    if not candidates:
-        raise RuntimeError(f"Could not identify a holdings table at {url}")
-    _, df, sym_col, weight_col, name_col = max(candidates, key=lambda x: x[0])
-    h = clean_holdings(df, sym_col, weight_col, name_col)
-    if h.empty:
-        raise RuntimeError(f"Parsed empty holdings from {url}")
-    h["holding_source"] = "stockanalysis_full_holdings"
-    return h
+    out["holding_source"] = source
+    return out[["symbol", "weight", "holding_source"]]
 
 
 def fetch_spdr_holdings(ticker: str) -> pd.DataFrame:
-    """Fetch SPDR full holdings XLSX using the public daily holdings workbook."""
     url = f"https://www.ssga.com/library-content/products/fund-data/etfs/us/holdings-daily-us-en-{ticker.lower()}.xlsx"
-    content = http_get(url)
-    xls = pd.ExcelFile(io.BytesIO(content))
-    best: tuple[int, pd.DataFrame, str, str, str | None] | None = None
-    for sheet in xls.sheet_names:
-        raw = pd.read_excel(xls, sheet_name=sheet, header=None)
-        for i in range(min(len(raw), 40)):
-            row = [str(x).strip() for x in raw.iloc[i].tolist()]
-            if any(x.lower() == "ticker" for x in row) and any("weight" in x.lower() for x in row):
-                df = pd.read_excel(xls, sheet_name=sheet, header=i)
-                cols = [str(c).strip() for c in df.columns]
-                df.columns = cols
-                sym_col = find_col(cols, [r"^ticker$", r"symbol"])
-                weight_col = find_col(cols, [r"weight", r"%"])
-                name_col = find_col(cols, [r"name", r"holding"])
-                if sym_col and weight_col:
-                    item = (len(df), df, sym_col, weight_col, name_col)
-                    if best is None or item[0] > best[0]:
-                        best = item
-    if best is None:
-        raise RuntimeError(f"Could not identify holdings table in SPDR workbook for {ticker}")
-    _, df, sym_col, weight_col, name_col = best
-    h = clean_holdings(df, sym_col, weight_col, name_col)
-    if h.empty:
-        raise RuntimeError(f"Parsed empty SPDR holdings for {ticker}")
-    h["holding_source"] = "spdr_full_holdings"
-    return h
+    r = _request(url)
+    sheets = pd.read_excel(io.BytesIO(r.content), sheet_name=None, header=None)
+    frames: list[pd.DataFrame] = []
+    for raw in sheets.values():
+        if raw.empty:
+            continue
+        header_idx = None
+        for i in range(min(30, len(raw))):
+            row = [str(x).strip().lower() for x in raw.iloc[i].tolist()]
+            if any("ticker" == x or "identifier" == x for x in row) and any("weight" in x for x in row):
+                header_idx = i
+                break
+        if header_idx is None:
+            continue
+        df = raw.iloc[header_idx + 1:].copy()
+        df.columns = [str(x).strip() for x in raw.iloc[header_idx].tolist()]
+        frames.append(df)
+    if not frames:
+        return pd.DataFrame(columns=["symbol", "weight", "holding_source"])
+    return _standardize_holdings(pd.concat(frames, ignore_index=True), "spdr_full_holdings")
 
 
-def parse_ishares_csv(content: bytes) -> pd.DataFrame:
-    """Parse iShares holdings CSV with variable metadata rows."""
-    text = content.decode("utf-8-sig", errors="ignore")
-    lines = [ln for ln in text.splitlines() if ln.strip()]
+def fetch_ishares_holdings(ticker: str, product_id: str | None, slug: str | None) -> pd.DataFrame:
+    if not product_id or not slug:
+        return pd.DataFrame(columns=["symbol", "weight", "holding_source"])
+    url = f"https://www.ishares.com/us/products/{product_id}/{slug}/1467271812596.ajax?fileType=csv&fileName={ticker.upper()}_holdings&dataType=fund"
+    r = _request(url)
+    text = r.text
+    lines = text.splitlines()
     header_idx = None
     for i, line in enumerate(lines[:80]):
-        lower = line.lower()
-        if "ticker" in lower and ("weight" in lower or "market value" in lower):
+        low = line.lower()
+        if ("ticker" in low or "symbol" in low) and "weight" in low:
             header_idx = i
             break
     if header_idx is None:
-        raise RuntimeError("Could not find iShares holdings header row")
+        return pd.DataFrame(columns=["symbol", "weight", "holding_source"])
     csv_text = "\n".join(lines[header_idx:])
-    df = pd.read_csv(io.StringIO(csv_text), on_bad_lines="skip")
-    cols = [str(c).strip() for c in df.columns]
-    df.columns = cols
-    sym_col = find_col(cols, [r"^ticker$", r"symbol"])
-    weight_col = find_col(cols, [r"weight\s*\(%\)", r"weight", r"% of fund"])
-    name_col = find_col(cols, [r"name", r"holding"])
-    if not sym_col or not weight_col:
-        raise RuntimeError("Could not identify iShares ticker/weight columns")
-    h = clean_holdings(df, sym_col, weight_col, name_col)
-    if h.empty:
-        raise RuntimeError("Parsed empty iShares holdings")
-    h["holding_source"] = "ishares_full_holdings"
-    return h
+    df = pd.read_csv(io.StringIO(csv_text))
+    return _standardize_holdings(df, "ishares_full_holdings")
 
 
-def fetch_ishares_holdings(spec: ETFSpec) -> pd.DataFrame:
-    """Fetch iShares full holdings CSV using the public ajax endpoint."""
-    if not spec.product_id or not spec.slug:
-        raise RuntimeError(f"Missing iShares product_id/slug for {spec.ticker}")
-    url = (
-        f"https://www.ishares.com/us/products/{spec.product_id}/{spec.slug}/"
-        f"1467271812596.ajax?fileType=csv&fileName={spec.ticker}_holdings&dataType=fund"
-    )
-    return parse_ishares_csv(http_get(url))
+def fetch_stockanalysis_holdings(ticker: str) -> pd.DataFrame:
+    url = f"https://stockanalysis.com/etf/{ticker.lower()}/holdings/"
+    try:
+        html = _request(url).text
+        tables = pd.read_html(io.StringIO(html))
+    except Exception:
+        return pd.DataFrame(columns=["symbol", "weight", "holding_source"])
+    best = pd.DataFrame()
+    for t in tables:
+        if len(t) > len(best):
+            best = t
+    return _standardize_holdings(best, "stockanalysis_holdings")
 
 
 def fetch_yfinance_top_holdings(ticker: str) -> pd.DataFrame:
-    """Fetch yfinance top holdings as a partial-holdings fallback."""
-    fund = yf.Ticker(ticker)
-    fd = getattr(fund, "funds_data", None)
-    if fd is None:
-        raise RuntimeError("funds_data is unavailable")
-    h = getattr(fd, "top_holdings", None)
-    if h is None:
-        raise RuntimeError("top_holdings is unavailable")
-    df = h.copy() if isinstance(h, pd.DataFrame) else pd.DataFrame(h)
-    if df.empty:
-        raise RuntimeError("top_holdings is empty")
-    cols = [str(c).strip() for c in df.columns]
-    df.columns = cols
-    sym_col = find_col(cols, [r"symbol", r"ticker", r"holding"])
-    weight_col = find_col(cols, [r"holdingPercent", r"holding_percent", r"weight", r"percent", r"pct"])
-    if sym_col is None:
-        sym_col = cols[0]
-    if weight_col is None:
-        numeric_cols = []
-        for c in cols:
-            vals = pd.to_numeric(df[c], errors="coerce")
-            if vals.notna().sum() >= max(1, len(df) // 2):
-                numeric_cols.append(c)
-        if numeric_cols:
-            weight_col = numeric_cols[-1]
-    if weight_col is None:
-        raise RuntimeError("Could not identify yfinance top holdings weight column")
-    h2 = clean_holdings(df, sym_col, weight_col, None)
-    h2["holding_source"] = "yfinance_top_holdings"
-    return h2
+    try:
+        fd = yf.Ticker(ticker).funds_data
+        h = fd.top_holdings
+        if h is None:
+            return pd.DataFrame(columns=["symbol", "weight", "holding_source"])
+        df = h.copy() if isinstance(h, pd.DataFrame) else pd.DataFrame(h)
+        return _standardize_holdings(df, "yfinance_top_holdings")
+    except Exception:
+        return pd.DataFrame(columns=["symbol", "weight", "holding_source"])
 
 
-def load_etf_specs(config_path: Path | None = None) -> list[ETFSpec]:
-    """Load ETF specs from config if available; otherwise use built-in defaults."""
-    specs = DEFAULT_ETFS.copy()
-    if config_path and config_path.exists():
-        try:
-            cfg = pd.read_csv(config_path, dtype=str).fillna("")
-            loaded = []
-            for _, r in cfg.iterrows():
-                ticker = str(r.get("ticker", "")).strip().upper()
-                if not ticker:
-                    continue
-                loaded.append(
-                    ETFSpec(
-                        ticker=ticker,
-                        label=str(r.get("label", ticker)).strip() or ticker,
-                        category=str(r.get("category", "ETF")).strip() or "ETF",
-                        provider=str(r.get("provider", "auto")).strip() or "auto",
-                        product_id=str(r.get("product_id", "")).strip(),
-                        slug=str(r.get("slug", "")).strip(),
-                    )
-                )
-            if loaded:
-                specs = loaded
-        except Exception:
-            pass
-    seen = set()
-    out = []
-    for s in specs:
-        if s.ticker not in seen:
-            seen.add(s.ticker)
-            out.append(s)
-    return out
-
-
-def fetch_full_or_partial_holdings(spec: ETFSpec) -> pd.DataFrame:
-    """Fetch ETF holdings using official provider sources first, then public full holdings, then top holdings."""
-    errors = []
+def fetch_best_holdings(row: pd.Series) -> pd.DataFrame:
+    ticker = str(row.get("ticker", "")).upper().strip()
+    product_id = str(row.get("ishares_id", "") or "").strip() or None
+    slug = str(row.get("ishares_slug", "") or "").strip() or None
     providers = []
-    if spec.provider.lower() in {"spdr", "auto"}:
-        providers.append(("spdr", lambda: fetch_spdr_holdings(spec.ticker)))
-    if spec.provider.lower() in {"ishares", "auto"}:
-        providers.append(("ishares", lambda: fetch_ishares_holdings(spec)))
-    providers.append(("stockanalysis", lambda: fetch_stockanalysis_holdings(spec.ticker)))
-    providers.append(("yfinance", lambda: fetch_yfinance_top_holdings(spec.ticker)))
-    for source, fn in providers:
+    if ticker in SPDR_TICKERS:
+        providers.append(lambda: fetch_spdr_holdings(ticker))
+    if product_id and slug:
+        providers.append(lambda: fetch_ishares_holdings(ticker, product_id, slug))
+    providers.extend([lambda: fetch_stockanalysis_holdings(ticker), lambda: fetch_yfinance_top_holdings(ticker)])
+    best = pd.DataFrame(columns=["symbol", "weight", "holding_source"])
+    for fn in providers:
         try:
             h = fn()
-            h["holding_source"] = h.get("holding_source", source)
+        except Exception:
+            h = pd.DataFrame(columns=["symbol", "weight", "holding_source"])
+        if not h.empty and len(h) > len(best):
+            best = h
+        if not h.empty and h["holding_source"].iloc[0] in {"spdr_full_holdings", "ishares_full_holdings"} and len(h) >= 50:
             return h
-        except Exception as exc:
-            errors.append(f"{source}: {type(exc).__name__}: {exc}")
-    raise RuntimeError(" | ".join(errors))
+        time.sleep(0.2)
+    return best
 
 
-def compute_icc_from_holdings(
-    holdings: pd.DataFrame,
-    base_panel: pd.DataFrame,
-    max_extra_symbols: int = 250,
-) -> tuple[float | None, float, int, int, pd.DataFrame]:
-    """Compute holdings-weighted ICC using base panel plus extra live ICC fetches for unmatched symbols."""
-    if holdings.empty:
-        return None, 0.0, 0, 0, pd.DataFrame()
-    h = holdings.copy()
-    h["symbol"] = h["symbol"].map(normalize_symbol)
-    h = h[h["symbol"].notna() & h["weight"].notna()].copy()
-    h["weight"] = pd.to_numeric(h["weight"], errors="coerce")
-    h = h[h["weight"] > 0].copy()
-    h["weight"] = h["weight"] / h["weight"].sum()
-
-    base = base_panel.copy()
-    base["ticker"] = base["ticker"].astype(str).str.upper().str.replace(".", "-", regex=False)
-    base = base[["ticker", "ICC", "mktcap", "name", "sector"]].dropna(subset=["ICC"]).drop_duplicates("ticker")
-
-    merged = h.merge(base, left_on="symbol", right_on="ticker", how="left")
-    current_cov = float(merged.loc[merged["ICC"].notna(), "weight"].sum()) if len(merged) else 0.0
-
-    if current_cov < 0.80 and get_live_panel is not None:
-        missing = merged.loc[merged["ICC"].isna(), ["symbol", "weight"]].sort_values("weight", ascending=False)
-        extra_symbols = missing["symbol"].head(max_extra_symbols).tolist()
-        if extra_symbols:
-            extra_panel = get_live_panel(extra_symbols)
-            if extra_panel is not None and not extra_panel.empty:
-                extra = extra_panel[["ticker", "ICC", "mktcap", "name", "sector"]].copy()
-                extra["ticker"] = extra["ticker"].astype(str).str.upper().str.replace(".", "-", regex=False)
-                combined = pd.concat([base, extra], ignore_index=True).drop_duplicates("ticker", keep="last")
-                merged = h.merge(combined, left_on="symbol", right_on="ticker", how="left")
-
-    matched = merged["ICC"].notna()
-    coverage = float(merged.loc[matched, "weight"].sum()) if len(merged) else 0.0
-    n_total = int(len(h))
-    n_matched = int(matched.sum())
-    if n_matched == 0 or coverage <= 0:
-        return None, 0.0, n_total, 0, merged
-    icc = float(np.average(merged.loc[matched, "ICC"], weights=merged.loc[matched, "weight"]))
-    return icc, coverage, n_total, n_matched, merged
+def _read_etf_config(config_path: Path | None = None) -> pd.DataFrame:
+    if config_path and config_path.exists() and config_path.stat().st_size > 0:
+        df = pd.read_csv(config_path)
+    else:
+        df = pd.DataFrame(DEFAULT_ETFS)
+    for c in ["ticker", "label", "category", "ishares_id", "ishares_slug"]:
+        if c not in df.columns:
+            df[c] = ""
+    return df
 
 
-def build_etf_icc_panel(base_panel: pd.DataFrame, config_path: Path | None = None) -> tuple[pd.DataFrame, pd.DataFrame]:
-    """Build ETF ICC panel from online holdings without requiring manual holdings files."""
-    rows = []
-    members = []
-    for spec in load_etf_specs(config_path):
-        try:
-            holdings = fetch_full_or_partial_holdings(spec)
-            icc, coverage, n_total, n_matched, merged = compute_icc_from_holdings(holdings, base_panel)
-            source = str(holdings["holding_source"].iloc[0]) if "holding_source" in holdings.columns and len(holdings) else "unknown"
-            if icc is None:
-                method = "Unavailable"
-                status = "unavailable"
-            elif source == "yfinance_top_holdings" or coverage < 0.80:
-                method = "Partial holdings estimate"
-                status = "partial_holdings"
-            else:
+def build_etf_icc_panel(latest_usall: pd.DataFrame, config_path: Path | None = None) -> tuple[pd.DataFrame, pd.DataFrame]:
+    base = latest_usall.copy()
+    base["ticker"] = base["ticker"].astype(str).str.upper().str.replace(".", "-", regex=False).str.strip()
+    base = base[["ticker", "ICC", "mktcap"] + (["name"] if "name" in base.columns else [])].dropna(subset=["ticker", "ICC", "mktcap"])
+    cfg = _read_etf_config(config_path)
+    rows: list[dict[str, Any]] = []
+    member_rows: list[dict[str, Any]] = []
+    for _, r in cfg.iterrows():
+        ticker = str(r.get("ticker", "")).upper().strip()
+        if not ticker:
+            continue
+        label = str(r.get("label", ticker) or ticker)
+        category = str(r.get("category", "") or "")
+        h = fetch_best_holdings(r)
+        if h.empty:
+            rows.append({"ticker": ticker, "label": label, "category": category, "icc": np.nan, "coverage_weight": 0.0, "n_holdings_total": 0, "n_holdings_matched": 0, "method": "Unavailable", "holding_source": "none", "status": "unavailable"})
+            continue
+        merged = h.merge(base, left_on="symbol", right_on="ticker", how="left")
+        matched = merged["ICC"].notna() & merged["weight"].notna()
+        coverage = float(merged.loc[matched, "weight"].sum()) if matched.any() else 0.0
+        n_matched = int(matched.sum())
+        n_total = int(len(h))
+        source = str(h["holding_source"].iloc[0])
+        if n_matched > 0 and coverage > 0:
+            icc = float(np.average(merged.loc[matched, "ICC"], weights=merged.loc[matched, "weight"]))
+            if source in {"spdr_full_holdings", "ishares_full_holdings"} and coverage >= 0.80 and n_matched >= 10:
                 method = "ICC calculation"
                 status = "icc_calculation"
-            rows.append(
-                {
-                    "ticker": spec.ticker,
-                    "label": spec.label,
-                    "category": spec.category,
-                    "icc": icc,
-                    "coverage_weight": coverage,
-                    "n_holdings_total": n_total,
-                    "n_holdings_matched": n_matched,
-                    "method": method,
-                    "holding_source": source,
-                    "status": status,
-                }
-            )
-            if not merged.empty:
-                tmp = merged.copy()
-                tmp["etf"] = spec.ticker
-                tmp["etf_label"] = spec.label
-                members.append(tmp)
-        except Exception as exc:
-            rows.append(
-                {
-                    "ticker": spec.ticker,
-                    "label": spec.label,
-                    "category": spec.category,
-                    "icc": None,
-                    "coverage_weight": 0.0,
-                    "n_holdings_total": 0,
-                    "n_holdings_matched": 0,
-                    "method": "Unavailable",
-                    "holding_source": "",
-                    "status": f"error: {type(exc).__name__}",
-                }
-            )
-    panel = pd.DataFrame(rows)
-    members_df = pd.concat(members, ignore_index=True) if members else pd.DataFrame()
-    return panel, members_df
+            else:
+                method = "Partial holdings estimate"
+                status = "partial_holdings"
+        else:
+            icc = np.nan
+            method = "Unavailable"
+            status = "unavailable"
+        rows.append({"ticker": ticker, "label": label, "category": category, "icc": icc, "coverage_weight": coverage, "n_holdings_total": n_total, "n_holdings_matched": n_matched, "method": method, "holding_source": source, "status": status})
+        for _, m in merged.iterrows():
+            member_rows.append({"etf": ticker, "symbol": m.get("symbol"), "weight": m.get("weight"), "matched": bool(pd.notna(m.get("ICC"))), "constituent_icc": m.get("ICC"), "holding_source": source})
+    return pd.DataFrame(rows), pd.DataFrame(member_rows)
