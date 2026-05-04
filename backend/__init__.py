@@ -1,1 +1,1 @@
-"""Backend package for Live ICC data library."""
+"""Backend package for the Live ICC data library."""
