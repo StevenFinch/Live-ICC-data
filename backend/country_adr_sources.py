@@ -407,6 +407,63 @@ def enrich_candidates(candidates: pd.DataFrame, cache_path: Path) -> pd.DataFram
     return out
 
 
+
+def repair_adr_universe_columns(adr: pd.DataFrame) -> pd.DataFrame:
+    """Repair legacy ADR universe caches that are missing normalized fields."""
+    if adr is None or adr.empty:
+        return pd.DataFrame(columns=["ticker", "company", "country_final", "market_cap", "source"])
+
+    out = adr.copy()
+
+    if "ticker" not in out.columns:
+        for c in ["symbol", "Symbol", "DR Ticker", "Ticker"]:
+            if c in out.columns:
+                out["ticker"] = out[c]
+                break
+    if "ticker" not in out.columns:
+        out["ticker"] = None
+    out["ticker"] = out["ticker"].map(normalize_ticker)
+
+    if "company" not in out.columns:
+        for c in ["name", "Name", "Company", "Issuer", "security_name", "Security Name"]:
+            if c in out.columns:
+                out["company"] = out[c].astype(str)
+                break
+    if "company" not in out.columns:
+        out["company"] = out["ticker"].astype(str)
+
+    country_candidates = [
+        "country_final", "country", "Country", "country_yf", "country_sec",
+        "country_citi", "country_db", "headquartersCountry", "incorporation_country",
+    ]
+    if "country_final" not in out.columns:
+        out["country_final"] = None
+    for c in country_candidates:
+        if c in out.columns and c != "country_final":
+            out["country_final"] = out["country_final"].where(
+                out["country_final"].notna() & (out["country_final"].astype(str).str.strip() != ""),
+                out[c],
+            )
+    out["country_final"] = out["country_final"].map(normalize_country)
+
+    if "market_cap" not in out.columns:
+        for c in ["mktcap", "marketCap", "market_cap_yf", "Market Cap"]:
+            if c in out.columns:
+                out["market_cap"] = out[c]
+                break
+    if "market_cap" not in out.columns:
+        out["market_cap"] = np.nan
+    out["market_cap"] = pd.to_numeric(out["market_cap"], errors="coerce")
+
+    if "source" not in out.columns:
+        out["source"] = "legacy_cache"
+
+    out = out.dropna(subset=["ticker", "country_final"]).copy()
+    out = out[out["country_final"].astype(str).str.strip() != ""]
+    out = out.drop_duplicates("ticker", keep="first")
+    return out
+
+
 def load_cached_or_build_adr_universe(cache_path: Path, max_age_days: int | None = None) -> pd.DataFrame:
     """Build or load the multi-source ADR universe."""
     force = os.environ.get("COUNTRY_ADR_FORCE_REBUILD", "0") == "1"
@@ -446,30 +503,44 @@ def build_country_adr_icc_panel(cache_path: Path, min_available: int | None = No
 
     The standard portfolio uses up to the 10 largest ADR-like U.S.-listed firms by market cap.
     A country / region is still computed when at least 4 constituents have valid ICC estimates.
+    Legacy ADR universe caches are repaired automatically if normalized columns are missing.
     """
     min_available = min_available if min_available is not None else _env_int("COUNTRY_ADR_MIN_AVAILABLE", 4)
     min_available = max(1, min_available)
 
-    adr = load_cached_or_build_adr_universe(cache_path)
     output_cols = [
         "country", "country_region", "icc", "vw_icc", "method", "n_candidates", "n_selected",
         "n_icc_available", "coverage_mktcap", "status", "constituents", "source_note",
     ]
-    if adr.empty or get_live_panel is None:
+
+    adr = load_cached_or_build_adr_universe(cache_path)
+    adr = repair_adr_universe_columns(adr)
+
+    if adr.empty:
+        print("[country_adr] ADR universe is empty after repair; returning empty country panel.")
+        return pd.DataFrame(columns=output_cols), pd.DataFrame()
+
+    if get_live_panel is None:
+        print("[country_adr] get_live_panel is unavailable; returning empty country panel.")
         return pd.DataFrame(columns=output_cols), pd.DataFrame()
 
     selected_rows = []
-    for country, g in adr.groupby("country_final"):
-        g2 = g.sort_values("market_cap", ascending=False).head(10).copy()
+    for country, g in adr.groupby("country_final", dropna=True):
+        g2 = g.copy()
+        g2["market_cap"] = pd.to_numeric(g2.get("market_cap"), errors="coerce")
+        # Keep records with positive market cap first, but allow unknown market cap at the bottom.
+        g2["_mcap_sort"] = g2["market_cap"].fillna(-1)
+        g2 = g2.sort_values("_mcap_sort", ascending=False).drop(columns=["_mcap_sort"]).head(10).copy()
         g2["rank_in_country"] = range(1, len(g2) + 1)
         selected_rows.append(g2)
-    selected = pd.concat(selected_rows, ignore_index=True) if selected_rows else pd.DataFrame()
 
+    selected = pd.concat(selected_rows, ignore_index=True) if selected_rows else pd.DataFrame()
     if selected.empty:
         return pd.DataFrame(columns=output_cols), pd.DataFrame()
 
     tickers = selected["ticker"].dropna().astype(str).unique().tolist()
     print(f"[country_adr] computing firm-level ICC for {len(tickers)} selected ADR tickers")
+
     try:
         live = get_live_panel(tickers)
     except Exception as exc:
@@ -480,18 +551,46 @@ def build_country_adr_icc_panel(cache_path: Path, min_available: int | None = No
         live = pd.DataFrame(columns=["ticker", "ICC", "mktcap", "name", "sector"])
 
     live = live.copy()
+    if "ticker" not in live.columns:
+        live["ticker"] = None
+    if "ICC" not in live.columns:
+        live["ICC"] = np.nan
+    if "mktcap" not in live.columns:
+        live["mktcap"] = np.nan
+    if "name" not in live.columns:
+        live["name"] = None
+    if "sector" not in live.columns:
+        live["sector"] = None
+
     live["ticker"] = live["ticker"].astype(str).str.upper().str.replace(".", "-", regex=False)
+    live["ICC"] = pd.to_numeric(live["ICC"], errors="coerce")
+    live["mktcap"] = pd.to_numeric(live["mktcap"], errors="coerce")
+
     selected["ticker"] = selected["ticker"].astype(str).str.upper().str.replace(".", "-", regex=False)
-    merged = selected.merge(live[["ticker", "ICC", "mktcap", "name", "sector"]], on="ticker", how="left", suffixes=("", "_icc"))
+    selected["market_cap"] = pd.to_numeric(selected.get("market_cap"), errors="coerce")
+
+    merged = selected.merge(
+        live[["ticker", "ICC", "mktcap", "name", "sector"]],
+        on="ticker",
+        how="left",
+        suffixes=("", "_icc"),
+    )
+
+    # Prefer the live market cap when available, otherwise use the ADR universe market cap.
+    merged["weight_mktcap"] = pd.to_numeric(merged.get("mktcap"), errors="coerce")
+    merged["weight_mktcap"] = merged["weight_mktcap"].where(merged["weight_mktcap"].notna() & (merged["weight_mktcap"] > 0), merged["market_cap"])
+    merged["weight_mktcap"] = pd.to_numeric(merged["weight_mktcap"], errors="coerce")
 
     rows = []
-    for country, g in merged.groupby("country_final"):
-        total_selected_mcap = float(g["market_cap"].sum()) if len(g) else 0.0
-        valid = g[g["ICC"].notna() & g["market_cap"].notna() & (g["market_cap"] > 0)].copy()
+    for country, g in merged.groupby("country_final", dropna=True):
         n_candidates = int((adr["country_final"] == country).sum())
         n_selected = int(len(g))
+
+        valid = g[g["ICC"].notna() & g["weight_mktcap"].notna() & (g["weight_mktcap"] > 0)].copy()
         n_available = int(len(valid))
-        coverage = float(valid["market_cap"].sum() / total_selected_mcap) if total_selected_mcap > 0 and n_available > 0 else 0.0
+
+        total_selected_mcap = float(g["weight_mktcap"].dropna().clip(lower=0).sum())
+        coverage = float(valid["weight_mktcap"].sum() / total_selected_mcap) if total_selected_mcap > 0 and n_available > 0 else 0.0
 
         if n_available >= 10:
             method = "ICC calculation"
@@ -504,11 +603,12 @@ def build_country_adr_icc_panel(cache_path: Path, min_available: int | None = No
             status = "unavailable"
 
         if n_available >= min_available:
-            icc_value = float(np.average(valid["ICC"], weights=valid["market_cap"]))
-            constituents = ", ".join(valid.sort_values("market_cap", ascending=False)["ticker"].astype(str).tolist())
+            icc_value = float(np.average(valid["ICC"], weights=valid["weight_mktcap"]))
+            constituents = ", ".join(valid.sort_values("weight_mktcap", ascending=False)["ticker"].astype(str).tolist())
         else:
             icc_value = None
-            constituents = ", ".join(g.sort_values("market_cap", ascending=False)["ticker"].astype(str).head(10).tolist())
+            sort_col = "weight_mktcap" if "weight_mktcap" in g.columns else "market_cap"
+            constituents = ", ".join(g.sort_values(sort_col, ascending=False)["ticker"].astype(str).head(10).tolist())
 
         rows.append({
             "country": country,
@@ -526,6 +626,9 @@ def build_country_adr_icc_panel(cache_path: Path, min_available: int | None = No
         })
 
     panel = pd.DataFrame(rows)
+    if panel.empty:
+        return pd.DataFrame(columns=output_cols), pd.DataFrame()
+
     status_order = {"icc_calculation": 0, "partial_adr_icc_calculation": 1, "unavailable": 2}
     panel["_status_order"] = panel["status"].map(status_order).fillna(9)
     panel = panel.sort_values(["_status_order", "country_region"]).drop(columns=["_status_order"]).reset_index(drop=True)

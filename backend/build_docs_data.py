@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import os
 import json
 import re
 import shutil
@@ -11,8 +12,7 @@ import numpy as np
 import pandas as pd
 from pandas.errors import EmptyDataError
 
-from backend.holdings_sources import build_etf_icc_panel
-from backend.country_adr_sources import build_country_adr_icc_panel
+from backend.ensure_daily_derived import ensure_daily_derived
 
 REPO = Path(__file__).resolve().parents[1]
 DATA_DIR = REPO / "data"
@@ -317,25 +317,26 @@ def main() -> None:
     index_frames = [build_market_history(by_universe[u], u) for u in INDEX_UNIVERSES if u in by_universe]
     indices = pd.concat(index_frames, ignore_index=True) if index_frames else pd.DataFrame()
 
-    etf_panel, etf_members = build_etf_icc_panel(latest_usall, CONFIG_DIR / "etfs.csv")
-    save_derived("etf", etf_panel, latest_date)
-    if not etf_members.empty:
-        mem_dir = DERIVED_DIR / "etf_members" / latest_date[:7].replace("-", "")
-        mem_dir.mkdir(parents=True, exist_ok=True)
-        etf_members.to_csv(mem_dir / f"etf_members_{latest_date.replace('-', '_')}.csv", index=False)
-    country_panel, country_members = build_country_adr_icc_panel(DERIVED_DIR / "country_adr" / "adr_candidates_latest.csv")
-    save_derived("country_adr", country_panel, latest_date)
-    if not country_members.empty:
-        mem_dir = DERIVED_DIR / "country_adr_members" / latest_date[:7].replace("-", "")
-        mem_dir.mkdir(parents=True, exist_ok=True)
-        country_members.to_csv(mem_dir / f"country_adr_members_{latest_date.replace('-', '_')}.csv", index=False)
+    # Ensure ETF and Country / Region derived files exist for the latest raw usall date.
+    # This prevents the website from staying on stale ETF/Country data when raw snapshots update.
+    force_derived = os.environ.get("FORCE_DERIVED_REBUILD", "0") == "1"
+    ensure_daily_derived(args.universe, force=force_derived)
 
     etf_daily = load_derived("etf")
-    if not etf_daily.empty and "icc" in etf_daily.columns:
-        etf_daily["daily_icc"] = etf_daily["icc"]
+    if not etf_daily.empty:
+        if "icc" in etf_daily.columns:
+            etf_daily["daily_icc"] = pd.to_numeric(etf_daily["icc"], errors="coerce")
+        if "ticker" not in etf_daily.columns:
+            etf_daily["ticker"] = "ETF"
+
     country_daily = load_derived("country_adr")
-    if not country_daily.empty and "icc" in country_daily.columns:
-        country_daily["daily_icc"] = country_daily["icc"]
+    if not country_daily.empty:
+        if "icc" in country_daily.columns:
+            country_daily["daily_icc"] = pd.to_numeric(country_daily["icc"], errors="coerce")
+        if "country" not in country_daily.columns and "country_region" in country_daily.columns:
+            country_daily["country"] = country_daily["country_region"]
+        if "country_region" not in country_daily.columns and "country" in country_daily.columns:
+            country_daily["country_region"] = country_daily["country"]
 
     families = {
         "marketwide": (marketwide, monthly_from_daily(marketwide, ["family"]), ["family"]),
