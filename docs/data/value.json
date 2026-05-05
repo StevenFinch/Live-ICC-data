@@ -3,38 +3,38 @@
     {
       "family": "growth_icc",
       "label": "Growth ICC",
-      "date": "2026-05-01",
-      "value": 0.0821823058151475,
+      "date": "2026-05-05",
+      "value": 0.0802947761080247,
       "method": "ICC calculation",
       "source": "Constituent ICC aggregation",
-      "n_items": 2563,
+      "n_items": 2562,
       "coverage_weight": null,
       "status": "available",
-      "__source_file": "data/library/value/daily/202605/value_2026_0501.csv"
+      "__source_file": "data/library/value/daily/202605/value_2026_0505.csv"
     },
     {
       "family": "ivp_bm",
       "label": "IVP (B/M)",
-      "date": "2026-05-01",
-      "value": 0.0373185621545196,
+      "date": "2026-05-05",
+      "value": 0.041658201036316,
       "method": "ICC calculation",
       "source": "Constituent ICC aggregation",
-      "n_items": 2563,
+      "n_items": 2562,
       "coverage_weight": null,
       "status": "available",
-      "__source_file": "data/library/value/daily/202605/value_2026_0501.csv"
+      "__source_file": "data/library/value/daily/202605/value_2026_0505.csv"
     },
     {
       "family": "value_icc",
       "label": "Value ICC",
-      "date": "2026-05-01",
-      "value": 0.1195008679696671,
+      "date": "2026-05-05",
+      "value": 0.1219529771443407,
       "method": "ICC calculation",
       "source": "Constituent ICC aggregation",
-      "n_items": 2563,
+      "n_items": 2562,
       "coverage_weight": null,
       "status": "available",
-      "__source_file": "data/library/value/daily/202605/value_2026_0501.csv"
+      "__source_file": "data/library/value/daily/202605/value_2026_0505.csv"
     }
   ],
   "daily": [
@@ -135,6 +135,18 @@
       "__source_file": "data/library/value/daily/202605/value_2026_0501.csv"
     },
     {
+      "family": "growth_icc",
+      "label": "Growth ICC",
+      "date": "2026-05-05",
+      "value": 0.0802947761080247,
+      "method": "ICC calculation",
+      "source": "Constituent ICC aggregation",
+      "n_items": 2562,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/value/daily/202605/value_2026_0505.csv"
+    },
+    {
       "family": "ivp_bm",
       "label": "IVP (B/M)",
       "date": "2026-04-17",
@@ -231,6 +243,18 @@
       "__source_file": "data/library/value/daily/202605/value_2026_0501.csv"
     },
     {
+      "family": "ivp_bm",
+      "label": "IVP (B/M)",
+      "date": "2026-05-05",
+      "value": 0.041658201036316,
+      "method": "ICC calculation",
+      "source": "Constituent ICC aggregation",
+      "n_items": 2562,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/value/daily/202605/value_2026_0505.csv"
+    },
+    {
       "family": "value_icc",
       "label": "Value ICC",
       "date": "2026-04-17",
@@ -325,6 +349,18 @@
       "coverage_weight": null,
       "status": "available",
       "__source_file": "data/library/value/daily/202605/value_2026_0501.csv"
+    },
+    {
+      "family": "value_icc",
+      "label": "Value ICC",
+      "date": "2026-05-05",
+      "value": 0.1219529771443407,
+      "method": "ICC calculation",
+      "source": "Constituent ICC aggregation",
+      "n_items": 2562,
+      "coverage_weight": null,
+      "status": "available",
+      "__source_file": "data/library/value/daily/202605/value_2026_0505.csv"
     }
   ],
   "monthly": [
@@ -343,14 +379,14 @@
     {
       "family": "growth_icc",
       "label": "Growth ICC",
-      "date": "2026-05-01",
-      "value": 0.0821823058151475,
+      "date": "2026-05-05",
+      "value": 0.0802947761080247,
       "method": "ICC calculation",
       "source": "Constituent ICC aggregation",
-      "n_items": 2563,
+      "n_items": 2562,
       "coverage_weight": null,
       "status": "available",
-      "__source_file": "data/library/value/daily/202605/value_2026_0501.csv"
+      "__source_file": "data/library/value/daily/202605/value_2026_0505.csv"
     },
     {
       "family": "ivp_bm",
@@ -367,14 +403,14 @@
     {
       "family": "ivp_bm",
       "label": "IVP (B/M)",
-      "date": "2026-05-01",
-      "value": 0.0373185621545196,
+      "date": "2026-05-05",
+      "value": 0.041658201036316,
       "method": "ICC calculation",
       "source": "Constituent ICC aggregation",
-      "n_items": 2563,
+      "n_items": 2562,
       "coverage_weight": null,
       "status": "available",
-      "__source_file": "data/library/value/daily/202605/value_2026_0501.csv"
+      "__source_file": "data/library/value/daily/202605/value_2026_0505.csv"
     },
     {
       "family": "value_icc",
@@ -391,14 +427,14 @@
     {
       "family": "value_icc",
       "label": "Value ICC",
-      "date": "2026-05-01",
-      "value": 0.1195008679696671,
+      "date": "2026-05-05",
+      "value": 0.1219529771443407,
       "method": "ICC calculation",
       "source": "Constituent ICC aggregation",
-      "n_items": 2563,
+      "n_items": 2562,
       "coverage_weight": null,
       "status": "available",
-      "__source_file": "data/library/value/daily/202605/value_2026_0501.csv"
+      "__source_file": "data/library/value/daily/202605/value_2026_0505.csv"
     }
   ],
   "monthly_groups": {
@@ -406,14 +442,14 @@
       {
         "family": "growth_icc",
         "label": "Growth ICC",
-        "date": "2026-05-01",
-        "value": 0.0821823058151475,
+        "date": "2026-05-05",
+        "value": 0.0802947761080247,
         "method": "ICC calculation",
         "source": "Constituent ICC aggregation",
-        "n_items": 2563,
+        "n_items": 2562,
         "coverage_weight": null,
         "status": "available",
-        "__source_file": "data/library/value/daily/202605/value_2026_0501.csv"
+        "__source_file": "data/library/value/daily/202605/value_2026_0505.csv"
       },
       {
         "family": "growth_icc",
@@ -432,14 +468,14 @@
       {
         "family": "ivp_bm",
         "label": "IVP (B/M)",
-        "date": "2026-05-01",
-        "value": 0.0373185621545196,
+        "date": "2026-05-05",
+        "value": 0.041658201036316,
         "method": "ICC calculation",
         "source": "Constituent ICC aggregation",
-        "n_items": 2563,
+        "n_items": 2562,
         "coverage_weight": null,
         "status": "available",
-        "__source_file": "data/library/value/daily/202605/value_2026_0501.csv"
+        "__source_file": "data/library/value/daily/202605/value_2026_0505.csv"
       },
       {
         "family": "ivp_bm",
@@ -458,14 +494,14 @@
       {
         "family": "value_icc",
         "label": "Value ICC",
-        "date": "2026-05-01",
-        "value": 0.1195008679696671,
+        "date": "2026-05-05",
+        "value": 0.1219529771443407,
         "method": "ICC calculation",
         "source": "Constituent ICC aggregation",
-        "n_items": 2563,
+        "n_items": 2562,
         "coverage_weight": null,
         "status": "available",
-        "__source_file": "data/library/value/daily/202605/value_2026_0501.csv"
+        "__source_file": "data/library/value/daily/202605/value_2026_0505.csv"
       },
       {
         "family": "value_icc",
@@ -495,6 +531,11 @@
             "yyyymm": "202605",
             "download_all": "./data/downloads/family/value/archive/202605.zip",
             "files": [
+              {
+                "date": "2026-05-05",
+                "download_path": "./data/downloads/family/value/archive/202605/value_2026_0505.csv",
+                "filename": "value_2026_0505.csv"
+              },
               {
                 "date": "2026-05-01",
                 "download_path": "./data/downloads/family/value/archive/202605/value_2026_0501.csv",
