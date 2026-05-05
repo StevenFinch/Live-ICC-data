@@ -1,18 +1,27 @@
-ticker,label,category,provider,product_id,slug
-SPY,SPDR S&P 500 ETF Trust,US equity,spdr,,
-IVV,iShares Core S&P 500 ETF,US equity,ishares,239726,ishares-core-sp-500-etf
-VOO,Vanguard S&P 500 ETF,US equity,stockanalysis,,
-VTI,Vanguard Total Stock Market ETF,US equity,stockanalysis,,
-QQQ,Invesco QQQ Trust,US equity,stockanalysis,,
-DIA,SPDR Dow Jones Industrial Average ETF Trust,US equity,spdr,,
-IWM,iShares Russell 2000 ETF,US equity,ishares,,
-IWB,iShares Russell 1000 ETF,US equity,ishares,,
-IWD,iShares Russell 1000 Value ETF,US value,ishares,,
-IWF,iShares Russell 1000 Growth ETF,US growth,ishares,,
-EFA,iShares MSCI EAFE ETF,International equity,ishares,239623,ishares-msci-eafe-etf
-EEM,iShares MSCI Emerging Markets ETF,Emerging markets,ishares,,
-EWJ,iShares MSCI Japan ETF,Country ETF,ishares,,
-EWG,iShares MSCI Germany ETF,Country ETF,ishares,239650,ishares-msci-germany-etf
-MCHI,iShares MSCI China ETF,Country ETF,ishares,,
-INDA,iShares MSCI India ETF,Country ETF,ishares,239659,ishares-msci-india-etf
-EWZ,iShares MSCI Brazil ETF,Country ETF,ishares,,
+ticker,label,category
+SPY,SPDR S&P 500 ETF Trust,Large Blend
+IVV,iShares Core S&P 500 ETF,Large Blend
+VOO,Vanguard S&P 500 ETF,Large Blend
+VTI,Vanguard Total Stock Market ETF,Total Market
+QQQ,Invesco QQQ Trust,Large Growth
+DIA,SPDR Dow Jones Industrial Average ETF,Large Blend
+IWM,iShares Russell 2000 ETF,Small Blend
+IJR,iShares Core S&P Small-Cap ETF,Small Blend
+MDY,SPDR S&P MidCap 400 ETF,Mid Blend
+VUG,Vanguard Growth ETF,Large Growth
+VTV,Vanguard Value ETF,Large Value
+IWF,iShares Russell 1000 Growth ETF,Large Growth
+IWD,iShares Russell 1000 Value ETF,Large Value
+XLK,Technology Select Sector SPDR Fund,Sector
+XLF,Financial Select Sector SPDR Fund,Sector
+XLV,Health Care Select Sector SPDR Fund,Sector
+XLY,Consumer Discretionary Select Sector SPDR Fund,Sector
+XLP,Consumer Staples Select Sector SPDR Fund,Sector
+XLE,Energy Select Sector SPDR Fund,Sector
+XLI,Industrial Select Sector SPDR Fund,Sector
+XLB,Materials Select Sector SPDR Fund,Sector
+XLU,Utilities Select Sector SPDR Fund,Sector
+XLRE,Real Estate Select Sector SPDR Fund,Sector
+XLC,Communication Services Select Sector SPDR Fund,Sector
+SMH,VanEck Semiconductor ETF,Industry
+XBI,SPDR S&P Biotech ETF,Industry
