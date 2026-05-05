@@ -1,192 +1,217 @@
 from __future__ import annotations
 
-import argparse
-import json
+import inspect
 import os
 import re
-from datetime import datetime
 from pathlib import Path
-from typing import Any
+from typing import Any, Callable
 
-import numpy as np
 import pandas as pd
 from pandas.errors import EmptyDataError
-
-from backend.holdings_sources import build_etf_icc_panel
-from backend.country_adr_sources import build_country_adr_icc_panel
 
 REPO = Path(__file__).resolve().parents[1]
 DATA_DIR = REPO / "data"
 DERIVED_DIR = DATA_DIR / "derived"
-DOCS_DATA = REPO / "docs" / "data"
 CONFIG_DIR = REPO / "config"
-SNAPSHOT_RE = re.compile(r"^icc_live_(?P<universe>[A-Za-z0-9_]+)_(?P<year>\d{4})_(?P<mmdd>\d{4})(?:_r(?P<rerun>\d+))?\.csv$")
+
+SNAPSHOT_RE = re.compile(
+    r"^icc_live_(?P<universe>[A-Za-z0-9_]+)_(?P<year>\d{4})_(?P<mmdd>\d{4})(?:_r(?P<rerun>\d+))?\.csv$"
+)
 
 
-def parse_snapshot_meta(path: Path) -> dict[str, Any] | None:
-    """Parse metadata from an ICC snapshot filename."""
-    m = SNAPSHOT_RE.match(path.name)
-    if not m:
-        return None
-    year = m.group("year")
-    mmdd = m.group("mmdd")
-    return {
-        "universe": m.group("universe"),
-        "year": year,
-        "mmdd": mmdd,
-        "date": datetime.strptime(f"{year}{mmdd}", "%Y%m%d").date().isoformat(),
-        "yyyymm": f"{year}{mmdd[:2]}",
-        "rerun": int(m.group("rerun") or 0),
-    }
+def _drop_duplicate_columns(df: pd.DataFrame) -> pd.DataFrame:
+    """Keep the first occurrence of each duplicated column name."""
+    if df is None or df.empty:
+        return df
+    return df.loc[:, ~df.columns.duplicated()].copy()
 
 
-def load_snapshot(path: Path) -> pd.DataFrame:
-    """Load and normalize one firm-level ICC snapshot."""
+def _load_snapshot(path: Path) -> pd.DataFrame:
+    """Load a non-empty ICC snapshot and normalize key fields."""
     if path.stat().st_size <= 0:
-        raise EmptyDataError(f"Empty file: {path}")
+        raise EmptyDataError(f"Empty snapshot: {path}")
     df = pd.read_csv(path)
     if df.empty:
-        raise EmptyDataError(f"Empty CSV: {path}")
-    df.columns = [str(c).strip() for c in df.columns]
-    required = {"ticker", "mktcap", "ICC", "date"}
+        raise EmptyDataError(f"No rows in snapshot: {path}")
+    df = _drop_duplicate_columns(df)
+    required = {"ticker", "ICC", "mktcap", "date"}
     missing = required - set(df.columns)
     if missing:
         raise ValueError(f"Missing required columns in {path}: {sorted(missing)}")
-    df["ticker"] = df["ticker"].astype(str).str.upper().str.replace(".", "-", regex=False).str.strip()
-    df["mktcap"] = pd.to_numeric(df["mktcap"], errors="coerce")
+    df["ticker"] = df["ticker"].astype(str).str.upper().str.strip()
     df["ICC"] = pd.to_numeric(df["ICC"], errors="coerce")
+    df["mktcap"] = pd.to_numeric(df["mktcap"], errors="coerce")
     df["date"] = pd.to_datetime(df["date"], errors="coerce").dt.strftime("%Y-%m-%d")
-    if "name" not in df.columns:
-        df["name"] = None
-    if "sector" not in df.columns:
-        df["sector"] = None
-    return df.dropna(subset=["ticker", "mktcap", "ICC", "date"]).copy()
+    df = df[df["ticker"].notna() & df["ICC"].notna() & df["mktcap"].notna() & df["date"].notna()].copy()
+    return df
 
 
-def latest_valid_snapshot(universe: str) -> tuple[Path, pd.DataFrame, str]:
-    """Find the latest valid snapshot for a universe."""
-    candidates: list[tuple[tuple[str, int, str], Path]] = []
+def _snapshot_sort_key(path: Path) -> tuple[int, int, str]:
+    """Sort snapshots by date, rerun number, and filename."""
+    m = SNAPSHOT_RE.match(path.name)
+    if not m:
+        return (0, 0, path.name)
+    yyyymmdd = int(f"{m.group('year')}{m.group('mmdd')}")
+    rerun = int(m.group("rerun") or 0)
+    return (yyyymmdd, rerun, path.name)
+
+
+def _find_latest_valid_usall() -> tuple[Path, pd.DataFrame, str]:
+    """Find the latest valid usall snapshot under data/YYYYMM."""
+    candidates = []
     for path in DATA_DIR.glob("*/*.csv"):
-        meta = parse_snapshot_meta(path)
-        if not meta or meta["universe"] != universe:
+        m = SNAPSHOT_RE.match(path.name)
+        if not m or m.group("universe") != "usall":
             continue
+        candidates.append(path)
+
+    for path in sorted(candidates, key=_snapshot_sort_key, reverse=True):
         try:
-            if path.stat().st_size <= 0:
-                continue
-        except FileNotFoundError:
-            continue
-        candidates.append(((meta["date"], meta["rerun"], path.name), path))
-    if not candidates:
-        raise FileNotFoundError(f"No valid snapshot files found for universe={universe}")
-    candidates.sort(key=lambda x: x[0])
-    for _key, path in reversed(candidates):
-        try:
-            df = load_snapshot(path)
+            df = _load_snapshot(path)
             if not df.empty:
-                return path, df, str(df["date"].iloc[0])
+                asof_date = str(df["date"].dropna().iloc[0])
+                return path, df, asof_date
         except Exception as exc:
-            print(f"[ensure_daily_derived] skip invalid {path}: {type(exc).__name__}: {exc}")
-    raise FileNotFoundError(f"No loadable snapshot files found for universe={universe}")
+            print(f"[ensure_daily_derived] skip invalid usall snapshot {path}: {type(exc).__name__}: {exc}")
+
+    raise RuntimeError("No valid non-empty usall snapshot found.")
 
 
-def safe_records(df: pd.DataFrame) -> list[dict[str, Any]]:
-    """Convert a dataframe to JSON-safe records."""
-    records = []
-    for row in df.to_dict(orient="records"):
-        out: dict[str, Any] = {}
-        for k, v in row.items():
-            try:
-                if pd.isna(v):
-                    out[k] = None
-                    continue
-            except Exception:
-                pass
-            if isinstance(v, (np.integer,)):
-                out[k] = int(v)
-            elif isinstance(v, (np.floating, float)):
-                x = float(v)
-                out[k] = x if np.isfinite(x) else None
-            else:
-                out[k] = v
-        records.append(out)
-    return records
+def _call_with_fallbacks(label: str, funcs: list[Callable[[], Any]]) -> Any:
+    """Try multiple call signatures and return the first successful result."""
+    errors: list[str] = []
+    for fn in funcs:
+        try:
+            return fn()
+        except TypeError as exc:
+            errors.append(f"TypeError: {exc}")
+        except Exception as exc:
+            errors.append(f"{type(exc).__name__}: {exc}")
+    raise RuntimeError(f"All {label} call patterns failed. Errors: {' | '.join(errors[-5:])}")
 
 
-def save_daily_panel(df: pd.DataFrame, root: Path, stem: str, asof_date: str) -> Path:
-    """Save one dated derived panel."""
-    dt = datetime.strptime(asof_date, "%Y-%m-%d")
-    out_dir = root / dt.strftime("%Y%m")
-    out_dir.mkdir(parents=True, exist_ok=True)
-    out_path = out_dir / f"{stem}_{dt.strftime('%Y_%m%d')}.csv"
-    out = df.copy()
-    if "date" not in out.columns:
-        out.insert(0, "date", asof_date)
+def _normalize_result(result: Any) -> tuple[pd.DataFrame, pd.DataFrame | None]:
+    """Normalize helper return values into a main panel and optional members panel."""
+    if isinstance(result, tuple):
+        if len(result) >= 2:
+            panel = result[0]
+            members = result[1]
+        elif len(result) == 1:
+            panel = result[0]
+            members = None
+        else:
+            panel = pd.DataFrame()
+            members = None
     else:
-        out["date"] = asof_date
-    out.to_csv(out_path, index=False)
+        panel = result
+        members = None
+
+    if panel is None:
+        panel = pd.DataFrame()
+    if not isinstance(panel, pd.DataFrame):
+        panel = pd.DataFrame(panel)
+    panel = _drop_duplicate_columns(panel)
+
+    if members is not None and not isinstance(members, pd.DataFrame):
+        members = pd.DataFrame(members)
+    if isinstance(members, pd.DataFrame):
+        members = _drop_duplicate_columns(members)
+
+    return panel, members
+
+
+def _ensure_date_column(df: pd.DataFrame, asof_date: str) -> pd.DataFrame:
+    """Ensure a consistent date column exists in derived outputs."""
+    df = _drop_duplicate_columns(df)
+    if "date" not in df.columns:
+        df["date"] = asof_date
+    else:
+        df["date"] = pd.to_datetime(df["date"], errors="coerce").dt.strftime("%Y-%m-%d")
+        df["date"] = df["date"].fillna(asof_date)
+    return df
+
+
+def _write_panel(df: pd.DataFrame, family_dir: Path, stem: str, asof_date: str) -> Path:
+    """Write a derived daily panel to data/derived/<family>/YYYYMM."""
+    yyyymm = asof_date[:7].replace("-", "")
+    tag = asof_date.replace("-", "_")
+    out_dir = family_dir / yyyymm
+    out_dir.mkdir(parents=True, exist_ok=True)
+    out_path = out_dir / f"{stem}_{tag}.csv"
+    df = _ensure_date_column(df, asof_date)
+    df.to_csv(out_path, index=False)
     return out_path
 
 
-def patch_docs_json(name: str, df: pd.DataFrame, asof_date: str) -> None:
-    """Patch lightweight docs JSON so the site never stays on an old date."""
-    DOCS_DATA.mkdir(parents=True, exist_ok=True)
-    payload = {"asof_date": asof_date, "latest": safe_records(df), "daily": safe_records(df), "monthly": safe_records(df)}
-    names = [name]
-    if name == "etf":
-        names.append("etf_icc")
-    if name == "country":
-        names.append("country_icc")
-    for n in names:
-        with open(DOCS_DATA / f"{n}.json", "w", encoding="utf-8") as f:
-            json.dump(payload, f, indent=2, allow_nan=False)
+def _build_etf(latest_usall: pd.DataFrame, asof_date: str) -> None:
+    """Refresh ETF ICC outputs for the latest usall date."""
+    from backend.holdings_sources import build_etf_icc_panel
+
+    config_path = CONFIG_DIR / "etfs.csv"
+    result = _call_with_fallbacks(
+        "ETF ICC",
+        [
+            lambda: build_etf_icc_panel(latest_usall, asof_date=asof_date, config_path=config_path),
+            lambda: build_etf_icc_panel(latest_usall, asof_date, config_path),
+            lambda: build_etf_icc_panel(latest_usall, asof_date),
+            lambda: build_etf_icc_panel(latest_usall, config_path=config_path, asof_date=asof_date),
+            lambda: build_etf_icc_panel(latest_usall, config_path),
+        ],
+    )
+    panel, members = _normalize_result(result)
+    if panel.empty:
+        raise RuntimeError("ETF ICC panel is empty after refresh.")
+    out_path = _write_panel(panel, DERIVED_DIR / "etf", "etf_icc", asof_date)
+    print(f"[ensure_daily_derived] wrote ETF panel: {out_path} ({len(panel)} rows)")
+    if members is not None and not members.empty:
+        members_path = _write_panel(members, DERIVED_DIR / "etf", "etf_members", asof_date)
+        print(f"[ensure_daily_derived] wrote ETF members: {members_path} ({len(members)} rows)")
 
 
-def ensure_daily_derived(universe: str = "usall", force: bool = False) -> None:
-    """Ensure ETF and Country / Region derived files exist for the latest raw snapshot date."""
-    path, usall, asof_date = latest_valid_snapshot(universe)
-    print(f"[ensure_daily_derived] latest raw snapshot = {path}")
-    print(f"[ensure_daily_derived] asof_date = {asof_date}")
+def _build_country_region(latest_usall: pd.DataFrame, asof_date: str) -> None:
+    """Refresh Country / Region ADR ICC outputs for the latest usall date."""
+    from backend.country_adr_sources import build_country_region_icc_panel
 
-    dt = datetime.strptime(asof_date, "%Y-%m-%d")
-    yyyymm = dt.strftime("%Y%m")
-    etf_file = DERIVED_DIR / "etf" / yyyymm / f"etf_icc_{dt.strftime('%Y_%m%d')}.csv"
-    country_file = DERIVED_DIR / "country_adr" / yyyymm / f"country_adr_icc_{dt.strftime('%Y_%m%d')}.csv"
-
-    if force or not etf_file.exists() or etf_file.stat().st_size == 0:
-        etf_panel, etf_members = build_etf_icc_panel(usall, CONFIG_DIR / "etfs.csv")
-        etf_file = save_daily_panel(etf_panel, DERIVED_DIR / "etf", "etf_icc", asof_date)
-        print(f"[ensure_daily_derived] wrote ETF file: {etf_file}")
-        if etf_members is not None and not etf_members.empty:
-            mem_dir = DERIVED_DIR / "etf_members" / yyyymm
-            mem_dir.mkdir(parents=True, exist_ok=True)
-            etf_members.to_csv(mem_dir / f"etf_members_{dt.strftime('%Y_%m%d')}.csv", index=False)
-    else:
-        etf_panel = pd.read_csv(etf_file)
-        print(f"[ensure_daily_derived] ETF already exists: {etf_file}")
-
-    if force or not country_file.exists() or country_file.stat().st_size == 0:
-        country_panel, country_members = build_country_adr_icc_panel(DERIVED_DIR / "country_adr" / "adr_candidates_latest.csv")
-        country_file = save_daily_panel(country_panel, DERIVED_DIR / "country_adr", "country_adr_icc", asof_date)
-        print(f"[ensure_daily_derived] wrote country file: {country_file}")
-        if country_members is not None and not country_members.empty:
-            mem_dir = DERIVED_DIR / "country_adr_members" / yyyymm
-            mem_dir.mkdir(parents=True, exist_ok=True)
-            country_members.to_csv(mem_dir / f"country_adr_members_{dt.strftime('%Y_%m%d')}.csv", index=False)
-    else:
-        country_panel = pd.read_csv(country_file)
-        print(f"[ensure_daily_derived] country already exists: {country_file}")
-
-    patch_docs_json("etf", etf_panel, asof_date)
-    patch_docs_json("country", country_panel, asof_date)
+    result = _call_with_fallbacks(
+        "Country / Region ICC",
+        [
+            lambda: build_country_region_icc_panel(latest_usall, asof_date=asof_date),
+            lambda: build_country_region_icc_panel(latest_usall, asof_date),
+            lambda: build_country_region_icc_panel(asof_date=asof_date, base_usall=latest_usall),
+            lambda: build_country_region_icc_panel(asof_date=asof_date),
+            lambda: build_country_region_icc_panel(latest_usall),
+        ],
+    )
+    panel, members = _normalize_result(result)
+    if panel.empty:
+        raise RuntimeError("Country / Region ICC panel is empty after refresh.")
+    out_path = _write_panel(panel, DERIVED_DIR / "country_adr", "country_adr_icc", asof_date)
+    print(f"[ensure_daily_derived] wrote Country / Region panel: {out_path} ({len(panel)} rows)")
+    if members is not None and not members.empty:
+        members_path = _write_panel(members, DERIVED_DIR / "country_adr", "country_adr_members", asof_date)
+        print(f"[ensure_daily_derived] wrote Country / Region members: {members_path} ({len(members)} rows)")
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--universe", default="usall")
-    parser.add_argument("--force", action="store_true")
-    args = parser.parse_args()
-    force_env = os.environ.get("FORCE_DERIVED_REBUILD", "0") == "1"
-    ensure_daily_derived(args.universe, force=args.force or force_env)
+    """Ensure ETF and Country / Region derived data exist for the latest usall date."""
+    source_path, latest_usall, asof_date = _find_latest_valid_usall()
+    force = os.environ.get("FORCE_DERIVED_REFRESH", "0") == "1"
+    print(f"[ensure_daily_derived] latest usall snapshot = {source_path}")
+    print(f"[ensure_daily_derived] asof_date = {asof_date}")
+    print(f"[ensure_daily_derived] force refresh = {force}")
+
+    etf_existing = DERIVED_DIR / "etf" / asof_date[:7].replace("-", "") / f"etf_icc_{asof_date.replace('-', '_')}.csv"
+    country_existing = DERIVED_DIR / "country_adr" / asof_date[:7].replace("-", "") / f"country_adr_icc_{asof_date.replace('-', '_')}.csv"
+
+    if force or not (etf_existing.exists() and etf_existing.stat().st_size > 0):
+        _build_etf(latest_usall, asof_date)
+    else:
+        print(f"[ensure_daily_derived] ETF panel already exists: {etf_existing}")
+
+    if force or not (country_existing.exists() and country_existing.stat().st_size > 0):
+        _build_country_region(latest_usall, asof_date)
+    else:
+        print(f"[ensure_daily_derived] Country / Region panel already exists: {country_existing}")
 
 
 if __name__ == "__main__":
