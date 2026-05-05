@@ -1,0 +1,27 @@
+date,ticker,label,category,icc,coverage_weight,n_holdings,n_matched,method,holding_source,status
+2026-05-04,SPY,SPDR S&P 500 ETF Trust,Large Blend,0.07927270254900445,0.8876193275098074,504,441,ICC calculation,spdr_full_holdings,ok_full_holdings
+2026-05-04,IVV,iShares Core S&P 500 ETF,Large Blend,0.08012109568204609,0.8623806694394929,506,439,ICC calculation,ishares_full_holdings,ok_full_holdings
+2026-05-04,VOO,Vanguard S&P 500 ETF,Large Blend,0.08290457206774988,0.8197618402432783,25,20,ICC calculation,stockanalysis_full_holdings,ok_full_holdings
+2026-05-04,VTI,Vanguard Total Stock Market ETF,Total Market,0.0774881334595076,0.8787954507594689,25,21,ICC calculation,stockanalysis_full_holdings,ok_full_holdings
+2026-05-04,QQQ,Invesco QQQ Trust,Large Growth,0.06316689053807537,0.5091081276809092,25,17,Partial holdings estimate,stockanalysis_full_holdings,ok_partial_holdings
+2026-05-04,DIA,SPDR Dow Jones Industrial Average ETF,Large Blend,0.11048772127524216,0.9940402428421424,30,28,ICC calculation,spdr_full_holdings,ok_full_holdings
+2026-05-04,IWM,iShares Russell 2000 ETF,Small Blend,0.0905449908074933,0.6550569186718569,1676,1023,Partial holdings estimate,ishares_full_holdings,ok_partial_holdings
+2026-05-04,IJR,iShares Core S&P Small-Cap ETF,Small Blend,0.09321374808646005,0.7646269729911142,608,463,ICC calculation,ishares_full_holdings,ok_full_holdings
+2026-05-04,MDY,SPDR S&P MidCap 400 ETF,Mid Blend,0.08400393058965219,0.8563511772617238,400,342,ICC calculation,spdr_full_holdings,ok_full_holdings
+2026-05-04,VUG,Vanguard Growth ETF,Large Growth,0.06095415176312357,0.8029684798106967,25,21,ICC calculation,stockanalysis_full_holdings,ok_full_holdings
+2026-05-04,VTV,Vanguard Value ETF,Large Value,0.08530875508723534,0.9514090451166717,25,23,ICC calculation,stockanalysis_full_holdings,ok_full_holdings
+2026-05-04,IWF,iShares Russell 1000 Growth ETF,Large Growth,0.0806398712991092,0.8660235229119962,901,776,ICC calculation,ishares_full_holdings,ok_full_holdings
+2026-05-04,IWD,iShares Russell 1000 Value ETF,Large Value,0.07097068259611872,0.8434043565612773,324,269,ICC calculation,ishares_full_holdings,ok_full_holdings
+2026-05-04,XLK,Technology Select Sector SPDR Fund,Sector,0.07362024794655408,0.6809960885897116,74,52,Partial holdings estimate,spdr_full_holdings,ok_partial_holdings
+2026-05-04,XLF,Financial Select Sector SPDR Fund,Sector,0.09765929872118799,0.9253360593631532,77,70,ICC calculation,spdr_full_holdings,ok_full_holdings
+2026-05-04,XLV,Health Care Select Sector SPDR Fund,Sector,0.08297715168517505,0.8830591841182431,59,52,ICC calculation,spdr_full_holdings,ok_full_holdings
+2026-05-04,XLY,Consumer Discretionary Select Sector SPDR Fund,Sector,0.08455106362439842,0.9249030171399903,49,40,ICC calculation,spdr_full_holdings,ok_full_holdings
+2026-05-04,XLP,Consumer Staples Select Sector SPDR Fund,Sector,0.08310319768802955,0.9891774464251946,37,34,ICC calculation,spdr_full_holdings,ok_full_holdings
+2026-05-04,XLE,Energy Select Sector SPDR Fund,Sector,0.06776703048917086,0.9994942618064497,23,22,ICC calculation,spdr_full_holdings,ok_full_holdings
+2026-05-04,XLI,Industrial Select Sector SPDR Fund,Sector,0.07185537376455177,0.8998393691201351,80,73,ICC calculation,spdr_full_holdings,ok_full_holdings
+2026-05-04,XLB,Materials Select Sector SPDR Fund,Sector,,0.0,29,0,Unavailable,spdr_full_holdings,insufficient_matching_holdings
+2026-05-04,XLU,Utilities Select Sector SPDR Fund,Sector,0.08106041642425854,0.9934253421279025,31,30,ICC calculation,spdr_full_holdings,ok_full_holdings
+2026-05-04,XLRE,Real Estate Select Sector SPDR Fund,Sector,0.04477893637652942,0.8570948819123545,32,29,ICC calculation,spdr_full_holdings,ok_full_holdings
+2026-05-04,XLC,Communication Services Select Sector SPDR Fund,Sector,0.07918722610319767,0.24828246085096997,24,14,Unavailable,spdr_full_holdings,insufficient_matching_holdings
+2026-05-04,SMH,VanEck Semiconductor ETF,Industry,0.09144454781329289,0.5899513433467316,25,17,Partial holdings estimate,stockanalysis_full_holdings,ok_partial_holdings
+2026-05-04,XBI,SPDR S&P Biotech ETF,Industry,0.09041252719144878,0.2644702833176571,145,30,Unavailable,spdr_full_holdings,insufficient_matching_holdings

@@ -2947,7 +2947,7 @@
     "etf": {
       "family": "etf",
       "label": "ETF ICC",
-      "note": "ETF ICC series from archived ETF holdings calculations where available. History starts when archiving begins.",
+      "note": "ETF ICC from online ETF holdings matched to firm-level ICC snapshots. History starts when archiving begins.",
       "latest_csv": "./data/downloads/families/etf/etf_latest.csv",
       "daily_history_csv": "./data/downloads/families/etf/etf_daily_history.csv",
       "monthly_history_csv": "./data/downloads/families/etf/etf_monthly_history.csv",
@@ -2965,7 +2965,7 @@
               "days": [
                 {
                   "date": "2026-05-04",
-                  "n_rows": 17,
+                  "n_rows": 26,
                   "csv": "./data/downloads/families/etf/archive/2026/05/etf_2026-05-04.csv"
                 }
               ]
@@ -2989,7 +2989,7 @@
     "country": {
       "family": "country",
       "label": "Country / Region Level ICC",
-      "note": "Country / Region Level ICC series from archived ADR composite calculations where available. History starts when archiving begins.",
+      "note": "Country / Region Level ICC from ADR and foreign-listing top-N composites. History starts when archiving begins.",
       "latest_csv": "./data/downloads/families/country/country_latest.csv",
       "daily_history_csv": "./data/downloads/families/country/country_daily_history.csv",
       "monthly_history_csv": "./data/downloads/families/country/country_monthly_history.csv",
@@ -3007,7 +3007,7 @@
               "days": [
                 {
                   "date": "2026-05-04",
-                  "n_rows": 37,
+                  "n_rows": 79,
                   "csv": "./data/downloads/families/country/archive/2026/05/country_2026-05-04.csv"
                 }
               ]

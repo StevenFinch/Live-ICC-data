@@ -1,75 +1,117 @@
-country,month,month_end_date,icc,n_selected,n_icc_available,coverage_mktcap,method,status,source_file
-Argentina,2026-04,2026-04-23,0.242903044114228,9,9,1.0,Partial ADR estimate,partial_adr_estimate,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
-Argentina,2026-05,2026-05-04,0.2454846691311192,9,9,1.0,Partial ADR ICC calculation,partial_adr_icc_calculation,data/derived/country_adr/202605/country_adr_icc_2026_0504.csv
-Australia,2026-04,2026-04-23,,10,3,0.9857179124108252,Unavailable,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
-Australia,2026-05,2026-05-04,,10,3,0.9854124959646148,Unavailable,unavailable,data/derived/country_adr/202605/country_adr_icc_2026_0504.csv
-Belgium,2026-04,2026-04-23,,4,2,0.982823469337271,Unavailable,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
-Belgium,2026-05,2026-05-04,,4,2,0.9832009758166494,Unavailable,unavailable,data/derived/country_adr/202605/country_adr_icc_2026_0504.csv
-Brazil,2026-04,2026-04-23,0.1314923254795482,10,9,0.9157737193433296,Partial ADR estimate,partial_adr_estimate,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
-Brazil,2026-05,2026-05-04,0.1020399020969463,10,9,0.9298291397163088,Partial ADR ICC calculation,partial_adr_icc_calculation,data/derived/country_adr/202605/country_adr_icc_2026_0504.csv
-Canada,2026-04,2026-04-23,,1,0,0.0,Unavailable,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
-Canada,2026-05,2026-05-04,,1,0,0.0,Unavailable,unavailable,data/derived/country_adr/202605/country_adr_icc_2026_0504.csv
-Cayman Islands,2026-04,2026-04-23,,1,0,0.0,Unavailable,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
-Cayman Islands,2026-05,2026-05-04,,1,0,0.0,Unavailable,unavailable,data/derived/country_adr/202605/country_adr_icc_2026_0504.csv
-Chile,2026-04,2026-04-23,,4,4,1.0,Unavailable,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
-Chile,2026-05,2026-05-04,0.1715460623041977,4,4,1.0,Partial ADR ICC calculation,partial_adr_icc_calculation,data/derived/country_adr/202605/country_adr_icc_2026_0504.csv
-China,2026-04,2026-04-23,0.2696887669370765,10,9,0.9417226320327968,Partial ADR estimate,partial_adr_estimate,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
-China,2026-05,2026-05-04,0.2636526924903519,10,9,0.9429145352176674,Partial ADR ICC calculation,partial_adr_icc_calculation,data/derived/country_adr/202605/country_adr_icc_2026_0504.csv
-Colombia,2026-04,2026-04-23,,1,1,1.0,Unavailable,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
-Colombia,2026-05,2026-05-04,,1,1,1.0,Unavailable,unavailable,data/derived/country_adr/202605/country_adr_icc_2026_0504.csv
-Denmark,2026-04,2026-04-23,,3,1,0.8679874445643015,Unavailable,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
-Denmark,2026-05,2026-05-04,,3,1,0.8682417810317766,Unavailable,unavailable,data/derived/country_adr/202605/country_adr_icc_2026_0504.csv
-Finland,2026-04,2026-04-23,,1,1,1.0,Unavailable,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
-Finland,2026-05,2026-05-04,,1,1,1.0,Unavailable,unavailable,data/derived/country_adr/202605/country_adr_icc_2026_0504.csv
-France,2026-04,2026-04-23,,10,4,0.9052204872317968,Unavailable,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
-France,2026-05,2026-05-04,0.1194308054718689,10,4,0.8971546752722643,Partial ADR ICC calculation,partial_adr_icc_calculation,data/derived/country_adr/202605/country_adr_icc_2026_0504.csv
-Germany,2026-04,2026-04-23,,8,3,0.8722901970917357,Unavailable,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
-Germany,2026-05,2026-05-04,,8,3,0.8772927103104321,Unavailable,unavailable,data/derived/country_adr/202605/country_adr_icc_2026_0504.csv
-Hong Kong,2026-04,2026-04-23,0.31086076193229,7,6,0.998649966429188,Partial ADR estimate,partial_adr_estimate,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
-Hong Kong,2026-05,2026-05-04,0.3101026841066058,7,6,0.998675356589616,Partial ADR ICC calculation,partial_adr_icc_calculation,data/derived/country_adr/202605/country_adr_icc_2026_0504.csv
-India,2026-04,2026-04-23,,2,2,1.0,Unavailable,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
-India,2026-05,2026-05-04,,2,2,1.0,Unavailable,unavailable,data/derived/country_adr/202605/country_adr_icc_2026_0504.csv
-Ireland,2026-04,2026-04-23,,4,3,0.9999256041209768,Unavailable,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
-Ireland,2026-05,2026-05-04,,4,3,0.9999249322508637,Unavailable,unavailable,data/derived/country_adr/202605/country_adr_icc_2026_0504.csv
-Israel,2026-04,2026-04-23,,10,4,0.9494199746622394,Unavailable,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
-Israel,2026-05,2026-05-04,0.1169557675975384,10,4,0.9554214850027144,Partial ADR ICC calculation,partial_adr_icc_calculation,data/derived/country_adr/202605/country_adr_icc_2026_0504.csv
-Italy,2026-04,2026-04-23,,1,0,0.0,Unavailable,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
-Italy,2026-05,2026-05-04,,1,0,0.0,Unavailable,unavailable,data/derived/country_adr/202605/country_adr_icc_2026_0504.csv
-Japan,2026-04,2026-04-23,0.1314893357567844,10,7,0.9994744801882716,Partial ADR estimate,partial_adr_estimate,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
-Japan,2026-05,2026-05-04,0.1273615903339697,10,7,0.9994808567119696,Partial ADR ICC calculation,partial_adr_icc_calculation,data/derived/country_adr/202605/country_adr_icc_2026_0504.csv
-Kazakhstan,2026-04,2026-04-23,,1,1,1.0,Unavailable,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
-Kazakhstan,2026-05,2026-05-04,,1,1,1.0,Unavailable,unavailable,data/derived/country_adr/202605/country_adr_icc_2026_0504.csv
-Luxembourg,2026-04,2026-04-23,,2,2,1.0,Unavailable,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
-Luxembourg,2026-05,2026-05-04,,2,2,1.0,Unavailable,unavailable,data/derived/country_adr/202605/country_adr_icc_2026_0504.csv
-Macau,2026-04,2026-04-23,,1,0,0.0,Unavailable,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
-Macau,2026-05,2026-05-04,,1,0,0.0,Unavailable,unavailable,data/derived/country_adr/202605/country_adr_icc_2026_0504.csv
-Mexico,2026-04,2026-04-23,0.1438391537430831,7,7,1.0,Partial ADR estimate,partial_adr_estimate,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
-Mexico,2026-05,2026-05-04,0.1464565490604017,7,6,0.9789614642285336,Partial ADR ICC calculation,partial_adr_icc_calculation,data/derived/country_adr/202605/country_adr_icc_2026_0504.csv
-Netherlands,2026-04,2026-04-23,,3,3,1.0,Unavailable,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
-Netherlands,2026-05,2026-05-04,,3,3,1.0,Unavailable,unavailable,data/derived/country_adr/202605/country_adr_icc_2026_0504.csv
-Norway,2026-04,2026-04-23,,1,1,1.0,Unavailable,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
-Norway,2026-05,2026-05-04,,1,1,1.0,Unavailable,unavailable,data/derived/country_adr/202605/country_adr_icc_2026_0504.csv
-Peru,2026-04,2026-04-23,,1,1,1.0,Unavailable,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
-Peru,2026-05,2026-05-04,,1,1,1.0,Unavailable,unavailable,data/derived/country_adr/202605/country_adr_icc_2026_0504.csv
-Philippines,2026-04,2026-04-23,,1,1,1.0,Unavailable,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
-Philippines,2026-05,2026-05-04,,1,1,1.0,Unavailable,unavailable,data/derived/country_adr/202605/country_adr_icc_2026_0504.csv
-Singapore,2026-04,2026-04-23,0.1643130768761475,10,6,0.991149585240037,Partial ADR estimate,partial_adr_estimate,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
-Singapore,2026-05,2026-05-04,0.1599093363555316,10,6,0.9911489734336364,Partial ADR ICC calculation,partial_adr_icc_calculation,data/derived/country_adr/202605/country_adr_icc_2026_0504.csv
-South Africa,2026-04,2026-04-23,,4,4,1.0,Unavailable,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
-South Africa,2026-05,2026-05-04,0.1389526014170044,4,4,1.0,Partial ADR ICC calculation,partial_adr_icc_calculation,data/derived/country_adr/202605/country_adr_icc_2026_0504.csv
-South Korea,2026-04,2026-04-23,0.0383106908780968,6,5,0.994338128571,Partial ADR estimate,partial_adr_estimate,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
-South Korea,2026-05,2026-05-04,0.1700185093761035,6,5,0.9945760238077064,Partial ADR ICC calculation,partial_adr_icc_calculation,data/derived/country_adr/202605/country_adr_icc_2026_0504.csv
-Spain,2026-04,2026-04-23,,3,2,0.9998660421481091,Unavailable,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
-Spain,2026-05,2026-05-04,,3,2,0.9998609232192812,Unavailable,unavailable,data/derived/country_adr/202605/country_adr_icc_2026_0504.csv
-Sweden,2026-04,2026-04-23,,5,1,0.5330496512671264,Unavailable,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
-Sweden,2026-05,2026-05-04,,5,1,0.5395890165495261,Unavailable,unavailable,data/derived/country_adr/202605/country_adr_icc_2026_0504.csv
-Switzerland,2026-04,2026-04-23,,4,1,0.9924104822661688,Unavailable,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
-Switzerland,2026-05,2026-05-04,,4,2,0.9948249504523063,Unavailable,unavailable,data/derived/country_adr/202605/country_adr_icc_2026_0504.csv
-Taiwan,2026-04,2026-04-23,,3,3,1.0,Unavailable,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
-Taiwan,2026-05,2026-05-04,,3,3,1.0,Unavailable,unavailable,data/derived/country_adr/202605/country_adr_icc_2026_0504.csv
-Turkey,2026-04,2026-04-23,,1,1,1.0,Unavailable,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
-Turkey,2026-05,2026-05-04,,1,1,1.0,Unavailable,unavailable,data/derived/country_adr/202605/country_adr_icc_2026_0504.csv
-United Arab Emirates,2026-04,2026-04-23,,2,2,1.0,Unavailable,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
-United Arab Emirates,2026-05,2026-05-04,,2,2,1.0,Unavailable,unavailable,data/derived/country_adr/202605/country_adr_icc_2026_0504.csv
-United Kingdom,2026-04,2026-04-23,0.0824416320199142,10,10,1.0,ADR Top-10 ICC calculation,icc_calculation,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
-United Kingdom,2026-05,2026-05-04,0.0838200830013707,10,10,1.0,ICC calculation,icc_calculation,data/derived/country_adr/202605/country_adr_icc_2026_0504.csv
+country,month,month_end_date,icc,method,n_candidates,n_selected,n_icc_available,coverage_mktcap,status,source_file
+Argentina,2026-04,2026-04-23,0.242903044114228,Partial ADR estimate,9,9,9,1.0,partial_adr_estimate,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
+Argentina,2026-05,2026-05-04,0.2092638496524455,ADR Top-10 ICC calculation,17,17,8,1.0,ok_adr_top_n,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Australia,2026-04,2026-04-23,,Unavailable,12,10,3,0.9857179124108252,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
+Australia,2026-05,2026-05-04,0.0792569067000121,ADR Top-10 ICC calculation,136,25,6,0.8679972235380886,ok_adr_top_n,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Austria,2026-05,2026-05-04,0.118987891176689,ADR Top-10 ICC calculation,20,20,4,1.0,ok_adr_top_n,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Bahrain,2026-05,2026-05-04,,Unavailable,3,3,0,,insufficient_adr_icc,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Bangladesh,2026-05,2026-05-04,,Unavailable,1,1,0,,insufficient_adr_icc,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Belgium,2026-04,2026-04-23,,Unavailable,4,4,2,0.982823469337271,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
+Belgium,2026-05,2026-05-04,0.0905404278176041,ADR Top-10 ICC calculation,28,25,5,0.9905245118964784,ok_adr_top_n,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Bermuda,2026-05,2026-05-04,0.0905586816958098,ADR Top-10 ICC calculation,11,11,4,0.7565904716206238,ok_adr_top_n,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Bolivia,2026-05,2026-05-04,,Unavailable,1,1,0,,insufficient_adr_icc,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Brazil,2026-04,2026-04-23,0.1314923254795482,Partial ADR estimate,18,10,9,0.9157737193433296,partial_adr_estimate,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
+Brazil,2026-05,2026-05-04,0.1197843641131328,ADR Top-10 ICC calculation,73,25,10,0.9766194804981048,ok_adr_top_n,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Cambodia,2026-05,2026-05-04,,Unavailable,2,2,0,,insufficient_adr_icc,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Canada,2026-04,2026-04-23,,Unavailable,1,1,0,0.0,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
+Canada,2026-05,2026-05-04,0.0925942340806058,ADR Top-10 ICC calculation,61,25,10,0.9674763842053268,ok_adr_top_n,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Cayman Islands,2026-04,2026-04-23,,Unavailable,1,1,0,0.0,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
+Cayman Islands,2026-05,2026-05-04,0.1183121270590311,Partial ADR estimate,8,8,3,0.9980725028461804,partial_adr_composite,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Chile,2026-04,2026-04-23,,Unavailable,4,4,4,1.0,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
+Chile,2026-05,2026-05-04,0.1318608738166316,ADR Top-10 ICC calculation,5,5,5,1.0,ok_adr_top_n,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+China,2026-04,2026-04-23,0.2696887669370765,Partial ADR estimate,104,10,9,0.9417226320327968,partial_adr_estimate,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
+China,2026-05,2026-05-04,0.3067103391863405,ADR Top-10 ICC calculation,355,25,10,0.8606905598240944,ok_adr_top_n,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Colombia,2026-04,2026-04-23,,Unavailable,1,1,1,1.0,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
+Colombia,2026-05,2026-05-04,0.1061231586494587,Partial ADR estimate,7,7,2,1.0,partial_adr_composite,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Cyprus,2026-05,2026-05-04,,Unavailable,1,1,0,,insufficient_adr_icc,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Czech Republic,2026-05,2026-05-04,,Unavailable,2,2,0,,insufficient_adr_icc,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Denmark,2026-04,2026-04-23,,Unavailable,3,3,1,0.8679874445643015,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
+Denmark,2026-05,2026-05-04,0.1540486886969634,ADR Top-10 ICC calculation,36,25,10,0.9328684683296788,ok_adr_top_n,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Egypt,2026-05,2026-05-04,,Unavailable,13,13,0,,insufficient_adr_icc,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Faroe Islands,2026-05,2026-05-04,,Unavailable,1,1,0,,insufficient_adr_icc,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Finland,2026-04,2026-04-23,,Unavailable,1,1,1,1.0,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
+Finland,2026-05,2026-05-04,0.1324224300545924,ADR Top-10 ICC calculation,27,25,8,1.0,ok_adr_top_n,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+France,2026-04,2026-04-23,,Unavailable,13,10,4,0.9052204872317968,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
+France,2026-05,2026-05-04,0.0919292815132607,ADR Top-10 ICC calculation,105,25,10,0.9758290444533884,ok_adr_top_n,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Germany,2026-04,2026-04-23,,Unavailable,8,8,3,0.8722901970917357,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
+Germany,2026-05,2026-05-04,0.1008880915949362,ADR Top-10 ICC calculation,120,25,10,0.92071852436879,ok_adr_top_n,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Gibraltar,2026-05,2026-05-04,,Unavailable,2,2,0,,insufficient_adr_icc,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Greece,2026-05,2026-05-04,0.1258021360593628,Partial ADR estimate,23,23,2,0.8866379807832964,partial_adr_composite,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Hong Kong,2026-04,2026-04-23,0.31086076193229,Partial ADR estimate,7,7,6,0.998649966429188,partial_adr_estimate,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
+Hong Kong,2026-05,2026-05-04,0.1312161736214065,Partial ADR estimate,196,25,2,0.4124346761903479,partial_adr_composite,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Hungary,2026-05,2026-05-04,,Unavailable,6,6,0,,insufficient_adr_icc,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Iceland,2026-05,2026-05-04,,Unavailable,1,1,0,,insufficient_adr_icc,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+India,2026-04,2026-04-23,,Unavailable,2,2,2,1.0,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
+India,2026-05,2026-05-04,0.0964577059291249,ADR Top-10 ICC calculation,73,25,7,1.0,ok_adr_top_n,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Indonesia,2026-05,2026-05-04,0.3969942153104492,Partial ADR estimate,46,25,2,1.0,partial_adr_composite,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Ireland,2026-04,2026-04-23,,Unavailable,4,4,3,0.9999256041209768,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
+Ireland,2026-05,2026-05-04,0.0935594455997474,ADR Top-10 ICC calculation,23,23,8,0.9786371280751952,ok_adr_top_n,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Isle of Man,2026-05,2026-05-04,,Unavailable,1,1,0,,insufficient_adr_icc,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Israel,2026-04,2026-04-23,,Unavailable,16,10,4,0.9494199746622394,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
+Israel,2026-05,2026-05-04,0.0771891771772823,ADR Top-10 ICC calculation,76,25,10,0.869448184171898,ok_adr_top_n,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Italy,2026-04,2026-04-23,,Unavailable,1,1,0,0.0,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
+Italy,2026-05,2026-05-04,0.0883964679866524,ADR Top-10 ICC calculation,51,25,6,0.9989959848828798,ok_adr_top_n,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Japan,2026-04,2026-04-23,0.1314893357567844,Partial ADR estimate,14,10,7,0.9994744801882716,partial_adr_estimate,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
+Japan,2026-05,2026-05-04,0.1027624013782952,ADR Top-10 ICC calculation,367,25,10,0.9997130589301966,ok_adr_top_n,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Jersey,2026-05,2026-05-04,0.1515119025597547,Partial ADR estimate,4,4,2,0.731750815470511,partial_adr_composite,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Jordan,2026-05,2026-05-04,,Unavailable,3,3,1,,insufficient_adr_icc,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Kazakhstan,2026-04,2026-04-23,,Unavailable,1,1,1,1.0,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
+Kazakhstan,2026-05,2026-05-04,,Unavailable,13,13,1,,insufficient_adr_icc,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Korea,2026-05,2026-05-04,,Unavailable,15,15,1,,insufficient_adr_icc,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Latvia,2026-05,2026-05-04,,Unavailable,1,1,0,,insufficient_adr_icc,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Lebanon,2026-05,2026-05-04,,Unavailable,5,5,0,,insufficient_adr_icc,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Lithuania,2026-05,2026-05-04,,Unavailable,2,2,0,,insufficient_adr_icc,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Luxembourg,2026-04,2026-04-23,,Unavailable,2,2,2,1.0,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
+Luxembourg,2026-05,2026-05-04,0.1037398475617777,ADR Top-10 ICC calculation,18,18,5,1.0,ok_adr_top_n,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Macau,2026-04,2026-04-23,,Unavailable,1,1,0,0.0,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
+Macau,2026-05,2026-05-04,,Unavailable,4,4,0,,insufficient_adr_icc,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Malaysia,2026-05,2026-05-04,,Unavailable,12,12,0,,insufficient_adr_icc,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Mexico,2026-04,2026-04-23,0.1438391537430831,Partial ADR estimate,7,7,7,1.0,partial_adr_estimate,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
+Mexico,2026-05,2026-05-04,0.1137795564661448,ADR Top-10 ICC calculation,22,22,10,0.9969888660514108,ok_adr_top_n,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Morocco,2026-05,2026-05-04,,Unavailable,2,2,0,,insufficient_adr_icc,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Netherlands,2026-04,2026-04-23,,Unavailable,3,3,3,1.0,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
+Netherlands,2026-05,2026-05-04,0.0841192504907211,ADR Top-10 ICC calculation,50,25,10,0.9322120651710633,ok_adr_top_n,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+New Zealand,2026-05,2026-05-04,,Unavailable,20,20,1,,insufficient_adr_icc,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Nigeria,2026-05,2026-05-04,,Unavailable,2,2,0,,insufficient_adr_icc,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Norway,2026-04,2026-04-23,,Unavailable,1,1,1,1.0,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
+Norway,2026-05,2026-05-04,0.1058694052521348,ADR Top-10 ICC calculation,32,25,5,1.0,ok_adr_top_n,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Oman,2026-05,2026-05-04,,Unavailable,2,2,0,,insufficient_adr_icc,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Pakistan,2026-05,2026-05-04,,Unavailable,9,9,0,,insufficient_adr_icc,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Peru,2026-04,2026-04-23,,Unavailable,1,1,1,1.0,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
+Peru,2026-05,2026-05-04,0.1088899549497859,Partial ADR estimate,6,6,2,1.0,partial_adr_composite,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Philippines,2026-04,2026-04-23,,Unavailable,1,1,1,1.0,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
+Philippines,2026-05,2026-05-04,,Unavailable,28,25,0,,insufficient_adr_icc,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Poland,2026-05,2026-05-04,,Unavailable,20,20,0,,insufficient_adr_icc,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Portugal,2026-05,2026-05-04,0.0769621483526192,Partial ADR estimate,7,7,2,1.0,partial_adr_composite,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Qatar,2026-05,2026-05-04,,Unavailable,2,2,0,,insufficient_adr_icc,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Romania,2026-05,2026-05-04,,Unavailable,3,3,0,,insufficient_adr_icc,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Russia,2026-05,2026-05-04,,Unavailable,40,25,0,,insufficient_adr_icc,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+S. Africa,2026-05,2026-05-04,0.2553350797862843,ADR Top-10 ICC calculation,41,25,5,1.0,ok_adr_top_n,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Singapore,2026-04,2026-04-23,0.1643130768761475,Partial ADR estimate,12,10,6,0.991149585240037,partial_adr_estimate,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
+Singapore,2026-05,2026-05-04,0.0927536667020151,ADR Top-10 ICC calculation,75,25,10,0.9916537843793778,ok_adr_top_n,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Slovenia,2026-05,2026-05-04,,Unavailable,1,1,0,,insufficient_adr_icc,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+South Africa,2026-04,2026-04-23,,Unavailable,4,4,4,1.0,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
+South Africa,2026-05,2026-05-04,0.120051182039422,ADR Top-10 ICC calculation,4,4,4,1.0,ok_adr_top_n,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+South Korea,2026-04,2026-04-23,0.0383106908780968,Partial ADR estimate,6,6,5,0.994338128571,partial_adr_estimate,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
+South Korea,2026-05,2026-05-04,0.1945954500879475,ADR Top-10 ICC calculation,8,8,7,0.9965353270785108,ok_adr_top_n,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Spain,2026-04,2026-04-23,,Unavailable,3,3,2,0.9998660421481091,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
+Spain,2026-05,2026-05-04,0.0844414860004277,ADR Top-10 ICC calculation,41,25,10,0.9917487488046748,ok_adr_top_n,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Sweden,2026-04,2026-04-23,,Unavailable,5,5,1,0.5330496512671264,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
+Sweden,2026-05,2026-05-04,0.069457305152073,ADR Top-10 ICC calculation,76,25,6,0.9996068321813604,ok_adr_top_n,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Switzerland,2026-04,2026-04-23,,Unavailable,4,4,1,0.9924104822661688,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
+Switzerland,2026-05,2026-05-04,0.084702061991051,ADR Top-10 ICC calculation,69,25,10,0.9905174669138624,ok_adr_top_n,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Taiwan,2026-04,2026-04-23,,Unavailable,3,3,3,1.0,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
+Taiwan,2026-05,2026-05-04,0.0892250756476131,ADR Top-10 ICC calculation,96,25,6,0.9996997613240364,ok_adr_top_n,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Thailand,2026-05,2026-05-04,0.189291195368269,Partial ADR estimate,39,25,2,1.0,partial_adr_composite,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Turkey,2026-04,2026-04-23,,Unavailable,1,1,1,1.0,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
+Turkey,2026-05,2026-05-04,0.1913241327422107,Partial ADR estimate,33,25,3,1.0,partial_adr_composite,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+UAE,2026-05,2026-05-04,,Unavailable,1,1,0,,insufficient_adr_icc,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+UK,2026-05,2026-05-04,0.0688409307453852,ADR Top-10 ICC calculation,170,25,4,1.0,ok_adr_top_n,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Ukraine,2026-05,2026-05-04,,Unavailable,5,5,0,,insufficient_adr_icc,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+United Arab Emirates,2026-04,2026-04-23,,Unavailable,2,2,2,1.0,unavailable,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
+United Arab Emirates,2026-05,2026-05-04,,Unavailable,2,2,1,,insufficient_adr_icc,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+United Kingdom,2026-04,2026-04-23,0.0824416320199142,ADR Top-10 ICC calculation,26,10,10,1.0,icc_calculation,data/derived/country_adr/202604/country_adr_icc_2026_04_23.csv
+United Kingdom,2026-05,2026-05-04,0.0825141900048158,ADR Top-10 ICC calculation,34,25,10,0.82350188452597,ok_adr_top_n,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+United States,2026-05,2026-05-04,0.0832050537545007,ADR Top-10 ICC calculation,94,25,10,0.8721341032298142,ok_adr_top_n,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Uruguay,2026-05,2026-05-04,0.0949658189790332,Partial ADR estimate,2,2,2,1.0,partial_adr_composite,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
+Venezuela,2026-05,2026-05-04,,Unavailable,3,3,0,,insufficient_adr_icc,data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv
