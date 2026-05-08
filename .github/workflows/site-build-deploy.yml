@@ -1,11 +1,28 @@
 name: Daily ICC + Build Website + Deploy Pages
 
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      force_recalc:
+        description: "Force recalculation of raw usall/sp500/index ICC snapshots"
+        required: false
+        default: "false"
+        type: choice
+        options:
+          - "false"
+          - "true"
+      force_country_adr_rebuild:
+        description: "Force rebuild of Country / Region ADR universe"
+        required: false
+        default: "false"
+        type: choice
+        options:
+          - "false"
+          - "true"
   schedule:
-    # Run at two UTC times to cover DST changes while only executing during 5pm ET.
-    - cron: "00 21 * * 1-5"
-    - cron: "00 22 * * 1-5"
+    # Run after 5pm US Eastern time all year.
+    # 22:10 UTC = 6:10pm EDT in summer and 5:10pm EST in winter.
+    - cron: "10 22 * * 1-5"
 
 permissions:
   contents: write
@@ -17,37 +34,9 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  gate:
-    runs-on: ubuntu-latest
-    outputs:
-      proceed: ${{ steps.check.outputs.proceed }}
-    steps:
-      - name: Decide whether to run
-        id: check
-        shell: bash
-        run: |
-          if [ "${{ github.event_name }}" = "schedule" ]; then
-            NY_HOUR=$(TZ=America/New_York date +%H)
-            NY_MIN=$(TZ=America/New_York date +%M)
-
-            # Only scheduled jobs during 5pm ET should proceed.
-            if [ "$NY_HOUR" -eq 17 ]; then
-              echo "proceed=true" >> "$GITHUB_OUTPUT"
-              echo "Proceeding: NY time is ${NY_HOUR}:${NY_MIN}."
-            else
-              echo "proceed=false" >> "$GITHUB_OUTPUT"
-              echo "Skipping: NY time is ${NY_HOUR}:${NY_MIN}."
-            fi
-          else
-            # Manual dispatch should always proceed.
-            echo "proceed=true" >> "$GITHUB_OUTPUT"
-            echo "Manual dispatch -> proceed."
-          fi
-
   build-and-deploy:
-    needs: gate
-    if: needs.gate.outputs.proceed == 'true'
     runs-on: ubuntu-latest
+
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -76,6 +65,8 @@ jobs:
           ls -la
           echo "Backend directory:"
           ls -la backend || true
+          echo "Workflow event: ${{ github.event_name }}"
+          echo "Branch: ${{ github.ref_name }}"
 
       - name: Ensure backend is a package
         run: |
@@ -108,8 +99,10 @@ jobs:
             pip install pandas numpy yfinance requests lxml html5lib openpyxl python-dateutil tzdata
           fi
 
-      - name: Decide target trading date and whether recalculation is needed
+      - name: Decide target trading date and whether raw recalculation is needed
         id: guard
+        env:
+          FORCE_RECALC: ${{ github.event.inputs.force_recalc || 'false' }}
         run: |
           python - <<'PY'
           import os
@@ -131,15 +124,17 @@ jobs:
               return d
 
           # Define the target trading date.
+          # Scheduled runs happen after 5pm ET by design.
+          # Manual runs before 5pm ET should still target the previous business day.
           if now.weekday() >= 5:
               target_date = previous_business_day(now.date())
               timing_reason = "weekend"
-          elif now.hour < 16:
+          elif now.hour < 17:
               target_date = previous_business_day(now.date())
-              timing_reason = "before market close"
+              timing_reason = "before 5pm ET"
           else:
               target_date = now.date()
-              timing_reason = "after market close"
+              timing_reason = "after 5pm ET"
 
           latest_valid_date = None
           latest_valid_file = None
@@ -164,14 +159,17 @@ jobs:
                   latest_valid_date = dt
                   latest_valid_file = str(p)
 
-          # Recalculate only when the latest valid usall date is older than the target date.
-          need_recalc = (latest_valid_date is None) or (latest_valid_date < target_date)
+          force_recalc = os.environ.get("FORCE_RECALC", "false").lower() == "true"
+
+          # Recalculate raw ICC only when forced or when the latest valid usall date is older than target.
+          need_recalc = force_recalc or (latest_valid_date is None) or (latest_valid_date < target_date)
 
           print(f"now_et={now.isoformat()}")
           print(f"timing_reason={timing_reason}")
           print(f"target_date={target_date.isoformat()}")
           print(f"latest_valid_usall_date={latest_valid_date.isoformat() if latest_valid_date else ''}")
           print(f"latest_valid_usall_file={latest_valid_file or ''}")
+          print(f"force_recalc={str(force_recalc).lower()}")
           print(f"need_recalc={str(need_recalc).lower()}")
 
           out = os.environ["GITHUB_OUTPUT"]
@@ -179,6 +177,7 @@ jobs:
               f.write(f"target_date={target_date.isoformat()}\n")
               f.write(f"latest_valid_usall_date={latest_valid_date.isoformat() if latest_valid_date else ''}\n")
               f.write(f"latest_valid_usall_file={latest_valid_file or ''}\n")
+              f.write(f"force_recalc={'true' if force_recalc else 'false'}\n")
               f.write(f"need_recalc={'true' if need_recalc else 'false'}\n")
               f.write(f"reason={timing_reason}\n")
           PY
@@ -188,38 +187,58 @@ jobs:
           echo "target_date = ${{ steps.guard.outputs.target_date }}"
           echo "latest_valid_usall_date = ${{ steps.guard.outputs.latest_valid_usall_date }}"
           echo "latest_valid_usall_file = ${{ steps.guard.outputs.latest_valid_usall_file }}"
+          echo "force_recalc = ${{ steps.guard.outputs.force_recalc }}"
           echo "need_recalc = ${{ steps.guard.outputs.need_recalc }}"
           echo "reason = ${{ steps.guard.outputs.reason }}"
 
-      - name: Run daily ICC
+      - name: Run daily ICC raw snapshots
         if: steps.guard.outputs.need_recalc == 'true'
         env:
           IGNORE_TIME_GUARD: "0"
           PYTHONPATH: ${{ github.workspace }}
         run: python run_daily_icc.py
 
-      - name: Run extra indices
+      - name: Run extra index raw snapshots
         if: steps.guard.outputs.need_recalc == 'true'
         env:
           PYTHONPATH: ${{ github.workspace }}
         run: python -m backend.run_extra_indices
 
-      - name: Ensure ETF and Country Region derived data
+      - name: Ensure ETF and Country / Region derived data
         env:
           PYTHONPATH: ${{ github.workspace }}
-          COUNTRY_ADR_FORCE_REBUILD: "1"
+          COUNTRY_ADR_FORCE_REBUILD: ${{ github.event.inputs.force_country_adr_rebuild || 'false' }}
         run: |
           if [ -f backend/ensure_daily_derived.py ]; then
             python -m backend.ensure_daily_derived
           else
-            echo "backend/ensure_daily_derived.py not found, skip explicit derived refresh."
+            echo "backend/ensure_daily_derived.py not found."
+            echo "This is not fatal, because backend.build_docs_data may still refresh derived data."
           fi
 
       - name: Build website data under docs/data
         env:
           PYTHONPATH: ${{ github.workspace }}
-          COUNTRY_ADR_FORCE_REBUILD: "1"
+          COUNTRY_ADR_FORCE_REBUILD: ${{ github.event.inputs.force_country_adr_rebuild || 'false' }}
         run: python -m backend.build_docs_data --universe usall
+
+      - name: Validate generated website data
+        run: |
+          echo "Checking generated docs/data files..."
+          test -s docs/data/marketwide.json
+          test -s docs/data/value.json
+          test -s docs/data/industry.json
+          test -s docs/data/indices.json
+          test -s docs/data/etf.json
+          test -s docs/data/country.json
+          test -s docs/data/downloads_catalog.json
+          echo "Generated docs/data files are present."
+
+          echo "Latest derived ETF files:"
+          find data/derived/etf -type f -name "*.csv" 2>/dev/null | sort | tail -5 || true
+
+          echo "Latest derived Country / Region files:"
+          find data/derived/country_adr -type f -name "*.csv" 2>/dev/null | sort | tail -5 || true
 
       - name: Generate FILES.md manifest if tool exists
         run: |
