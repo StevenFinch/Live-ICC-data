@@ -3,6 +3,7 @@ name: Daily ICC + Build Website + Deploy Pages
 on:
   workflow_dispatch: {}
   schedule:
+    # Run at two UTC times to cover DST changes while only executing during 5pm ET.
     - cron: "00 21 * * 1-5"
     - cron: "00 22 * * 1-5"
 
@@ -21,20 +22,21 @@ jobs:
     outputs:
       proceed: ${{ steps.check.outputs.proceed }}
     steps:
-      - name: Decide whether scheduled run should proceed
+      - name: Decide whether to run
         id: check
         shell: bash
         run: |
           if [ "${{ github.event_name }}" = "schedule" ]; then
             NY_HOUR=$(TZ=America/New_York date +%H)
             NY_MIN=$(TZ=America/New_York date +%M)
-            # Only the 5pm ET scheduled run should proceed.
+
+            # Only scheduled jobs during 5pm ET should proceed.
             if [ "$NY_HOUR" -eq 17 ]; then
               echo "proceed=true" >> "$GITHUB_OUTPUT"
-              echo "Proceeding: New York time is ${NY_HOUR}:${NY_MIN}."
+              echo "Proceeding: NY time is ${NY_HOUR}:${NY_MIN}."
             else
               echo "proceed=false" >> "$GITHUB_OUTPUT"
-              echo "Skipping: New York time is ${NY_HOUR}:${NY_MIN}."
+              echo "Skipping: NY time is ${NY_HOUR}:${NY_MIN}."
             fi
           else
             # Manual dispatch should always proceed.
@@ -67,7 +69,15 @@ jobs:
       - name: Mark workspace as safe
         run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
 
-      - name: Ensure backend package exists
+      - name: Debug workspace
+        run: |
+          echo "GITHUB_WORKSPACE=$GITHUB_WORKSPACE"
+          pwd
+          ls -la
+          echo "Backend directory:"
+          ls -la backend || true
+
+      - name: Ensure backend is a package
         run: |
           mkdir -p backend
           if [ ! -f backend/__init__.py ]; then
@@ -75,9 +85,12 @@ jobs:
           fi
           python - <<'PY'
           import os
-          import backend
+          import sys
           print("cwd =", os.getcwd())
-          print("backend import OK:", backend.__file__)
+          print("PYTHONPATH =", os.environ.get("PYTHONPATH"))
+          print("sys.path[0:5] =", sys.path[0:5])
+          import backend
+          print("backend package import OK:", backend.__file__)
           PY
 
       - name: Set up Python
@@ -90,22 +103,25 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then
             pip install -r requirements.txt
-            pip install openpyxl beautifulsoup4 tzdata || true
+            pip install openpyxl tzdata lxml html5lib || true
           else
-            pip install pandas numpy yfinance requests lxml html5lib openpyxl beautifulsoup4 python-dateutil tzdata
+            pip install pandas numpy yfinance requests lxml html5lib openpyxl python-dateutil tzdata
           fi
 
-      - name: Decide target trading date and whether raw ICC recalculation is needed
+      - name: Decide target trading date and whether recalculation is needed
         id: guard
         run: |
           python - <<'PY'
-          import os, re
+          import os
+          import re
           from pathlib import Path
           from datetime import datetime, timedelta
           from zoneinfo import ZoneInfo
 
+          repo = Path(".").resolve()
+          data_dir = repo / "data"
           now = datetime.now(ZoneInfo("America/New_York"))
-          data_dir = Path("data")
+
           snap_re = re.compile(r"^icc_live_usall_(\d{4})_(\d{4})(?:_r\d+)?\.csv$")
 
           def previous_business_day(d):
@@ -114,47 +130,57 @@ jobs:
                   d -= timedelta(days=1)
               return d
 
-          # Before 4pm ET, use the previous business day. After 4pm ET, use today.
+          # Define the target trading date.
           if now.weekday() >= 5:
               target_date = previous_business_day(now.date())
-              reason = "weekend"
+              timing_reason = "weekend"
           elif now.hour < 16:
               target_date = previous_business_day(now.date())
-              reason = "before market close"
+              timing_reason = "before market close"
           else:
               target_date = now.date()
-              reason = "after market close"
+              timing_reason = "after market close"
 
           latest_valid_date = None
-          latest_valid_file = ""
+          latest_valid_file = None
+
+          # Find the latest valid non-empty usall snapshot.
           for p in data_dir.glob("*/*.csv"):
               m = snap_re.match(p.name)
               if not m:
                   continue
+
               try:
                   if p.stat().st_size <= 0:
                       continue
               except FileNotFoundError:
                   continue
-              dt = datetime.strptime(m.group(1) + m.group(2), "%Y%m%d").date()
+
+              year = m.group(1)
+              mmdd = m.group(2)
+              dt = datetime.strptime(f"{year}{mmdd}", "%Y%m%d").date()
+
               if latest_valid_date is None or dt > latest_valid_date:
                   latest_valid_date = dt
                   latest_valid_file = str(p)
 
-          need_recalc = latest_valid_date is None or latest_valid_date < target_date
+          # Recalculate only when the latest valid usall date is older than the target date.
+          need_recalc = (latest_valid_date is None) or (latest_valid_date < target_date)
+
           print(f"now_et={now.isoformat()}")
+          print(f"timing_reason={timing_reason}")
           print(f"target_date={target_date.isoformat()}")
           print(f"latest_valid_usall_date={latest_valid_date.isoformat() if latest_valid_date else ''}")
-          print(f"latest_valid_usall_file={latest_valid_file}")
+          print(f"latest_valid_usall_file={latest_valid_file or ''}")
           print(f"need_recalc={str(need_recalc).lower()}")
-          print(f"reason={reason}")
 
-          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as f:
+          out = os.environ["GITHUB_OUTPUT"]
+          with open(out, "a", encoding="utf-8") as f:
               f.write(f"target_date={target_date.isoformat()}\n")
               f.write(f"latest_valid_usall_date={latest_valid_date.isoformat() if latest_valid_date else ''}\n")
-              f.write(f"latest_valid_usall_file={latest_valid_file}\n")
+              f.write(f"latest_valid_usall_file={latest_valid_file or ''}\n")
               f.write(f"need_recalc={'true' if need_recalc else 'false'}\n")
-              f.write(f"reason={reason}\n")
+              f.write(f"reason={timing_reason}\n")
           PY
 
       - name: Show guard decision
@@ -165,30 +191,35 @@ jobs:
           echo "need_recalc = ${{ steps.guard.outputs.need_recalc }}"
           echo "reason = ${{ steps.guard.outputs.reason }}"
 
-      - name: Run daily all-market and S&P 500 ICC
+      - name: Run daily ICC
         if: steps.guard.outputs.need_recalc == 'true'
         env:
           IGNORE_TIME_GUARD: "0"
           PYTHONPATH: ${{ github.workspace }}
         run: python run_daily_icc.py
 
-      - name: Run extra index ICC
+      - name: Run extra indices
         if: steps.guard.outputs.need_recalc == 'true'
         env:
           PYTHONPATH: ${{ github.workspace }}
         run: python -m backend.run_extra_indices
 
-      - name: Refresh ETF and Country / Region derived data
+      - name: Ensure ETF and Country Region derived data
         env:
           PYTHONPATH: ${{ github.workspace }}
-          FORCE_DERIVED_REFRESH: "1"
-        run: python -m backend.ensure_daily_derived --universe usall
+          COUNTRY_ADR_FORCE_REBUILD: "1"
+        run: |
+          if [ -f backend/ensure_daily_derived.py ]; then
+            python -m backend.ensure_daily_derived
+          else
+            echo "backend/ensure_daily_derived.py not found, skip explicit derived refresh."
+          fi
 
       - name: Build website data under docs/data
         env:
           PYTHONPATH: ${{ github.workspace }}
-          FORCE_DERIVED_REFRESH: "0"
-        run: python -m backend.build_docs_data --universe usall --skip-derived-refresh
+          COUNTRY_ADR_FORCE_REBUILD: "1"
+        run: python -m backend.build_docs_data --universe usall
 
       - name: Generate FILES.md manifest if tool exists
         run: |
@@ -198,22 +229,27 @@ jobs:
             echo "tools/generate_files_manifest.py not found, skip."
           fi
 
-      - name: Commit raw data, derived data, and site data back to repo
+      - name: Commit raw data and site data back to repo
         env:
           BRANCH_NAME: ${{ github.ref_name }}
         run: |
           set -euo pipefail
           BRANCH="${BRANCH_NAME}"
+
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
           git fetch origin "${BRANCH}" || true
+
           ts=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
-          # Commit all raw, derived, docs, zip, and manifest files.
+
+          # Add all generated raw data, derived data, docs data, and manifests.
           git add -A data docs backend/__init__.py FILES.md || true
+
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
-            git commit -m "Update ICC raw derived site data ${ts} [skip ci]" || true
+            git commit -m "Update ICC raw/site data ${ts} [skip ci]" || true
             git pull --rebase --autostash origin "${BRANCH}" || true
             git push origin HEAD:"${BRANCH}" || true
           fi
