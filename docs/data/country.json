@@ -4,28 +4,28 @@
   "note": "Country / Region Level ICC from ADR and foreign-listing top-N composites. History starts when archiving begins.",
   "latest": [
     {
-      "date": "2026-05-11",
+      "date": "2026-05-12",
       "country": "Argentina",
-      "icc": 0.2260412158135282,
+      "icc": 0.2134035137368943,
       "method": "ADR Top-10 ICC calculation",
       "n_candidates": null,
-      "n_selected": 9,
-      "n_icc_available": 9,
+      "n_selected": 10,
+      "n_icc_available": 10,
       "coverage_mktcap": 1.0,
       "status": "adr_top10_icc_calculation",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
-      "date": "2026-05-11",
+      "date": "2026-05-12",
       "country": "Australia",
-      "icc": 0.0716482150409389,
-      "method": "Unavailable",
+      "icc": 0.0716220313668008,
+      "method": "Partial ADR estimate",
       "n_candidates": null,
-      "n_selected": 3,
-      "n_icc_available": 1,
-      "coverage_mktcap": 0.9995136452376032,
-      "status": "too_few_adr_icc",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "n_selected": 10,
+      "n_icc_available": 2,
+      "coverage_mktcap": 0.9082332533891364,
+      "status": "partial_adr_estimate",
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "date": "2026-05-07",
@@ -76,28 +76,28 @@
       "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_0507.csv"
     },
     {
-      "date": "2026-05-11",
+      "date": "2026-05-12",
       "country": "Belgium",
-      "icc": null,
-      "method": "Unavailable",
+      "icc": 0.0773401691161541,
+      "method": "Partial ADR estimate",
       "n_candidates": null,
-      "n_selected": 1,
-      "n_icc_available": 0,
-      "coverage_mktcap": 0.0,
-      "status": "unavailable",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "n_selected": 7,
+      "n_icc_available": 3,
+      "coverage_mktcap": 0.9837845083427472,
+      "status": "partial_adr_estimate",
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
-      "date": "2026-05-11",
+      "date": "2026-05-12",
       "country": "Bermuda",
-      "icc": 0.0867245628187757,
-      "method": "Unavailable",
+      "icc": 0.0933360800659235,
+      "method": "ADR Top-10 ICC calculation",
       "n_candidates": null,
-      "n_selected": 1,
-      "n_icc_available": 1,
-      "coverage_mktcap": 1.0,
-      "status": "too_few_adr_icc",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "n_selected": 10,
+      "n_icc_available": 6,
+      "coverage_mktcap": 0.8076369897880883,
+      "status": "adr_top10_icc_calculation",
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "date": "2026-05-07",
@@ -112,16 +112,16 @@
       "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_0507.csv"
     },
     {
-      "date": "2026-05-11",
+      "date": "2026-05-12",
       "country": "Brazil",
-      "icc": 0.1240575016200979,
+      "icc": 0.1303729658728163,
       "method": "ADR Top-10 ICC calculation",
       "n_candidates": null,
-      "n_selected": 8,
-      "n_icc_available": 7,
-      "coverage_mktcap": 0.999216822554688,
+      "n_selected": 10,
+      "n_icc_available": 9,
+      "coverage_mktcap": 0.9492255535905524,
       "status": "adr_top10_icc_calculation",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "date": "2026-05-04",
@@ -136,7 +136,7 @@
       "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv"
     },
     {
-      "date": "2026-05-08",
+      "date": "2026-05-12",
       "country": "Cambodia",
       "icc": null,
       "method": "Unavailable",
@@ -145,79 +145,79 @@
       "n_icc_available": 0,
       "coverage_mktcap": 0.0,
       "status": "unavailable",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_08.csv"
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
-      "date": "2026-05-11",
+      "date": "2026-05-12",
       "country": "Canada",
-      "icc": 0.0953913569345805,
+      "icc": 0.0950624763543779,
       "method": "ADR Top-10 ICC calculation",
       "n_candidates": null,
       "n_selected": 10,
       "n_icc_available": 10,
       "coverage_mktcap": 1.0,
       "status": "adr_top10_icc_calculation",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
-      "date": "2026-05-11",
+      "date": "2026-05-12",
       "country": "Cayman Islands",
-      "icc": 0.1415586703481773,
-      "method": "Partial ADR estimate",
-      "n_candidates": null,
-      "n_selected": 5,
-      "n_icc_available": 3,
-      "coverage_mktcap": 0.9947909113854972,
-      "status": "partial_adr_estimate",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
-    },
-    {
-      "date": "2026-05-11",
-      "country": "Chile",
-      "icc": 0.1169078093229925,
+      "icc": 0.1261062227993939,
       "method": "ADR Top-10 ICC calculation",
       "n_candidates": null,
-      "n_selected": 5,
-      "n_icc_available": 5,
-      "coverage_mktcap": 1.0,
+      "n_selected": 10,
+      "n_icc_available": 7,
+      "coverage_mktcap": 0.9829642983063284,
       "status": "adr_top10_icc_calculation",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
-      "date": "2026-05-11",
+      "date": "2026-05-12",
+      "country": "Chile",
+      "icc": 0.1387536626263737,
+      "method": "ADR Top-10 ICC calculation",
+      "n_candidates": null,
+      "n_selected": 8,
+      "n_icc_available": 7,
+      "coverage_mktcap": 0.9617770008126956,
+      "status": "adr_top10_icc_calculation",
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
+    },
+    {
+      "date": "2026-05-12",
       "country": "China",
-      "icc": 0.2495028517619552,
+      "icc": 0.2495929024254119,
       "method": "ADR Top-10 ICC calculation",
       "n_candidates": null,
       "n_selected": 10,
       "n_icc_available": 9,
-      "coverage_mktcap": 0.9470248860071068,
+      "coverage_mktcap": 0.9467329791886696,
       "status": "adr_top10_icc_calculation",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
-      "date": "2026-05-07",
+      "date": "2026-05-12",
       "country": "Colombia",
-      "icc": 0.1074374117965291,
-      "method": "Partial ADR estimate",
-      "n_candidates": 7.0,
-      "n_selected": 7,
-      "n_icc_available": 2,
+      "icc": 0.1115959549589234,
+      "method": "ADR Top-10 ICC calculation",
+      "n_candidates": null,
+      "n_selected": 4,
+      "n_icc_available": 4,
       "coverage_mktcap": 1.0,
-      "status": "partial_adr_composite",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_0507.csv"
+      "status": "adr_top10_icc_calculation",
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
-      "date": "2026-05-08",
+      "date": "2026-05-12",
       "country": "Cyprus",
-      "icc": 0.193769414083705,
-      "method": "Unavailable",
+      "icc": 0.100125146408289,
+      "method": "Partial ADR estimate",
       "n_candidates": null,
-      "n_selected": 1,
-      "n_icc_available": 1,
-      "coverage_mktcap": 1.0,
-      "status": "too_few_adr_icc",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_08.csv"
+      "n_selected": 3,
+      "n_icc_available": 2,
+      "coverage_mktcap": 0.9988504863497564,
+      "status": "partial_adr_estimate",
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "date": "2026-05-07",
@@ -232,16 +232,16 @@
       "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_0507.csv"
     },
     {
-      "date": "2026-05-08",
+      "date": "2026-05-12",
       "country": "Denmark",
-      "icc": 0.1852589500522243,
+      "icc": 0.1834106776865274,
       "method": "Partial ADR estimate",
       "n_candidates": null,
-      "n_selected": 2,
+      "n_selected": 3,
       "n_icc_available": 2,
-      "coverage_mktcap": 1.0,
+      "coverage_mktcap": 0.8572116941274687,
       "status": "partial_adr_estimate",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_08.csv"
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "date": "2026-05-07",
@@ -268,43 +268,43 @@
       "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_0507.csv"
     },
     {
-      "date": "2026-05-07",
+      "date": "2026-05-12",
       "country": "Finland",
-      "icc": 0.1082468488749317,
-      "method": "ADR Top-10 ICC calculation",
-      "n_candidates": 27.0,
-      "n_selected": 25,
-      "n_icc_available": 8,
+      "icc": 0.0713811926636335,
+      "method": "Partial ADR estimate",
+      "n_candidates": null,
+      "n_selected": 2,
+      "n_icc_available": 2,
       "coverage_mktcap": 1.0,
-      "status": "ok_adr_top_n",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_0507.csv"
+      "status": "partial_adr_estimate",
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
-      "date": "2026-05-11",
+      "date": "2026-05-12",
       "country": "France",
-      "icc": 0.098724589094619,
+      "icc": 0.0980033877975986,
       "method": "ADR Top-10 ICC calculation",
       "n_candidates": null,
       "n_selected": 10,
-      "n_icc_available": 7,
-      "coverage_mktcap": 0.9888793850916378,
+      "n_icc_available": 8,
+      "coverage_mktcap": 0.9894375879034688,
       "status": "adr_top10_icc_calculation",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
-      "date": "2026-05-11",
+      "date": "2026-05-12",
       "country": "Germany",
-      "icc": 0.0989506596035209,
+      "icc": 0.1007111201852344,
       "method": "ADR Top-10 ICC calculation",
       "n_candidates": null,
-      "n_selected": 9,
-      "n_icc_available": 8,
-      "coverage_mktcap": 0.972740135905187,
+      "n_selected": 10,
+      "n_icc_available": 9,
+      "coverage_mktcap": 0.9729556294000176,
       "status": "adr_top10_icc_calculation",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
-      "date": "2026-05-11",
+      "date": "2026-05-12",
       "country": "Gibraltar",
       "icc": null,
       "method": "Unavailable",
@@ -313,43 +313,43 @@
       "n_icc_available": 0,
       "coverage_mktcap": 0.0,
       "status": "unavailable",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
-      "date": "2026-05-11",
+      "date": "2026-05-12",
       "country": "Greece",
-      "icc": 0.0801065095007157,
-      "method": "Unavailable",
+      "icc": 0.0983744471957139,
+      "method": "Partial ADR estimate",
       "n_candidates": null,
-      "n_selected": 2,
-      "n_icc_available": 1,
-      "coverage_mktcap": 0.7283390683451884,
-      "status": "too_few_adr_icc",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "n_selected": 4,
+      "n_icc_available": 3,
+      "coverage_mktcap": 0.9872065040613024,
+      "status": "partial_adr_estimate",
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
-      "date": "2026-05-04",
+      "date": "2026-05-12",
       "country": "Guernsey",
-      "icc": 0.091405924239836,
+      "icc": 0.0900799374185076,
       "method": "Partial ADR estimate",
-      "n_candidates": 2.0,
+      "n_candidates": null,
       "n_selected": 2,
       "n_icc_available": 2,
       "coverage_mktcap": 1.0,
-      "status": "partial_adr_composite",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv"
+      "status": "partial_adr_estimate",
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
-      "date": "2026-05-11",
+      "date": "2026-05-12",
       "country": "Hong Kong",
-      "icc": 0.3087143184649407,
-      "method": "Unavailable",
+      "icc": 0.302047027236849,
+      "method": "ADR Top-10 ICC calculation",
       "n_candidates": null,
       "n_selected": 10,
-      "n_icc_available": 1,
-      "coverage_mktcap": 0.996887731213872,
-      "status": "too_few_adr_icc",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "n_icc_available": 5,
+      "coverage_mktcap": 0.9400609597785434,
+      "status": "adr_top10_icc_calculation",
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "date": "2026-05-07",
@@ -376,92 +376,44 @@
       "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_0507.csv"
     },
     {
-      "date": "2026-05-11",
+      "date": "2026-05-12",
       "country": "India",
-      "icc": 0.097191097363009,
+      "icc": 0.0974525550617441,
       "method": "ADR Top-10 ICC calculation",
       "n_candidates": null,
-      "n_selected": 6,
-      "n_icc_available": 6,
+      "n_selected": 7,
+      "n_icc_available": 7,
       "coverage_mktcap": 1.0,
       "status": "adr_top10_icc_calculation",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
-      "date": "2026-05-07",
+      "date": "2026-05-12",
       "country": "Indonesia",
-      "icc": 0.397959499086463,
-      "method": "Partial ADR estimate",
-      "n_candidates": 46.0,
-      "n_selected": 25,
-      "n_icc_available": 2,
-      "coverage_mktcap": 1.0,
-      "status": "partial_adr_composite",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_0507.csv"
-    },
-    {
-      "date": "2026-05-11",
-      "country": "Ireland",
-      "icc": 0.1268332556448704,
-      "method": "ADR Top-10 ICC calculation",
-      "n_candidates": null,
-      "n_selected": 10,
-      "n_icc_available": 10,
-      "coverage_mktcap": 1.0,
-      "status": "adr_top10_icc_calculation",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
-    },
-    {
-      "date": "2026-05-07",
-      "country": "Isle of Man",
       "icc": null,
       "method": "Unavailable",
-      "n_candidates": 1.0,
-      "n_selected": 1,
+      "n_candidates": null,
+      "n_selected": 2,
       "n_icc_available": 0,
-      "coverage_mktcap": null,
-      "status": "insufficient_adr_icc",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_0507.csv"
+      "coverage_mktcap": 0.0,
+      "status": "unavailable",
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
-      "date": "2026-05-11",
-      "country": "Israel",
-      "icc": 0.0965191410661952,
-      "method": "ADR Top-10 ICC calculation",
-      "n_candidates": null,
-      "n_selected": 10,
-      "n_icc_available": 9,
-      "coverage_mktcap": 0.9908811930205712,
-      "status": "adr_top10_icc_calculation",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
-    },
-    {
-      "date": "2026-05-11",
-      "country": "Italy",
-      "icc": 0.0885297323433159,
-      "method": "ADR Top-10 ICC calculation",
-      "n_candidates": null,
-      "n_selected": 5,
-      "n_icc_available": 5,
-      "coverage_mktcap": 1.0,
-      "status": "adr_top10_icc_calculation",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
-    },
-    {
-      "date": "2026-05-11",
-      "country": "Japan",
-      "icc": 0.1281025892429796,
+      "date": "2026-05-12",
+      "country": "Ireland",
+      "icc": 0.1143323037373974,
       "method": "ADR Top-10 ICC calculation",
       "n_candidates": null,
       "n_selected": 10,
       "n_icc_available": 10,
       "coverage_mktcap": 1.0,
       "status": "adr_top10_icc_calculation",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
-      "date": "2026-05-11",
-      "country": "Jersey",
+      "date": "2026-05-12",
+      "country": "Isle of Man",
       "icc": null,
       "method": "Unavailable",
       "n_candidates": null,
@@ -469,19 +421,67 @@
       "n_icc_available": 0,
       "coverage_mktcap": 0.0,
       "status": "unavailable",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
-      "date": "2026-05-07",
+      "date": "2026-05-12",
+      "country": "Israel",
+      "icc": 0.0800700265630904,
+      "method": "ADR Top-10 ICC calculation",
+      "n_candidates": null,
+      "n_selected": 10,
+      "n_icc_available": 10,
+      "coverage_mktcap": 1.0,
+      "status": "adr_top10_icc_calculation",
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
+    },
+    {
+      "date": "2026-05-12",
+      "country": "Italy",
+      "icc": 0.0887004383800949,
+      "method": "ADR Top-10 ICC calculation",
+      "n_candidates": null,
+      "n_selected": 9,
+      "n_icc_available": 7,
+      "coverage_mktcap": 0.998907682250264,
+      "status": "adr_top10_icc_calculation",
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
+    },
+    {
+      "date": "2026-05-12",
+      "country": "Japan",
+      "icc": 0.1201262459641527,
+      "method": "ADR Top-10 ICC calculation",
+      "n_candidates": null,
+      "n_selected": 10,
+      "n_icc_available": 10,
+      "coverage_mktcap": 1.0,
+      "status": "adr_top10_icc_calculation",
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
+    },
+    {
+      "date": "2026-05-12",
+      "country": "Jersey",
+      "icc": 0.1334057151194971,
+      "method": "Partial ADR estimate",
+      "n_candidates": null,
+      "n_selected": 4,
+      "n_icc_available": 2,
+      "coverage_mktcap": 0.416658417647582,
+      "status": "partial_adr_estimate",
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
+    },
+    {
+      "date": "2026-05-12",
       "country": "Jordan",
-      "icc": null,
+      "icc": 0.1100287440165178,
       "method": "Unavailable",
-      "n_candidates": 3.0,
-      "n_selected": 3,
+      "n_candidates": null,
+      "n_selected": 1,
       "n_icc_available": 1,
-      "coverage_mktcap": null,
-      "status": "insufficient_adr_icc",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_0507.csv"
+      "coverage_mktcap": 1.0,
+      "status": "too_few_adr_icc",
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "date": "2026-05-07",
@@ -544,52 +544,52 @@
       "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_0507.csv"
     },
     {
-      "date": "2026-05-11",
+      "date": "2026-05-12",
       "country": "Luxembourg",
-      "icc": 0.171681440143927,
+      "icc": 0.1253351065397926,
       "method": "ADR Top-10 ICC calculation",
       "n_candidates": null,
-      "n_selected": 5,
-      "n_icc_available": 5,
+      "n_selected": 10,
+      "n_icc_available": 10,
       "coverage_mktcap": 1.0,
       "status": "adr_top10_icc_calculation",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
-      "date": "2026-05-07",
+      "date": "2026-05-12",
       "country": "Macau",
       "icc": null,
       "method": "Unavailable",
-      "n_candidates": 3.0,
-      "n_selected": 3,
+      "n_candidates": null,
+      "n_selected": 2,
       "n_icc_available": 0,
-      "coverage_mktcap": null,
-      "status": "insufficient_adr_icc",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_0507.csv"
+      "coverage_mktcap": 0.0,
+      "status": "unavailable",
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
-      "date": "2026-05-11",
+      "date": "2026-05-12",
       "country": "Malaysia",
       "icc": null,
       "method": "Unavailable",
       "n_candidates": null,
-      "n_selected": 4,
+      "n_selected": 10,
       "n_icc_available": 0,
       "coverage_mktcap": 0.0,
       "status": "unavailable",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
-      "date": "2026-05-11",
+      "date": "2026-05-12",
       "country": "Mexico",
-      "icc": 0.0806776444728861,
+      "icc": 0.088547064245668,
       "method": "ADR Top-10 ICC calculation",
       "n_candidates": null,
-      "n_selected": 8,
-      "n_icc_available": 8,
+      "n_selected": 10,
+      "n_icc_available": 10,
       "coverage_mktcap": 1.0,
       "status": "adr_top10_icc_calculation",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "date": "2026-05-04",
@@ -616,16 +616,16 @@
       "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_0507.csv"
     },
     {
-      "date": "2026-05-11",
+      "date": "2026-05-12",
       "country": "Netherlands",
-      "icc": 0.0762747764435637,
+      "icc": 0.0890234937036878,
       "method": "ADR Top-10 ICC calculation",
       "n_candidates": null,
-      "n_selected": 7,
-      "n_icc_available": 6,
-      "coverage_mktcap": 0.999720287574228,
+      "n_selected": 10,
+      "n_icc_available": 9,
+      "coverage_mktcap": 0.9548220639420866,
       "status": "adr_top10_icc_calculation",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "date": "2026-05-07",
@@ -652,16 +652,16 @@
       "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_0507.csv"
     },
     {
-      "date": "2026-05-07",
+      "date": "2026-05-12",
       "country": "Norway",
-      "icc": 0.1119163667089671,
-      "method": "ADR Top-10 ICC calculation",
-      "n_candidates": 32.0,
-      "n_selected": 25,
-      "n_icc_available": 5,
+      "icc": 0.1498257509656507,
+      "method": "Unavailable",
+      "n_candidates": null,
+      "n_selected": 1,
+      "n_icc_available": 1,
       "coverage_mktcap": 1.0,
-      "status": "ok_adr_top_n",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_0507.csv"
+      "status": "too_few_adr_icc",
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "date": "2026-05-07",
@@ -688,40 +688,40 @@
       "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_0507.csv"
     },
     {
-      "date": "2026-05-04",
+      "date": "2026-05-12",
       "country": "Panama",
-      "icc": 0.205048936867136,
+      "icc": 0.2025133102680946,
       "method": "Partial ADR estimate",
-      "n_candidates": 2.0,
+      "n_candidates": null,
       "n_selected": 2,
       "n_icc_available": 2,
       "coverage_mktcap": 1.0,
-      "status": "partial_adr_composite",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv"
+      "status": "partial_adr_estimate",
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
-      "date": "2026-05-07",
+      "date": "2026-05-12",
       "country": "Peru",
-      "icc": 0.1071942872617621,
+      "icc": 0.1123448159148852,
       "method": "Partial ADR estimate",
-      "n_candidates": 6.0,
-      "n_selected": 6,
+      "n_candidates": null,
+      "n_selected": 2,
       "n_icc_available": 2,
       "coverage_mktcap": 1.0,
-      "status": "partial_adr_composite",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_0507.csv"
+      "status": "partial_adr_estimate",
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
-      "date": "2026-05-07",
+      "date": "2026-05-12",
       "country": "Philippines",
-      "icc": null,
-      "method": "Unavailable",
-      "n_candidates": 28.0,
-      "n_selected": 25,
-      "n_icc_available": 0,
-      "coverage_mktcap": null,
-      "status": "insufficient_adr_icc",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_0507.csv"
+      "icc": 0.1086729129238922,
+      "method": "Partial ADR estimate",
+      "n_candidates": null,
+      "n_selected": 2,
+      "n_icc_available": 2,
+      "coverage_mktcap": 1.0,
+      "status": "partial_adr_estimate",
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "date": "2026-05-07",
@@ -796,16 +796,16 @@
       "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_0507.csv"
     },
     {
-      "date": "2026-05-11",
+      "date": "2026-05-12",
       "country": "Singapore",
-      "icc": 0.0193433200196951,
-      "method": "Partial ADR estimate",
+      "icc": 0.1418485908703246,
+      "method": "ADR Top-10 ICC calculation",
       "n_candidates": null,
       "n_selected": 10,
-      "n_icc_available": 2,
-      "coverage_mktcap": 0.6578011353037406,
-      "status": "partial_adr_estimate",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "n_icc_available": 7,
+      "coverage_mktcap": 0.968127296125232,
+      "status": "adr_top10_icc_calculation",
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "date": "2026-05-07",
@@ -820,100 +820,100 @@
       "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_0507.csv"
     },
     {
-      "date": "2026-05-11",
+      "date": "2026-05-12",
       "country": "South Africa",
-      "icc": 0.1243143992558406,
+      "icc": 0.1230869703625478,
       "method": "ADR Top-10 ICC calculation",
       "n_candidates": null,
-      "n_selected": 5,
-      "n_icc_available": 5,
+      "n_selected": 6,
+      "n_icc_available": 6,
       "coverage_mktcap": 1.0,
       "status": "adr_top10_icc_calculation",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
-      "date": "2026-05-11",
+      "date": "2026-05-12",
       "country": "South Korea",
-      "icc": 0.1960309876999932,
+      "icc": 0.1932090239405363,
       "method": "ADR Top-10 ICC calculation",
       "n_candidates": null,
-      "n_selected": 8,
-      "n_icc_available": 8,
-      "coverage_mktcap": 1.0,
+      "n_selected": 10,
+      "n_icc_available": 9,
+      "coverage_mktcap": 0.9972154277723138,
       "status": "adr_top10_icc_calculation",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
-      "date": "2026-05-11",
+      "date": "2026-05-12",
       "country": "Spain",
-      "icc": 0.1081696700037715,
+      "icc": 0.1087311343353249,
       "method": "Partial ADR estimate",
       "n_candidates": null,
-      "n_selected": 4,
+      "n_selected": 6,
       "n_icc_available": 3,
-      "coverage_mktcap": 0.999639441242944,
+      "coverage_mktcap": 0.999439267566676,
       "status": "partial_adr_estimate",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
-      "date": "2026-05-11",
+      "date": "2026-05-12",
       "country": "Sweden",
-      "icc": 0.068212920116914,
+      "icc": 0.0688067158693143,
+      "method": "Partial ADR estimate",
+      "n_candidates": null,
+      "n_selected": 6,
+      "n_icc_available": 2,
+      "coverage_mktcap": 0.8057392150920775,
+      "status": "partial_adr_estimate",
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
+    },
+    {
+      "date": "2026-05-12",
+      "country": "Switzerland",
+      "icc": 0.0932109942541986,
+      "method": "ADR Top-10 ICC calculation",
+      "n_candidates": null,
+      "n_selected": 10,
+      "n_icc_available": 10,
+      "coverage_mktcap": 1.0,
+      "status": "adr_top10_icc_calculation",
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
+    },
+    {
+      "date": "2026-05-12",
+      "country": "Taiwan",
+      "icc": 0.0889073438593703,
+      "method": "ADR Top-10 ICC calculation",
+      "n_candidates": null,
+      "n_selected": 10,
+      "n_icc_available": 7,
+      "coverage_mktcap": 0.999565268239482,
+      "status": "adr_top10_icc_calculation",
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
+    },
+    {
+      "date": "2026-05-12",
+      "country": "Thailand",
+      "icc": 0.4,
       "method": "Unavailable",
       "n_candidates": null,
       "n_selected": 1,
       "n_icc_available": 1,
       "coverage_mktcap": 1.0,
       "status": "too_few_adr_icc",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
-      "date": "2026-05-11",
-      "country": "Switzerland",
-      "icc": 0.0981914865649549,
-      "method": "ADR Top-10 ICC calculation",
-      "n_candidates": null,
-      "n_selected": 8,
-      "n_icc_available": 6,
-      "coverage_mktcap": 0.9933812873158196,
-      "status": "adr_top10_icc_calculation",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
-    },
-    {
-      "date": "2026-05-11",
-      "country": "Taiwan",
-      "icc": 0.0873356484944574,
-      "method": "ADR Top-10 ICC calculation",
-      "n_candidates": null,
-      "n_selected": 6,
-      "n_icc_available": 5,
-      "coverage_mktcap": 0.9998098693869394,
-      "status": "adr_top10_icc_calculation",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
-    },
-    {
-      "date": "2026-05-07",
-      "country": "Thailand",
-      "icc": null,
-      "method": "Unavailable",
-      "n_candidates": 37.0,
-      "n_selected": 25,
-      "n_icc_available": 1,
-      "coverage_mktcap": null,
-      "status": "insufficient_adr_icc",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_0507.csv"
-    },
-    {
-      "date": "2026-05-07",
+      "date": "2026-05-12",
       "country": "Turkey",
-      "icc": 0.1905751097006552,
+      "icc": 0.302480024595738,
       "method": "Partial ADR estimate",
-      "n_candidates": 33.0,
-      "n_selected": 25,
-      "n_icc_available": 3,
+      "n_candidates": null,
+      "n_selected": 2,
+      "n_icc_available": 2,
       "coverage_mktcap": 1.0,
-      "status": "partial_adr_composite",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_0507.csv"
+      "status": "partial_adr_estimate",
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "date": "2026-05-07",
@@ -952,52 +952,52 @@
       "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_0507.csv"
     },
     {
-      "date": "2026-05-11",
+      "date": "2026-05-12",
       "country": "United Arab Emirates",
-      "icc": null,
-      "method": "Unavailable",
+      "icc": 0.2601491051960141,
+      "method": "Partial ADR estimate",
       "n_candidates": null,
-      "n_selected": 3,
-      "n_icc_available": 0,
-      "coverage_mktcap": 0.0,
-      "status": "unavailable",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "n_selected": 9,
+      "n_icc_available": 3,
+      "coverage_mktcap": 0.9409844662391492,
+      "status": "partial_adr_estimate",
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
-      "date": "2026-05-11",
+      "date": "2026-05-12",
       "country": "United Kingdom",
-      "icc": 0.0850566487072577,
+      "icc": 0.0781975117176287,
       "method": "ADR Top-10 ICC calculation",
       "n_candidates": null,
       "n_selected": 10,
       "n_icc_available": 10,
       "coverage_mktcap": 1.0,
       "status": "adr_top10_icc_calculation",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
-      "date": "2026-05-11",
+      "date": "2026-05-12",
       "country": "United States",
-      "icc": 0.0967231897381174,
+      "icc": 0.1026367639274274,
       "method": "ADR Top-10 ICC calculation",
       "n_candidates": null,
       "n_selected": 10,
-      "n_icc_available": 8,
-      "coverage_mktcap": 0.9876517153489668,
+      "n_icc_available": 10,
+      "coverage_mktcap": 1.0,
       "status": "adr_top10_icc_calculation",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
-      "date": "2026-05-11",
+      "date": "2026-05-12",
       "country": "Uruguay",
-      "icc": 0.1024045177016811,
+      "icc": 0.101620205089319,
       "method": "Unavailable",
       "n_candidates": null,
       "n_selected": 1,
       "n_icc_available": 1,
       "coverage_mktcap": 1.0,
       "status": "too_few_adr_icc",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "date": "2026-05-07",
@@ -1012,31 +1012,31 @@
       "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_0507.csv"
     },
     {
-      "date": "2026-05-04",
+      "date": "2026-05-12",
       "country": "Vietnam",
       "icc": null,
       "method": "Unavailable",
-      "n_candidates": 2.0,
-      "n_selected": 2,
+      "n_candidates": null,
+      "n_selected": 1,
       "n_icc_available": 0,
-      "coverage_mktcap": null,
-      "status": "insufficient_adr_icc",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv"
+      "coverage_mktcap": 0.0,
+      "status": "unavailable",
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     }
   ],
   "monthly": [
     {
       "country": "Argentina",
       "month": "2026-05",
-      "month_end_date": "2026-05-11",
-      "icc": 0.2260412158135282,
+      "month_end_date": "2026-05-12",
+      "icc": 0.2134035137368943,
       "method": "ADR Top-10 ICC calculation",
       "n_candidates": null,
-      "n_selected": 9,
-      "n_icc_available": 9,
+      "n_selected": 10,
+      "n_icc_available": 10,
       "coverage_mktcap": 1.0,
       "status": "adr_top10_icc_calculation",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "country": "Argentina",
@@ -1054,15 +1054,15 @@
     {
       "country": "Australia",
       "month": "2026-05",
-      "month_end_date": "2026-05-11",
-      "icc": 0.0716482150409389,
-      "method": "Unavailable",
+      "month_end_date": "2026-05-12",
+      "icc": 0.0716220313668008,
+      "method": "Partial ADR estimate",
       "n_candidates": null,
-      "n_selected": 3,
-      "n_icc_available": 1,
-      "coverage_mktcap": 0.9995136452376032,
-      "status": "too_few_adr_icc",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "n_selected": 10,
+      "n_icc_available": 2,
+      "coverage_mktcap": 0.9082332533891364,
+      "status": "partial_adr_estimate",
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "country": "Australia",
@@ -1132,15 +1132,15 @@
     {
       "country": "Belgium",
       "month": "2026-05",
-      "month_end_date": "2026-05-11",
-      "icc": null,
-      "method": "Unavailable",
+      "month_end_date": "2026-05-12",
+      "icc": 0.0773401691161541,
+      "method": "Partial ADR estimate",
       "n_candidates": null,
-      "n_selected": 1,
-      "n_icc_available": 0,
-      "coverage_mktcap": 0.0,
-      "status": "unavailable",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "n_selected": 7,
+      "n_icc_available": 3,
+      "coverage_mktcap": 0.9837845083427472,
+      "status": "partial_adr_estimate",
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "country": "Belgium",
@@ -1158,15 +1158,15 @@
     {
       "country": "Bermuda",
       "month": "2026-05",
-      "month_end_date": "2026-05-11",
-      "icc": 0.0867245628187757,
-      "method": "Unavailable",
+      "month_end_date": "2026-05-12",
+      "icc": 0.0933360800659235,
+      "method": "ADR Top-10 ICC calculation",
       "n_candidates": null,
-      "n_selected": 1,
-      "n_icc_available": 1,
-      "coverage_mktcap": 1.0,
-      "status": "too_few_adr_icc",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "n_selected": 10,
+      "n_icc_available": 6,
+      "coverage_mktcap": 0.8076369897880883,
+      "status": "adr_top10_icc_calculation",
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "country": "Bolivia",
@@ -1184,15 +1184,15 @@
     {
       "country": "Brazil",
       "month": "2026-05",
-      "month_end_date": "2026-05-11",
-      "icc": 0.1240575016200979,
+      "month_end_date": "2026-05-12",
+      "icc": 0.1303729658728163,
       "method": "ADR Top-10 ICC calculation",
       "n_candidates": null,
-      "n_selected": 8,
-      "n_icc_available": 7,
-      "coverage_mktcap": 0.999216822554688,
+      "n_selected": 10,
+      "n_icc_available": 9,
+      "coverage_mktcap": 0.9492255535905524,
       "status": "adr_top10_icc_calculation",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "country": "Brazil",
@@ -1223,7 +1223,7 @@
     {
       "country": "Cambodia",
       "month": "2026-05",
-      "month_end_date": "2026-05-08",
+      "month_end_date": "2026-05-12",
       "icc": null,
       "method": "Unavailable",
       "n_candidates": null,
@@ -1231,20 +1231,20 @@
       "n_icc_available": 0,
       "coverage_mktcap": 0.0,
       "status": "unavailable",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_08.csv"
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "country": "Canada",
       "month": "2026-05",
-      "month_end_date": "2026-05-11",
-      "icc": 0.0953913569345805,
+      "month_end_date": "2026-05-12",
+      "icc": 0.0950624763543779,
       "method": "ADR Top-10 ICC calculation",
       "n_candidates": null,
       "n_selected": 10,
       "n_icc_available": 10,
       "coverage_mktcap": 1.0,
       "status": "adr_top10_icc_calculation",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "country": "Canada",
@@ -1262,15 +1262,15 @@
     {
       "country": "Cayman Islands",
       "month": "2026-05",
-      "month_end_date": "2026-05-11",
-      "icc": 0.1415586703481773,
-      "method": "Partial ADR estimate",
+      "month_end_date": "2026-05-12",
+      "icc": 0.1261062227993939,
+      "method": "ADR Top-10 ICC calculation",
       "n_candidates": null,
-      "n_selected": 5,
-      "n_icc_available": 3,
-      "coverage_mktcap": 0.9947909113854972,
-      "status": "partial_adr_estimate",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "n_selected": 10,
+      "n_icc_available": 7,
+      "coverage_mktcap": 0.9829642983063284,
+      "status": "adr_top10_icc_calculation",
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "country": "Cayman Islands",
@@ -1288,15 +1288,15 @@
     {
       "country": "Chile",
       "month": "2026-05",
-      "month_end_date": "2026-05-11",
-      "icc": 0.1169078093229925,
+      "month_end_date": "2026-05-12",
+      "icc": 0.1387536626263737,
       "method": "ADR Top-10 ICC calculation",
       "n_candidates": null,
-      "n_selected": 5,
-      "n_icc_available": 5,
-      "coverage_mktcap": 1.0,
+      "n_selected": 8,
+      "n_icc_available": 7,
+      "coverage_mktcap": 0.9617770008126956,
       "status": "adr_top10_icc_calculation",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "country": "Chile",
@@ -1314,15 +1314,15 @@
     {
       "country": "China",
       "month": "2026-05",
-      "month_end_date": "2026-05-11",
-      "icc": 0.2495028517619552,
+      "month_end_date": "2026-05-12",
+      "icc": 0.2495929024254119,
       "method": "ADR Top-10 ICC calculation",
       "n_candidates": null,
       "n_selected": 10,
       "n_icc_available": 9,
-      "coverage_mktcap": 0.9470248860071068,
+      "coverage_mktcap": 0.9467329791886696,
       "status": "adr_top10_icc_calculation",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "country": "China",
@@ -1340,15 +1340,15 @@
     {
       "country": "Colombia",
       "month": "2026-05",
-      "month_end_date": "2026-05-07",
-      "icc": 0.1074374117965291,
-      "method": "Partial ADR estimate",
-      "n_candidates": 7.0,
-      "n_selected": 7,
-      "n_icc_available": 2,
+      "month_end_date": "2026-05-12",
+      "icc": 0.1115959549589234,
+      "method": "ADR Top-10 ICC calculation",
+      "n_candidates": null,
+      "n_selected": 4,
+      "n_icc_available": 4,
       "coverage_mktcap": 1.0,
-      "status": "partial_adr_composite",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_0507.csv"
+      "status": "adr_top10_icc_calculation",
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "country": "Colombia",
@@ -1366,15 +1366,15 @@
     {
       "country": "Cyprus",
       "month": "2026-05",
-      "month_end_date": "2026-05-08",
-      "icc": 0.193769414083705,
-      "method": "Unavailable",
+      "month_end_date": "2026-05-12",
+      "icc": 0.100125146408289,
+      "method": "Partial ADR estimate",
       "n_candidates": null,
-      "n_selected": 1,
-      "n_icc_available": 1,
-      "coverage_mktcap": 1.0,
-      "status": "too_few_adr_icc",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_08.csv"
+      "n_selected": 3,
+      "n_icc_available": 2,
+      "coverage_mktcap": 0.9988504863497564,
+      "status": "partial_adr_estimate",
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "country": "Czech Republic",
@@ -1392,15 +1392,15 @@
     {
       "country": "Denmark",
       "month": "2026-05",
-      "month_end_date": "2026-05-08",
-      "icc": 0.1852589500522243,
+      "month_end_date": "2026-05-12",
+      "icc": 0.1834106776865274,
       "method": "Partial ADR estimate",
       "n_candidates": null,
-      "n_selected": 2,
+      "n_selected": 3,
       "n_icc_available": 2,
-      "coverage_mktcap": 1.0,
+      "coverage_mktcap": 0.8572116941274687,
       "status": "partial_adr_estimate",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_08.csv"
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "country": "Denmark",
@@ -1444,15 +1444,15 @@
     {
       "country": "Finland",
       "month": "2026-05",
-      "month_end_date": "2026-05-07",
-      "icc": 0.1082468488749317,
-      "method": "ADR Top-10 ICC calculation",
-      "n_candidates": 27.0,
-      "n_selected": 25,
-      "n_icc_available": 8,
+      "month_end_date": "2026-05-12",
+      "icc": 0.0713811926636335,
+      "method": "Partial ADR estimate",
+      "n_candidates": null,
+      "n_selected": 2,
+      "n_icc_available": 2,
       "coverage_mktcap": 1.0,
-      "status": "ok_adr_top_n",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_0507.csv"
+      "status": "partial_adr_estimate",
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "country": "Finland",
@@ -1470,15 +1470,15 @@
     {
       "country": "France",
       "month": "2026-05",
-      "month_end_date": "2026-05-11",
-      "icc": 0.098724589094619,
+      "month_end_date": "2026-05-12",
+      "icc": 0.0980033877975986,
       "method": "ADR Top-10 ICC calculation",
       "n_candidates": null,
       "n_selected": 10,
-      "n_icc_available": 7,
-      "coverage_mktcap": 0.9888793850916378,
+      "n_icc_available": 8,
+      "coverage_mktcap": 0.9894375879034688,
       "status": "adr_top10_icc_calculation",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "country": "France",
@@ -1496,15 +1496,15 @@
     {
       "country": "Germany",
       "month": "2026-05",
-      "month_end_date": "2026-05-11",
-      "icc": 0.0989506596035209,
+      "month_end_date": "2026-05-12",
+      "icc": 0.1007111201852344,
       "method": "ADR Top-10 ICC calculation",
       "n_candidates": null,
-      "n_selected": 9,
-      "n_icc_available": 8,
-      "coverage_mktcap": 0.972740135905187,
+      "n_selected": 10,
+      "n_icc_available": 9,
+      "coverage_mktcap": 0.9729556294000176,
       "status": "adr_top10_icc_calculation",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "country": "Germany",
@@ -1522,7 +1522,7 @@
     {
       "country": "Gibraltar",
       "month": "2026-05",
-      "month_end_date": "2026-05-11",
+      "month_end_date": "2026-05-12",
       "icc": null,
       "method": "Unavailable",
       "n_candidates": null,
@@ -1530,46 +1530,46 @@
       "n_icc_available": 0,
       "coverage_mktcap": 0.0,
       "status": "unavailable",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "country": "Greece",
       "month": "2026-05",
-      "month_end_date": "2026-05-11",
-      "icc": 0.0801065095007157,
-      "method": "Unavailable",
+      "month_end_date": "2026-05-12",
+      "icc": 0.0983744471957139,
+      "method": "Partial ADR estimate",
       "n_candidates": null,
-      "n_selected": 2,
-      "n_icc_available": 1,
-      "coverage_mktcap": 0.7283390683451884,
-      "status": "too_few_adr_icc",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "n_selected": 4,
+      "n_icc_available": 3,
+      "coverage_mktcap": 0.9872065040613024,
+      "status": "partial_adr_estimate",
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "country": "Guernsey",
       "month": "2026-05",
-      "month_end_date": "2026-05-04",
-      "icc": 0.091405924239836,
+      "month_end_date": "2026-05-12",
+      "icc": 0.0900799374185076,
       "method": "Partial ADR estimate",
-      "n_candidates": 2.0,
+      "n_candidates": null,
       "n_selected": 2,
       "n_icc_available": 2,
       "coverage_mktcap": 1.0,
-      "status": "partial_adr_composite",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv"
+      "status": "partial_adr_estimate",
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "country": "Hong Kong",
       "month": "2026-05",
-      "month_end_date": "2026-05-11",
-      "icc": 0.3087143184649407,
-      "method": "Unavailable",
+      "month_end_date": "2026-05-12",
+      "icc": 0.302047027236849,
+      "method": "ADR Top-10 ICC calculation",
       "n_candidates": null,
       "n_selected": 10,
-      "n_icc_available": 1,
-      "coverage_mktcap": 0.996887731213872,
-      "status": "too_few_adr_icc",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "n_icc_available": 5,
+      "coverage_mktcap": 0.9400609597785434,
+      "status": "adr_top10_icc_calculation",
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "country": "Hong Kong",
@@ -1613,15 +1613,15 @@
     {
       "country": "India",
       "month": "2026-05",
-      "month_end_date": "2026-05-11",
-      "icc": 0.097191097363009,
+      "month_end_date": "2026-05-12",
+      "icc": 0.0974525550617441,
       "method": "ADR Top-10 ICC calculation",
       "n_candidates": null,
-      "n_selected": 6,
-      "n_icc_available": 6,
+      "n_selected": 7,
+      "n_icc_available": 7,
       "coverage_mktcap": 1.0,
       "status": "adr_top10_icc_calculation",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "country": "India",
@@ -1639,28 +1639,28 @@
     {
       "country": "Indonesia",
       "month": "2026-05",
-      "month_end_date": "2026-05-07",
-      "icc": 0.397959499086463,
-      "method": "Partial ADR estimate",
-      "n_candidates": 46.0,
-      "n_selected": 25,
-      "n_icc_available": 2,
-      "coverage_mktcap": 1.0,
-      "status": "partial_adr_composite",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_0507.csv"
+      "month_end_date": "2026-05-12",
+      "icc": null,
+      "method": "Unavailable",
+      "n_candidates": null,
+      "n_selected": 2,
+      "n_icc_available": 0,
+      "coverage_mktcap": 0.0,
+      "status": "unavailable",
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "country": "Ireland",
       "month": "2026-05",
-      "month_end_date": "2026-05-11",
-      "icc": 0.1268332556448704,
+      "month_end_date": "2026-05-12",
+      "icc": 0.1143323037373974,
       "method": "ADR Top-10 ICC calculation",
       "n_candidates": null,
       "n_selected": 10,
       "n_icc_available": 10,
       "coverage_mktcap": 1.0,
       "status": "adr_top10_icc_calculation",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "country": "Ireland",
@@ -1678,28 +1678,28 @@
     {
       "country": "Isle of Man",
       "month": "2026-05",
-      "month_end_date": "2026-05-07",
+      "month_end_date": "2026-05-12",
       "icc": null,
       "method": "Unavailable",
-      "n_candidates": 1.0,
+      "n_candidates": null,
       "n_selected": 1,
       "n_icc_available": 0,
-      "coverage_mktcap": null,
-      "status": "insufficient_adr_icc",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_0507.csv"
+      "coverage_mktcap": 0.0,
+      "status": "unavailable",
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "country": "Israel",
       "month": "2026-05",
-      "month_end_date": "2026-05-11",
-      "icc": 0.0965191410661952,
+      "month_end_date": "2026-05-12",
+      "icc": 0.0800700265630904,
       "method": "ADR Top-10 ICC calculation",
       "n_candidates": null,
       "n_selected": 10,
-      "n_icc_available": 9,
-      "coverage_mktcap": 0.9908811930205712,
+      "n_icc_available": 10,
+      "coverage_mktcap": 1.0,
       "status": "adr_top10_icc_calculation",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "country": "Israel",
@@ -1717,15 +1717,15 @@
     {
       "country": "Italy",
       "month": "2026-05",
-      "month_end_date": "2026-05-11",
-      "icc": 0.0885297323433159,
+      "month_end_date": "2026-05-12",
+      "icc": 0.0887004383800949,
       "method": "ADR Top-10 ICC calculation",
       "n_candidates": null,
-      "n_selected": 5,
-      "n_icc_available": 5,
-      "coverage_mktcap": 1.0,
+      "n_selected": 9,
+      "n_icc_available": 7,
+      "coverage_mktcap": 0.998907682250264,
       "status": "adr_top10_icc_calculation",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "country": "Italy",
@@ -1743,15 +1743,15 @@
     {
       "country": "Japan",
       "month": "2026-05",
-      "month_end_date": "2026-05-11",
-      "icc": 0.1281025892429796,
+      "month_end_date": "2026-05-12",
+      "icc": 0.1201262459641527,
       "method": "ADR Top-10 ICC calculation",
       "n_candidates": null,
       "n_selected": 10,
       "n_icc_available": 10,
       "coverage_mktcap": 1.0,
       "status": "adr_top10_icc_calculation",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "country": "Japan",
@@ -1769,28 +1769,28 @@
     {
       "country": "Jersey",
       "month": "2026-05",
-      "month_end_date": "2026-05-11",
-      "icc": null,
-      "method": "Unavailable",
+      "month_end_date": "2026-05-12",
+      "icc": 0.1334057151194971,
+      "method": "Partial ADR estimate",
       "n_candidates": null,
-      "n_selected": 1,
-      "n_icc_available": 0,
-      "coverage_mktcap": 0.0,
-      "status": "unavailable",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "n_selected": 4,
+      "n_icc_available": 2,
+      "coverage_mktcap": 0.416658417647582,
+      "status": "partial_adr_estimate",
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "country": "Jordan",
       "month": "2026-05",
-      "month_end_date": "2026-05-07",
-      "icc": null,
+      "month_end_date": "2026-05-12",
+      "icc": 0.1100287440165178,
       "method": "Unavailable",
-      "n_candidates": 3.0,
-      "n_selected": 3,
+      "n_candidates": null,
+      "n_selected": 1,
       "n_icc_available": 1,
-      "coverage_mktcap": null,
-      "status": "insufficient_adr_icc",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_0507.csv"
+      "coverage_mktcap": 1.0,
+      "status": "too_few_adr_icc",
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "country": "Kazakhstan",
@@ -1873,15 +1873,15 @@
     {
       "country": "Luxembourg",
       "month": "2026-05",
-      "month_end_date": "2026-05-11",
-      "icc": 0.171681440143927,
+      "month_end_date": "2026-05-12",
+      "icc": 0.1253351065397926,
       "method": "ADR Top-10 ICC calculation",
       "n_candidates": null,
-      "n_selected": 5,
-      "n_icc_available": 5,
+      "n_selected": 10,
+      "n_icc_available": 10,
       "coverage_mktcap": 1.0,
       "status": "adr_top10_icc_calculation",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "country": "Luxembourg",
@@ -1899,15 +1899,15 @@
     {
       "country": "Macau",
       "month": "2026-05",
-      "month_end_date": "2026-05-07",
+      "month_end_date": "2026-05-12",
       "icc": null,
       "method": "Unavailable",
-      "n_candidates": 3.0,
-      "n_selected": 3,
+      "n_candidates": null,
+      "n_selected": 2,
       "n_icc_available": 0,
-      "coverage_mktcap": null,
-      "status": "insufficient_adr_icc",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_0507.csv"
+      "coverage_mktcap": 0.0,
+      "status": "unavailable",
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "country": "Macau",
@@ -1925,28 +1925,28 @@
     {
       "country": "Malaysia",
       "month": "2026-05",
-      "month_end_date": "2026-05-11",
+      "month_end_date": "2026-05-12",
       "icc": null,
       "method": "Unavailable",
       "n_candidates": null,
-      "n_selected": 4,
+      "n_selected": 10,
       "n_icc_available": 0,
       "coverage_mktcap": 0.0,
       "status": "unavailable",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "country": "Mexico",
       "month": "2026-05",
-      "month_end_date": "2026-05-11",
-      "icc": 0.0806776444728861,
+      "month_end_date": "2026-05-12",
+      "icc": 0.088547064245668,
       "method": "ADR Top-10 ICC calculation",
       "n_candidates": null,
-      "n_selected": 8,
-      "n_icc_available": 8,
+      "n_selected": 10,
+      "n_icc_available": 10,
       "coverage_mktcap": 1.0,
       "status": "adr_top10_icc_calculation",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "country": "Mexico",
@@ -1990,15 +1990,15 @@
     {
       "country": "Netherlands",
       "month": "2026-05",
-      "month_end_date": "2026-05-11",
-      "icc": 0.0762747764435637,
+      "month_end_date": "2026-05-12",
+      "icc": 0.0890234937036878,
       "method": "ADR Top-10 ICC calculation",
       "n_candidates": null,
-      "n_selected": 7,
-      "n_icc_available": 6,
-      "coverage_mktcap": 0.999720287574228,
+      "n_selected": 10,
+      "n_icc_available": 9,
+      "coverage_mktcap": 0.9548220639420866,
       "status": "adr_top10_icc_calculation",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "country": "Netherlands",
@@ -2042,15 +2042,15 @@
     {
       "country": "Norway",
       "month": "2026-05",
-      "month_end_date": "2026-05-07",
-      "icc": 0.1119163667089671,
-      "method": "ADR Top-10 ICC calculation",
-      "n_candidates": 32.0,
-      "n_selected": 25,
-      "n_icc_available": 5,
+      "month_end_date": "2026-05-12",
+      "icc": 0.1498257509656507,
+      "method": "Unavailable",
+      "n_candidates": null,
+      "n_selected": 1,
+      "n_icc_available": 1,
       "coverage_mktcap": 1.0,
-      "status": "ok_adr_top_n",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_0507.csv"
+      "status": "too_few_adr_icc",
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "country": "Norway",
@@ -2094,28 +2094,28 @@
     {
       "country": "Panama",
       "month": "2026-05",
-      "month_end_date": "2026-05-04",
-      "icc": 0.205048936867136,
+      "month_end_date": "2026-05-12",
+      "icc": 0.2025133102680946,
       "method": "Partial ADR estimate",
-      "n_candidates": 2.0,
+      "n_candidates": null,
       "n_selected": 2,
       "n_icc_available": 2,
       "coverage_mktcap": 1.0,
-      "status": "partial_adr_composite",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv"
+      "status": "partial_adr_estimate",
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "country": "Peru",
       "month": "2026-05",
-      "month_end_date": "2026-05-07",
-      "icc": 0.1071942872617621,
+      "month_end_date": "2026-05-12",
+      "icc": 0.1123448159148852,
       "method": "Partial ADR estimate",
-      "n_candidates": 6.0,
-      "n_selected": 6,
+      "n_candidates": null,
+      "n_selected": 2,
       "n_icc_available": 2,
       "coverage_mktcap": 1.0,
-      "status": "partial_adr_composite",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_0507.csv"
+      "status": "partial_adr_estimate",
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "country": "Peru",
@@ -2133,15 +2133,15 @@
     {
       "country": "Philippines",
       "month": "2026-05",
-      "month_end_date": "2026-05-07",
-      "icc": null,
-      "method": "Unavailable",
-      "n_candidates": 28.0,
-      "n_selected": 25,
-      "n_icc_available": 0,
-      "coverage_mktcap": null,
-      "status": "insufficient_adr_icc",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_0507.csv"
+      "month_end_date": "2026-05-12",
+      "icc": 0.1086729129238922,
+      "method": "Partial ADR estimate",
+      "n_candidates": null,
+      "n_selected": 2,
+      "n_icc_available": 2,
+      "coverage_mktcap": 1.0,
+      "status": "partial_adr_estimate",
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "country": "Philippines",
@@ -2237,15 +2237,15 @@
     {
       "country": "Singapore",
       "month": "2026-05",
-      "month_end_date": "2026-05-11",
-      "icc": 0.0193433200196951,
-      "method": "Partial ADR estimate",
+      "month_end_date": "2026-05-12",
+      "icc": 0.1418485908703246,
+      "method": "ADR Top-10 ICC calculation",
       "n_candidates": null,
       "n_selected": 10,
-      "n_icc_available": 2,
-      "coverage_mktcap": 0.6578011353037406,
-      "status": "partial_adr_estimate",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "n_icc_available": 7,
+      "coverage_mktcap": 0.968127296125232,
+      "status": "adr_top10_icc_calculation",
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "country": "Singapore",
@@ -2276,15 +2276,15 @@
     {
       "country": "South Africa",
       "month": "2026-05",
-      "month_end_date": "2026-05-11",
-      "icc": 0.1243143992558406,
+      "month_end_date": "2026-05-12",
+      "icc": 0.1230869703625478,
       "method": "ADR Top-10 ICC calculation",
       "n_candidates": null,
-      "n_selected": 5,
-      "n_icc_available": 5,
+      "n_selected": 6,
+      "n_icc_available": 6,
       "coverage_mktcap": 1.0,
       "status": "adr_top10_icc_calculation",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "country": "South Africa",
@@ -2302,15 +2302,15 @@
     {
       "country": "South Korea",
       "month": "2026-05",
-      "month_end_date": "2026-05-11",
-      "icc": 0.1960309876999932,
+      "month_end_date": "2026-05-12",
+      "icc": 0.1932090239405363,
       "method": "ADR Top-10 ICC calculation",
       "n_candidates": null,
-      "n_selected": 8,
-      "n_icc_available": 8,
-      "coverage_mktcap": 1.0,
+      "n_selected": 10,
+      "n_icc_available": 9,
+      "coverage_mktcap": 0.9972154277723138,
       "status": "adr_top10_icc_calculation",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "country": "South Korea",
@@ -2328,15 +2328,15 @@
     {
       "country": "Spain",
       "month": "2026-05",
-      "month_end_date": "2026-05-11",
-      "icc": 0.1081696700037715,
+      "month_end_date": "2026-05-12",
+      "icc": 0.1087311343353249,
       "method": "Partial ADR estimate",
       "n_candidates": null,
-      "n_selected": 4,
+      "n_selected": 6,
       "n_icc_available": 3,
-      "coverage_mktcap": 0.999639441242944,
+      "coverage_mktcap": 0.999439267566676,
       "status": "partial_adr_estimate",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "country": "Spain",
@@ -2354,15 +2354,15 @@
     {
       "country": "Sweden",
       "month": "2026-05",
-      "month_end_date": "2026-05-11",
-      "icc": 0.068212920116914,
-      "method": "Unavailable",
+      "month_end_date": "2026-05-12",
+      "icc": 0.0688067158693143,
+      "method": "Partial ADR estimate",
       "n_candidates": null,
-      "n_selected": 1,
-      "n_icc_available": 1,
-      "coverage_mktcap": 1.0,
-      "status": "too_few_adr_icc",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "n_selected": 6,
+      "n_icc_available": 2,
+      "coverage_mktcap": 0.8057392150920775,
+      "status": "partial_adr_estimate",
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "country": "Sweden",
@@ -2380,15 +2380,15 @@
     {
       "country": "Switzerland",
       "month": "2026-05",
-      "month_end_date": "2026-05-11",
-      "icc": 0.0981914865649549,
+      "month_end_date": "2026-05-12",
+      "icc": 0.0932109942541986,
       "method": "ADR Top-10 ICC calculation",
       "n_candidates": null,
-      "n_selected": 8,
-      "n_icc_available": 6,
-      "coverage_mktcap": 0.9933812873158196,
+      "n_selected": 10,
+      "n_icc_available": 10,
+      "coverage_mktcap": 1.0,
       "status": "adr_top10_icc_calculation",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "country": "Switzerland",
@@ -2406,15 +2406,15 @@
     {
       "country": "Taiwan",
       "month": "2026-05",
-      "month_end_date": "2026-05-11",
-      "icc": 0.0873356484944574,
+      "month_end_date": "2026-05-12",
+      "icc": 0.0889073438593703,
       "method": "ADR Top-10 ICC calculation",
       "n_candidates": null,
-      "n_selected": 6,
-      "n_icc_available": 5,
-      "coverage_mktcap": 0.9998098693869394,
+      "n_selected": 10,
+      "n_icc_available": 7,
+      "coverage_mktcap": 0.999565268239482,
       "status": "adr_top10_icc_calculation",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "country": "Taiwan",
@@ -2432,28 +2432,28 @@
     {
       "country": "Thailand",
       "month": "2026-05",
-      "month_end_date": "2026-05-07",
-      "icc": null,
+      "month_end_date": "2026-05-12",
+      "icc": 0.4,
       "method": "Unavailable",
-      "n_candidates": 37.0,
-      "n_selected": 25,
+      "n_candidates": null,
+      "n_selected": 1,
       "n_icc_available": 1,
-      "coverage_mktcap": null,
-      "status": "insufficient_adr_icc",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_0507.csv"
+      "coverage_mktcap": 1.0,
+      "status": "too_few_adr_icc",
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "country": "Turkey",
       "month": "2026-05",
-      "month_end_date": "2026-05-07",
-      "icc": 0.1905751097006552,
+      "month_end_date": "2026-05-12",
+      "icc": 0.302480024595738,
       "method": "Partial ADR estimate",
-      "n_candidates": 33.0,
-      "n_selected": 25,
-      "n_icc_available": 3,
+      "n_candidates": null,
+      "n_selected": 2,
+      "n_icc_available": 2,
       "coverage_mktcap": 1.0,
-      "status": "partial_adr_composite",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_0507.csv"
+      "status": "partial_adr_estimate",
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "country": "Turkey",
@@ -2510,15 +2510,15 @@
     {
       "country": "United Arab Emirates",
       "month": "2026-05",
-      "month_end_date": "2026-05-11",
-      "icc": null,
-      "method": "Unavailable",
+      "month_end_date": "2026-05-12",
+      "icc": 0.2601491051960141,
+      "method": "Partial ADR estimate",
       "n_candidates": null,
-      "n_selected": 3,
-      "n_icc_available": 0,
-      "coverage_mktcap": 0.0,
-      "status": "unavailable",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "n_selected": 9,
+      "n_icc_available": 3,
+      "coverage_mktcap": 0.9409844662391492,
+      "status": "partial_adr_estimate",
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "country": "United Arab Emirates",
@@ -2536,15 +2536,15 @@
     {
       "country": "United Kingdom",
       "month": "2026-05",
-      "month_end_date": "2026-05-11",
-      "icc": 0.0850566487072577,
+      "month_end_date": "2026-05-12",
+      "icc": 0.0781975117176287,
       "method": "ADR Top-10 ICC calculation",
       "n_candidates": null,
       "n_selected": 10,
       "n_icc_available": 10,
       "coverage_mktcap": 1.0,
       "status": "adr_top10_icc_calculation",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "country": "United Kingdom",
@@ -2562,28 +2562,28 @@
     {
       "country": "United States",
       "month": "2026-05",
-      "month_end_date": "2026-05-11",
-      "icc": 0.0967231897381174,
+      "month_end_date": "2026-05-12",
+      "icc": 0.1026367639274274,
       "method": "ADR Top-10 ICC calculation",
       "n_candidates": null,
       "n_selected": 10,
-      "n_icc_available": 8,
-      "coverage_mktcap": 0.9876517153489668,
+      "n_icc_available": 10,
+      "coverage_mktcap": 1.0,
       "status": "adr_top10_icc_calculation",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "country": "Uruguay",
       "month": "2026-05",
-      "month_end_date": "2026-05-11",
-      "icc": 0.1024045177016811,
+      "month_end_date": "2026-05-12",
+      "icc": 0.101620205089319,
       "method": "Unavailable",
       "n_candidates": null,
       "n_selected": 1,
       "n_icc_available": 1,
       "coverage_mktcap": 1.0,
       "status": "too_few_adr_icc",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_11.csv"
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     },
     {
       "country": "Venezuela",
@@ -2601,15 +2601,15 @@
     {
       "country": "Vietnam",
       "month": "2026-05",
-      "month_end_date": "2026-05-04",
+      "month_end_date": "2026-05-12",
       "icc": null,
       "method": "Unavailable",
-      "n_candidates": 2.0,
-      "n_selected": 2,
+      "n_candidates": null,
+      "n_selected": 1,
       "n_icc_available": 0,
-      "coverage_mktcap": null,
-      "status": "insufficient_adr_icc",
-      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_04.csv"
+      "coverage_mktcap": 0.0,
+      "status": "unavailable",
+      "source_file": "data/derived/country_adr/202605/country_adr_icc_2026_05_12.csv"
     }
   ],
   "downloads": {
@@ -2623,14 +2623,19 @@
     "tree": [
       {
         "year": "2026",
-        "n_files": 7,
+        "n_files": 8,
         "download_all_zip": "./data/downloads/families/country/archive/country_2026_all.zip",
         "months": [
           {
             "month": "2026-05",
-            "n_files": 6,
+            "n_files": 7,
             "download_all_zip": "./data/downloads/families/country/archive/2026/country_2026_05_all.zip",
             "days": [
+              {
+                "date": "2026-05-12",
+                "n_rows": 52,
+                "csv": "./data/downloads/families/country/archive/2026/05/country_2026-05-12.csv"
+              },
               {
                 "date": "2026-05-11",
                 "n_rows": 35,
