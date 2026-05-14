@@ -1,281 +1,48 @@
 date,country,ticker,company,icc,mktcap,source
 2026-05-07,Argentina,YPF,YPF,0.2028749100242192,18058870784.0,builtin_major_adr_universe
-2026-05-07,Argentina,GGAL,Grupo Financiero Galicia,0.3241448817572278,7327166976.0,builtin_major_adr_universe
-2026-05-07,Argentina,TEO,Telecom Argentina,0.12235934865034193,5164543488.0,builtin_major_adr_universe
-2026-05-07,Argentina,BMA,Banco Macro,0.4,4786476032.0,builtin_major_adr_universe
-2026-05-07,Argentina,TGS,"Transportadora de Gas del Sur, S.A. (TGS)",0.06930740883815134,4615930880.0,citi_dr_directory
-2026-05-07,Argentina,PAM,Pampa Energia,0.22029335065086741,4521190912.0,builtin_major_adr_universe
-2026-05-07,Argentina,LOMA,Loma Negra,0.09378951081230033,1295332608.0,builtin_major_adr_universe
-2026-05-07,Argentina,CRESY,"Cresud S.A.C.I.F. y A. - American Depositary Shares, each representing ten shares of Common Stock",0.025609680507272192,794596416.0,nasdaq_trader_symbol_directory
-2026-05-07,Australia,BHP,BHP,0.07511659805217386,209705500672.0,builtin_major_adr_universe
-2026-05-07,Australia,MQBKY,Macquarie,0.0787188090282159,65422405632.0,builtin_major_adr_universe
-2026-05-07,Australia,CSLLY,CSL,0.10467834051243358,42222747648.0,builtin_major_adr_universe
-2026-05-07,Australia,IREN,IREN Limited - Ordinary Shares,0.026908252145116197,18860509184.0,nasdaq_trader_symbol_directory
-2026-05-07,Australia,ELVR,Elevra Lithium Limited - American Depository Shares,0.010000000000000002,1741289344.0,nasdaq_trader_symbol_directory
-2026-05-07,Australia,GVH,Globavend Holdings Limited - Ord Shares,0.010000000000000002,9353090.0,nasdaq_trader_symbol_directory
-2026-05-07,Austria,NEM,Newmont,0.09518515112372483,121156558848.0,citi_dr_directory
-2026-05-07,Austria,EBKDY,Erste Group Bank AG,0.10716104067823445,44981092352.0,citi_dr_directory
-2026-05-07,Austria,OMVKY,OMV AG,0.3119512942887036,23328634880.0,citi_dr_directory
-2026-05-07,Austria,WBRBY,Wienerberger Baustoffindustrie AG,0.14358271450104676,3282255360.0,citi_dr_directory
-2026-05-07,Belgium,BUD,Anheuser-Busch InBev,0.07747025292528098,155434024960.0,builtin_major_adr_universe
-2026-05-07,Belgium,KBCSY,KBC Group NV,0.09891154253908063,53563854848.0,citi_dr_directory
-2026-05-07,Belgium,UCBJY,UCB,0.08365562713505226,51664134144.0,builtin_major_adr_universe
-2026-05-07,Belgium,AGESY,Ageas,0.13291594131158002,16482954240.0,citi_dr_directory
-2026-05-07,Belgium,MTLS,Materialise NV - American Depositary Shares,0.14606399855615881,317903296.0,nasdaq_trader_symbol_directory
-2026-05-07,Bermuda,ACGL,Arch Capital Group Ltd. - Common Stock,0.08732010561982306,33024303104.0,nasdaq_trader_symbol_directory
-2026-05-07,Bermuda,GLNG,Golar LNG Limited - Common Shares,0.035930789200263644,5600940544.0,nasdaq_trader_symbol_directory
-2026-05-07,Bermuda,LILAK,Liberty Latin America Ltd. - Class C Common Stock,0.20006746394424868,1598782080.0,nasdaq_trader_symbol_directory
-2026-05-07,Bermuda,LILA,Liberty Latin America Ltd. - Class A Common Stock,0.2160415097976479,1575900800.0,nasdaq_trader_symbol_directory
+2026-05-07,Australia,BHP,BHP,0.0751165980521738,209705500672.0,builtin_major_adr_universe
+2026-05-07,Austria,NEM,Newmont,0.0951851511237248,121156558848.0,citi_dr_directory
+2026-05-07,Belgium,BUD,Anheuser-Busch InBev,0.0774702529252809,155434024960.0,builtin_major_adr_universe
+2026-05-07,Bermuda,ACGL,Arch Capital Group Ltd. - Common Stock,0.087320105619823,33024303104.0,nasdaq_trader_symbol_directory
 2026-05-07,Brazil,PBR,Petrobras,0.1365822260026447,131271745536.0,builtin_major_adr_universe
-2026-05-07,Brazil,ITUB,Itau,0.10769480770746498,90154721280.0,builtin_major_adr_universe
-2026-05-07,Brazil,VALE,Vale,0.10486329512365156,70671228928.0,builtin_major_adr_universe
-2026-05-07,Brazil,ABEV,Ambev,0.0952847184309743,51157155840.0,builtin_major_adr_universe
-2026-05-07,Brazil,BSBR,Banco Santander Brasil,0.15681372397268156,43427102720.0,builtin_major_adr_universe
-2026-05-07,Brazil,BBD,Bradesco,0.14621806443684815,39534465024.0,builtin_major_adr_universe
-2026-05-07,Brazil,BDORY,Banco do Brasil S.A.,0.010000000000000002,26030202880.0,citi_dr_directory
-2026-05-07,Brazil,VIV,Telefonica Brasil,0.25108952815133667,24574212096.0,builtin_major_adr_universe
-2026-05-07,Brazil,BOLSY,B3 S.A.,0.08261942959442414,18406264832.0,citi_dr_directory
-2026-05-07,Brazil,SUZ,Suzano,0.08058348474802213,10840569856.0,builtin_major_adr_universe
-2026-05-07,Canada,RY,Royal Bank of Canada,0.09887937098749461,252170174464.0,builtin_major_adr_universe
-2026-05-07,Canada,TD,Toronto-Dominion,0.10150052900363449,180581744640.0,builtin_major_adr_universe
-2026-05-07,Canada,SHOP,Shopify,0.0504956207401247,144999923712.0,builtin_major_adr_universe
-2026-05-07,Canada,ENB,Enbridge,0.08532224061937288,117824364544.0,builtin_major_adr_universe
-2026-05-07,Canada,BMO,Bank of Montreal,0.1185023636825443,107486191616.0,builtin_major_adr_universe
-2026-05-07,Canada,CM,CIBC,0.09977689717995986,101707882496.0,builtin_major_adr_universe
-2026-05-07,Canada,BNS,Scotiabank,0.12612192093018681,96162643968.0,builtin_major_adr_universe
-2026-05-07,Canada,CNQ,Canadian Natural Resources,0.0855624953799588,93364797440.0,builtin_major_adr_universe
-2026-05-07,Canada,CP,Canadian Pacific Kansas City,0.08586943125739899,75652898816.0,builtin_major_adr_universe
-2026-05-07,Canada,CNI,Canadian National Railway,0.09226526296283821,67235540992.0,builtin_major_adr_universe
-2026-05-07,Cayman Islands,CRDO,Credo Technology Group Holding Ltd - Ordinary Shares,0.11610791520374894,34730078208.0,nasdaq_trader_symbol_directory
-2026-05-07,Cayman Islands,GLRE,"Greenlight Reinsurance, Ltd. - Class A Ordinary Shares",0.12569808307279107,590362752.0,nasdaq_trader_symbol_directory
-2026-05-07,Cayman Islands,CWCO,Consolidated Water Co. Ltd. - Ordinary Shares,0.1331128472581885,530886304.0,nasdaq_trader_symbol_directory
-2026-05-07,Chile,SQM,SQM,0.047403158459107794,26164424704.0,builtin_major_adr_universe
-2026-05-07,Chile,BCH,Banco de Chile,0.10919871466648046,18420465664.0,builtin_major_adr_universe
-2026-05-07,Chile,LTM,LATAM Airlines,0.15944370734033708,15169990656.0,builtin_major_adr_universe
-2026-05-07,Chile,ENIC,Enel Chile,0.4,6404823552.0,builtin_major_adr_universe
-2026-05-07,Chile,CCU,CCU,0.1026895322783622,2227226112.0,builtin_major_adr_universe
-2026-05-07,China,PDD,PDD Holdings,0.32904297681914174,144488972288.0,builtin_major_adr_universe
-2026-05-07,China,NTES,NetEase,0.2537350984850154,74731184128.0,builtin_major_adr_universe
-2026-05-07,China,BIDU,Baidu,0.2341189587826592,47591141376.0,builtin_major_adr_universe
-2026-05-07,China,JD,JD.com,0.4,41261441024.0,builtin_major_adr_universe
-2026-05-07,China,TCOM,Trip.com,0.2550455017531471,33607366656.0,builtin_major_adr_universe
-2026-05-07,China,BEKE,KE Holdings,0.23071453155041038,20506687488.0,builtin_major_adr_universe
-2026-05-07,China,FUTU,Futu,0.2936682731668031,20312780800.0,builtin_major_adr_universe
-2026-05-07,China,ZTO,ZTO Express,0.2563789551974539,19420098560.0,builtin_major_adr_universe
-2026-05-07,China,LI,Li Auto,0.2619656038904995,17984804864.0,builtin_major_adr_universe
-2026-05-07,China,YUMC,Yum China,0.08497196201158375,16888284160.0,builtin_major_adr_universe
-2026-05-07,Colombia,EC,Ecopetrol,0.09619979748528165,26725851136.0,builtin_major_adr_universe
-2026-05-07,Colombia,CIB,Bancolombia,0.12686671134130767,15457829888.0,builtin_major_adr_universe
-2026-05-07,Denmark,NVO,Novo Nordisk,0.20435810591136494,203024564224.0,builtin_major_adr_universe
-2026-05-07,Denmark,DSDVY,DSV A/S,0.2164046826347782,55614382080.0,citi_dr_directory
-2026-05-07,Denmark,DNNGY,Orsted,0.0464816175372208,32974034944.0,builtin_major_adr_universe
-2026-05-07,Denmark,AMKBY,A.P. Moller - Maersk A/S,0.035436893362787214,31621726208.0,citi_dr_directory
-2026-05-07,Denmark,NVZMY,Novonesis (Novozymes) B,0.05566566215282054,27241736192.0,citi_dr_directory
-2026-05-07,Denmark,CABGY,Carlsberg A/S,0.23365874586871105,17724274688.0,citi_dr_directory
-2026-05-07,Denmark,GMAB,Genmab A/S - American Depositary Shares,0.14125877408855303,16612420608.0,nasdaq_trader_symbol_directory
-2026-05-07,Denmark,ASND,Ascendis Pharma A/S,0.10439578180593279,15206468608.0,citi_dr_directory
-2026-05-07,Denmark,CLPBY,Coloplast A/S,0.09007327277389565,14491083776.0,citi_dr_directory
-2026-05-07,Denmark,GNNDY,GN Store Nord A/S,0.0692852768400212,2191953920.0,citi_dr_directory
-2026-05-07,Finland,NOK,Nokia,0.07281600176496619,68944297984.0,builtin_major_adr_universe
-2026-05-07,Finland,NRDBY,Nordea Bank ABP,0.12260990130729021,62003879936.0,citi_dr_directory
-2026-05-07,Finland,KNYJY,Kone OYJ,0.0802368946544244,31594569728.0,citi_dr_directory
-2026-05-07,Finland,SAXPY,Sampo OYJ,0.11366037399318174,27658854400.0,citi_dr_directory
-2026-05-07,Finland,NTOIY,Neste Oyj,0.06526857806699071,24585046016.0,citi_dr_directory
-2026-05-07,Finland,FOJCY,Fortum Oyj,0.14019182311272582,21758662656.0,citi_dr_directory
-2026-05-07,Finland,UPMMY,UPM-Kymmene Corporation,0.24035305460233658,15603518464.0,citi_dr_directory
-2026-05-07,Finland,SEOAY,Stora Enso Oyj,0.17471892173247827,8840429568.0,citi_dr_directory
-2026-05-07,France,LVMUY,LVMH,0.08039551597054462,274311675904.0,builtin_major_adr_universe
-2026-05-07,France,LRLCY,L'Oreal,0.057264838517080086,227579199488.0,builtin_major_adr_universe
-2026-05-07,France,TTE,TotalEnergies,0.09395855664949573,197517492224.0,builtin_major_adr_universe
-2026-05-07,France,EADSY,Airbus,0.06895428128458311,167049805824.0,builtin_major_adr_universe
-2026-05-07,France,AIQUY,Air Liquide S.A.,0.06730913869033739,118417440768.0,citi_dr_directory
-2026-05-07,France,BNPQY,BNP Paribas,0.17260249170410857,118348685312.0,builtin_major_adr_universe
-2026-05-07,France,SNY,Sanofi,0.12080173111080461,103452811264.0,builtin_major_adr_universe
-2026-05-07,France,AXAHY,AXA,0.12970555552062024,99004735488.0,builtin_major_adr_universe
-2026-05-07,France,ORANY,Orange,0.07937876881658895,55441702912.0,builtin_major_adr_universe
-2026-05-07,France,DANOY,Danone,0.07878145010938656,47724892160.0,builtin_major_adr_universe
-2026-05-07,Germany,SIEGY,Siemens,0.07715991295301616,237262536704.0,builtin_major_adr_universe
-2026-05-07,Germany,SAP,SAP,0.08272101543962818,205971275776.0,builtin_major_adr_universe
-2026-05-07,Germany,ALIZY,Allianz,0.09556033516180362,172477857792.0,builtin_major_adr_universe
-2026-05-07,Germany,DTEGY,Deutsche Telekom,0.10384531064925573,157806690304.0,builtin_major_adr_universe
-2026-05-07,Germany,DHLGY,DHL,0.09777150171440818,62607290368.0,builtin_major_adr_universe
-2026-05-07,Germany,DB,Deutsche Bank,0.18848456587970974,60226392064.0,builtin_major_adr_universe
-2026-05-07,Germany,BMWKY,Bayerische Motoren Werke AG (BMW),0.19269442035721973,59782995968.0,citi_dr_directory
-2026-05-07,Germany,VWAGY,Volkswagen,0.010000000000000002,52585873408.0,builtin_major_adr_universe
-2026-05-07,Germany,BASFY,BASF,0.05159108236492274,52528922624.0,builtin_major_adr_universe
-2026-05-07,Germany,BAYRY,Bayer,0.08003122701747489,42637205504.0,builtin_major_adr_universe
+2026-05-07,Canada,RY,Royal Bank of Canada,0.0988793709874946,252170174464.0,builtin_major_adr_universe
+2026-05-07,Cayman Islands,CRDO,Credo Technology Group Holding Ltd - Ordinary Shares,0.1161079152037489,34730078208.0,nasdaq_trader_symbol_directory
+2026-05-07,Chile,SQM,SQM,0.0474031584591077,26164424704.0,builtin_major_adr_universe
+2026-05-07,China,PDD,PDD Holdings,0.3290429768191417,144488972288.0,builtin_major_adr_universe
+2026-05-07,Colombia,EC,Ecopetrol,0.0961997974852816,26725851136.0,builtin_major_adr_universe
+2026-05-07,Denmark,NVO,Novo Nordisk,0.2043581059113649,203024564224.0,builtin_major_adr_universe
+2026-05-07,Finland,NOK,Nokia,0.0728160017649661,68944297984.0,builtin_major_adr_universe
+2026-05-07,France,LVMUY,LVMH,0.0803955159705446,274311675904.0,builtin_major_adr_universe
+2026-05-07,Germany,SIEGY,Siemens,0.0771599129530161,237262536704.0,builtin_major_adr_universe
 2026-05-07,Greece,ESEA,Euroseas Ltd. - Common Stock,0.1254565411916223,509999072.0,nasdaq_trader_symbol_directory
-2026-05-07,Greece,EDRY,EuroDry Ltd. - Common Shares,0.08187769767766062,62031136.0,nasdaq_trader_symbol_directory
-2026-05-07,Hong Kong,HCM,HUTCHMED (China) Limited - American Depositary Shares,0.08818412354532792,2288659456.0,nasdaq_trader_symbol_directory
-2026-05-07,Hong Kong,MLCO,Melco Resorts & Entertainment Limited - American Depositary Shares ,0.1928877471875693,2174432768.0,nasdaq_trader_symbol_directory
-2026-05-07,India,HDB,HDFC Bank,0.08254366328379634,131733544960.0,builtin_major_adr_universe
-2026-05-07,India,IBN,ICICI Bank,0.08444761008616619,95830179840.0,builtin_major_adr_universe
-2026-05-07,India,INFY,Infosys,0.076404431921442,50870886400.0,builtin_major_adr_universe
-2026-05-07,India,WIT,Wipro,0.10198592747909696,20752328704.0,builtin_major_adr_universe
-2026-05-07,India,RDY,Dr Reddy's,0.4,11212654592.0,builtin_major_adr_universe
-2026-05-07,India,MMYT,MakeMyTrip,0.07757972804651592,4791741952.0,builtin_major_adr_universe
-2026-05-07,India,SIFY,Sify,0.024899849028471456,1148924416.0,builtin_major_adr_universe
+2026-05-07,Hong Kong,HCM,HUTCHMED (China) Limited - American Depositary Shares,0.0881841235453279,2288659456.0,nasdaq_trader_symbol_directory
+2026-05-07,India,HDB,HDFC Bank,0.0825436632837963,131733544960.0,builtin_major_adr_universe
 2026-05-07,Indonesia,PPERY,PT Bank Mandiri (Persero) Tbk,0.4,24616667136.0,citi_dr_directory
-2026-05-07,Indonesia,PEGIY,PT Energi Mega Persada Tbk,0.22712193918371215,294023936.0,citi_dr_directory
 2026-05-07,Ireland,AIBGY,AIB Group plc,0.1367486228626419,24146909184.0,citi_dr_directory
-2026-05-07,Ireland,JAZZ,Jazz Pharmaceuticals plc - Ordinary Shares,0.06810439782871114,14240110592.0,nasdaq_trader_symbol_directory
-2026-05-07,Ireland,KRYAY,Kerry Group PLC,0.06833534275243369,13703493632.0,citi_dr_directory
-2026-05-07,Ireland,ICLR,ICON plc - Ordinary Shares,0.0649939484637726,9721516032.0,nasdaq_trader_symbol_directory
-2026-05-07,Ireland,ALKS,Alkermes plc - Ordinary Shares,0.042977459787408745,5900323840.0,nasdaq_trader_symbol_directory
-2026-05-07,Ireland,CMPR,Cimpress plc - Ordinary Shares,0.1009676195318926,2228867840.0,nasdaq_trader_symbol_directory
-2026-05-07,Ireland,ADSE,ADS-TEC ENERGY PLC - Ordinary Shares,0.06300813016072382,663151552.0,nasdaq_trader_symbol_directory
-2026-05-07,Ireland,AMRN,Amarin Corporation plc - American Depositary Shares,0.05780649620982026,311181568.0,nasdaq_trader_symbol_directory
-2026-05-07,Israel,TEVA,Teva,0.12560108486227362,41931014144.0,builtin_major_adr_universe
-2026-05-07,Israel,ESLT,Elbit Systems Ltd. - Ordinary Shares,0.03905332581780063,37179985920.0,nasdaq_trader_symbol_directory
-2026-05-07,Israel,CHKP,Check Point,0.0897561135276107,12045142016.0,builtin_major_adr_universe
-2026-05-07,Israel,ENLT,Enlight Renewable Energy Ltd. - Ordinary Shares,0.03319744210316544,11856150528.0,nasdaq_trader_symbol_directory
-2026-05-07,Israel,CAMT,Camtek Ltd. - Ordinary Shares,0.050705080673573044,8987604992.0,nasdaq_trader_symbol_directory
-2026-05-07,Israel,NICE,NICE,0.11886847234223413,5589487104.0,builtin_major_adr_universe
-2026-05-07,Israel,GLBE,Global-E Online Ltd. - ordinary shares,0.09740529686783839,5480776192.0,nasdaq_trader_symbol_directory
-2026-05-07,Israel,WIX,Wix,0.13618707628599436,4684958720.0,builtin_major_adr_universe
-2026-05-07,Israel,MNDY,monday.com Ltd. - Ordinary Shares,0.09840360047522767,3938016256.0,nasdaq_trader_symbol_directory
-2026-05-07,Israel,CLBT,Cellebrite DI Ltd. - Ordinary Shares,0.062053369002189274,3444764160.0,nasdaq_trader_symbol_directory
-2026-05-07,Italy,ISNPY,Intesa Sanpaolo,0.12556878309904473,119685554176.0,builtin_major_adr_universe
-2026-05-07,Italy,ENLAY,Enel,0.07014696561524697,114514460672.0,builtin_major_adr_universe
-2026-05-07,Italy,E,Eni,0.09268715903227165,77337649152.0,builtin_major_adr_universe
-2026-05-07,Italy,ARZGY,Assicurazioni Generali,0.08959443226341526,68041719808.0,citi_dr_directory
-2026-05-07,Italy,RACE,Ferrari,0.04714874855444218,59515125760.0,builtin_major_adr_universe
-2026-05-07,Italy,BZZUY,Buzzi SpA,0.09206310216781227,9638411264.0,citi_dr_directory
-2026-05-07,Japan,TM,Toyota,0.13927080734576747,223795904512.0,builtin_major_adr_universe
-2026-05-07,Japan,MUFG,Mitsubishi UFJ,0.10138663316251917,203176738816.0,builtin_major_adr_universe
-2026-05-07,Japan,SMFG,Sumitomo Mitsui,0.11142570038227595,136684511232.0,builtin_major_adr_universe
-2026-05-07,Japan,SONY,Sony,0.04772002056574809,117503500288.0,builtin_major_adr_universe
-2026-05-07,Japan,MFG,Mizuho,0.09990829757228059,105586040832.0,builtin_major_adr_universe
-2026-05-07,Japan,IX,ORIX,0.07578096451135219,36450443264.0,builtin_major_adr_universe
-2026-05-07,Japan,HMC,Honda,0.12492552682392746,31218262016.0,builtin_major_adr_universe
-2026-05-07,Japan,NMR,Nomura,0.010000000000000002,22807519232.0,builtin_major_adr_universe
-2026-05-07,Japan,RICOY,Ricoh Company Ltd,0.08174680214229346,4787245568.0,citi_dr_directory
-2026-05-07,Jersey,BMRRY,B&M European Value Retail plc,0.14555202800028855,2372984064.0,citi_dr_directory
-2026-05-07,Jersey,GAMB,Gambling.com Group Limited - Ordinary Shares,0.19773052391337897,155129584.0,nasdaq_trader_symbol_directory
-2026-05-07,Jordan,IGIC,International General Insurance Holdings Ltd. - Ordinary Shares,0.10205862559501855,1108328192.0,nasdaq_trader_symbol_directory
+2026-05-07,Israel,TEVA,Teva,0.1256010848622736,41931014144.0,builtin_major_adr_universe
+2026-05-07,Italy,ISNPY,Intesa Sanpaolo,0.1255687830990447,119685554176.0,builtin_major_adr_universe
+2026-05-07,Japan,TM,Toyota,0.1392708073457674,223795904512.0,builtin_major_adr_universe
+2026-05-07,Jersey,BMRRY,B&M European Value Retail plc,0.1455520280002885,2372984064.0,citi_dr_directory
+2026-05-07,Jordan,IGIC,International General Insurance Holdings Ltd. - Ordinary Shares,0.1020586255950185,1108328192.0,nasdaq_trader_symbol_directory
 2026-05-07,Kazakhstan,KSPI,JSC Kaspi.kz,0.4,16460271616.0,citi_dr_directory
-2026-05-07,Korea,KEP,Korea Electric Power Corporation (KEPCO),0.010000000000000002,19412994048.0,citi_dr_directory
-2026-05-07,Luxembourg,SPOT,Spotify,0.06738734674755087,87888183296.0,builtin_major_adr_universe
-2026-05-07,Luxembourg,MT,ArcelorMittal,0.17616333889787306,46535233536.0,citi_dr_directory
-2026-05-07,Luxembourg,GLOB,Globant,0.11168048696731547,1769066496.0,builtin_major_adr_universe
-2026-05-07,Luxembourg,CDRO,"Codere Online Luxembourg, S.A. - Ordinary Shares",0.03899340824529929,423207552.0,nasdaq_trader_symbol_directory
-2026-05-07,Luxembourg,ASPS,Altisource Portfolio Solutions S.A. - Common Stock,0.3019403335017431,76584064.0,nasdaq_trader_symbol_directory
-2026-05-07,Mexico,AMX,America Movil,0.06107655803073249,80461324288.0,builtin_major_adr_universe
-2026-05-07,Mexico,WMMVY,"Wal-Mart de Mexico, S.A. de C.V.",0.07150746652521545,56701161472.0,citi_dr_directory
-2026-05-07,Mexico,FMX,Fomento Economico Mexicano,0.07042544950870408,40851116032.0,builtin_major_adr_universe
-2026-05-07,Mexico,GBOOY,Grupo Financiero Banorte,0.4,31325913088.0,citi_dr_directory
-2026-05-07,Mexico,KOF,Coca-Cola FEMSA,0.13455040615601976,22296133632.0,builtin_major_adr_universe
-2026-05-07,Mexico,CX,Cemex,0.08084599154186922,18960396288.0,builtin_major_adr_universe
-2026-05-07,Mexico,PAC,Grupo Aeroportuario del Pacifico,0.08970666026659602,12687516672.0,builtin_major_adr_universe
-2026-05-07,Mexico,ASR,ASUR,0.0940600311610772,9377513472.0,builtin_major_adr_universe
-2026-05-07,Mexico,KCDMY,"Kimberly Clark de Mexico, S.A. de C.V.",0.16784335957795904,6829931520.0,citi_dr_directory
-2026-05-07,Mexico,OMAB,OMA,0.13089662549230618,5164050432.0,builtin_major_adr_universe
-2026-05-07,Netherlands,ASML,ASML,0.06700814136066435,584524431360.0,builtin_major_adr_universe
-2026-05-07,Netherlands,ING,ING,0.11782876825584798,85513396224.0,builtin_major_adr_universe
-2026-05-07,Netherlands,NXPI,NXP,0.09199267582706894,73272156160.0,builtin_major_adr_universe
-2026-05-07,Netherlands,FER,Ferrovial N.V. - Ordinary Shares,0.03856155946371828,50220949504.0,nasdaq_trader_symbol_directory
-2026-05-07,Netherlands,ARGX,argenx SE - American Depositary Shares,0.07935741387640338,49202913280.0,nasdaq_trader_symbol_directory
-2026-05-07,Netherlands,ASMIY,ASM International N.V.,0.06601760569257709,48470052864.0,citi_dr_directory
-2026-05-07,Netherlands,ADYEY,Adyen N.V.,0.07852212519082447,34753433600.0,citi_dr_directory
-2026-05-07,Netherlands,PHG,Philips,0.08532527470988815,25837008896.0,builtin_major_adr_universe
-2026-05-07,Netherlands,AER,AerCap,0.07349278582101093,23414661120.0,builtin_major_adr_universe
-2026-05-07,Netherlands,STLA,Stellantis,0.4,21673359360.0,builtin_major_adr_universe
-2026-05-07,New Zealand,SPKKY,Spark New Zealand Limited,0.06485889600952588,2324834560.0,citi_dr_directory
-2026-05-07,Norway,EQNR,Equinor,0.09792086761644236,91985698816.0,builtin_major_adr_universe
-2026-05-07,Norway,DNBBY,DNB ASA,0.010000000000000002,43378417664.0,citi_dr_directory
-2026-05-07,Norway,NHYDY,Norsk Hydro A/S,0.19682976195895796,22536679424.0,citi_dr_directory
-2026-05-07,Norway,MHGVY,Mowi ASA,0.280587438927521,11191474176.0,citi_dr_directory
-2026-05-07,Norway,SUBCY,Subsea 7 SA,0.3036934112765729,9943904256.0,citi_dr_directory
-2026-05-07,Peru,BAP,Credicorp,0.11371362705262478,25537787904.0,builtin_major_adr_universe
-2026-05-07,Peru,BVN,Buenaventura,0.08787496938366346,8617774080.0,builtin_major_adr_universe
-2026-05-07,Portugal,GLPEY,Galp Energia SGPS SA,0.06667792567332043,17895520256.0,citi_dr_directory
-2026-05-07,Portugal,JRONY,Jeronimo Martins SGPS SA,0.09495629004055059,14133485568.0,citi_dr_directory
-2026-05-07,S. Africa,MTNOY,MTN Group Limited,0.25754185604230917,23993608192.0,citi_dr_directory
-2026-05-07,S. Africa,IMPUY,Impala Platinum Holdings Ltd,0.33213120813088703,14622020608.0,citi_dr_directory
-2026-05-07,S. Africa,BDVSY,Bidvest Group Limited,0.05921852261571103,4924973568.0,citi_dr_directory
-2026-05-07,S. Africa,MONDY,Mondi Plc,0.1785262899545078,4738576896.0,citi_dr_directory
-2026-05-07,S. Africa,DTTLY,Datatec Limited,0.09949391624587178,1141145856.0,citi_dr_directory
-2026-05-07,Singapore,DBSDY,DBS Group,0.07552636231748411,131077447680.0,builtin_major_adr_universe
-2026-05-07,Singapore,SE,Sea Limited,0.0991281950169437,54290628608.0,builtin_major_adr_universe
-2026-05-07,Singapore,UOVEY,UOB,0.10359150252391391,47314354176.0,builtin_major_adr_universe
-2026-05-07,Singapore,GRAB,Grab,0.10425655521943822,15501099008.0,builtin_major_adr_universe
-2026-05-07,Singapore,JOYY,JOYY Inc. - American Depositary Shares,0.14374505561085255,2972525056.0,nasdaq_trader_symbol_directory
-2026-05-07,Singapore,KARO,Karooooo Ltd. - Ordinary shares,0.2959652824071578,1584826240.0,nasdaq_trader_symbol_directory
-2026-05-07,Singapore,HDL,SUPER HI INTERNATIONAL HOLDING LTD. - American Depositary Shares,0.09376094386502498,799001024.0,nasdaq_trader_symbol_directory
-2026-05-07,Singapore,MNY,MoneyHero Limited - Class A Ordinary Shares,0.019204085622015588,62156656.0,nasdaq_trader_symbol_directory
-2026-05-07,Singapore,EUDA,Euda Health Holdings Limited - Ordinary Shares,0.010000000000000002,33523726.0,nasdaq_trader_symbol_directory
-2026-05-07,Singapore,GFAI,"Guardforce AI Co., Limited - Ordinary Shares",0.05622280627247847,14765822.0,nasdaq_trader_symbol_directory
-2026-05-07,South Africa,NPSNY,Naspers,0.08519030855151569,42400473088.0,builtin_major_adr_universe
-2026-05-07,South Africa,GFI,Gold Fields,0.09324523884267089,40177278976.0,builtin_major_adr_universe
-2026-05-07,South Africa,SBSW,Sibanye Stillwater,0.4,9541254144.0,builtin_major_adr_universe
-2026-05-07,South Africa,SSL,Sasol,0.09637747783581097,8185983488.0,builtin_major_adr_universe
-2026-05-07,South Korea,KB,KB Financial,0.4,38941167616.0,builtin_major_adr_universe
-2026-05-07,South Korea,SHG,Shinhan,0.12492704877235228,33772339200.0,builtin_major_adr_universe
-2026-05-07,South Korea,PKX,POSCO,0.09600477202832514,26301274112.0,builtin_major_adr_universe
-2026-05-07,South Korea,SKM,SK Telecom,0.07559782430461548,13931410432.0,builtin_major_adr_universe
-2026-05-07,South Korea,KT,KT,0.11958711306665204,10094857216.0,builtin_major_adr_universe
-2026-05-07,South Korea,LPL,LG Display,0.028825951184644594,4320000000.0,builtin_major_adr_universe
-2026-05-07,South Korea,DDI,"DoubleDown Interactive Co., Ltd. - American Depository Shares",0.10555102499179358,551034240.0,nasdaq_trader_symbol_directory
+2026-05-07,Luxembourg,SPOT,Spotify,0.0673873467475508,87888183296.0,builtin_major_adr_universe
+2026-05-07,Mexico,AMX,America Movil,0.0610765580307324,80461324288.0,builtin_major_adr_universe
+2026-05-07,Netherlands,ASML,ASML,0.0670081413606643,584524431360.0,builtin_major_adr_universe
+2026-05-07,New Zealand,SPKKY,Spark New Zealand Limited,0.0648588960095258,2324834560.0,citi_dr_directory
+2026-05-07,Norway,EQNR,Equinor,0.0979208676164423,91985698816.0,builtin_major_adr_universe
+2026-05-07,Peru,BAP,Credicorp,0.1137136270526247,25537787904.0,builtin_major_adr_universe
+2026-05-07,Portugal,GLPEY,Galp Energia SGPS SA,0.0666779256733204,17895520256.0,citi_dr_directory
+2026-05-07,S. Africa,MTNOY,MTN Group Limited,0.2575418560423091,23993608192.0,citi_dr_directory
+2026-05-07,Singapore,DBSDY,DBS Group,0.0755263623174841,131077447680.0,builtin_major_adr_universe
+2026-05-07,South Africa,NPSNY,Naspers,0.0851903085515156,42400473088.0,builtin_major_adr_universe
+2026-05-07,South Korea,KEP,Korea Electric Power Corporation (KEPCO),0.01,19412994048.0,citi_dr_directory
 2026-05-07,Spain,SAN,Santander,0.1152876746764423,175396126720.0,builtin_major_adr_universe
-2026-05-07,Spain,IBDRY,Iberdrola,0.0694277926855772,155227701248.0,builtin_major_adr_universe
-2026-05-07,Spain,BBVA,BBVA,0.09308043865447496,122060947456.0,builtin_major_adr_universe
-2026-05-07,Spain,CAIXY,CaixaBank SA,0.11260656430479166,87700602880.0,citi_dr_directory
-2026-05-07,Spain,ELEZY,Endesa S.A.,0.09922019388074654,43747741696.0,citi_dr_directory
-2026-05-07,Spain,ANYYY,"Aena SME, S.A",0.06012948638837405,42300002304.0,citi_dr_directory
-2026-05-07,Spain,AMADY,Amadeus IT Group S.A.,0.07701099596020311,25976274944.0,citi_dr_directory
-2026-05-07,Spain,CLLNY,Cellnex Telecom S.A.,0.010000000000000002,21942784000.0,citi_dr_directory
-2026-05-07,Spain,EDRVY,EDP Renovaveis SA,0.0224460048705043,20058966016.0,citi_dr_directory
-2026-05-07,Spain,BKNIY,"Bankinter, S.A.",0.056441720636716375,14743720960.0,citi_dr_directory
 2026-05-07,Sweden,ATLKY,Atlas Copco AB,0.0732439013908377,95328256000.0,citi_dr_directory
-2026-05-07,Sweden,ASAZY,Assa Abloy,0.061952650269840565,42676023296.0,builtin_major_adr_universe
-2026-05-07,Sweden,ERIC,Ericsson,0.07573932126534466,39128322048.0,builtin_major_adr_universe
-2026-05-07,Sweden,ALFVY,Alfa Laval AB,0.010000000000000002,24291186688.0,citi_dr_directory
-2026-05-07,Sweden,AXFOY,Axfood AB,0.19388613193217596,5881708032.0,citi_dr_directory
-2026-05-07,Sweden,ELUXY,AB Electrolux,0.10045860957603858,1622977920.0,citi_dr_directory
 2026-05-07,Switzerland,RHHBY,Roche,0.0787686548528711,325586911232.0,builtin_major_adr_universe
-2026-05-07,Switzerland,NVS,Novartis,0.0880382317107059,277417492480.0,builtin_major_adr_universe
-2026-05-07,Switzerland,NSRGY,Nestle,0.07534326653473344,254701207552.0,builtin_major_adr_universe
-2026-05-07,Switzerland,ABBNY,ABB Limited,0.037903409314831674,187204222976.0,citi_dr_directory
-2026-05-07,Switzerland,UBS,UBS,0.1617976021118429,145567318016.0,builtin_major_adr_universe
-2026-05-07,Switzerland,CFRUY,Compagnie Financiere Richemont,0.06392601001889353,117882028032.0,citi_dr_directory
-2026-05-07,Switzerland,ZURVY,Zurich Insurance,0.09216591237838803,103871389696.0,builtin_major_adr_universe
-2026-05-07,Switzerland,CCHGY,Coca-Cola HBC AG,0.07933026754960648,21379489792.0,citi_dr_directory
-2026-05-07,Switzerland,LOGI,Logitech International S.A. - Registered Shares,0.05829234209849965,14810841088.0,nasdaq_trader_symbol_directory
-2026-05-07,Switzerland,DUFRY,Avolta AG,0.10306322238682963,8349012480.0,citi_dr_directory
-2026-05-07,Taiwan,TSM,Taiwan Semiconductor,0.08579222297923822,2147947642880.0,builtin_major_adr_universe
-2026-05-07,Taiwan,ASX,ASE Technology,0.127657607984777,73146155008.0,builtin_major_adr_universe
-2026-05-07,Taiwan,UMC,United Microelectronics,0.08697980519375018,38133415936.0,builtin_major_adr_universe
-2026-05-07,Taiwan,AUOTY,AUO,0.16971440420970324,4362223104.0,builtin_major_adr_universe
-2026-05-07,Taiwan,HIMX,Himax,0.03175645323832431,2796047616.0,builtin_major_adr_universe
-2026-05-07,Taiwan,IMOS,ChipMOS TECHNOLOGIES INC. - American Depositary Shares,0.15410730094295022,2066782464.0,nasdaq_trader_symbol_directory
-2026-05-07,Thailand,AVIFY,Advanced Info Service Ltd.,0.04175282533606817,37891629056.0,citi_dr_directory
-2026-05-07,Turkey,KHOLY,KOC Holdings AG,0.07009367119845356,11154032640.0,citi_dr_directory
-2026-05-07,Turkey,TKC,Turkcell Iletisim Hizmetleri A.S.,0.4,5684868096.0,citi_dr_directory
-2026-05-07,Turkey,HEPS,D-Market Electronic Services & Trading - American Depositary Shares,0.34439012306806915,996658368.0,nasdaq_trader_symbol_directory
-2026-05-07,UK,BAESY,BAE Systems plc,0.07996636887172837,79061057536.0,citi_dr_directory
-2026-05-07,UK,NGLOY,Anglo American plc,0.04960602635260958,54924468224.0,citi_dr_directory
-2026-05-07,UK,ASBFY,Associated British Foods plc,0.07103961381494436,17400045568.0,citi_dr_directory
-2026-05-07,UK,BZLFY,Bunzl plc,0.06995341631625118,10574246912.0,citi_dr_directory
+2026-05-07,Taiwan,TSM,Taiwan Semiconductor,0.0857922229792382,2147947642880.0,builtin_major_adr_universe
+2026-05-07,Thailand,AVIFY,Advanced Info Service Ltd.,0.0417528253360681,37891629056.0,citi_dr_directory
+2026-05-07,Turkey,KHOLY,KOC Holdings AG,0.0700936711984535,11154032640.0,citi_dr_directory
 2026-05-07,United Arab Emirates,KYIV,Kyivstar Group Ltd. - Common Shares,0.4,2911190016.0,nasdaq_trader_symbol_directory
-2026-05-07,United Kingdom,HSBC,HSBC,0.1107900668906393,305135190016.0,builtin_major_adr_universe
-2026-05-07,United Kingdom,AZN,AstraZeneca,0.09955107250997408,282957742080.0,builtin_major_adr_universe
-2026-05-07,United Kingdom,SHEL,Shell,0.08427561072947232,234870341632.0,builtin_major_adr_universe
-2026-05-07,United Kingdom,LIN,Linde plc - Ordinary Shares,0.053614207129036084,228330209280.0,nasdaq_trader_symbol_directory
-2026-05-07,United Kingdom,ARM,Arm Holdings,0.046927848032152775,226534916096.0,builtin_major_adr_universe
-2026-05-07,United Kingdom,RIO,Rio Tinto,0.08652134298060432,167682801664.0,builtin_major_adr_universe
-2026-05-07,United Kingdom,UL,Unilever,0.0688044119176704,128080969728.0,builtin_major_adr_universe
-2026-05-07,United Kingdom,BTI,British American Tobacco,0.10679990356047264,125673766912.0,builtin_major_adr_universe
-2026-05-07,United Kingdom,BP,BP,0.08919677894613942,112810631168.0,builtin_major_adr_universe
-2026-05-07,United Kingdom,GSK,GSK,0.10289391246671642,101379366912.0,builtin_major_adr_universe
-2026-05-07,United States,FLEX,Flex Ltd. - Ordinary Shares,0.08287521767778838,48904306688.0,nasdaq_trader_symbol_directory
-2026-05-07,United States,FTAI,FTAI Aviation Ltd. - Common Stock,0.131845976708015,27957964800.0,nasdaq_trader_symbol_directory
-2026-05-07,United States,MDGL,"Madrigal Pharmaceuticals, Inc. - Common Stock",0.030850767284541836,12331475968.0,nasdaq_trader_symbol_directory
-2026-05-07,United States,DOX,Amdocs Limited - Ordinary Shares,0.11463599994436036,7007174656.0,nasdaq_trader_symbol_directory
-2026-05-07,United States,FROG,JFrog Ltd. - Ordinary shares,0.041407681498486865,6908389376.0,nasdaq_trader_symbol_directory
-2026-05-07,United States,BLTE,"Belite Bio, Inc - American Depositary Shares",0.010000000000000002,6234588672.0,nasdaq_trader_symbol_directory
-2026-05-07,United States,LEGN,Legend Biotech Corporation - American Depositary Shares,0.036329103556862336,5284183040.0,nasdaq_trader_symbol_directory
-2026-05-07,United States,IEP,Icahn Enterprises L.P. - Depositary Units representing Limited Partner Interests,0.20141399293689977,5084931584.0,nasdaq_trader_symbol_directory
-2026-05-07,United States,ARLP,"Alliance Resource Partners, L.P. - Common Units Representing Limited Partnership Interests",0.17569704763057958,3287232256.0,nasdaq_trader_symbol_directory
-2026-05-07,United States,GIII,"G-III Apparel Group, LTD. - Common Stock",0.07936939861763082,1320524672.0,nasdaq_trader_symbol_directory
-2026-05-07,Uruguay,MELI,MercadoLibre,0.09228571355416093,94804238336.0,builtin_major_adr_universe
-2026-05-07,Uruguay,DLO,DLocal Limited - Class A Common Shares,0.11802959873986862,4055314432.0,nasdaq_trader_symbol_directory
+2026-05-07,United Kingdom,BAESY,BAE Systems plc,0.0799663688717283,79061057536.0,citi_dr_directory
+2026-05-07,United States,FLEX,Flex Ltd. - Ordinary Shares,0.0828752176777883,48904306688.0,nasdaq_trader_symbol_directory
+2026-05-07,Uruguay,MELI,MercadoLibre,0.0922857135541609,94804238336.0,builtin_major_adr_universe
