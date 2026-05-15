@@ -21,7 +21,7 @@
               "days": [
                 {
                   "date": "2026-05-14",
-                  "n_rows": 1,
+                  "n_rows": 2,
                   "csv": "./data/downloads/families/marketwide/archive/2026/05/marketwide_2026-05-14.csv"
                 },
                 {
@@ -2344,7 +2344,7 @@
               "days": [
                 {
                   "date": "2026-05-14",
-                  "n_rows": 6,
+                  "n_rows": 7,
                   "csv": "./data/downloads/families/indices/archive/2026/05/indices_2026-05-14.csv"
                 },
                 {
@@ -3207,47 +3207,47 @@
               "days": [
                 {
                   "date": "2026-05-14",
-                  "n_rows": 52,
+                  "n_rows": 36,
                   "csv": "./data/downloads/families/country/archive/2026/05/country_2026-05-14.csv"
                 },
                 {
                   "date": "2026-05-13",
-                  "n_rows": 40,
+                  "n_rows": 34,
                   "csv": "./data/downloads/families/country/archive/2026/05/country_2026-05-13.csv"
                 },
                 {
                   "date": "2026-05-12",
-                  "n_rows": 52,
+                  "n_rows": 41,
                   "csv": "./data/downloads/families/country/archive/2026/05/country_2026-05-12.csv"
                 },
                 {
                   "date": "2026-05-11",
-                  "n_rows": 35,
+                  "n_rows": 24,
                   "csv": "./data/downloads/families/country/archive/2026/05/country_2026-05-11.csv"
                 },
                 {
                   "date": "2026-05-08",
-                  "n_rows": 38,
+                  "n_rows": 28,
                   "csv": "./data/downloads/families/country/archive/2026/05/country_2026-05-08.csv"
                 },
                 {
                   "date": "2026-05-07",
-                  "n_rows": 79,
+                  "n_rows": 42,
                   "csv": "./data/downloads/families/country/archive/2026/05/country_2026-05-07.csv"
                 },
                 {
                   "date": "2026-05-06",
-                  "n_rows": 78,
+                  "n_rows": 40,
                   "csv": "./data/downloads/families/country/archive/2026/05/country_2026-05-06.csv"
                 },
                 {
                   "date": "2026-05-05",
-                  "n_rows": 78,
+                  "n_rows": 39,
                   "csv": "./data/downloads/families/country/archive/2026/05/country_2026-05-05.csv"
                 },
                 {
                   "date": "2026-05-04",
-                  "n_rows": 85,
+                  "n_rows": 46,
                   "csv": "./data/downloads/families/country/archive/2026/05/country_2026-05-04.csv"
                 }
               ]
@@ -3259,7 +3259,7 @@
               "days": [
                 {
                   "date": "2026-04-23",
-                  "n_rows": 37,
+                  "n_rows": 9,
                   "csv": "./data/downloads/families/country/archive/2026/04/country_2026-04-23.csv"
                 }
               ]
@@ -4592,14 +4592,23 @@
       "years": [
         {
           "year": "2026",
-          "n_files": 94,
+          "n_files": 95,
           "download_all_zip": "./data/downloads/raw_snapshots/sp500/raw_sp500_2026_all.zip",
           "months": [
             {
               "month": "2026-05",
-              "n_files": 9,
+              "n_files": 10,
               "download_all_zip": "./data/downloads/raw_snapshots/sp500/2026/raw_sp500_2026_05_all.zip",
               "days": [
+                {
+                  "raw_group": "sp500",
+                  "date": "2026-05-14",
+                  "year": "2026",
+                  "month": "05",
+                  "universe": "sp500",
+                  "n_firms": 501,
+                  "csv": "./data/downloads/raw_snapshots/sp500/2026/05/icc_live_sp500_2026_0514_r1.csv"
+                },
                 {
                   "raw_group": "sp500",
                   "date": "2026-05-13",

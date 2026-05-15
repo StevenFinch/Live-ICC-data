@@ -11,9 +11,9 @@
     },
     {
       "dataset": "S&P 500",
-      "latest_daily": 0.07054802902771362,
+      "latest_daily": 0.07030040477972323,
       "method": "ICC calculation",
-      "month_1": 0.07054802902771362,
+      "month_1": 0.07030040477972323,
       "month_2": 0.07410737908665195,
       "month_3": 0.07889568917176408
     },
@@ -51,11 +51,11 @@
     },
     {
       "dataset": "Country / Region Level ICC",
-      "latest_daily": 0.2028806103936528,
+      "latest_daily": 0.2114196902130185,
       "method": "ADR Top-10 ICC calculation",
-      "month_1": 0.2028806103936528,
+      "month_1": 0.2114196902130185,
       "month_2": 0.242903044114228,
-      "month_3": 0.0652368006138415
+      "month_3": 0.0708309010098534
     }
   ],
   "families": {
@@ -80,7 +80,7 @@
               "days": [
                 {
                   "date": "2026-05-14",
-                  "n_rows": 1,
+                  "n_rows": 2,
                   "csv": "./data/downloads/families/marketwide/archive/2026/05/marketwide_2026-05-14.csv"
                 },
                 {
@@ -2403,7 +2403,7 @@
               "days": [
                 {
                   "date": "2026-05-14",
-                  "n_rows": 6,
+                  "n_rows": 7,
                   "csv": "./data/downloads/families/indices/archive/2026/05/indices_2026-05-14.csv"
                 },
                 {
@@ -3266,47 +3266,47 @@
               "days": [
                 {
                   "date": "2026-05-14",
-                  "n_rows": 52,
+                  "n_rows": 36,
                   "csv": "./data/downloads/families/country/archive/2026/05/country_2026-05-14.csv"
                 },
                 {
                   "date": "2026-05-13",
-                  "n_rows": 40,
+                  "n_rows": 34,
                   "csv": "./data/downloads/families/country/archive/2026/05/country_2026-05-13.csv"
                 },
                 {
                   "date": "2026-05-12",
-                  "n_rows": 52,
+                  "n_rows": 41,
                   "csv": "./data/downloads/families/country/archive/2026/05/country_2026-05-12.csv"
                 },
                 {
                   "date": "2026-05-11",
-                  "n_rows": 35,
+                  "n_rows": 24,
                   "csv": "./data/downloads/families/country/archive/2026/05/country_2026-05-11.csv"
                 },
                 {
                   "date": "2026-05-08",
-                  "n_rows": 38,
+                  "n_rows": 28,
                   "csv": "./data/downloads/families/country/archive/2026/05/country_2026-05-08.csv"
                 },
                 {
                   "date": "2026-05-07",
-                  "n_rows": 79,
+                  "n_rows": 42,
                   "csv": "./data/downloads/families/country/archive/2026/05/country_2026-05-07.csv"
                 },
                 {
                   "date": "2026-05-06",
-                  "n_rows": 78,
+                  "n_rows": 40,
                   "csv": "./data/downloads/families/country/archive/2026/05/country_2026-05-06.csv"
                 },
                 {
                   "date": "2026-05-05",
-                  "n_rows": 78,
+                  "n_rows": 39,
                   "csv": "./data/downloads/families/country/archive/2026/05/country_2026-05-05.csv"
                 },
                 {
                   "date": "2026-05-04",
-                  "n_rows": 85,
+                  "n_rows": 46,
                   "csv": "./data/downloads/families/country/archive/2026/05/country_2026-05-04.csv"
                 }
               ]
@@ -3318,7 +3318,7 @@
               "days": [
                 {
                   "date": "2026-04-23",
-                  "n_rows": 37,
+                  "n_rows": 9,
                   "csv": "./data/downloads/families/country/archive/2026/04/country_2026-04-23.csv"
                 }
               ]
