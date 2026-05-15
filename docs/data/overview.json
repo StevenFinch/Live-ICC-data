@@ -43,19 +43,19 @@
     },
     {
       "dataset": "ETF ICC",
-      "latest_daily": 0.1509913306818822,
+      "latest_daily": 0.1512394343901005,
       "method": "ICC calculation",
-      "month_1": 0.1509913306818822,
-      "month_2": 0.0646574587442311,
-      "month_3": 0.0821039536057223
+      "month_1": 0.1512394343901005,
+      "month_2": 0.0647309981491617,
+      "month_3": 0.081828536263283
     },
     {
       "dataset": "Country / Region Level ICC",
-      "latest_daily": 0.2114196902130185,
+      "latest_daily": 0.1852471217959739,
       "method": "ADR Top-10 ICC calculation",
-      "month_1": 0.2114196902130185,
-      "month_2": 0.0667947473364266,
-      "month_3": 0.1430622461800945
+      "month_1": 0.1852471217959739,
+      "month_2": 0.0698286895464761,
+      "month_3": 0.077634132751074
     }
   ],
   "families": {
@@ -3214,7 +3214,7 @@
               "days": [
                 {
                   "date": "2026-05-14",
-                  "n_rows": 50,
+                  "n_rows": 53,
                   "csv": "./data/downloads/families/country/archive/2026/05/country_2026-05-14.csv"
                 }
               ]
