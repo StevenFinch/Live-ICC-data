@@ -8,9 +8,29 @@ on:
         required: false
         default: "false"
         type: choice
-        options: ["false", "true"]
+        options:
+          - "false"
+          - "true"
+      force_country_adr_rebuild:
+        description: "Force rebuild of Country / Region ADR universe"
+        required: false
+        default: "false"
+        type: choice
+        options:
+          - "false"
+          - "true"
+      force_derived_refresh:
+        description: "Force deletion and regeneration of ETF and Country / Region derived data for the target date"
+        required: false
+        default: "true"
+        type: choice
+        options:
+          - "true"
+          - "false"
+
   schedule:
     # Run after 5pm US Eastern time all year.
+    # 22:10 UTC = 6:10pm EDT in summer and 5:10pm EST in winter.
     - cron: "10 22 * * 1-5"
 
 permissions:
@@ -25,13 +45,17 @@ concurrency:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 120
+
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+
     defaults:
       run:
         shell: bash
         working-directory: ${{ github.workspace }}
+
     env:
       PYTHONPATH: ${{ github.workspace }}
 
@@ -44,6 +68,16 @@ jobs:
       - name: Mark workspace as safe
         run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
 
+      - name: Debug workspace
+        run: |
+          echo "GITHUB_WORKSPACE=$GITHUB_WORKSPACE"
+          pwd
+          ls -la
+          echo "Workflow event: ${{ github.event_name }}"
+          echo "Branch: ${{ github.ref_name }}"
+          echo "Backend directory:"
+          ls -la backend || true
+
       - name: Ensure backend is a package
         run: |
           mkdir -p backend
@@ -51,11 +85,13 @@ jobs:
             echo '"""Backend package for Live ICC data library."""' > backend/__init__.py
           fi
           python - <<'PY'
-          import os, sys
+          import os
+          import sys
           print("cwd =", os.getcwd())
           print("PYTHONPATH =", os.environ.get("PYTHONPATH"))
+          print("sys.path[0:5] =", sys.path[0:5])
           import backend
-          print("backend import OK:", backend.__file__)
+          print("backend package import OK:", backend.__file__)
           PY
 
       - name: Set up Python
@@ -79,63 +115,89 @@ jobs:
           FORCE_RECALC: ${{ github.event.inputs.force_recalc || 'false' }}
         run: |
           python - <<'PY'
-          import os, re
+          import os
+          import re
           from pathlib import Path
           from datetime import datetime, timedelta
           from zoneinfo import ZoneInfo
 
           data_dir = Path("data")
           now = datetime.now(ZoneInfo("America/New_York"))
+
           snap_re = re.compile(r"^icc_live_usall_(\d{4})_(\d{4})(?:_r\d+)?\.csv$")
 
-          def prev_bday(d):
+          def previous_business_day(d):
               d = d - timedelta(days=1)
               while d.weekday() >= 5:
                   d -= timedelta(days=1)
               return d
 
+          # Scheduled runs happen after 5pm ET by design.
+          # Manual runs before 5pm ET should target the previous business day.
           if now.weekday() >= 5:
-              target = prev_bday(now.date())
+              target_date = previous_business_day(now.date())
               reason = "weekend"
           elif now.hour < 17:
-              target = prev_bday(now.date())
+              target_date = previous_business_day(now.date())
               reason = "before 5pm ET"
           else:
-              target = now.date()
+              target_date = now.date()
               reason = "after 5pm ET"
 
-          latest = None
-          latest_file = ""
+          latest_valid_date = None
+          latest_valid_file = None
+
+          # Find the latest valid non-empty usall snapshot.
           for p in data_dir.glob("*/*.csv"):
               m = snap_re.match(p.name)
               if not m:
                   continue
-              if p.stat().st_size <= 0:
+              try:
+                  if p.stat().st_size <= 0:
+                      continue
+              except FileNotFoundError:
                   continue
-              dt = datetime.strptime(m.group(1) + m.group(2), "%Y%m%d").date()
-              if latest is None or dt > latest:
-                  latest = dt
-                  latest_file = str(p)
 
-          force = os.environ.get("FORCE_RECALC", "false").lower() == "true"
-          need = force or latest is None or latest < target
+              dt = datetime.strptime(f"{m.group(1)}{m.group(2)}", "%Y%m%d").date()
+              if latest_valid_date is None or dt > latest_valid_date:
+                  latest_valid_date = dt
+                  latest_valid_file = str(p)
+
+          force_recalc = os.environ.get("FORCE_RECALC", "false").lower() == "true"
+          need_recalc = force_recalc or latest_valid_date is None or latest_valid_date < target_date
+
+          yyyymm = target_date.strftime("%Y%m")
+          date_tag = target_date.strftime("%Y_%m%d")
+
           print(f"now_et={now.isoformat()}")
-          print(f"target_date={target.isoformat()}")
-          print(f"latest_valid_usall_date={latest.isoformat() if latest else ''}")
-          print(f"latest_valid_usall_file={latest_file}")
-          print(f"need_recalc={str(need).lower()}")
-          out = os.environ["GITHUB_OUTPUT"]
-          with open(out, "a") as f:
-              f.write(f"target_date={target.isoformat()}\n")
-              f.write(f"latest_valid_usall_date={latest.isoformat() if latest else ''}\n")
-              f.write(f"need_recalc={'true' if need else 'false'}\n")
+          print(f"reason={reason}")
+          print(f"target_date={target_date.isoformat()}")
+          print(f"target_yyyymm={yyyymm}")
+          print(f"target_date_tag={date_tag}")
+          print(f"latest_valid_usall_date={latest_valid_date.isoformat() if latest_valid_date else ''}")
+          print(f"latest_valid_usall_file={latest_valid_file or ''}")
+          print(f"force_recalc={str(force_recalc).lower()}")
+          print(f"need_recalc={str(need_recalc).lower()}")
+
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as f:
+              f.write(f"target_date={target_date.isoformat()}\n")
+              f.write(f"target_yyyymm={yyyymm}\n")
+              f.write(f"target_date_tag={date_tag}\n")
+              f.write(f"latest_valid_usall_date={latest_valid_date.isoformat() if latest_valid_date else ''}\n")
+              f.write(f"latest_valid_usall_file={latest_valid_file or ''}\n")
+              f.write(f"force_recalc={'true' if force_recalc else 'false'}\n")
+              f.write(f"need_recalc={'true' if need_recalc else 'false'}\n")
               f.write(f"reason={reason}\n")
           PY
 
       - name: Show guard decision
         run: |
           echo "target_date = ${{ steps.guard.outputs.target_date }}"
+          echo "target_yyyymm = ${{ steps.guard.outputs.target_yyyymm }}"
+          echo "target_date_tag = ${{ steps.guard.outputs.target_date_tag }}"
           echo "latest_valid_usall_date = ${{ steps.guard.outputs.latest_valid_usall_date }}"
+          echo "latest_valid_usall_file = ${{ steps.guard.outputs.latest_valid_usall_file }}"
+          echo "force_recalc = ${{ steps.guard.outputs.force_recalc }}"
           echo "need_recalc = ${{ steps.guard.outputs.need_recalc }}"
           echo "reason = ${{ steps.guard.outputs.reason }}"
 
@@ -152,35 +214,153 @@ jobs:
           PYTHONPATH: ${{ github.workspace }}
         run: python -m backend.run_extra_indices
 
+      - name: Force remove target-date derived outputs before refresh
+        if: github.event.inputs.force_derived_refresh == 'true' || github.event_name == 'schedule'
+        env:
+          TARGET_YYYYMM: ${{ steps.guard.outputs.target_yyyymm }}
+          TARGET_DATE_TAG: ${{ steps.guard.outputs.target_date_tag }}
+        run: |
+          echo "Removing target-date derived outputs for ${TARGET_DATE_TAG} if they exist."
+
+          rm -f "data/derived/etf/${TARGET_YYYYMM}/etf_icc_${TARGET_DATE_TAG}.csv" || true
+          rm -f "data/derived/etf/${TARGET_YYYYMM}/etf_members_${TARGET_DATE_TAG}.csv" || true
+          rm -f "data/derived/etf/${TARGET_YYYYMM}/"*${TARGET_DATE_TAG}*.csv || true
+
+          rm -f "data/derived/country_adr/${TARGET_YYYYMM}/country_adr_icc_${TARGET_DATE_TAG}.csv" || true
+          rm -f "data/derived/country_adr/${TARGET_YYYYMM}/country_adr_members_${TARGET_DATE_TAG}.csv" || true
+          rm -f "data/derived/country_adr/${TARGET_YYYYMM}/"*${TARGET_DATE_TAG}*.csv || true
+
+          echo "Remaining ETF derived files:"
+          find data/derived/etf -type f -name "*.csv" 2>/dev/null | sort | tail -10 || true
+
+          echo "Remaining Country / Region derived files:"
+          find data/derived/country_adr -type f -name "*.csv" 2>/dev/null | sort | tail -10 || true
+
       - name: Ensure ETF and Country / Region derived data
+        timeout-minutes: 45
         env:
           PYTHONPATH: ${{ github.workspace }}
-        run: python -m backend.ensure_daily_derived
+          COUNTRY_ADR_FORCE_REBUILD: ${{ github.event.inputs.force_country_adr_rebuild || 'false' }}
+        run: |
+          if [ -f backend/ensure_daily_derived.py ]; then
+            python -m backend.ensure_daily_derived
+          else
+            echo "backend/ensure_daily_derived.py not found."
+            exit 1
+          fi
+
+      - name: Validate derived data was generated
+        env:
+          TARGET_YYYYMM: ${{ steps.guard.outputs.target_yyyymm }}
+          TARGET_DATE_TAG: ${{ steps.guard.outputs.target_date_tag }}
+        run: |
+          echo "Checking target derived files for ${TARGET_DATE_TAG}"
+
+          ETF_FILE="data/derived/etf/${TARGET_YYYYMM}/etf_icc_${TARGET_DATE_TAG}.csv"
+          COUNTRY_FILE="data/derived/country_adr/${TARGET_YYYYMM}/country_adr_icc_${TARGET_DATE_TAG}.csv"
+
+          if [ ! -s "$ETF_FILE" ]; then
+            echo "Missing ETF derived file: $ETF_FILE"
+            echo "Available ETF derived files:"
+            find data/derived/etf -type f -name "*.csv" 2>/dev/null | sort | tail -20 || true
+            exit 1
+          fi
+
+          if [ ! -s "$COUNTRY_FILE" ]; then
+            echo "Missing Country / Region derived file: $COUNTRY_FILE"
+            echo "Available Country / Region derived files:"
+            find data/derived/country_adr -type f -name "*.csv" 2>/dev/null | sort | tail -20 || true
+            exit 1
+          fi
+
+          echo "ETF derived file exists: $ETF_FILE"
+          echo "Country / Region derived file exists: $COUNTRY_FILE"
+
+      - name: Checkpoint commit derived ETF and Country / Region data
+        env:
+          BRANCH_NAME: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+          BRANCH="${BRANCH_NAME}"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git fetch origin "${BRANCH}" || true
+
+          ts=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
+
+          git add -A data/derived backend/__init__.py || true
+
+          if git diff --cached --quiet; then
+            echo "No derived data changes to checkpoint."
+          else
+            git commit -m "Checkpoint ETF Country Region derived data ${ts} [skip ci]" || true
+            git pull --rebase --autostash origin "${BRANCH}" || true
+            git push origin HEAD:"${BRANCH}" || true
+          fi
 
       - name: Build website data under docs/data
+        timeout-minutes: 60
         env:
           PYTHONPATH: ${{ github.workspace }}
+          COUNTRY_ADR_FORCE_REBUILD: "false"
         run: python -m backend.build_docs_data --universe usall
 
-      - name: Sanitize public ETF and Country / Region outputs
+      - name: Clean Country / Region public outputs if tool exists
         env:
           PYTHONPATH: ${{ github.workspace }}
-        run: python -m backend.public_data_sanitizer
-
-      - name: Validate current public dates
         run: |
+          if [ -f backend/clean_country_outputs.py ]; then
+            python -m backend.clean_country_outputs
+          else
+            echo "backend/clean_country_outputs.py not found, skip."
+          fi
+
+      - name: Sanitize public data if tool exists
+        env:
+          PYTHONPATH: ${{ github.workspace }}
+        run: |
+          if [ -f backend/public_data_sanitizer.py ]; then
+            python -m backend.public_data_sanitizer
+          else
+            echo "backend/public_data_sanitizer.py not found, skip."
+          fi
+
+      - name: Validate generated website data
+        run: |
+          echo "Checking generated docs/data files..."
+
+          test -s docs/data/marketwide.json
+          test -s docs/data/value.json
+          test -s docs/data/industry.json
+          test -s docs/data/indices.json
+          test -s docs/data/etf.json
+          test -s docs/data/country.json
+          test -s docs/data/downloads_catalog.json
+
           python - <<'PY'
           import json
           from pathlib import Path
-          for name in ["etf", "country"]:
-              p = Path("docs/data") / f"{name}.json"
-              data = json.loads(p.read_text())
+
+          def latest_dates(path):
+              data = json.loads(Path(path).read_text())
               rows = data.get("latest", [])
-              dates = sorted({r.get("date") for r in rows if r.get("date")})
-              print(name, "latest dates:", dates)
-              if len(dates) > 1:
-                  raise SystemExit(f"{name}.json latest table still has mixed stale dates: {dates}")
+              return sorted({r.get("date") for r in rows if r.get("date")})
+
+          etf_dates = latest_dates("docs/data/etf.json")
+          country_dates = latest_dates("docs/data/country.json")
+
+          print("etf latest dates:", etf_dates)
+          print("country latest dates:", country_dates)
+
+          if len(etf_dates) > 1:
+              raise SystemExit(f"ETF latest has mixed dates: {etf_dates}")
+          if len(country_dates) > 1:
+              raise SystemExit(f"Country / Region latest has mixed dates: {country_dates}")
           PY
+
+          echo "Generated docs/data files are valid."
 
       - name: Generate FILES.md manifest if tool exists
         run: |
@@ -190,21 +370,26 @@ jobs:
             echo "tools/generate_files_manifest.py not found, skip."
           fi
 
-      - name: Commit raw data and site data back to repo
+      - name: Commit final site data back to repo
         env:
           BRANCH_NAME: ${{ github.ref_name }}
         run: |
           set -euo pipefail
           BRANCH="${BRANCH_NAME}"
+
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
           git fetch origin "${BRANCH}" || true
+
           ts=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
+
           git add -A data docs backend/__init__.py FILES.md || true
+
           if git diff --cached --quiet; then
-            echo "No changes to commit."
+            echo "No final site data changes to commit."
           else
-            git commit -m "Update ICC raw/site data ${ts} [skip ci]" || true
+            git commit -m "Update ICC site data ${ts} [skip ci]" || true
             git pull --rebase --autostash origin "${BRANCH}" || true
             git push origin HEAD:"${BRANCH}" || true
           fi
