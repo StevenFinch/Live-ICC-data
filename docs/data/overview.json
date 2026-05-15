@@ -46,16 +46,16 @@
       "latest_daily": 0.1509913306818822,
       "method": "ICC calculation",
       "month_1": 0.1509913306818822,
-      "month_2": 0.0703589408576189,
-      "month_3": 0.2449245886251108
+      "month_2": 0.0646574587442311,
+      "month_3": 0.0821039536057223
     },
     {
       "dataset": "Country / Region Level ICC",
       "latest_daily": 0.2114196902130185,
       "method": "ADR Top-10 ICC calculation",
       "month_1": 0.2114196902130185,
-      "month_2": 0.242903044114228,
-      "month_3": 0.0708309010098534
+      "month_2": 0.0667947473364266,
+      "month_3": 0.1430622461800945
     }
   ],
   "families": {
@@ -3174,70 +3174,18 @@
       "tree": [
         {
           "year": "2026",
-          "n_files": 10,
+          "n_files": 1,
           "download_all_zip": "./data/downloads/families/etf/archive/etf_2026_all.zip",
           "months": [
             {
               "month": "2026-05",
-              "n_files": 9,
+              "n_files": 1,
               "download_all_zip": "./data/downloads/families/etf/archive/2026/etf_2026_05_all.zip",
               "days": [
                 {
                   "date": "2026-05-14",
                   "n_rows": 26,
                   "csv": "./data/downloads/families/etf/archive/2026/05/etf_2026-05-14.csv"
-                },
-                {
-                  "date": "2026-05-13",
-                  "n_rows": 26,
-                  "csv": "./data/downloads/families/etf/archive/2026/05/etf_2026-05-13.csv"
-                },
-                {
-                  "date": "2026-05-12",
-                  "n_rows": 26,
-                  "csv": "./data/downloads/families/etf/archive/2026/05/etf_2026-05-12.csv"
-                },
-                {
-                  "date": "2026-05-11",
-                  "n_rows": 26,
-                  "csv": "./data/downloads/families/etf/archive/2026/05/etf_2026-05-11.csv"
-                },
-                {
-                  "date": "2026-05-08",
-                  "n_rows": 26,
-                  "csv": "./data/downloads/families/etf/archive/2026/05/etf_2026-05-08.csv"
-                },
-                {
-                  "date": "2026-05-07",
-                  "n_rows": 26,
-                  "csv": "./data/downloads/families/etf/archive/2026/05/etf_2026-05-07.csv"
-                },
-                {
-                  "date": "2026-05-06",
-                  "n_rows": 26,
-                  "csv": "./data/downloads/families/etf/archive/2026/05/etf_2026-05-06.csv"
-                },
-                {
-                  "date": "2026-05-05",
-                  "n_rows": 26,
-                  "csv": "./data/downloads/families/etf/archive/2026/05/etf_2026-05-05.csv"
-                },
-                {
-                  "date": "2026-05-04",
-                  "n_rows": 26,
-                  "csv": "./data/downloads/families/etf/archive/2026/05/etf_2026-05-04.csv"
-                }
-              ]
-            },
-            {
-              "month": "2026-04",
-              "n_files": 1,
-              "download_all_zip": "./data/downloads/families/etf/archive/2026/etf_2026_04_all.zip",
-              "days": [
-                {
-                  "date": "2026-04-23",
-                  "n_rows": 17,
-                  "csv": "./data/downloads/families/etf/archive/2026/04/etf_2026-04-23.csv"
                 }
               ]
             }
@@ -3256,70 +3204,18 @@
       "tree": [
         {
           "year": "2026",
-          "n_files": 10,
+          "n_files": 1,
           "download_all_zip": "./data/downloads/families/country/archive/country_2026_all.zip",
           "months": [
             {
               "month": "2026-05",
-              "n_files": 9,
+              "n_files": 1,
               "download_all_zip": "./data/downloads/families/country/archive/2026/country_2026_05_all.zip",
               "days": [
                 {
                   "date": "2026-05-14",
-                  "n_rows": 36,
+                  "n_rows": 50,
                   "csv": "./data/downloads/families/country/archive/2026/05/country_2026-05-14.csv"
-                },
-                {
-                  "date": "2026-05-13",
-                  "n_rows": 34,
-                  "csv": "./data/downloads/families/country/archive/2026/05/country_2026-05-13.csv"
-                },
-                {
-                  "date": "2026-05-12",
-                  "n_rows": 41,
-                  "csv": "./data/downloads/families/country/archive/2026/05/country_2026-05-12.csv"
-                },
-                {
-                  "date": "2026-05-11",
-                  "n_rows": 24,
-                  "csv": "./data/downloads/families/country/archive/2026/05/country_2026-05-11.csv"
-                },
-                {
-                  "date": "2026-05-08",
-                  "n_rows": 28,
-                  "csv": "./data/downloads/families/country/archive/2026/05/country_2026-05-08.csv"
-                },
-                {
-                  "date": "2026-05-07",
-                  "n_rows": 42,
-                  "csv": "./data/downloads/families/country/archive/2026/05/country_2026-05-07.csv"
-                },
-                {
-                  "date": "2026-05-06",
-                  "n_rows": 40,
-                  "csv": "./data/downloads/families/country/archive/2026/05/country_2026-05-06.csv"
-                },
-                {
-                  "date": "2026-05-05",
-                  "n_rows": 39,
-                  "csv": "./data/downloads/families/country/archive/2026/05/country_2026-05-05.csv"
-                },
-                {
-                  "date": "2026-05-04",
-                  "n_rows": 46,
-                  "csv": "./data/downloads/families/country/archive/2026/05/country_2026-05-04.csv"
-                }
-              ]
-            },
-            {
-              "month": "2026-04",
-              "n_files": 1,
-              "download_all_zip": "./data/downloads/families/country/archive/2026/country_2026_04_all.zip",
-              "days": [
-                {
-                  "date": "2026-04-23",
-                  "n_rows": 9,
-                  "csv": "./data/downloads/families/country/archive/2026/04/country_2026-04-23.csv"
                 }
               ]
             }
