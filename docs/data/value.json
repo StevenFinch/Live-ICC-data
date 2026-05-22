@@ -4,25 +4,25 @@
   "note": "Value, growth, and implied value premium series built from firm-level ICC snapshots.",
   "latest": [
     {
-      "date": "2026-05-20",
-      "value_icc": 0.12807384087958137,
-      "growth_icc": 0.0823132619373474,
-      "ivp": 0.04576057894223397,
-      "n_firms": 3584,
+      "date": "2026-05-21",
+      "value_icc": 0.12790112543659973,
+      "growth_icc": 0.08306704151669411,
+      "ivp": 0.04483408391990562,
+      "n_firms": 3592,
       "method": "ICC calculation",
-      "source_file": "data/202605/icc_live_usall_2026_0520_r1.csv"
+      "source_file": "data/202605/icc_live_usall_2026_0521_r1.csv"
     }
   ],
   "monthly": [
     {
       "month": "2026-05",
-      "month_end_date": "2026-05-20",
-      "value_icc": 0.12807384087958137,
-      "growth_icc": 0.0823132619373474,
-      "ivp": 0.04576057894223397,
-      "n_firms": 3584,
+      "month_end_date": "2026-05-21",
+      "value_icc": 0.12790112543659973,
+      "growth_icc": 0.08306704151669411,
+      "ivp": 0.04483408391990562,
+      "n_firms": 3592,
       "method": "ICC calculation",
-      "source_file": "data/202605/icc_live_usall_2026_0520_r1.csv"
+      "source_file": "data/202605/icc_live_usall_2026_0521_r1.csv"
     },
     {
       "month": "2026-04",
@@ -56,14 +56,19 @@
     "tree": [
       {
         "year": "2026",
-        "n_files": 97,
+        "n_files": 98,
         "download_all_zip": "./data/downloads/families/value/archive/value_2026_all.zip",
         "months": [
           {
             "month": "2026-05",
-            "n_files": 14,
+            "n_files": 15,
             "download_all_zip": "./data/downloads/families/value/archive/2026/value_2026_05_all.zip",
             "days": [
+              {
+                "date": "2026-05-21",
+                "n_rows": 1,
+                "csv": "./data/downloads/families/value/archive/2026/05/value_2026-05-21.csv"
+              },
               {
                 "date": "2026-05-20",
                 "n_rows": 1,
