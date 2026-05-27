@@ -30,7 +30,7 @@ on:
 
   schedule:
     # Run after 5pm US Eastern time all year.
-    # 20:30 UTC = 4:30pm EDT in summer and 5:30pm EST in winter.
+    # 21:30 UTC = 4:30pm EDT in summer and 5:30pm EST in winter.
     - cron: "30 21 * * 1-5"
 
 permissions:
