@@ -4,25 +4,35 @@
   "note": "All U.S. market and S&P 500 aggregate ICC series.",
   "latest": [
     {
-      "date": "2026-05-29",
+      "date": "2026-06-01",
       "family": "all_market",
-      "daily_icc": 0.07916304571156077,
-      "ew_icc": 0.11150552194875588,
-      "n_firms": 3963,
+      "daily_icc": 0.07915625234310596,
+      "ew_icc": 0.11126206100380363,
+      "n_firms": 3980,
       "method": "ICC calculation",
-      "source_file": "data/202605/icc_live_usall_2026_0529_r1.csv"
+      "source_file": "data/202606/icc_live_usall_2026_0601_r1.csv"
     },
     {
-      "date": "2026-05-29",
+      "date": "2026-06-01",
       "family": "sp500",
-      "daily_icc": 0.07234705959777499,
-      "ew_icc": 0.08001543253963682,
-      "n_firms": 500,
+      "daily_icc": 0.07259081446194907,
+      "ew_icc": 0.08000097097840617,
+      "n_firms": 501,
       "method": "ICC calculation",
-      "source_file": "data/202605/icc_live_sp500_2026_0529_r1.csv"
+      "source_file": "data/202606/icc_live_sp500_2026_0601_r1.csv"
     }
   ],
   "monthly": [
+    {
+      "family": "all_market",
+      "month": "2026-06",
+      "month_end_date": "2026-06-01",
+      "daily_icc": 0.07915625234310596,
+      "ew_icc": 0.11126206100380363,
+      "n_firms": 3980,
+      "method": "ICC calculation",
+      "source_file": "data/202606/icc_live_usall_2026_0601_r1.csv"
+    },
     {
       "family": "all_market",
       "month": "2026-05",
@@ -44,14 +54,14 @@
       "source_file": "data/202604/icc_live_usall_2026_0430_r1.csv"
     },
     {
-      "family": "all_market",
-      "month": "2026-03",
-      "month_end_date": "2026-03-31",
-      "daily_icc": 0.0846043873892946,
-      "ew_icc": 0.1095647685619641,
-      "n_firms": 2721,
+      "family": "sp500",
+      "month": "2026-06",
+      "month_end_date": "2026-06-01",
+      "daily_icc": 0.07259081446194907,
+      "ew_icc": 0.08000097097840617,
+      "n_firms": 501,
       "method": "ICC calculation",
-      "source_file": "data/202603/icc_live_usall_2026_0331_r1.csv"
+      "source_file": "data/202606/icc_live_sp500_2026_0601_r1.csv"
     },
     {
       "family": "sp500",
@@ -72,16 +82,6 @@
       "n_firms": 500,
       "method": "ICC calculation",
       "source_file": "data/202604/icc_live_sp500_2026_0430_r1.csv"
-    },
-    {
-      "family": "sp500",
-      "month": "2026-03",
-      "month_end_date": "2026-03-31",
-      "daily_icc": 0.07889568917176408,
-      "ew_icc": 0.08332771742426166,
-      "n_firms": 500,
-      "method": "ICC calculation",
-      "source_file": "data/202603/icc_live_sp500_2026_0331_r1.csv"
     }
   ],
   "downloads": {
@@ -95,9 +95,21 @@
     "tree": [
       {
         "year": "2026",
-        "n_files": 106,
+        "n_files": 107,
         "download_all_zip": "./data/downloads/families/marketwide/archive/marketwide_2026_all.zip",
         "months": [
+          {
+            "month": "2026-06",
+            "n_files": 1,
+            "download_all_zip": "./data/downloads/families/marketwide/archive/2026/marketwide_2026_06_all.zip",
+            "days": [
+              {
+                "date": "2026-06-01",
+                "n_rows": 2,
+                "csv": "./data/downloads/families/marketwide/archive/2026/06/marketwide_2026-06-01.csv"
+              }
+            ]
+          },
           {
             "month": "2026-05",
             "n_files": 21,
