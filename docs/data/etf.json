@@ -4,385 +4,385 @@
   "note": "ETF ICC from online ETF holdings matched to firm-level ICC snapshots. History starts when archiving begins.",
   "latest": [
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "ticker": "DIA",
       "label": "SPDR Dow Jones Industrial Average ETF",
       "category": "Index",
-      "icc": 0.0549325702029145,
+      "icc": 0.0549448190218754,
       "coverage_weight": 1.0,
       "n_holdings": 25,
       "n_matched": 25,
       "method": "ICC calculation",
       "holding_source": "stockanalysis_full_holdings",
       "status": "icc_calculation",
-      "source_file": "data/derived/etf/202606/etf_icc_2026_06_18.csv"
+      "source_file": "data/derived/etf/202606/etf_icc_2026_06_19.csv"
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "ticker": "IJR",
       "label": "iShares Core S&P Small-Cap ETF",
       "category": "Small Cap",
-      "icc": 0.0666311451611866,
-      "coverage_weight": 0.96,
-      "n_holdings": 25,
-      "n_matched": 24,
-      "method": "ICC calculation",
-      "holding_source": "stockanalysis_full_holdings",
-      "status": "icc_calculation",
-      "source_file": "data/derived/etf/202606/etf_icc_2026_06_18.csv"
-    },
-    {
-      "date": "2026-06-18",
-      "ticker": "IVV",
-      "label": "iShares Core S&P 500 ETF",
-      "category": "Broad Market",
-      "icc": 0.0636424018446506,
-      "coverage_weight": 1.0,
-      "n_holdings": 25,
-      "n_matched": 25,
-      "method": "ICC calculation",
-      "holding_source": "stockanalysis_full_holdings",
-      "status": "icc_calculation",
-      "source_file": "data/derived/etf/202606/etf_icc_2026_06_18.csv"
-    },
-    {
-      "date": "2026-06-18",
-      "ticker": "IWD",
-      "label": "iShares Russell 1000 Value ETF",
-      "category": "Style",
-      "icc": 0.0779720668939373,
-      "coverage_weight": 1.0000000000000002,
-      "n_holdings": 25,
-      "n_matched": 25,
-      "method": "ICC calculation",
-      "holding_source": "stockanalysis_full_holdings",
-      "status": "icc_calculation",
-      "source_file": "data/derived/etf/202606/etf_icc_2026_06_18.csv"
-    },
-    {
-      "date": "2026-06-18",
-      "ticker": "IWF",
-      "label": "iShares Russell 1000 Growth ETF",
-      "category": "Style",
-      "icc": 0.0614095250084215,
-      "coverage_weight": 1.0,
-      "n_holdings": 25,
-      "n_matched": 25,
-      "method": "ICC calculation",
-      "holding_source": "stockanalysis_full_holdings",
-      "status": "icc_calculation",
-      "source_file": "data/derived/etf/202606/etf_icc_2026_06_18.csv"
-    },
-    {
-      "date": "2026-06-18",
-      "ticker": "IWM",
-      "label": "iShares Russell 2000 ETF",
-      "category": "Small Cap",
-      "icc": 0.0645226842159015,
-      "coverage_weight": 0.929829547977936,
+      "icc": 0.0683726962431911,
+      "coverage_weight": 0.9635948767282296,
       "n_holdings": 25,
       "n_matched": 23,
       "method": "ICC calculation",
       "holding_source": "stockanalysis_full_holdings",
       "status": "icc_calculation",
-      "source_file": "data/derived/etf/202606/etf_icc_2026_06_18.csv"
+      "source_file": "data/derived/etf/202606/etf_icc_2026_06_19.csv"
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
+      "ticker": "IVV",
+      "label": "iShares Core S&P 500 ETF",
+      "category": "Broad Market",
+      "icc": 0.0638300279979918,
+      "coverage_weight": 1.0,
+      "n_holdings": 25,
+      "n_matched": 25,
+      "method": "ICC calculation",
+      "holding_source": "stockanalysis_full_holdings",
+      "status": "icc_calculation",
+      "source_file": "data/derived/etf/202606/etf_icc_2026_06_19.csv"
+    },
+    {
+      "date": "2026-06-19",
+      "ticker": "IWD",
+      "label": "iShares Russell 1000 Value ETF",
+      "category": "Style",
+      "icc": 0.0806136079374693,
+      "coverage_weight": 1.0,
+      "n_holdings": 25,
+      "n_matched": 25,
+      "method": "ICC calculation",
+      "holding_source": "stockanalysis_full_holdings",
+      "status": "icc_calculation",
+      "source_file": "data/derived/etf/202606/etf_icc_2026_06_19.csv"
+    },
+    {
+      "date": "2026-06-19",
+      "ticker": "IWF",
+      "label": "iShares Russell 1000 Growth ETF",
+      "category": "Style",
+      "icc": 0.0615240662536918,
+      "coverage_weight": 1.0,
+      "n_holdings": 25,
+      "n_matched": 25,
+      "method": "ICC calculation",
+      "holding_source": "stockanalysis_full_holdings",
+      "status": "icc_calculation",
+      "source_file": "data/derived/etf/202606/etf_icc_2026_06_19.csv"
+    },
+    {
+      "date": "2026-06-19",
+      "ticker": "IWM",
+      "label": "iShares Russell 2000 ETF",
+      "category": "Small Cap",
+      "icc": 0.065635780049653,
+      "coverage_weight": 0.8982147756742165,
+      "n_holdings": 25,
+      "n_matched": 22,
+      "method": "ICC calculation",
+      "holding_source": "stockanalysis_full_holdings",
+      "status": "icc_calculation",
+      "source_file": "data/derived/etf/202606/etf_icc_2026_06_19.csv"
+    },
+    {
+      "date": "2026-06-19",
       "ticker": "MDY",
       "label": "SPDR S&P MidCap 400 ETF Trust",
       "category": "Mid Cap",
-      "icc": 0.0673100857505094,
-      "coverage_weight": 0.9559322033898304,
+      "icc": 0.0672476008819145,
+      "coverage_weight": 0.9557670772676374,
       "n_holdings": 25,
       "n_matched": 24,
       "method": "ICC calculation",
       "holding_source": "stockanalysis_full_holdings",
       "status": "icc_calculation",
-      "source_file": "data/derived/etf/202606/etf_icc_2026_06_18.csv"
+      "source_file": "data/derived/etf/202606/etf_icc_2026_06_19.csv"
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "ticker": "QQQ",
       "label": "Invesco QQQ Trust",
       "category": "Growth / Nasdaq",
-      "icc": 0.0776755445764988,
+      "icc": 0.0778593753342416,
+      "coverage_weight": 1.0,
+      "n_holdings": 25,
+      "n_matched": 25,
+      "method": "ICC calculation",
+      "holding_source": "stockanalysis_full_holdings",
+      "status": "icc_calculation",
+      "source_file": "data/derived/etf/202606/etf_icc_2026_06_19.csv"
+    },
+    {
+      "date": "2026-06-19",
+      "ticker": "SMH",
+      "label": "VanEck Semiconductor ETF",
+      "category": "Theme",
+      "icc": 0.0612353621681409,
       "coverage_weight": 1.0000000000000002,
       "n_holdings": 25,
       "n_matched": 25,
       "method": "ICC calculation",
       "holding_source": "stockanalysis_full_holdings",
       "status": "icc_calculation",
-      "source_file": "data/derived/etf/202606/etf_icc_2026_06_18.csv"
+      "source_file": "data/derived/etf/202606/etf_icc_2026_06_19.csv"
     },
     {
-      "date": "2026-06-18",
-      "ticker": "SMH",
-      "label": "VanEck Semiconductor ETF",
-      "category": "Theme",
-      "icc": 0.0611152940853463,
-      "coverage_weight": 1.0,
-      "n_holdings": 25,
-      "n_matched": 25,
-      "method": "ICC calculation",
-      "holding_source": "stockanalysis_full_holdings",
-      "status": "icc_calculation",
-      "source_file": "data/derived/etf/202606/etf_icc_2026_06_18.csv"
-    },
-    {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "ticker": "SPY",
       "label": "SPDR S&P 500 ETF Trust",
       "category": "Broad Market",
-      "icc": 0.0637530462198997,
+      "icc": 0.0638298797537425,
       "coverage_weight": 1.0,
       "n_holdings": 25,
       "n_matched": 25,
       "method": "ICC calculation",
       "holding_source": "stockanalysis_full_holdings",
       "status": "icc_calculation",
-      "source_file": "data/derived/etf/202606/etf_icc_2026_06_18.csv"
+      "source_file": "data/derived/etf/202606/etf_icc_2026_06_19.csv"
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "ticker": "VOO",
       "label": "Vanguard S&P 500 ETF",
       "category": "Broad Market",
-      "icc": 0.0654290641418676,
+      "icc": 0.0654524114756013,
       "coverage_weight": 1.0,
       "n_holdings": 25,
       "n_matched": 25,
       "method": "ICC calculation",
       "holding_source": "stockanalysis_full_holdings",
       "status": "icc_calculation",
-      "source_file": "data/derived/etf/202606/etf_icc_2026_06_18.csv"
+      "source_file": "data/derived/etf/202606/etf_icc_2026_06_19.csv"
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "ticker": "VTI",
       "label": "Vanguard Total Stock Market ETF",
       "category": "Broad Market",
-      "icc": 0.0828924924408245,
+      "icc": 0.0830396443823508,
       "coverage_weight": 1.0,
       "n_holdings": 25,
       "n_matched": 25,
       "method": "ICC calculation",
       "holding_source": "stockanalysis_full_holdings",
       "status": "icc_calculation",
-      "source_file": "data/derived/etf/202606/etf_icc_2026_06_18.csv"
+      "source_file": "data/derived/etf/202606/etf_icc_2026_06_19.csv"
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "ticker": "VTV",
       "label": "Vanguard Value ETF",
       "category": "Style",
-      "icc": 0.0761390250770045,
+      "icc": 0.0761278123547982,
       "coverage_weight": 1.0,
       "n_holdings": 25,
       "n_matched": 25,
       "method": "ICC calculation",
       "holding_source": "stockanalysis_full_holdings",
       "status": "icc_calculation",
-      "source_file": "data/derived/etf/202606/etf_icc_2026_06_18.csv"
+      "source_file": "data/derived/etf/202606/etf_icc_2026_06_19.csv"
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "ticker": "VUG",
       "label": "Vanguard Growth ETF",
       "category": "Style",
-      "icc": 0.0688262961250549,
+      "icc": 0.0689227712900956,
       "coverage_weight": 1.0,
       "n_holdings": 25,
       "n_matched": 25,
       "method": "ICC calculation",
       "holding_source": "stockanalysis_full_holdings",
       "status": "icc_calculation",
-      "source_file": "data/derived/etf/202606/etf_icc_2026_06_18.csv"
+      "source_file": "data/derived/etf/202606/etf_icc_2026_06_19.csv"
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "ticker": "XBI",
       "label": "SPDR S&P Biotech ETF",
       "category": "Theme",
-      "icc": 0.0713687602444543,
-      "coverage_weight": 0.4318458072671874,
+      "icc": 0.0708798462813528,
+      "coverage_weight": 0.4321960358139232,
       "n_holdings": 25,
       "n_matched": 11,
       "method": "Partial holdings estimate",
       "holding_source": "stockanalysis_full_holdings",
       "status": "partial_holdings_estimate",
-      "source_file": "data/derived/etf/202606/etf_icc_2026_06_18.csv"
+      "source_file": "data/derived/etf/202606/etf_icc_2026_06_19.csv"
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "ticker": "XLB",
       "label": "Materials Select Sector SPDR Fund",
       "category": "Sector",
-      "icc": 0.0782184324790411,
+      "icc": 0.0779108966925641,
       "coverage_weight": 1.0,
       "n_holdings": 25,
       "n_matched": 25,
       "method": "ICC calculation",
       "holding_source": "stockanalysis_full_holdings",
       "status": "icc_calculation",
-      "source_file": "data/derived/etf/202606/etf_icc_2026_06_18.csv"
+      "source_file": "data/derived/etf/202606/etf_icc_2026_06_19.csv"
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "ticker": "XLC",
       "label": "Communication Services Select Sector SPDR Fund",
       "category": "Sector",
-      "icc": 0.1111350598665493,
-      "coverage_weight": 0.5941819139133868,
+      "icc": 0.1111508858058566,
+      "coverage_weight": 0.5660957400087835,
       "n_holdings": 24,
       "n_matched": 21,
       "method": "Partial holdings estimate",
       "holding_source": "stockanalysis_full_holdings",
       "status": "partial_holdings_estimate",
-      "source_file": "data/derived/etf/202606/etf_icc_2026_06_18.csv"
+      "source_file": "data/derived/etf/202606/etf_icc_2026_06_19.csv"
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "ticker": "XLE",
       "label": "Energy Select Sector SPDR Fund",
       "category": "Sector",
-      "icc": 0.0775944018161213,
-      "coverage_weight": 0.8844202821001264,
+      "icc": 0.0776394936028377,
+      "coverage_weight": 0.7797524113313586,
       "n_holdings": 22,
       "n_matched": 21,
-      "method": "ICC calculation",
+      "method": "Partial holdings estimate",
       "holding_source": "stockanalysis_full_holdings",
-      "status": "icc_calculation",
-      "source_file": "data/derived/etf/202606/etf_icc_2026_06_18.csv"
+      "status": "partial_holdings_estimate",
+      "source_file": "data/derived/etf/202606/etf_icc_2026_06_19.csv"
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "ticker": "XLF",
       "label": "Financial Select Sector SPDR Fund",
       "category": "Sector",
-      "icc": 0.081600960868296,
+      "icc": 0.0835314419091694,
       "coverage_weight": 1.0,
       "n_holdings": 25,
       "n_matched": 25,
       "method": "ICC calculation",
       "holding_source": "stockanalysis_full_holdings",
       "status": "icc_calculation",
-      "source_file": "data/derived/etf/202606/etf_icc_2026_06_18.csv"
+      "source_file": "data/derived/etf/202606/etf_icc_2026_06_19.csv"
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "ticker": "XLI",
       "label": "Industrial Select Sector SPDR Fund",
       "category": "Sector",
-      "icc": 0.077112375581134,
-      "coverage_weight": 1.0,
-      "n_holdings": 25,
-      "n_matched": 25,
-      "method": "ICC calculation",
-      "holding_source": "stockanalysis_full_holdings",
-      "status": "icc_calculation",
-      "source_file": "data/derived/etf/202606/etf_icc_2026_06_18.csv"
-    },
-    {
-      "date": "2026-06-18",
-      "ticker": "XLK",
-      "label": "Technology Select Sector SPDR Fund",
-      "category": "Sector",
-      "icc": 0.0613370551926339,
-      "coverage_weight": 1.0,
-      "n_holdings": 25,
-      "n_matched": 25,
-      "method": "ICC calculation",
-      "holding_source": "stockanalysis_full_holdings",
-      "status": "icc_calculation",
-      "source_file": "data/derived/etf/202606/etf_icc_2026_06_18.csv"
-    },
-    {
-      "date": "2026-06-18",
-      "ticker": "XLP",
-      "label": "Consumer Staples Select Sector SPDR Fund",
-      "category": "Sector",
-      "icc": 0.0747881234193642,
+      "icc": 0.0737818482504367,
       "coverage_weight": 1.0000000000000002,
       "n_holdings": 25,
       "n_matched": 25,
       "method": "ICC calculation",
       "holding_source": "stockanalysis_full_holdings",
       "status": "icc_calculation",
-      "source_file": "data/derived/etf/202606/etf_icc_2026_06_18.csv"
+      "source_file": "data/derived/etf/202606/etf_icc_2026_06_19.csv"
     },
     {
-      "date": "2026-06-18",
-      "ticker": "XLRE",
-      "label": "Real Estate Select Sector SPDR Fund",
+      "date": "2026-06-19",
+      "ticker": "XLK",
+      "label": "Technology Select Sector SPDR Fund",
       "category": "Sector",
-      "icc": 0.0544164831852916,
+      "icc": 0.0613293627719326,
       "coverage_weight": 1.0,
       "n_holdings": 25,
       "n_matched": 25,
       "method": "ICC calculation",
       "holding_source": "stockanalysis_full_holdings",
       "status": "icc_calculation",
-      "source_file": "data/derived/etf/202606/etf_icc_2026_06_18.csv"
+      "source_file": "data/derived/etf/202606/etf_icc_2026_06_19.csv"
     },
     {
-      "date": "2026-06-18",
-      "ticker": "XLU",
-      "label": "Utilities Select Sector SPDR Fund",
+      "date": "2026-06-19",
+      "ticker": "XLP",
+      "label": "Consumer Staples Select Sector SPDR Fund",
       "category": "Sector",
-      "icc": 0.0716998709943416,
-      "coverage_weight": 1.0,
-      "n_holdings": 25,
-      "n_matched": 25,
-      "method": "ICC calculation",
-      "holding_source": "stockanalysis_full_holdings",
-      "status": "icc_calculation",
-      "source_file": "data/derived/etf/202606/etf_icc_2026_06_18.csv"
-    },
-    {
-      "date": "2026-06-18",
-      "ticker": "XLV",
-      "label": "Health Care Select Sector SPDR Fund",
-      "category": "Sector",
-      "icc": 0.0822421089547663,
-      "coverage_weight": 1.0,
-      "n_holdings": 25,
-      "n_matched": 25,
-      "method": "ICC calculation",
-      "holding_source": "stockanalysis_full_holdings",
-      "status": "icc_calculation",
-      "source_file": "data/derived/etf/202606/etf_icc_2026_06_18.csv"
-    },
-    {
-      "date": "2026-06-18",
-      "ticker": "XLY",
-      "label": "Consumer Discretionary Select Sector SPDR Fund",
-      "category": "Sector",
-      "icc": 0.0856231434448253,
+      "icc": 0.0794939223416115,
       "coverage_weight": 0.9999999999999998,
       "n_holdings": 25,
       "n_matched": 25,
       "method": "ICC calculation",
       "holding_source": "stockanalysis_full_holdings",
       "status": "icc_calculation",
-      "source_file": "data/derived/etf/202606/etf_icc_2026_06_18.csv"
-    }
-  ],
-  "monthly": [
+      "source_file": "data/derived/etf/202606/etf_icc_2026_06_19.csv"
+    },
     {
-      "ticker": "DIA",
-      "month": "2026-06",
-      "month_end_date": "2026-06-18",
-      "label": "SPDR Dow Jones Industrial Average ETF",
-      "category": "Index",
-      "icc": 0.0549325702029145,
+      "date": "2026-06-19",
+      "ticker": "XLRE",
+      "label": "Real Estate Select Sector SPDR Fund",
+      "category": "Sector",
+      "icc": 0.0545572705008932,
+      "coverage_weight": 1.0000000000000002,
+      "n_holdings": 25,
+      "n_matched": 25,
+      "method": "ICC calculation",
+      "holding_source": "stockanalysis_full_holdings",
+      "status": "icc_calculation",
+      "source_file": "data/derived/etf/202606/etf_icc_2026_06_19.csv"
+    },
+    {
+      "date": "2026-06-19",
+      "ticker": "XLU",
+      "label": "Utilities Select Sector SPDR Fund",
+      "category": "Sector",
+      "icc": 0.0716456911094152,
       "coverage_weight": 1.0,
       "n_holdings": 25,
       "n_matched": 25,
       "method": "ICC calculation",
       "holding_source": "stockanalysis_full_holdings",
       "status": "icc_calculation",
-      "source_file": "data/derived/etf/202606/etf_icc_2026_06_18.csv"
+      "source_file": "data/derived/etf/202606/etf_icc_2026_06_19.csv"
+    },
+    {
+      "date": "2026-06-19",
+      "ticker": "XLV",
+      "label": "Health Care Select Sector SPDR Fund",
+      "category": "Sector",
+      "icc": 0.0822046197748399,
+      "coverage_weight": 1.0,
+      "n_holdings": 25,
+      "n_matched": 25,
+      "method": "ICC calculation",
+      "holding_source": "stockanalysis_full_holdings",
+      "status": "icc_calculation",
+      "source_file": "data/derived/etf/202606/etf_icc_2026_06_19.csv"
+    },
+    {
+      "date": "2026-06-19",
+      "ticker": "XLY",
+      "label": "Consumer Discretionary Select Sector SPDR Fund",
+      "category": "Sector",
+      "icc": 0.0855516358871011,
+      "coverage_weight": 1.0,
+      "n_holdings": 25,
+      "n_matched": 25,
+      "method": "ICC calculation",
+      "holding_source": "stockanalysis_full_holdings",
+      "status": "icc_calculation",
+      "source_file": "data/derived/etf/202606/etf_icc_2026_06_19.csv"
+    }
+  ],
+  "monthly": [
+    {
+      "ticker": "DIA",
+      "month": "2026-06",
+      "month_end_date": "2026-06-19",
+      "label": "SPDR Dow Jones Industrial Average ETF",
+      "category": "Index",
+      "icc": 0.0549448190218754,
+      "coverage_weight": 1.0,
+      "n_holdings": 25,
+      "n_matched": 25,
+      "method": "ICC calculation",
+      "holding_source": "stockanalysis_full_holdings",
+      "status": "icc_calculation",
+      "source_file": "data/derived/etf/202606/etf_icc_2026_06_19.csv"
     },
     {
       "ticker": "DIA",
@@ -402,17 +402,17 @@
     {
       "ticker": "IJR",
       "month": "2026-06",
-      "month_end_date": "2026-06-18",
+      "month_end_date": "2026-06-19",
       "label": "iShares Core S&P Small-Cap ETF",
       "category": "Small Cap",
-      "icc": 0.0666311451611866,
-      "coverage_weight": 0.96,
+      "icc": 0.0683726962431911,
+      "coverage_weight": 0.9635948767282296,
       "n_holdings": 25,
-      "n_matched": 24,
+      "n_matched": 23,
       "method": "ICC calculation",
       "holding_source": "stockanalysis_full_holdings",
       "status": "icc_calculation",
-      "source_file": "data/derived/etf/202606/etf_icc_2026_06_18.csv"
+      "source_file": "data/derived/etf/202606/etf_icc_2026_06_19.csv"
     },
     {
       "ticker": "IJR",
@@ -432,17 +432,17 @@
     {
       "ticker": "IVV",
       "month": "2026-06",
-      "month_end_date": "2026-06-18",
+      "month_end_date": "2026-06-19",
       "label": "iShares Core S&P 500 ETF",
       "category": "Broad Market",
-      "icc": 0.0636424018446506,
+      "icc": 0.0638300279979918,
       "coverage_weight": 1.0,
       "n_holdings": 25,
       "n_matched": 25,
       "method": "ICC calculation",
       "holding_source": "stockanalysis_full_holdings",
       "status": "icc_calculation",
-      "source_file": "data/derived/etf/202606/etf_icc_2026_06_18.csv"
+      "source_file": "data/derived/etf/202606/etf_icc_2026_06_19.csv"
     },
     {
       "ticker": "IVV",
@@ -462,17 +462,17 @@
     {
       "ticker": "IWD",
       "month": "2026-06",
-      "month_end_date": "2026-06-18",
+      "month_end_date": "2026-06-19",
       "label": "iShares Russell 1000 Value ETF",
       "category": "Style",
-      "icc": 0.0779720668939373,
-      "coverage_weight": 1.0000000000000002,
+      "icc": 0.0806136079374693,
+      "coverage_weight": 1.0,
       "n_holdings": 25,
       "n_matched": 25,
       "method": "ICC calculation",
       "holding_source": "stockanalysis_full_holdings",
       "status": "icc_calculation",
-      "source_file": "data/derived/etf/202606/etf_icc_2026_06_18.csv"
+      "source_file": "data/derived/etf/202606/etf_icc_2026_06_19.csv"
     },
     {
       "ticker": "IWD",
@@ -492,17 +492,17 @@
     {
       "ticker": "IWF",
       "month": "2026-06",
-      "month_end_date": "2026-06-18",
+      "month_end_date": "2026-06-19",
       "label": "iShares Russell 1000 Growth ETF",
       "category": "Style",
-      "icc": 0.0614095250084215,
+      "icc": 0.0615240662536918,
       "coverage_weight": 1.0,
       "n_holdings": 25,
       "n_matched": 25,
       "method": "ICC calculation",
       "holding_source": "stockanalysis_full_holdings",
       "status": "icc_calculation",
-      "source_file": "data/derived/etf/202606/etf_icc_2026_06_18.csv"
+      "source_file": "data/derived/etf/202606/etf_icc_2026_06_19.csv"
     },
     {
       "ticker": "IWF",
@@ -522,17 +522,17 @@
     {
       "ticker": "IWM",
       "month": "2026-06",
-      "month_end_date": "2026-06-18",
+      "month_end_date": "2026-06-19",
       "label": "iShares Russell 2000 ETF",
       "category": "Small Cap",
-      "icc": 0.0645226842159015,
-      "coverage_weight": 0.929829547977936,
+      "icc": 0.065635780049653,
+      "coverage_weight": 0.8982147756742165,
       "n_holdings": 25,
-      "n_matched": 23,
+      "n_matched": 22,
       "method": "ICC calculation",
       "holding_source": "stockanalysis_full_holdings",
       "status": "icc_calculation",
-      "source_file": "data/derived/etf/202606/etf_icc_2026_06_18.csv"
+      "source_file": "data/derived/etf/202606/etf_icc_2026_06_19.csv"
     },
     {
       "ticker": "IWM",
@@ -552,17 +552,17 @@
     {
       "ticker": "MDY",
       "month": "2026-06",
-      "month_end_date": "2026-06-18",
+      "month_end_date": "2026-06-19",
       "label": "SPDR S&P MidCap 400 ETF Trust",
       "category": "Mid Cap",
-      "icc": 0.0673100857505094,
-      "coverage_weight": 0.9559322033898304,
+      "icc": 0.0672476008819145,
+      "coverage_weight": 0.9557670772676374,
       "n_holdings": 25,
       "n_matched": 24,
       "method": "ICC calculation",
       "holding_source": "stockanalysis_full_holdings",
       "status": "icc_calculation",
-      "source_file": "data/derived/etf/202606/etf_icc_2026_06_18.csv"
+      "source_file": "data/derived/etf/202606/etf_icc_2026_06_19.csv"
     },
     {
       "ticker": "MDY",
@@ -582,17 +582,17 @@
     {
       "ticker": "QQQ",
       "month": "2026-06",
-      "month_end_date": "2026-06-18",
+      "month_end_date": "2026-06-19",
       "label": "Invesco QQQ Trust",
       "category": "Growth / Nasdaq",
-      "icc": 0.0776755445764988,
-      "coverage_weight": 1.0000000000000002,
+      "icc": 0.0778593753342416,
+      "coverage_weight": 1.0,
       "n_holdings": 25,
       "n_matched": 25,
       "method": "ICC calculation",
       "holding_source": "stockanalysis_full_holdings",
       "status": "icc_calculation",
-      "source_file": "data/derived/etf/202606/etf_icc_2026_06_18.csv"
+      "source_file": "data/derived/etf/202606/etf_icc_2026_06_19.csv"
     },
     {
       "ticker": "QQQ",
@@ -612,17 +612,17 @@
     {
       "ticker": "SMH",
       "month": "2026-06",
-      "month_end_date": "2026-06-18",
+      "month_end_date": "2026-06-19",
       "label": "VanEck Semiconductor ETF",
       "category": "Theme",
-      "icc": 0.0611152940853463,
-      "coverage_weight": 1.0,
+      "icc": 0.0612353621681409,
+      "coverage_weight": 1.0000000000000002,
       "n_holdings": 25,
       "n_matched": 25,
       "method": "ICC calculation",
       "holding_source": "stockanalysis_full_holdings",
       "status": "icc_calculation",
-      "source_file": "data/derived/etf/202606/etf_icc_2026_06_18.csv"
+      "source_file": "data/derived/etf/202606/etf_icc_2026_06_19.csv"
     },
     {
       "ticker": "SMH",
@@ -642,17 +642,17 @@
     {
       "ticker": "SPY",
       "month": "2026-06",
-      "month_end_date": "2026-06-18",
+      "month_end_date": "2026-06-19",
       "label": "SPDR S&P 500 ETF Trust",
       "category": "Broad Market",
-      "icc": 0.0637530462198997,
+      "icc": 0.0638298797537425,
       "coverage_weight": 1.0,
       "n_holdings": 25,
       "n_matched": 25,
       "method": "ICC calculation",
       "holding_source": "stockanalysis_full_holdings",
       "status": "icc_calculation",
-      "source_file": "data/derived/etf/202606/etf_icc_2026_06_18.csv"
+      "source_file": "data/derived/etf/202606/etf_icc_2026_06_19.csv"
     },
     {
       "ticker": "SPY",
@@ -672,17 +672,17 @@
     {
       "ticker": "VOO",
       "month": "2026-06",
-      "month_end_date": "2026-06-18",
+      "month_end_date": "2026-06-19",
       "label": "Vanguard S&P 500 ETF",
       "category": "Broad Market",
-      "icc": 0.0654290641418676,
+      "icc": 0.0654524114756013,
       "coverage_weight": 1.0,
       "n_holdings": 25,
       "n_matched": 25,
       "method": "ICC calculation",
       "holding_source": "stockanalysis_full_holdings",
       "status": "icc_calculation",
-      "source_file": "data/derived/etf/202606/etf_icc_2026_06_18.csv"
+      "source_file": "data/derived/etf/202606/etf_icc_2026_06_19.csv"
     },
     {
       "ticker": "VOO",
@@ -702,17 +702,17 @@
     {
       "ticker": "VTI",
       "month": "2026-06",
-      "month_end_date": "2026-06-18",
+      "month_end_date": "2026-06-19",
       "label": "Vanguard Total Stock Market ETF",
       "category": "Broad Market",
-      "icc": 0.0828924924408245,
+      "icc": 0.0830396443823508,
       "coverage_weight": 1.0,
       "n_holdings": 25,
       "n_matched": 25,
       "method": "ICC calculation",
       "holding_source": "stockanalysis_full_holdings",
       "status": "icc_calculation",
-      "source_file": "data/derived/etf/202606/etf_icc_2026_06_18.csv"
+      "source_file": "data/derived/etf/202606/etf_icc_2026_06_19.csv"
     },
     {
       "ticker": "VTI",
@@ -732,17 +732,17 @@
     {
       "ticker": "VTV",
       "month": "2026-06",
-      "month_end_date": "2026-06-18",
+      "month_end_date": "2026-06-19",
       "label": "Vanguard Value ETF",
       "category": "Style",
-      "icc": 0.0761390250770045,
+      "icc": 0.0761278123547982,
       "coverage_weight": 1.0,
       "n_holdings": 25,
       "n_matched": 25,
       "method": "ICC calculation",
       "holding_source": "stockanalysis_full_holdings",
       "status": "icc_calculation",
-      "source_file": "data/derived/etf/202606/etf_icc_2026_06_18.csv"
+      "source_file": "data/derived/etf/202606/etf_icc_2026_06_19.csv"
     },
     {
       "ticker": "VTV",
@@ -762,17 +762,17 @@
     {
       "ticker": "VUG",
       "month": "2026-06",
-      "month_end_date": "2026-06-18",
+      "month_end_date": "2026-06-19",
       "label": "Vanguard Growth ETF",
       "category": "Style",
-      "icc": 0.0688262961250549,
+      "icc": 0.0689227712900956,
       "coverage_weight": 1.0,
       "n_holdings": 25,
       "n_matched": 25,
       "method": "ICC calculation",
       "holding_source": "stockanalysis_full_holdings",
       "status": "icc_calculation",
-      "source_file": "data/derived/etf/202606/etf_icc_2026_06_18.csv"
+      "source_file": "data/derived/etf/202606/etf_icc_2026_06_19.csv"
     },
     {
       "ticker": "VUG",
@@ -792,17 +792,17 @@
     {
       "ticker": "XBI",
       "month": "2026-06",
-      "month_end_date": "2026-06-18",
+      "month_end_date": "2026-06-19",
       "label": "SPDR S&P Biotech ETF",
       "category": "Theme",
-      "icc": 0.0713687602444543,
-      "coverage_weight": 0.4318458072671874,
+      "icc": 0.0708798462813528,
+      "coverage_weight": 0.4321960358139232,
       "n_holdings": 25,
       "n_matched": 11,
       "method": "Partial holdings estimate",
       "holding_source": "stockanalysis_full_holdings",
       "status": "partial_holdings_estimate",
-      "source_file": "data/derived/etf/202606/etf_icc_2026_06_18.csv"
+      "source_file": "data/derived/etf/202606/etf_icc_2026_06_19.csv"
     },
     {
       "ticker": "XBI",
@@ -822,17 +822,17 @@
     {
       "ticker": "XLB",
       "month": "2026-06",
-      "month_end_date": "2026-06-18",
+      "month_end_date": "2026-06-19",
       "label": "Materials Select Sector SPDR Fund",
       "category": "Sector",
-      "icc": 0.0782184324790411,
+      "icc": 0.0779108966925641,
       "coverage_weight": 1.0,
       "n_holdings": 25,
       "n_matched": 25,
       "method": "ICC calculation",
       "holding_source": "stockanalysis_full_holdings",
       "status": "icc_calculation",
-      "source_file": "data/derived/etf/202606/etf_icc_2026_06_18.csv"
+      "source_file": "data/derived/etf/202606/etf_icc_2026_06_19.csv"
     },
     {
       "ticker": "XLB",
@@ -852,17 +852,17 @@
     {
       "ticker": "XLC",
       "month": "2026-06",
-      "month_end_date": "2026-06-18",
+      "month_end_date": "2026-06-19",
       "label": "Communication Services Select Sector SPDR Fund",
       "category": "Sector",
-      "icc": 0.1111350598665493,
-      "coverage_weight": 0.5941819139133868,
+      "icc": 0.1111508858058566,
+      "coverage_weight": 0.5660957400087835,
       "n_holdings": 24,
       "n_matched": 21,
       "method": "Partial holdings estimate",
       "holding_source": "stockanalysis_full_holdings",
       "status": "partial_holdings_estimate",
-      "source_file": "data/derived/etf/202606/etf_icc_2026_06_18.csv"
+      "source_file": "data/derived/etf/202606/etf_icc_2026_06_19.csv"
     },
     {
       "ticker": "XLC",
@@ -882,17 +882,17 @@
     {
       "ticker": "XLE",
       "month": "2026-06",
-      "month_end_date": "2026-06-18",
+      "month_end_date": "2026-06-19",
       "label": "Energy Select Sector SPDR Fund",
       "category": "Sector",
-      "icc": 0.0775944018161213,
-      "coverage_weight": 0.8844202821001264,
+      "icc": 0.0776394936028377,
+      "coverage_weight": 0.7797524113313586,
       "n_holdings": 22,
       "n_matched": 21,
-      "method": "ICC calculation",
+      "method": "Partial holdings estimate",
       "holding_source": "stockanalysis_full_holdings",
-      "status": "icc_calculation",
-      "source_file": "data/derived/etf/202606/etf_icc_2026_06_18.csv"
+      "status": "partial_holdings_estimate",
+      "source_file": "data/derived/etf/202606/etf_icc_2026_06_19.csv"
     },
     {
       "ticker": "XLE",
@@ -912,17 +912,17 @@
     {
       "ticker": "XLF",
       "month": "2026-06",
-      "month_end_date": "2026-06-18",
+      "month_end_date": "2026-06-19",
       "label": "Financial Select Sector SPDR Fund",
       "category": "Sector",
-      "icc": 0.081600960868296,
+      "icc": 0.0835314419091694,
       "coverage_weight": 1.0,
       "n_holdings": 25,
       "n_matched": 25,
       "method": "ICC calculation",
       "holding_source": "stockanalysis_full_holdings",
       "status": "icc_calculation",
-      "source_file": "data/derived/etf/202606/etf_icc_2026_06_18.csv"
+      "source_file": "data/derived/etf/202606/etf_icc_2026_06_19.csv"
     },
     {
       "ticker": "XLF",
@@ -942,17 +942,17 @@
     {
       "ticker": "XLI",
       "month": "2026-06",
-      "month_end_date": "2026-06-18",
+      "month_end_date": "2026-06-19",
       "label": "Industrial Select Sector SPDR Fund",
       "category": "Sector",
-      "icc": 0.077112375581134,
-      "coverage_weight": 1.0,
+      "icc": 0.0737818482504367,
+      "coverage_weight": 1.0000000000000002,
       "n_holdings": 25,
       "n_matched": 25,
       "method": "ICC calculation",
       "holding_source": "stockanalysis_full_holdings",
       "status": "icc_calculation",
-      "source_file": "data/derived/etf/202606/etf_icc_2026_06_18.csv"
+      "source_file": "data/derived/etf/202606/etf_icc_2026_06_19.csv"
     },
     {
       "ticker": "XLI",
@@ -972,17 +972,17 @@
     {
       "ticker": "XLK",
       "month": "2026-06",
-      "month_end_date": "2026-06-18",
+      "month_end_date": "2026-06-19",
       "label": "Technology Select Sector SPDR Fund",
       "category": "Sector",
-      "icc": 0.0613370551926339,
+      "icc": 0.0613293627719326,
       "coverage_weight": 1.0,
       "n_holdings": 25,
       "n_matched": 25,
       "method": "ICC calculation",
       "holding_source": "stockanalysis_full_holdings",
       "status": "icc_calculation",
-      "source_file": "data/derived/etf/202606/etf_icc_2026_06_18.csv"
+      "source_file": "data/derived/etf/202606/etf_icc_2026_06_19.csv"
     },
     {
       "ticker": "XLK",
@@ -1002,17 +1002,17 @@
     {
       "ticker": "XLP",
       "month": "2026-06",
-      "month_end_date": "2026-06-18",
+      "month_end_date": "2026-06-19",
       "label": "Consumer Staples Select Sector SPDR Fund",
       "category": "Sector",
-      "icc": 0.0747881234193642,
-      "coverage_weight": 1.0000000000000002,
+      "icc": 0.0794939223416115,
+      "coverage_weight": 0.9999999999999998,
       "n_holdings": 25,
       "n_matched": 25,
       "method": "ICC calculation",
       "holding_source": "stockanalysis_full_holdings",
       "status": "icc_calculation",
-      "source_file": "data/derived/etf/202606/etf_icc_2026_06_18.csv"
+      "source_file": "data/derived/etf/202606/etf_icc_2026_06_19.csv"
     },
     {
       "ticker": "XLP",
@@ -1032,17 +1032,17 @@
     {
       "ticker": "XLRE",
       "month": "2026-06",
-      "month_end_date": "2026-06-18",
+      "month_end_date": "2026-06-19",
       "label": "Real Estate Select Sector SPDR Fund",
       "category": "Sector",
-      "icc": 0.0544164831852916,
-      "coverage_weight": 1.0,
+      "icc": 0.0545572705008932,
+      "coverage_weight": 1.0000000000000002,
       "n_holdings": 25,
       "n_matched": 25,
       "method": "ICC calculation",
       "holding_source": "stockanalysis_full_holdings",
       "status": "icc_calculation",
-      "source_file": "data/derived/etf/202606/etf_icc_2026_06_18.csv"
+      "source_file": "data/derived/etf/202606/etf_icc_2026_06_19.csv"
     },
     {
       "ticker": "XLRE",
@@ -1062,17 +1062,17 @@
     {
       "ticker": "XLU",
       "month": "2026-06",
-      "month_end_date": "2026-06-18",
+      "month_end_date": "2026-06-19",
       "label": "Utilities Select Sector SPDR Fund",
       "category": "Sector",
-      "icc": 0.0716998709943416,
+      "icc": 0.0716456911094152,
       "coverage_weight": 1.0,
       "n_holdings": 25,
       "n_matched": 25,
       "method": "ICC calculation",
       "holding_source": "stockanalysis_full_holdings",
       "status": "icc_calculation",
-      "source_file": "data/derived/etf/202606/etf_icc_2026_06_18.csv"
+      "source_file": "data/derived/etf/202606/etf_icc_2026_06_19.csv"
     },
     {
       "ticker": "XLU",
@@ -1092,17 +1092,17 @@
     {
       "ticker": "XLV",
       "month": "2026-06",
-      "month_end_date": "2026-06-18",
+      "month_end_date": "2026-06-19",
       "label": "Health Care Select Sector SPDR Fund",
       "category": "Sector",
-      "icc": 0.0822421089547663,
+      "icc": 0.0822046197748399,
       "coverage_weight": 1.0,
       "n_holdings": 25,
       "n_matched": 25,
       "method": "ICC calculation",
       "holding_source": "stockanalysis_full_holdings",
       "status": "icc_calculation",
-      "source_file": "data/derived/etf/202606/etf_icc_2026_06_18.csv"
+      "source_file": "data/derived/etf/202606/etf_icc_2026_06_19.csv"
     },
     {
       "ticker": "XLV",
@@ -1122,17 +1122,17 @@
     {
       "ticker": "XLY",
       "month": "2026-06",
-      "month_end_date": "2026-06-18",
+      "month_end_date": "2026-06-19",
       "label": "Consumer Discretionary Select Sector SPDR Fund",
       "category": "Sector",
-      "icc": 0.0856231434448253,
-      "coverage_weight": 0.9999999999999998,
+      "icc": 0.0855516358871011,
+      "coverage_weight": 1.0,
       "n_holdings": 25,
       "n_matched": 25,
       "method": "ICC calculation",
       "holding_source": "stockanalysis_full_holdings",
       "status": "icc_calculation",
-      "source_file": "data/derived/etf/202606/etf_icc_2026_06_18.csv"
+      "source_file": "data/derived/etf/202606/etf_icc_2026_06_19.csv"
     },
     {
       "ticker": "XLY",
@@ -1161,14 +1161,19 @@
     "tree": [
       {
         "year": "2026",
-        "n_files": 26,
+        "n_files": 27,
         "download_all_zip": "./data/downloads/families/etf/archive/etf_2026_all.zip",
         "months": [
           {
             "month": "2026-06",
-            "n_files": 14,
+            "n_files": 15,
             "download_all_zip": "./data/downloads/families/etf/archive/2026/etf_2026_06_all.zip",
             "days": [
+              {
+                "date": "2026-06-19",
+                "n_rows": 26,
+                "csv": "./data/downloads/families/etf/archive/2026/06/etf_2026-06-19.csv"
+              },
               {
                 "date": "2026-06-18",
                 "n_rows": 26,
