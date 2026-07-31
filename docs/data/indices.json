@@ -4,13 +4,13 @@
   "note": "Index-level ICC series aggregated from available index constituent snapshots.",
   "latest": [
     {
-      "date": "2026-07-30",
+      "date": "2026-07-31",
       "family": "dow30",
-      "daily_icc": 0.07146527131040355,
-      "ew_icc": 0.06703077727574476,
+      "daily_icc": 0.07059328636161694,
+      "ew_icc": 0.06661713878119963,
       "n_firms": 21,
       "method": "ICC calculation",
-      "source_file": "data/202607/icc_live_dow30_2026_0730.csv"
+      "source_file": "data/202607/icc_live_dow30_2026_0731.csv"
     },
     {
       "date": "2026-07-08",
@@ -31,52 +31,52 @@
       "source_file": "data/202606/icc_live_rut1000_2026_0630.csv"
     },
     {
-      "date": "2026-07-30",
+      "date": "2026-07-31",
       "family": "sp100",
-      "daily_icc": 0.07254061071127166,
-      "ew_icc": 0.07841704805937899,
-      "n_firms": 76,
+      "daily_icc": 0.07162030570125723,
+      "ew_icc": 0.07816205832415858,
+      "n_firms": 78,
       "method": "ICC calculation",
-      "source_file": "data/202607/icc_live_sp100_2026_0730.csv"
+      "source_file": "data/202607/icc_live_sp100_2026_0731.csv"
     },
     {
-      "date": "2026-07-30",
+      "date": "2026-07-31",
       "family": "sp400",
-      "daily_icc": 0.08360880498038166,
-      "ew_icc": 0.0859723229770765,
-      "n_firms": 331,
+      "daily_icc": 0.08373950318779139,
+      "ew_icc": 0.0864253040270351,
+      "n_firms": 338,
       "method": "ICC calculation",
-      "source_file": "data/202607/icc_live_sp400_2026_0730.csv"
+      "source_file": "data/202607/icc_live_sp400_2026_0731.csv"
     },
     {
-      "date": "2026-07-30",
+      "date": "2026-07-31",
       "family": "sp500",
-      "daily_icc": 0.07289811146030555,
-      "ew_icc": 0.07858765094511112,
-      "n_firms": 392,
+      "daily_icc": 0.07227135484060097,
+      "ew_icc": 0.07863115866212064,
+      "n_firms": 406,
       "method": "ICC calculation",
-      "source_file": "data/202607/icc_live_sp500_2026_0730_r1.csv"
+      "source_file": "data/202607/icc_live_sp500_2026_0731_r1.csv"
     },
     {
-      "date": "2026-07-30",
+      "date": "2026-07-31",
       "family": "sp600",
-      "daily_icc": 0.09172064862393287,
-      "ew_icc": 0.09773613020409613,
-      "n_firms": 511,
+      "daily_icc": 0.09173797080800872,
+      "ew_icc": 0.09789093677264235,
+      "n_firms": 514,
       "method": "ICC calculation",
-      "source_file": "data/202607/icc_live_sp600_2026_0730.csv"
+      "source_file": "data/202607/icc_live_sp600_2026_0731.csv"
     }
   ],
   "monthly": [
     {
       "family": "dow30",
       "month": "2026-07",
-      "month_end_date": "2026-07-30",
-      "daily_icc": 0.07146527131040355,
-      "ew_icc": 0.06703077727574476,
+      "month_end_date": "2026-07-31",
+      "daily_icc": 0.07059328636161694,
+      "ew_icc": 0.06661713878119963,
       "n_firms": 21,
       "method": "ICC calculation",
-      "source_file": "data/202607/icc_live_dow30_2026_0730.csv"
+      "source_file": "data/202607/icc_live_dow30_2026_0731.csv"
     },
     {
       "family": "dow30",
@@ -161,12 +161,12 @@
     {
       "family": "sp100",
       "month": "2026-07",
-      "month_end_date": "2026-07-30",
-      "daily_icc": 0.07254061071127166,
-      "ew_icc": 0.07841704805937899,
-      "n_firms": 76,
+      "month_end_date": "2026-07-31",
+      "daily_icc": 0.07162030570125723,
+      "ew_icc": 0.07816205832415858,
+      "n_firms": 78,
       "method": "ICC calculation",
-      "source_file": "data/202607/icc_live_sp100_2026_0730.csv"
+      "source_file": "data/202607/icc_live_sp100_2026_0731.csv"
     },
     {
       "family": "sp100",
@@ -191,12 +191,12 @@
     {
       "family": "sp400",
       "month": "2026-07",
-      "month_end_date": "2026-07-30",
-      "daily_icc": 0.08360880498038166,
-      "ew_icc": 0.0859723229770765,
-      "n_firms": 331,
+      "month_end_date": "2026-07-31",
+      "daily_icc": 0.08373950318779139,
+      "ew_icc": 0.0864253040270351,
+      "n_firms": 338,
       "method": "ICC calculation",
-      "source_file": "data/202607/icc_live_sp400_2026_0730.csv"
+      "source_file": "data/202607/icc_live_sp400_2026_0731.csv"
     },
     {
       "family": "sp400",
@@ -221,12 +221,12 @@
     {
       "family": "sp500",
       "month": "2026-07",
-      "month_end_date": "2026-07-30",
-      "daily_icc": 0.07289811146030555,
-      "ew_icc": 0.07858765094511112,
-      "n_firms": 392,
+      "month_end_date": "2026-07-31",
+      "daily_icc": 0.07227135484060097,
+      "ew_icc": 0.07863115866212064,
+      "n_firms": 406,
       "method": "ICC calculation",
-      "source_file": "data/202607/icc_live_sp500_2026_0730_r1.csv"
+      "source_file": "data/202607/icc_live_sp500_2026_0731_r1.csv"
     },
     {
       "family": "sp500",
@@ -251,12 +251,12 @@
     {
       "family": "sp600",
       "month": "2026-07",
-      "month_end_date": "2026-07-30",
-      "daily_icc": 0.09172064862393287,
-      "ew_icc": 0.09773613020409613,
-      "n_firms": 511,
+      "month_end_date": "2026-07-31",
+      "daily_icc": 0.09173797080800872,
+      "ew_icc": 0.09789093677264235,
+      "n_firms": 514,
       "method": "ICC calculation",
-      "source_file": "data/202607/icc_live_sp600_2026_0730.csv"
+      "source_file": "data/202607/icc_live_sp600_2026_0731.csv"
     },
     {
       "family": "sp600",
@@ -290,14 +290,19 @@
     "tree": [
       {
         "year": "2026",
-        "n_files": 150,
+        "n_files": 151,
         "download_all_zip": "./data/downloads/families/indices/archive/indices_2026_all.zip",
         "months": [
           {
             "month": "2026-07",
-            "n_files": 22,
+            "n_files": 23,
             "download_all_zip": "./data/downloads/families/indices/archive/2026/indices_2026_07_all.zip",
             "days": [
+              {
+                "date": "2026-07-31",
+                "n_rows": 5,
+                "csv": "./data/downloads/families/indices/archive/2026/07/indices_2026-07-31.csv"
+              },
               {
                 "date": "2026-07-30",
                 "n_rows": 5,
