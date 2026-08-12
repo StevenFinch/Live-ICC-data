@@ -3,57 +3,57 @@
   "rows": [
     {
       "dataset": "All market",
-      "latest_daily": 0.07885260831315798,
+      "latest_daily": 0.07864937653169383,
       "method": "ICC calculation",
-      "month_1": 0.07885260831315798,
+      "month_1": 0.07864937653169383,
       "month_2": 0.0804329918002805,
       "month_3": 0.07954739248667812
     },
     {
       "dataset": "S&P 500",
-      "latest_daily": 0.07137063388680896,
+      "latest_daily": 0.07136256650556715,
       "method": "ICC calculation",
-      "month_1": 0.07137063388680896,
+      "month_1": 0.07136256650556715,
       "month_2": 0.07227135484060097,
       "month_3": 0.07513606202132606
     },
     {
       "dataset": "Value premium ICC",
-      "latest_daily": 0.043637495287477485,
+      "latest_daily": 0.04554575814188115,
       "method": "ICC calculation",
-      "month_1": 0.043637495287477485,
+      "month_1": 0.04554575814188115,
       "month_2": 0.04485014426911872,
       "month_3": 0.0519092558549302
     },
     {
       "dataset": "Industry ICC",
-      "latest_daily": 0.08369996416801469,
+      "latest_daily": 0.08525927654696816,
       "method": "ICC calculation",
-      "month_1": 0.08369996416801469,
+      "month_1": 0.08525927654696816,
       "month_2": 0.08318695873526899,
       "month_3": 0.08703528114237645
     },
     {
       "dataset": "Index ICC",
-      "latest_daily": 0.06888473007055092,
+      "latest_daily": 0.06906358063584629,
       "method": "ICC calculation",
-      "month_1": 0.06888473007055092,
+      "month_1": 0.06906358063584629,
       "month_2": 0.07059328636161694,
       "month_3": 0.07080010914344624
     },
     {
       "dataset": "ETF ICC",
-      "latest_daily": 0.1360899975677307,
+      "latest_daily": 0.1348598841629628,
       "method": "ICC calculation",
-      "month_1": 0.1360899975677307,
+      "month_1": 0.1348598841629628,
       "month_2": 0.0651105191490894,
       "month_3": 0.1442949332599786
     },
     {
       "dataset": "Country / Region Level ICC",
-      "latest_daily": 0.1640057683119606,
+      "latest_daily": 0.164369634938498,
       "method": "ADR Top-10 ICC calculation",
-      "month_1": 0.1640057683119606,
+      "month_1": 0.164369634938498,
       "month_2": 0.1622215485241088,
       "month_3": 0.1779369320848434
     }
@@ -70,14 +70,19 @@
       "tree": [
         {
           "year": "2026",
-          "n_files": 158,
+          "n_files": 159,
           "download_all_zip": "./data/downloads/families/marketwide/archive/marketwide_2026_all.zip",
           "months": [
             {
               "month": "2026-08",
-              "n_files": 7,
+              "n_files": 8,
               "download_all_zip": "./data/downloads/families/marketwide/archive/2026/marketwide_2026_08_all.zip",
               "days": [
+                {
+                  "date": "2026-08-12",
+                  "n_rows": 2,
+                  "csv": "./data/downloads/families/marketwide/archive/2026/08/marketwide_2026-08-12.csv"
+                },
                 {
                   "date": "2026-08-11",
                   "n_rows": 2,
@@ -1187,14 +1192,19 @@
       "tree": [
         {
           "year": "2026",
-          "n_files": 156,
+          "n_files": 157,
           "download_all_zip": "./data/downloads/families/value/archive/value_2026_all.zip",
           "months": [
             {
               "month": "2026-08",
-              "n_files": 7,
+              "n_files": 8,
               "download_all_zip": "./data/downloads/families/value/archive/2026/value_2026_08_all.zip",
               "days": [
+                {
+                  "date": "2026-08-12",
+                  "n_rows": 1,
+                  "csv": "./data/downloads/families/value/archive/2026/08/value_2026-08-12.csv"
+                },
                 {
                   "date": "2026-08-11",
                   "n_rows": 1,
@@ -2294,14 +2304,19 @@
       "tree": [
         {
           "year": "2026",
-          "n_files": 156,
+          "n_files": 157,
           "download_all_zip": "./data/downloads/families/industry/archive/industry_2026_all.zip",
           "months": [
             {
               "month": "2026-08",
-              "n_files": 7,
+              "n_files": 8,
               "download_all_zip": "./data/downloads/families/industry/archive/2026/industry_2026_08_all.zip",
               "days": [
+                {
+                  "date": "2026-08-12",
+                  "n_rows": 12,
+                  "csv": "./data/downloads/families/industry/archive/2026/08/industry_2026-08-12.csv"
+                },
                 {
                   "date": "2026-08-11",
                   "n_rows": 12,
@@ -3401,14 +3416,19 @@
       "tree": [
         {
           "year": "2026",
-          "n_files": 158,
+          "n_files": 159,
           "download_all_zip": "./data/downloads/families/indices/archive/indices_2026_all.zip",
           "months": [
             {
               "month": "2026-08",
-              "n_files": 7,
+              "n_files": 8,
               "download_all_zip": "./data/downloads/families/indices/archive/2026/indices_2026_08_all.zip",
               "days": [
+                {
+                  "date": "2026-08-12",
+                  "n_rows": 5,
+                  "csv": "./data/downloads/families/indices/archive/2026/08/indices_2026-08-12.csv"
+                },
                 {
                   "date": "2026-08-11",
                   "n_rows": 5,
@@ -4518,14 +4538,19 @@
       "tree": [
         {
           "year": "2026",
-          "n_files": 64,
+          "n_files": 65,
           "download_all_zip": "./data/downloads/families/etf/archive/etf_2026_all.zip",
           "months": [
             {
               "month": "2026-08",
-              "n_files": 7,
+              "n_files": 8,
               "download_all_zip": "./data/downloads/families/etf/archive/2026/etf_2026_08_all.zip",
               "days": [
+                {
+                  "date": "2026-08-12",
+                  "n_rows": 26,
+                  "csv": "./data/downloads/families/etf/archive/2026/08/etf_2026-08-12.csv"
+                },
                 {
                   "date": "2026-08-11",
                   "n_rows": 26,
@@ -4884,17 +4909,22 @@
       "tree": [
         {
           "year": "2026",
-          "n_files": 64,
+          "n_files": 65,
           "download_all_zip": "./data/downloads/families/country/archive/country_2026_all.zip",
           "months": [
             {
               "month": "2026-08",
-              "n_files": 7,
+              "n_files": 8,
               "download_all_zip": "./data/downloads/families/country/archive/2026/country_2026_08_all.zip",
               "days": [
                 {
+                  "date": "2026-08-12",
+                  "n_rows": 42,
+                  "csv": "./data/downloads/families/country/archive/2026/08/country_2026-08-12.csv"
+                },
+                {
                   "date": "2026-08-11",
-                  "n_rows": 38,
+                  "n_rows": 30,
                   "csv": "./data/downloads/families/country/archive/2026/08/country_2026-08-11.csv"
                 },
                 {
