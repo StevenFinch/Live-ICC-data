@@ -31,40 +31,40 @@
       "source_file": "data/202606/icc_live_rut1000_2026_0630.csv"
     },
     {
-      "date": "2026-08-17",
+      "date": "2026-08-18",
       "family": "sp100",
-      "daily_icc": 0.07450233571055916,
-      "ew_icc": 0.07732478133862812,
+      "daily_icc": 0.07293472855519322,
+      "ew_icc": 0.07488274327007684,
       "n_firms": 101,
       "method": "ICC calculation",
-      "source_file": "data/202608/icc_live_sp100_2026_0817.csv"
+      "source_file": "data/202608/icc_live_sp100_2026_0818.csv"
     },
     {
-      "date": "2026-08-17",
+      "date": "2026-08-18",
       "family": "sp400",
-      "daily_icc": 0.08112710831505064,
-      "ew_icc": 0.0853350830043494,
+      "daily_icc": 0.08051268228484616,
+      "ew_icc": 0.08432775186629493,
       "n_firms": 397,
       "method": "ICC calculation",
-      "source_file": "data/202608/icc_live_sp400_2026_0817.csv"
+      "source_file": "data/202608/icc_live_sp400_2026_0818.csv"
     },
     {
-      "date": "2026-08-17",
+      "date": "2026-08-18",
       "family": "sp500",
-      "daily_icc": 0.07435622525357748,
-      "ew_icc": 0.0775582459848421,
+      "daily_icc": 0.07299334694060541,
+      "ew_icc": 0.0760963079131731,
       "n_firms": 502,
       "method": "ICC calculation",
-      "source_file": "data/202608/icc_live_sp500_2026_0817_r1.csv"
+      "source_file": "data/202608/icc_live_sp500_2026_0818_r1.csv"
     },
     {
-      "date": "2026-08-17",
+      "date": "2026-08-18",
       "family": "sp600",
-      "daily_icc": 0.09042967862417402,
-      "ew_icc": 0.09659844195214508,
+      "daily_icc": 0.0892293882046911,
+      "ew_icc": 0.09477187050048992,
       "n_firms": 584,
       "method": "ICC calculation",
-      "source_file": "data/202608/icc_live_sp600_2026_0817.csv"
+      "source_file": "data/202608/icc_live_sp600_2026_0818.csv"
     }
   ],
   "monthly": [
@@ -161,12 +161,12 @@
     {
       "family": "sp100",
       "month": "2026-08",
-      "month_end_date": "2026-08-17",
-      "daily_icc": 0.07450233571055916,
-      "ew_icc": 0.07732478133862812,
+      "month_end_date": "2026-08-18",
+      "daily_icc": 0.07293472855519322,
+      "ew_icc": 0.07488274327007684,
       "n_firms": 101,
       "method": "ICC calculation",
-      "source_file": "data/202608/icc_live_sp100_2026_0817.csv"
+      "source_file": "data/202608/icc_live_sp100_2026_0818.csv"
     },
     {
       "family": "sp100",
@@ -191,12 +191,12 @@
     {
       "family": "sp400",
       "month": "2026-08",
-      "month_end_date": "2026-08-17",
-      "daily_icc": 0.08112710831505064,
-      "ew_icc": 0.0853350830043494,
+      "month_end_date": "2026-08-18",
+      "daily_icc": 0.08051268228484616,
+      "ew_icc": 0.08432775186629493,
       "n_firms": 397,
       "method": "ICC calculation",
-      "source_file": "data/202608/icc_live_sp400_2026_0817.csv"
+      "source_file": "data/202608/icc_live_sp400_2026_0818.csv"
     },
     {
       "family": "sp400",
@@ -221,12 +221,12 @@
     {
       "family": "sp500",
       "month": "2026-08",
-      "month_end_date": "2026-08-17",
-      "daily_icc": 0.07435622525357748,
-      "ew_icc": 0.0775582459848421,
+      "month_end_date": "2026-08-18",
+      "daily_icc": 0.07299334694060541,
+      "ew_icc": 0.0760963079131731,
       "n_firms": 502,
       "method": "ICC calculation",
-      "source_file": "data/202608/icc_live_sp500_2026_0817_r1.csv"
+      "source_file": "data/202608/icc_live_sp500_2026_0818_r1.csv"
     },
     {
       "family": "sp500",
@@ -251,12 +251,12 @@
     {
       "family": "sp600",
       "month": "2026-08",
-      "month_end_date": "2026-08-17",
-      "daily_icc": 0.09042967862417402,
-      "ew_icc": 0.09659844195214508,
+      "month_end_date": "2026-08-18",
+      "daily_icc": 0.0892293882046911,
+      "ew_icc": 0.09477187050048992,
       "n_firms": 584,
       "method": "ICC calculation",
-      "source_file": "data/202608/icc_live_sp600_2026_0817.csv"
+      "source_file": "data/202608/icc_live_sp600_2026_0818.csv"
     },
     {
       "family": "sp600",
@@ -290,14 +290,19 @@
     "tree": [
       {
         "year": "2026",
-        "n_files": 162,
+        "n_files": 163,
         "download_all_zip": "./data/downloads/families/indices/archive/indices_2026_all.zip",
         "months": [
           {
             "month": "2026-08",
-            "n_files": 11,
+            "n_files": 12,
             "download_all_zip": "./data/downloads/families/indices/archive/2026/indices_2026_08_all.zip",
             "days": [
+              {
+                "date": "2026-08-18",
+                "n_rows": 4,
+                "csv": "./data/downloads/families/indices/archive/2026/08/indices_2026-08-18.csv"
+              },
               {
                 "date": "2026-08-17",
                 "n_rows": 4,
