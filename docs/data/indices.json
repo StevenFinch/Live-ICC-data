@@ -31,40 +31,40 @@
       "source_file": "data/202606/icc_live_rut1000_2026_0630.csv"
     },
     {
-      "date": "2026-08-24",
+      "date": "2026-08-25",
       "family": "sp100",
-      "daily_icc": 0.07102371294035884,
-      "ew_icc": 0.07541351295676162,
+      "daily_icc": 0.07102288035552715,
+      "ew_icc": 0.07541870809624728,
       "n_firms": 97,
       "method": "ICC calculation",
-      "source_file": "data/202608/icc_live_sp100_2026_0824.csv"
+      "source_file": "data/202608/icc_live_sp100_2026_0825.csv"
     },
     {
-      "date": "2026-08-24",
+      "date": "2026-08-25",
       "family": "sp400",
-      "daily_icc": 0.0828322579421204,
-      "ew_icc": 0.0862317453295367,
-      "n_firms": 383,
+      "daily_icc": 0.08295491116003771,
+      "ew_icc": 0.086352393631562,
+      "n_firms": 384,
       "method": "ICC calculation",
-      "source_file": "data/202608/icc_live_sp400_2026_0824.csv"
+      "source_file": "data/202608/icc_live_sp400_2026_0825.csv"
     },
     {
-      "date": "2026-08-24",
+      "date": "2026-08-25",
       "family": "sp500",
-      "daily_icc": 0.0719225866811285,
-      "ew_icc": 0.07721374881820034,
-      "n_firms": 486,
+      "daily_icc": 0.0719551340124398,
+      "ew_icc": 0.07719622045876551,
+      "n_firms": 488,
       "method": "ICC calculation",
-      "source_file": "data/202608/icc_live_sp500_2026_0824_r1.csv"
+      "source_file": "data/202608/icc_live_sp500_2026_0825_r1.csv"
     },
     {
-      "date": "2026-08-24",
+      "date": "2026-08-25",
       "family": "sp600",
-      "daily_icc": 0.09145424891387095,
-      "ew_icc": 0.09679123112811772,
-      "n_firms": 571,
+      "daily_icc": 0.09152800986002194,
+      "ew_icc": 0.0967362792374467,
+      "n_firms": 572,
       "method": "ICC calculation",
-      "source_file": "data/202608/icc_live_sp600_2026_0824.csv"
+      "source_file": "data/202608/icc_live_sp600_2026_0825.csv"
     }
   ],
   "monthly": [
@@ -161,12 +161,12 @@
     {
       "family": "sp100",
       "month": "2026-08",
-      "month_end_date": "2026-08-24",
-      "daily_icc": 0.07102371294035884,
-      "ew_icc": 0.07541351295676162,
+      "month_end_date": "2026-08-25",
+      "daily_icc": 0.07102288035552715,
+      "ew_icc": 0.07541870809624728,
       "n_firms": 97,
       "method": "ICC calculation",
-      "source_file": "data/202608/icc_live_sp100_2026_0824.csv"
+      "source_file": "data/202608/icc_live_sp100_2026_0825.csv"
     },
     {
       "family": "sp100",
@@ -191,12 +191,12 @@
     {
       "family": "sp400",
       "month": "2026-08",
-      "month_end_date": "2026-08-24",
-      "daily_icc": 0.0828322579421204,
-      "ew_icc": 0.0862317453295367,
-      "n_firms": 383,
+      "month_end_date": "2026-08-25",
+      "daily_icc": 0.08295491116003771,
+      "ew_icc": 0.086352393631562,
+      "n_firms": 384,
       "method": "ICC calculation",
-      "source_file": "data/202608/icc_live_sp400_2026_0824.csv"
+      "source_file": "data/202608/icc_live_sp400_2026_0825.csv"
     },
     {
       "family": "sp400",
@@ -221,12 +221,12 @@
     {
       "family": "sp500",
       "month": "2026-08",
-      "month_end_date": "2026-08-24",
-      "daily_icc": 0.0719225866811285,
-      "ew_icc": 0.07721374881820034,
-      "n_firms": 486,
+      "month_end_date": "2026-08-25",
+      "daily_icc": 0.0719551340124398,
+      "ew_icc": 0.07719622045876551,
+      "n_firms": 488,
       "method": "ICC calculation",
-      "source_file": "data/202608/icc_live_sp500_2026_0824_r1.csv"
+      "source_file": "data/202608/icc_live_sp500_2026_0825_r1.csv"
     },
     {
       "family": "sp500",
@@ -251,12 +251,12 @@
     {
       "family": "sp600",
       "month": "2026-08",
-      "month_end_date": "2026-08-24",
-      "daily_icc": 0.09145424891387095,
-      "ew_icc": 0.09679123112811772,
-      "n_firms": 571,
+      "month_end_date": "2026-08-25",
+      "daily_icc": 0.09152800986002194,
+      "ew_icc": 0.0967362792374467,
+      "n_firms": 572,
       "method": "ICC calculation",
-      "source_file": "data/202608/icc_live_sp600_2026_0824.csv"
+      "source_file": "data/202608/icc_live_sp600_2026_0825.csv"
     },
     {
       "family": "sp600",
@@ -290,14 +290,19 @@
     "tree": [
       {
         "year": "2026",
-        "n_files": 167,
+        "n_files": 168,
         "download_all_zip": "./data/downloads/families/indices/archive/indices_2026_all.zip",
         "months": [
           {
             "month": "2026-08",
-            "n_files": 16,
+            "n_files": 17,
             "download_all_zip": "./data/downloads/families/indices/archive/2026/indices_2026_08_all.zip",
             "days": [
+              {
+                "date": "2026-08-25",
+                "n_rows": 4,
+                "csv": "./data/downloads/families/indices/archive/2026/08/indices_2026-08-25.csv"
+              },
               {
                 "date": "2026-08-24",
                 "n_rows": 4,
