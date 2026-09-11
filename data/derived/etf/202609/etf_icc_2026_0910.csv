@@ -1,0 +1,27 @@
+date,ticker,label,category,icc,coverage_weight,n_holdings,n_matched,method,holding_source,status
+2026-09-10,SPY,SPDR S&P 500 ETF Trust,Broad Market,0.0872278592547915,0.5103,25,25,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-09-10,IVV,iShares Core S&P 500 ETF,Broad Market,0.08758025041404556,0.5167,25,25,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-09-10,VOO,Vanguard S&P 500 ETF,Broad Market,0.08661703705136677,0.5138,25,25,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-09-10,VTI,Vanguard Total Stock Market ETF,Broad Market,0.08720008524650691,0.4626,25,25,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-09-10,QQQ,Invesco QQQ Trust,Growth / Nasdaq,0.08872754818862698,0.7006,25,25,ICC calculation,stockanalysis_full_holdings,ok_full_holdings
+2026-09-10,DIA,SPDR Dow Jones Industrial Average ETF,Index,0.06886092744400231,0.9487,25,25,ICC calculation,stockanalysis_full_holdings,ok_full_holdings
+2026-09-10,IWM,iShares Russell 2000 ETF,Small Cap,0.060962434435964184,0.06130000000000001,25,21,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-09-10,IJR,iShares Core S&P Small-Cap ETF,Small Cap,,0.0,0,0,Unavailable,stockanalysis_full_holdings,error: RuntimeError
+2026-09-10,MDY,SPDR S&P MidCap 400 ETF Trust,Mid Cap,0.06232171580996369,0.1498,24,23,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-09-10,VUG,Vanguard Growth ETF,Style,0.08510406203032908,0.7728,25,25,ICC calculation,stockanalysis_full_holdings,ok_full_holdings
+2026-09-10,VTV,Vanguard Value ETF,Style,0.08485682166546181,0.3833,25,25,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-09-10,IWF,iShares Russell 1000 Growth ETF,Style,0.10175336583069189,0.7339,25,25,ICC calculation,stockanalysis_full_holdings,ok_full_holdings
+2026-09-10,IWD,iShares Russell 1000 Value ETF,Style,0.05941872284322281,0.4066,25,25,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-09-10,XLK,Technology Select Sector SPDR Fund,Sector,0.10485618029925697,0.8319999999999999,25,25,ICC calculation,stockanalysis_full_holdings,ok_full_holdings
+2026-09-10,XLF,Financial Select Sector SPDR Fund,Sector,0.07103140724653789,0.7741000000000001,25,25,ICC calculation,stockanalysis_full_holdings,ok_full_holdings
+2026-09-10,XLV,Health Care Select Sector SPDR Fund,Sector,0.0826639435256009,0.8479000000000001,25,25,ICC calculation,stockanalysis_full_holdings,ok_full_holdings
+2026-09-10,XLY,Consumer Discretionary Select Sector SPDR Fund,Sector,0.05517030933878773,0.8981,25,25,ICC calculation,stockanalysis_full_holdings,ok_full_holdings
+2026-09-10,XLP,Consumer Staples Select Sector SPDR Fund,Sector,0.06199310295528247,0.9286000000000001,25,25,ICC calculation,stockanalysis_full_holdings,ok_full_holdings
+2026-09-10,XLE,Energy Select Sector SPDR Fund,Sector,0.06775492311468258,0.9978999999999999,24,21,ICC calculation,stockanalysis_full_holdings,ok_full_holdings
+2026-09-10,XLI,Industrial Select Sector SPDR Fund,Sector,0.06378421605148941,0.6478,25,25,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-09-10,XLB,Materials Select Sector SPDR Fund,Sector,0.08755701597981133,0.9964000000000001,25,25,ICC calculation,stockanalysis_full_holdings,ok_full_holdings
+2026-09-10,XLU,Utilities Select Sector SPDR Fund,Sector,0.07432476203343133,0.922,25,25,ICC calculation,stockanalysis_full_holdings,ok_full_holdings
+2026-09-10,XLRE,Real Estate Select Sector SPDR Fund,Sector,0.04786703833035756,0.8876999999999999,25,23,ICC calculation,stockanalysis_full_holdings,ok_full_holdings
+2026-09-10,XLC,Communication Services Select Sector SPDR Fund,Sector,0.07948057723045542,0.9891,24,23,ICC calculation,stockanalysis_full_holdings,ok_full_holdings
+2026-09-10,SMH,VanEck Semiconductor ETF,Theme,0.12276864709803452,0.9990999999999999,25,25,ICC calculation,stockanalysis_full_holdings,ok_full_holdings
+2026-09-10,XBI,SPDR S&P Biotech ETF,Theme,0.07163497552929603,0.1005,25,8,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
