@@ -1,0 +1,27 @@
+date,ticker,label,category,icc,coverage_weight,n_holdings,n_matched,method,holding_source,status
+2026-10-06,SPY,SPDR S&P 500 ETF Trust,Broad Market,0.0861254570563184,0.5327999999999999,25,25,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-10-06,IVV,iShares Core S&P 500 ETF,Broad Market,0.08611172051195418,0.5322,25,25,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-10-06,VOO,Vanguard S&P 500 ETF,Broad Market,0.08507363527052,0.5141,25,25,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-10-06,VTI,Vanguard Total Stock Market ETF,Broad Market,0.08452160176198367,0.4552,25,25,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-10-06,QQQ,Invesco QQQ Trust,Growth / Nasdaq,0.0814963405540564,0.7244999999999999,25,25,ICC calculation,stockanalysis_full_holdings,ok_full_holdings
+2026-10-06,DIA,SPDR Dow Jones Industrial Average ETF,Index,0.07071098670891875,0.9481999999999999,25,25,ICC calculation,stockanalysis_full_holdings,ok_full_holdings
+2026-10-06,IWM,iShares Russell 2000 ETF,Small Cap,0.06514522461861415,0.0603,25,20,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-10-06,IJR,iShares Core S&P Small-Cap ETF,Small Cap,0.07224550159025592,0.1051,25,23,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-10-06,MDY,SPDR S&P MidCap 400 ETF Trust,Mid Cap,0.06482448793597523,0.14759999999999998,24,22,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-10-06,VUG,Vanguard Growth ETF,Style,0.08479013567952315,0.7834000000000001,25,25,ICC calculation,stockanalysis_full_holdings,ok_full_holdings
+2026-10-06,VTV,Vanguard Value ETF,Style,0.07977471202576408,0.38459999999999994,25,25,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-10-06,IWF,iShares Russell 1000 Growth ETF,Style,0.09762525753738194,0.7475,25,25,ICC calculation,stockanalysis_full_holdings,ok_full_holdings
+2026-10-06,IWD,iShares Russell 1000 Value ETF,Style,0.05957065763496634,0.41969999999999996,25,25,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-10-06,XLK,Technology Select Sector SPDR Fund,Sector,0.09923369468718876,0.8468,25,25,ICC calculation,stockanalysis_full_holdings,ok_full_holdings
+2026-10-06,XLF,Financial Select Sector SPDR Fund,Sector,0.07315331854821575,0.7822,25,25,ICC calculation,stockanalysis_full_holdings,ok_full_holdings
+2026-10-06,XLV,Health Care Select Sector SPDR Fund,Sector,0.08215974499165447,0.8266,25,24,ICC calculation,stockanalysis_full_holdings,ok_full_holdings
+2026-10-06,XLY,Consumer Discretionary Select Sector SPDR Fund,Sector,0.0542282244934693,0.9013999999999999,25,25,ICC calculation,stockanalysis_full_holdings,ok_full_holdings
+2026-10-06,XLP,Consumer Staples Select Sector SPDR Fund,Sector,0.06165965986276824,0.9271,25,25,ICC calculation,stockanalysis_full_holdings,ok_full_holdings
+2026-10-06,XLE,Energy Select Sector SPDR Fund,Sector,0.06870955956851045,0.9981999999999999,23,21,ICC calculation,stockanalysis_full_holdings,ok_full_holdings
+2026-10-06,XLI,Industrial Select Sector SPDR Fund,Sector,0.06406196653616784,0.645,25,25,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-10-06,XLB,Materials Select Sector SPDR Fund,Sector,0.094434737287201,0.9944,25,24,ICC calculation,stockanalysis_full_holdings,ok_full_holdings
+2026-10-06,XLU,Utilities Select Sector SPDR Fund,Sector,0.07593814495069755,0.9207999999999998,25,25,ICC calculation,stockanalysis_full_holdings,ok_full_holdings
+2026-10-06,XLRE,Real Estate Select Sector SPDR Fund,Sector,0.04843268389150622,0.9424,25,25,ICC calculation,stockanalysis_full_holdings,ok_full_holdings
+2026-10-06,XLC,Communication Services Select Sector SPDR Fund,Sector,0.07926757622514606,1.0413999999999999,24,22,ICC calculation,stockanalysis_full_holdings,ok_full_holdings
+2026-10-06,SMH,VanEck Semiconductor ETF,Theme,0.11358639181846888,0.9997,25,25,ICC calculation,stockanalysis_full_holdings,ok_full_holdings
+2026-10-06,XBI,SPDR S&P Biotech ETF,Theme,0.09235457608891574,0.21500000000000002,25,15,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
