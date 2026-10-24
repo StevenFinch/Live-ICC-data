@@ -1,27 +1,27 @@
 date,ticker,label,category,icc,coverage_weight,n_holdings,n_matched,method,holding_source,status,source_file
-2026-07-14,DIA,SPDR Dow Jones Industrial Average ETF,Index,0.1398979130892003,1.0,25,25,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202607/etf_icc_2026_07_14.csv
-2026-07-14,IJR,iShares Core S&P Small-Cap ETF,Small Cap,0.0640978064342162,0.9200000000000004,25,23,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202607/etf_icc_2026_07_14.csv
-2026-07-14,IVV,iShares Core S&P 500 ETF,Broad Market,0.0693861029170762,1.0,25,25,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202607/etf_icc_2026_07_14.csv
-2026-07-14,IWD,iShares Russell 1000 Value ETF,Style,0.0728473221027204,0.9999999999999998,25,25,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202607/etf_icc_2026_07_14.csv
-2026-07-14,IWF,iShares Russell 1000 Growth ETF,Style,0.0676680976306319,1.0000000000000002,25,25,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202607/etf_icc_2026_07_14.csv
-2026-07-14,IWM,iShares Russell 2000 ETF,Small Cap,0.0579939757219367,0.8426812585499317,25,21,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202607/etf_icc_2026_07_14.csv
-2026-07-14,MDY,SPDR S&P MidCap 400 ETF Trust,Mid Cap,0.0607002914843111,0.9493444576877236,25,24,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202607/etf_icc_2026_07_14.csv
-2026-07-14,QQQ,Invesco QQQ Trust,Growth / Nasdaq,0.0637444637279615,1.0,25,25,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202607/etf_icc_2026_07_14.csv
+2026-07-14,DIA,SPDR Dow Jones Industrial Average ETF,Index,0.13989791308920038,0.9999999999999999,25,25,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202607/etf_icc_2026_07_14.csv
+2026-07-14,IJR,iShares Core S&P Small-Cap ETF,Small Cap,0.06409780643421625,0.9200000000000003,25,23,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202607/etf_icc_2026_07_14.csv
+2026-07-14,IVV,iShares Core S&P 500 ETF,Broad Market,0.06938610291707625,1.0,25,25,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202607/etf_icc_2026_07_14.csv
+2026-07-14,IWD,iShares Russell 1000 Value ETF,Style,0.07284732210272042,0.9999999999999998,25,25,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202607/etf_icc_2026_07_14.csv
+2026-07-14,IWF,iShares Russell 1000 Growth ETF,Style,0.06766809763063192,1.0000000000000002,25,25,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202607/etf_icc_2026_07_14.csv
+2026-07-14,IWM,iShares Russell 2000 ETF,Small Cap,0.057993975721936784,0.8426812585499317,25,21,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202607/etf_icc_2026_07_14.csv
+2026-07-14,MDY,SPDR S&P MidCap 400 ETF Trust,Mid Cap,0.06070029148431116,0.9493444576877237,25,24,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202607/etf_icc_2026_07_14.csv
+2026-07-14,QQQ,Invesco QQQ Trust,Growth / Nasdaq,0.06374446372796153,1.0,25,25,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202607/etf_icc_2026_07_14.csv
 2026-07-14,SMH,VanEck Semiconductor ETF,Theme,0.0693879340306314,1.0,25,25,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202607/etf_icc_2026_07_14.csv
-2026-07-14,SPY,SPDR S&P 500 ETF Trust,Broad Market,0.0698984461441993,0.9390227001857036,25,24,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202607/etf_icc_2026_07_14.csv
-2026-07-14,VOO,Vanguard S&P 500 ETF,Broad Market,0.0671327234607526,1.0,25,25,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202607/etf_icc_2026_07_14.csv
-2026-07-14,VTI,Vanguard Total Stock Market ETF,Broad Market,0.0897934786359297,1.0,25,25,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202607/etf_icc_2026_07_14.csv
-2026-07-14,VTV,Vanguard Value ETF,Style,0.0773565495634548,1.0,25,25,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202607/etf_icc_2026_07_14.csv
-2026-07-14,VUG,Vanguard Growth ETF,Style,0.0752865185112784,1.0,25,25,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202607/etf_icc_2026_07_14.csv
-2026-07-14,XBI,SPDR S&P Biotech ETF,Theme,0.0236447084281527,0.1516835567178816,25,4,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings_estimate,data/derived/etf/202607/etf_icc_2026_07_14.csv
-2026-07-14,XLB,Materials Select Sector SPDR Fund,Sector,0.0848428208720402,1.0,25,25,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202607/etf_icc_2026_07_14.csv
+2026-07-14,SPY,SPDR S&P 500 ETF Trust,Broad Market,0.06989844614419939,0.9390227001857037,25,24,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202607/etf_icc_2026_07_14.csv
+2026-07-14,VOO,Vanguard S&P 500 ETF,Broad Market,0.06713272346075268,0.9999999999999999,25,25,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202607/etf_icc_2026_07_14.csv
+2026-07-14,VTI,Vanguard Total Stock Market ETF,Broad Market,0.08979347863592976,1.0,25,25,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202607/etf_icc_2026_07_14.csv
+2026-07-14,VTV,Vanguard Value ETF,Style,0.07735654956345482,1.0,25,25,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202607/etf_icc_2026_07_14.csv
+2026-07-14,VUG,Vanguard Growth ETF,Style,0.07528651851127843,1.0,25,25,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202607/etf_icc_2026_07_14.csv
+2026-07-14,XBI,SPDR S&P Biotech ETF,Theme,0.02364470842815279,0.15168355671788164,25,4,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings_estimate,data/derived/etf/202607/etf_icc_2026_07_14.csv
+2026-07-14,XLB,Materials Select Sector SPDR Fund,Sector,0.08484282087204024,1.0,25,25,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202607/etf_icc_2026_07_14.csv
 2026-07-14,XLC,Communication Services Select Sector SPDR Fund,Sector,0.0997161754675483,0.8185319838852315,24,21,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202607/etf_icc_2026_07_14.csv
 2026-07-14,XLE,Energy Select Sector SPDR Fund,Sector,0.079986160943091,0.9503722084367248,22,21,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202607/etf_icc_2026_07_14.csv
-2026-07-14,XLF,Financial Select Sector SPDR Fund,Sector,0.0840824180557886,1.0,25,25,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202607/etf_icc_2026_07_14.csv
-2026-07-14,XLI,Industrial Select Sector SPDR Fund,Sector,0.0758674600488205,1.0,25,25,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202607/etf_icc_2026_07_14.csv
-2026-07-14,XLK,Technology Select Sector SPDR Fund,Sector,0.0798874759264711,1.0,25,25,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202607/etf_icc_2026_07_14.csv
-2026-07-14,XLP,Consumer Staples Select Sector SPDR Fund,Sector,0.0759633754279955,1.0,25,25,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202607/etf_icc_2026_07_14.csv
-2026-07-14,XLRE,Real Estate Select Sector SPDR Fund,Sector,0.0404841229707468,1.0,25,25,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202607/etf_icc_2026_07_14.csv
-2026-07-14,XLU,Utilities Select Sector SPDR Fund,Sector,0.071536176081663,1.0,25,25,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202607/etf_icc_2026_07_14.csv
-2026-07-14,XLV,Health Care Select Sector SPDR Fund,Sector,0.0823883757213938,1.0,25,25,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202607/etf_icc_2026_07_14.csv
-2026-07-14,XLY,Consumer Discretionary Select Sector SPDR Fund,Sector,0.0826404558960498,1.0,25,25,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202607/etf_icc_2026_07_14.csv
+2026-07-14,XLF,Financial Select Sector SPDR Fund,Sector,0.08408241805578866,1.0,25,25,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202607/etf_icc_2026_07_14.csv
+2026-07-14,XLI,Industrial Select Sector SPDR Fund,Sector,0.07586746004882051,0.9999999999999999,25,25,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202607/etf_icc_2026_07_14.csv
+2026-07-14,XLK,Technology Select Sector SPDR Fund,Sector,0.07988747592647118,1.0,25,25,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202607/etf_icc_2026_07_14.csv
+2026-07-14,XLP,Consumer Staples Select Sector SPDR Fund,Sector,0.07596337542799556,1.0,25,25,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202607/etf_icc_2026_07_14.csv
+2026-07-14,XLRE,Real Estate Select Sector SPDR Fund,Sector,0.04048412297074682,1.0,25,25,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202607/etf_icc_2026_07_14.csv
+2026-07-14,XLU,Utilities Select Sector SPDR Fund,Sector,0.07153617608166306,1.0,25,25,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202607/etf_icc_2026_07_14.csv
+2026-07-14,XLV,Health Care Select Sector SPDR Fund,Sector,0.08238837572139387,0.9999999999999999,25,25,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202607/etf_icc_2026_07_14.csv
+2026-07-14,XLY,Consumer Discretionary Select Sector SPDR Fund,Sector,0.08264045589604986,1.0,25,25,ICC calculation,stockanalysis_full_holdings,icc_calculation,data/derived/etf/202607/etf_icc_2026_07_14.csv

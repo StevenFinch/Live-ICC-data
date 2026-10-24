@@ -4,32 +4,32 @@
   "note": "Value, growth, and implied value premium series built from firm-level ICC snapshots.",
   "latest": [
     {
-      "date": "2026-10-21",
-      "value_icc": 0.12768101533431178,
-      "growth_icc": 0.09069050494225434,
-      "ivp": 0.036990510392057446,
-      "n_firms": 3486,
+      "date": "2026-10-23",
+      "value_icc": 0.11695375827085652,
+      "growth_icc": 0.0824373419540193,
+      "ivp": 0.03451641631683722,
+      "n_firms": 974,
       "method": "ICC calculation",
-      "source_file": "data/202610/icc_live_usall_2026_1021_r1.csv"
+      "source_file": "data/202610/icc_live_usall_2026_1023_r1.csv"
     }
   ],
   "monthly": [
     {
       "month": "2026-10",
-      "month_end_date": "2026-10-21",
-      "value_icc": 0.12768101533431178,
-      "growth_icc": 0.09069050494225434,
-      "ivp": 0.036990510392057446,
-      "n_firms": 3486,
+      "month_end_date": "2026-10-23",
+      "value_icc": 0.11695375827085652,
+      "growth_icc": 0.0824373419540193,
+      "ivp": 0.03451641631683722,
+      "n_firms": 974,
       "method": "ICC calculation",
-      "source_file": "data/202610/icc_live_usall_2026_1021_r1.csv"
+      "source_file": "data/202610/icc_live_usall_2026_1023_r1.csv"
     },
     {
       "month": "2026-09",
       "month_end_date": "2026-09-30",
       "value_icc": 0.13286195082260033,
-      "growth_icc": 0.08924582228238531,
-      "ivp": 0.043616128540215016,
+      "growth_icc": 0.08924582228238534,
+      "ivp": 0.04361612854021499,
       "n_firms": 3479,
       "method": "ICC calculation",
       "source_file": "data/202609/icc_live_usall_2026_0930_r1.csv"
@@ -37,9 +37,9 @@
     {
       "month": "2026-08",
       "month_end_date": "2026-08-31",
-      "value_icc": 0.12926465719455882,
-      "growth_icc": 0.08477964803161311,
-      "ivp": 0.044485009162945705,
+      "value_icc": 0.12926465719455885,
+      "growth_icc": 0.08477964803161316,
+      "ivp": 0.04448500916294569,
       "n_firms": 3590,
       "method": "ICC calculation",
       "source_file": "data/202608/icc_live_usall_2026_0831_r1.csv"
@@ -56,14 +56,19 @@
     "tree": [
       {
         "year": "2026",
-        "n_files": 202,
+        "n_files": 203,
         "download_all_zip": "./data/downloads/families/value/archive/value_2026_all.zip",
         "months": [
           {
             "month": "2026-10",
-            "n_files": 14,
+            "n_files": 15,
             "download_all_zip": "./data/downloads/families/value/archive/2026/value_2026_10_all.zip",
             "days": [
+              {
+                "date": "2026-10-23",
+                "n_rows": 1,
+                "csv": "./data/downloads/families/value/archive/2026/10/value_2026-10-23.csv"
+              },
               {
                 "date": "2026-10-21",
                 "n_rows": 1,
