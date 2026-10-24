@@ -1,0 +1,27 @@
+date,ticker,label,category,icc,coverage_weight,n_holdings,n_matched,method,holding_source,status
+2026-10-23,SPY,SPDR S&P 500 ETF Trust,Broad Market,0.07831715965938614,0.06309999999999999,9,4,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-10-23,IVV,iShares Core S&P 500 ETF,Broad Market,0.07831715965938614,0.06309999999999999,9,4,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-10-23,VOO,Vanguard S&P 500 ETF,Broad Market,0.0964538265430557,0.0387,9,4,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-10-23,VTI,Vanguard Total Stock Market ETF,Broad Market,0.11730725104778518,0.0234,8,3,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-10-23,QQQ,Invesco QQQ Trust,Growth / Nasdaq,0.04522103520136243,0.11960000000000001,11,4,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-10-23,DIA,SPDR Dow Jones Industrial Average ETF,Index,,0.0331,5,2,Unavailable,stockanalysis_full_holdings,insufficient_matched_holdings
+2026-10-23,IWM,iShares Russell 2000 ETF,Small Cap,,0.0,10,0,Unavailable,stockanalysis_full_holdings,insufficient_matched_holdings
+2026-10-23,IJR,iShares Core S&P Small-Cap ETF,Small Cap,,0.0057,9,2,Unavailable,stockanalysis_full_holdings,insufficient_matched_holdings
+2026-10-23,MDY,SPDR S&P MidCap 400 ETF Trust,Mid Cap,,0.010700000000000001,9,1,Unavailable,stockanalysis_full_holdings,insufficient_matched_holdings
+2026-10-23,VUG,Vanguard Growth ETF,Style,0.042384107357477135,0.1043,8,3,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-10-23,VTV,Vanguard Value ETF,Style,0.06277510309246498,0.045700000000000005,5,3,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-10-23,IWF,iShares Russell 1000 Growth ETF,Style,0.042384107357477135,0.1043,9,3,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-10-23,IWD,iShares Russell 1000 Value ETF,Style,0.06277510309246498,0.045700000000000005,7,3,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-10-23,XLK,Technology Select Sector SPDR Fund,Sector,0.053268745079909,0.15500000000000003,18,7,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-10-23,XLF,Financial Select Sector SPDR Fund,Sector,,0.0,0,0,Unavailable,stockanalysis_full_holdings,error: RuntimeError
+2026-10-23,XLV,Health Care Select Sector SPDR Fund,Sector,,0.0132,6,2,Unavailable,stockanalysis_full_holdings,insufficient_matched_holdings
+2026-10-23,XLY,Consumer Discretionary Select Sector SPDR Fund,Sector,,0.0,0,0,Unavailable,stockanalysis_full_holdings,error: RuntimeError
+2026-10-23,XLP,Consumer Staples Select Sector SPDR Fund,Sector,,0.0,0,0,Unavailable,stockanalysis_full_holdings,error: RuntimeError
+2026-10-23,XLE,Energy Select Sector SPDR Fund,Sector,0.07140179598451914,0.2505,18,7,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-10-23,XLI,Industrial Select Sector SPDR Fund,Sector,,0.0046,7,2,Unavailable,stockanalysis_full_holdings,insufficient_matched_holdings
+2026-10-23,XLB,Materials Select Sector SPDR Fund,Sector,,0.0301,9,2,Unavailable,stockanalysis_full_holdings,insufficient_matched_holdings
+2026-10-23,XLU,Utilities Select Sector SPDR Fund,Sector,,0.0,0,0,Unavailable,stockanalysis_full_holdings,error: RuntimeError
+2026-10-23,XLRE,Real Estate Select Sector SPDR Fund,Sector,0.058884761803940755,0.13390000000000002,9,3,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-10-23,XLC,Communication Services Select Sector SPDR Fund,Sector,,0.0,0,0,Unavailable,stockanalysis_full_holdings,error: RuntimeError
+2026-10-23,SMH,VanEck Semiconductor ETF,Theme,0.10904907834255342,0.066,15,6,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-10-23,XBI,SPDR S&P Biotech ETF,Theme,,0.0016,7,1,Unavailable,stockanalysis_full_holdings,insufficient_matched_holdings
