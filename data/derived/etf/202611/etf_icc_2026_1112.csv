@@ -1,0 +1,27 @@
+date,ticker,label,category,icc,coverage_weight,n_holdings,n_matched,method,holding_source,status
+2026-11-12,SPY,SPDR S&P 500 ETF Trust,Broad Market,0.09399720179620381,0.24280000000000002,15,15,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-11-12,IVV,iShares Core S&P 500 ETF,Broad Market,0.09399720179620381,0.24280000000000002,15,15,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-11-12,VOO,Vanguard S&P 500 ETF,Broad Market,0.09728815576633502,0.22210000000000002,12,12,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-11-12,VTI,Vanguard Total Stock Market ETF,Broad Market,0.09783933580251045,0.21390000000000003,12,12,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-11-12,QQQ,Invesco QQQ Trust,Growth / Nasdaq,0.10070417629961394,0.2076,13,13,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-11-12,DIA,SPDR Dow Jones Industrial Average ETF,Index,0.05918945164852932,0.0747,9,9,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-11-12,IWM,iShares Russell 2000 ETF,Small Cap,,0.0,0,0,Unavailable,stockanalysis_full_holdings,error: RuntimeError
+2026-11-12,IJR,iShares Core S&P Small-Cap ETF,Small Cap,,0.0,0,0,Unavailable,stockanalysis_full_holdings,error: RuntimeError
+2026-11-12,MDY,SPDR S&P MidCap 400 ETF Trust,Mid Cap,0.08508322040921114,0.05519999999999999,6,6,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-11-12,VUG,Vanguard Growth ETF,Style,0.10080447658246125,0.19379999999999997,10,10,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-11-12,VTV,Vanguard Value ETF,Style,0.061747376465726755,0.07830000000000001,10,10,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-11-12,IWF,iShares Russell 1000 Growth ETF,Style,0.10257937599013131,0.1995,10,10,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-11-12,IWD,iShares Russell 1000 Value ETF,Style,0.05821634801793425,0.0848,12,12,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-11-12,XLK,Technology Select Sector SPDR Fund,Sector,0.11321419484493116,0.2003,10,10,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-11-12,XLF,Financial Select Sector SPDR Fund,Sector,0.05647121261498621,0.025,5,5,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-11-12,XLV,Health Care Select Sector SPDR Fund,Sector,,0.0,0,0,Unavailable,stockanalysis_full_holdings,error: RuntimeError
+2026-11-12,XLY,Consumer Discretionary Select Sector SPDR Fund,Sector,0.04555048566019874,0.04379999999999999,6,6,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-11-12,XLP,Consumer Staples Select Sector SPDR Fund,Sector,0.06405203549907454,0.0398,10,10,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-11-12,XLE,Energy Select Sector SPDR Fund,Sector,0.07610084805538993,0.25880000000000003,15,15,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-11-12,XLI,Industrial Select Sector SPDR Fund,Sector,0.06534710601422267,0.0726,8,8,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-11-12,XLB,Materials Select Sector SPDR Fund,Sector,,0.0,0,0,Unavailable,stockanalysis_full_holdings,error: RuntimeError
+2026-11-12,XLU,Utilities Select Sector SPDR Fund,Sector,0.06926813937510104,0.07819999999999999,13,13,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-11-12,XLRE,Real Estate Select Sector SPDR Fund,Sector,,0.0,0,0,Unavailable,stockanalysis_full_holdings,error: RuntimeError
+2026-11-12,XLC,Communication Services Select Sector SPDR Fund,Sector,,0.0,0,0,Unavailable,stockanalysis_full_holdings,error: RuntimeError
+2026-11-12,SMH,VanEck Semiconductor ETF,Theme,0.13549680983434834,0.1456,9,9,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-11-12,XBI,SPDR S&P Biotech ETF,Theme,,0.0,0,0,Unavailable,stockanalysis_full_holdings,error: RuntimeError
