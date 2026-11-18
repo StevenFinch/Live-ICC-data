@@ -1,0 +1,27 @@
+date,ticker,label,category,icc,coverage_weight,n_holdings,n_matched,method,holding_source,status
+2026-11-17,SPY,SPDR S&P 500 ETF Trust,Broad Market,0.14160235826989218,0.0343,5,5,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-11-17,IVV,iShares Core S&P 500 ETF,Broad Market,,0.0,0,0,Unavailable,stockanalysis_full_holdings,error: RuntimeError
+2026-11-17,VOO,Vanguard S&P 500 ETF,Broad Market,0.14160235826989218,0.0343,5,5,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-11-17,VTI,Vanguard Total Stock Market ETF,Broad Market,0.14160235826989218,0.0343,5,5,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-11-17,QQQ,Invesco QQQ Trust,Growth / Nasdaq,0.09116839018321259,0.0695,6,6,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-11-17,DIA,SPDR Dow Jones Industrial Average ETF,Index,,0.0,0,0,Unavailable,stockanalysis_full_holdings,error: RuntimeError
+2026-11-17,IWM,iShares Russell 2000 ETF,Small Cap,,0.0,0,0,Unavailable,stockanalysis_full_holdings,error: RuntimeError
+2026-11-17,IJR,iShares Core S&P Small-Cap ETF,Small Cap,,0.0,0,0,Unavailable,stockanalysis_full_holdings,error: RuntimeError
+2026-11-17,MDY,SPDR S&P MidCap 400 ETF Trust,Mid Cap,0.0809483541256857,0.023,5,4,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-11-17,VUG,Vanguard Growth ETF,Style,0.10121623782616283,0.064,6,6,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-11-17,VTV,Vanguard Value ETF,Style,,0.0,0,0,Unavailable,stockanalysis_full_holdings,error: RuntimeError
+2026-11-17,IWF,iShares Russell 1000 Growth ETF,Style,0.1416928359601893,0.035500000000000004,5,5,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-11-17,IWD,iShares Russell 1000 Value ETF,Style,,0.0,0,0,Unavailable,stockanalysis_full_holdings,error: RuntimeError
+2026-11-17,XLK,Technology Select Sector SPDR Fund,Sector,0.13778998790853844,0.07750000000000001,7,7,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-11-17,XLF,Financial Select Sector SPDR Fund,Sector,,0.0,0,0,Unavailable,stockanalysis_full_holdings,error: RuntimeError
+2026-11-17,XLV,Health Care Select Sector SPDR Fund,Sector,,0.0,0,0,Unavailable,stockanalysis_full_holdings,error: RuntimeError
+2026-11-17,XLY,Consumer Discretionary Select Sector SPDR Fund,Sector,0.07659289218276616,0.0182,6,6,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-11-17,XLP,Consumer Staples Select Sector SPDR Fund,Sector,,0.0,0,0,Unavailable,stockanalysis_full_holdings,error: RuntimeError
+2026-11-17,XLE,Energy Select Sector SPDR Fund,Sector,,0.0,0,0,Unavailable,stockanalysis_full_holdings,error: RuntimeError
+2026-11-17,XLI,Industrial Select Sector SPDR Fund,Sector,0.05209713883182322,0.08430000000000001,8,8,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-11-17,XLB,Materials Select Sector SPDR Fund,Sector,,0.0,0,0,Unavailable,stockanalysis_full_holdings,error: RuntimeError
+2026-11-17,XLU,Utilities Select Sector SPDR Fund,Sector,,0.0,0,0,Unavailable,stockanalysis_full_holdings,error: RuntimeError
+2026-11-17,XLRE,Real Estate Select Sector SPDR Fund,Sector,,0.0,0,0,Unavailable,stockanalysis_full_holdings,error: RuntimeError
+2026-11-17,XLC,Communication Services Select Sector SPDR Fund,Sector,,0.0,0,0,Unavailable,stockanalysis_full_holdings,error: RuntimeError
+2026-11-17,SMH,VanEck Semiconductor ETF,Theme,0.11612166084837698,0.18530000000000002,12,12,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
+2026-11-17,XBI,SPDR S&P Biotech ETF,Theme,0.08885666570363424,0.0552,6,5,Partial holdings estimate,stockanalysis_full_holdings,partial_holdings
